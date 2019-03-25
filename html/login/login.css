@@ -1,0 +1,204 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,500);
+* {
+    padding: 0;
+    margin: 0;
+    outline: none;
+}
+
+html,
+body {
+    height: 100%;
+    font-family: "Roboto";
+}
+
+/* login-box LOGIN */
+
+#login {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-header-text {
+    padding-bottom: 24px;
+    margin-bottom: 8px;
+}
+
+.login-box {
+    min-height: 30vh;
+    min-width: 20vh;
+    width: 400px;
+    color: #666;
+    padding: 10px 0px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 1);
+    border-top: 2px solid #C0C0C0;
+    border-bottom: 2px solid #F00;
+}
+
+.login-box h1 {
+    text-align: center;
+    font-size: 30px;
+}
+
+.show {
+    display: none;
+}
+
+.login-box button {
+    background: #FF4747;
+    border: 0;
+    color: #fff;
+    padding: 10px;
+    font-size: 20px;
+    width: 330px;
+    margin: 20px auto;
+    display: block;
+    cursor: pointer;
+    -webkit-transition: all 0.4s;
+    transition: all 0.4s;
+    border-radius: 10px;
+}
+
+.login-box button:active {
+    background: #27ae60;
+}
+
+.login-box button:hover {
+    background: #FF2020;
+    -webkit-transition: all 0.4s;
+    transition: all 0.4s;
+}
+
+.login-box p {
+    font-size: 14px;
+    text-align: center;
+}
+
+.change-window {
+    cursor: pointer;
+    color: #666;
+    font-size: 15px;
+    text-align: center;
+}
+
+.group {
+    position: relative;
+    margin-bottom: 35px;
+    margin-left: 40px;
+}
+
+.inputMaterial {
+    font-size: 18px;
+    padding: 10px 10px 10px 5px;
+    display: block;
+    width: 300px;
+    border: none;
+    border-bottom: 1px solid #757575;
+}
+
+.inputMaterial:focus {
+    outline: none;
+}
+
+/* LABEL ======================================= */
+
+label {
+    color: #999;
+    font-size: 18px;
+    font-weight: normal;
+    position: absolute;
+    pointer-events: none;
+    left: 5px;
+    top: 10px;
+    transition: 0.2s ease all;
+    -moz-transition: 0.2s ease all;
+    -webkit-transition: 0.2s ease all;
+}
+
+/* active state */
+
+.inputMaterial:focus~label,
+.inputMaterial:valid~label {
+    top: -20px;
+    font-size: 14px;
+    color: #FF0000;
+}
+
+/* BOTTOM BARS ================================= */
+
+.bar {
+    position: relative;
+    display: block;
+    width: 315px;
+}
+
+.bar:before,
+.bar:after {
+    content: '';
+    height: 2px;
+    width: 0;
+    bottom: 1px;
+    position: absolute;
+    background: #FF0000;
+    transition: 0.2s ease all;
+    -moz-transition: 0.2s ease all;
+    -webkit-transition: 0.2s ease all;
+}
+
+.bar:before {
+    left: 50%;
+}
+
+.bar:after {
+    right: 50%;
+}
+
+/* active state */
+
+.inputMaterial:focus~.bar:before,
+.inputMaterial:focus~.bar:after {
+    width: 50%;
+}
+
+/* active state */
+
+.inputMaterial:focus~.highlight {
+    -webkit-animation: inputHighlighter 0.3s ease;
+    -moz-animation: inputHighlighter 0.3s ease;
+    animation: inputHighlighter 0.3s ease;
+}
+
+/* ANIMATIONS ================ */
+
+@-webkit-keyframes inputHighlighter {
+    from {
+        background: #5264AE;
+    }
+    to {
+        width: 0;
+        background: transparent;
+    }
+}
+
+@-moz-keyframes inputHighlighter {
+    from {
+        background: #5264AE;
+    }
+    to {
+        width: 0;
+        background: transparent;
+    }
+}
+
+@keyframes inputHighlighter {
+    from {
+        background: #5264AE;
+    }
+    to {
+        width: 0;
+        background: transparent;
+    }
+}

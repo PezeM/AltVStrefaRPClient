@@ -3,6 +3,7 @@ import game from 'natives';
 import { showUi } from 'src/Helpers/uiHelper.js';
 import chat from 'chat';
 
+let localPlayer = alt.getLocalPlayer();
 let loginView = null;
 let viewLoaded = () => {
     return loginView == null ? false : true;
@@ -28,6 +29,9 @@ function loadLoginView() {
     loginView.on('loadCharacter', (characterId) => {
         tryToLoadCharacter(characterId);
     });
+    loginView.on('tryToCreateNewCharacter', () => {
+        tryToCreateNewCharacter();
+    });
 
     alt.showCursor(true);
     showUi(false);
@@ -50,6 +54,11 @@ function tryToRegister(username, password) {
     alt.emitServer('registerAccount', username, password);
 }
 
+function tryToCreateNewCharacter() {
+    // For now just sends requests to server and creates new default character
+    alt.emitServer('tryToCreateNewCharacter');
+}
+
 function tryToLoadCharacter(characterId) {
     characterId = Number(characterId);
     alt.log('Loading character with id: ' + characterId);
@@ -65,7 +74,6 @@ alt.onServer('showLoginError', (message) => {
 });
 
 alt.onServer('successfullyRegistered', () => {
-    // Player successfully registered
     alt.log('Client - registered succ');
     loginView.emit('registeredSuccessfully');
 });
@@ -76,12 +84,11 @@ alt.onServer('loginSuccesfully', (characterList) => {
         // alt.log('Character list as json: ' + JSON.parse(characterList));
         loginView.emit('loggedIn', characterList);
     }
+});
 
-    // alt.showCursor(false);
-    // showUi(true);
+alt.onServer('CharacterCreatedSuccessfully', () => {
+    // Destory any camera etc
 
-    // alt.log('Setting default component...')
-    // game.setPedDefaultComponentVariation(game.playerPedId());
 });
 
 export default { hello, counter };

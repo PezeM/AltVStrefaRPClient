@@ -10,63 +10,81 @@ declare module "alt" {
     LockedCanBeDamaged
   }
 
-  export class Entity {
-    setMeta(name: String, value: any): void;
-    getMeta(name: String): any;    
+  export class Position {
+    x: number;
+    y: number;
+    z: number;
   }
+
+  export class BaseObject {
+    setMeta(name: string, value: any): void;
+    getMeta(name: string): any;  
+  }
+
+  export class Entity extends BaseObject {
+    pos: Position;
+    readonly id: number;
+  }
+
   export class Checkpoint {}
   export class Blip {}
 
-  export class Position {
-    x: Number;
-    y: Number;
-    z: Number;
-  }
-
   export class Player extends Entity {
-    readonly ping: Number;
-    name: String;
+    readonly ping: number;
+    name: string;
     readonly vehicle: Vehicle;
-    readonly seat: Number;
-    readonly health: Number;
-    pos: Position;
+    readonly seat: number;
+    readonly health: number;
 
-    setDateTime(day: Number, month: Number, year: Number, hour: Number, minute: Number, second: Number): void;
-    setWeather(weather: Number): void;
+    setDateTime(day: number, month: number, year: number, hour: number, minute: number, second: number): void;
+    setWeather(weather: number): void;
+
+    spawn(x: number, y: number, z: number, delay: number): void;
 
     kick(): void;
   }
 
+  export const players: Player[];
+
+  export class VoiceChannel extends BaseObject {
+    addPlayer(p: Player):void;
+    removePlayer(p: Player):void;
+    isPlayerInChannel(p: Player): boolean;
+    mutePlayer(p: Player): void;
+    unmutePlayer(p: Player): void;
+    isPlayerMuted(p: Player): boolean;
+  }
+
   export class Vehicle extends Entity {
     driver: Player;
-    modKit: Number;
-    modKitsCount: Number;
-    primaryColor: Number;
-    secondaryColor: Number;
-    customPrimaryColor: Number;
-    customSecondaryColor: Number;
-    tireSmokeColor: Number;
-    neonColor: Number;
-    pearlColor: Number;
-    wheelColor: Number;
-    interiorColor: Number;
-    dashboardColor: Number;
-    customTires: Number;
-    darkness: Number;
-    windowTint: Number;
-    neon: Number;
-    dirtLevel: Number;
-    numberPlateIndex: Number;
-    numberPlateText: String;
+    modKit: number;
+    modKitsCount: number;
+    primaryColor: number;
+    secondaryColor: number;
+    customPrimaryColor: number;
+    customSecondaryColor: number;
+    tireSmokeColor: number;
+    neonColor: number;
+    pearlColor: number;
+    wheelColor: number;
+    interiorColor: number;
+    dashboardColor: number;
+    customTires: number;
+    darkness: number;
+    windowTint: number;
+    neon: number;
+    dirtLevel: number;
+    numberPlateIndex: number;
+    numberPlateText: string;
 
-    getModsCount(category: Number): Number;
-    setMod(category: Number, id: Number): void;
-    setExtra(id: Number, disable: boolean): void;
-    setWheels(category: Number, id: Number): void;
+    getModsCount(category: number): number;
+    setMod(category: number, id: number): void;
+    setExtra(id: number, disable: boolean): void;
+    setWheels(category: number, id: number): void;
 
     engineOn: boolean;
     readonly handbrakeActive: boolean;
-    headlightColor: Number;
+    headlightColor: number;
     sirenActive: boolean;
     lockState: VehicleLockState;
     readonly daylightOn: boolean;
@@ -74,65 +92,68 @@ declare module "alt" {
     roofOpened: boolean;
     readonly flamethrowerActive: boolean;
 
-    getDoorState(id: Number): Number;
-    setDoorState(id: Number, state: Number): void;
-    isWindowOpened(id: Number): boolean;
-    setWindowOpened(id: Number, opened: boolean): void;
-    getGamestateDataBase64(): String;
-    setGamestateDataBase64(data: String): void;
+    getDoorState(id: number): number;
+    setDoorState(id: number, state: number): void;
+    isWindowOpened(id: number): boolean;
+    setWindowOpened(id: number, opened: boolean): void;
+    getGamestateDataBase64(): string;
+    setGamestateDataBase64(data: string): void;
 
-    engineHealth: Number;
-    petrolTankHealth: Number;
-    bodyHealth: Number;
-    bodyAdditionalHealth: Number;
-    readonly wheelsCount: Number;
-    readonly repairsCount: Number;
+    engineHealth: number;
+    petrolTankHealth: number;
+    bodyHealth: number;
+    bodyAdditionalHealth: number;
+    readonly wheelsCount: number;
+    readonly repairsCount: number;
 
-    setWheelBurst(id: Number, burst: boolean): void;
-    isWheelBurst(id: Number): boolean;
-    setWheelHasTire(id: Number, hasTire: boolean): void;
-    doesWheelHasTire(id: Number): boolean;
-    setWheelHealth(id: Number, health: Number): void;
-    getWheelHealth(id: Number): Number;
-    getHealthDataBase64(): String;
-    setHealthDataBase64(data: String): void;
+    setWheelBurst(id: number, burst: boolean): void;
+    isWheelBurst(id: number): boolean;
+    setWheelHasTire(id: number, hasTire: boolean): void;
+    doesWheelHasTire(id: number): boolean;
+    setWheelHealth(id: number, health: number): void;
+    getWheelHealth(id: number): number;
+    getHealthDataBase64(): string;
+    setHealthDataBase64(data: string): void;
 
     readonly hasArmoredWindows: boolean;
 
-    getPartDamageLevel(id: Number): Number;
-    setPartDamageLevel(id: Number, damageLevel: Number): void;
-    getPartBulletHoles(id: Number): Number;
-    setPartBulletHoles(id: Number, bulletHoles: Number): void;
-    isLightDamaged(id: Number): boolean;
-    setLightDamaged(id: Number, damaged: boolean): void;
-    isWindowDamaged(id: Number): boolean;
-    setWindowDamaged(id: Number, damaged: boolean): void;
-    isSpecialLightDamaged(id: Number): boolean;
-    setSpecialLightDamaged(id: Number, damaged: boolean): void;
-    getBumperDamageLevel(id: Number): Number;
-    setBumperDamageLevel(id: Number, damageLevel: Number): void;
-    getArmoredWindowHealth(id: Number): Number;
-    setArmoredWindowHealth(id: Number, health: Number): void;
-    getArmoredWindowShootCount(id: Number): Number;
-    setArmoredWindowShootCount(id: Number, shootCount: Number): void;
-    getDamageStatusBase64(): String;
-    setDamageStatusBase64(data: String): void;
+    getPartDamageLevel(id: number): number;
+    setPartDamageLevel(id: number, damageLevel: number): void;
+    getPartBulletHoles(id: number): number;
+    setPartBulletHoles(id: number, bulletHoles: number): void;
+    isLightDamaged(id: number): boolean;
+    setLightDamaged(id: number, damaged: boolean): void;
+    isWindowDamaged(id: number): boolean;
+    setWindowDamaged(id: number, damaged: boolean): void;
+    isSpecialLightDamaged(id: number): boolean;
+    setSpecialLightDamaged(id: number, damaged: boolean): void;
+    getBumperDamageLevel(id: number): number;
+    setBumperDamageLevel(id: number, damageLevel: number): void;
+    getArmoredWindowHealth(id: number): number;
+    setArmoredWindowHealth(id: number, health: number): void;
+    getArmoredWindowShootCount(id: number): number;
+    setArmoredWindowShootCount(id: number, shootCount: number): void;
+    getDamageStatusBase64(): string;
+    setDamageStatusBase64(data: string): void;
   }
 
-  export function on(event: String, callback: Function): void;
-  export function emit(event: String, ...args: any[]): void;
-  export function onClient(event: String, callback: Function): void;
-  export function emitClient(client: Player | null, event: String, ...args: any[]): void;
+  export function on(event: string, callback: Function): void;
+  export function emit(event: string, ...args: any[]): void;
+  export function onClient(event: string, callback: Function): void;
+  export function emitClient(client: Player | null, event: string, ...args: any[]): void;
 
   export function log(...args: any[]): void;
   export function logWarning(...args: any[]): void;
   export function logError(...args: any[]): void;
 
-  export function getPlayersByName(name: String): Player[];
+  export function getPlayersByName(name: string): Player[];
 
-  export function createVehicle(model: Number | String, posX: Number, posY: Number, posZ: Number, heading: Number): Vehicle;
+  export function createVehicle(model: number | string, posX: number, posY: number, posZ: number, heading: number): Vehicle;
   export function removeEntity(entity: Entity): void;
 
-  export function createCheckpoint(type: Number, x: Number, y: Number, z: Number, radius: Number, height: Number, r: Number, g: Number, b: Number, a: Number): Checkpoint;
-  export function createBlipForCoords(type: Number, x: Number, y: Number, z: Number): Blip;
+  export function createCheckpoint(type: number, x: number, y: number, z: number, radius: number, height: number, r: number, g: number, b: number, a: number): Checkpoint;
+  export function createBlipForCoords(type: number, x: number, y: number, z: number): Blip;
+
+  export function createVoiceChannel(isChannel3D: boolean, maxDistance: number): VoiceChannel;
+  export function removeVoiceChannel(channel: VoiceChannel): void;
 }

@@ -1,17 +1,13 @@
 import alt from 'alt';
 import game from 'natives';
-import { showUi } from 'src/Helpers/uiHelper.js';
 import chat from 'chat';
+import { showUi } from 'src/Helpers/uiHelper.js';
 
 let localPlayer = alt.getLocalPlayer();
 let loginView = null;
 let viewLoaded = () => {
     return loginView == null ? false : true;
 }
-
-export let counter = {
-    value: 0
-};
 
 export function hello() {
     return "Module.js working";
@@ -88,7 +84,7 @@ alt.onServer('loginSuccesfully', (characterList) => {
 
 alt.onServer('CharacterCreatedSuccessfully', () => {
     // Destory any camera etc
-
+    game.setPedDefaultComponentVariation(localPlayer.scriptID);
 });
 
 export default { hello, counter };

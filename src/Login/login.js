@@ -9,12 +9,14 @@ let viewLoaded = () => {
     return loginView == null ? false : true;
 }
 
+alt.log('Login.js loaded');
+
 export function hello() {
     return "Module.js working";
 }
 
 function loadLoginView() {
-    loginView = new alt.WebView('http://resources/testAltVClient/html/login/index.html');
+    loginView = new alt.WebView('http://resources/AltVStrefaRPClient/html/login/index.html');
 
     loginView.on('tryToLogin', (username, password) => {
         tryToLogin(username, password)
@@ -32,6 +34,11 @@ function loadLoginView() {
     alt.showCursor(true);
     showUi(false);
     loginView.focus();
+}
+
+function hideLoginView() {
+    alt.showCursor(false);
+    showUi(true);
 }
 
 function tryToLogin(username, password) {
@@ -62,6 +69,7 @@ function tryToLoadCharacter(characterId) {
 }
 
 alt.onServer('showAuthenticateWindow', () => {
+    alt.log('Loading login view');
     loadLoginView();
 });
 
@@ -77,6 +85,12 @@ alt.onServer('successfullyRegistered', () => {
 alt.onServer('loginSuccesfully', (characterList) => {
     if (characterList) {
         alt.log('Character list: ' + characterList);
+        if (Array.isArray(characterList)) {
+            alt.log('Character list is an array');
+        }
+        else {
+            alt.log('Character list is an object');
+        }
         // alt.log('Character list as json: ' + JSON.parse(characterList));
         loginView.emit('loggedIn', characterList);
     }
@@ -84,7 +98,18 @@ alt.onServer('loginSuccesfully', (characterList) => {
 
 alt.onServer('CharacterCreatedSuccessfully', () => {
     // Destory any camera etc
+    alt.log('Character created succesfully');
+    game.freezeEntityPosition(localPlayer.scriptID, false);
     game.setPedDefaultComponentVariation(localPlayer.scriptID);
+    loginView.emit('hideCharacterSelectWindow');
+    hideLoginView();
 });
 
-export default { hello, counter };
+alt.onServer('loadedCharacter', () => {
+    game.freezeEntityPosition(localPlayer.scriptID, false);
+    game.setPedDefaultComponentVariation(localPlayer.scriptID);
+    loginView.emit('hideCharacterSelectWindow');
+    hideLoginView();
+});
+
+export default { hello };

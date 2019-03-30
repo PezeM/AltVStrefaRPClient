@@ -78,16 +78,6 @@ let characterSelect = new Vue({
     },
     computed: {
         filteredCharacterList() { // Sort characters by ID
-            // return this.charactersList.sort(function (a, b) {
-            //     return a.Id - b.Id;
-            // })
-            if (Array.isArray(this.charactersList)) {
-                console.log("Character list is an array");
-            }
-            else {
-                console.log("Character list is an object");
-            }
-
             return this.charactersList.sort(function (a, b) {
                 return a.Id - b.Id;
             })

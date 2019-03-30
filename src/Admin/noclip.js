@@ -3,8 +3,8 @@
 
 import alt from 'alt';
 import game from 'natives';
-import chat from 'chat';
-import { drawText } from 'src/Helpers/uiHelper.js';
+import { drawText, draw3DText } from 'src/Helpers/uiHelper.js';
+import { rotToDirection } from 'src/Helpers/mathHelper.js';
 
 const controlsIds = {
     F5: 327,
@@ -14,18 +14,20 @@ const controlsIds = {
     D: 35, // 30, 218, 235, 266, 267
     Space: 321,
     LCtrl: 326,
+    Shift: 21
 };
 
 let fly = {
     flying: false,
     f: 2.0,
     w: 2.0,
-    h: 2.0
+    h: 2.0,
+    currentSpeedIndex: 0,
+    speeds: [0.01, 0.1, 0.2, 0.5, 1, 5]
 };
 
-let gameplayCamera = game.createCam("DEFAULT_SCRIPTED_CAMERA", true);
 let direction = null;
-let coords = null;
+let rotation = null;
 let localPlayer = alt.getLocalPlayer();
 
 function toggleFlying() {
@@ -35,19 +37,97 @@ function toggleFlying() {
     game.setPlayerInvisibleLocally(localPlayer.scriptID, fly.flying);
     game.setEntityVisible(localPlayer.scriptID, !fly.flying, 0);
 
+    if (!fly.flying) {
+        landSafeOnTheGround();
+    }
+
     drawNotification(`Noclip: ${fly.flying ? "~g~włączony" : "~r~wyłączony"}`);
+}
+
+function landSafeOnTheGround() {
+    const position = game.getEntityCoords(localPlayer.scriptID, true);
+    alt.log('Old position z' + position.z);
+    var [isGroundFound, positionZ] = game.getGroundZFor3dCoord(position.x, position.y, position.z, 0.0, false);
+    if (isGroundFound) {
+        alt.log('New position z' + position.z);
+        game.setEntityCoordsNoOffset(localPlayer.scriptID, position.x, position.y, positionZ, false, false, false);
+    }
 }
 
 alt.on('update', () => {
     if (fly.flying) {
-        coords = game.getGameplayCamCoord();
-        direction = game.getGameplayCamRot(2);
-        let updated = false;
+        rotation = game.getGameplayCamRot(2);
+        direction = rotToDirection(rotation);
+        let positionUpdated = false;
+        var currentSpeed = fly.speeds[fly.currentSpeedIndex];
         const position = game.getEntityCoords(localPlayer.scriptID, true);
 
-        drawText(`Coords: X: ${coords.x} Y: ${coords.y} Z: ${coords.y}`, [0.85, 0.8], 0, [255, 255, 255, 255], 0.5);
-        drawText(`Direction: X: ${direction.x} Y: ${direction.y} Z: ${direction.z}`, [0.85, 0.85], 0, [255, 255, 255, 255], 0.5);
-        drawText(`Player position: X: ${position.x} Y: ${position.y} Z: ${position.z}`, [0.85, 0.9], 0, [255, 255, 255, 255], 0.5);
+        drawText(`Player position: X: ${position.x} Y: ${position.y} Z: ${position.z}`, [0.5, 0.01], 0, [200, 200, 200, 200], 0.35);
+        drawText(`Speed: X: ${currentSpeed}`, [0.5, 0.04], 0, [200, 200, 200, 200], 0.35);
+
+        draw3DText(`Player position: X: ${position.x} Y: ${position.y} Z: ${position.z}`, [position.x, position.y, position.z], 0, [255, 255, 255, 255], 1);
+
+
+        if (game.isControlPressed(0, controlsIds.Shift)) {
+            if (fly.currentSpeedIndex + 1 < fly.speeds.length) {
+                fly.speeds[++fly.currentSpeedIndex];
+            }
+            else {
+                fly.currentSpeedIndex = 0;
+                fly.speeds[fly.currentSpeedIndex];
+            }
+        }
+
+        if (game.isControlPressed(0, controlsIds.W)) {
+            if (fly.f < 8.0) { fly.f *= 1.025; }
+
+            position.x += direction.x * fly.f * currentSpeed;
+            position.y += direction.y * fly.f * currentSpeed;
+            position.z += direction.z * fly.f * currentSpeed;
+            positionUpdated = true;
+        } else if (game.isControlPressed(0, controlsIds.S)) {
+            if (fly.f < 8.0) { fly.f *= 1.025; }
+
+            position.x -= direction.x * fly.f * currentSpeed;
+            position.y -= direction.y * fly.f * currentSpeed;
+            position.z -= direction.z * fly.f * currentSpeed;
+            positionUpdated = true;
+        } else {
+            fly.f = 2.0;
+        }
+
+        if (game.isControlPressed(0, controlsIds.A)) {
+            if (fly.l < 8.0) { fly.l *= 1.025; }
+
+            position.x += (-direction.y) * fly.l * currentSpeed;
+            position.y += direction.x * fly.l * currentSpeed;
+            positionUpdated = true;
+        } else if (game.isControlPressed(0, controlsIds.D)) {
+            if (fly.l < 8.0) { fly.l *= 1.05; }
+
+            position.x -= (-direction.y) * fly.l * currentSpeed;
+            position.y -= direction.x * fly.l * currentSpeed;
+            positionUpdated = true;
+        } else {
+            fly.l = 2.0;
+        }
+
+        if (game.isControlPressed(0, controlsIds.Space)) {
+            if (fly.h < 8.0) { fly.h *= 1.025; }
+
+            position.z += fly.h;
+            positionUpdated = true;
+        } else if (game.isControlPressed(0, controlsIds.LCtrl)) {
+            if (fly.h < 8.0) { fly.h *= 1.05; }
+
+            position.z -= fly.h;
+            positionUpdated = true;
+        } else {
+            fly.h = 2.0;
+        }
+
+        if (positionUpdated)
+            game.setEntityCoordsNoOffset(localPlayer.scriptID, position.x, position.y, position.z, false, false, false);
     }
 });
 
@@ -60,5 +140,5 @@ alt.on('keydown', (key) => {
 function drawNotification(text) {
     game.setNotificationTextEntry("STRING");
     game.addTextComponentSubstringPlayerName(text);
-    game.drawNotification(false, false);
+    game.drawNotification(true, false);
 }

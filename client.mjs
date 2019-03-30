@@ -16,7 +16,7 @@ game.freezeEntityPosition(localPlayer.scriptID, true);
 alt.log('Client side script loaded');
 
 alt.on('keydown', (key) => {
-	if (key == 'F6'.charCodeAt(0)) {
+	if (key == 0x75) { // F6 Key
 		cursorShown = !cursorShown;
 		alt.showCursor(cursorShown);
 	}

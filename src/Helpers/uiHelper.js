@@ -18,33 +18,34 @@ export function drawText(text, position, font, color, scale, outline = true) {
     game.setTextEdge(2, 0, 0, 0, 150);
     game.setTextDropShadow(0, 0, 0, 0, 55);
     game.setTextDropShadow();
-    game.setTextCentre(1);
 
     if (outline) game.setTextOutline();
 
     game.beginTextCommandDisplayText("STRING");
-    // game.addTextComponentScaleform(text);
-    game.addTextComponentSubstringPlayerName(text);
+    game.addTextComponentScaleform(text);
+    game.setTextCentre(1);
+    // game.addTextComponentSubstringPlayerName(text);
     game.endTextCommandDisplayText(position[0], position[1]);
 }
 
 export function draw3DText(text, position, font, color, scale, outline = true) {
-    game.setDrawOrigin(position[0], position[1], position[3], 0);
-    game.setTextFont(font);
-    game.setTextProportional(0);
     game.setTextScale(scale, scale);
+    game.setTextFont(font);
+    game.setTextProportional(1);
     game.setTextColour(color[0], color[1], color[2], color[3]);
-    game.setTextDropShadow(0, 0, 0, 0, 255);
+    game.setTextDropshadow(0, 0, 0, 0, 255);
+    game.setTextEdge(2, 0, 0, 0, 150);
     game.setTextDropShadow();
-    game.setTextEdge(2, 0, 0, 0, 255);
+
+    if (outline)
+        game.setTextOutline();
+
     game.setTextCentre(1);
 
-    if (outline) game.setTextOutline();
-
+    alt.log('Position x' + position[0] + ' y ' + position[1] + 'z ' + position[2])
+    game.setDrawOrigin(position[0], position[1], position[2], 0);
     game.beginTextCommandDisplayText("STRING");
-    // game.addTextComponentScaleform(text);
     game.addTextComponentSubstringPlayerName(text);
-    game.endTextCommandDisplayText(position[0], position[1]);
-
+    game.endTextCommandDisplayText(0, 0);
     game.clearDrawOrigin();
 }

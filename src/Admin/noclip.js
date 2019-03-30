@@ -3,7 +3,7 @@
 
 import alt from 'alt';
 import game from 'natives';
-import { drawText, draw3DText } from 'src/Helpers/uiHelper.js';
+import { drawText, draw3DText, draw3DText2 } from 'src/Helpers/uiHelper.js';
 import { rotToDirection } from 'src/Helpers/mathHelper.js';
 
 const controlsIds = {
@@ -23,7 +23,7 @@ let fly = {
     w: 2.0,
     h: 2.0,
     currentSpeedIndex: 0,
-    speeds: [0.01, 0.1, 0.2, 0.5, 1, 5]
+    speeds: [0.01, 0.1, 0.25, 0.5, 1, 5]
 };
 
 let direction = null;
@@ -46,10 +46,8 @@ function toggleFlying() {
 
 function landSafeOnTheGround() {
     const position = game.getEntityCoords(localPlayer.scriptID, true);
-    alt.log('Old position z' + position.z);
     var [isGroundFound, positionZ] = game.getGroundZFor3dCoord(position.x, position.y, position.z, 0.0, false);
     if (isGroundFound) {
-        alt.log('New position z' + position.z);
         game.setEntityCoordsNoOffset(localPlayer.scriptID, position.x, position.y, positionZ, false, false, false);
     }
 }
@@ -59,16 +57,13 @@ alt.on('update', () => {
         rotation = game.getGameplayCamRot(2);
         direction = rotToDirection(rotation);
         let positionUpdated = false;
-        var currentSpeed = fly.speeds[fly.currentSpeedIndex];
+        const currentSpeed = fly.speeds[fly.currentSpeedIndex];
         const position = game.getEntityCoords(localPlayer.scriptID, true);
 
         drawText(`Player position: X: ${position.x} Y: ${position.y} Z: ${position.z}`, [0.5, 0.01], 0, [200, 200, 200, 200], 0.35);
-        drawText(`Speed: X: ${currentSpeed}`, [0.5, 0.04], 0, [200, 200, 200, 200], 0.35);
+        drawText(`Speed: ${currentSpeed}`, [0.5, 0.04], 0, [200, 200, 200, 200], 0.35);
 
-        draw3DText(`Player position: X: ${position.x} Y: ${position.y} Z: ${position.z}`, [position.x, position.y, position.z], 0, [255, 255, 255, 255], 1);
-
-
-        if (game.isControlPressed(0, controlsIds.Shift)) {
+        if (game.isControlJustReleased(0, controlsIds.Shift)) {
             if (fly.currentSpeedIndex + 1 < fly.speeds.length) {
                 fly.speeds[++fly.currentSpeedIndex];
             }

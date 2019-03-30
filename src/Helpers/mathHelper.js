@@ -6,10 +6,6 @@ import game from 'natives';
 
 export function rotToDirection(rotation) {
     try {
-        // var radiansZ = degToRad(rotation.z);
-        // var radiansX = degToRad(rotation.X);
-        // var num = Math.abs(Math.cos(radiansX));
-
         var radiansZ = Math.PI / 180 * rotation.z;
         var radiansX = Math.PI / 180 * rotation.x;
         var num = Math.abs(Math.cos(radiansX));

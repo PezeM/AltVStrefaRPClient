@@ -1,6 +1,5 @@
 import alt from 'alt';
 import game from 'natives';
-import chat from 'chat';
 import { showUi } from 'src/Helpers/uiHelper.js';
 
 let localPlayer = alt.getLocalPlayer();
@@ -9,11 +8,11 @@ let viewLoaded = () => {
     return loginView == null ? false : true;
 }
 
-alt.log('Login.js loaded');
-
-export function hello() {
-    return "Module.js working";
+export default function eldo() {
+    alt.log('co');
 }
+
+alt.log('Login.js loaded');
 
 function loadLoginView() {
     loginView = new alt.WebView('http://resources/AltVStrefaRPClient/html/login/index.html');
@@ -111,5 +110,3 @@ alt.onServer('loadedCharacter', () => {
     loginView.emit('hideCharacterSelectWindow');
     hideLoginView();
 });
-
-export default { hello };

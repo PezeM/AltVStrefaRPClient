@@ -3,7 +3,7 @@
 
 import alt from 'alt';
 import game from 'natives';
-import { drawText, draw3DText, draw3DText2 } from 'src/Helpers/uiHelper.js';
+import { drawText } from 'src/Helpers/uiHelper.js';
 import { rotToDirection } from 'src/Helpers/mathHelper.js';
 
 const controlsIds = {

@@ -3,6 +3,7 @@
 
 import alt from 'alt';
 import game from 'natives';
+let playerId = alt.getLocalPlayer().scriptID;
 
 export function showUi(toogle) {
     alt.toggleGameControls(toogle);
@@ -22,13 +23,17 @@ export function drawText(text, position, font, color, scale, outline = true) {
     if (outline) game.setTextOutline();
 
     game.beginTextCommandDisplayText("STRING");
-    game.addTextComponentScaleform(text);
+    // game.addTextComponentScaleform(text);
     game.setTextCentre(1);
-    // game.addTextComponentSubstringPlayerName(text);
+    game.addTextComponentSubstringPlayerName(text);
     game.endTextCommandDisplayText(position[0], position[1]);
 }
 
 export function draw3DText(text, position, font, color, scale, outline = true) {
+    var camCoord = game.getGameplayCamCoords();
+    var distance = game.getDistanceBetweenCoords(position[0], position[1], position[2], camCoord.x, camCoord.y, camCoord.z, true);
+    var newScale = ((1 / distance) * 2) * (1 / game.getGameplayCamFov()) * 100;
+
     game.setTextScale(scale, scale);
     game.setTextFont(font);
     game.setTextProportional(1);
@@ -42,7 +47,6 @@ export function draw3DText(text, position, font, color, scale, outline = true) {
 
     game.setTextCentre(1);
 
-    alt.log('Position x' + position[0] + ' y ' + position[1] + 'z ' + position[2])
     game.setDrawOrigin(position[0], position[1], position[2], 0);
     game.beginTextCommandDisplayText("STRING");
     game.addTextComponentSubstringPlayerName(text);

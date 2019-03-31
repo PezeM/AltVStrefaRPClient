@@ -53,3 +53,26 @@ export function draw3DText(text, position, font, color, scale, outline = true) {
     game.endTextCommandDisplayText(0, 0);
     game.clearDrawOrigin();
 }
+
+export function getMinimapAnchor() {
+    let sfX = 1.0 / 20.0;
+    let sfY = 1.0 / 20.0;
+    let safeZone = game.getSafeZoneSize();
+    let aspectRatio = game.getAspectRatio(false);
+    let resolution = game.getActiveScreenResolution(0, 0);
+    let scaleX = 1.0 / resolution.x;
+    let scaleY = 1.0 / resolution.y;
+
+    let minimap = {
+        width: scaleX * (resolution.x / (4 * aspectRatio)),
+        height: scaleY * (resolution.y / 5.674),
+        scaleX: scaleX,
+        scaleY: scaleY,
+        leftX: scaleX * (resolution.x * (sfX * (Math.abs(safeZone - 1.0) * 10))),
+        bottomY: 1.0 - scaleY * (resolution.y * (sfY * (Math.abs(safeZone - 1.0) * 10))),
+    };
+
+    minimap.rightX = minimap.leftX + minimap.width;
+    minimap.topY = minimap.bottomY - minimap.height;
+    return minimap;
+}

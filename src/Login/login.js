@@ -36,8 +36,8 @@ function loadLoginView() {
 }
 
 function hideLoginView() {
-    alt.showCursor(false);
     showUi(true);
+    alt.showCursor(false);
 }
 
 function tryToLogin(username, password) {

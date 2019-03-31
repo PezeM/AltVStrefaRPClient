@@ -11,7 +11,7 @@ export function showUi(toogle) {
     game.displayRadar(toogle);
 }
 
-export function drawText(text, position, font, color, scale, outline = true) {
+export function drawText(text, position, font, color, scale, outline = true, center = true) {
     game.setTextFont(font);
     game.setTextProportional(0);
     game.setTextScale(scale, scale);
@@ -20,11 +20,11 @@ export function drawText(text, position, font, color, scale, outline = true) {
     game.setTextDropShadow(0, 0, 0, 0, 55);
     game.setTextDropShadow();
 
+    if (center) game.setTextCentre(1);
     if (outline) game.setTextOutline();
 
     game.beginTextCommandDisplayText("STRING");
     // game.addTextComponentScaleform(text);
-    game.setTextCentre(1);
     game.addTextComponentSubstringPlayerName(text);
     game.endTextCommandDisplayText(position[0], position[1]);
 }
@@ -59,17 +59,17 @@ export function getMinimapAnchor() {
     let sfY = 1.0 / 20.0;
     let safeZone = game.getSafeZoneSize();
     let aspectRatio = game.getAspectRatio(false);
-    let resolution = game.getActiveScreenResolution(0, 0);
-    let scaleX = 1.0 / resolution.x;
-    let scaleY = 1.0 / resolution.y;
+    let resolution = game.getActiveScreenResolution(0, 0); // Returns [null,x,y]
+    let scaleX = 1.0 / resolution[1];
+    let scaleY = 1.0 / resolution[2];
 
     let minimap = {
-        width: scaleX * (resolution.x / (4 * aspectRatio)),
-        height: scaleY * (resolution.y / 5.674),
+        width: scaleX * (resolution[1] / (4 * aspectRatio)),
+        height: scaleY * (resolution[2] / 5.674),
         scaleX: scaleX,
         scaleY: scaleY,
-        leftX: scaleX * (resolution.x * (sfX * (Math.abs(safeZone - 1.0) * 10))),
-        bottomY: 1.0 - scaleY * (resolution.y * (sfY * (Math.abs(safeZone - 1.0) * 10))),
+        leftX: scaleX * (resolution[1] * (sfX * (Math.abs(safeZone - 1.0) * 10))),
+        bottomY: 1.0 - scaleY * (resolution[2] * (sfY * (Math.abs(safeZone - 1.0) * 10))),
     };
 
     minimap.rightX = minimap.leftX + minimap.width;

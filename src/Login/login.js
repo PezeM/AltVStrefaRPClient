@@ -106,6 +106,7 @@ alt.onServer('CharacterCreatedSuccessfully', () => {
 
 alt.onServer('loadedCharacter', () => {
     game.freezeEntityPosition(localPlayer.scriptID, false);
+    alt.log('Setting player component variation');
     game.setPedDefaultComponentVariation(localPlayer.scriptID);
     loginView.emit('hideCharacterSelectWindow');
     hideLoginView();

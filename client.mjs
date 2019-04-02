@@ -20,6 +20,7 @@ alt.log('Client side script loaded');
 alt.on('keydown', (key) => {
 	if (key == 0x75) { // F6 Key
 		cursorShown = !cursorShown;
+		alt.log('Cursor shown = ' + cursorShown);
 		alt.showCursor(cursorShown);
 	}
 });
@@ -28,6 +29,13 @@ alt.on('update', () => {
 	// DEV Constant running
 	if (game.isPedSprinting(localPlayer.scriptID))
 		game.restorePlayerStamina(localPlayer.scriptID, 100);
+});
+
+alt.onServer('setPedIntoVehicle', () => {
+	var coords = game.getEntityCoords(localPlayer.scriptID, true);
+	var closestVehicle = game.getClosestVehicle(coords.x, coords.y, coords.z, 500, 0, 70);
+	alt.log('Closest vehicle: ' + JSON.stringify(closestVehicle));
+	game.taskWarpPedIntoVehicle(localPlayer.scriptID, closestVehicle, -1);
 });
 
 game.requestIpl('chop_props');

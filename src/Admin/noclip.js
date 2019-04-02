@@ -16,7 +16,7 @@ const controlsIds = {
     LCtrl: 326,
     Shift: 21
 };
-
+let lastChecked = 0;
 let fly = {
     flying: false,
     f: 2.0,
@@ -63,7 +63,7 @@ alt.on('update', () => {
         drawText(`Player position: X: ${position.x} Y: ${position.y} Z: ${position.z}`, [0.5, 0.01], 0, [200, 200, 200, 200], 0.35);
         drawText(`Speed: ${currentSpeed}`, [0.5, 0.04], 0, [200, 200, 200, 200], 0.35);
 
-        if (game.isControlJustReleased(0, controlsIds.Shift)) {
+        if (game.isControlJustReleased(0, controlsIds.Shift) && (new Date().getTime() - lastChecked > 100)) {
             if (fly.currentSpeedIndex + 1 < fly.speeds.length) {
                 fly.speeds[++fly.currentSpeedIndex];
             }
@@ -71,6 +71,7 @@ alt.on('update', () => {
                 fly.currentSpeedIndex = 0;
                 fly.speeds[fly.currentSpeedIndex];
             }
+            lastChecked = new Date().getTime();
         }
 
         if (game.isControlPressed(0, controlsIds.W)) {
@@ -108,12 +109,12 @@ alt.on('update', () => {
         }
 
         if (game.isControlPressed(0, controlsIds.Space)) {
-            if (fly.h < 8.0) { fly.h *= 1.025; }
+            if (fly.h < 8.0) { fly.h *= 1.01; }
 
             position.z += fly.h;
             positionUpdated = true;
         } else if (game.isControlPressed(0, controlsIds.LCtrl)) {
-            if (fly.h < 8.0) { fly.h *= 1.05; }
+            if (fly.h < 8.0) { fly.h *= 1.01; }
 
             position.z -= fly.h;
             positionUpdated = true;

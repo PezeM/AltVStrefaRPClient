@@ -79,6 +79,17 @@ export function poitingAt(maxDistance = 4) {
     alt.log(`Raycast result: ${result}`);
 }
 
+alt.onServer("showNotification", (type, message, time) => {
+    showCefNotification(type, message, time);
+});
+
+// Shows notification in Cef ui for 5000ms
+export function showCefNotification(type, message, time = 5000) {
+    if (typeof type == 'number' && typeof message == 'string') {
+        uiView.emit('showNotification', type, message, time);
+    }
+}
+
 alt.on('keydown', (key) => {
     if (key == controlsIds.Alt) {
         if (localPlayer.vehicle != null || game.isEntityDead(localPlayerId)) return;
@@ -108,3 +119,4 @@ alt.on('update', () => {
         // Draw entity
     }
 });
+

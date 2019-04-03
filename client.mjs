@@ -10,20 +10,8 @@ import * as sitting from 'src/Environment/sitting.js';
 import * as ui from 'src/ui.js';
 
 let localPlayer = alt.getLocalPlayer();
-let cursorShown = false;
-
-// Startup
-game.freezeEntityPosition(localPlayer.scriptID, true);
 
 alt.log('Client side script loaded');
-
-alt.on('keydown', (key) => {
-	if (key == 0x75) { // F6 Key
-		cursorShown = !cursorShown;
-		alt.log('Cursor shown = ' + cursorShown);
-		alt.showCursor(cursorShown);
-	}
-});
 
 alt.on('update', () => {
 	// DEV Constant running

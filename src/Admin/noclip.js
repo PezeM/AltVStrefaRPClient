@@ -3,7 +3,7 @@
 
 import alt from 'alt';
 import game from 'natives';
-import { drawText } from 'src/Helpers/uiHelper.js';
+import { drawText, showNotification } from 'src/Helpers/uiHelper.js';
 import { rotToDirection } from 'src/Helpers/mathHelper.js';
 
 const controlsIds = {
@@ -41,7 +41,7 @@ function toggleFlying() {
         landSafeOnTheGround();
     }
 
-    drawNotification(`Noclip: ${fly.flying ? "~g~włączony" : "~r~wyłączony"}`);
+    showNotification('Noclip', fly.flying ? "~g~ Został włączony" : "~r~Został wyłączony", "");
 }
 
 function landSafeOnTheGround() {

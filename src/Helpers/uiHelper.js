@@ -11,22 +11,48 @@ export function showUi(toogle) {
     game.displayRadar(toogle);
 }
 
+export function showNotification(title, subtitle, message, char = "CHAR_DEFAULT", flashing = false, icon = 7) {
+    alt.nextTick(() => {
+        streamTextureDict(char);
+        game.setNotificationTextEntry("STRING");
+        game.addTextComponentSubstringPlayerName(message);
+        game.setNotificationMessage2(char, char, flashing, icon, title, subtitle);
+        game.drawNotification(false, true);
+    });
+}
+
+function streamTextureDict(dict) {
+    alt.log('UiHelper streamTextureDict called');
+    let tries = 0;
+    if (!game.hasStreamedTextureDictLoaded(dict)) {
+        game.requestStreamedTextureDict(dict, true);
+
+        while (game.hasStreamedTextureDictLoaded(dict) && tries < 50) {
+            tries++;
+            alt.wait(0);
+        }
+
+        if (tries >= 50) return false;
+    }
+}
+
 export function drawText(text, position, font, color, scale, outline = true, center = true) {
-    game.setTextFont(font);
-    game.setTextProportional(0);
-    game.setTextScale(scale, scale);
-    game.setTextColour(color[0], color[1], color[2], color[3]);
-    game.setTextEdge(2, 0, 0, 0, 150);
-    game.setTextDropShadow(0, 0, 0, 0, 55);
-    game.setTextDropShadow();
+    alt.nextTick(() => {
+        game.setTextFont(font);
+        game.setTextProportional(0);
+        game.setTextScale(scale, scale);
+        game.setTextColour(color[0], color[1], color[2], color[3]);
+        game.setTextEdge(2, 0, 0, 0, 150);
+        game.setTextDropShadow(0, 0, 0, 0, 55);
+        game.setTextDropShadow();
 
-    if (center) game.setTextCentre(1);
-    if (outline) game.setTextOutline();
+        if (center) game.setTextCentre(1);
+        if (outline) game.setTextOutline();
 
-    game.beginTextCommandDisplayText("STRING");
-    // game.addTextComponentScaleform(text);
-    game.addTextComponentSubstringPlayerName(text);
-    game.endTextCommandDisplayText(position[0], position[1]);
+        game.beginTextCommandDisplayText("STRING");
+        game.addTextComponentSubstringPlayerName(text);
+        game.endTextCommandDisplayText(position[0], position[1]);
+    });
 }
 
 export function draw3DText(text, position, font, color, scale, outline = true) {

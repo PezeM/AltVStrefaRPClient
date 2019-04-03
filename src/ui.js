@@ -26,8 +26,8 @@ const localPlayerId = localPlayer.scriptID;
 
 // Raycasting
 let entityHit = null;
-let endPos = null;
-let surface = null;
+// let endPos = null;
+// let surface = null;
 let didRaycaystHit = false;
 
 alt.setInterval(() => {
@@ -56,6 +56,7 @@ function calculateRaycastDistance(maxDistance = 4) {
     return zoomDistance + maxDistance;
 }
 
+// Confirmed to be not working by one of the devs
 export function poitingAt(maxDistance = 4) {
     var pos = game.getGameplayCamCoord();
     var dir = rotToDirection(game.getGameplayCamRot(2));
@@ -71,9 +72,10 @@ export function poitingAt(maxDistance = 4) {
     game.drawLine(pos.x, pos.y, pos.z, farAway.x, farAway.y, farAway.z, 255, 255, 255, 255);
     alt.log(`RayTest = ${JSON.stringify(rayTest)}`);
     // var surface = new alt.Position();
-    // var surface = { x: 0, y: 0, z: 0 };
-    // var endPos = { x: 0, y: 0, z: 0 };
-    var result = game.getShapeTestResult(rayTest, didRaycaystHit, null, null, entityHit);
+    var surface = { x: 0.0, y: 0.0, z: 0.0 };
+    var endPos = { x: 0.0, y: 0.0, z: 0.0 };
+    alt.log(`Surface: ${JSON.stringify(surface)} Endpos: ${JSON.stringify(endPos)}`);
+    var result = game.getShapeTestResult(rayTest, didRaycaystHit, endPos, surface, entityHit);
     alt.log(`Raycast result: ${result}`);
 }
 

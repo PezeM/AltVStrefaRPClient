@@ -13,7 +13,7 @@ export function showUi(toogle) {
 
 export function showNotification(title, subtitle, message, char = "CHAR_DEFAULT", flashing = false, icon = 7) {
     alt.nextTick(() => {
-        streamTextureDict(char);
+        // streamTextureDict(char);
         game.setNotificationTextEntry("STRING");
         game.addTextComponentSubstringPlayerName(message);
         game.setNotificationMessage2(char, char, flashing, icon, title, subtitle);
@@ -25,11 +25,13 @@ function streamTextureDict(dict) {
     alt.log('UiHelper streamTextureDict called');
     let tries = 0;
     if (!game.hasStreamedTextureDictLoaded(dict)) {
+        alt.log('UiHelper streamTextureDict was not loaded.');
         game.requestStreamedTextureDict(dict, true);
 
         while (game.hasStreamedTextureDictLoaded(dict) && tries < 50) {
+            alt.log('UiHelper streamTextureDict trying to load dict for ' + tries + ' time.');
             tries++;
-            alt.wait(0);
+            alt.wait(1);
         }
 
         if (tries >= 50) return false;

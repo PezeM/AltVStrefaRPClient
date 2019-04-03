@@ -36,13 +36,17 @@ function loadLoginView() {
     alt.showCursor(true);
     showUi(false);
     loginView.focus();
-    alt.setCamFrozen(true);
+    alt.setTimeout(() => {
+        alt.setCamFrozen(true);
+    }, 100);
 }
 
 function hideLoginView() {
     showUi(true);
     alt.showCursor(false);
-    alt.setCamFrozen(false);
+    alt.setTimeout(() => {
+        alt.setCamFrozen(false);
+    }, 50);
     // Trying if its works
     loginView.destroy();
 }

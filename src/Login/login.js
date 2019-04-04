@@ -37,6 +37,7 @@ function loadLoginView() {
         loginView.focus();
     });
 
+    loginView.focus();
     alt.showCursor(true);
     showUi(false);
 }
@@ -55,7 +56,6 @@ function tryToLogin(username, password) {
         return loginView.emit('showError', 'Wysłano puste dane');
     }
 
-    alt.log(`Login: ${username} Password: ${password}`);
     alt.emitServer('loginAccount', username, password);
 }
 
@@ -94,12 +94,6 @@ alt.onServer('successfullyRegistered', () => {
 alt.onServer('loginSuccesfully', (characterList) => {
     if (characterList) {
         alt.log('Character list: ' + characterList);
-        if (Array.isArray(characterList)) {
-            alt.log('Character list is an array');
-        }
-        else {
-            alt.log('Character list is an object');
-        }
         // alt.log('Character list as json: ' + JSON.parse(characterList));
         loginView.emit('loggedIn', characterList);
     }

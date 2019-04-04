@@ -21,7 +21,7 @@ let fly = {
     flying: false,
     f: 2.0,
     w: 2.0,
-    h: 2.0,
+    h: 1.0,
     currentSpeedIndex: 0,
     speeds: [0.01, 0.1, 0.25, 0.5, 1, 5]
 };

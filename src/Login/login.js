@@ -18,7 +18,7 @@ export default function eldo() {
 alt.log('Login.js loaded');
 
 function loadLoginView() {
-    loginView = new alt.WebView('http://resources/AltVStrefaRPClient/html/login/index.html');
+    loginView = new alt.WebView('http://resources/AltVStrefaRPClient/html/login/login.html');
 
     loginView.on('tryToLogin', (username, password) => {
         tryToLogin(username, password)
@@ -32,22 +32,21 @@ function loadLoginView() {
     loginView.on('tryToCreateNewCharacter', () => {
         tryToCreateNewCharacter();
     });
+    loginView.on('loginViewLoaded', () => {
+        alt.setCamFrozen(true);
+        loginView.focus();
+    });
 
     alt.showCursor(true);
     showUi(false);
-    loginView.focus();
-    alt.setTimeout(() => {
-        alt.setCamFrozen(true);
-    }, 100);
 }
 
 function hideLoginView() {
     showUi(true);
     alt.showCursor(false);
-    alt.setTimeout(() => {
+    alt.nextTick(() => {
         alt.setCamFrozen(false);
-    }, 50);
-    // Trying if its works
+    });
     loginView.destroy();
 }
 

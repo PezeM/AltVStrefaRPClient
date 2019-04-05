@@ -83,10 +83,18 @@ alt.onServer("showNotification", (type, message, time) => {
     showCefNotification(type, message, time);
 });
 
+alt.on('showNotification', (type, message, time) => {
+    showCefNotification(type, message, time);
+});
+
 // Shows notification in Cef ui for 5000ms
 export function showCefNotification(type, message, time = 5000) {
-    if (typeof type == 'number' && typeof message == 'string') {
-        uiView.emit('showNotification', type, message, time);
+    try {
+        if (typeof type == 'number' && typeof message == 'string') {
+            uiView.emit('showNotification', type, message, time);
+        }
+    } catch (error) {
+        alt.log('showCefNotification -> error -> ' + error);
     }
 }
 

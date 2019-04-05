@@ -74,7 +74,7 @@ var bankMenu = new Vue({
         'bank-chart': bankChartComponent
     },
     data: {
-        bankMenuVisible: true,
+        bankMenuVisible: false,
         showMainScreen: false,
         showDepositDiv: false,
         showWithdrawDiv: false,
@@ -179,8 +179,14 @@ var bankMenu = new Vue({
             // console.log('Transactions: ' + JSON.stringify(this.transactionChartData));
             this.$refs.foo.updateChart(labels.reverse(), data.reverse());
         },
-        populateBankData: function (characterJson) {
-            this.characterData = JSON.parse(characterJson);
+        showBankMenu: function (characterJson) {
+            try {
+                this.characterData = JSON.parse(characterJson);
+                this.bankMenuVisible = true;
+            } catch (error) {
+                console.log(error);
+                this.closeBankMenu();
+            }
         },
         generateChartData: function () {
             this.transactionChartData = this.transactionHistory.reduce(function (transactions, currentTransaction) {
@@ -264,11 +270,8 @@ var bankMenu = new Vue({
                     return "Brak";
             }
         },
-        showBankMenu: function () {
-            this.showMainScreen = true;
-        },
         closeBankMenu: function () {
-            mp.trigger('closeBankMenu');
+            alt.emit('closeBankMenu');
         },
         openDepositDiv: function () {
             this.showMainScreen = false;
@@ -280,7 +283,7 @@ var bankMenu = new Vue({
             if (money > 0) {
                 mp.trigger('depositMoney', money);
             } else {
-                mp.trigger('ShowNotification', 3, 'Podaj wartość większą od 0', 5000);
+                alt.emit('showNotification', 3, 'Podaj wartość większą od 0', 5000);
             }
         },
         closeDepositDiv: function () {
@@ -297,7 +300,7 @@ var bankMenu = new Vue({
             if (money > 0) {
                 mp.trigger('withdrawMoney', money);
             } else {
-                mp.trigger('ShowNotification', 3, 'Podaj wartość większą od 0', 5000);
+                alt.emit('showNotification', 3, 'Podaj wartość większą od 0', 5000);
             }
         },
         closeWithdrawDiv: function () {
@@ -320,29 +323,29 @@ var bankMenu = new Vue({
             var receiver = this.transferReceiver.trim();
             this.transferReceiver = '';
             if (money <= 0) {
-                mp.trigger('ShowNotification', 3, 'Podaj wartość większą od 0', 5000);
+                alt.emit('showNotification', 3, 'Podaj wartość większą od 0', 5000);
                 return;
             }
             if (!receiver || 0 === receiver.length) {
-                mp.trigger('ShowNotification', 3, 'Podaj imie i nazwisko odbiorcy', 5000);
+                alt.emit('showNotification', 3, 'Podaj imie i nazwisko odbiorcy', 5000);
                 return;
             }
 
             var firstName = receiver.split(' ').slice(0, -1).join(' ');
             var lastName = receiver.split(' ').slice(-1).join(' ');
             if ((!firstName || 0 === firstName.length) || (!lastName || 0 === lastName.length)) {
-                mp.trigger('ShowNotification', 3, 'Podaj poprawne imię i nazwisko odbiorcy', 5000);
+                alt.emit('showNotification', 3, 'Podaj poprawne imię i nazwisko odbiorcy', 5000);
                 return;
             }
 
-            mp.trigger('tryTransferMoney', money, receiver);
+            alt.emit('tryTransferMoney', money, receiver);
         },
         closeTransferDiv: function () {
             this.showMainScreen = true;
             this.showTransferDiv = false;
         },
         openHistoryDiv: function () {
-            mp.trigger('getTransferHistoryInfo');
+            alt.emit('getTransferHistoryInfo');
         },
         populateTransactionHistory: function (transactionJson) {
             console.log('Transaction history:' + transactionJson);
@@ -353,7 +356,7 @@ var bankMenu = new Vue({
                 this.showMainScreen = false;
             }
             else {
-                mp.trigger('ShowNotification', 3, 'Nie masz jeszcze żadnych transakcji.', 5000);
+                alt.emit('showNotification', 3, "Nie masz jeszcze żadnych transkacji.", 5000);
             }
         },
         closeHistoryDiv: function () {
@@ -377,3 +380,7 @@ var bankMenu = new Vue({
         },
     }
 })
+
+alt.on('openBankMenuView', (bankAccountInformations) => {
+    bankMenu.showBankMenu(bankAccountInformations);
+});

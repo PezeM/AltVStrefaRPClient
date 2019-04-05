@@ -11,6 +11,11 @@ export function showUi(toogle) {
     game.displayRadar(toogle);
 }
 
+export function showUiAndFreezePlayer(toggle) {
+    showUi(toggle);
+    game.freezeEntityPosition(playerId, !toggle);
+}
+
 export function showNotification(title, subtitle, message, char = "CHAR_DEFAULT", flashing = false, icon = 7) {
     alt.nextTick(() => {
         // streamTextureDict(char);

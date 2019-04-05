@@ -1,0 +1,379 @@
+var bankChartComponent = Vue.extend({
+    template: '<canvas id="canvas" width="500" height="500"></canvas>',
+    data: function () {
+        return {
+            myChart: null,
+            chartLabels: ["13-02-2019"],
+            chartData: [0],
+        }
+    },
+    methods: {
+        draw: function (ctx) {
+            this.myChart = new Chart(ctx, {
+                type: "line",
+                data: {
+                    labels: this.chartLabels,
+                    datasets: [{
+                        label: "Stan konta",
+                        data: this.chartData,
+                        backgroundColor: [
+                            "rgba(255, 99, 132, 0.2)",
+                        ],
+                        borderColor: [
+                            "rgba(255,99,132,1)",
+                        ],
+                        borderWidth: 1,
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    lineTension: 0,
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true,
+                                padding: 25,
+                            }
+                        }]
+                    }
+                }
+            });
+        },
+        updateChart: function (newLabels, newData) {
+            console.log('Changing labels: ' + newLabels);
+            this.chartData = newData;
+            this.chartLabels = newLabels;
+            this.myChart.data.labels = this.chartLabels;
+            this.chartData.forEach((element) => {
+                this.myChart.data.datasets.forEach((dataset) => {
+                    dataset.data.pop();
+                });
+            });
+
+            this.chartData.forEach((element) => {
+                this.myChart.data.datasets.forEach((dataset) => {
+                    dataset.data.push(element);
+                });
+            });
+
+            this.myChart.update();
+        },
+    },
+    mounted: function () {
+        var c = document.getElementById("canvas");
+        var ctx = c.getContext("2d");
+        ctx.translate(0.5, 0.5);
+        ctx.imageSmoothingEnabled = true;
+        this.draw(ctx);
+    },
+});
+
+var bankMenu = new Vue({
+    el: '#bankApp',
+    components: {
+        'bank-chart': bankChartComponent
+    },
+    data: {
+        bankMenuVisible: true,
+        showMainScreen: false,
+        showDepositDiv: false,
+        showWithdrawDiv: false,
+        showTransferDiv: false,
+        showHistoryDiv: false,
+        moneyToDeposit: null,
+        moneyToWithdraw: null,
+        moneyToTransfer: null,
+        transferReceiver: '',
+        characterData: {
+            Name: "Imie Nazwisko",
+            AccountNumber: "#888888",
+            Money: 100,
+        },
+        transactionHistory: [{
+            "TransactionDate": "19-02-2019 19:37",
+            "Source": "characters/33-A",
+            "Receiver": "characters/1-A",
+            "Type": 5,
+            "Amount": 50.0
+        },
+        {
+            "TransactionDate": "19-02-2019 19:37",
+            "Source": "characters/33-A",
+            "Receiver": "characters/1-A",
+            "Type": 4,
+            "Amount": 50.0
+        },
+        {
+            "TransactionDate": "18-02-2019 19:37",
+            "Source": "characters/33-A",
+            "Receiver": "BankAccount",
+            "Type": 4,
+            "Amount": 200.0
+        },
+        {
+            "TransactionDate": "17-02-2019 19:11",
+            "Source": "characters/33-A",
+            "Receiver": "BankAccount",
+            "Type": 3,
+            "Amount": 12.0
+        },
+        ],
+        transactionChartData: [],
+        authTimer: null,
+        isAuthed: false,
+    },
+    computed: {
+        computedTransactionList() {
+            var transactionHistory = [];
+            this.transactionHistory.forEach(transaction => {
+                var newObject = {};
+                newObject.Date = transaction.TransactionDate;
+                newObject.Amount = transaction.Amount;
+                newObject.Text = this.getTransactionText(transaction, newObject);
+                transactionHistory.push(newObject);
+            });
+            transactionHistory.reverse();
+            return transactionHistory;
+        },
+    },
+    methods: {
+        applyChartData: function () {
+            this.generateChartData();
+            console.log('Transactions: ' + JSON.stringify(this.transactionChartData));
+
+            var currentDate = this.getCurrentDate();
+            var today = null;
+            for (var key in this.transactionChartData) {
+                if (!this.transactionChartData.hasOwnProperty(key)) continue;
+
+                if (key == currentDate) {
+                    today = key;
+                    break;
+                }
+            }
+
+            if (today == null) {
+                var newObject = {};
+                newObject[currentDate] = {};
+                newObject[currentDate].Amount = this.characterData.Money;
+                this.transactionChartData = Object.assign(newObject, this.transactionChartData);
+            }
+
+            var labels = [];
+            var data = [];
+            var lastMoney = 0;
+            Object.entries(this.transactionChartData).forEach(([key, val]) => {
+                if (key == currentDate) {
+                    labels.push(key);
+                    lastMoney = this.characterData.Money;
+                    data.push(lastMoney);
+                } else {
+                    labels.push(key);
+                    lastMoney += val.Amount;
+                    data.push(lastMoney);
+                }
+
+                // console.log(key);          // the name of the current key.
+                // console.log(val.Amount);          // the value of the current key.
+            });
+            // console.log('Transactions: ' + JSON.stringify(this.transactionChartData));
+            this.$refs.foo.updateChart(labels.reverse(), data.reverse());
+        },
+        populateBankData: function (characterJson) {
+            this.characterData = JSON.parse(characterJson);
+        },
+        generateChartData: function () {
+            this.transactionChartData = this.transactionHistory.reduce(function (transactions, currentTransaction) {
+                const [date] = currentTransaction.TransactionDate.split(/\s/u);
+
+                if (transactions.hasOwnProperty(date)) {
+                    transactions[date].Amount += bankMenu.getTransactionAmount(currentTransaction);
+                } else {
+                    transactions[date] = {};
+                    transactions[date].Amount = bankMenu.getTransactionAmount(currentTransaction);
+                }
+
+                // console.log("Transaction iteration: " + JSON.stringify(transactions));
+                return transactions;
+            }, {});
+        },
+        changeBankMoney: function (amount) {
+            console.log('Change bank money with value: ' + amount);
+            this.characterData.Money = amount;
+        },
+        getCurrentDate: function () {
+            var today = new Date();
+            var dd = today.getDate();
+            var mm = today.getMonth() + 1;
+            var yyyy = today.getFullYear();
+
+            if (dd < 10) {
+                dd = '0' + dd;
+            }
+
+            if (mm < 10) {
+                mm = '0' + mm;
+            }
+
+            today = dd + '-' + mm + '-' + yyyy;
+            return today;
+        },
+        getTransactionAmount: function (transaction) {
+            switch (transaction.Type) {
+                case 1:
+                    return -transaction.Amount;
+                case 2:
+                    return +transaction.Amount;
+                case 3:
+                    return -transaction.Amount;
+                case 4:
+                    return +transaction.Amount;
+                case 5:
+                    if (transaction.Source == this.characterData.Name) {
+                        return -transaction.Amount;
+                    } else {
+                        return +transaction.Amount;
+                    }
+                default:
+                    return +transaction.Amount;
+            }
+        },
+        getTransactionText: function (transaction, transType) {
+            switch (transaction.Type) {
+                case 1:
+                    transType.Positive = false;
+                    return "Kupno pojazdu";
+                case 2:
+                    transType.Positive = true;
+                    return "Sprzedaż pojazdu";
+                case 3:
+                    transType.Positive = false;
+                    return "Wypłata z banku";
+                case 4:
+                    transType.Positive = true;
+                    return "Wpłata do banku";
+                case 5:
+                    if (transaction.Source == this.characterData.Name) {
+                        transType.Positive = false;
+                        return "Przelew do " + transaction.Receiver;
+                    } else {
+                        transType.Positive = true;
+                        return "Przelew od " + transaction.Source;
+                    }
+                default:
+                    return "Brak";
+            }
+        },
+        showBankMenu: function () {
+            this.showMainScreen = true;
+        },
+        closeBankMenu: function () {
+            mp.trigger('closeBankMenu');
+        },
+        openDepositDiv: function () {
+            this.showMainScreen = false;
+            this.showDepositDiv = true;
+        },
+        depositMoney: function () {
+            var money = parseInt(this.moneyToDeposit, 10);
+            this.moneyToDeposit = null;
+            if (money > 0) {
+                mp.trigger('depositMoney', money);
+            } else {
+                mp.trigger('ShowNotification', 3, 'Podaj wartość większą od 0', 5000);
+            }
+        },
+        closeDepositDiv: function () {
+            this.showMainScreen = true;
+            this.showDepositDiv = false;
+        },
+        openWithdrawDiv: function () {
+            this.showMainScreen = false;
+            this.showWithdrawDiv = true;
+        },
+        withdrawMoney: function () {
+            var money = parseInt(this.moneyToWithdraw, 10);
+            this.moneyToWithdraw = null;
+            if (money > 0) {
+                mp.trigger('withdrawMoney', money);
+            } else {
+                mp.trigger('ShowNotification', 3, 'Podaj wartość większą od 0', 5000);
+            }
+        },
+        closeWithdrawDiv: function () {
+            this.showMainScreen = true;
+            this.showWithdrawDiv = false;
+        },
+        openTransferDiv: function () {
+            this.showMainScreen = false;
+            this.showTransferDiv = true;
+        },
+        onlyLetters: function ($event) {
+            var inputValue = $event.which;
+            if (!(inputValue >= 65 && inputValue <= 122) && (inputValue != 32 && inputValue != 0)) {
+                $event.preventDefault();
+            }
+        },
+        transferMoney: function () {
+            var money = parseInt(this.moneyToTransfer, 10);
+            this.moneyToTransfer = null;
+            var receiver = this.transferReceiver.trim();
+            this.transferReceiver = '';
+            if (money <= 0) {
+                mp.trigger('ShowNotification', 3, 'Podaj wartość większą od 0', 5000);
+                return;
+            }
+            if (!receiver || 0 === receiver.length) {
+                mp.trigger('ShowNotification', 3, 'Podaj imie i nazwisko odbiorcy', 5000);
+                return;
+            }
+
+            var firstName = receiver.split(' ').slice(0, -1).join(' ');
+            var lastName = receiver.split(' ').slice(-1).join(' ');
+            if ((!firstName || 0 === firstName.length) || (!lastName || 0 === lastName.length)) {
+                mp.trigger('ShowNotification', 3, 'Podaj poprawne imię i nazwisko odbiorcy', 5000);
+                return;
+            }
+
+            mp.trigger('tryTransferMoney', money, receiver);
+        },
+        closeTransferDiv: function () {
+            this.showMainScreen = true;
+            this.showTransferDiv = false;
+        },
+        openHistoryDiv: function () {
+            mp.trigger('getTransferHistoryInfo');
+        },
+        populateTransactionHistory: function (transactionJson) {
+            console.log('Transaction history:' + transactionJson);
+            if (transactionJson) {
+                this.transactionHistory = JSON.parse(transactionJson);
+                this.applyChartData();
+                this.showHistoryDiv = true;
+                this.showMainScreen = false;
+            }
+            else {
+                mp.trigger('ShowNotification', 3, 'Nie masz jeszcze żadnych transakcji.', 5000);
+            }
+        },
+        closeHistoryDiv: function () {
+            this.showHistoryDiv = false;
+            this.showMainScreen = true;
+        },
+        mouseDown: function () {
+            if (this.isAuthed) return;
+            $('.fingerprint').addClass("active");
+            this.authTimer = setTimeout(this.onAuthSuccess, 1650);
+        },
+        mouseUp: function () {
+            if (this.isAuthed) return;
+            $('.fingerprint').removeClass("active");
+            clearTimeout(this.authTimer);
+        },
+        onAuthSuccess: function () {
+            $('.login-screen').addClass("success");
+            this.showMainScreen = true;
+            this.isAuthed = true;
+        },
+    }
+})

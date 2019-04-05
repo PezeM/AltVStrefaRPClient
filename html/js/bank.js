@@ -116,8 +116,7 @@ var bankMenu = new Vue({
             "Receiver": "BankAccount",
             "Type": 3,
             "Amount": 12.0
-        },
-        ],
+        }],
         transactionChartData: [],
         authTimer: null,
         isAuthed: false,
@@ -281,7 +280,7 @@ var bankMenu = new Vue({
             var money = parseInt(this.moneyToDeposit, 10);
             this.moneyToDeposit = null;
             if (money > 0) {
-                mp.trigger('depositMoney', money);
+                alt.emit('depositMoney', money);
             } else {
                 alt.emit('showNotification', 3, 'Podaj wartość większą od 0', 5000);
             }
@@ -298,7 +297,7 @@ var bankMenu = new Vue({
             var money = parseInt(this.moneyToWithdraw, 10);
             this.moneyToWithdraw = null;
             if (money > 0) {
-                mp.trigger('withdrawMoney', money);
+                alt.emit('withdrawMoney', money);
             } else {
                 alt.emit('showNotification', 3, 'Podaj wartość większą od 0', 5000);
             }

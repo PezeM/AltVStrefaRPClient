@@ -9,6 +9,7 @@ import * as noclipModule from 'src/Admin/noclip.js';
 import * as adminTeleports from 'src/Admin/adminTeleports.js';
 import * as sitting from 'src/Environment/sitting.js';
 import * as ui from 'src/ui.js';
+import * as menus from 'src/menus.js';
 
 let localPlayer = alt.getLocalPlayer();
 

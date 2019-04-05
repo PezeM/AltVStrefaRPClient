@@ -119,8 +119,3 @@ alt.on('update', () => {
         // Draw entity
     }
 });
-
-alt.onServer('openBankMenu', (bankAccountInformations) => {
-    alt.log(`BankAccountInformation type: ${typeof bankAccountInformations} : ${JSON.stringify(bankAccountInformations)}`);
-    // Open bank account menu
-});

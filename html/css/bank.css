@@ -25,7 +25,7 @@ button {
     display: none;
 }
 
-.window {
+.bankWindow {
     width: 50rem;
     height: 32rem;
     background: #21223f;
@@ -35,7 +35,7 @@ button {
     box-shadow: 0 0.8rem 3rem rgba(0, 0, 0, 0.5);
 }
 
-.window-header {
+.bankWindow-header {
     z-index: 1;
     height: 3.2rem;
     position: sticky;
@@ -67,7 +67,7 @@ button {
     fill: #ccc;
 }
 
-.window-content {
+.bankWindow-content {
     margin-top: auto;
     margin-bottom: auto;
     width: 100%;

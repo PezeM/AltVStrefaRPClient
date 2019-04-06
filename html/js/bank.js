@@ -75,11 +75,13 @@ var bankMenu = new Vue({
     },
     data: {
         bankMenuVisible: false,
-        showMainScreen: false,
+        currentMenuShown: '',
+
         showDepositDiv: false,
         showWithdrawDiv: false,
         showTransferDiv: false,
         showHistoryDiv: false,
+
         moneyToDeposit: null,
         moneyToWithdraw: null,
         moneyToTransfer: null,
@@ -182,10 +184,14 @@ var bankMenu = new Vue({
             try {
                 this.characterData = JSON.parse(characterJson);
                 this.bankMenuVisible = true;
+                this.currentMenuShown = 'mainScreen';
             } catch (error) {
                 console.log(error);
                 this.closeBankMenu();
             }
+        },
+        showBankMenu: function () {
+            this.bankMenuVisible = true;
         },
         generateChartData: function () {
             this.transactionChartData = this.transactionHistory.reduce(function (transactions, currentTransaction) {
@@ -276,8 +282,7 @@ var bankMenu = new Vue({
             this.transactionHistory = [];
         },
         openDepositDiv: function () {
-            this.showMainScreen = false;
-            this.showDepositDiv = true;
+            this.currentMenuShown = 'depositScreen';
         },
         depositMoney: function () {
             var money = parseInt(this.moneyToDeposit, 10);
@@ -289,12 +294,10 @@ var bankMenu = new Vue({
             }
         },
         closeDepositDiv: function () {
-            this.showMainScreen = true;
-            this.showDepositDiv = false;
+            this.currentMenuShown = 'mainScreen';
         },
         openWithdrawDiv: function () {
-            this.showMainScreen = false;
-            this.showWithdrawDiv = true;
+            this.currentMenuShown = 'withdrawScreen';
         },
         withdrawMoney: function () {
             var money = parseInt(this.moneyToWithdraw, 10);
@@ -306,12 +309,10 @@ var bankMenu = new Vue({
             }
         },
         closeWithdrawDiv: function () {
-            this.showMainScreen = true;
-            this.showWithdrawDiv = false;
+            this.currentMenuShown = 'mainScreen';
         },
         openTransferDiv: function () {
-            this.showMainScreen = false;
-            this.showTransferDiv = true;
+            this.currentMenuShown = 'transferScreen';
         },
         onlyLetters: function ($event) {
             var inputValue = $event.which;
@@ -343,8 +344,7 @@ var bankMenu = new Vue({
             alt.emit('tryTransferMoney', money, receiver);
         },
         closeTransferDiv: function () {
-            this.showMainScreen = true;
-            this.showTransferDiv = false;
+            this.currentMenuShown = 'mainScreen';
         },
         openHistoryDiv: function () {
             alt.emit('getTransferHistoryInfo');
@@ -354,16 +354,14 @@ var bankMenu = new Vue({
             if (transactionJson) {
                 this.transactionHistory = JSON.parse(transactionJson);
                 this.applyChartData();
-                this.showHistoryDiv = true;
-                this.showMainScreen = false;
+                this.currentMenuShown = 'historyScreen';
             }
             else {
                 alt.emit('showNotification', 3, "Nie masz jeszcze żadnych transkacji.", 5000);
             }
         },
         closeHistoryDiv: function () {
-            this.showHistoryDiv = false;
-            this.showMainScreen = true;
+            this.currentMenuShown = 'mainScreen';
         },
         mouseDown: function () {
             if (this.isAuthed) return;
@@ -377,7 +375,7 @@ var bankMenu = new Vue({
         },
         onAuthSuccess: function () {
             $('.login-screen').addClass("success");
-            this.showMainScreen = true;
+            this.currentMenuShown = 'mainScreen';
             this.isAuthed = true;
         },
     }

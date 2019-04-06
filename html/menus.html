@@ -53,7 +53,7 @@
                 </div>
 
                 <transition name="fade">
-                    <section class="section" id="depositMoney" v-show="showDepositDiv">
+                    <section class="section" id="depositMoney" v-show="currentMenuShown == 'depositScreen'">
                         <div class="container-fluid">
                             <h1 class="section-title">Wpłać pieniądze do banku</h1>
                             <div class="current-money">
@@ -79,7 +79,7 @@
                 </transition>
 
                 <transition name="fade">
-                    <section class="section" id="withdrawDiv" v-show="showWithdrawDiv">
+                    <section class="section" id="withdrawDiv" v-show="currentMenuShown == 'withdrawScreen'">
                         <div class="container-fluid">
                             <h1 class="section-title">Wypłać pieniądze z konta</h1>
                             <div class="current-money">
@@ -105,7 +105,7 @@
                 </transition>
 
                 <transition name="fade">
-                    <section class="section" id="transferDiv" v-show="showTransferDiv">
+                    <section class="section" id="transferDiv" v-show="currentMenuShown == 'transferScreen'">
                         <div class="container-fluid">
                             <h1 class="section-title">Wykonaj przelew</h1>
                             <p class="small-text">Podatek wynosi 1% kwoty przelewu</p>
@@ -140,7 +140,7 @@
 
                 <transition name="fade">
 
-                    <section class="section" id="historyDiv" v-show="showHistoryDiv">
+                    <section class="section" id="historyDiv" v-show="currentMenuShown == 'historyScreen'">
                         <div class="container-fluid">
                             <div class="row">
                                 <div class="col-6 pl-2 mt-1">
@@ -185,7 +185,7 @@
                     </section>
                 </transition>
 
-                <div class="welcome-screen" v-show="showMainScreen">
+                <div class="welcome-screen" v-show="currentMenuShown == 'mainScreen'">
                     <div class="container">
                         <div class="row justify-content-center">
                             <div class="col-3 balance-card mx-2">

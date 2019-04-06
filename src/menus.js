@@ -63,3 +63,7 @@ menusView.on('depositMoney', (amount) => {
     }
     alt.emitServer('DepositMoneyToBank', amount);
 });
+
+menusView.on('showNotification', (type, message, time) => {
+    showCefNotification(type, message, time);
+});

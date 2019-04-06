@@ -183,19 +183,20 @@ var bankMenu = new Vue({
         showBankMenu: function (characterJson) {
             try {
                 this.characterData = JSON.parse(characterJson);
+                console.log('Current character data = ' + JSON.stringify(this.characterData));
                 this.bankMenuVisible = true;
-                this.currentMenuShown = 'mainScreen';
+                // this.currentMenuShown = 'mainScreen';
             } catch (error) {
                 console.log(error);
                 this.closeBankMenu();
             }
         },
-        showBankMenu: function () {
-            this.bankMenuVisible = true;
-        },
+        // showBankMenu: function () {
+        //     this.bankMenuVisible = true;
+        // },
         generateChartData: function () {
             this.transactionChartData = this.transactionHistory.reduce(function (transactions, currentTransaction) {
-                const [date] = currentTransaction.TransactionDate.split(/\s/u);
+                const [date] = currentTransaction.Date.split(/\s/u);
 
                 if (transactions.hasOwnProperty(date)) {
                     transactions[date].Amount += bankMenu.getTransactionAmount(currentTransaction);
@@ -277,8 +278,12 @@ var bankMenu = new Vue({
         },
         closeBankMenu: function () {
             alt.emit('closeBankMenu');
+            $('.login-screen').removeClass("success");
+            $('.fingerprint').removeClass("active");
+            this.currentMenuShown = '';
+            this.isAuthed = false;
             this.bankMenuVisible = false;
-            this.characterData = {};
+            // this.characterData = {};
             this.transactionHistory = [];
         },
         openDepositDiv: function () {
@@ -323,7 +328,7 @@ var bankMenu = new Vue({
                 alt.emit('showNotification', 3, 'Podaj wartość większą od 0', 5000);
                 return;
             }
-            if (!receiver || receiver < 100000 || receiver > 99999 || typeof receiver !== 'number') { // 100_000 the lowest, 999_999 the highest possible numbers
+            if (!receiver || receiver < 100000 || receiver > 999999 || typeof receiver !== 'number') { // 100_000 the lowest, 999_999 the highest possible numbers
                 alt.emit('showNotification', 3, 'Podaj number konta odbiorcy', 5000);
                 return;
             }

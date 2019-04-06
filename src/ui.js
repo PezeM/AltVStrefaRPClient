@@ -84,6 +84,7 @@ alt.onServer("showNotification", (type, message, time) => {
 });
 
 alt.on('showNotification', (type, message, time) => {
+    alt.log('Triggering client-side showNotification')
     showCefNotification(type, message, time);
 });
 

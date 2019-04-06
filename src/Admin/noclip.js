@@ -8,10 +8,10 @@ import { rotToDirection } from 'src/Helpers/mathHelper.js';
 
 const controlsIds = {
     F5: 327,
-    W: 32, // 232
-    S: 33, // 31, 219, 233, 268, 269
-    A: 34, // 234
-    D: 35, // 30, 218, 235, 266, 267
+    W: 32,
+    S: 33,
+    A: 34,
+    D: 35,
     Space: 321,
     LCtrl: 326,
     Shift: 21
@@ -22,7 +22,7 @@ let fly = {
     f: 2.0,
     w: 2.0,
     h: 1.0,
-    currentSpeedIndex: 0,
+    currentSpeedIndex: 2,
     speeds: [0.01, 0.1, 0.25, 0.5, 1, 5]
 };
 
@@ -109,17 +109,13 @@ alt.on('update', () => {
         }
 
         if (game.isControlPressed(0, controlsIds.Space)) {
-            if (fly.h < 8.0) { fly.h *= 1.01; }
-
-            position.z += fly.h;
+            position.z += fly.h * currentSpeed;
             positionUpdated = true;
         } else if (game.isControlPressed(0, controlsIds.LCtrl)) {
-            if (fly.h < 8.0) { fly.h *= 1.01; }
-
-            position.z -= fly.h;
+            position.z -= fly.h * currentSpeed;
             positionUpdated = true;
         } else {
-            fly.h = 2.0;
+            fly.h = 1.0;
         }
 
         if (positionUpdated)

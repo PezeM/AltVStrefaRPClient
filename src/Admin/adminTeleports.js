@@ -30,20 +30,24 @@ alt.onServer('teleportToWaypoint', () => {
         var [isGroundFound, positionZ] = game.getGroundZFor3dCoord(waypointCoords.x, waypointCoords.y, waypointCoords.z, 0, false);
         if (isGroundFound) {
             groundFound = true;
-            // if (!game.isPlayerTeleportActive()) {
-            //     game.startPlayerTeleport(localPlayerId, waypointCoords.x, waypointCoords.y, positionZ, 0, true, true, false);
-            // }
+            if (!game.isPlayerTeleportActive()) {
+                game.startPlayerTeleport(localPlayerId, waypointCoords.x, waypointCoords.y, positionZ, 0, true, true, false);
+            }
             game.setEntityCoords(localPlayerId, waypointCoords.x, waypointCoords.y, positionZ, true, false, false, true);
             showCefNotification(1, `Znaleziono pozycje poczas ${i} iteracji. PozycjaZ ${positionZ}`, 4000);
             break;
         }
 
+        alt.log(`Iteration ${i} current position: ${positionZ}`);
         waypointCoords.z = positionZ;
-        alt.wait(1);
+        alt.wait(25);
     }
 
     if (!groundFound) {
         game.setEntityCoords(localPlayerId, waypointCoords.x, waypointCoords.y, 1000, true, false, false, true);
+    }
+    else {
+        alt.log('Setting Z coord to ' + waypointCoords.z);
     }
 });
 

@@ -1,9 +1,12 @@
-@import url(https://fonts.googleapis.com/css?family=Roboto:400,500);
-
 * {
     padding: 0;
     margin: 0;
     outline: none;
+}
+
+@font-face {
+    font-family: 'Roboto';
+    src: url('../packages/fonts/Roboto-Regular.ttf');
 }
 
 html,
@@ -56,18 +59,14 @@ body {
     margin: 20px auto;
     display: block;
     cursor: pointer;
-    -webkit-transition: all 0.4s;
     transition: all 0.4s;
     border-radius: 10px;
 }
 
-.login-box button:active {
-    background: #27ae60;
-}
-
 .login-box button:hover {
     background: #FF2020;
-    -webkit-transition: all 0.4s;
+    color: rgb(224, 224, 224);
+    box-shadow: 0 0.5rem 1.3rem rgba(0, 0, 0, 0.8);
     transition: all 0.4s;
 }
 

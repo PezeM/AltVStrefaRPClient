@@ -4,7 +4,7 @@
 import alt from 'alt';
 import game from 'natives';
 import chat from 'chat';
-import loginModule from 'src/Login/login.js';
+import * as loginModule from 'src/Login/login.js';
 import * as noclipModule from 'src/Admin/noclip.js';
 import * as adminTeleports from 'src/Admin/adminTeleports.js';
 import * as sitting from 'src/Environment/sitting.js';

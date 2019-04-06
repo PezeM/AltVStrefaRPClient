@@ -1,4 +1,5 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,500);
+
 * {
     padding: 0;
     margin: 0;
@@ -10,8 +11,6 @@ body {
     height: 100%;
     font-family: "Roboto";
 }
-
-/* login-box LOGIN */
 
 #login {
     width: 100%;
@@ -103,8 +102,6 @@ body {
     outline: none;
 }
 
-/* LABEL ======================================= */
-
 label {
     color: #999;
     font-size: 18px;
@@ -118,16 +115,12 @@ label {
     -webkit-transition: 0.2s ease all;
 }
 
-/* active state */
-
 .inputMaterial:focus~label,
 .inputMaterial:valid~label {
     top: -20px;
     font-size: 14px;
     color: #FF0000;
 }
-
-/* BOTTOM BARS ================================= */
 
 .bar {
     position: relative;
@@ -156,14 +149,12 @@ label {
     right: 50%;
 }
 
-/* active state */
 
 .inputMaterial:focus~.bar:before,
 .inputMaterial:focus~.bar:after {
     width: 50%;
 }
 
-/* active state */
 
 .inputMaterial:focus~.highlight {
     -webkit-animation: inputHighlighter 0.3s ease;
@@ -171,12 +162,12 @@ label {
     animation: inputHighlighter 0.3s ease;
 }
 
-/* ANIMATIONS ================ */
 
 @-webkit-keyframes inputHighlighter {
     from {
         background: #5264AE;
     }
+
     to {
         width: 0;
         background: transparent;
@@ -187,6 +178,7 @@ label {
     from {
         background: #5264AE;
     }
+
     to {
         width: 0;
         background: transparent;
@@ -197,6 +189,7 @@ label {
     from {
         background: #5264AE;
     }
+
     to {
         width: 0;
         background: transparent;

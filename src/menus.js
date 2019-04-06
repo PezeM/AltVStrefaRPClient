@@ -8,6 +8,7 @@ import { showCefNotification } from 'src/ui.js';
 
 let menusView = new alt.WebView('http://resources/AltVStrefaRPClient/html/menus.html');
 
+// Bank
 alt.onServer('openBankMenu', (bankAccountInformations) => {
     alt.log(`BankAccountInformation type: ${typeof bankAccountInformations} : ${JSON.stringify(bankAccountInformations)}`);
     if (bankAccountInformations == null) {
@@ -17,10 +18,13 @@ alt.onServer('openBankMenu', (bankAccountInformations) => {
     // Open bank account menu
     menusView.emit('openBankMenuView', bankAccountInformations);
     showUiAndFreezePlayer(false);
+    menusView.focus();
+    alt.showCursor(true);
 });
 
 menusView.on('closeBankMenu', () => {
     showUiAndFreezePlayer(true);
+    alt.showCursor(false);
 });
 
 menusView.on('getTransferHistoryInfo', () => {

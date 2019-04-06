@@ -11,10 +11,6 @@ let viewLoaded = () => {
 // Startup
 game.freezeEntityPosition(localPlayer.scriptID, true);
 
-export default function eldo() {
-    alt.log('co');
-}
-
 alt.log('Login.js loaded');
 
 function loadLoginView() {
@@ -48,7 +44,7 @@ function hideLoginView() {
     alt.nextTick(() => {
         alt.setCamFrozen(false);
     });
-    loginView.destroy();
+    // loginView.destroy();
 }
 
 function tryToLogin(username, password) {

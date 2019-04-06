@@ -3,7 +3,7 @@
 }
 
 body {
-    background-color: rgba(0, 0, 0, 0.5) !important;
+    background-color: transparent !important;
     padding: 0;
     margin: 0;
     display: flex;

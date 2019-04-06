@@ -271,6 +271,9 @@ var bankMenu = new Vue({
         },
         closeBankMenu: function () {
             alt.emit('closeBankMenu');
+            this.bankMenuVisible = false;
+            this.characterData = {};
+            this.transactionHistory = [];
         },
         openDepositDiv: function () {
             this.showMainScreen = false;

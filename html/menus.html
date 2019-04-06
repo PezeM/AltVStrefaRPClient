@@ -122,8 +122,8 @@
 
                             <div class="deposit-money">
                                 <p>Odbiorca przelewu</p>
-                                <input v-model="transferReceiver" type="text" placeholder="Imie i nazwisko"
-                                    class="form-input" @keypress="onlyLetters($event)">
+                                <input v-model="transferReceiver" type="text" placeholder="Numer konta odbiorcy"
+                                    class="form-input" oninput="validity.valid||(value='');">
                             </div>
 
                             <div class="row justify-content-center">

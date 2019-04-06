@@ -32,7 +32,7 @@ menusView.on('getTransferHistoryInfo', () => {
 });
 
 menusView.on('tryTransferMoney', (money, receiver) => {
-    if (money <= 0 || typeof receiver == 'undefined' || receiver == null) {
+    if (money <= 0 || typeof receiver === 'undefined' || receiver == null) {
         showCefNotification(3, 'Podano błędne dane do transferu pieniędzy.', 4000);
         return;
     }

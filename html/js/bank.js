@@ -85,7 +85,7 @@ var bankMenu = new Vue({
         moneyToDeposit: null,
         moneyToWithdraw: null,
         moneyToTransfer: null,
-        transferReceiver: '',
+        transferReceiver: 0,
         characterData: {
             Name: "Imie Nazwisko",
             AccountNumber: "#888888",
@@ -314,30 +314,17 @@ var bankMenu = new Vue({
         openTransferDiv: function () {
             this.currentMenuShown = 'transferScreen';
         },
-        onlyLetters: function ($event) {
-            var inputValue = $event.which;
-            if (!(inputValue >= 65 && inputValue <= 122) && (inputValue != 32 && inputValue != 0)) {
-                $event.preventDefault();
-            }
-        },
         transferMoney: function () {
             var money = parseInt(this.moneyToTransfer, 10);
             this.moneyToTransfer = null;
-            var receiver = this.transferReceiver.trim();
-            this.transferReceiver = '';
+            var receiver = parseInt(this.transferReceiver);
+            this.transferReceiver = 0;
             if (money <= 0) {
                 alt.emit('showNotification', 3, 'Podaj wartość większą od 0', 5000);
                 return;
             }
-            if (!receiver || 0 === receiver.length) {
-                alt.emit('showNotification', 3, 'Podaj imie i nazwisko odbiorcy', 5000);
-                return;
-            }
-
-            var firstName = receiver.split(' ').slice(0, -1).join(' ');
-            var lastName = receiver.split(' ').slice(-1).join(' ');
-            if ((!firstName || 0 === firstName.length) || (!lastName || 0 === lastName.length)) {
-                alt.emit('showNotification', 3, 'Podaj poprawne imię i nazwisko odbiorcy', 5000);
+            if (!receiver || receiver < 100000 || receiver > 99999 || typeof receiver !== 'number') { // 100_000 the lowest, 999_999 the highest possible numbers
+                alt.emit('showNotification', 3, 'Podaj number konta odbiorcy', 5000);
                 return;
             }
 

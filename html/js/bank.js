@@ -209,7 +209,7 @@ var bankMenu = new Vue({
             }, {});
         },
         changeBankMoney: function (amount) {
-            console.log('Change bank money with value: ' + amount);
+            console.log('Updated bank money with to: ' + amount);
             this.characterData.Money = amount;
         },
         getCurrentDate: function () {
@@ -370,4 +370,8 @@ var bankMenu = new Vue({
 
 alt.on('openBankMenuView', (bankAccountInformations) => {
     bankMenu.showBankMenu(bankAccountInformations);
+});
+
+alt.on('updateBankMoney', (money) => {
+    bankMenu.changeBankMoney(money);
 });

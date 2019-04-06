@@ -22,6 +22,11 @@ alt.onServer('openBankMenu', (bankAccountInformations) => {
     alt.showCursor(true);
 });
 
+alt.onServer('updateBankMoneyWithNotification', (notificationMessage, money) => {
+    menusView.emit('updateBankMoney', money);
+    showCefNotification(1, notificationMessage, 6000);
+});
+
 menusView.on('closeBankMenu', () => {
     showUiAndFreezePlayer(true);
     alt.showCursor(false);

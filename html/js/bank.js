@@ -375,3 +375,8 @@ alt.on('openBankMenuView', (bankAccountInformations) => {
 alt.on('updateBankMoney', (money) => {
     bankMenu.changeBankMoney(money);
 });
+
+alt.on('openTransactionHistory', (transactionHistory) => {
+    console.log('Transaction history is of type: ' + typeof transactionHistory);
+    bankMenu.populateTransactionHistory(transactionHistory);
+});

@@ -44,22 +44,22 @@ function streamTextureDict(dict) {
 }
 
 export function drawText(text, position, font, color, scale, outline = true, center = true) {
-    alt.nextTick(() => {
-        game.setTextFont(font);
-        game.setTextProportional(0);
-        game.setTextScale(scale, scale);
-        game.setTextColour(color[0], color[1], color[2], color[3]);
-        game.setTextEdge(2, 0, 0, 0, 150);
-        game.setTextDropShadow(0, 0, 0, 0, 55);
-        game.setTextDropShadow();
+    // alt.nextTick(() => {
+    game.setTextFont(font);
+    game.setTextProportional(0);
+    game.setTextScale(scale, scale);
+    game.setTextColour(color[0], color[1], color[2], color[3]);
+    game.setTextEdge(2, 0, 0, 0, 150);
+    game.setTextDropShadow(0, 0, 0, 0, 55);
+    game.setTextDropShadow();
 
-        if (center) game.setTextCentre(1);
-        if (outline) game.setTextOutline();
+    if (center) game.setTextCentre(1);
+    if (outline) game.setTextOutline();
 
-        game.beginTextCommandDisplayText("STRING");
-        game.addTextComponentSubstringPlayerName(text);
-        game.endTextCommandDisplayText(position[0], position[1]);
-    });
+    game.beginTextCommandDisplayText("STRING");
+    game.addTextComponentSubstringPlayerName(text);
+    game.endTextCommandDisplayText(position[0], position[1]);
+    // });
 }
 
 export function draw3DText(text, position, font, color, scale, outline = true) {

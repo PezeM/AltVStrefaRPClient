@@ -7,6 +7,7 @@ import chat from 'chat';
 import * as loginModule from 'src/Login/login.js';
 import * as noclipModule from 'src/Admin/noclip.js';
 import * as adminTeleports from 'src/Admin/adminTeleports.js';
+import * as animationBrowser from 'src/Admin/animationBrowser.js';
 import * as sitting from 'src/Environment/sitting.js';
 import * as ui from 'src/ui.js';
 import * as menus from 'src/menus.js';

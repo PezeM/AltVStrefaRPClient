@@ -7,7 +7,6 @@ import { drawText, showNotification } from 'src/Helpers/uiHelper.js';
 import { rotToDirection } from 'src/Helpers/mathHelper.js';
 
 const controlsIds = {
-    F5: 327,
     W: 32,
     S: 33,
     A: 34,
@@ -16,6 +15,7 @@ const controlsIds = {
     LCtrl: 326,
     Shift: 21
 };
+
 let lastChecked = 0;
 let fly = {
     flying: false,
@@ -128,9 +128,3 @@ alt.on('keydown', (key) => {
         toggleFlying();
     }
 });
-
-function drawNotification(text) {
-    game.setNotificationTextEntry("STRING");
-    game.addTextComponentSubstringPlayerName(text);
-    game.drawNotification(true, false);
-}

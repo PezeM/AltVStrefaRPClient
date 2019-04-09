@@ -324,12 +324,16 @@ var bankMenu = new Vue({
             this.moneyToTransfer = null;
             var receiver = parseInt(this.transferReceiver);
             this.transferReceiver = 0;
+            if (this.transferReceiver == this.characterData.AccountNumber) {
+                alt.emit('showNotification', 3, 'Nie możesz wysłać pieniędzy sam do siebie.', 5000);
+                return;
+            }
             if (money <= 0) {
-                alt.emit('showNotification', 3, 'Podaj wartość większą od 0', 5000);
+                alt.emit('showNotification', 3, 'Podaj wartość większą od 0,', 5000);
                 return;
             }
             if (!receiver || receiver < 100000 || receiver > 999999 || typeof receiver !== 'number') { // 100_000 the lowest, 999_999 the highest possible numbers
-                alt.emit('showNotification', 3, 'Podaj number konta odbiorcy', 5000);
+                alt.emit('showNotification', 3, 'Podaj number konta odbiorcy,', 5000);
                 return;
             }
 

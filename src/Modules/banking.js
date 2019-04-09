@@ -14,7 +14,6 @@ export default class Bank {
         this.pedList = [];
         this.pedHash = 3272005365;
         // alt.loadModel(this.pedModel);
-        alt.log('Created bank constructor');
         this.initializePeds();
     }
     initializePeds() {

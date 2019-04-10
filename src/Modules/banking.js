@@ -13,13 +13,12 @@ export default class Bank {
     constructor() {
         this.pedList = [];
         this.pedHash = 3272005365;
-        // alt.loadModel(this.pedModel);
+        alt.loadModel(this.pedHash);
         this.initializePeds();
     }
     initializePeds() {
         pedPositions.forEach(bankPed => {
             var ped = game.createPed(26, this.pedHash, bankPed.x, bankPed.y, bankPed.z, bankPed.rot, false, true);
-            game.freezeEntityPosition(ped, true);
             game.setPedCanRagdoll(ped, false);
             this.pedList.push(ped);
         });

@@ -210,7 +210,7 @@ var bankMenu = new Vue({
             }, {});
         },
         changeBankMoney: function (amount) {
-            console.log('Updated bank money with to: ' + amount);
+            console.log('Updated bank money to: ' + amount);
             this.characterData.Money = amount;
         },
         getCurrentDate: function () {
@@ -324,7 +324,7 @@ var bankMenu = new Vue({
             this.moneyToTransfer = null;
             var receiver = parseInt(this.transferReceiver);
             this.transferReceiver = 0;
-            if (this.transferReceiver === Number.parseInt(this.characterData.AccountNumber.substring(1, this.characterData.AccountNumber.length))) {
+            if (this.transferReceiver === this.characterData.AccountNumber) {
                 alt.emit('showNotification', 3, 'Nie możesz wysłać pieniędzy sam do siebie.', 5000);
                 return;
             }

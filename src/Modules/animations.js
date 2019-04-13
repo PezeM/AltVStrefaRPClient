@@ -71,6 +71,7 @@ export default class Animations {
     }
     forceAnimationStop() {
         if (this.currentAnimation) {
+            alt.log('Found animation to force stop');
             this.stopAnimation(this.currentAnimation);
         } else {
             game.clearPedTasks(this.playerId);

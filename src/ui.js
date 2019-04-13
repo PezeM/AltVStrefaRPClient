@@ -3,6 +3,7 @@
 
 import alt from 'alt';
 import game from 'natives';
+import chat from 'chat';
 import { drawText, getMinimapAnchor, showUi } from 'src/Helpers/uiHelper.js';
 import { rotToDirection } from 'src/Helpers/mathHelper.js';
 import Animations from 'src/Modules/animations.js';
@@ -115,12 +116,6 @@ uiView.on('circleMenuCallback', (option) => {
     closeCircleMenu();
     switch (circleMenuName) {
         case "animations":
-            // switch (option) {
-            //     case "someFastDance":
-            //         alt.log('Some fast dance');
-            //         someTestAnim();
-            //         break;
-            // }
             animations.findAnimation(option);
             break;
     }
@@ -149,7 +144,7 @@ function closeCircleMenu(hideMenu = false) {
 alt.on('keydown', (key) => {
     switch (key) {
         case controlsIds.Alt:
-            if (localPlayer.vehicle != null || game.isEntityDead(localPlayerId)) return;
+            if (localPlayer.vehicle != null || game.isEntityDead(localPlayerId) || chat.isOpen()) return;
             if (entityHit == null) return;
             alt.log('Clicked Alt key entity: ' + JSON.stringify(entityHit));
             break;
@@ -159,7 +154,7 @@ alt.on('keydown', (key) => {
             alt.showCursor(cursorShown);
             break;
         case controlsIds.G:
-            if (game.isEntityDead(localPlayerId) || new Date().getTime() - lastKeyPressedTime < 500) return;
+            if (game.isEntityDead(localPlayerId) || chat.isOpen() || new Date().getTime() - lastKeyPressedTime < 500) return;
             if (circleMenuOpened) {
                 closeCircleMenu(true);
             } else {
@@ -168,7 +163,7 @@ alt.on('keydown', (key) => {
             lastKeyPressedTime = new Date().getTime();
             break;
         case controlsIds.Tilde:
-            if (game.isEntityDead(localPlayerId) || new Date().getTime() - lastKeyPressedTime < 500) return;
+            if (game.isEntityDead(localPlayerId) || chat.isOpen() || new Date().getTime() - lastKeyPressedTime < 500) return;
             lastKeyPressedTime = new Date().getTime();
             animations.forceAnimationStop();
             break;

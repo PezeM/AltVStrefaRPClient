@@ -22,14 +22,27 @@ const animations = {
         flag: 15,
         exitAnim: "exit",
     },
-    // Z propami
+    // Animacje z propami
     "box": {
         dict: "anim@heists@box_carry@",
         name: "idle",
         flag: 63,
+        exitFlag: 49,
         exitAnim: "exit",
+        waitTime: 1000,
         prop: {
             name: "hei_prop_heist_box",
+            boneIndex: 60309,
+            position: {
+                x: 0.1,
+                y: 0.1,
+                z: 0.255
+            },
+            rotation: {
+                x: -145.0,
+                y: 290.0,
+                z: 0.0
+            }
         }
     }
 };
@@ -51,42 +64,73 @@ export default class Animations {
             this.setupAnimation(this.currentAnimation);
         } else {
             alt.log(`Nie znaleziono animacji z nazwą ${animationName}.`);
-            // showCefNotification(3, `Nie znaleziono animacji z nazwą ${animationName}.`, 5000);
         }
     }
     setupAnimation(animation) {
-        this.loadAnimDict(animation.dict);
-        if (!game.hasAnimDictLoaded(animation.dict)) {
-            alt.log(`Anim dict named: ${animation.dict} didnt load properly`);
-            return;
-        }
-
-        if (game.isEntityPlayingAnim(this.playerId, animation.dict, animation.name, animation.flag)) {
+        if (game.isEntityPlayingAnim(this.playerId, animation.dict, animation.name, 3)) {
+            alt.log('Entity is playing animation');
             this.stopAnimation(animation);
         } else {
+            this.loadAnimDict(animation.dict);
+            if (!game.hasAnimDictLoaded(animation.dict)) {
+                alt.log(`Anim dict named: ${animation.dict} didnt load properly`);
+            }
             this.playAnimation(animation);
         }
     }
     playAnimation(animation) {
         if (animation.hasOwnProperty("prop")) {
-            this.holdingProp = true;
-            this.propModel = animation.prop.name;
-            var position = game.getEntityCoords(this.playerId, true);
-            this.propID = game.createObject(game.getHashKey(this.propModel), position.x, position.y, position.z, true, true, true);
-            game.taskPlayAnim(this.playerId, animation.animDict, animation.name, 8.0, 1.0, -1, animation.flag, 0, false, false, false);
+            alt.log(`Playing prop animation`);
+            this.playPropAnimation(animation);
         } else {
+            alt.log(`Playing normal animation`);
             game.taskPlayAnim(this.playerId, animation.dict, animation.name, 8.0, 1.0, -1, animation.flag, 0, false, false, false);
         }
     }
+    playPropAnimation(animation) {
+        this.holdingProp = true;
+        this.propModel = animation.prop.name;
+        var position = game.getEntityCoords(this.playerId, true);
+        this.propID = game.createObject(game.getHashKey(this.propModel), position.x, position.y, position.z + 0.2, true, true, true);
+        alt.log(`Created prop with id: ${this.propID}`);
+        game.attachEntityToEntity(this.propID, this.playerId, game.getPedBoneIndex(this.playerId, animation.prop.boneIndex),
+            animation.prop.position.x, animation.prop.position.y, animation.prop.position.z,
+            animation.prop.rotation.x, animation.prop.rotation.y, animation.prop.rotation.z, true, true, false, true, 1, true);
+        game.taskPlayAnim(this.playerId, animation.animDict, animation.name, 3.0, -8, -1, animation.flag, 0, false, false, false);
+    }
     stopAnimation(animation) {
+        alt.log('Stopping animation');
+        if (this.holdingProp) {
+            alt.log(`Deleting prop with id ${this.propID}`);
+            game.detachEntity(this.propID, true, true);
+            game.deleteObject(this.propID);
+            this.holdingProp = false;
+        } else {
+            alt.log(`Holding prop set to false`);
+        }
+
         if (animation.hasOwnProperty("waitTime")) {
             this.waitTime = animation.waitTime;
         }
-        game.taskPlayAnim(this.playerId, animation.dict, animation.exitAnim, 8.0, 1.0, -1, animation.flag, 0, false, false, false);
+        if (animation.hasOwnProperty("prop")) {
+            this.stopPropAnimation(animation);
+        } else {
+            this.stopNormalAnimation(animation);
+        }
+    }
+    stopNormalAnimation(animation) {
+        game.taskPlayAnim(this.playerId, animation.dict, animation.exitAnim, 8.0, 1.0, -1,
+            animation.exitFlag ? animation.exitFlag : animation.flag, 0, false, false, false);
         alt.setTimeout(() => {
             game.clearPedSecondaryTask(this.playerId);
         }, this.waitTime);
         this.clearPropState();
+    }
+    stopPropAnimation(animation) {
+        this.holdingProp = false;
+        game.detachEntity(this.propID, true, true);
+        game.deleteObject(this.propID);
+        this.stopNormalAnimation(animation);
     }
     forceAnimationStop() {
         if (this.currentAnimation) {

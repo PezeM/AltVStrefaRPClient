@@ -5,6 +5,7 @@ import alt from 'alt';
 import game from 'natives';
 import { drawText, getMinimapAnchor, showUi } from 'src/Helpers/uiHelper.js';
 import { rotToDirection } from 'src/Helpers/mathHelper.js';
+import Animations from 'src/Modules/animations.js';
 
 let uiView = new alt.WebView('http://resources/AltVStrefaRPClient/html/ui.html');
 
@@ -23,6 +24,7 @@ const controlsIds = {
 let cursorShown = false;
 const localPlayer = alt.getLocalPlayer();
 const localPlayerId = localPlayer.scriptID;
+let animations = new Animations();
 
 // Raycasting
 let entityHit = null;
@@ -112,12 +114,13 @@ uiView.on('circleMenuCallback', (option) => {
     closeCircleMenu();
     switch (circleMenuName) {
         case "animations":
-            switch (option) {
-                case "someFastDance":
-                    alt.log('Some fast dance');
-                    someTestAnim();
-                    break;
-            }
+            // switch (option) {
+            //     case "someFastDance":
+            //         alt.log('Some fast dance');
+            //         someTestAnim();
+            //         break;
+            // }
+            animations.findAnimations(option);
             break;
     }
 });

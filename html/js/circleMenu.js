@@ -48,14 +48,14 @@ const menusList = {
     },
     "fastDances": {
         "dancingAnims": usefullOptions.back,
-        "someFastDance": {
+        "dance1": {
             desc: "Jakiś szybki taniec",
             icon: "someFastDance",
         }
     },
     "slowDances": {
         "dancingAnims": usefullOptions.back,
-        "someDance": {
+        "dance2": {
             desc: "Jakiś wolny taniec",
             icon: "someFastDance",
         }

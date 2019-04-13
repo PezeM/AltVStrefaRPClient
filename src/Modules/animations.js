@@ -27,18 +27,41 @@ const animations = {
 export default class Animations {
     constructor() {
         alt.log('Animations class initialized');
+        this.playerId = alt.getLocalPlayer().scriptID;
         this.currentAnimation = null;
+        this.waitTime = 600;
+        this.propID = null;
+        this.propModel = null;
+        this.holdingProp = false;
     }
     findAnimation(animationName) {
         if (animations[animationName]) {
             this.currentAnimation = animations[animationName];
-            this.playAnimation(this.currentAnimation);
+            this.setupAnimation(this.currentAnimation);
         } else {
             showCefNotification(3, `Nie znaleziono animacji z nazwą ${animationName}.`, 5000);
         }
     }
+    setupAnimation(animation) {
+        this.loadAnimDict(animation.dict);
+        if (game.isEntityPlayingAnim(entity, animation.dict, animation.name, animation.flag)) {
+            this.stopAnimation(animation);
+        } else {
+            this.playAnimation(animation);
+        }
+    }
     playAnimation(animation) {
-        loadAnimDict(animation.dict);
+        game.taskPlayAnim(this.playerId, animation.dict, animation.name, 8.0, 1.0, -1, animation.flag, 0, false, false, false);
+    }
+    stopAnimation(animation) {
+        if (animation.hasOwnProperty(waitTime)) {
+            this.waitTime = animation.waitTime;
+        }
+        game.taskPlayAnim(this.playerId, animation.dict, animation.exitAnim, 8.0, 1.0, -1, animation.flag, 0, false, false, false);
+        alt.setTimeout(() => {
+            game.clearPedSecondaryTask(this.playerId);
+        }, this.waitTime);
+        this.clearPropState();
     }
     loadAnimDict(animDict) {
         game.requestAnimDict(animDict);
@@ -52,5 +75,10 @@ export default class Animations {
                 }
             }, 5);
         }
+    }
+    clearPropState() {
+        this.propID = null;
+        this.propModel = null;
+        this.holdingProp = false;
     }
 }

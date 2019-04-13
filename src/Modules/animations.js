@@ -1,6 +1,5 @@
 import game from 'natives';
 import alt from 'alt';
-import { showCefNotification } from 'src/ui.js';
 
 const animations = {
     "dance1": {
@@ -35,16 +34,18 @@ export default class Animations {
         this.holdingProp = false;
     }
     findAnimation(animationName) {
+        alt.log('Looking for animation named ' + animationName);
         if (animations[animationName]) {
             this.currentAnimation = animations[animationName];
             this.setupAnimation(this.currentAnimation);
         } else {
-            showCefNotification(3, `Nie znaleziono animacji z nazwą ${animationName}.`, 5000);
+            alt.log(`Nie znaleziono animacji z nazwą ${animationName}.`);
+            // showCefNotification(3, `Nie znaleziono animacji z nazwą ${animationName}.`, 5000);
         }
     }
     setupAnimation(animation) {
         this.loadAnimDict(animation.dict);
-        if (game.isEntityPlayingAnim(entity, animation.dict, animation.name, animation.flag)) {
+        if (game.isEntityPlayingAnim(this.playerId, animation.dict, animation.name, animation.flag)) {
             this.stopAnimation(animation);
         } else {
             this.playAnimation(animation);

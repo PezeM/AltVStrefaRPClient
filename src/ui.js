@@ -120,7 +120,7 @@ uiView.on('circleMenuCallback', (option) => {
             //         someTestAnim();
             //         break;
             // }
-            animations.findAnimations(option);
+            animations.findAnimation(option);
             break;
     }
 });

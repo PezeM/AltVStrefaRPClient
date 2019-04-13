@@ -64,161 +64,161 @@ declare module "natives" {
    *
    * @param {NativePlayer} player undefined
    */
-  export function GetPlayerPed(player: NativePlayer): void;
+  export function getPlayerPed(player: NativePlayer): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function GetPlayerPedScriptIndex(player: NativePlayer): void;
+  export function getPlayerPedScriptIndex(player: NativePlayer): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function SetPlayerModel(player: NativePlayer, modelHash: NativeHash): void;
+  export function setPlayerModel(player: NativePlayer, modelHash: NativeHash): void;
   /**
    *
    * @param {number} axel undefined
    */
-  export function ChangePlayerPed(axel: number, ped: NativePed, p2: NativeBOOL, p3: NativeBOOL): void;
+  export function changePlayerPed(axel: number, ped: NativePed, p2: NativeBOOL, p3: NativeBOOL): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function GetPlayerRgbColour(player: NativePlayer, r: number, g: number, b: number): void;
+  export function getPlayerRgbColour(player: NativePlayer, r: number, g: number, b: number): void;
   /**
    *
    */
-  export function GetNumberOfPlayers(): void;
-  /**
-   *
-   * @param {NativePlayer} player undefined
-   */
-  export function GetPlayerTeam(player: NativePlayer): void;
+  export function getNumberOfPlayers(): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function SetPlayerTeam(player: NativePlayer, team: number): void;
+  export function getPlayerTeam(player: NativePlayer): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function GetPlayerName(player: NativePlayer): void;
+  export function setPlayerTeam(player: NativePlayer, team: number): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function GetWantedLevelRadius(player: NativePlayer): void;
+  export function getPlayerName(player: NativePlayer): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function GetPlayerWantedCentrePosition(player: NativePlayer): void;
+  export function getWantedLevelRadius(player: NativePlayer): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function SetPlayerWantedCentrePosition(player: NativePlayer, x: number, y: number, z: number): void;
+  export function getPlayerWantedCentrePosition(player: NativePlayer): void;
+  /**
+   *
+   * @param {NativePlayer} player undefined
+   */
+  export function setPlayerWantedCentrePosition(player: NativePlayer, x: number, y: number, z: number): void;
   /**
    *
    * @param {number} wantedLevel undefined
    */
-  export function GetWantedLevelThreshold(wantedLevel: number): void;
+  export function getWantedLevelThreshold(wantedLevel: number): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function SetPlayerWantedLevel(player: NativePlayer, wantedLevel: number, disableNoMission: NativeBOOL): void;
+  export function setPlayerWantedLevel(player: NativePlayer, wantedLevel: number, disableNoMission: NativeBOOL): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function SetPlayerWantedLevelNoDrop(player: NativePlayer, wantedLevel: number, p2: NativeBOOL): void;
+  export function setPlayerWantedLevelNoDrop(player: NativePlayer, wantedLevel: number, p2: NativeBOOL): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function SetPlayerWantedLevelNow(player: NativePlayer, p1: NativeBOOL): void;
+  export function setPlayerWantedLevelNow(player: NativePlayer, p1: NativeBOOL): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function ArePlayerFlashingStarsAboutToDrop(player: NativePlayer): void;
+  export function arePlayerFlashingStarsAboutToDrop(player: NativePlayer): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function ArePlayerStarsGreyedOut(player: NativePlayer): void;
+  export function arePlayerStarsGreyedOut(player: NativePlayer): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function SetDispatchCopsForPlayer(player: NativePlayer, toggle: NativeBOOL): void;
+  export function setDispatchCopsForPlayer(player: NativePlayer, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function IsPlayerWantedLevelGreater(player: NativePlayer, wantedLevel: number): void;
+  export function isPlayerWantedLevelGreater(player: NativePlayer, wantedLevel: number): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function ClearPlayerWantedLevel(player: NativePlayer): void;
+  export function clearPlayerWantedLevel(player: NativePlayer): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function IsPlayerDead(player: NativePlayer): void;
+  export function isPlayerDead(player: NativePlayer): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function IsPlayerPressingHorn(player: NativePlayer): void;
+  export function isPlayerPressingHorn(player: NativePlayer): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function SetPlayerControl(player: NativePlayer, toggle: NativeBOOL, flags: number): void;
+  export function setPlayerControl(player: NativePlayer, toggle: NativeBOOL, flags: number): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function GetPlayerWantedLevel(player: NativePlayer): void;
+  export function getPlayerWantedLevel(player: NativePlayer): void;
   /**
    *
    * @param {number} maxWantedLevel undefined
    */
-  export function SetMaxWantedLevel(maxWantedLevel: number): void;
+  export function setMaxWantedLevel(maxWantedLevel: number): void;
   /**
    *
    * @param {NativeAny} toggle undefined
    */
-  export function SetPoliceRadarBlips(toggle: NativeAny): void;
+  export function setPoliceRadarBlips(toggle: NativeAny): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function SetPoliceIgnorePlayer(player: NativePlayer, toggle: NativeBOOL): void;
+  export function setPoliceIgnorePlayer(player: NativePlayer, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function IsPlayerPlaying(player: NativePlayer): void;
+  export function isPlayerPlaying(player: NativePlayer): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function SetEveryoneIgnorePlayer(player: NativePlayer, toggle: NativeBOOL): void;
+  export function setEveryoneIgnorePlayer(player: NativePlayer, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function SetAllRandomPedsFlee(player: NativePlayer, toggle: NativeBOOL): void;
+  export function setAllRandomPedsFlee(player: NativePlayer, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function SetAllRandomPedsFleeThisFrame(player: NativePlayer): void;
+  export function setAllRandomPedsFleeThisFrame(player: NativePlayer): void;
   /**
    *
    * @param {NativePlayer} player undefined
@@ -233,37 +233,37 @@ declare module "natives" {
    *
    * @param {NativePlayer} player undefined
    */
-  export function SetIgnoreLowPriorityShockingEvents(player: NativePlayer, toggle: NativeBOOL): void;
+  export function setIgnoreLowPriorityShockingEvents(player: NativePlayer, toggle: NativeBOOL): void;
   /**
    *
    * @param {number} multiplier undefined
    */
-  export function SetWantedLevelMultiplier(multiplier: number): void;
+  export function setWantedLevelMultiplier(multiplier: number): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function SetWantedLevelDifficulty(player: NativePlayer, difficulty: number): void;
+  export function setWantedLevelDifficulty(player: NativePlayer, difficulty: number): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function ResetWantedLevelDifficulty(player: NativePlayer): void;
+  export function resetWantedLevelDifficulty(player: NativePlayer): void;
   /**
    *
    * @param {number} duration undefined
    */
-  export function StartFiringAmnesty(duration: number): void;
+  export function startFiringAmnesty(duration: number): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function ReportCrime(player: NativePlayer, crimeType: number, wantedLvlThresh: number): void;
+  export function reportCrime(player: NativePlayer, crimeType: number, wantedLvlThresh: number): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function SwitchCrimeType(player: NativePlayer, p1: number): void;
+  export function switchCrimeType(player: NativePlayer, p1: number): void;
   /**
    *
    * @param {NativePlayer} player undefined
@@ -302,271 +302,271 @@ declare module "natives" {
    *
    * @param {NativePlayer} player undefined
    */
-  export function CanPlayerStartMission(player: NativePlayer): void;
+  export function canPlayerStartMission(player: NativePlayer): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function IsPlayerReadyForCutscene(player: NativePlayer): void;
+  export function isPlayerReadyForCutscene(player: NativePlayer): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function IsPlayerTargettingEntity(player: NativePlayer, entity: NativeEntity): void;
+  export function isPlayerTargettingEntity(player: NativePlayer, entity: NativeEntity): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function GetPlayerTargetEntity(player: NativePlayer, entity: NativeEntity): void;
+  export function getPlayerTargetEntity(player: NativePlayer, entity: NativeEntity): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function IsPlayerFreeAiming(player: NativePlayer): void;
+  export function isPlayerFreeAiming(player: NativePlayer): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function IsPlayerFreeAimingAtEntity(player: NativePlayer, entity: NativeEntity): void;
+  export function isPlayerFreeAimingAtEntity(player: NativePlayer, entity: NativeEntity): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function GetEntityPlayerIsFreeAimingAt(player: NativePlayer, entity: NativeEntity): void;
+  export function getEntityPlayerIsFreeAimingAt(player: NativePlayer, entity: NativeEntity): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function SetPlayerLockonRangeOverride(player: NativePlayer, range: number): void;
+  export function setPlayerLockonRangeOverride(player: NativePlayer, range: number): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function SetPlayerCanDoDriveBy(player: NativePlayer, toggle: NativeBOOL): void;
+  export function setPlayerCanDoDriveBy(player: NativePlayer, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function SetPlayerCanBeHassledByGangs(player: NativePlayer, toggle: NativeBOOL): void;
+  export function setPlayerCanBeHassledByGangs(player: NativePlayer, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function SetPlayerCanUseCover(player: NativePlayer, toggle: NativeBOOL): void;
+  export function setPlayerCanUseCover(player: NativePlayer, toggle: NativeBOOL): void;
   /**
    *
    */
-  export function GetMaxWantedLevel(): void;
-  /**
-   *
-   * @param {NativePlayer} player undefined
-   */
-  export function IsPlayerTargettingAnything(player: NativePlayer): void;
+  export function getMaxWantedLevel(): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function SetPlayerSprint(player: NativePlayer, toggle: NativeBOOL): void;
+  export function isPlayerTargettingAnything(player: NativePlayer): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function ResetPlayerStamina(player: NativePlayer): void;
+  export function setPlayerSprint(player: NativePlayer, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function RestorePlayerStamina(player: NativePlayer, p1: number): void;
+  export function resetPlayerStamina(player: NativePlayer): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function GetPlayerSprintStaminaRemaining(player: NativePlayer): void;
+  export function restorePlayerStamina(player: NativePlayer, p1: number): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function GetPlayerSprintTimeRemaining(player: NativePlayer): void;
+  export function getPlayerSprintStaminaRemaining(player: NativePlayer): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function GetPlayerUnderwaterTimeRemaining(player: NativePlayer): void;
+  export function getPlayerSprintTimeRemaining(player: NativePlayer): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function GetPlayerGroup(player: NativePlayer): void;
+  export function getPlayerUnderwaterTimeRemaining(player: NativePlayer): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function GetPlayerMaxArmour(player: NativePlayer): void;
+  export function getPlayerGroup(player: NativePlayer): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function IsPlayerControlOn(player: NativePlayer): void;
-  /**
-   *
-   */
-  export function IsPlayerCamControlDisabled(): void;
+  export function getPlayerMaxArmour(player: NativePlayer): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function IsPlayerScriptControlOn(player: NativePlayer): void;
+  export function isPlayerControlOn(player: NativePlayer): void;
+  /**
+   *
+   */
+  export function isPlayerCamControlDisabled(): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function IsPlayerClimbing(player: NativePlayer): void;
+  export function isPlayerScriptControlOn(player: NativePlayer): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function IsPlayerBeingArrested(player: NativePlayer, atArresting: NativeBOOL): void;
+  export function isPlayerClimbing(player: NativePlayer): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function ResetPlayerArrestState(player: NativePlayer): void;
+  export function isPlayerBeingArrested(player: NativePlayer, atArresting: NativeBOOL): void;
+  /**
+   *
+   * @param {NativePlayer} player undefined
+   */
+  export function resetPlayerArrestState(player: NativePlayer): void;
   /**
    *
    */
-  export function GetPlayersLastVehicle(): void;
+  export function getPlayersLastVehicle(): void;
   /**
    *
    */
-  export function GetPlayerIndex(): void;
+  export function getPlayerIndex(): void;
   /**
    *
    * @param {number} value undefined
    */
-  export function IntToPlayerindex(value: number): void;
+  export function intToPlayerindex(value: number): void;
   /**
    *
    * @param {number} value undefined
    */
-  export function IntToParticipantindex(value: number): void;
+  export function intToParticipantindex(value: number): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function GetTimeSincePlayerHitVehicle(player: NativePlayer): void;
+  export function getTimeSincePlayerHitVehicle(player: NativePlayer): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function GetTimeSincePlayerHitPed(player: NativePlayer): void;
+  export function getTimeSincePlayerHitPed(player: NativePlayer): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function GetTimeSincePlayerDroveOnPavement(player: NativePlayer): void;
+  export function getTimeSincePlayerDroveOnPavement(player: NativePlayer): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function GetTimeSincePlayerDroveAgainstTraffic(player: NativePlayer): void;
+  export function getTimeSincePlayerDroveAgainstTraffic(player: NativePlayer): void;
   /**
    *
    * @param {NativeVehicle} player undefined
    */
-  export function IsPlayerFreeForAmbientTask(player: NativeVehicle): void;
+  export function isPlayerFreeForAmbientTask(player: NativeVehicle): void;
   /**
    *
    */
-  export function PlayerId(): void;
+  export function playerId(): void;
   /**
    *
    */
-  export function PlayerPedId(): void;
+  export function playerPedId(): void;
   /**
    *
    */
-  export function NetworkPlayerIdToInt(): void;
-  /**
-   *
-   * @param {number} cleanupFlags undefined
-   */
-  export function HasForceCleanupOccurred(cleanupFlags: number): void;
+  export function networkPlayerIdToInt(): void;
   /**
    *
    * @param {number} cleanupFlags undefined
    */
-  export function ForceCleanup(cleanupFlags: number): void;
+  export function hasForceCleanupOccurred(cleanupFlags: number): void;
+  /**
+   *
+   * @param {number} cleanupFlags undefined
+   */
+  export function forceCleanup(cleanupFlags: number): void;
   /**
    *
    * @param {string} name undefined
    */
-  export function ForceCleanupForAllThreadsWithThisName(name: string, cleanupFlags: number): void;
+  export function forceCleanupForAllThreadsWithThisName(name: string, cleanupFlags: number): void;
   /**
    *
    * @param {number} id undefined
    */
-  export function ForceCleanupForThreadWithThisId(id: number, cleanupFlags: number): void;
+  export function forceCleanupForThreadWithThisId(id: number, cleanupFlags: number): void;
   /**
    *
    */
-  export function GetCauseOfMostRecentForceCleanup(): void;
-  /**
-   *
-   * @param {NativePlayer} player undefined
-   */
-  export function SetPlayerMayOnlyEnterThisVehicle(player: NativePlayer, vehicle: NativeVehicle): void;
+  export function getCauseOfMostRecentForceCleanup(): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function SetPlayerMayNotEnterAnyVehicle(player: NativePlayer): void;
+  export function setPlayerMayOnlyEnterThisVehicle(player: NativePlayer, vehicle: NativeVehicle): void;
+  /**
+   *
+   * @param {NativePlayer} player undefined
+   */
+  export function setPlayerMayNotEnterAnyVehicle(player: NativePlayer): void;
   /**
    *
    * @param {number} achievement undefined
    */
-  export function GiveAchievementToPlayer(achievement: number): void;
+  export function giveAchievementToPlayer(achievement: number): void;
   /**
    *
    * @param {number} achId undefined
    */
-  export function SetAchievementProgression(achId: number, progression: number): void;
+  export function setAchievementProgression(achId: number, progression: number): void;
   /**
    *
    * @param {number} achId undefined
    */
-  export function GetAchievementProgression(achId: number): void;
+  export function getAchievementProgression(achId: number): void;
   /**
    *
    * @param {number} achievement undefined
    */
-  export function HasAchievementBeenPassed(achievement: number): void;
+  export function hasAchievementBeenPassed(achievement: number): void;
   /**
    *
    */
-  export function IsPlayerOnline(): void;
+  export function isPlayerOnline(): void;
   /**
    *
    */
-  export function IsPlayerLoggingInNp(): void;
+  export function isPlayerLoggingInNp(): void;
   /**
    *
    * @param {NativeBOOL} unk undefined
    */
-  export function DisplaySystemSigninUi(unk: NativeBOOL): void;
+  export function displaySystemSigninUi(unk: NativeBOOL): void;
   /**
    *
    */
-  export function IsSystemUiBeingDisplayed(): void;
-  /**
-   *
-   * @param {NativePlayer} player undefined
-   */
-  export function SetPlayerInvincible(player: NativePlayer, toggle: NativeBOOL): void;
+  export function isSystemUiBeingDisplayed(): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function GetPlayerInvincible(player: NativePlayer): void;
+  export function setPlayerInvincible(player: NativePlayer, toggle: NativeBOOL): void;
+  /**
+   *
+   * @param {NativePlayer} player undefined
+   */
+  export function getPlayerInvincible(player: NativePlayer): void;
   /**
    *
    * @param {NativePlayer} player undefined
@@ -576,22 +576,22 @@ declare module "natives" {
    *
    * @param {NativePlayer} player undefined
    */
-  export function RemovePlayerHelmet(player: NativePlayer, p2: NativeBOOL): void;
+  export function removePlayerHelmet(player: NativePlayer, p2: NativeBOOL): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function GivePlayerRagdollControl(player: NativePlayer, toggle: NativeBOOL): void;
+  export function givePlayerRagdollControl(player: NativePlayer, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function SetPlayerLockon(player: NativePlayer, toggle: NativeBOOL): void;
+  export function setPlayerLockon(player: NativePlayer, toggle: NativeBOOL): void;
   /**
    *
    * @param {number} targetMode undefined
    */
-  export function SetPlayerTargetingMode(targetMode: number): void;
+  export function setPlayerTargetingMode(targetMode: number): void;
   /**
    *
    * @param {number} p0 undefined
@@ -605,73 +605,73 @@ declare module "natives" {
    *
    * @param {NativePlayer} player undefined
    */
-  export function ClearPlayerHasDamagedAtLeastOnePed(player: NativePlayer): void;
+  export function clearPlayerHasDamagedAtLeastOnePed(player: NativePlayer): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function HasPlayerDamagedAtLeastOnePed(player: NativePlayer): void;
+  export function hasPlayerDamagedAtLeastOnePed(player: NativePlayer): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function ClearPlayerHasDamagedAtLeastOneNonAnimalPed(player: NativePlayer): void;
+  export function clearPlayerHasDamagedAtLeastOneNonAnimalPed(player: NativePlayer): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function HasPlayerDamagedAtLeastOneNonAnimalPed(player: NativePlayer): void;
+  export function hasPlayerDamagedAtLeastOneNonAnimalPed(player: NativePlayer): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function SetAirDragMultiplierForPlayersVehicle(player: NativePlayer, multiplier: number): void;
+  export function setAirDragMultiplierForPlayersVehicle(player: NativePlayer, multiplier: number): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function SetSwimMultiplierForPlayer(player: NativePlayer, multiplier: number): void;
+  export function setSwimMultiplierForPlayer(player: NativePlayer, multiplier: number): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function SetRunSprintMultiplierForPlayer(player: NativePlayer, multiplier: number): void;
+  export function setRunSprintMultiplierForPlayer(player: NativePlayer, multiplier: number): void;
   /**
    *
    */
-  export function GetTimeSinceLastArrest(): void;
+  export function getTimeSinceLastArrest(): void;
   /**
    *
    */
-  export function GetTimeSinceLastDeath(): void;
+  export function getTimeSinceLastDeath(): void;
   /**
    *
    */
-  export function AssistedMovementCloseRoute(): void;
+  export function assistedMovementCloseRoute(): void;
   /**
    *
    */
-  export function AssistedMovementFlushRoute(): void;
-  /**
-   *
-   * @param {NativePlayer} player undefined
-   */
-  export function SetPlayerForcedAim(player: NativePlayer, toggle: NativeBOOL): void;
+  export function assistedMovementFlushRoute(): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function SetPlayerForcedZoom(player: NativePlayer, toggle: NativeBOOL): void;
+  export function setPlayerForcedAim(player: NativePlayer, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function SetPlayerForceSkipAimIntro(player: NativePlayer, toggle: NativeBOOL): void;
+  export function setPlayerForcedZoom(player: NativePlayer, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function DisablePlayerFiring(player: NativePlayer, toggle: NativeBOOL): void;
+  export function setPlayerForceSkipAimIntro(player: NativePlayer, toggle: NativeBOOL): void;
+  /**
+   *
+   * @param {NativePlayer} player undefined
+   */
+  export function disablePlayerFiring(player: NativePlayer, toggle: NativeBOOL): void;
   /**
    *
    */
@@ -680,27 +680,27 @@ declare module "natives" {
    *
    * @param {NativePlayer} player undefined
    */
-  export function SetDisableAmbientMeleeMove(player: NativePlayer, toggle: NativeBOOL): void;
+  export function setDisableAmbientMeleeMove(player: NativePlayer, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function SetPlayerMaxArmour(player: NativePlayer, value: number): void;
+  export function setPlayerMaxArmour(player: NativePlayer, value: number): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function SpecialAbilityDeactivate(player: NativePlayer): void;
+  export function specialAbilityDeactivate(player: NativePlayer): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function SpecialAbilityDeactivateFast(player: NativePlayer): void;
+  export function specialAbilityDeactivateFast(player: NativePlayer): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function SpecialAbilityReset(player: NativePlayer): void;
+  export function specialAbilityReset(player: NativePlayer): void;
   /**
    *
    * @param {NativeCam} player undefined
@@ -710,82 +710,82 @@ declare module "natives" {
    *
    * @param {NativePlayer} player undefined
    */
-  export function SpecialAbilityChargeSmall(player: NativePlayer, p1: NativeBOOL, p2: NativeBOOL): void;
+  export function specialAbilityChargeSmall(player: NativePlayer, p1: NativeBOOL, p2: NativeBOOL): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function SpecialAbilityChargeMedium(player: NativePlayer, p1: NativeVehicle, p2: NativeVehicle): void;
+  export function specialAbilityChargeMedium(player: NativePlayer, p1: NativeVehicle, p2: NativeVehicle): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function SpecialAbilityChargeLarge(player: NativePlayer, p1: NativeBOOL, p2: NativeBOOL): void;
+  export function specialAbilityChargeLarge(player: NativePlayer, p1: NativeBOOL, p2: NativeBOOL): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function SpecialAbilityChargeContinuous(player: NativePlayer, p2: NativePed): void;
+  export function specialAbilityChargeContinuous(player: NativePlayer, p2: NativePed): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function SpecialAbilityChargeAbsolute(player: NativePlayer, p1: number, p2: NativeBOOL): void;
+  export function specialAbilityChargeAbsolute(player: NativePlayer, p1: number, p2: NativeBOOL): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function SpecialAbilityChargeNormalized(player: NativePlayer, normalizedValue: number, p2: NativeBOOL): void;
+  export function specialAbilityChargeNormalized(player: NativePlayer, normalizedValue: number, p2: NativeBOOL): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function SpecialAbilityFillMeter(player: NativePlayer, p1: NativeBOOL): void;
+  export function specialAbilityFillMeter(player: NativePlayer, p1: NativeBOOL): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function SpecialAbilityDepleteMeter(player: NativePlayer, p1: NativeBOOL): void;
+  export function specialAbilityDepleteMeter(player: NativePlayer, p1: NativeBOOL): void;
   /**
    *
    * @param {NativeHash} playerModel undefined
    */
-  export function SpecialAbilityLock(playerModel: NativeHash): void;
+  export function specialAbilityLock(playerModel: NativeHash): void;
   /**
    *
    * @param {NativeHash} playerModel undefined
    */
-  export function SpecialAbilityUnlock(playerModel: NativeHash): void;
+  export function specialAbilityUnlock(playerModel: NativeHash): void;
   /**
    *
    * @param {NativeHash} playerModel undefined
    */
-  export function IsSpecialAbilityUnlocked(playerModel: NativeHash): void;
+  export function isSpecialAbilityUnlocked(playerModel: NativeHash): void;
   /**
    *
    * @param {NativePed} player undefined
    */
-  export function IsSpecialAbilityActive(player: NativePed): void;
+  export function isSpecialAbilityActive(player: NativePed): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function IsSpecialAbilityMeterFull(player: NativePlayer): void;
+  export function isSpecialAbilityMeterFull(player: NativePlayer): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function EnableSpecialAbility(player: NativePlayer, toggle: NativeBOOL): void;
+  export function enableSpecialAbility(player: NativePlayer, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function IsSpecialAbilityEnabled(player: NativePlayer): void;
+  export function isSpecialAbilityEnabled(player: NativePlayer): void;
   /**
    *
    * @param {number} multiplier undefined
    */
-  export function SetSpecialAbilityMultiplier(multiplier: number): void;
+  export function setSpecialAbilityMultiplier(multiplier: number): void;
   /**
    *
    * @param {NativePlayer} player undefined
@@ -810,150 +810,150 @@ declare module "natives" {
    *
    * @param {NativePlayer} player undefined
    */
-  export function StartPlayerTeleport(player: NativePlayer, x: number, y: number, z: number, heading: number, p5: NativeBOOL, p6: NativeBOOL, p7: NativeBOOL): void;
+  export function startPlayerTeleport(player: NativePlayer, x: number, y: number, z: number, heading: number, p5: NativeBOOL, p6: NativeBOOL, p7: NativeBOOL): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function HasPlayerTeleportFinished(player: NativePlayer): void;
+  export function hasPlayerTeleportFinished(player: NativePlayer): void;
   /**
    *
    */
-  export function StopPlayerTeleport(): void;
+  export function stopPlayerTeleport(): void;
   /**
    *
    */
-  export function IsPlayerTeleportActive(): void;
-  /**
-   *
-   * @param {NativePlayer} player undefined
-   */
-  export function GetPlayerCurrentStealthNoise(player: NativePlayer): void;
+  export function isPlayerTeleportActive(): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function SetPlayerHealthRechargeMultiplier(player: NativePlayer, regenRate: number): void;
+  export function getPlayerCurrentStealthNoise(player: NativePlayer): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function SetPlayerWeaponDamageModifier(player: NativePlayer, damageAmount: number): void;
+  export function setPlayerHealthRechargeMultiplier(player: NativePlayer, regenRate: number): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function SetPlayerWeaponDefenseModifier(player: NativePlayer, modifier: NativeScrHandle): void;
+  export function setPlayerWeaponDamageModifier(player: NativePlayer, damageAmount: number): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function SetPlayerMeleeWeaponDamageModifier(player: NativePlayer, modifier: number): void;
+  export function setPlayerWeaponDefenseModifier(player: NativePlayer, modifier: NativeScrHandle): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function SetPlayerMeleeWeaponDefenseModifier(player: NativePlayer, modifier: number): void;
+  export function setPlayerMeleeWeaponDamageModifier(player: NativePlayer, modifier: number): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function SetPlayerVehicleDamageModifier(player: NativePlayer, damageAmount: number): void;
+  export function setPlayerMeleeWeaponDefenseModifier(player: NativePlayer, modifier: number): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function SetPlayerVehicleDefenseModifier(player: NativePlayer, modifier: number): void;
+  export function setPlayerVehicleDamageModifier(player: NativePlayer, damageAmount: number): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function SetPlayerParachuteTintIndex(player: NativePlayer, tintIndex: number): void;
+  export function setPlayerVehicleDefenseModifier(player: NativePlayer, modifier: number): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function GetPlayerParachuteTintIndex(player: NativePlayer, tintIndex: number): void;
+  export function setPlayerParachuteTintIndex(player: NativePlayer, tintIndex: number): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function SetPlayerReserveParachuteTintIndex(player: NativePlayer, index: number): void;
+  export function getPlayerParachuteTintIndex(player: NativePlayer, tintIndex: number): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function GetPlayerReserveParachuteTintIndex(player: NativePlayer, index: number): void;
+  export function setPlayerReserveParachuteTintIndex(player: NativePlayer, index: number): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function SetPlayerParachutePackTintIndex(player: NativePlayer, tintIndex: number): void;
+  export function getPlayerReserveParachuteTintIndex(player: NativePlayer, index: number): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function GetPlayerParachutePackTintIndex(player: NativePlayer, tintIndex: number): void;
+  export function setPlayerParachutePackTintIndex(player: NativePlayer, tintIndex: number): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function SetPlayerHasReserveParachute(player: NativePlayer): void;
+  export function getPlayerParachutePackTintIndex(player: NativePlayer, tintIndex: number): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function GetPlayerHasReserveParachute(player: NativePlayer): void;
+  export function setPlayerHasReserveParachute(player: NativePlayer): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function SetPlayerCanLeaveParachuteSmokeTrail(player: NativePlayer, enabled: NativeBOOL): void;
+  export function getPlayerHasReserveParachute(player: NativePlayer): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function SetPlayerParachuteSmokeTrailColor(player: NativePlayer, r: number, g: number, b: number): void;
+  export function setPlayerCanLeaveParachuteSmokeTrail(player: NativePlayer, enabled: NativeBOOL): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function GetPlayerParachuteSmokeTrailColor(player: NativePlayer, r: number, g: number, b: number): void;
+  export function setPlayerParachuteSmokeTrailColor(player: NativePlayer, r: number, g: number, b: number): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function SetPlayerResetFlagPreferRearSeats(player: NativePlayer, flags: number): void;
+  export function getPlayerParachuteSmokeTrailColor(player: NativePlayer, r: number, g: number, b: number): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function SetPlayerNoiseMultiplier(player: NativePlayer, multiplier: number): void;
+  export function setPlayerResetFlagPreferRearSeats(player: NativePlayer, flags: number): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function SetPlayerSneakingNoiseMultiplier(player: NativePlayer, multiplier: number): void;
+  export function setPlayerNoiseMultiplier(player: NativePlayer, multiplier: number): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function CanPedHearPlayer(player: NativePlayer, ped: NativePed): void;
+  export function setPlayerSneakingNoiseMultiplier(player: NativePlayer, multiplier: number): void;
+  /**
+   *
+   * @param {NativePlayer} player undefined
+   */
+  export function canPedHearPlayer(player: NativePlayer, ped: NativePed): void;
   /**
    *
    * @param {NativePlayer} control undefined
    */
-  export function SimulatePlayerInputGait(control: NativePlayer, amount: number, gaitType: number, speed: number, p4: NativeBOOL, p5: NativeBOOL): void;
+  export function simulatePlayerInputGait(control: NativePlayer, amount: number, gaitType: number, speed: number, p4: NativeBOOL, p5: NativeBOOL): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function ResetPlayerInputGait(player: NativePlayer): void;
+  export function resetPlayerInputGait(player: NativePlayer): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function SetAutoGiveParachuteWhenEnterPlane(player: NativePlayer, toggle: NativeBOOL): void;
+  export function setAutoGiveParachuteWhenEnterPlane(player: NativePlayer, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativePlayer} player undefined
@@ -963,7 +963,7 @@ declare module "natives" {
    *
    * @param {NativePlayer} player undefined
    */
-  export function SetPlayerStealthPerceptionModifier(player: NativePlayer, value: number): void;
+  export function setPlayerStealthPerceptionModifier(player: NativePlayer, value: number): void;
   /**
    *
    * @param {NativePed} p0 undefined
@@ -978,36 +978,36 @@ declare module "natives" {
    *
    * @param {NativePlayer} player undefined
    */
-  export function SetPlayerSimulateAiming(player: NativePlayer, toggle: NativeBOOL): void;
+  export function setPlayerSimulateAiming(player: NativePlayer, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function SetPlayerClothPinFrames(player: NativePlayer, toggle: NativeBOOL): void;
+  export function setPlayerClothPinFrames(player: NativePlayer, toggle: NativeBOOL): void;
   /**
    *
    * @param {number} index undefined
    */
-  export function SetPlayerClothPackageIndex(index: number): void;
+  export function setPlayerClothPackageIndex(index: number): void;
   /**
    *
    * @param {number} value undefined
    */
-  export function SetPlayerClothLockCounter(value: number): void;
+  export function setPlayerClothLockCounter(value: number): void;
   /**
    *
    * @param {number} p0 undefined
    */
-  export function PlayerAttachVirtualBound(p0: number, p1: number, p2: number, p3: number, p4: number, p5: number, p6: number, p7: number): void;
+  export function playerAttachVirtualBound(p0: number, p1: number, p2: number, p3: number, p4: number, p5: number, p6: number, p7: number): void;
   /**
    *
    */
-  export function PlayerDetachVirtualBound(): void;
+  export function playerDetachVirtualBound(): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function HasPlayerBeenSpottedInStolenVehicle(player: NativePlayer): void;
+  export function hasPlayerBeenSpottedInStolenVehicle(player: NativePlayer): void;
   /**
    *
    * @param {NativePlayer} player undefined
@@ -1022,17 +1022,17 @@ declare module "natives" {
    *
    * @param {number} x undefined
    */
-  export function ExpandWorldLimits(x: number, y: number, z: number): void;
+  export function expandWorldLimits(x: number, y: number, z: number): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function IsPlayerRidingTrain(player: NativePlayer): void;
+  export function isPlayerRidingTrain(player: NativePlayer): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function HasPlayerLeftTheWorld(player: NativePlayer): void;
+  export function hasPlayerLeftTheWorld(player: NativePlayer): void;
   /**
    *
    * @param {NativePlayer} player undefined
@@ -1042,37 +1042,37 @@ declare module "natives" {
    *
    * @param {NativePlayer} player undefined
    */
-  export function SetPlayerParachuteVariationOverride(player: NativePlayer, p1: number, p2: NativeAny, p3: NativeAny, p4: NativeBOOL): void;
+  export function setPlayerParachuteVariationOverride(player: NativePlayer, p1: number, p2: NativeAny, p3: NativeAny, p4: NativeBOOL): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function ClearPlayerParachuteVariationOverride(player: NativePlayer): void;
+  export function clearPlayerParachuteVariationOverride(player: NativePlayer): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function SetPlayerParachuteModelOverride(player: NativePlayer, model: NativeHash): void;
+  export function setPlayerParachuteModelOverride(player: NativePlayer, model: NativeHash): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function ClearPlayerParachuteModelOverride(player: NativePlayer): void;
+  export function clearPlayerParachuteModelOverride(player: NativePlayer): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function SetPlayerParachutePackModelOverride(player: NativePlayer, model: NativeHash): void;
+  export function setPlayerParachutePackModelOverride(player: NativePlayer, model: NativeHash): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function ClearPlayerParachutePackModelOverride(player: NativePlayer): void;
+  export function clearPlayerParachutePackModelOverride(player: NativePlayer): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function DisablePlayerVehicleRewards(player: NativePlayer): void;
+  export function disablePlayerVehicleRewards(player: NativePlayer): void;
   /**
    *
    * @param {NativeBOOL} p0 undefined
@@ -1102,712 +1102,712 @@ declare module "natives" {
    *
    * @param {NativeEntity} entity undefined
    */
-  export function DoesEntityExist(entity: NativeEntity): void;
+  export function doesEntityExist(entity: NativeEntity): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function DoesEntityBelongToThisScript(entity: NativeEntity, p2: NativeBOOL): void;
+  export function doesEntityBelongToThisScript(entity: NativeEntity, p2: NativeBOOL): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function DoesEntityHaveDrawable(entity: NativeEntity): void;
+  export function doesEntityHaveDrawable(entity: NativeEntity): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function DoesEntityHavePhysics(entity: NativeEntity): void;
+  export function doesEntityHavePhysics(entity: NativeEntity): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function HasEntityAnimFinished(entity: NativeEntity, animDict: string, animName: string, p3: number): void;
+  export function hasEntityAnimFinished(entity: NativeEntity, animDict: string, animName: string, p3: number): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function HasEntityBeenDamagedByAnyObject(entity: NativeEntity): void;
+  export function hasEntityBeenDamagedByAnyObject(entity: NativeEntity): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function HasEntityBeenDamagedByAnyPed(entity: NativeEntity): void;
+  export function hasEntityBeenDamagedByAnyPed(entity: NativeEntity): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function HasEntityBeenDamagedByAnyVehicle(entity: NativeEntity): void;
+  export function hasEntityBeenDamagedByAnyVehicle(entity: NativeEntity): void;
   /**
    *
    * @param {NativeEntity} entity1 undefined
    */
-  export function HasEntityBeenDamagedByEntity(entity1: NativeEntity, entity2: NativeEntity, p2: NativeBOOL): void;
+  export function hasEntityBeenDamagedByEntity(entity1: NativeEntity, entity2: NativeEntity, p2: NativeBOOL): void;
   /**
    *
    * @param {NativeEntity} entity1 undefined
    */
-  export function HasEntityClearLosToEntity(entity1: NativeEntity, entity2: NativeEntity, traceType: number): void;
+  export function hasEntityClearLosToEntity(entity1: NativeEntity, entity2: NativeEntity, traceType: number): void;
   /**
    *
    * @param {NativeEntity} entity1 undefined
    */
-  export function HasEntityClearLosToEntityInFront(entity1: NativeEntity, entity2: NativeEntity): void;
+  export function hasEntityClearLosToEntityInFront(entity1: NativeEntity, entity2: NativeEntity): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function HasEntityCollidedWithAnything(entity: NativeEntity): void;
+  export function hasEntityCollidedWithAnything(entity: NativeEntity): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function GetLastMaterialHitByEntity(entity: NativeEntity): void;
+  export function getLastMaterialHitByEntity(entity: NativeEntity): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function GetCollisionNormalOfLastHitForEntity(entity: NativeEntity): void;
+  export function getCollisionNormalOfLastHitForEntity(entity: NativeEntity): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function ForceEntityAiAndAnimationUpdate(entity: NativeEntity): void;
+  export function forceEntityAiAndAnimationUpdate(entity: NativeEntity): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function GetEntityAnimCurrentTime(entity: NativeEntity, animDict: string, animName: string): void;
+  export function getEntityAnimCurrentTime(entity: NativeEntity, animDict: string, animName: string): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function GetEntityAnimTotalTime(entity: NativeEntity, animDict: string, animName: string): void;
+  export function getEntityAnimTotalTime(entity: NativeEntity, animDict: string, animName: string): void;
   /**
    *
    * @param {string} animDict undefined
    */
-  export function GetAnimDuration(animDict: string, animName: string): void;
+  export function getAnimDuration(animDict: string, animName: string): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function GetEntityAttachedTo(entity: NativeEntity): void;
+  export function getEntityAttachedTo(entity: NativeEntity): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function GetEntityCoords(entity: NativeEntity, alive: NativeBOOL): void;
+  export function getEntityCoords(entity: NativeEntity, alive: NativeBOOL): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function GetEntityForwardVector(entity: NativeEntity): void;
+  export function getEntityForwardVector(entity: NativeEntity): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function GetEntityForwardX(entity: NativeEntity): void;
+  export function getEntityForwardX(entity: NativeEntity): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function GetEntityForwardY(entity: NativeEntity): void;
+  export function getEntityForwardY(entity: NativeEntity): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function GetEntityHeading(entity: NativeEntity): void;
+  export function getEntityHeading(entity: NativeEntity): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function GetEntityPhysicsHeading(entity: NativeEntity): void;
+  export function getEntityPhysicsHeading(entity: NativeEntity): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function GetEntityHealth(entity: NativeEntity): void;
+  export function getEntityHealth(entity: NativeEntity): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function GetEntityMaxHealth(entity: NativeEntity): void;
+  export function getEntityMaxHealth(entity: NativeEntity): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function SetEntityMaxHealth(entity: NativeEntity, value: number): void;
+  export function setEntityMaxHealth(entity: NativeEntity, value: number): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function GetEntityHeight(entity: NativeEntity, X: number, Y: number, Z: number, atTop: NativeBOOL, inWorldCoords: NativeBOOL): void;
+  export function getEntityHeight(entity: NativeEntity, X: number, Y: number, Z: number, atTop: NativeBOOL, inWorldCoords: NativeBOOL): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function GetEntityHeightAboveGround(entity: NativeEntity): void;
+  export function getEntityHeightAboveGround(entity: NativeEntity): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function GetEntityMatrix(entity: NativeEntity, rightVector: NativeVector3, forwardVector: NativeVector3, upVector: NativeVector3, position: NativeVector3): void;
+  export function getEntityMatrix(entity: NativeEntity, rightVector: NativeVector3, forwardVector: NativeVector3, upVector: NativeVector3, position: NativeVector3): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function GetEntityModel(entity: NativeEntity): void;
+  export function getEntityModel(entity: NativeEntity): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function GetOffsetFromEntityGivenWorldCoords(entity: NativeEntity, posX: number, posY: number, posZ: number): void;
+  export function getOffsetFromEntityGivenWorldCoords(entity: NativeEntity, posX: number, posY: number, posZ: number): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function GetOffsetFromEntityInWorldCoords(entity: NativeEntity, offsetX: number, offsetY: number, offsetZ: number): void;
+  export function getOffsetFromEntityInWorldCoords(entity: NativeEntity, offsetX: number, offsetY: number, offsetZ: number): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function GetEntityPitch(entity: NativeEntity): void;
+  export function getEntityPitch(entity: NativeEntity): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function GetEntityQuaternion(entity: NativeEntity, x: number, y: number, z: number, w: number): void;
+  export function getEntityQuaternion(entity: NativeEntity, x: number, y: number, z: number, w: number): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function GetEntityRoll(entity: NativeEntity): void;
+  export function getEntityRoll(entity: NativeEntity): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function GetEntityRotation(entity: NativeEntity, rotationOrder: number): void;
+  export function getEntityRotation(entity: NativeEntity, rotationOrder: number): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function GetEntityRotationVelocity(entity: NativeEntity): void;
+  export function getEntityRotationVelocity(entity: NativeEntity): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function GetEntityScript(entity: NativeEntity, script: NativeScrHandle): void;
+  export function getEntityScript(entity: NativeEntity, script: NativeScrHandle): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function GetEntitySpeed(entity: NativeEntity): void;
+  export function getEntitySpeed(entity: NativeEntity): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function GetEntitySpeedVector(entity: NativeEntity, relative: NativeBOOL): void;
+  export function getEntitySpeedVector(entity: NativeEntity, relative: NativeBOOL): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function GetEntityUprightValue(entity: NativeEntity): void;
+  export function getEntityUprightValue(entity: NativeEntity): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function GetEntityVelocity(entity: NativeEntity): void;
+  export function getEntityVelocity(entity: NativeEntity): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function GetObjectIndexFromEntityIndex(entity: NativeEntity): void;
+  export function getObjectIndexFromEntityIndex(entity: NativeEntity): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function GetPedIndexFromEntityIndex(entity: NativeEntity): void;
+  export function getPedIndexFromEntityIndex(entity: NativeEntity): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function GetVehicleIndexFromEntityIndex(entity: NativeEntity): void;
+  export function getVehicleIndexFromEntityIndex(entity: NativeEntity): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function GetWorldPositionOfEntityBone(entity: NativeEntity, boneIndex: number): void;
+  export function getWorldPositionOfEntityBone(entity: NativeEntity, boneIndex: number): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function GetNearestPlayerToEntity(entity: NativeEntity): void;
+  export function getNearestPlayerToEntity(entity: NativeEntity): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function GetNearestPlayerToEntityOnTeam(entity: NativeEntity, team: number): void;
+  export function getNearestPlayerToEntityOnTeam(entity: NativeEntity, team: number): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function GetEntityType(entity: NativeEntity): void;
+  export function getEntityType(entity: NativeEntity): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function GetEntityPopulationType(entity: NativeEntity): void;
+  export function getEntityPopulationType(entity: NativeEntity): void;
   /**
    *
    * @param {number} handle undefined
    */
-  export function IsAnEntity(handle: number): void;
+  export function isAnEntity(handle: number): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function IsEntityAPed(entity: NativeEntity): void;
+  export function isEntityAPed(entity: NativeEntity): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function IsEntityAMissionEntity(entity: NativeEntity): void;
+  export function isEntityAMissionEntity(entity: NativeEntity): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function IsEntityAVehicle(entity: NativeEntity): void;
+  export function isEntityAVehicle(entity: NativeEntity): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function IsEntityAnObject(entity: NativeEntity): void;
+  export function isEntityAnObject(entity: NativeEntity): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function IsEntityAtCoord(entity: NativeEntity, xPos: number, yPos: number, zPos: number, xSize: number, ySize: number, zSize: number, p7: NativeBOOL, p8: NativeBOOL, p9: number): void;
+  export function isEntityAtCoord(entity: NativeEntity, xPos: number, yPos: number, zPos: number, xSize: number, ySize: number, zSize: number, p7: NativeBOOL, p8: NativeBOOL, p9: number): void;
   /**
    *
    * @param {NativeEntity} entity1 undefined
    */
-  export function IsEntityAtEntity(entity1: NativeEntity, entity2: NativeEntity, xSize: number, ySize: number, zSize: number, p5: NativeBOOL, p6: NativeBOOL, p7: number): void;
+  export function isEntityAtEntity(entity1: NativeEntity, entity2: NativeEntity, xSize: number, ySize: number, zSize: number, p5: NativeBOOL, p6: NativeBOOL, p7: number): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function IsEntityAttached(entity: NativeEntity): void;
+  export function isEntityAttached(entity: NativeEntity): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function IsEntityAttachedToAnyObject(entity: NativeEntity): void;
+  export function isEntityAttachedToAnyObject(entity: NativeEntity): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function IsEntityAttachedToAnyPed(entity: NativeEntity): void;
+  export function isEntityAttachedToAnyPed(entity: NativeEntity): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function IsEntityAttachedToAnyVehicle(entity: NativeEntity): void;
+  export function isEntityAttachedToAnyVehicle(entity: NativeEntity): void;
   /**
    *
    * @param {NativeEntity} from undefined
    */
-  export function IsEntityAttachedToEntity(from: NativeEntity, to: NativeEntity): void;
+  export function isEntityAttachedToEntity(from: NativeEntity, to: NativeEntity): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function IsEntityDead(entity: NativeEntity): void;
+  export function isEntityDead(entity: NativeEntity): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function IsEntityInAir(entity: NativeEntity): void;
+  export function isEntityInAir(entity: NativeEntity): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function IsEntityInAngledArea(entity: NativeEntity, originX: number, originY: number, originZ: number, edgeX: number, edgeY: number, edgeZ: number, angle: number, p8: NativeBOOL, p9: NativeBOOL, p10: NativeAny): void;
+  export function isEntityInAngledArea(entity: NativeEntity, originX: number, originY: number, originZ: number, edgeX: number, edgeY: number, edgeZ: number, angle: number, p8: NativeBOOL, p9: NativeBOOL, p10: NativeAny): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function IsEntityInArea(entity: NativeEntity, x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, p7: NativeBOOL, p8: NativeBOOL, p9: NativeAny): void;
+  export function isEntityInArea(entity: NativeEntity, x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, p7: NativeBOOL, p8: NativeBOOL, p9: NativeAny): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function IsEntityInZone(entity: NativeEntity, zone: string): void;
+  export function isEntityInZone(entity: NativeEntity, zone: string): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function IsEntityInWater(entity: NativeEntity): void;
+  export function isEntityInWater(entity: NativeEntity): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function GetEntitySubmergedLevel(entity: NativeEntity): void;
+  export function getEntitySubmergedLevel(entity: NativeEntity): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function SetUsedByPlayer(entity: NativeEntity, toggle: NativeBOOL): void;
+  export function setUsedByPlayer(entity: NativeEntity, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function IsEntityOnScreen(entity: NativeEntity): void;
+  export function isEntityOnScreen(entity: NativeEntity): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function IsEntityPlayingAnim(entity: NativeEntity, animDict: string, animName: string, taskFlag: number): void;
+  export function isEntityPlayingAnim(entity: NativeEntity, animDict: string, animName: string, taskFlag: number): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function IsEntityStatic(entity: NativeEntity): void;
+  export function isEntityStatic(entity: NativeEntity): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function IsEntityTouchingEntity(entity: NativeEntity, targetEntity: NativeEntity): void;
+  export function isEntityTouchingEntity(entity: NativeEntity, targetEntity: NativeEntity): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function IsEntityTouchingModel(entity: NativeEntity, modelHash: NativeHash): void;
+  export function isEntityTouchingModel(entity: NativeEntity, modelHash: NativeHash): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function IsEntityUpright(entity: NativeEntity, angle: number): void;
+  export function isEntityUpright(entity: NativeEntity, angle: number): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function IsEntityUpsidedown(entity: NativeEntity): void;
+  export function isEntityUpsidedown(entity: NativeEntity): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function IsEntityVisible(entity: NativeEntity): void;
+  export function isEntityVisible(entity: NativeEntity): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function IsEntityVisibleToScript(entity: NativeEntity): void;
+  export function isEntityVisibleToScript(entity: NativeEntity): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function IsEntityOccluded(entity: NativeEntity): void;
+  export function isEntityOccluded(entity: NativeEntity): void;
   /**
    *
    * @param {NativeHash} entityModelHash undefined
    */
-  export function WouldEntityBeOccluded(entityModelHash: NativeHash, x: number, y: number, z: number, p4: NativeBOOL): void;
+  export function wouldEntityBeOccluded(entityModelHash: NativeHash, x: number, y: number, z: number, p4: NativeBOOL): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function IsEntityWaitingForWorldCollision(entity: NativeEntity): void;
+  export function isEntityWaitingForWorldCollision(entity: NativeEntity): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function ApplyForceToEntityCenterOfMass(entity: NativeEntity, forceType: number, x: number, y: number, z: number, p5: NativeBOOL, isDirectionRel: NativeBOOL, isForceRel: NativeBOOL, p8: NativeBOOL): void;
+  export function applyForceToEntityCenterOfMass(entity: NativeEntity, forceType: number, x: number, y: number, z: number, p5: NativeBOOL, isDirectionRel: NativeBOOL, isForceRel: NativeBOOL, p8: NativeBOOL): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function ApplyForceToEntity(entity: NativeEntity, forceFlags: number, x: number, y: number, z: number, offX: number, offY: number, offZ: number, boneIndex: number, isDirectionRel: NativeBOOL, ignoreUpVec: NativeBOOL, isForceRel: NativeBOOL, p12: NativeBOOL, p13: NativeBOOL): void;
+  export function applyForceToEntity(entity: NativeEntity, forceFlags: number, x: number, y: number, z: number, offX: number, offY: number, offZ: number, boneIndex: number, isDirectionRel: NativeBOOL, ignoreUpVec: NativeBOOL, isForceRel: NativeBOOL, p12: NativeBOOL, p13: NativeBOOL): void;
   /**
    *
    * @param {NativeEntity} entity1 undefined
    */
-  export function AttachEntityToEntity(entity1: NativeEntity, entity2: NativeEntity, boneIndex: number, xPos: number, yPos: number, zPos: number, xRot: number, yRot: number, zRot: number, p9: NativeBOOL, useSoftPinning: NativeBOOL, collision: NativeBOOL, isPed: NativeBOOL, vertexIndex: number, fixedRot: NativeBOOL): void;
+  export function attachEntityToEntity(entity1: NativeEntity, entity2: NativeEntity, boneIndex: number, xPos: number, yPos: number, zPos: number, xRot: number, yRot: number, zRot: number, p9: NativeBOOL, useSoftPinning: NativeBOOL, collision: NativeBOOL, isPed: NativeBOOL, vertexIndex: number, fixedRot: NativeBOOL): void;
   /**
    *
    * @param {NativeEntity} entity1 undefined
    */
-  export function AttachEntityToEntityPhysically(entity1: NativeEntity, entity2: NativeEntity, boneIndex1: number, boneIndex2: number, xPos1: number, yPos1: number, zPos1: number, xPos2: number, yPos2: number, zPos2: number, xRot: number, yRot: number, zRot: number, breakForce: number, fixedRot: NativeBOOL, p15: NativeBOOL, collision: NativeBOOL, teleport: NativeBOOL, p18: number): void;
+  export function attachEntityToEntityPhysically(entity1: NativeEntity, entity2: NativeEntity, boneIndex1: number, boneIndex2: number, xPos1: number, yPos1: number, zPos1: number, xPos2: number, yPos2: number, zPos2: number, xRot: number, yRot: number, zRot: number, breakForce: number, fixedRot: NativeBOOL, p15: NativeBOOL, collision: NativeBOOL, teleport: NativeBOOL, p18: number): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function ProcessEntityAttachments(entity: NativeEntity): void;
+  export function processEntityAttachments(entity: NativeEntity): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function GetEntityBoneIndexByName(entity: NativeEntity, boneName: string): void;
+  export function getEntityBoneIndexByName(entity: NativeEntity, boneName: string): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function ClearEntityLastDamageEntity(entity: NativeEntity): void;
+  export function clearEntityLastDamageEntity(entity: NativeEntity): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function DeleteEntity(entity: NativeEntity): void;
+  export function deleteEntity(entity: NativeEntity): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function DetachEntity(entity: NativeEntity, p1: NativeBOOL, collision: NativeBOOL): void;
+  export function detachEntity(entity: NativeEntity, p1: NativeBOOL, collision: NativeBOOL): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function FreezeEntityPosition(entity: NativeEntity, toggle: NativeBOOL): void;
+  export function freezeEntityPosition(entity: NativeEntity, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function SetEntitySomething(entity: NativeEntity, toggle: NativeBOOL): void;
+  export function setEntitySomething(entity: NativeEntity, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function PlayEntityAnim(entity: NativeEntity, animName: string, animDict: string, p3: number, loop: NativeBOOL, stayInAnim: NativeBOOL, p6: NativeBOOL, delta: number, bitset: NativeAny): void;
+  export function playEntityAnim(entity: NativeEntity, animName: string, animDict: string, p3: number, loop: NativeBOOL, stayInAnim: NativeBOOL, p6: NativeBOOL, delta: number, bitset: NativeAny): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function PlaySynchronizedEntityAnim(entity: NativeEntity, SceneID: number, animName: string, animDict: string, speed: number, speedMult: number, flag: number, flag2: number): void;
+  export function playSynchronizedEntityAnim(entity: NativeEntity, SceneID: number, animName: string, animDict: string, speed: number, speedMult: number, flag: number, flag2: number): void;
   /**
    *
    * @param {number} p0 undefined
    */
-  export function PlaySynchronizedMapEntityAnim(p0: number, p1: number, p2: number, p3: number, p4: NativeAny, p5: NativeAny, p6: NativeAny, p7: NativeAny, p8: number, p9: number, p10: NativeAny, p11: number): void;
+  export function playSynchronizedMapEntityAnim(p0: number, p1: number, p2: number, p3: number, p4: NativeAny, p5: NativeAny, p6: NativeAny, p7: NativeAny, p8: number, p9: number, p10: NativeAny, p11: number): void;
   /**
    *
    * @param {number} p0 undefined
    */
-  export function StopSynchronizedMapEntityAnim(p0: number, p1: number, p2: number, p3: number, p4: NativeAny, p5: number): void;
+  export function stopSynchronizedMapEntityAnim(p0: number, p1: number, p2: number, p3: number, p4: NativeAny, p5: number): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function StopEntityAnim(entity: NativeEntity, animation: string, animGroup: string, p3: number): void;
+  export function stopEntityAnim(entity: NativeEntity, animation: string, animGroup: string, p3: number): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function StopSynchronizedEntityAnim(entity: NativeEntity, p1: number, p2: NativeBOOL): void;
+  export function stopSynchronizedEntityAnim(entity: NativeEntity, p1: number, p2: NativeBOOL): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function HasAnimEventFired(entity: NativeEntity, actionHash: NativeHash): void;
+  export function hasAnimEventFired(entity: NativeEntity, actionHash: NativeHash): void;
   /**
    *
    * @param {string} animDictionary undefined
    */
-  export function FindAnimEventPhase(animDictionary: string, animName: string, p2: string, p3: NativeAny, p4: NativeAny): void;
+  export function findAnimEventPhase(animDictionary: string, animName: string, p2: string, p3: NativeAny, p4: NativeAny): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function SetEntityAnimCurrentTime(entity: NativeEntity, animDictionary: string, animName: string, time: number): void;
+  export function setEntityAnimCurrentTime(entity: NativeEntity, animDictionary: string, animName: string, time: number): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function SetEntityAnimSpeed(entity: NativeEntity, animDictionary: string, animName: string, speedMultiplier: number): void;
+  export function setEntityAnimSpeed(entity: NativeEntity, animDictionary: string, animName: string, speedMultiplier: number): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function SetEntityAsMissionEntity(entity: NativeEntity, p1: NativeBOOL, p2: NativeBOOL): void;
+  export function setEntityAsMissionEntity(entity: NativeEntity, p1: NativeBOOL, p2: NativeBOOL): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function SetEntityAsNoLongerNeeded(entity: NativeEntity): void;
+  export function setEntityAsNoLongerNeeded(entity: NativeEntity): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedAsNoLongerNeeded(ped: NativePed): void;
+  export function setPedAsNoLongerNeeded(ped: NativePed): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function SetVehicleAsNoLongerNeeded(vehicle: NativeVehicle): void;
+  export function setVehicleAsNoLongerNeeded(vehicle: NativeVehicle): void;
   /**
    *
    * @param {NativeObject} object undefined
    */
-  export function SetObjectAsNoLongerNeeded(object: NativeObject): void;
+  export function setObjectAsNoLongerNeeded(object: NativeObject): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function SetEntityCanBeDamaged(entity: NativeEntity, toggle: NativeBOOL): void;
+  export function setEntityCanBeDamaged(entity: NativeEntity, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function SetEntityCanBeDamagedByRelationshipGroup(entity: NativeEntity, bCanBeDamaged: NativeBOOL, relGroup: number): void;
+  export function setEntityCanBeDamagedByRelationshipGroup(entity: NativeEntity, bCanBeDamaged: NativeBOOL, relGroup: number): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function SetEntityCanBeTargetedWithoutLos(entity: NativeEntity, toggle: NativeBOOL): void;
+  export function setEntityCanBeTargetedWithoutLos(entity: NativeEntity, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function SetEntityCollision(entity: NativeEntity, toggle: NativeBOOL, keepPhysics: NativeBOOL): void;
+  export function setEntityCollision(entity: NativeEntity, toggle: NativeBOOL, keepPhysics: NativeBOOL): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function GetEntityCollisonDisabled(entity: NativeEntity): void;
+  export function getEntityCollisonDisabled(entity: NativeEntity): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function SetEntityCollision2(entity: NativeEntity, p1: NativeBOOL, p2: NativeBOOL): void;
+  export function setEntityCollision2(entity: NativeEntity, p1: NativeBOOL, p2: NativeBOOL): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function SetEntityCoords(entity: NativeEntity, xPos: number, yPos: number, zPos: number, xAxis: NativeBOOL, yAxis: NativeBOOL, zAxis: NativeBOOL, clearArea: NativeBOOL): void;
+  export function setEntityCoords(entity: NativeEntity, xPos: number, yPos: number, zPos: number, xAxis: NativeBOOL, yAxis: NativeBOOL, zAxis: NativeBOOL, clearArea: NativeBOOL): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function SetEntityCoords2(entity: NativeEntity, xPos: number, yPos: number, zPos: number, xAxis: NativeBOOL, yAxis: NativeBOOL, zAxis: NativeBOOL, clearArea: NativeBOOL): void;
+  export function setEntityCoords2(entity: NativeEntity, xPos: number, yPos: number, zPos: number, xAxis: NativeBOOL, yAxis: NativeBOOL, zAxis: NativeBOOL, clearArea: NativeBOOL): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function SetEntityCoordsNoOffset(entity: NativeEntity, xPos: number, yPos: number, zPos: number, xAxis: NativeBOOL, yAxis: NativeBOOL, zAxis: NativeBOOL): void;
+  export function setEntityCoordsNoOffset(entity: NativeEntity, xPos: number, yPos: number, zPos: number, xAxis: NativeBOOL, yAxis: NativeBOOL, zAxis: NativeBOOL): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function SetEntityDynamic(entity: NativeEntity, toggle: NativeBOOL): void;
+  export function setEntityDynamic(entity: NativeEntity, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function SetEntityHeading(entity: NativeEntity, heading: number): void;
+  export function setEntityHeading(entity: NativeEntity, heading: number): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function SetEntityHealth(entity: NativeEntity, health: number): void;
+  export function setEntityHealth(entity: NativeEntity, health: number): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function SetEntityInvincible(entity: NativeEntity, toggle: NativeBOOL): void;
+  export function setEntityInvincible(entity: NativeEntity, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function SetEntityIsTargetPriority(entity: NativeEntity, p1: NativeBOOL, p2: number): void;
+  export function setEntityIsTargetPriority(entity: NativeEntity, p1: NativeBOOL, p2: number): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function SetEntityLights(entity: NativeEntity, toggle: NativeBOOL): void;
+  export function setEntityLights(entity: NativeEntity, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function SetEntityLoadCollisionFlag(entity: NativeEntity, toggle: NativeBOOL): void;
+  export function setEntityLoadCollisionFlag(entity: NativeEntity, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function HasCollisionLoadedAroundEntity(entity: NativeEntity): void;
+  export function hasCollisionLoadedAroundEntity(entity: NativeEntity): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function SetEntityMaxSpeed(entity: NativeEntity, speed: number): void;
+  export function setEntityMaxSpeed(entity: NativeEntity, speed: number): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function SetEntityOnlyDamagedByPlayer(entity: NativeEntity, toggle: NativeBOOL): void;
+  export function setEntityOnlyDamagedByPlayer(entity: NativeEntity, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function SetEntityOnlyDamagedByRelationshipGroup(entity: NativeEntity, p1: NativeBOOL, relationshipHash: NativeHash): void;
+  export function setEntityOnlyDamagedByRelationshipGroup(entity: NativeEntity, p1: NativeBOOL, relationshipHash: NativeHash): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function SetEntityProofs(entity: NativeEntity, bulletProof: NativeBOOL, fireProof: NativeBOOL, explosionProof: NativeBOOL, collisionProof: NativeBOOL, meleeProof: NativeBOOL, p6: NativeBOOL, p7: NativeBOOL, drownProof: NativeBOOL): void;
+  export function setEntityProofs(entity: NativeEntity, bulletProof: NativeBOOL, fireProof: NativeBOOL, explosionProof: NativeBOOL, collisionProof: NativeBOOL, meleeProof: NativeBOOL, p6: NativeBOOL, p7: NativeBOOL, drownProof: NativeBOOL): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function SetEntityQuaternion(entity: NativeEntity, x: number, y: number, z: number, w: number): void;
+  export function setEntityQuaternion(entity: NativeEntity, x: number, y: number, z: number, w: number): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function SetEntityRecordsCollisions(entity: NativeEntity, toggle: NativeBOOL): void;
+  export function setEntityRecordsCollisions(entity: NativeEntity, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function SetEntityRotation(entity: NativeEntity, pitch: number, roll: number, yaw: number, rotationOrder: number, p5: NativeBOOL): void;
+  export function setEntityRotation(entity: NativeEntity, pitch: number, roll: number, yaw: number, rotationOrder: number, p5: NativeBOOL): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function SetEntityVisible(entity: NativeEntity, toggle: NativeBOOL, unk: NativeBOOL): void;
+  export function setEntityVisible(entity: NativeEntity, toggle: NativeBOOL, unk: NativeBOOL): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function SetEntityVelocity(entity: NativeEntity, x: number, y: number, z: number): void;
+  export function setEntityVelocity(entity: NativeEntity, x: number, y: number, z: number): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function SetEntityHasGravity(entity: NativeEntity, toggle: NativeBOOL): void;
+  export function setEntityHasGravity(entity: NativeEntity, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function SetEntityLodDist(entity: NativeEntity, value: number): void;
+  export function setEntityLodDist(entity: NativeEntity, value: number): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function GetEntityLodDist(entity: NativeEntity): void;
+  export function getEntityLodDist(entity: NativeEntity): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function SetEntityAlpha(entity: NativeEntity, alphaLevel: number, skin: number): void;
+  export function setEntityAlpha(entity: NativeEntity, alphaLevel: number, skin: number): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function GetEntityAlpha(entity: NativeEntity): void;
+  export function getEntityAlpha(entity: NativeEntity): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function ResetEntityAlpha(entity: NativeEntity): void;
+  export function resetEntityAlpha(entity: NativeEntity): void;
   /**
    *
    * @param {NativeEntity} entity undefined
@@ -1817,17 +1817,17 @@ declare module "natives" {
    *
    * @param {NativeEntity} entity undefined
    */
-  export function SetEntityAlwaysPrerender(entity: NativeEntity, toggle: NativeBOOL): void;
+  export function setEntityAlwaysPrerender(entity: NativeEntity, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function SetEntityRenderScorched(entity: NativeEntity, toggle: NativeBOOL): void;
+  export function setEntityRenderScorched(entity: NativeEntity, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function SetEntityTrafficlightOverride(entity: NativeEntity, state: number): void;
+  export function setEntityTrafficlightOverride(entity: NativeEntity, state: number): void;
   /**
    *
    * @param {NativeEntity} entity undefined
@@ -1837,47 +1837,47 @@ declare module "natives" {
    *
    * @param {number} x undefined
    */
-  export function CreateModelSwap(x: number, y: number, z: number, radius: number, originalModel: NativeHash, newModel: NativeHash, p6: NativeBOOL): void;
+  export function createModelSwap(x: number, y: number, z: number, radius: number, originalModel: NativeHash, newModel: NativeHash, p6: NativeBOOL): void;
   /**
    *
    * @param {number} x undefined
    */
-  export function RemoveModelSwap(x: number, y: number, z: number, radius: number, originalModel: NativeHash, newModel: NativeHash, p6: NativeBOOL): void;
+  export function removeModelSwap(x: number, y: number, z: number, radius: number, originalModel: NativeHash, newModel: NativeHash, p6: NativeBOOL): void;
   /**
    *
    * @param {number} x undefined
    */
-  export function CreateModelHide(x: number, y: number, z: number, radius: number, model: NativeHash, p5: NativeBOOL): void;
+  export function createModelHide(x: number, y: number, z: number, radius: number, model: NativeHash, p5: NativeBOOL): void;
   /**
    *
    * @param {number} x undefined
    */
-  export function CreateModelHideExcludingScriptObjects(x: number, y: number, z: number, radius: number, model: NativeHash, p5: NativeBOOL): void;
+  export function createModelHideExcludingScriptObjects(x: number, y: number, z: number, radius: number, model: NativeHash, p5: NativeBOOL): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function RemoveModelHide(p0: NativeAny, p1: NativeAny, p2: NativeAny, p3: NativeAny, p4: NativeAny, p5: NativeAny): void;
+  export function removeModelHide(p0: NativeAny, p1: NativeAny, p2: NativeAny, p3: NativeAny, p4: NativeAny, p5: NativeAny): void;
   /**
    *
    * @param {number} x undefined
    */
-  export function CreateForcedObject(x: number, y: number, z: number, p3: NativeAny, modelHash: NativeHash, p5: NativeBOOL): void;
+  export function createForcedObject(x: number, y: number, z: number, p3: NativeAny, modelHash: NativeHash, p5: NativeBOOL): void;
   /**
    *
    * @param {number} posX undefined
    */
-  export function RemoveForcedObject(posX: number, posY: number, posZ: number, unk: number, modelHash: NativeHash): void;
+  export function removeForcedObject(posX: number, posY: number, posZ: number, unk: number, modelHash: NativeHash): void;
   /**
    *
    * @param {NativeEntity} entity1 undefined
    */
-  export function SetEntityNoCollisionEntity(entity1: NativeEntity, entity2: NativeEntity, unknown: NativeBOOL): void;
+  export function setEntityNoCollisionEntity(entity1: NativeEntity, entity2: NativeEntity, unknown: NativeBOOL): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function SetEntityMotionBlur(entity: NativeEntity, toggle: NativeBOOL): void;
+  export function setEntityMotionBlur(entity: NativeEntity, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativeEntity} entity undefined
@@ -1907,205 +1907,205 @@ declare module "natives" {
    *
    * @param {number} pedType undefined
    */
-  export function CreatePed(pedType: number, modelHash: NativeHash, x: number, y: number, z: number, heading: number, isNetwork: NativeBOOL, thisScriptCheck: NativeBOOL): void;
+  export function createPed(pedType: number, modelHash: NativeHash, x: number, y: number, z: number, heading: number, isNetwork: NativeBOOL, thisScriptCheck: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function DeletePed(ped: NativePed): void;
+  export function deletePed(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function ClonePed(ped: NativePed, heading: number, isNetwork: NativeBOOL, thisScriptCheck: NativeBOOL): void;
+  export function clonePed(ped: NativePed, heading: number, isNetwork: NativeBOOL, thisScriptCheck: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function ClonePedToTarget(ped: NativePed, targetPed: NativePed): void;
+  export function clonePedToTarget(ped: NativePed, targetPed: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function IsPedInVehicle(ped: NativePed, vehicle: NativeVehicle, atGetIn: NativeBOOL): void;
+  export function isPedInVehicle(ped: NativePed, vehicle: NativeVehicle, atGetIn: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function IsPedInModel(ped: NativePed, modelHash: NativeHash): void;
+  export function isPedInModel(ped: NativePed, modelHash: NativeHash): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function IsPedInAnyVehicle(ped: NativePed, atGetIn: NativeBOOL): void;
+  export function isPedInAnyVehicle(ped: NativePed, atGetIn: NativeBOOL): void;
   /**
    *
    * @param {number} x1 undefined
    */
-  export function IsCopPedInArea3d(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number): void;
+  export function isCopPedInArea3d(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function IsPedInjured(ped: NativePed): void;
+  export function isPedInjured(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function IsPedHurt(ped: NativePed): void;
+  export function isPedHurt(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function IsPedFatallyInjured(ped: NativePed): void;
+  export function isPedFatallyInjured(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function IsPedDeadOrDying(ped: NativePed, p1: NativeBOOL): void;
+  export function isPedDeadOrDying(ped: NativePed, p1: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function IsConversationPedDead(ped: NativePed): void;
+  export function isConversationPedDead(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function IsPedAimingFromCover(ped: NativePed): void;
+  export function isPedAimingFromCover(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function IsPedReloading(ped: NativePed): void;
+  export function isPedReloading(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function IsPedAPlayer(ped: NativePed): void;
+  export function isPedAPlayer(ped: NativePed): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function CreatePedInsideVehicle(vehicle: NativeVehicle, pedType: number, modelHash: NativeHash, seat: number, isNetwork: NativeBOOL, thisScriptCheck: NativeBOOL): void;
+  export function createPedInsideVehicle(vehicle: NativeVehicle, pedType: number, modelHash: NativeHash, seat: number, isNetwork: NativeBOOL, thisScriptCheck: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedDesiredHeading(ped: NativePed, heading: number): void;
+  export function setPedDesiredHeading(ped: NativePed, heading: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function FreezePedCameraRotation(ped: NativePed): void;
+  export function freezePedCameraRotation(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function IsPedFacingPed(ped: NativePed, otherPed: NativePed, angle: number): void;
+  export function isPedFacingPed(ped: NativePed, otherPed: NativePed, angle: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function IsPedInMeleeCombat(ped: NativePed): void;
+  export function isPedInMeleeCombat(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function IsPedStopped(ped: NativePed): void;
+  export function isPedStopped(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function IsPedShootingInArea(ped: NativePed, x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, p7: NativeBOOL, p8: NativeBOOL): void;
+  export function isPedShootingInArea(ped: NativePed, x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, p7: NativeBOOL, p8: NativeBOOL): void;
   /**
    *
    * @param {number} x1 undefined
    */
-  export function IsAnyPedShootingInArea(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, p6: NativeBOOL, p7: NativeBOOL): void;
+  export function isAnyPedShootingInArea(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, p6: NativeBOOL, p7: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function IsPedShooting(ped: NativePed): void;
+  export function isPedShooting(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedAccuracy(ped: NativePed, accuracy: number): void;
+  export function setPedAccuracy(ped: NativePed, accuracy: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function GetPedAccuracy(ped: NativePed): void;
+  export function getPedAccuracy(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function IsPedModel(ped: NativePed, modelHash: NativeHash): void;
+  export function isPedModel(ped: NativePed, modelHash: NativeHash): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function ExplodePedHead(ped: NativePed, weaponHash: NativeHash): void;
+  export function explodePedHead(ped: NativePed, weaponHash: NativeHash): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function RemovePedElegantly(ped: NativePed): void;
+  export function removePedElegantly(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function AddArmourToPed(ped: NativePed, amount: number): void;
+  export function addArmourToPed(ped: NativePed, amount: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedArmour(ped: NativePed, amount: number): void;
+  export function setPedArmour(ped: NativePed, amount: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedIntoVehicle(ped: NativePed, vehicle: NativeVehicle, seatIndex: number): void;
+  export function setPedIntoVehicle(ped: NativePed, vehicle: NativeVehicle, seatIndex: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedAllowVehiclesOverride(ped: NativePed, toggle: NativeBOOL): void;
+  export function setPedAllowVehiclesOverride(ped: NativePed, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativeBOOL} unk undefined
    */
-  export function CanCreateRandomPed(unk: NativeBOOL): void;
+  export function canCreateRandomPed(unk: NativeBOOL): void;
   /**
    *
    * @param {number} posX undefined
    */
-  export function CreateRandomPed(posX: number, posY: number, posZ: number): void;
+  export function createRandomPed(posX: number, posY: number, posZ: number): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function CreateRandomPedAsDriver(vehicle: NativeVehicle, returnHandle: NativeBOOL): void;
+  export function createRandomPedAsDriver(vehicle: NativeVehicle, returnHandle: NativeBOOL): void;
   /**
    *
    */
-  export function CanCreateRandomDriver(): void;
+  export function canCreateRandomDriver(): void;
   /**
    *
    */
-  export function CanCreateRandomBikeRider(): void;
-  /**
-   *
-   * @param {NativePed} ped undefined
-   */
-  export function SetPedMoveAnimsBlendOut(ped: NativePed): void;
+  export function canCreateRandomBikeRider(): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedCanBeDraggedOut(ped: NativePed, toggle: NativeBOOL): void;
+  export function setPedMoveAnimsBlendOut(ped: NativePed): void;
+  /**
+   *
+   * @param {NativePed} ped undefined
+   */
+  export function setPedCanBeDraggedOut(ped: NativePed, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativeBOOL} toggle undefined
@@ -2115,32 +2115,32 @@ declare module "natives" {
    *
    * @param {NativePed} ped undefined
    */
-  export function IsPedMale(ped: NativePed): void;
+  export function isPedMale(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function IsPedHuman(ped: NativePed): void;
+  export function isPedHuman(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function GetVehiclePedIsIn(ped: NativePed, lastVehicle: NativeBOOL): void;
+  export function getVehiclePedIsIn(ped: NativePed, lastVehicle: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function ResetPedLastVehicle(ped: NativePed): void;
+  export function resetPedLastVehicle(ped: NativePed): void;
   /**
    *
    * @param {number} multiplier undefined
    */
-  export function SetPedDensityMultiplierThisFrame(multiplier: number): void;
+  export function setPedDensityMultiplierThisFrame(multiplier: number): void;
   /**
    *
    * @param {number} p0 undefined
    */
-  export function SetScenarioPedDensityMultiplierThisFrame(p0: number, p1: number): void;
+  export function setScenarioPedDensityMultiplierThisFrame(p0: number, p1: number): void;
   /**
    *
    */
@@ -2149,16 +2149,16 @@ declare module "natives" {
    *
    * @param {number} x undefined
    */
-  export function SetScriptedConversionCoordThisFrame(x: number, y: number, z: number): void;
+  export function setScriptedConversionCoordThisFrame(x: number, y: number, z: number): void;
   /**
    *
    * @param {number} x1 undefined
    */
-  export function SetPedNonCreationArea(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number): void;
+  export function setPedNonCreationArea(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number): void;
   /**
    *
    */
-  export function ClearPedNonCreationArea(): void;
+  export function clearPedNonCreationArea(): void;
   /**
    *
    */
@@ -2167,32 +2167,32 @@ declare module "natives" {
    *
    * @param {NativePed} ped undefined
    */
-  export function IsPedOnMount(ped: NativePed): void;
+  export function isPedOnMount(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function GetMount(ped: NativePed): void;
+  export function getMount(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function IsPedOnVehicle(ped: NativePed): void;
+  export function isPedOnVehicle(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function IsPedOnSpecificVehicle(ped: NativePed, vehicle: NativeVehicle): void;
+  export function isPedOnSpecificVehicle(ped: NativePed, vehicle: NativeVehicle): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedMoney(ped: NativePed, amount: number): void;
+  export function setPedMoney(ped: NativePed, amount: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function GetPedMoney(ped: NativePed): void;
+  export function getPedMoney(ped: NativePed): void;
   /**
    *
    * @param {number} p0 undefined
@@ -2212,7 +2212,7 @@ declare module "natives" {
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedSuffersCriticalHits(ped: NativePed, toggle: NativeBOOL): void;
+  export function setPedSuffersCriticalHits(ped: NativePed, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
@@ -2222,110 +2222,110 @@ declare module "natives" {
    *
    * @param {NativePed} ped undefined
    */
-  export function IsPedSittingInVehicle(ped: NativePed, vehicle: NativeVehicle): void;
+  export function isPedSittingInVehicle(ped: NativePed, vehicle: NativeVehicle): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function IsPedSittingInAnyVehicle(ped: NativePed): void;
+  export function isPedSittingInAnyVehicle(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function IsPedOnFoot(ped: NativePed): void;
+  export function isPedOnFoot(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function IsPedOnAnyBike(ped: NativePed): void;
+  export function isPedOnAnyBike(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function IsPedPlantingBomb(ped: NativePed): void;
+  export function isPedPlantingBomb(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function GetDeadPedPickupCoords(ped: NativePed, p1: number, p2: number): void;
+  export function getDeadPedPickupCoords(ped: NativePed, p1: number, p2: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function IsPedInAnyBoat(ped: NativePed): void;
+  export function isPedInAnyBoat(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function IsPedInAnySub(ped: NativePed): void;
+  export function isPedInAnySub(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function IsPedInAnyHeli(ped: NativePed): void;
+  export function isPedInAnyHeli(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function IsPedInAnyPlane(ped: NativePed): void;
+  export function isPedInAnyPlane(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function IsPedInFlyingVehicle(ped: NativePed): void;
+  export function isPedInFlyingVehicle(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedDiesInWater(ped: NativePed, toggle: NativeBOOL): void;
+  export function setPedDiesInWater(ped: NativePed, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedDiesInSinkingVehicle(ped: NativePed, toggle: NativeBOOL): void;
+  export function setPedDiesInSinkingVehicle(ped: NativePed, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function GetPedArmour(ped: NativePed): void;
+  export function getPedArmour(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedStayInVehicleWhenJacked(ped: NativePed, toggle: NativeBOOL): void;
+  export function setPedStayInVehicleWhenJacked(ped: NativePed, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedCanBeShotInVehicle(ped: NativePed, toggle: NativeBOOL): void;
+  export function setPedCanBeShotInVehicle(ped: NativePed, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function GetPedLastDamageBone(ped: NativePed, outBone: number): void;
+  export function getPedLastDamageBone(ped: NativePed, outBone: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function ClearPedLastDamageBone(ped: NativePed): void;
+  export function clearPedLastDamageBone(ped: NativePed): void;
   /**
    *
    * @param {number} value undefined
    */
-  export function SetAiWeaponDamageModifier(value: number): void;
+  export function setAiWeaponDamageModifier(value: number): void;
   /**
    *
    */
-  export function ResetAiWeaponDamageModifier(): void;
+  export function resetAiWeaponDamageModifier(): void;
   /**
    *
    * @param {number} modifier undefined
    */
-  export function SetAiMeleeWeaponDamageModifier(modifier: number): void;
+  export function setAiMeleeWeaponDamageModifier(modifier: number): void;
   /**
    *
    */
-  export function ResetAiMeleeWeaponDamageModifier(): void;
+  export function resetAiMeleeWeaponDamageModifier(): void;
   /**
    *
    * @param {NativeAny} p0 undefined
@@ -2335,17 +2335,17 @@ declare module "natives" {
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedCanBeTargetted(ped: NativePed, toggle: NativeBOOL): void;
+  export function setPedCanBeTargetted(ped: NativePed, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedCanBeTargettedByTeam(ped: NativePed, team: number, toggle: NativeBOOL): void;
+  export function setPedCanBeTargettedByTeam(ped: NativePed, team: number, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedCanBeTargettedByPlayer(ped: NativePed, player: NativePlayer, toggle: NativeBOOL): void;
+  export function setPedCanBeTargettedByPlayer(ped: NativePed, player: NativePlayer, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativeAny} p0 undefined
@@ -2355,52 +2355,52 @@ declare module "natives" {
    *
    * @param {NativeAny} p0 undefined
    */
-  export function SetTimeExclusiveDisplayTexture(p0: NativeAny, p1: NativeBOOL): void;
+  export function setTimeExclusiveDisplayTexture(p0: NativeAny, p1: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function IsPedInAnyPoliceVehicle(ped: NativePed): void;
+  export function isPedInAnyPoliceVehicle(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function ForcePedToOpenParachute(ped: NativePed): void;
+  export function forcePedToOpenParachute(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function IsPedInParachuteFreeFall(ped: NativePed): void;
+  export function isPedInParachuteFreeFall(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function IsPedFalling(ped: NativePed): void;
+  export function isPedFalling(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function IsPedJumping(ped: NativePed): void;
+  export function isPedJumping(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function IsPedClimbing(ped: NativePed): void;
+  export function isPedClimbing(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function IsPedVaulting(ped: NativePed): void;
+  export function isPedVaulting(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function IsPedDiving(ped: NativePed): void;
+  export function isPedDiving(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function IsPedJumpingOutOfVehicle(ped: NativePed): void;
+  export function isPedJumpingOutOfVehicle(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
@@ -2410,27 +2410,27 @@ declare module "natives" {
    *
    * @param {NativePed} ped undefined
    */
-  export function GetPedParachuteState(ped: NativePed): void;
+  export function getPedParachuteState(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function GetPedParachuteLandingType(ped: NativePed): void;
+  export function getPedParachuteLandingType(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedParachuteTintIndex(ped: NativePed, tintIndex: number): void;
+  export function setPedParachuteTintIndex(ped: NativePed, tintIndex: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function GetPedParachuteTintIndex(ped: NativePed, outTintIndex: number): void;
+  export function getPedParachuteTintIndex(ped: NativePed, outTintIndex: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedReserveParachuteTintIndex(ped: NativePed, p1: NativeAny): void;
+  export function setPedReserveParachuteTintIndex(ped: NativePed, p1: NativeAny): void;
   /**
    *
    * @param {NativePed} ped undefined
@@ -2440,22 +2440,22 @@ declare module "natives" {
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedDucking(ped: NativePed, toggle: NativeBOOL): void;
+  export function setPedDucking(ped: NativePed, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function IsPedDucking(ped: NativePed): void;
+  export function isPedDucking(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function IsPedInAnyTaxi(ped: NativePed): void;
+  export function isPedInAnyTaxi(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedIdRange(ped: NativePed, value: number): void;
+  export function setPedIdRange(ped: NativePed, value: number): void;
   /**
    *
    * @param {NativePed} ped undefined
@@ -2475,197 +2475,197 @@ declare module "natives" {
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedSeeingRange(ped: NativePed, value: number): void;
+  export function setPedSeeingRange(ped: NativePed, value: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedHearingRange(ped: NativePed, value: number): void;
+  export function setPedHearingRange(ped: NativePed, value: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedVisualFieldMinAngle(ped: NativePed, value: number): void;
+  export function setPedVisualFieldMinAngle(ped: NativePed, value: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedVisualFieldMaxAngle(ped: NativePed, value: number): void;
+  export function setPedVisualFieldMaxAngle(ped: NativePed, value: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedVisualFieldMinElevationAngle(ped: NativePed, angle: number): void;
+  export function setPedVisualFieldMinElevationAngle(ped: NativePed, angle: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedVisualFieldMaxElevationAngle(ped: NativePed, angle: number): void;
+  export function setPedVisualFieldMaxElevationAngle(ped: NativePed, angle: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedVisualFieldPeripheralRange(ped: NativePed, range: number): void;
+  export function setPedVisualFieldPeripheralRange(ped: NativePed, range: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedVisualFieldCenterAngle(ped: NativePed, angle: number): void;
+  export function setPedVisualFieldCenterAngle(ped: NativePed, angle: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedStealthMovement(ped: NativePed, p1: NativeBOOL, action: string): void;
+  export function setPedStealthMovement(ped: NativePed, p1: NativeBOOL, action: string): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function GetPedStealthMovement(ped: NativePed): void;
+  export function getPedStealthMovement(ped: NativePed): void;
   /**
    *
    * @param {number} unused undefined
    */
-  export function CreateGroup(unused: number): void;
+  export function createGroup(unused: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedAsGroupLeader(ped: NativePed, groupId: number): void;
+  export function setPedAsGroupLeader(ped: NativePed, groupId: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedAsGroupMember(ped: NativePed, groupId: number): void;
+  export function setPedAsGroupMember(ped: NativePed, groupId: number): void;
   /**
    *
    * @param {NativePed} pedHandle undefined
    */
-  export function SetPedCanTeleportToGroupLeader(pedHandle: NativePed, groupHandle: number, toggle: NativeBOOL): void;
+  export function setPedCanTeleportToGroupLeader(pedHandle: NativePed, groupHandle: number, toggle: NativeBOOL): void;
   /**
    *
    * @param {number} groupId undefined
    */
-  export function RemoveGroup(groupId: number): void;
+  export function removeGroup(groupId: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function RemovePedFromGroup(ped: NativePed): void;
+  export function removePedFromGroup(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function IsPedGroupMember(ped: NativePed, groupId: number): void;
+  export function isPedGroupMember(ped: NativePed, groupId: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function IsPedHangingOnToVehicle(ped: NativePed): void;
+  export function isPedHangingOnToVehicle(ped: NativePed): void;
   /**
    *
    * @param {number} groupHandle undefined
    */
-  export function SetGroupSeparationRange(groupHandle: number, separationRange: number): void;
+  export function setGroupSeparationRange(groupHandle: number, separationRange: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedMinGroundTimeForStungun(ped: NativePed, ms1000000: number): void;
+  export function setPedMinGroundTimeForStungun(ped: NativePed, ms1000000: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function IsPedProne(ped: NativePed): void;
+  export function isPedProne(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function IsPedInCombat(ped: NativePed, target: NativePed): void;
+  export function isPedInCombat(ped: NativePed, target: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function CanPedInCombatSeeTarget(ped: NativePed, target: NativePed): void;
+  export function canPedInCombatSeeTarget(ped: NativePed, target: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function IsPedDoingDriveby(ped: NativePed): void;
+  export function isPedDoingDriveby(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function IsPedJacking(ped: NativePed): void;
+  export function isPedJacking(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function IsPedBeingJacked(ped: NativePed): void;
+  export function isPedBeingJacked(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function IsPedBeingStunned(ped: NativePed, p1: number): void;
+  export function isPedBeingStunned(ped: NativePed, p1: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function GetPedsJacker(ped: NativePed): void;
+  export function getPedsJacker(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function GetJackTarget(ped: NativePed): void;
+  export function getJackTarget(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function IsPedFleeing(ped: NativePed): void;
+  export function isPedFleeing(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function IsPedInCover(ped: NativePed, exceptUseWeapon: NativeBOOL): void;
+  export function isPedInCover(ped: NativePed, exceptUseWeapon: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function IsPedInCoverFacingLeft(ped: NativePed): void;
+  export function isPedInCoverFacingLeft(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function IsPedStandingInCover(ped: NativePed): void;
+  export function isPedStandingInCover(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function IsPedGoingIntoCover(ped: NativePed): void;
+  export function isPedGoingIntoCover(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedPinnedDown(ped: NativePed, pinned: NativeBOOL, p2: number): void;
+  export function setPedPinnedDown(ped: NativePed, pinned: NativeBOOL, p2: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function GetSeatPedIsTryingToEnter(ped: NativePed): void;
+  export function getSeatPedIsTryingToEnter(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function GetVehiclePedIsTryingToEnter(ped: NativePed): void;
+  export function getVehiclePedIsTryingToEnter(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function GetPedSourceOfDeath(ped: NativePed): void;
+  export function getPedSourceOfDeath(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function GetPedCauseOfDeath(ped: NativePed): void;
+  export function getPedCauseOfDeath(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
@@ -2685,147 +2685,147 @@ declare module "natives" {
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedRelationshipGroupDefaultHash(ped: NativePed, hash: NativeHash): void;
+  export function setPedRelationshipGroupDefaultHash(ped: NativePed, hash: NativeHash): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedRelationshipGroupHash(ped: NativePed, hash: NativeHash): void;
+  export function setPedRelationshipGroupHash(ped: NativePed, hash: NativeHash): void;
   /**
    *
    * @param {number} relationship undefined
    */
-  export function SetRelationshipBetweenGroups(relationship: number, group1: NativeHash, group2: NativeHash): void;
+  export function setRelationshipBetweenGroups(relationship: number, group1: NativeHash, group2: NativeHash): void;
   /**
    *
    * @param {number} relationship undefined
    */
-  export function ClearRelationshipBetweenGroups(relationship: number, group1: NativeHash, group2: NativeHash): void;
+  export function clearRelationshipBetweenGroups(relationship: number, group1: NativeHash, group2: NativeHash): void;
   /**
    *
    * @param {string} name undefined
    */
-  export function AddRelationshipGroup(name: string, groupHash: NativeHash): void;
+  export function addRelationshipGroup(name: string, groupHash: NativeHash): void;
   /**
    *
    * @param {NativeHash} groupHash undefined
    */
-  export function RemoveRelationshipGroup(groupHash: NativeHash): void;
+  export function removeRelationshipGroup(groupHash: NativeHash): void;
   /**
    *
    * @param {NativePed} ped1 undefined
    */
-  export function GetRelationshipBetweenPeds(ped1: NativePed, ped2: NativePed): void;
+  export function getRelationshipBetweenPeds(ped1: NativePed, ped2: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function GetPedRelationshipGroupDefaultHash(ped: NativePed): void;
+  export function getPedRelationshipGroupDefaultHash(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function GetPedRelationshipGroupHash(ped: NativePed): void;
+  export function getPedRelationshipGroupHash(ped: NativePed): void;
   /**
    *
    * @param {NativeHash} group1 undefined
    */
-  export function GetRelationshipBetweenGroups(group1: NativeHash, group2: NativeHash): void;
+  export function getRelationshipBetweenGroups(group1: NativeHash, group2: NativeHash): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedCanBeTargetedWithoutLos(ped: NativePed, toggle: NativeBOOL): void;
+  export function setPedCanBeTargetedWithoutLos(ped: NativePed, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedToInformRespectedFriends(ped: NativePed, radius: number, maxFriends: number): void;
+  export function setPedToInformRespectedFriends(ped: NativePed, radius: number, maxFriends: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function IsPedRespondingToEvent(ped: NativePed, event: NativeAny): void;
+  export function isPedRespondingToEvent(ped: NativePed, event: NativeAny): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedFiringPattern(ped: NativePed, patternHash: NativeHash): void;
+  export function setPedFiringPattern(ped: NativePed, patternHash: NativeHash): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedShootRate(ped: NativePed, shootRate: number): void;
+  export function setPedShootRate(ped: NativePed, shootRate: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetCombatFloat(ped: NativePed, combatType: number, p2: number): void;
+  export function setCombatFloat(ped: NativePed, combatType: number, p2: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function GetCombatFloat(ped: NativePed, p1: number): void;
+  export function getCombatFloat(ped: NativePed, p1: number): void;
   /**
    *
    * @param {number} groupID undefined
    */
-  export function GetGroupSize(groupID: number, unknown: NativeAny, sizeInMembers: number): void;
+  export function getGroupSize(groupID: number, unknown: NativeAny, sizeInMembers: number): void;
   /**
    *
    * @param {number} groupId undefined
    */
-  export function DoesGroupExist(groupId: number): void;
+  export function doesGroupExist(groupId: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function GetPedGroupIndex(ped: NativePed): void;
+  export function getPedGroupIndex(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function IsPedInGroup(ped: NativePed): void;
+  export function isPedInGroup(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function GetPlayerPedIsFollowing(ped: NativePed): void;
+  export function getPlayerPedIsFollowing(ped: NativePed): void;
   /**
    *
    * @param {number} groupId undefined
    */
-  export function SetGroupFormation(groupId: number, formationType: number): void;
+  export function setGroupFormation(groupId: number, formationType: number): void;
   /**
    *
    * @param {number} groupId undefined
    */
-  export function SetGroupFormationSpacing(groupId: number, p1: number, p2: number, p3: number): void;
+  export function setGroupFormationSpacing(groupId: number, p1: number, p2: number, p3: number): void;
   /**
    *
    * @param {number} groupHandle undefined
    */
-  export function ResetGroupFormationDefaultSpacing(groupHandle: number): void;
+  export function resetGroupFormationDefaultSpacing(groupHandle: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function GetVehiclePedIsUsing(ped: NativePed): void;
+  export function getVehiclePedIsUsing(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetExclusivePhoneRelationships(ped: NativePed): void;
+  export function setExclusivePhoneRelationships(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedGravity(ped: NativePed, toggle: NativeBOOL): void;
+  export function setPedGravity(ped: NativePed, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function ApplyDamageToPed(ped: NativePed, damageAmount: number, armorFirst: NativeBOOL): void;
+  export function applyDamageToPed(ped: NativePed, damageAmount: number, armorFirst: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
@@ -2835,42 +2835,42 @@ declare module "natives" {
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedAllowedToDuck(ped: NativePed, toggle: NativeBOOL): void;
+  export function setPedAllowedToDuck(ped: NativePed, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedNeverLeavesGroup(ped: NativePed, toggle: NativeBOOL): void;
+  export function setPedNeverLeavesGroup(ped: NativePed, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function GetPedType(ped: NativePed): void;
+  export function getPedType(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedAsCop(ped: NativePed, toggle: NativeBOOL): void;
+  export function setPedAsCop(ped: NativePed, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedMaxHealth(ped: NativePed, value: number): void;
+  export function setPedMaxHealth(ped: NativePed, value: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function GetPedMaxHealth(ped: NativePed): void;
+  export function getPedMaxHealth(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedMaxTimeInWater(ped: NativePed, value: number): void;
+  export function setPedMaxTimeInWater(ped: NativePed, value: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedMaxTimeUnderwater(ped: NativePed, value: number): void;
+  export function setPedMaxTimeUnderwater(ped: NativePed, value: number): void;
   /**
    *
    * @param {NativePed} ped undefined
@@ -2890,37 +2890,37 @@ declare module "natives" {
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedCanBeKnockedOffVehicle(ped: NativePed, state: number): void;
+  export function setPedCanBeKnockedOffVehicle(ped: NativePed, state: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function CanKnockPedOffVehicle(ped: NativePed): void;
+  export function canKnockPedOffVehicle(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function KnockPedOffVehicle(ped: NativePed): void;
+  export function knockPedOffVehicle(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedCoordsNoGang(ped: NativePed, posX: number, posY: number, posZ: number): void;
+  export function setPedCoordsNoGang(ped: NativePed, posX: number, posY: number, posZ: number): void;
   /**
    *
    * @param {number} groupID undefined
    */
-  export function GetPedAsGroupMember(groupID: number, memberNumber: number): void;
+  export function getPedAsGroupMember(groupID: number, memberNumber: number): void;
   /**
    *
    * @param {number} groupID undefined
    */
-  export function GetPedAsGroupLeader(groupID: number): void;
+  export function getPedAsGroupLeader(groupID: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedKeepTask(ped: NativePed, toggle: NativeBOOL): void;
+  export function setPedKeepTask(ped: NativePed, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
@@ -2930,141 +2930,141 @@ declare module "natives" {
    *
    * @param {NativePed} ped undefined
    */
-  export function IsPedSwimming(ped: NativePed): void;
+  export function isPedSwimming(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function IsPedSwimmingUnderWater(ped: NativePed): void;
+  export function isPedSwimmingUnderWater(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedCoordsKeepVehicle(ped: NativePed, posX: number, posY: number, posZ: number): void;
+  export function setPedCoordsKeepVehicle(ped: NativePed, posX: number, posY: number, posZ: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedDiesInVehicle(ped: NativePed, toggle: NativeBOOL): void;
+  export function setPedDiesInVehicle(ped: NativePed, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativeBOOL} toggle undefined
    */
-  export function SetCreateRandomCops(toggle: NativeBOOL): void;
+  export function setCreateRandomCops(toggle: NativeBOOL): void;
   /**
    *
    * @param {NativeBOOL} toggle undefined
    */
-  export function SetCreateRandomCopsNotOnScenarios(toggle: NativeBOOL): void;
+  export function setCreateRandomCopsNotOnScenarios(toggle: NativeBOOL): void;
   /**
    *
    * @param {NativeBOOL} toggle undefined
    */
-  export function SetCreateRandomCopsOnScenarios(toggle: NativeBOOL): void;
+  export function setCreateRandomCopsOnScenarios(toggle: NativeBOOL): void;
   /**
    *
    */
-  export function CanCreateRandomCops(): void;
-  /**
-   *
-   * @param {NativePed} ped undefined
-   */
-  export function SetPedAsEnemy(ped: NativePed, toggle: NativeBOOL): void;
+  export function canCreateRandomCops(): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedCanSmashGlass(ped: NativePed, p1: NativeBOOL, p2: NativeBOOL): void;
+  export function setPedAsEnemy(ped: NativePed, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function IsPedInAnyTrain(ped: NativePed): void;
+  export function setPedCanSmashGlass(ped: NativePed, p1: NativeBOOL, p2: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function IsPedGettingIntoAVehicle(ped: NativePed): void;
+  export function isPedInAnyTrain(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function IsPedTryingToEnterALockedVehicle(ped: NativePed): void;
+  export function isPedGettingIntoAVehicle(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetEnableHandcuffs(ped: NativePed, toggle: NativeBOOL): void;
+  export function isPedTryingToEnterALockedVehicle(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetEnableBoundAnkles(ped: NativePed, toggle: NativeBOOL): void;
+  export function setEnableHandcuffs(ped: NativePed, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetEnableScuba(ped: NativePed, toggle: NativeBOOL): void;
+  export function setEnableBoundAnkles(ped: NativePed, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetCanAttackFriendly(ped: NativePed, toggle: NativeBOOL, p2: NativeBOOL): void;
+  export function setEnableScuba(ped: NativePed, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function GetPedAlertness(ped: NativePed): void;
+  export function setCanAttackFriendly(ped: NativePed, toggle: NativeBOOL, p2: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedAlertness(ped: NativePed, value: number): void;
+  export function getPedAlertness(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedGetOutUpsideDownVehicle(ped: NativePed, toggle: NativeBOOL): void;
+  export function setPedAlertness(ped: NativePed, value: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedMovementClipset(ped: NativePed, clipSet: string, p2: number): void;
+  export function setPedGetOutUpsideDownVehicle(ped: NativePed, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function ResetPedMovementClipset(ped: NativePed, p1: number): void;
+  export function setPedMovementClipset(ped: NativePed, clipSet: string, p2: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedStrafeClipset(ped: NativePed, clipSet: string): void;
+  export function resetPedMovementClipset(ped: NativePed, p1: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function ResetPedStrafeClipset(ped: NativePed): void;
+  export function setPedStrafeClipset(ped: NativePed, clipSet: string): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedWeaponMovementClipset(ped: NativePed, clipSet: string): void;
+  export function resetPedStrafeClipset(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function ResetPedWeaponMovementClipset(ped: NativePed): void;
+  export function setPedWeaponMovementClipset(ped: NativePed, clipSet: string): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedDriveByClipsetOverride(ped: NativePed, clipset: string): void;
+  export function resetPedWeaponMovementClipset(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function ClearPedDriveByClipsetOverride(ped: NativePed): void;
+  export function setPedDriveByClipsetOverride(ped: NativePed, clipset: string): void;
+  /**
+   *
+   * @param {NativePed} ped undefined
+   */
+  export function clearPedDriveByClipsetOverride(ped: NativePed): void;
   /**
    *
    * @param {NativeAny} p0 undefined
@@ -3084,87 +3084,87 @@ declare module "natives" {
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedInVehicleContext(ped: NativePed, context: NativeHash): void;
+  export function setPedInVehicleContext(ped: NativePed, context: NativeHash): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function ResetPedInVehicleContext(ped: NativePed): void;
+  export function resetPedInVehicleContext(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function IsScriptedScenarioPedUsingConditionalAnim(ped: NativePed, animDict: string, anim: string): void;
+  export function isScriptedScenarioPedUsingConditionalAnim(ped: NativePed, animDict: string, anim: string): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedAlternateWalkAnim(ped: NativePed, animDict: string, animName: string, p3: number, p4: NativeBOOL): void;
+  export function setPedAlternateWalkAnim(ped: NativePed, animDict: string, animName: string, p3: number, p4: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function ClearPedAlternateWalkAnim(ped: NativePed, p1: number): void;
+  export function clearPedAlternateWalkAnim(ped: NativePed, p1: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedAlternateMovementAnim(ped: NativePed, stance: number, animDictionary: string, animationName: string, p4: number, p5: NativeBOOL): void;
+  export function setPedAlternateMovementAnim(ped: NativePed, stance: number, animDictionary: string, animationName: string, p4: number, p5: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function ClearPedAlternateMovementAnim(ped: NativePed, stance: number, p2: number): void;
+  export function clearPedAlternateMovementAnim(ped: NativePed, stance: number, p2: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedGestureGroup(ped: NativePed, animGroupGesture: string): void;
+  export function setPedGestureGroup(ped: NativePed, animGroupGesture: string): void;
   /**
    *
    * @param {string} animDict undefined
    */
-  export function GetAnimInitialOffsetPosition(animDict: string, animName: string, x: number, y: number, z: number, xRot: number, yRot: number, zRot: number, p8: number, p9: number): void;
+  export function getAnimInitialOffsetPosition(animDict: string, animName: string, x: number, y: number, z: number, xRot: number, yRot: number, zRot: number, p8: number, p9: number): void;
   /**
    *
    * @param {string} animDict undefined
    */
-  export function GetAnimInitialOffsetRotation(animDict: string, animName: string, x: number, y: number, z: number, xRot: number, yRot: number, zRot: number, p8: number, p9: number): void;
+  export function getAnimInitialOffsetRotation(animDict: string, animName: string, x: number, y: number, z: number, xRot: number, yRot: number, zRot: number, p8: number, p9: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function GetPedDrawableVariation(ped: NativePed, componentId: number): void;
+  export function getPedDrawableVariation(ped: NativePed, componentId: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function GetNumberOfPedDrawableVariations(ped: NativePed, componentId: number): void;
+  export function getNumberOfPedDrawableVariations(ped: NativePed, componentId: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function GetPedTextureVariation(ped: NativePed, componentId: number): void;
+  export function getPedTextureVariation(ped: NativePed, componentId: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function GetNumberOfPedTextureVariations(ped: NativePed, componentId: number, drawableId: number): void;
+  export function getNumberOfPedTextureVariations(ped: NativePed, componentId: number, drawableId: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function GetNumberOfPedPropDrawableVariations(ped: NativePed, propId: number): void;
+  export function getNumberOfPedPropDrawableVariations(ped: NativePed, propId: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function GetNumberOfPedPropTextureVariations(ped: NativePed, propId: number, drawableId: number): void;
+  export function getNumberOfPedPropTextureVariations(ped: NativePed, propId: number, drawableId: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function GetPedPaletteVariation(ped: NativePed, componentId: number): void;
+  export function getPedPaletteVariation(ped: NativePed, componentId: number): void;
   /**
    *
    * @param {NativeAny} p0 undefined
@@ -3184,95 +3184,95 @@ declare module "natives" {
    *
    * @param {NativePed} ped undefined
    */
-  export function IsPedComponentVariationValid(ped: NativePed, componentId: number, drawableId: number, textureId: number): void;
+  export function isPedComponentVariationValid(ped: NativePed, componentId: number, drawableId: number, textureId: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedComponentVariation(ped: NativePed, componentId: number, drawableId: number, textureId: number, paletteId: number): void;
+  export function setPedComponentVariation(ped: NativePed, componentId: number, drawableId: number, textureId: number, paletteId: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedRandomComponentVariation(ped: NativePed, p1: NativeBOOL): void;
+  export function setPedRandomComponentVariation(ped: NativePed, p1: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedRandomProps(ped: NativePed): void;
+  export function setPedRandomProps(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedDefaultComponentVariation(ped: NativePed): void;
+  export function setPedDefaultComponentVariation(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedBlendFromParents(ped: NativePed, father: NativePed, mother: NativePed, fathersSide: number, mothersSide: number): void;
+  export function setPedBlendFromParents(ped: NativePed, father: NativePed, mother: NativePed, fathersSide: number, mothersSide: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedHeadBlendData(ped: NativePed, shapeFirstID: number, shapeSecondID: number, shapeThirdID: number, skinFirstID: number, skinSecondID: number, skinThirdID: number, shapeMix: number, skinMix: number, thirdMix: number, isParent: NativeBOOL): void;
+  export function setPedHeadBlendData(ped: NativePed, shapeFirstID: number, shapeSecondID: number, shapeThirdID: number, skinFirstID: number, skinSecondID: number, skinThirdID: number, shapeMix: number, skinMix: number, thirdMix: number, isParent: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function GetPedHeadBlendData(ped: NativePed, headBlendData: NativeAny): void;
+  export function getPedHeadBlendData(ped: NativePed, headBlendData: NativeAny): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function UpdatePedHeadBlendData(ped: NativePed, shapeMix: number, skinMix: number, thirdMix: number): void;
+  export function updatePedHeadBlendData(ped: NativePed, shapeMix: number, skinMix: number, thirdMix: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedEyeColor(ped: NativePed, index: number): void;
+  export function setPedEyeColor(ped: NativePed, index: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedHeadOverlay(ped: NativePed, overlayID: number, index: number, opacity: number): void;
+  export function setPedHeadOverlay(ped: NativePed, overlayID: number, index: number, opacity: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function GetPedHeadOverlayValue(ped: NativePed, overlayID: number): void;
+  export function getPedHeadOverlayValue(ped: NativePed, overlayID: number): void;
   /**
    *
    * @param {number} overlayID undefined
    */
-  export function GetNumHeadOverlayValues(overlayID: number): void;
+  export function getNumHeadOverlayValues(overlayID: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedHeadOverlayColor(ped: NativePed, overlayID: number, colorType: number, colorID: number, secondColorID: number): void;
+  export function setPedHeadOverlayColor(ped: NativePed, overlayID: number, colorType: number, colorID: number, secondColorID: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedHairColor(ped: NativePed, colorID: number, highlightColorID: number): void;
+  export function setPedHairColor(ped: NativePed, colorID: number, highlightColorID: number): void;
   /**
    *
    */
-  export function GetNumHairColors(): void;
+  export function getNumHairColors(): void;
   /**
    *
    */
-  export function GetNumMakeupColors(): void;
-  /**
-   *
-   * @param {number} colorID undefined
-   */
-  export function GetHairColor(colorID: number, R: number, G: number, B: number): void;
+  export function getNumMakeupColors(): void;
   /**
    *
    * @param {number} colorID undefined
    */
-  export function GetLipstickColor(colorID: number, R: number, G: number, B: NativeAny): void;
+  export function getHairColor(colorID: number, R: number, G: number, B: number): void;
+  /**
+   *
+   * @param {number} colorID undefined
+   */
+  export function getLipstickColor(colorID: number, R: number, G: number, B: NativeAny): void;
   /**
    *
    * @param {number} ColorID undefined
@@ -3297,7 +3297,7 @@ declare module "natives" {
    *
    * @param {number} colorID undefined
    */
-  export function IsPedHairColorValid(colorID: number): void;
+  export function isPedHairColorValid(colorID: number): void;
   /**
    *
    * @param {NativeAny} p0 undefined
@@ -3307,12 +3307,12 @@ declare module "natives" {
    *
    * @param {number} colorID undefined
    */
-  export function IsPedLipstickColorValid(colorID: number): void;
+  export function isPedLipstickColorValid(colorID: number): void;
   /**
    *
    * @param {number} colorID undefined
    */
-  export function IsPedBlushColorValid(colorID: number): void;
+  export function isPedBlushColorValid(colorID: number): void;
   /**
    *
    * @param {NativeHash} modelHash undefined
@@ -3322,12 +3322,12 @@ declare module "natives" {
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedFaceFeature(ped: NativePed, index: number, scale: number): void;
+  export function setPedFaceFeature(ped: NativePed, index: number, scale: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function HasPedHeadBlendFinished(ped: NativePed): void;
+  export function hasPedHeadBlendFinished(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
@@ -3347,12 +3347,12 @@ declare module "natives" {
    *
    * @param {number} type undefined
    */
-  export function GetFirstParentIdForPedType(type: number): void;
+  export function getFirstParentIdForPedType(type: number): void;
   /**
    *
    * @param {number} type undefined
    */
-  export function GetNumParentPedsOfType(type: number): void;
+  export function getNumParentPedsOfType(type: number): void;
   /**
    *
    * @param {NativePed} ped undefined
@@ -3372,7 +3372,7 @@ declare module "natives" {
    *
    * @param {NativePed} ped undefined
    */
-  export function IsPedPropValid(ped: NativePed, componentId: number, drawableId: number, TextureId: number): void;
+  export function isPedPropValid(ped: NativePed, componentId: number, drawableId: number, TextureId: number): void;
   /**
    *
    * @param {NativePed} ped undefined
@@ -3387,27 +3387,27 @@ declare module "natives" {
    *
    * @param {NativePed} ped undefined
    */
-  export function GetPedPropIndex(ped: NativePed, componentId: number): void;
+  export function getPedPropIndex(ped: NativePed, componentId: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedPropIndex(ped: NativePed, componentId: number, drawableId: number, TextureId: number, attach: NativeBOOL): void;
+  export function setPedPropIndex(ped: NativePed, componentId: number, drawableId: number, TextureId: number, attach: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function KnockOffPedProp(ped: NativePed, p1: NativeBOOL, p2: NativeBOOL, p3: NativeBOOL, p4: NativeBOOL): void;
+  export function knockOffPedProp(ped: NativePed, p1: NativeBOOL, p2: NativeBOOL, p3: NativeBOOL, p4: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function ClearPedProp(ped: NativePed, propId: number): void;
+  export function clearPedProp(ped: NativePed, propId: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function ClearAllPedProps(ped: NativePed): void;
+  export function clearAllPedProps(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
@@ -3417,7 +3417,7 @@ declare module "natives" {
    *
    * @param {NativePed} ped undefined
    */
-  export function GetPedPropTextureIndex(ped: NativePed, componentId: number): void;
+  export function getPedPropTextureIndex(ped: NativePed, componentId: number): void;
   /**
    *
    * @param {NativeAny} p0 undefined
@@ -3442,37 +3442,37 @@ declare module "natives" {
    *
    * @param {NativePed} ped undefined
    */
-  export function SetBlockingOfNonTemporaryEvents(ped: NativePed, toggle: NativeBOOL): void;
+  export function setBlockingOfNonTemporaryEvents(ped: NativePed, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedBoundsOrientation(ped: NativePed, p1: number, p2: number, p3: number, p4: number, p5: number): void;
+  export function setPedBoundsOrientation(ped: NativePed, p1: number, p2: number, p3: number, p4: number, p5: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function RegisterTarget(ped: NativePed, target: NativePed): void;
+  export function registerTarget(ped: NativePed, target: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function RegisterHatedTargetsAroundPed(ped: NativePed, radius: number): void;
+  export function registerHatedTargetsAroundPed(ped: NativePed, radius: number): void;
   /**
    *
    * @param {number} x undefined
    */
-  export function GetRandomPedAtCoord(x: number, y: number, z: number, xRadius: number, yRadius: number, zRadius: number, pedType: number): void;
+  export function getRandomPedAtCoord(x: number, y: number, z: number, xRadius: number, yRadius: number, zRadius: number, pedType: number): void;
   /**
    *
    * @param {number} x undefined
    */
-  export function GetClosestPed(x: number, y: number, z: number, radius: number, p4: NativeBOOL, p5: NativeBOOL, outPed: NativePed, p7: NativeBOOL, p8: NativeBOOL, pedType: number): void;
+  export function getClosestPed(x: number, y: number, z: number, radius: number, p4: NativeBOOL, p5: NativeBOOL, outPed: NativePed, p7: NativeBOOL, p8: NativeBOOL, pedType: number): void;
   /**
    *
    * @param {NativeBOOL} value undefined
    */
-  export function SetScenarioPedsToBeReturnedByNextCommand(value: NativeBOOL): void;
+  export function setScenarioPedsToBeReturnedByNextCommand(value: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
@@ -3482,62 +3482,62 @@ declare module "natives" {
    *
    * @param {NativePed} driver undefined
    */
-  export function SetDriverRacingModifier(driver: NativePed, racingModifier: number): void;
+  export function setDriverRacingModifier(driver: NativePed, racingModifier: number): void;
   /**
    *
    * @param {NativePed} driver undefined
    */
-  export function SetDriverAbility(driver: NativePed, ability: number): void;
+  export function setDriverAbility(driver: NativePed, ability: number): void;
   /**
    *
    * @param {NativePed} driver undefined
    */
-  export function SetDriverAggressiveness(driver: NativePed, aggressiveness: number): void;
+  export function setDriverAggressiveness(driver: NativePed, aggressiveness: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function CanPedRagdoll(ped: NativePed): void;
+  export function canPedRagdoll(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedToRagdoll(ped: NativePed, time1: number, time2: number, ragdollType: number, p4: NativeBOOL, p5: NativeBOOL, p6: NativeBOOL): void;
+  export function setPedToRagdoll(ped: NativePed, time1: number, time2: number, ragdollType: number, p4: NativeBOOL, p5: NativeBOOL, p6: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedToRagdollWithFall(ped: NativePed, time: number, p2: number, ragdollType: number, x: number, y: number, z: number, p7: number, p8: number, p9: number, p10: number, p11: number, p12: number, p13: number): void;
+  export function setPedToRagdollWithFall(ped: NativePed, time: number, p2: number, ragdollType: number, x: number, y: number, z: number, p7: number, p8: number, p9: number, p10: number, p11: number, p12: number, p13: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedRagdollOnCollision(ped: NativePed, toggle: NativeBOOL): void;
+  export function setPedRagdollOnCollision(ped: NativePed, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function IsPedRagdoll(ped: NativePed): void;
+  export function isPedRagdoll(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function IsPedRunningRagdollTask(ped: NativePed): void;
+  export function isPedRunningRagdollTask(ped: NativePed): void;
   /**
    *
    * @param {NativePlayer} ped undefined
    */
-  export function SetPedRagdollForceFall(ped: NativePlayer): void;
+  export function setPedRagdollForceFall(ped: NativePlayer): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function ResetPedRagdollTimer(ped: NativePed): void;
+  export function resetPedRagdollTimer(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedCanRagdoll(ped: NativePed, toggle: NativeBOOL): void;
+  export function setPedCanRagdoll(ped: NativePed, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
@@ -3547,7 +3547,7 @@ declare module "natives" {
    *
    * @param {NativePed} ped undefined
    */
-  export function IsPedRunningMobilePhoneTask(ped: NativePed): void;
+  export function isPedRunningMobilePhoneTask(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
@@ -3557,27 +3557,27 @@ declare module "natives" {
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedRagdollBlockingFlags(ped: NativePed, flags: number): void;
+  export function setPedRagdollBlockingFlags(ped: NativePed, flags: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function ResetPedRagdollBlockingFlags(ped: NativePed, flags: number): void;
+  export function resetPedRagdollBlockingFlags(ped: NativePed, flags: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedAngledDefensiveArea(ped: NativePed, p1: number, p2: number, p3: number, p4: number, p5: number, p6: number, p7: number, p8: NativeBOOL, p9: NativeBOOL): void;
+  export function setPedAngledDefensiveArea(ped: NativePed, p1: number, p2: number, p3: number, p4: number, p5: number, p6: number, p7: number, p8: NativeBOOL, p9: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedSphereDefensiveArea(ped: NativePed, x: number, y: number, z: number, radius: number, p5: NativeBOOL, p6: NativeBOOL): void;
+  export function setPedSphereDefensiveArea(ped: NativePed, x: number, y: number, z: number, radius: number, p5: NativeBOOL, p6: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedDefensiveSphereAttachedToPed(ped: NativePed, target: NativePed, xOffset: number, yOffset: number, zOffset: number, radius: number, p6: NativeBOOL): void;
+  export function setPedDefensiveSphereAttachedToPed(ped: NativePed, target: NativePed, xOffset: number, yOffset: number, zOffset: number, radius: number, p6: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
@@ -3587,22 +3587,22 @@ declare module "natives" {
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedDefensiveAreaAttachedToPed(ped: NativePed, attachPed: NativePed, p2: number, p3: number, p4: number, p5: number, p6: number, p7: number, p8: number, p9: NativeBOOL, p10: NativeBOOL): void;
+  export function setPedDefensiveAreaAttachedToPed(ped: NativePed, attachPed: NativePed, p2: number, p3: number, p4: number, p5: number, p6: number, p7: number, p8: number, p9: NativeBOOL, p10: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedDefensiveAreaDirection(ped: NativePed, p1: number, p2: number, p3: number, p4: NativeBOOL): void;
+  export function setPedDefensiveAreaDirection(ped: NativePed, p1: number, p2: number, p3: number, p4: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function RemovePedDefensiveArea(ped: NativePed, toggle: NativeBOOL): void;
+  export function removePedDefensiveArea(ped: NativePed, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function GetPedDefensiveAreaPosition(ped: NativePed, p1: NativeBOOL): void;
+  export function getPedDefensiveAreaPosition(ped: NativePed, p1: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
@@ -3612,42 +3612,42 @@ declare module "natives" {
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedPreferredCoverSet(ped: NativePed, itemSet: NativeAny): void;
+  export function setPedPreferredCoverSet(ped: NativePed, itemSet: NativeAny): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function RemovePedPreferredCoverSet(ped: NativePed): void;
+  export function removePedPreferredCoverSet(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function ReviveInjuredPed(ped: NativePed): void;
+  export function reviveInjuredPed(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function ResurrectPed(ped: NativePed): void;
+  export function resurrectPed(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedNameDebug(ped: NativePed, name: string): void;
+  export function setPedNameDebug(ped: NativePed, name: string): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function GetPedExtractedDisplacement(ped: NativePed, worldSpace: NativeBOOL): void;
+  export function getPedExtractedDisplacement(ped: NativePed, worldSpace: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedDiesWhenInjured(ped: NativePed, toggle: NativeBOOL): void;
+  export function setPedDiesWhenInjured(ped: NativePed, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedEnableWeaponBlocking(ped: NativePed, toggle: NativeBOOL): void;
+  export function setPedEnableWeaponBlocking(ped: NativePed, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
@@ -3657,62 +3657,62 @@ declare module "natives" {
    *
    * @param {NativePed} ped undefined
    */
-  export function ResetPedVisibleDamage(ped: NativePed): void;
+  export function resetPedVisibleDamage(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function ApplyPedBloodDamageByZone(ped: NativePed, p1: NativeAny, p2: number, p3: number, p4: NativeAny): void;
+  export function applyPedBloodDamageByZone(ped: NativePed, p1: NativeAny, p2: number, p3: number, p4: NativeAny): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function ApplyPedBlood(ped: NativePed, boneIndex: number, xRot: number, yRot: number, zRot: number, woundType: string): void;
+  export function applyPedBlood(ped: NativePed, boneIndex: number, xRot: number, yRot: number, zRot: number, woundType: string): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function ApplyPedBloodByZone(ped: NativePed, p1: NativeAny, p2: number, p3: number, p4: NativeAny): void;
+  export function applyPedBloodByZone(ped: NativePed, p1: NativeAny, p2: number, p3: number, p4: NativeAny): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function ApplyPedBloodSpecific(ped: NativePed, p1: NativeAny, p2: number, p3: number, p4: number, p5: number, p6: NativeAny, p7: number, p8: NativeAny): void;
+  export function applyPedBloodSpecific(ped: NativePed, p1: NativeAny, p2: number, p3: number, p4: number, p5: number, p6: NativeAny, p7: number, p8: NativeAny): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function ApplyPedDamageDecal(ped: NativePed, p1: number, p2: number, p3: number, p4: number, p5: number, p6: number, p7: number, p8: NativeBOOL, p9: string): void;
+  export function applyPedDamageDecal(ped: NativePed, p1: number, p2: number, p3: number, p4: number, p5: number, p6: number, p7: number, p8: NativeBOOL, p9: string): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function ApplyPedDamagePack(ped: NativePed, damagePack: string, damage: number, mult: number): void;
+  export function applyPedDamagePack(ped: NativePed, damagePack: string, damage: number, mult: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function ClearPedBloodDamage(ped: NativePed): void;
+  export function clearPedBloodDamage(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function ClearPedBloodDamageByZone(ped: NativePed, p1: number): void;
+  export function clearPedBloodDamageByZone(ped: NativePed, p1: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function HidePedBloodDamageByZone(ped: NativePed, p1: NativeAny, p2: NativeBOOL): void;
+  export function hidePedBloodDamageByZone(ped: NativePed, p1: NativeAny, p2: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function ClearPedDamageDecalByZone(ped: NativePed, p1: number, p2: string): void;
+  export function clearPedDamageDecalByZone(ped: NativePed, p1: number, p2: string): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function GetPedDecorationsState(ped: NativePed): void;
+  export function getPedDecorationsState(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
@@ -3722,17 +3722,17 @@ declare module "natives" {
    *
    * @param {NativePed} ped undefined
    */
-  export function ClearPedWetness(ped: NativePed): void;
+  export function clearPedWetness(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedWetnessHeight(ped: NativePed, height: number): void;
+  export function setPedWetnessHeight(ped: NativePed, height: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedWetnessEnabledThisFrame(ped: NativePed): void;
+  export function setPedWetnessEnabledThisFrame(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
@@ -3742,81 +3742,81 @@ declare module "natives" {
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedSweat(ped: NativePed, sweat: number): void;
+  export function setPedSweat(ped: NativePed, sweat: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedDecoration(ped: NativePed, collection: NativeHash, overlay: NativeHash): void;
+  export function setPedDecoration(ped: NativePed, collection: NativeHash, overlay: NativeHash): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedFacialDecoration(ped: NativePed, collection: NativeHash, overlay: NativeHash): void;
+  export function setPedFacialDecoration(ped: NativePed, collection: NativeHash, overlay: NativeHash): void;
   /**
    *
    * @param {NativeHash} collection undefined
    */
-  export function GetTattooZone(collection: NativeHash, overlay: NativeHash): void;
+  export function getTattooZone(collection: NativeHash, overlay: NativeHash): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function ClearPedDecorations(ped: NativePed): void;
+  export function clearPedDecorations(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function ClearPedFacialDecorations(ped: NativePed): void;
+  export function clearPedFacialDecorations(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function WasPedSkeletonUpdated(ped: NativePed): void;
+  export function wasPedSkeletonUpdated(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function GetPedBoneCoords(ped: NativePed, boneId: number, offsetX: number, offsetY: number, offsetZ: number): void;
+  export function getPedBoneCoords(ped: NativePed, boneId: number, offsetX: number, offsetY: number, offsetZ: number): void;
   /**
    *
    * @param {NativeBOOL} startImmediately undefined
    */
-  export function CreateNmMessage(startImmediately: NativeBOOL, messageId: number): void;
+  export function createNmMessage(startImmediately: NativeBOOL, messageId: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function GivePedNmMessage(ped: NativePed): void;
+  export function givePedNmMessage(ped: NativePed): void;
   /**
    *
    * @param {number} x1 undefined
    */
-  export function AddScenarioBlockingArea(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, p6: NativeBOOL, p7: NativeBOOL, p8: NativeBOOL, p9: NativeBOOL): void;
+  export function addScenarioBlockingArea(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, p6: NativeBOOL, p7: NativeBOOL, p8: NativeBOOL, p9: NativeBOOL): void;
   /**
    *
    */
-  export function RemoveScenarioBlockingAreas(): void;
+  export function removeScenarioBlockingAreas(): void;
   /**
    *
    * @param {number} areaHandle undefined
    */
-  export function RemoveScenarioBlockingArea(areaHandle: number, p1: NativeBOOL): void;
+  export function removeScenarioBlockingArea(areaHandle: number, p1: NativeBOOL): void;
   /**
    *
    * @param {number} x undefined
    */
-  export function SetScenarioPedsSpawnInSphereArea(x: number, y: number, z: number, range: number, p4: number): void;
+  export function setScenarioPedsSpawnInSphereArea(x: number, y: number, z: number, range: number, p4: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function IsPedUsingScenario(ped: NativePed, scenario: string): void;
+  export function isPedUsingScenario(ped: NativePed, scenario: string): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function IsPedUsingAnyScenario(ped: NativePed): void;
+  export function isPedUsingAnyScenario(ped: NativePed): void;
   /**
    *
    * @param {NativeAny} p0 undefined
@@ -3871,42 +3871,42 @@ declare module "natives" {
    *
    * @param {NativePed} ped undefined
    */
-  export function PlayFacialAnim(ped: NativePed, animName: string, animDict: string): void;
+  export function playFacialAnim(ped: NativePed, animName: string, animDict: string): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetFacialIdleAnimOverride(ped: NativePed, animName: string, animDict: string): void;
+  export function setFacialIdleAnimOverride(ped: NativePed, animName: string, animDict: string): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function ClearFacialIdleAnimOverride(ped: NativePed): void;
+  export function clearFacialIdleAnimOverride(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedCanPlayGestureAnims(ped: NativePed, toggle: NativeBOOL): void;
+  export function setPedCanPlayGestureAnims(ped: NativePed, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedCanPlayVisemeAnims(ped: NativePed, toggle: NativeBOOL, p2: NativeBOOL): void;
+  export function setPedCanPlayVisemeAnims(ped: NativePed, toggle: NativeBOOL, p2: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedCanPlayInjuredAnims(ped: NativePed, p1: NativeBOOL): void;
+  export function setPedCanPlayInjuredAnims(ped: NativePed, p1: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedCanPlayAmbientAnims(ped: NativePed, toggle: NativeBOOL): void;
+  export function setPedCanPlayAmbientAnims(ped: NativePed, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedCanPlayAmbientBaseAnims(ped: NativePed, toggle: NativeBOOL): void;
+  export function setPedCanPlayAmbientBaseAnims(ped: NativePed, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
@@ -3916,22 +3916,22 @@ declare module "natives" {
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedCanArmIk(ped: NativePed, toggle: NativeBOOL): void;
+  export function setPedCanArmIk(ped: NativePed, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedCanHeadIk(ped: NativePed, toggle: NativeBOOL): void;
+  export function setPedCanHeadIk(ped: NativePed, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedCanLegIk(ped: NativePed, toggle: NativeBOOL): void;
+  export function setPedCanLegIk(ped: NativePed, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedCanTorsoIk(ped: NativePed, toggle: NativeBOOL): void;
+  export function setPedCanTorsoIk(ped: NativePed, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
@@ -3946,22 +3946,22 @@ declare module "natives" {
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedCanUseAutoConversationLookat(ped: NativePed, toggle: NativeBOOL): void;
+  export function setPedCanUseAutoConversationLookat(ped: NativePed, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped1 undefined
    */
-  export function IsPedHeadtrackingPed(ped1: NativePed, ped2: NativePed): void;
+  export function isPedHeadtrackingPed(ped1: NativePed, ped2: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function IsPedHeadtrackingEntity(ped: NativePed, entity: NativeEntity): void;
+  export function isPedHeadtrackingEntity(ped: NativePed, entity: NativeEntity): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedPrimaryLookat(ped: NativePed, lookAt: NativePed): void;
+  export function setPedPrimaryLookat(ped: NativePed, lookAt: NativePed): void;
   /**
    *
    * @param {NativeAny} p0 undefined
@@ -3971,7 +3971,7 @@ declare module "natives" {
    *
    * @param {NativeAny} p0 undefined
    */
-  export function SetPedClothProne(p0: NativeAny, p1: NativeAny): void;
+  export function setPedClothProne(p0: NativeAny, p1: NativeAny): void;
   /**
    *
    * @param {NativeAny} p0 undefined
@@ -3981,61 +3981,61 @@ declare module "natives" {
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedConfigFlag(ped: NativePed, flagId: number, value: NativeBOOL): void;
+  export function setPedConfigFlag(ped: NativePed, flagId: number, value: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedResetFlag(ped: NativePed, flagId: number, doReset: NativeBOOL): void;
+  export function setPedResetFlag(ped: NativePed, flagId: number, doReset: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function GetPedConfigFlag(ped: NativePed, flagId: number, p2: NativeBOOL): void;
+  export function getPedConfigFlag(ped: NativePed, flagId: number, p2: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function GetPedResetFlag(ped: NativePed, flagId: number): void;
+  export function getPedResetFlag(ped: NativePed, flagId: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedGroupMemberPassengerIndex(ped: NativePed, index: number): void;
+  export function setPedGroupMemberPassengerIndex(ped: NativePed, index: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedCanEvasiveDive(ped: NativePed, toggle: NativeBOOL): void;
+  export function setPedCanEvasiveDive(ped: NativePed, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function IsPedEvasiveDiving(ped: NativePed, evadingEntity: NativeEntity): void;
+  export function isPedEvasiveDiving(ped: NativePed, evadingEntity: NativeEntity): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedShootsAtCoord(ped: NativePed, x: number, y: number, z: number, toggle: NativeBOOL): void;
+  export function setPedShootsAtCoord(ped: NativePed, x: number, y: number, z: number, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedModelIsSuppressed(ped: NativePed, toggle: NativeBOOL): void;
+  export function setPedModelIsSuppressed(ped: NativePed, toggle: NativeBOOL): void;
   /**
    *
    */
-  export function StopAnyPedModelBeingSuppressed(): void;
-  /**
-   *
-   * @param {NativePed} ped undefined
-   */
-  export function SetPedCanBeTargetedWhenInjured(ped: NativePed, toggle: NativeBOOL): void;
+  export function stopAnyPedModelBeingSuppressed(): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedGeneratesDeadBodyEvents(ped: NativePed, toggle: NativeBOOL): void;
+  export function setPedCanBeTargetedWhenInjured(ped: NativePed, toggle: NativeBOOL): void;
+  /**
+   *
+   * @param {NativePed} ped undefined
+   */
+  export function setPedGeneratesDeadBodyEvents(ped: NativePed, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
@@ -4045,17 +4045,17 @@ declare module "natives" {
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedCanRagdollFromPlayerImpact(ped: NativePed, toggle: NativeBOOL): void;
+  export function setPedCanRagdollFromPlayerImpact(ped: NativePed, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function GivePedHelmet(ped: NativePed, cannotRemove: NativeBOOL, helmetFlag: number, textureIndex: number): void;
+  export function givePedHelmet(ped: NativePed, cannotRemove: NativeBOOL, helmetFlag: number, textureIndex: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function RemovePedHelmet(ped: NativePed, instantly: NativeBOOL): void;
+  export function removePedHelmet(ped: NativePed, instantly: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
@@ -4065,27 +4065,27 @@ declare module "natives" {
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedHelmet(ped: NativePed, canWearHelmet: NativeBOOL): void;
+  export function setPedHelmet(ped: NativePed, canWearHelmet: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedHelmetFlag(ped: NativePed, helmetFlag: number): void;
+  export function setPedHelmetFlag(ped: NativePed, helmetFlag: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedHelmetPropIndex(ped: NativePed, propIndex: number): void;
+  export function setPedHelmetPropIndex(ped: NativePed, propIndex: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedHelmetTextureIndex(ped: NativePed, textureIndex: number): void;
+  export function setPedHelmetTextureIndex(ped: NativePed, textureIndex: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function IsPedWearingHelmet(ped: NativePed): void;
+  export function isPedWearingHelmet(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
@@ -4110,42 +4110,42 @@ declare module "natives" {
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedToLoadCover(ped: NativePed, toggle: NativeBOOL): void;
+  export function setPedToLoadCover(ped: NativePed, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedCanCowerInCover(ped: NativePed, toggle: NativeBOOL): void;
+  export function setPedCanCowerInCover(ped: NativePed, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedCanPeekInCover(ped: NativePed, toggle: NativeBOOL): void;
+  export function setPedCanPeekInCover(ped: NativePed, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedPlaysHeadOnHornAnimWhenDiesInVehicle(ped: NativePed, toggle: NativeBOOL): void;
+  export function setPedPlaysHeadOnHornAnimWhenDiesInVehicle(ped: NativePed, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedLegIkMode(ped: NativePed, mode: number): void;
+  export function setPedLegIkMode(ped: NativePed, mode: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedMotionBlur(ped: NativePed, toggle: NativeBOOL): void;
+  export function setPedMotionBlur(ped: NativePed, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedCanSwitchWeapon(ped: NativePed, toggle: NativeBOOL): void;
+  export function setPedCanSwitchWeapon(ped: NativePed, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedDiesInstantlyInWater(ped: NativePed, toggle: NativeBOOL): void;
+  export function setPedDiesInstantlyInWater(ped: NativePed, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
@@ -4155,47 +4155,47 @@ declare module "natives" {
    *
    * @param {NativePed} ped undefined
    */
-  export function StopPedWeaponFiringWhenDropped(ped: NativePed): void;
+  export function stopPedWeaponFiringWhenDropped(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetScriptedAnimSeatOffset(ped: NativePed, p1: number): void;
+  export function setScriptedAnimSeatOffset(ped: NativePed, p1: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedCombatMovement(ped: NativePed, combatMovement: number): void;
+  export function setPedCombatMovement(ped: NativePed, combatMovement: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function GetPedCombatMovement(ped: NativePed): void;
+  export function getPedCombatMovement(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedCombatAbility(ped: NativePed, p1: number): void;
+  export function setPedCombatAbility(ped: NativePed, p1: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedCombatRange(ped: NativePed, p1: number): void;
+  export function setPedCombatRange(ped: NativePed, p1: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function GetPedCombatRange(ped: NativePed): void;
+  export function getPedCombatRange(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedCombatAttributes(ped: NativePed, attributeIndex: number, enabled: NativeBOOL): void;
+  export function setPedCombatAttributes(ped: NativePed, attributeIndex: number, enabled: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedTargetLossResponse(ped: NativePed, responseType: number): void;
+  export function setPedTargetLossResponse(ped: NativePed, responseType: number): void;
   /**
    *
    * @param {NativePed} ped undefined
@@ -4205,7 +4205,7 @@ declare module "natives" {
    *
    * @param {NativePed} ped undefined
    */
-  export function IsPedPerformingStealthKill(ped: NativePed): void;
+  export function isPedPerformingStealthKill(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
@@ -4215,22 +4215,22 @@ declare module "natives" {
    *
    * @param {NativePed} ped undefined
    */
-  export function IsPedBeingStealthKilled(ped: NativePed): void;
+  export function isPedBeingStealthKilled(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function GetMeleeTargetForPed(ped: NativePed): void;
+  export function getMeleeTargetForPed(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function WasPedKilledByStealth(ped: NativePed): void;
+  export function wasPedKilledByStealth(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function WasPedKilledByTakedown(ped: NativePed): void;
+  export function wasPedKilledByTakedown(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
@@ -4240,12 +4240,12 @@ declare module "natives" {
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedFleeAttributes(ped: NativePed, attributes: number, p2: NativeBOOL): void;
+  export function setPedFleeAttributes(ped: NativePed, attributes: number, p2: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedCowerHash(ped: NativePed, p1: string): void;
+  export function setPedCowerHash(ped: NativePed, p1: string): void;
   /**
    *
    * @param {NativeAny} p0 undefined
@@ -4255,17 +4255,17 @@ declare module "natives" {
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedSteersAroundPeds(ped: NativePed, toggle: NativeBOOL): void;
+  export function setPedSteersAroundPeds(ped: NativePed, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedSteersAroundObjects(ped: NativePed, toggle: NativeBOOL): void;
+  export function setPedSteersAroundObjects(ped: NativePed, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedSteersAroundVehicles(ped: NativePed, toggle: NativeBOOL): void;
+  export function setPedSteersAroundVehicles(ped: NativePed, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativeAny} p0 undefined
@@ -4290,7 +4290,7 @@ declare module "natives" {
    *
    * @param {number} x undefined
    */
-  export function IsAnyPedNearPoint(x: number, y: number, z: number, radius: number): void;
+  export function isAnyPedNearPoint(x: number, y: number, z: number, radius: number): void;
   /**
    *
    * @param {NativePed} ped undefined
@@ -4310,7 +4310,7 @@ declare module "natives" {
    *
    * @param {NativePed} ped undefined
    */
-  export function GetPedFloodInvincibility(ped: NativePed, p1: NativeBOOL): void;
+  export function getPedFloodInvincibility(ped: NativePed, p1: NativeBOOL): void;
   /**
    *
    * @param {NativeAny} p0 undefined
@@ -4325,7 +4325,7 @@ declare module "natives" {
    *
    * @param {NativePed} ped undefined
    */
-  export function IsTrackedPedVisible(ped: NativePed): void;
+  export function isTrackedPedVisible(ped: NativePed): void;
   /**
    *
    * @param {NativeAny} p0 undefined
@@ -4335,17 +4335,17 @@ declare module "natives" {
    *
    * @param {NativePed} ped undefined
    */
-  export function IsPedTracked(ped: NativePed): void;
+  export function isPedTracked(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function HasPedReceivedEvent(ped: NativePed, p1: NativeAny): void;
+  export function hasPedReceivedEvent(ped: NativePed, p1: NativeAny): void;
   /**
    *
    * @param {NativePed} ped1 undefined
    */
-  export function CanPedSeePed(ped1: NativePed, ped2: NativePed): void;
+  export function canPedSeePed(ped1: NativePed, ped2: NativePed): void;
   /**
    *
    * @param {NativePed} p0 undefined
@@ -4355,27 +4355,27 @@ declare module "natives" {
    *
    * @param {NativePed} ped undefined
    */
-  export function GetPedBoneIndex(ped: NativePed, boneId: number): void;
+  export function getPedBoneIndex(ped: NativePed, boneId: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function GetPedRagdollBoneIndex(ped: NativePed, bone: number): void;
+  export function getPedRagdollBoneIndex(ped: NativePed, bone: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedEnveffScale(ped: NativePed, value: number): void;
+  export function setPedEnveffScale(ped: NativePed, value: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function GetPedEnveffScale(ped: NativePed): void;
+  export function getPedEnveffScale(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetEnablePedEnveffScale(ped: NativePed, toggle: NativeBOOL): void;
+  export function setEnablePedEnveffScale(ped: NativePed, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
@@ -4405,57 +4405,57 @@ declare module "natives" {
    *
    * @param {number} x undefined
    */
-  export function CreateSynchronizedScene(x: number, y: number, z: number, roll: number, pitch: number, yaw: number, p6: number): void;
+  export function createSynchronizedScene(x: number, y: number, z: number, roll: number, pitch: number, yaw: number, p6: number): void;
   /**
    *
    * @param {number} x undefined
    */
-  export function CreateSynchronizedScene2(x: number, y: number, z: number, radius: number, object: NativeHash): void;
+  export function createSynchronizedScene2(x: number, y: number, z: number, radius: number, object: NativeHash): void;
   /**
    *
    * @param {number} sceneId undefined
    */
-  export function IsSynchronizedSceneRunning(sceneId: number): void;
+  export function isSynchronizedSceneRunning(sceneId: number): void;
   /**
    *
    * @param {number} sceneID undefined
    */
-  export function SetSynchronizedSceneOrigin(sceneID: number, x: number, y: number, z: number, roll: number, pitch: number, yaw: number, unk: number): void;
+  export function setSynchronizedSceneOrigin(sceneID: number, x: number, y: number, z: number, roll: number, pitch: number, yaw: number, unk: number): void;
   /**
    *
    * @param {number} sceneID undefined
    */
-  export function SetSynchronizedScenePhase(sceneID: number, phase: number): void;
+  export function setSynchronizedScenePhase(sceneID: number, phase: number): void;
   /**
    *
    * @param {number} sceneID undefined
    */
-  export function GetSynchronizedScenePhase(sceneID: number): void;
+  export function getSynchronizedScenePhase(sceneID: number): void;
   /**
    *
    * @param {number} sceneID undefined
    */
-  export function SetSynchronizedSceneRate(sceneID: number, rate: number): void;
+  export function setSynchronizedSceneRate(sceneID: number, rate: number): void;
   /**
    *
    * @param {number} sceneID undefined
    */
-  export function GetSynchronizedSceneRate(sceneID: number): void;
+  export function getSynchronizedSceneRate(sceneID: number): void;
   /**
    *
    * @param {number} sceneID undefined
    */
-  export function SetSynchronizedSceneLooped(sceneID: number, toggle: NativeBOOL): void;
+  export function setSynchronizedSceneLooped(sceneID: number, toggle: NativeBOOL): void;
   /**
    *
    * @param {number} sceneID undefined
    */
-  export function IsSynchronizedSceneLooped(sceneID: number): void;
+  export function isSynchronizedSceneLooped(sceneID: number): void;
   /**
    *
    * @param {number} sceneID undefined
    */
-  export function SetSynchronizedSceneOcclusionPortal(sceneID: number, p1: NativeBOOL): void;
+  export function setSynchronizedSceneOcclusionPortal(sceneID: number, p1: NativeBOOL): void;
   /**
    *
    * @param {number} SceneID undefined
@@ -4465,22 +4465,22 @@ declare module "natives" {
    *
    * @param {number} sceneID undefined
    */
-  export function AttachSynchronizedSceneToEntity(sceneID: number, entity: NativeEntity, boneIndex: number): void;
+  export function attachSynchronizedSceneToEntity(sceneID: number, entity: NativeEntity, boneIndex: number): void;
   /**
    *
    * @param {number} sceneID undefined
    */
-  export function DetachSynchronizedScene(sceneID: number): void;
+  export function detachSynchronizedScene(sceneID: number): void;
   /**
    *
    * @param {number} scene undefined
    */
-  export function DisposeSynchronizedScene(scene: number): void;
+  export function disposeSynchronizedScene(scene: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function ForcePedMotionState(ped: NativePed, motionStateHash: NativeHash, p2: NativeBOOL, p3: NativeBOOL, p4: NativeBOOL): void;
+  export function forcePedMotionState(ped: NativePed, motionStateHash: NativeHash, p2: NativeBOOL, p3: NativeBOOL, p4: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
@@ -4490,17 +4490,17 @@ declare module "natives" {
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedMaxMoveBlendRatio(ped: NativePed, value: number): void;
+  export function setPedMaxMoveBlendRatio(ped: NativePed, value: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedMinMoveBlendRatio(ped: NativePed, value: number): void;
+  export function setPedMinMoveBlendRatio(ped: NativePed, value: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedMoveRateOverride(ped: NativePed, value: number): void;
+  export function setPedMoveRateOverride(ped: NativePed, value: number): void;
   /**
    *
    * @param {NativePed} ped undefined
@@ -4510,12 +4510,12 @@ declare module "natives" {
    *
    * @param {NativePed} ped undefined
    */
-  export function GetPedNearbyVehicles(ped: NativePed, sizeAndVehs: number): void;
+  export function getPedNearbyVehicles(ped: NativePed, sizeAndVehs: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function GetPedNearbyPeds(ped: NativePed, sizeAndPeds: number, ignore: number): void;
+  export function getPedNearbyPeds(ped: NativePed, sizeAndPeds: number, ignore: number): void;
   /**
    *
    * @param {NativePed} ped undefined
@@ -4525,12 +4525,12 @@ declare module "natives" {
    *
    * @param {NativePed} ped undefined
    */
-  export function IsPedUsingActionMode(ped: NativePed): void;
+  export function isPedUsingActionMode(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedUsingActionMode(ped: NativePed, p1: NativeBOOL, p2: NativeAny, action: string): void;
+  export function setPedUsingActionMode(ped: NativePed, p1: NativeBOOL, p2: NativeAny, action: string): void;
   /**
    *
    * @param {NativePed} ped undefined
@@ -4540,12 +4540,12 @@ declare module "natives" {
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedCapsule(ped: NativePed, value: number): void;
+  export function setPedCapsule(ped: NativePed, value: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function RegisterPedheadshot(ped: NativePed): void;
+  export function registerPedheadshot(ped: NativePed): void;
   /**
    *
    * @param {NativeAny} p0 undefined
@@ -4555,22 +4555,22 @@ declare module "natives" {
    *
    * @param {number} handle undefined
    */
-  export function UnregisterPedheadshot(handle: number): void;
+  export function unregisterPedheadshot(handle: number): void;
   /**
    *
    * @param {number} handle undefined
    */
-  export function IsPedheadshotValid(handle: number): void;
+  export function isPedheadshotValid(handle: number): void;
   /**
    *
    * @param {number} handle undefined
    */
-  export function IsPedheadshotReady(handle: number): void;
+  export function isPedheadshotReady(handle: number): void;
   /**
    *
    * @param {number} handle undefined
    */
-  export function GetPedheadshotTxdString(handle: number): void;
+  export function getPedheadshotTxdString(handle: number): void;
   /**
    *
    * @param {NativeAny} p0 undefined
@@ -4647,7 +4647,7 @@ declare module "natives" {
    *
    * @param {NativePed} ped undefined
    */
-  export function SetIkTarget(ped: NativePed, ikIndex: number, entityLookAt: NativeEntity, boneLookAt: number, offsetX: number, offsetY: number, offsetZ: number, p7: NativeAny, blendInDuration: number, blendOutDuration: number): void;
+  export function setIkTarget(ped: NativePed, ikIndex: number, entityLookAt: NativeEntity, boneLookAt: number, offsetX: number, offsetY: number, offsetZ: number, p7: NativeAny, blendInDuration: number, blendOutDuration: number): void;
   /**
    *
    * @param {NativePed} ped undefined
@@ -4657,37 +4657,37 @@ declare module "natives" {
    *
    * @param {string} asset undefined
    */
-  export function RequestActionModeAsset(asset: string): void;
+  export function requestActionModeAsset(asset: string): void;
   /**
    *
    * @param {string} asset undefined
    */
-  export function HasActionModeAssetLoaded(asset: string): void;
+  export function hasActionModeAssetLoaded(asset: string): void;
   /**
    *
    * @param {string} asset undefined
    */
-  export function RemoveActionModeAsset(asset: string): void;
+  export function removeActionModeAsset(asset: string): void;
   /**
    *
    * @param {string} asset undefined
    */
-  export function RequestStealthModeAsset(asset: string): void;
+  export function requestStealthModeAsset(asset: string): void;
   /**
    *
    * @param {string} asset undefined
    */
-  export function HasStealthModeAssetLoaded(asset: string): void;
+  export function hasStealthModeAssetLoaded(asset: string): void;
   /**
    *
    * @param {string} asset undefined
    */
-  export function RemoveStealthModeAsset(asset: string): void;
+  export function removeStealthModeAsset(asset: string): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedLodMultiplier(ped: NativePed, multiplier: number): void;
+  export function setPedLodMultiplier(ped: NativePed, multiplier: number): void;
   /**
    *
    * @param {NativePickup} p0 undefined
@@ -4737,12 +4737,12 @@ declare module "natives" {
    *
    * @param {NativeHash} modelHash undefined
    */
-  export function CreateVehicle(modelHash: NativeHash, x: number, y: number, z: number, heading: number, isNetwork: NativeBOOL, thisScriptCheck: NativeBOOL): void;
+  export function createVehicle(modelHash: NativeHash, x: number, y: number, z: number, heading: number, isNetwork: NativeBOOL, thisScriptCheck: NativeBOOL): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function DeleteVehicle(vehicle: NativeVehicle): void;
+  export function deleteVehicle(vehicle: NativeVehicle): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
@@ -4752,7 +4752,7 @@ declare module "natives" {
    *
    * @param {NativeVehicle} veh undefined
    */
-  export function SetVehicleAllowNoPassengersLockon(veh: NativeVehicle, toggle: NativeBOOL): void;
+  export function setVehicleAllowNoPassengersLockon(veh: NativeVehicle, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
@@ -4762,41 +4762,41 @@ declare module "natives" {
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function IsVehicleModel(vehicle: NativeVehicle, model: NativeHash): void;
+  export function isVehicleModel(vehicle: NativeVehicle, model: NativeHash): void;
   /**
    *
    * @param {number} v undefined
    */
-  export function DoesScriptVehicleGeneratorExist(v: number): void;
+  export function doesScriptVehicleGeneratorExist(v: number): void;
   /**
    *
    * @param {number} x undefined
    */
-  export function CreateScriptVehicleGenerator(x: number, y: number, z: number, heading: number, p4: number, p5: number, modelHash: NativeHash, p7: number, p8: number, p9: number, p10: number, p11: NativeBOOL, p12: NativeBOOL, p13: NativeBOOL, p14: NativeBOOL, p15: NativeBOOL, p16: number): void;
+  export function createScriptVehicleGenerator(x: number, y: number, z: number, heading: number, p4: number, p5: number, modelHash: NativeHash, p7: number, p8: number, p9: number, p10: number, p11: NativeBOOL, p12: NativeBOOL, p13: NativeBOOL, p14: NativeBOOL, p15: NativeBOOL, p16: number): void;
   /**
    *
    * @param {number} vehicleGenerator undefined
    */
-  export function DeleteScriptVehicleGenerator(vehicleGenerator: number): void;
+  export function deleteScriptVehicleGenerator(vehicleGenerator: number): void;
   /**
    *
    * @param {number} vehicleGenerator undefined
    */
-  export function SetScriptVehicleGenerator(vehicleGenerator: number, enabled: NativeBOOL): void;
+  export function setScriptVehicleGenerator(vehicleGenerator: number, enabled: NativeBOOL): void;
   /**
    *
    * @param {number} x1 undefined
    */
-  export function SetAllVehicleGeneratorsActiveInArea(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, p6: NativeBOOL, p7: NativeBOOL): void;
+  export function setAllVehicleGeneratorsActiveInArea(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, p6: NativeBOOL, p7: NativeBOOL): void;
   /**
    *
    */
-  export function SetAllVehicleGeneratorsActive(): void;
+  export function setAllVehicleGeneratorsActive(): void;
   /**
    *
    * @param {NativeBOOL} active undefined
    */
-  export function SetAllLowPriorityVehicleGeneratorsActive(active: NativeBOOL): void;
+  export function setAllLowPriorityVehicleGeneratorsActive(active: NativeBOOL): void;
   /**
    *
    * @param {number} p0 undefined
@@ -4810,47 +4810,47 @@ declare module "natives" {
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function SetVehicleOnGroundProperly(vehicle: NativeVehicle): void;
+  export function setVehicleOnGroundProperly(vehicle: NativeVehicle): void;
   /**
    *
    * @param {NativeVehicle} p0 undefined
    */
-  export function SetAllVehiclesSpawn(p0: NativeVehicle, p1: NativeBOOL, p2: NativeBOOL, p3: NativeBOOL): void;
+  export function setAllVehiclesSpawn(p0: NativeVehicle, p1: NativeBOOL, p2: NativeBOOL, p3: NativeBOOL): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function IsVehicleStuckOnRoof(vehicle: NativeVehicle): void;
+  export function isVehicleStuckOnRoof(vehicle: NativeVehicle): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function AddVehicleUpsidedownCheck(vehicle: NativeVehicle): void;
+  export function addVehicleUpsidedownCheck(vehicle: NativeVehicle): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function RemoveVehicleUpsidedownCheck(vehicle: NativeVehicle): void;
+  export function removeVehicleUpsidedownCheck(vehicle: NativeVehicle): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function IsVehicleStopped(vehicle: NativeVehicle): void;
+  export function isVehicleStopped(vehicle: NativeVehicle): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function GetVehicleNumberOfPassengers(vehicle: NativeVehicle): void;
+  export function getVehicleNumberOfPassengers(vehicle: NativeVehicle): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function GetVehicleMaxNumberOfPassengers(vehicle: NativeVehicle): void;
+  export function getVehicleMaxNumberOfPassengers(vehicle: NativeVehicle): void;
   /**
    *
    * @param {NativeHash} modelHash undefined
    */
-  export function GetVehicleModelNumberOfSeats(modelHash: NativeHash): void;
+  export function getVehicleModelNumberOfSeats(modelHash: NativeHash): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
@@ -4865,67 +4865,67 @@ declare module "natives" {
    *
    * @param {number} multiplier undefined
    */
-  export function SetVehicleDensityMultiplierThisFrame(multiplier: number): void;
+  export function setVehicleDensityMultiplierThisFrame(multiplier: number): void;
   /**
    *
    * @param {number} multiplier undefined
    */
-  export function SetRandomVehicleDensityMultiplierThisFrame(multiplier: number): void;
+  export function setRandomVehicleDensityMultiplierThisFrame(multiplier: number): void;
   /**
    *
    * @param {number} multiplier undefined
    */
-  export function SetParkedVehicleDensityMultiplierThisFrame(multiplier: number): void;
+  export function setParkedVehicleDensityMultiplierThisFrame(multiplier: number): void;
   /**
    *
    * @param {NativeBOOL} toggle undefined
    */
-  export function SetSomethingMultiplierThisFrame(toggle: NativeBOOL): void;
+  export function setSomethingMultiplierThisFrame(toggle: NativeBOOL): void;
   /**
    *
    * @param {number} value undefined
    */
-  export function SetSomeVehicleDensityMultiplierThisFrame(value: number): void;
+  export function setSomeVehicleDensityMultiplierThisFrame(value: number): void;
   /**
    *
    * @param {NativeBOOL} toggle undefined
    */
-  export function SetFarDrawVehicles(toggle: NativeBOOL): void;
+  export function setFarDrawVehicles(toggle: NativeBOOL): void;
   /**
    *
    * @param {number} value undefined
    */
-  export function SetNumberOfParkedVehicles(value: number): void;
+  export function setNumberOfParkedVehicles(value: number): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function SetVehicleDoorsLocked(vehicle: NativeVehicle, doorLockStatus: number): void;
+  export function setVehicleDoorsLocked(vehicle: NativeVehicle, doorLockStatus: number): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function SetPedTargettableVehicleDestroy(vehicle: NativeVehicle, doorIndex: number, destroyType: number): void;
+  export function setPedTargettableVehicleDestroy(vehicle: NativeVehicle, doorIndex: number, destroyType: number): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function DisableVehicleImpactExplosionActivation(vehicle: NativeVehicle, toggle: NativeBOOL): void;
+  export function disableVehicleImpactExplosionActivation(vehicle: NativeVehicle, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function SetVehicleDoorsLockedForPlayer(vehicle: NativeVehicle, player: NativePlayer, toggle: NativeBOOL): void;
+  export function setVehicleDoorsLockedForPlayer(vehicle: NativeVehicle, player: NativePlayer, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function GetVehicleDoorsLockedForPlayer(vehicle: NativeVehicle, player: NativePlayer): void;
+  export function getVehicleDoorsLockedForPlayer(vehicle: NativeVehicle, player: NativePlayer): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function SetVehicleDoorsLockedForAllPlayers(vehicle: NativeVehicle, toggle: NativeBOOL): void;
+  export function setVehicleDoorsLockedForAllPlayers(vehicle: NativeVehicle, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
@@ -4935,22 +4935,22 @@ declare module "natives" {
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function SetVehicleDoorsLockedForTeam(vehicle: NativeVehicle, team: number, toggle: NativeBOOL): void;
+  export function setVehicleDoorsLockedForTeam(vehicle: NativeVehicle, team: number, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function ExplodeVehicle(vehicle: NativeVehicle, isAudible: NativeBOOL, isInvisible: NativeBOOL): void;
+  export function explodeVehicle(vehicle: NativeVehicle, isAudible: NativeBOOL, isInvisible: NativeBOOL): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function SetVehicleOutOfControl(vehicle: NativeVehicle, killDriver: NativeBOOL, explodeOnImpact: NativeBOOL): void;
+  export function setVehicleOutOfControl(vehicle: NativeVehicle, killDriver: NativeBOOL, explodeOnImpact: NativeBOOL): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function SetVehicleTimedExplosion(vehicle: NativeVehicle, ped: NativePed, toggle: NativeBOOL): void;
+  export function setVehicleTimedExplosion(vehicle: NativeVehicle, ped: NativePed, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
@@ -4963,92 +4963,92 @@ declare module "natives" {
   /**
    *
    */
-  export function RequestVehiclePhoneExplosion(): void;
+  export function requestVehiclePhoneExplosion(): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function SetTaxiLights(vehicle: NativeVehicle, state: NativeBOOL): void;
+  export function setTaxiLights(vehicle: NativeVehicle, state: NativeBOOL): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function IsTaxiLightOn(vehicle: NativeVehicle): void;
+  export function isTaxiLightOn(vehicle: NativeVehicle): void;
   /**
    *
    * @param {string} garageName undefined
    */
-  export function IsVehicleInGarageArea(garageName: string, vehicle: NativeVehicle): void;
+  export function isVehicleInGarageArea(garageName: string, vehicle: NativeVehicle): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function SetVehicleColours(vehicle: NativeVehicle, colorPrimary: number, colorSecondary: number): void;
+  export function setVehicleColours(vehicle: NativeVehicle, colorPrimary: number, colorSecondary: number): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function SetVehicleFullbeam(vehicle: NativeVehicle, toggle: NativeBOOL): void;
+  export function setVehicleFullbeam(vehicle: NativeVehicle, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function SteerUnlockBias(vehicle: NativeVehicle, toggle: NativeBOOL): void;
+  export function steerUnlockBias(vehicle: NativeVehicle, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function SetVehicleCustomPrimaryColour(vehicle: NativeVehicle, r: number, g: number, b: number): void;
+  export function setVehicleCustomPrimaryColour(vehicle: NativeVehicle, r: number, g: number, b: number): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function GetVehicleCustomPrimaryColour(vehicle: NativeVehicle, r: number, g: number, b: number): void;
+  export function getVehicleCustomPrimaryColour(vehicle: NativeVehicle, r: number, g: number, b: number): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function ClearVehicleCustomPrimaryColour(vehicle: NativeVehicle): void;
+  export function clearVehicleCustomPrimaryColour(vehicle: NativeVehicle): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function GetIsVehiclePrimaryColourCustom(vehicle: NativeVehicle): void;
+  export function getIsVehiclePrimaryColourCustom(vehicle: NativeVehicle): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function SetVehicleCustomSecondaryColour(vehicle: NativeVehicle, r: number, g: number, b: number): void;
+  export function setVehicleCustomSecondaryColour(vehicle: NativeVehicle, r: number, g: number, b: number): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function GetVehicleCustomSecondaryColour(vehicle: NativeVehicle, r: number, g: number, b: number): void;
+  export function getVehicleCustomSecondaryColour(vehicle: NativeVehicle, r: number, g: number, b: number): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function ClearVehicleCustomSecondaryColour(vehicle: NativeVehicle): void;
+  export function clearVehicleCustomSecondaryColour(vehicle: NativeVehicle): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function GetIsVehicleSecondaryColourCustom(vehicle: NativeVehicle): void;
+  export function getIsVehicleSecondaryColourCustom(vehicle: NativeVehicle): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function SetVehicleEnveffScale(vehicle: NativeVehicle, fade: number): void;
+  export function setVehicleEnveffScale(vehicle: NativeVehicle, fade: number): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function GetVehicleEnveffScale(vehicle: NativeVehicle): void;
+  export function getVehicleEnveffScale(vehicle: NativeVehicle): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function SetCanResprayVehicle(vehicle: NativeVehicle, state: NativeBOOL): void;
+  export function setCanResprayVehicle(vehicle: NativeVehicle, state: NativeBOOL): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
@@ -5058,17 +5058,17 @@ declare module "natives" {
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function JitterVehicle(vehicle: NativeVehicle, p1: NativeBOOL, yaw: number, pitch: number, roll: number): void;
+  export function jitterVehicle(vehicle: NativeVehicle, p1: NativeBOOL, yaw: number, pitch: number, roll: number): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function SetBoatAnchor(vehicle: NativeVehicle, toggle: NativeBOOL): void;
+  export function setBoatAnchor(vehicle: NativeVehicle, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function GetBoatAnchor(vehicle: NativeVehicle): void;
+  export function getBoatAnchor(vehicle: NativeVehicle): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
@@ -5093,77 +5093,77 @@ declare module "natives" {
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function SetVehicleSiren(vehicle: NativeVehicle, toggle: NativeBOOL): void;
+  export function setVehicleSiren(vehicle: NativeVehicle, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function IsVehicleSirenOn(vehicle: NativeVehicle): void;
+  export function isVehicleSirenOn(vehicle: NativeVehicle): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function IsVehicleSirenSoundOn(vehicle: NativeVehicle): void;
+  export function isVehicleSirenSoundOn(vehicle: NativeVehicle): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function SetVehicleStrong(vehicle: NativeVehicle, toggle: NativeBOOL): void;
+  export function setVehicleStrong(vehicle: NativeVehicle, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function RemoveVehicleStuckCheck(vehicle: NativeVehicle): void;
+  export function removeVehicleStuckCheck(vehicle: NativeVehicle): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function GetVehicleColours(vehicle: NativeVehicle, colorPrimary: number, colorSecondary: number): void;
+  export function getVehicleColours(vehicle: NativeVehicle, colorPrimary: number, colorSecondary: number): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function IsVehicleSeatFree(vehicle: NativeVehicle, seatIndex: number): void;
+  export function isVehicleSeatFree(vehicle: NativeVehicle, seatIndex: number): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function GetPedInVehicleSeat(vehicle: NativeVehicle, index: number): void;
+  export function getPedInVehicleSeat(vehicle: NativeVehicle, index: number): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function GetLastPedInVehicleSeat(vehicle: NativeVehicle, seatIndex: number): void;
+  export function getLastPedInVehicleSeat(vehicle: NativeVehicle, seatIndex: number): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function GetVehicleLightsState(vehicle: NativeVehicle, lightsOn: NativeBOOL, highbeamsOn: NativeBOOL): void;
+  export function getVehicleLightsState(vehicle: NativeVehicle, lightsOn: NativeBOOL, highbeamsOn: NativeBOOL): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function IsVehicleTyreBurst(vehicle: NativeVehicle, wheel_rf: NativeVehicle, completely: NativeBOOL): void;
+  export function isVehicleTyreBurst(vehicle: NativeVehicle, wheel_rf: NativeVehicle, completely: NativeBOOL): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function SetVehicleForwardSpeed(vehicle: NativeVehicle, speed: number): void;
+  export function setVehicleForwardSpeed(vehicle: NativeVehicle, speed: number): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function SetVehicleHalt(vehicle: NativeVehicle, distance: number, killEngine: number, unknown: NativeBOOL): void;
+  export function setVehicleHalt(vehicle: NativeVehicle, distance: number, killEngine: number, unknown: NativeBOOL): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function SetVehicleForkliftHeight(vehicle: NativeVehicle, height: number): void;
+  export function setVehicleForkliftHeight(vehicle: NativeVehicle, height: number): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function SetPedEnabledBikeRingtone(vehicle: NativeVehicle, entity: NativeEntity): void;
+  export function setPedEnabledBikeRingtone(vehicle: NativeVehicle, entity: NativeEntity): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
@@ -5173,7 +5173,7 @@ declare module "natives" {
    *
    * @param {NativeVehicle} object undefined
    */
-  export function GetVehicleAttachedToEntity(object: NativeVehicle): void;
+  export function getVehicleAttachedToEntity(object: NativeVehicle): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
@@ -5213,77 +5213,77 @@ declare module "natives" {
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function SetVehicleTyreBurst(vehicle: NativeVehicle, index: number, onRim: NativeBOOL, p3: number): void;
+  export function setVehicleTyreBurst(vehicle: NativeVehicle, index: number, onRim: NativeBOOL, p3: number): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function SetVehicleDoorsShut(vehicle: NativeVehicle, closeInstantly: NativeBOOL): void;
+  export function setVehicleDoorsShut(vehicle: NativeVehicle, closeInstantly: NativeBOOL): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function SetVehicleTyresCanBurst(vehicle: NativeVehicle, toggle: NativeBOOL): void;
+  export function setVehicleTyresCanBurst(vehicle: NativeVehicle, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function GetVehicleTyresCanBurst(vehicle: NativeVehicle): void;
+  export function getVehicleTyresCanBurst(vehicle: NativeVehicle): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function SetVehicleWheelsCanBreak(vehicle: NativeVehicle, enabled: NativeBOOL): void;
+  export function setVehicleWheelsCanBreak(vehicle: NativeVehicle, enabled: NativeBOOL): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function SetVehicleDoorOpen(vehicle: NativeVehicle, doorIndex: number, loose: NativeBOOL, openInstantly: NativeBOOL): void;
+  export function setVehicleDoorOpen(vehicle: NativeVehicle, doorIndex: number, loose: NativeBOOL, openInstantly: NativeBOOL): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function RemoveVehicleWindow(vehicle: NativeVehicle, windowIndex: number): void;
+  export function removeVehicleWindow(vehicle: NativeVehicle, windowIndex: number): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function RollDownWindows(vehicle: NativeVehicle): void;
+  export function rollDownWindows(vehicle: NativeVehicle): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function RollDownWindow(vehicle: NativeVehicle, windowIndex: number): void;
+  export function rollDownWindow(vehicle: NativeVehicle, windowIndex: number): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function RollUpWindow(vehicle: NativeVehicle, windowIndex: number): void;
+  export function rollUpWindow(vehicle: NativeVehicle, windowIndex: number): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function SmashVehicleWindow(vehicle: NativeVehicle, index: number): void;
+  export function smashVehicleWindow(vehicle: NativeVehicle, index: number): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function FixVehicleWindow(vehicle: NativeVehicle, index: number): void;
+  export function fixVehicleWindow(vehicle: NativeVehicle, index: number): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function DetachVehicleWindscreen(vehicle: NativeVehicle): void;
+  export function detachVehicleWindscreen(vehicle: NativeVehicle): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function EjectJb700Roof(vehicle: NativeVehicle, x: number, y: number, z: number): void;
+  export function ejectJb700Roof(vehicle: NativeVehicle, x: number, y: number, z: number): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function SetVehicleLights(vehicle: NativeVehicle, state: number): void;
+  export function setVehicleLights(vehicle: NativeVehicle, state: number): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
@@ -5293,37 +5293,37 @@ declare module "natives" {
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function SetVehicleLightsMode(vehicle: NativeVehicle, p1: number): void;
+  export function setVehicleLightsMode(vehicle: NativeVehicle, p1: number): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function SetVehicleAlarm(vehicle: NativeVehicle, state: NativeBOOL): void;
+  export function setVehicleAlarm(vehicle: NativeVehicle, state: NativeBOOL): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function StartVehicleAlarm(vehicle: NativeVehicle): void;
+  export function startVehicleAlarm(vehicle: NativeVehicle): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function IsVehicleAlarmActivated(vehicle: NativeVehicle): void;
+  export function isVehicleAlarmActivated(vehicle: NativeVehicle): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function SetVehicleInteriorlight(vehicle: NativeVehicle, toggle: NativeBOOL): void;
+  export function setVehicleInteriorlight(vehicle: NativeVehicle, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function SetVehicleLightMultiplier(vehicle: NativeVehicle, multiplier: number): void;
+  export function setVehicleLightMultiplier(vehicle: NativeVehicle, multiplier: number): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function AttachVehicleToTrailer(vehicle: NativeVehicle, trailer: NativeVehicle, radius: number): void;
+  export function attachVehicleToTrailer(vehicle: NativeVehicle, trailer: NativeVehicle, radius: number): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
@@ -5338,12 +5338,12 @@ declare module "natives" {
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function DetachVehicleFromTrailer(vehicle: NativeVehicle): void;
+  export function detachVehicleFromTrailer(vehicle: NativeVehicle): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function IsVehicleAttachedToTrailer(vehicle: NativeVehicle): void;
+  export function isVehicleAttachedToTrailer(vehicle: NativeVehicle): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
@@ -5358,46 +5358,46 @@ declare module "natives" {
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function SetVehicleTyreFixed(vehicle: NativeVehicle, tyreIndex: number): void;
+  export function setVehicleTyreFixed(vehicle: NativeVehicle, tyreIndex: number): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function SetVehicleNumberPlateText(vehicle: NativeVehicle, plateText: string): void;
+  export function setVehicleNumberPlateText(vehicle: NativeVehicle, plateText: string): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function GetVehicleNumberPlateText(vehicle: NativeVehicle): void;
+  export function getVehicleNumberPlateText(vehicle: NativeVehicle): void;
   /**
    *
    */
-  export function GetNumberOfVehicleNumberPlates(): void;
+  export function getNumberOfVehicleNumberPlates(): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function SetVehicleNumberPlateTextIndex(vehicle: NativeVehicle, plateIndex: number): void;
+  export function setVehicleNumberPlateTextIndex(vehicle: NativeVehicle, plateIndex: number): void;
   /**
    *
    * @param {NativeVehicle} elegy undefined
    */
-  export function GetVehicleNumberPlateTextIndex(elegy: NativeVehicle): void;
+  export function getVehicleNumberPlateTextIndex(elegy: NativeVehicle): void;
   /**
    *
    * @param {NativeBOOL} toggle undefined
    */
-  export function SetRandomTrains(toggle: NativeBOOL): void;
+  export function setRandomTrains(toggle: NativeBOOL): void;
   /**
    *
    * @param {number} variation undefined
    */
-  export function CreateMissionTrain(variation: number, x: number, y: number, z: number, direction: NativeBOOL): void;
+  export function createMissionTrain(variation: number, x: number, y: number, z: number, direction: NativeBOOL): void;
   /**
    *
    * @param {number} intersectionId undefined
    */
-  export function SwitchTrainTrack(intersectionId: number, state: NativeBOOL): void;
+  export function switchTrainTrack(intersectionId: number, state: NativeBOOL): void;
   /**
    *
    * @param {NativeAny} p0 undefined
@@ -5406,52 +5406,52 @@ declare module "natives" {
   /**
    *
    */
-  export function DeleteAllTrains(): void;
+  export function deleteAllTrains(): void;
   /**
    *
    * @param {NativeVehicle} train undefined
    */
-  export function SetTrainSpeed(train: NativeVehicle, speed: number): void;
+  export function setTrainSpeed(train: NativeVehicle, speed: number): void;
   /**
    *
    * @param {NativeVehicle} train undefined
    */
-  export function SetTrainCruiseSpeed(train: NativeVehicle, speed: number): void;
+  export function setTrainCruiseSpeed(train: NativeVehicle, speed: number): void;
   /**
    *
    * @param {NativeBOOL} toggle undefined
    */
-  export function SetRandomBoats(toggle: NativeBOOL): void;
+  export function setRandomBoats(toggle: NativeBOOL): void;
   /**
    *
    * @param {NativeBOOL} toggle undefined
    */
-  export function SetGarbageTrucks(toggle: NativeBOOL): void;
+  export function setGarbageTrucks(toggle: NativeBOOL): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function DoesVehicleHaveStuckVehicleCheck(vehicle: NativeVehicle): void;
+  export function doesVehicleHaveStuckVehicleCheck(vehicle: NativeVehicle): void;
   /**
    *
    * @param {number} p0 undefined
    */
-  export function GetVehicleRecordingId(p0: number, p1: string): void;
+  export function getVehicleRecordingId(p0: number, p1: string): void;
   /**
    *
    * @param {number} i undefined
    */
-  export function RequestVehicleRecording(i: number, name: string): void;
+  export function requestVehicleRecording(i: number, name: string): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function HasVehicleRecordingBeenLoaded(p0: NativeAny, p1: NativeAny): void;
+  export function hasVehicleRecordingBeenLoaded(p0: NativeAny, p1: NativeAny): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function RemoveVehicleRecording(p0: NativeAny, p1: NativeAny): void;
+  export function removeVehicleRecording(p0: NativeAny, p1: NativeAny): void;
   /**
    *
    * @param {NativeAny} p0 undefined
@@ -5461,7 +5461,7 @@ declare module "natives" {
    *
    * @param {number} p0 undefined
    */
-  export function GetPositionOfVehicleRecordingAtTime(p0: number, p1: number, p2: string): void;
+  export function getPositionOfVehicleRecordingAtTime(p0: number, p1: number, p2: string): void;
   /**
    *
    * @param {NativeAny} p0 undefined
@@ -5471,37 +5471,37 @@ declare module "natives" {
    *
    * @param {NativeAny} p0 undefined
    */
-  export function GetRotationOfVehicleRecordingAtTime(p0: NativeAny, p1: number, p2: NativeAny): void;
+  export function getRotationOfVehicleRecordingAtTime(p0: NativeAny, p1: number, p2: NativeAny): void;
   /**
    *
    * @param {number} recordingID undefined
    */
-  export function GetTotalDurationOfVehicleRecordingId(recordingID: number): void;
+  export function getTotalDurationOfVehicleRecordingId(recordingID: number): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function GetTotalDurationOfVehicleRecording(p0: NativeAny, p1: NativeAny): void;
+  export function getTotalDurationOfVehicleRecording(p0: NativeAny, p1: NativeAny): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function GetPositionInRecording(p0: NativeAny): void;
+  export function getPositionInRecording(p0: NativeAny): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function GetTimePositionInRecording(p0: NativeAny): void;
+  export function getTimePositionInRecording(p0: NativeAny): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function StartPlaybackRecordedVehicle(vehicle: NativeVehicle, p1: number, playback: string, p3: NativeBOOL): void;
+  export function startPlaybackRecordedVehicle(vehicle: NativeVehicle, p1: number, playback: string, p3: NativeBOOL): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function StartPlaybackRecordedVehicleWithFlags(vehicle: NativeVehicle, p1: NativeAny, playback: string, p3: NativeAny, p4: NativeAny, p5: NativeAny): void;
+  export function startPlaybackRecordedVehicleWithFlags(vehicle: NativeVehicle, p1: NativeAny, playback: string, p3: NativeAny, p4: NativeAny, p5: NativeAny): void;
   /**
    *
    * @param {NativeAny} p0 undefined
@@ -5511,62 +5511,62 @@ declare module "natives" {
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function StopPlaybackRecordedVehicle(vehicle: NativeVehicle): void;
+  export function stopPlaybackRecordedVehicle(vehicle: NativeVehicle): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function PausePlaybackRecordedVehicle(p0: NativeAny): void;
+  export function pausePlaybackRecordedVehicle(p0: NativeAny): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function UnpausePlaybackRecordedVehicle(p0: NativeAny): void;
+  export function unpausePlaybackRecordedVehicle(p0: NativeAny): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function IsPlaybackGoingOnForVehicle(vehicle: NativeVehicle): void;
+  export function isPlaybackGoingOnForVehicle(vehicle: NativeVehicle): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function IsPlaybackUsingAiGoingOnForVehicle(p0: NativeAny): void;
+  export function isPlaybackUsingAiGoingOnForVehicle(p0: NativeAny): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function GetCurrentPlaybackForVehicle(vehicle: NativeVehicle): void;
+  export function getCurrentPlaybackForVehicle(vehicle: NativeVehicle): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function SkipToEndAndStopPlaybackRecordedVehicle(p0: NativeAny): void;
+  export function skipToEndAndStopPlaybackRecordedVehicle(p0: NativeAny): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function SetPlaybackSpeed(vehicle: NativeVehicle, speed: number): void;
+  export function setPlaybackSpeed(vehicle: NativeVehicle, speed: number): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function StartPlaybackRecordedVehicleUsingAi(p0: NativeAny, p1: NativeAny, p2: NativeAny, p3: number, p4: NativeAny): void;
+  export function startPlaybackRecordedVehicleUsingAi(p0: NativeAny, p1: NativeAny, p2: NativeAny, p3: number, p4: NativeAny): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function SkipTimeInPlaybackRecordedVehicle(p0: NativeAny, p1: number): void;
+  export function skipTimeInPlaybackRecordedVehicle(p0: NativeAny, p1: number): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function SetPlaybackToUseAi(vehicle: NativeVehicle, flag: number): void;
+  export function setPlaybackToUseAi(vehicle: NativeVehicle, flag: number): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function SetPlaybackToUseAiTryToRevertBackLater(p0: NativeAny, p1: NativeAny, p2: NativeAny, p3: NativeBOOL): void;
+  export function setPlaybackToUseAiTryToRevertBackLater(p0: NativeAny, p1: NativeAny, p2: NativeAny, p3: NativeBOOL): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
@@ -5591,112 +5591,112 @@ declare module "natives" {
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function ExplodeVehicleInCutscene(vehicle: NativeVehicle, p1: NativeBOOL): void;
+  export function explodeVehicleInCutscene(vehicle: NativeVehicle, p1: NativeBOOL): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function AddVehicleStuckCheckWithWarp(p0: NativeAny, p1: number, p2: NativeAny, p3: NativeBOOL, p4: NativeBOOL, p5: NativeBOOL, p6: NativeAny): void;
+  export function addVehicleStuckCheckWithWarp(p0: NativeAny, p1: number, p2: NativeAny, p3: NativeBOOL, p4: NativeBOOL, p5: NativeBOOL, p6: NativeAny): void;
   /**
    *
    * @param {NativeHash} model undefined
    */
-  export function SetVehicleModelIsSuppressed(model: NativeHash, suppressed: NativeBOOL): void;
+  export function setVehicleModelIsSuppressed(model: NativeHash, suppressed: NativeBOOL): void;
   /**
    *
    * @param {number} x undefined
    */
-  export function GetRandomVehicleInSphere(x: number, y: number, z: number, radius: number, modelHash: NativeHash, flags: number): void;
+  export function getRandomVehicleInSphere(x: number, y: number, z: number, radius: number, modelHash: NativeHash, flags: number): void;
   /**
    *
    * @param {number} p0 undefined
    */
-  export function GetRandomVehicleFrontBumperInSphere(p0: number, p1: number, p2: number, p3: number, p4: number, p5: number, p6: number): void;
+  export function getRandomVehicleFrontBumperInSphere(p0: number, p1: number, p2: number, p3: number, p4: number, p5: number, p6: number): void;
   /**
    *
    * @param {number} p0 undefined
    */
-  export function GetRandomVehicleBackBumperInSphere(p0: number, p1: number, p2: number, p3: number, p4: number, p5: number, p6: number): void;
+  export function getRandomVehicleBackBumperInSphere(p0: number, p1: number, p2: number, p3: number, p4: number, p5: number, p6: number): void;
   /**
    *
    * @param {number} x undefined
    */
-  export function GetClosestVehicle(x: number, y: number, z: number, radius: number, modelHash: NativeHash, flags: number): void;
+  export function getClosestVehicle(x: number, y: number, z: number, radius: number, modelHash: NativeHash, flags: number): void;
   /**
    *
    * @param {NativeVehicle} train undefined
    */
-  export function GetTrainCarriage(train: NativeVehicle, trailerNumber: number): void;
+  export function getTrainCarriage(train: NativeVehicle, trailerNumber: number): void;
   /**
    *
    * @param {NativeVehicle} train undefined
    */
-  export function DeleteMissionTrain(train: NativeVehicle): void;
+  export function deleteMissionTrain(train: NativeVehicle): void;
   /**
    *
    * @param {NativeVehicle} train undefined
    */
-  export function SetMissionTrainAsNoLongerNeeded(train: NativeVehicle, p1: NativeBOOL): void;
+  export function setMissionTrainAsNoLongerNeeded(train: NativeVehicle, p1: NativeBOOL): void;
   /**
    *
    * @param {NativeVehicle} train undefined
    */
-  export function SetMissionTrainCoords(train: NativeVehicle, x: number, y: number, z: number): void;
+  export function setMissionTrainCoords(train: NativeVehicle, x: number, y: number, z: number): void;
   /**
    *
    * @param {NativeHash} model undefined
    */
-  export function IsThisModelABoat(model: NativeHash): void;
+  export function isThisModelABoat(model: NativeHash): void;
   /**
    *
    * @param {NativeHash} model undefined
    */
-  export function IsThisModelAJetski(model: NativeHash): void;
+  export function isThisModelAJetski(model: NativeHash): void;
   /**
    *
    * @param {NativeHash} model undefined
    */
-  export function IsThisModelAPlane(model: NativeHash): void;
+  export function isThisModelAPlane(model: NativeHash): void;
   /**
    *
    * @param {NativeHash} model undefined
    */
-  export function IsThisModelAHeli(model: NativeHash): void;
+  export function isThisModelAHeli(model: NativeHash): void;
   /**
    *
    * @param {NativeHash} model undefined
    */
-  export function IsThisModelACar(model: NativeHash): void;
+  export function isThisModelACar(model: NativeHash): void;
   /**
    *
    * @param {NativeHash} model undefined
    */
-  export function IsThisModelATrain(model: NativeHash): void;
+  export function isThisModelATrain(model: NativeHash): void;
   /**
    *
    * @param {NativeHash} model undefined
    */
-  export function IsThisModelABike(model: NativeHash): void;
+  export function isThisModelABike(model: NativeHash): void;
   /**
    *
    * @param {NativeHash} model undefined
    */
-  export function IsThisModelABicycle(model: NativeHash): void;
+  export function isThisModelABicycle(model: NativeHash): void;
   /**
    *
    * @param {NativeHash} model undefined
    */
-  export function IsThisModelAQuadbike(model: NativeHash): void;
+  export function isThisModelAQuadbike(model: NativeHash): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function SetHeliBladesFullSpeed(vehicle: NativeVehicle): void;
+  export function setHeliBladesFullSpeed(vehicle: NativeVehicle): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function SetHeliBladesSpeed(vehicle: NativeVehicle, speed: number): void;
+  export function setHeliBladesSpeed(vehicle: NativeVehicle, speed: number): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
@@ -5706,7 +5706,7 @@ declare module "natives" {
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function SetVehicleCanBeTargetted(vehicle: NativeVehicle, state: NativeBOOL): void;
+  export function setVehicleCanBeTargetted(vehicle: NativeVehicle, state: NativeBOOL): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
@@ -5716,7 +5716,7 @@ declare module "natives" {
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function SetVehicleCanBeVisiblyDamaged(vehicle: NativeVehicle, state: NativeBOOL): void;
+  export function setVehicleCanBeVisiblyDamaged(vehicle: NativeVehicle, state: NativeBOOL): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
@@ -5731,102 +5731,102 @@ declare module "natives" {
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function GetVehicleDirtLevel(vehicle: NativeVehicle): void;
+  export function getVehicleDirtLevel(vehicle: NativeVehicle): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function SetVehicleDirtLevel(vehicle: NativeVehicle, dirtLevel: number): void;
+  export function setVehicleDirtLevel(vehicle: NativeVehicle, dirtLevel: number): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function IsVehicleDamaged(vehicle: NativeVehicle): void;
+  export function isVehicleDamaged(vehicle: NativeVehicle): void;
   /**
    *
    * @param {NativeVehicle} v undefined
    */
-  export function IsVehicleDoorFullyOpen(v: NativeVehicle, rwing: number): void;
+  export function isVehicleDoorFullyOpen(v: NativeVehicle, rwing: number): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function SetVehicleEngineOn(vehicle: NativeVehicle, value: NativeBOOL, instantly: NativeBOOL, otherwise: NativeBOOL): void;
+  export function setVehicleEngineOn(vehicle: NativeVehicle, value: NativeBOOL, instantly: NativeBOOL, otherwise: NativeBOOL): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function SetVehicleUndriveable(vehicle: NativeVehicle, toggle: NativeBOOL): void;
+  export function setVehicleUndriveable(vehicle: NativeVehicle, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function SetVehicleProvidesCover(vehicle: NativeVehicle, toggle: NativeBOOL): void;
+  export function setVehicleProvidesCover(vehicle: NativeVehicle, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function SetVehicleDoorControl(vehicle: NativeVehicle, doorIndex: number, speed: number, angle: number): void;
+  export function setVehicleDoorControl(vehicle: NativeVehicle, doorIndex: number, speed: number, angle: number): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function SetVehicleDoorLatched(vehicle: NativeVehicle, doorIndex: number, forceClose: NativeBOOL, lock: NativeBOOL, p4: NativeBOOL): void;
+  export function setVehicleDoorLatched(vehicle: NativeVehicle, doorIndex: number, forceClose: NativeBOOL, lock: NativeBOOL, p4: NativeBOOL): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function GetVehicleDoorAngleRatio(vehicle: NativeVehicle, door: number): void;
+  export function getVehicleDoorAngleRatio(vehicle: NativeVehicle, door: number): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function GetPedUsingVehicleDoor(vehicle: NativeVehicle, doorIndex: number): void;
+  export function getPedUsingVehicleDoor(vehicle: NativeVehicle, doorIndex: number): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function SetVehicleDoorShut(vehicle: NativeVehicle, doorIndex: number, closeInstantly: NativeBOOL): void;
+  export function setVehicleDoorShut(vehicle: NativeVehicle, doorIndex: number, closeInstantly: NativeBOOL): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function SetVehicleDoorBroken(vehicle: NativeVehicle, doorIndex: number, deleteDoor: NativeBOOL): void;
+  export function setVehicleDoorBroken(vehicle: NativeVehicle, doorIndex: number, deleteDoor: NativeBOOL): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function SetVehicleCanBreak(vehicle: NativeVehicle, toggle: NativeBOOL): void;
+  export function setVehicleCanBreak(vehicle: NativeVehicle, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function DoesVehicleHaveRoof(vehicle: NativeVehicle): void;
+  export function doesVehicleHaveRoof(vehicle: NativeVehicle): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function IsBigVehicle(vehicle: NativeVehicle): void;
+  export function isBigVehicle(vehicle: NativeVehicle): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function GetNumberOfVehicleColours(vehicle: NativeVehicle): void;
+  export function getNumberOfVehicleColours(vehicle: NativeVehicle): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function SetVehicleColourCombination(vehicle: NativeVehicle, colorCombination: number): void;
+  export function setVehicleColourCombination(vehicle: NativeVehicle, colorCombination: number): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function GetVehicleColourCombination(vehicle: NativeVehicle): void;
+  export function getVehicleColourCombination(vehicle: NativeVehicle): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function SetVehicleIsConsideredByPlayer(vehicle: NativeVehicle, toggle: NativeBOOL): void;
+  export function setVehicleIsConsideredByPlayer(vehicle: NativeVehicle, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
@@ -5851,22 +5851,22 @@ declare module "natives" {
    *
    * @param {NativeBOOL} p0 undefined
    */
-  export function GetRandomVehicleModelInMemory(p0: NativeBOOL, modelHash: NativeHash, p2: number): void;
+  export function getRandomVehicleModelInMemory(p0: NativeBOOL, modelHash: NativeHash, p2: number): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function GetVehicleDoorLockStatus(vehicle: NativeVehicle): void;
+  export function getVehicleDoorLockStatus(vehicle: NativeVehicle): void;
   /**
    *
    * @param {NativeVehicle} veh undefined
    */
-  export function IsVehicleDoorDamaged(veh: NativeVehicle, doorID: number): void;
+  export function isVehicleDoorDamaged(veh: NativeVehicle, doorID: number): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function SetVehicleDoorCanBreak(vehicle: NativeVehicle, doorIndex: number, isBreakable: NativeBOOL): void;
+  export function setVehicleDoorCanBreak(vehicle: NativeVehicle, doorIndex: number, isBreakable: NativeBOOL): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
@@ -5876,22 +5876,22 @@ declare module "natives" {
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function IsVehicleBumperBrokenOff(vehicle: NativeVehicle, front: NativeBOOL): void;
+  export function isVehicleBumperBrokenOff(vehicle: NativeVehicle, front: NativeBOOL): void;
   /**
    *
    * @param {number} x1 undefined
    */
-  export function IsCopVehicleInArea3d(x1: number, x2: number, y1: number, y2: number, z1: number, z2: number): void;
+  export function isCopVehicleInArea3d(x1: number, x2: number, y1: number, y2: number, z1: number, z2: number): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function IsVehicleOnAllWheels(vehicle: NativeVehicle): void;
+  export function isVehicleOnAllWheels(vehicle: NativeVehicle): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function GetVehicleLayoutHash(vehicle: NativeVehicle): void;
+  export function getVehicleLayoutHash(vehicle: NativeVehicle): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
@@ -5901,31 +5901,31 @@ declare module "natives" {
    *
    * @param {NativeVehicle} train undefined
    */
-  export function SetRenderTrainAsDerailed(train: NativeVehicle, toggle: NativeBOOL): void;
+  export function setRenderTrainAsDerailed(train: NativeVehicle, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function SetVehicleExtraColours(vehicle: NativeVehicle, pearlescentColor: number, wheelColor: number): void;
+  export function setVehicleExtraColours(vehicle: NativeVehicle, pearlescentColor: number, wheelColor: number): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function GetVehicleExtraColours(vehicle: NativeVehicle, pearlescentColor: number, wheelColor: number): void;
+  export function getVehicleExtraColours(vehicle: NativeVehicle, pearlescentColor: number, wheelColor: number): void;
   /**
    *
    */
-  export function StopAllGarageActivity(): void;
+  export function stopAllGarageActivity(): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function SetVehicleFixed(vehicle: NativeVehicle): void;
+  export function setVehicleFixed(vehicle: NativeVehicle): void;
   /**
    *
    * @param {NativeAny} vehicle undefined
    */
-  export function SetVehicleDeformationFixed(vehicle: NativeAny): void;
+  export function setVehicleDeformationFixed(vehicle: NativeAny): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
@@ -5945,12 +5945,12 @@ declare module "natives" {
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function SetDisableVehiclePetrolTankFires(vehicle: NativeVehicle, toggle: NativeBOOL): void;
+  export function setDisableVehiclePetrolTankFires(vehicle: NativeVehicle, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function SetDisableVehiclePetrolTankDamage(vehicle: NativeVehicle, toggle: NativeBOOL): void;
+  export function setDisableVehiclePetrolTankDamage(vehicle: NativeVehicle, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
@@ -5975,107 +5975,107 @@ declare module "natives" {
    *
    * @param {number} x1 undefined
    */
-  export function RemoveVehiclesFromGeneratorsInArea(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, unk: NativeAny): void;
+  export function removeVehiclesFromGeneratorsInArea(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, unk: NativeAny): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function SetVehicleSteerBias(vehicle: NativeVehicle, value: number): void;
+  export function setVehicleSteerBias(vehicle: NativeVehicle, value: number): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function IsVehicleExtraTurnedOn(vehicle: NativeVehicle, extraId: number): void;
+  export function isVehicleExtraTurnedOn(vehicle: NativeVehicle, extraId: number): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function SetVehicleExtra(vehicle: NativeVehicle, extraId: number, disable: NativeBOOL): void;
+  export function setVehicleExtra(vehicle: NativeVehicle, extraId: number, disable: NativeBOOL): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function DoesExtraExist(vehicle: NativeVehicle, extraId: number): void;
+  export function doesExtraExist(vehicle: NativeVehicle, extraId: number): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function SetConvertibleRoof(vehicle: NativeVehicle, p1: NativeBOOL): void;
+  export function setConvertibleRoof(vehicle: NativeVehicle, p1: NativeBOOL): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function LowerConvertibleRoof(vehicle: NativeVehicle, instantlyLower: NativeBOOL): void;
+  export function lowerConvertibleRoof(vehicle: NativeVehicle, instantlyLower: NativeBOOL): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function RaiseConvertibleRoof(vehicle: NativeVehicle, instantlyRaise: NativeBOOL): void;
+  export function raiseConvertibleRoof(vehicle: NativeVehicle, instantlyRaise: NativeBOOL): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function GetConvertibleRoofState(vehicle: NativeVehicle): void;
+  export function getConvertibleRoofState(vehicle: NativeVehicle): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function IsVehicleAConvertible(vehicle: NativeVehicle, p1: NativeBOOL): void;
+  export function isVehicleAConvertible(vehicle: NativeVehicle, p1: NativeBOOL): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function IsVehicleStoppedAtTrafficLights(vehicle: NativeVehicle): void;
+  export function isVehicleStoppedAtTrafficLights(vehicle: NativeVehicle): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function SetVehicleDamage(vehicle: NativeVehicle, xOffset: number, yOffset: number, zOffset: number, damage: number, radius: number, p6: NativeBOOL): void;
+  export function setVehicleDamage(vehicle: NativeVehicle, xOffset: number, yOffset: number, zOffset: number, damage: number, radius: number, p6: NativeBOOL): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function GetVehicleEngineHealth(vehicle: NativeVehicle): void;
+  export function getVehicleEngineHealth(vehicle: NativeVehicle): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function SetVehicleEngineHealth(vehicle: NativeVehicle, health: number): void;
+  export function setVehicleEngineHealth(vehicle: NativeVehicle, health: number): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function GetVehiclePetrolTankHealth(vehicle: NativeVehicle): void;
+  export function getVehiclePetrolTankHealth(vehicle: NativeVehicle): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function SetVehiclePetrolTankHealth(vehicle: NativeVehicle, health: number): void;
+  export function setVehiclePetrolTankHealth(vehicle: NativeVehicle, health: number): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function IsVehicleStuckTimerUp(vehicle: NativeVehicle, p1: number, p2: number): void;
+  export function isVehicleStuckTimerUp(vehicle: NativeVehicle, p1: number, p2: number): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function ResetVehicleStuckTimer(vehicle: NativeVehicle, nullAttributes: number): void;
+  export function resetVehicleStuckTimer(vehicle: NativeVehicle, nullAttributes: number): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function IsVehicleDriveable(vehicle: NativeVehicle, isOnFireCheck: NativeBOOL): void;
+  export function isVehicleDriveable(vehicle: NativeVehicle, isOnFireCheck: NativeBOOL): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function SetVehicleHasBeenOwnedByPlayer(vehicle: NativeVehicle, owned: NativeBOOL): void;
+  export function setVehicleHasBeenOwnedByPlayer(vehicle: NativeVehicle, owned: NativeBOOL): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function SetVehicleNeedsToBeHotwired(vehicle: NativeVehicle, toggle: NativeBOOL): void;
+  export function setVehicleNeedsToBeHotwired(vehicle: NativeVehicle, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
@@ -6090,97 +6090,97 @@ declare module "natives" {
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function StartVehicleHorn(vehicle: NativeVehicle, duration: number, mode: NativeHash, forever: NativeBOOL): void;
+  export function startVehicleHorn(vehicle: NativeVehicle, duration: number, mode: NativeHash, forever: NativeBOOL): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function SetVehicleSilent(vehicle: NativeVehicle, toggle: NativeBOOL): void;
+  export function setVehicleSilent(vehicle: NativeVehicle, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function SetVehicleHasStrongAxles(vehicle: NativeVehicle, toggle: NativeBOOL): void;
+  export function setVehicleHasStrongAxles(vehicle: NativeVehicle, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativeHash} modelHash undefined
    */
-  export function GetDisplayNameFromVehicleModel(modelHash: NativeHash): void;
+  export function getDisplayNameFromVehicleModel(modelHash: NativeHash): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function GetVehicleDeformationAtPos(vehicle: NativeVehicle, offsetX: number, offsetY: number, offsetZ: number): void;
+  export function getVehicleDeformationAtPos(vehicle: NativeVehicle, offsetX: number, offsetY: number, offsetZ: number): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function SetVehicleLivery(vehicle: NativeVehicle, liveryIndex: number): void;
+  export function setVehicleLivery(vehicle: NativeVehicle, liveryIndex: number): void;
   /**
    *
    * @param {NativeVehicle} trailers2 undefined
    */
-  export function GetVehicleLivery(trailers2: NativeVehicle): void;
+  export function getVehicleLivery(trailers2: NativeVehicle): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function GetVehicleLiveryCount(vehicle: NativeVehicle): void;
+  export function getVehicleLiveryCount(vehicle: NativeVehicle): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function IsVehicleWindowIntact(vehicle: NativeVehicle, windowIndex: number): void;
+  export function isVehicleWindowIntact(vehicle: NativeVehicle, windowIndex: number): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function AreAllVehicleWindowsIntact(vehicle: NativeVehicle): void;
+  export function areAllVehicleWindowsIntact(vehicle: NativeVehicle): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function AreAnyVehicleSeatsFree(vehicle: NativeVehicle): void;
+  export function areAnyVehicleSeatsFree(vehicle: NativeVehicle): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function ResetVehicleWheels(vehicle: NativeVehicle, toggle: NativeBOOL): void;
+  export function resetVehicleWheels(vehicle: NativeVehicle, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function IsHeliPartBroken(vehicle: NativeVehicle, p1: NativeBOOL, p2: NativeBOOL, p3: NativeBOOL): void;
+  export function isHeliPartBroken(vehicle: NativeVehicle, p1: NativeBOOL, p2: NativeBOOL, p3: NativeBOOL): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function GetHeliMainRotorHealth(vehicle: NativeVehicle): void;
+  export function getHeliMainRotorHealth(vehicle: NativeVehicle): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function GetHeliTailRotorHealth(vehicle: NativeVehicle): void;
+  export function getHeliTailRotorHealth(vehicle: NativeVehicle): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function GetHeliEngineHealth(vehicle: NativeVehicle): void;
+  export function getHeliEngineHealth(vehicle: NativeVehicle): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function WasCounterActivated(vehicle: NativeVehicle, p1: NativeAny): void;
+  export function wasCounterActivated(vehicle: NativeVehicle, p1: NativeAny): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function SetVehicleNameDebug(vehicle: NativeVehicle, name: string): void;
+  export function setVehicleNameDebug(vehicle: NativeVehicle, name: string): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function SetVehicleExplodesOnHighExplosionDamage(vehicle: NativeVehicle, toggle: NativeBOOL): void;
+  export function setVehicleExplodesOnHighExplosionDamage(vehicle: NativeVehicle, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
@@ -6195,82 +6195,82 @@ declare module "natives" {
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function ControlLandingGear(vehicle: NativeVehicle, state: number): void;
+  export function controlLandingGear(vehicle: NativeVehicle, state: number): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function GetLandingGearState(vehicle: NativeVehicle): void;
+  export function getLandingGearState(vehicle: NativeVehicle): void;
   /**
    *
    * @param {number} x undefined
    */
-  export function IsAnyVehicleNearPoint(x: number, y: number, z: number, radius: number): void;
+  export function isAnyVehicleNearPoint(x: number, y: number, z: number, radius: number): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function RequestVehicleHighDetailModel(vehicle: NativeVehicle): void;
+  export function requestVehicleHighDetailModel(vehicle: NativeVehicle): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function RemoveVehicleHighDetailModel(vehicle: NativeVehicle): void;
+  export function removeVehicleHighDetailModel(vehicle: NativeVehicle): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function IsVehicleHighDetail(vehicle: NativeVehicle): void;
+  export function isVehicleHighDetail(vehicle: NativeVehicle): void;
   /**
    *
    * @param {NativeHash} vehicleHash undefined
    */
-  export function RequestVehicleAsset(vehicleHash: NativeHash, vehicleAsset: number): void;
+  export function requestVehicleAsset(vehicleHash: NativeHash, vehicleAsset: number): void;
   /**
    *
    * @param {number} vehicleAsset undefined
    */
-  export function HasVehicleAssetLoaded(vehicleAsset: number): void;
+  export function hasVehicleAssetLoaded(vehicleAsset: number): void;
   /**
    *
    * @param {number} vehicleAsset undefined
    */
-  export function RemoveVehicleAsset(vehicleAsset: number): void;
+  export function removeVehicleAsset(vehicleAsset: number): void;
   /**
    *
    * @param {NativeVehicle} towTruck undefined
    */
-  export function SetTowTruckCraneHeight(towTruck: NativeVehicle, height: number): void;
+  export function setTowTruckCraneHeight(towTruck: NativeVehicle, height: number): void;
   /**
    *
    * @param {NativeVehicle} towTruck undefined
    */
-  export function AttachVehicleToTowTruck(towTruck: NativeVehicle, vehicle: NativeVehicle, rear: NativeBOOL, hookOffsetX: number, hookOffsetY: number, hookOffsetZ: number): void;
+  export function attachVehicleToTowTruck(towTruck: NativeVehicle, vehicle: NativeVehicle, rear: NativeBOOL, hookOffsetX: number, hookOffsetY: number, hookOffsetZ: number): void;
   /**
    *
    * @param {NativeVehicle} towTruck undefined
    */
-  export function DetachVehicleFromTowTruck(towTruck: NativeVehicle, vehicle: NativeVehicle): void;
+  export function detachVehicleFromTowTruck(towTruck: NativeVehicle, vehicle: NativeVehicle): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function DetachVehicleFromAnyTowTruck(vehicle: NativeVehicle): void;
+  export function detachVehicleFromAnyTowTruck(vehicle: NativeVehicle): void;
   /**
    *
    * @param {NativeVehicle} towTruck undefined
    */
-  export function IsVehicleAttachedToTowTruck(towTruck: NativeVehicle, vehicle: NativeVehicle): void;
+  export function isVehicleAttachedToTowTruck(towTruck: NativeVehicle, vehicle: NativeVehicle): void;
   /**
    *
    * @param {NativeVehicle} towTruck undefined
    */
-  export function GetEntityAttachedToTowTruck(towTruck: NativeVehicle): void;
+  export function getEntityAttachedToTowTruck(towTruck: NativeVehicle): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function SetVehicleAutomaticallyAttaches(vehicle: NativeVehicle, p1: NativeBOOL, p2: NativeAny): void;
+  export function setVehicleAutomaticallyAttaches(vehicle: NativeVehicle, p1: NativeBOOL, p2: NativeAny): void;
   /**
    *
    * @param {NativeAny} p0 undefined
@@ -6290,12 +6290,12 @@ declare module "natives" {
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function SetDesiredVerticalFlightPhase(vehicle: NativeVehicle, angleRatio: number): void;
+  export function setDesiredVerticalFlightPhase(vehicle: NativeVehicle, angleRatio: number): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function SetVerticalFlightPhase(vehicle: NativeVehicle, angle: number): void;
+  export function setVerticalFlightPhase(vehicle: NativeVehicle, angle: number): void;
   /**
    *
    * @param {NativeVector3} outVec undefined
@@ -6305,32 +6305,32 @@ declare module "natives" {
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function SetVehicleBurnout(vehicle: NativeVehicle, toggle: NativeBOOL): void;
+  export function setVehicleBurnout(vehicle: NativeVehicle, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function IsVehicleInBurnout(vehicle: NativeVehicle): void;
+  export function isVehicleInBurnout(vehicle: NativeVehicle): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function SetVehicleReduceGrip(vehicle: NativeVehicle, toggle: NativeBOOL): void;
+  export function setVehicleReduceGrip(vehicle: NativeVehicle, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function SetVehicleIndicatorLights(vehicle: NativeVehicle, turnSignal: number, toggle: NativeBOOL): void;
+  export function setVehicleIndicatorLights(vehicle: NativeVehicle, turnSignal: number, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function SetVehicleBrakeLights(vehicle: NativeVehicle, p1: NativeBOOL): void;
+  export function setVehicleBrakeLights(vehicle: NativeVehicle, p1: NativeBOOL): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function SetVehicleHandbrake(vehicle: NativeVehicle, toggle: NativeBOOL): void;
+  export function setVehicleHandbrake(vehicle: NativeVehicle, toggle: NativeBOOL): void;
   /**
    *
    */
@@ -6348,7 +6348,7 @@ declare module "natives" {
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function GetVehicleTrailerVehicle(vehicle: NativeVehicle, trailer: NativeVehicle): void;
+  export function getVehicleTrailerVehicle(vehicle: NativeVehicle, trailer: NativeVehicle): void;
   /**
    *
    * @param {string} vehicle undefined
@@ -6358,7 +6358,7 @@ declare module "natives" {
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function SetVehicleRudderBroken(vehicle: NativeVehicle, p1: NativeBOOL): void;
+  export function setVehicleRudderBroken(vehicle: NativeVehicle, p1: NativeBOOL): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
@@ -6368,117 +6368,117 @@ declare module "natives" {
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function GetVehicleMaxSpeed(vehicle: NativeVehicle): void;
+  export function getVehicleMaxSpeed(vehicle: NativeVehicle): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function GetVehicleMaxBraking(vehicle: NativeVehicle): void;
+  export function getVehicleMaxBraking(vehicle: NativeVehicle): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function GetVehicleMaxTraction(vehicle: NativeVehicle): void;
+  export function getVehicleMaxTraction(vehicle: NativeVehicle): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function GetVehicleAcceleration(vehicle: NativeVehicle): void;
+  export function getVehicleAcceleration(vehicle: NativeVehicle): void;
   /**
    *
    * @param {NativeHash} modelHash undefined
    */
-  export function GetVehicleModelMaxSpeed(modelHash: NativeHash): void;
+  export function getVehicleModelMaxSpeed(modelHash: NativeHash): void;
   /**
    *
    * @param {NativeHash} modelHash undefined
    */
-  export function GetVehicleModelMaxBraking(modelHash: NativeHash): void;
+  export function getVehicleModelMaxBraking(modelHash: NativeHash): void;
   /**
    *
    * @param {NativeHash} modelHash undefined
    */
-  export function GetVehicleModelHandBrake(modelHash: NativeHash): void;
+  export function getVehicleModelHandBrake(modelHash: NativeHash): void;
   /**
    *
    * @param {NativeHash} modelHash undefined
    */
-  export function GetVehicleModelMaxTraction(modelHash: NativeHash): void;
+  export function getVehicleModelMaxTraction(modelHash: NativeHash): void;
   /**
    *
    * @param {NativeHash} modelHash undefined
    */
-  export function GetVehicleModelAcceleration(modelHash: NativeHash): void;
+  export function getVehicleModelAcceleration(modelHash: NativeHash): void;
   /**
    *
    * @param {NativeHash} modelHash undefined
    */
-  export function GetVehicleModelDownForce(modelHash: NativeHash): void;
+  export function getVehicleModelDownForce(modelHash: NativeHash): void;
   /**
    *
    * @param {NativeHash} modelHash undefined
    */
-  export function GetVehicleModelMaxKnots(modelHash: NativeHash): void;
+  export function getVehicleModelMaxKnots(modelHash: NativeHash): void;
   /**
    *
    * @param {NativeHash} modelHash undefined
    */
-  export function GetVehicleModelMoveResistance(modelHash: NativeHash): void;
+  export function getVehicleModelMoveResistance(modelHash: NativeHash): void;
   /**
    *
    * @param {number} vehicleClass undefined
    */
-  export function GetVehicleClassMaxSpeed(vehicleClass: number): void;
+  export function getVehicleClassMaxSpeed(vehicleClass: number): void;
   /**
    *
    * @param {number} vehicleClass undefined
    */
-  export function GetVehicleClassMaxTraction(vehicleClass: number): void;
+  export function getVehicleClassMaxTraction(vehicleClass: number): void;
   /**
    *
    * @param {number} vehicleClass undefined
    */
-  export function GetVehicleClassMaxAgility(vehicleClass: number): void;
+  export function getVehicleClassMaxAgility(vehicleClass: number): void;
   /**
    *
    * @param {number} vehicleClass undefined
    */
-  export function GetVehicleClassMaxAcceleration(vehicleClass: number): void;
+  export function getVehicleClassMaxAcceleration(vehicleClass: number): void;
   /**
    *
    * @param {number} vehicleClass undefined
    */
-  export function GetVehicleClassMaxBraking(vehicleClass: number): void;
+  export function getVehicleClassMaxBraking(vehicleClass: number): void;
   /**
    *
    * @param {number} x undefined
    */
-  export function AddSpeedZoneForCoord(x: number, y: number, z: number, radius: number, speed: number, p5: NativeBOOL): void;
+  export function addSpeedZoneForCoord(x: number, y: number, z: number, radius: number, speed: number, p5: NativeBOOL): void;
   /**
    *
    * @param {number} speedzone undefined
    */
-  export function RemoveSpeedZone(speedzone: number): void;
+  export function removeSpeedZone(speedzone: number): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function OpenBombBayDoors(vehicle: NativeVehicle): void;
+  export function openBombBayDoors(vehicle: NativeVehicle): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function CloseBombBayDoors(vehicle: NativeVehicle): void;
+  export function closeBombBayDoors(vehicle: NativeVehicle): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function IsVehicleSearchlightOn(vehicle: NativeVehicle): void;
+  export function isVehicleSearchlightOn(vehicle: NativeVehicle): void;
   /**
    *
    * @param {NativeVehicle} heli undefined
    */
-  export function SetVehicleSearchlight(heli: NativeVehicle, toggle: NativeBOOL, canBeUsedByAI: NativeBOOL): void;
+  export function setVehicleSearchlight(heli: NativeVehicle, toggle: NativeBOOL, canBeUsedByAI: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
@@ -6488,186 +6488,186 @@ declare module "natives" {
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function CanShuffleSeat(vehicle: NativeVehicle, ped: NativePed): void;
+  export function canShuffleSeat(vehicle: NativeVehicle, ped: NativePed): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function GetNumModKits(vehicle: NativeVehicle): void;
+  export function getNumModKits(vehicle: NativeVehicle): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function SetVehicleModKit(vehicle: NativeVehicle, modKit: number): void;
+  export function setVehicleModKit(vehicle: NativeVehicle, modKit: number): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function GetVehicleModKit(vehicle: NativeVehicle): void;
+  export function getVehicleModKit(vehicle: NativeVehicle): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function GetVehicleModKitType(vehicle: NativeVehicle): void;
+  export function getVehicleModKitType(vehicle: NativeVehicle): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function GetVehicleWheelType(vehicle: NativeVehicle): void;
+  export function getVehicleWheelType(vehicle: NativeVehicle): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function SetVehicleWheelType(vehicle: NativeVehicle, WheelType: number): void;
+  export function setVehicleWheelType(vehicle: NativeVehicle, WheelType: number): void;
   /**
    *
    * @param {number} p0 undefined
    */
-  export function GetNumModColors(p0: number, p1: NativeBOOL): void;
+  export function getNumModColors(p0: number, p1: NativeBOOL): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function SetVehicleModColor1(vehicle: NativeVehicle, paintType: number, color: number, p3: number): void;
+  export function setVehicleModColor1(vehicle: NativeVehicle, paintType: number, color: number, p3: number): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function SetVehicleModColor2(vehicle: NativeVehicle, paintType: number, color: number): void;
+  export function setVehicleModColor2(vehicle: NativeVehicle, paintType: number, color: number): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function GetVehicleModColor1(vehicle: NativeVehicle, paintType: number, color: number, pearlescentColor: number): void;
+  export function getVehicleModColor1(vehicle: NativeVehicle, paintType: number, color: number, pearlescentColor: number): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function GetVehicleModColor2(vehicle: NativeVehicle, paintType: number, color: number): void;
+  export function getVehicleModColor2(vehicle: NativeVehicle, paintType: number, color: number): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function GetVehicleModColor1Name(vehicle: NativeVehicle, p1: NativeBOOL): void;
+  export function getVehicleModColor1Name(vehicle: NativeVehicle, p1: NativeBOOL): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function GetVehicleModColor2Name(vehicle: NativeVehicle): void;
+  export function getVehicleModColor2Name(vehicle: NativeVehicle): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function IsVehicleModLoadDone(vehicle: NativeVehicle): void;
+  export function isVehicleModLoadDone(vehicle: NativeVehicle): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function SetVehicleMod(vehicle: NativeVehicle, modType: number, modIndex: number, customTires: NativeBOOL): void;
+  export function setVehicleMod(vehicle: NativeVehicle, modType: number, modIndex: number, customTires: NativeBOOL): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function GetVehicleMod(vehicle: NativeVehicle, modType: number): void;
+  export function getVehicleMod(vehicle: NativeVehicle, modType: number): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function SetVehicleHeadlightColor(vehicle: NativeVehicle, color: number): void;
+  export function setVehicleHeadlightColor(vehicle: NativeVehicle, color: number): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function GetVehicleModVariation(vehicle: NativeVehicle, modType: number): void;
+  export function getVehicleModVariation(vehicle: NativeVehicle, modType: number): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function GetNumVehicleMods(vehicle: NativeVehicle, modType: number): void;
+  export function getNumVehicleMods(vehicle: NativeVehicle, modType: number): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function RemoveVehicleMod(vehicle: NativeVehicle, modType: number): void;
+  export function removeVehicleMod(vehicle: NativeVehicle, modType: number): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function ToggleVehicleMod(vehicle: NativeVehicle, modType: number, toggle: NativeBOOL): void;
+  export function toggleVehicleMod(vehicle: NativeVehicle, modType: number, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function IsToggleModOn(vehicle: NativeVehicle, modType: number): void;
+  export function isToggleModOn(vehicle: NativeVehicle, modType: number): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function GetModTextLabel(vehicle: NativeVehicle, modType: number, modValue: number): void;
+  export function getModTextLabel(vehicle: NativeVehicle, modType: number, modValue: number): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function GetModSlotName(vehicle: NativeVehicle, modType: number): void;
+  export function getModSlotName(vehicle: NativeVehicle, modType: number): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function GetLiveryName(vehicle: NativeVehicle, liveryIndex: number): void;
+  export function getLiveryName(vehicle: NativeVehicle, liveryIndex: number): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function GetVehicleModModifierValue(vehicle: NativeVehicle, modType: number, modIndex: number): void;
+  export function getVehicleModModifierValue(vehicle: NativeVehicle, modType: number, modIndex: number): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function GetVehicleModData(vehicle: NativeVehicle, modType: number, modIndex: number): void;
+  export function getVehicleModData(vehicle: NativeVehicle, modType: number, modIndex: number): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function PreloadVehicleMod(p0: NativeAny, modType: number, p2: NativeAny): void;
+  export function preloadVehicleMod(p0: NativeAny, modType: number, p2: NativeAny): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function HasPreloadModsFinished(p0: NativeAny): void;
+  export function hasPreloadModsFinished(p0: NativeAny): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function ReleasePreloadMods(vehicle: NativeVehicle): void;
+  export function releasePreloadMods(vehicle: NativeVehicle): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function SetVehicleTyreSmokeColor(vehicle: NativeVehicle, r: number, g: number, b: number): void;
+  export function setVehicleTyreSmokeColor(vehicle: NativeVehicle, r: number, g: number, b: number): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function GetVehicleTyreSmokeColor(vehicle: NativeVehicle, r: number, g: number, b: number): void;
+  export function getVehicleTyreSmokeColor(vehicle: NativeVehicle, r: number, g: number, b: number): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function SetVehicleWindowTint(vehicle: NativeVehicle, tint: number): void;
+  export function setVehicleWindowTint(vehicle: NativeVehicle, tint: number): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function GetVehicleWindowTint(vehicle: NativeVehicle): void;
+  export function getVehicleWindowTint(vehicle: NativeVehicle): void;
   /**
    *
    */
-  export function GetNumVehicleWindowTints(): void;
+  export function getNumVehicleWindowTints(): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function GetVehicleColor(vehicle: NativeVehicle, r: number, g: number, b: number): void;
+  export function getVehicleColor(vehicle: NativeVehicle, r: number, g: number, b: number): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
@@ -6677,27 +6677,27 @@ declare module "natives" {
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function GetVehicleCauseOfDestruction(vehicle: NativeVehicle): void;
+  export function getVehicleCauseOfDestruction(vehicle: NativeVehicle): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function GetIsLeftVehicleHeadlightDamaged(vehicle: NativeVehicle): void;
+  export function getIsLeftVehicleHeadlightDamaged(vehicle: NativeVehicle): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function GetIsRightVehicleHeadlightDamaged(vehicle: NativeVehicle): void;
+  export function getIsRightVehicleHeadlightDamaged(vehicle: NativeVehicle): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function SetVehicleEnginePowerMultiplier(vehicle: NativeVehicle, value: number): void;
+  export function setVehicleEnginePowerMultiplier(vehicle: NativeVehicle, value: number): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function SetVehicleSt(vehicle: NativeVehicle, toggle: NativeBOOL): void;
+  export function setVehicleSt(vehicle: NativeVehicle, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
@@ -6717,12 +6717,12 @@ declare module "natives" {
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function IsAnyPassengerRappelling(vehicle: NativeVehicle): void;
+  export function isAnyPassengerRappelling(vehicle: NativeVehicle): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function SetVehicleEngineTorqueMultiplier(vehicle: NativeVehicle, value: number): void;
+  export function setVehicleEngineTorqueMultiplier(vehicle: NativeVehicle, value: number): void;
   /**
    *
    * @param {NativeAny} p0 undefined
@@ -6732,7 +6732,7 @@ declare module "natives" {
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function SetVehicleIsWanted(vehicle: NativeVehicle, state: NativeBOOL): void;
+  export function setVehicleIsWanted(vehicle: NativeVehicle, state: NativeBOOL): void;
   /**
    *
    * @param {NativeAny} p0 undefined
@@ -6757,12 +6757,12 @@ declare module "natives" {
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function DisablePlaneAileron(vehicle: NativeVehicle, p1: NativeBOOL, p2: NativeBOOL): void;
+  export function disablePlaneAileron(vehicle: NativeVehicle, p1: NativeBOOL, p2: NativeBOOL): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function GetIsVehicleEngineRunning(vehicle: NativeVehicle): void;
+  export function getIsVehicleEngineRunning(vehicle: NativeVehicle): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
@@ -6772,7 +6772,7 @@ declare module "natives" {
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function SetBikeLeanAngle(vehicle: NativeVehicle, x: number, y: number): void;
+  export function setBikeLeanAngle(vehicle: NativeVehicle, x: number, y: number): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
@@ -6787,11 +6787,11 @@ declare module "natives" {
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function SetLastDrivenVehicle(vehicle: NativeVehicle): void;
+  export function setLastDrivenVehicle(vehicle: NativeVehicle): void;
   /**
    *
    */
-  export function GetLastDrivenVehicle(): void;
+  export function getLastDrivenVehicle(): void;
   /**
    *
    */
@@ -6805,12 +6805,12 @@ declare module "natives" {
    *
    * @param {NativeVehicle} plane undefined
    */
-  export function SetPlaneMinHeightAboveTerrain(plane: NativeVehicle, height: number): void;
+  export function setPlaneMinHeightAboveTerrain(plane: NativeVehicle, height: number): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function SetVehicleLodMultiplier(vehicle: NativeVehicle, multiplier: number): void;
+  export function setVehicleLodMultiplier(vehicle: NativeVehicle, multiplier: number): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
@@ -6854,17 +6854,17 @@ declare module "natives" {
    *
    * @param {NativePed} driver undefined
    */
-  export function SetVehicleShootAtTarget(driver: NativePed, entity: NativeEntity, xTarget: number, yTarget: number, zTarget: number): void;
+  export function setVehicleShootAtTarget(driver: NativePed, entity: NativeEntity, xTarget: number, yTarget: number, zTarget: number): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function GetVehicleOwner(vehicle: NativeVehicle, entity: NativeEntity): void;
+  export function getVehicleOwner(vehicle: NativeVehicle, entity: NativeEntity): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function SetForceHdVehicle(vehicle: NativeVehicle, toggle: NativeBOOL): void;
+  export function setForceHdVehicle(vehicle: NativeVehicle, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
@@ -6874,22 +6874,22 @@ declare module "natives" {
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function GetVehiclePlateType(vehicle: NativeVehicle): void;
+  export function getVehiclePlateType(vehicle: NativeVehicle): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function TrackVehicleVisibility(vehicle: NativeVehicle): void;
+  export function trackVehicleVisibility(vehicle: NativeVehicle): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function IsVehicleVisible(vehicle: NativeVehicle): void;
+  export function isVehicleVisible(vehicle: NativeVehicle): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function SetVehicleGravity(vehicle: NativeVehicle, toggle: NativeBOOL): void;
+  export function setVehicleGravity(vehicle: NativeVehicle, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativeBOOL} p0 undefined
@@ -6914,12 +6914,12 @@ declare module "natives" {
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function IsVehicleShopResprayAllowed(vehicle: NativeVehicle): void;
+  export function isVehicleShopResprayAllowed(vehicle: NativeVehicle): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function SetVehicleEngineCanDegrade(vehicle: NativeVehicle, toggle: NativeBOOL): void;
+  export function setVehicleEngineCanDegrade(vehicle: NativeVehicle, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
@@ -6934,12 +6934,12 @@ declare module "natives" {
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function VehicleHasLandingGear(vehicle: NativeVehicle): void;
+  export function vehicleHasLandingGear(vehicle: NativeVehicle): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function ArePropellersUndamaged(vehicle: NativeVehicle): void;
+  export function arePropellersUndamaged(vehicle: NativeVehicle): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
@@ -6949,12 +6949,12 @@ declare module "natives" {
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function IsVehicleStolen(vehicle: NativeVehicle): void;
+  export function isVehicleStolen(vehicle: NativeVehicle): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function SetVehicleIsStolen(vehicle: NativeVehicle, isStolen: NativeBOOL): void;
+  export function setVehicleIsStolen(vehicle: NativeVehicle, isStolen: NativeBOOL): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
@@ -6964,7 +6964,7 @@ declare module "natives" {
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function AreVehicleWingsIntact(vehicle: NativeVehicle): void;
+  export function areVehicleWingsIntact(vehicle: NativeVehicle): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
@@ -6974,27 +6974,27 @@ declare module "natives" {
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function DetachVehicleFromCargobob(vehicle: NativeVehicle, cargobob: NativeVehicle): void;
+  export function detachVehicleFromCargobob(vehicle: NativeVehicle, cargobob: NativeVehicle): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function DetachVehicleFromAnyCargobob(vehicle: NativeVehicle): void;
+  export function detachVehicleFromAnyCargobob(vehicle: NativeVehicle): void;
   /**
    *
    * @param {NativeVehicle} cargobob undefined
    */
-  export function IsVehicleAttachedToCargobob(cargobob: NativeVehicle, vehicleAttached: NativeVehicle): void;
+  export function isVehicleAttachedToCargobob(cargobob: NativeVehicle, vehicleAttached: NativeVehicle): void;
   /**
    *
    * @param {NativeVehicle} cargobob undefined
    */
-  export function GetVehicleAttachedToCargobob(cargobob: NativeVehicle): void;
+  export function getVehicleAttachedToCargobob(cargobob: NativeVehicle): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function AttachVehicleToCargobob(vehicle: NativeVehicle, cargobob: NativeVehicle, p2: number, x: number, y: number, z: number): void;
+  export function attachVehicleToCargobob(vehicle: NativeVehicle, cargobob: NativeVehicle, p2: number, x: number, y: number, z: number): void;
   /**
    *
    * @param {NativeVehicle} cargobob undefined
@@ -7004,27 +7004,27 @@ declare module "natives" {
    *
    * @param {NativeVehicle} cargobob undefined
    */
-  export function GetCargobobHookPosition(cargobob: NativeVehicle): void;
+  export function getCargobobHookPosition(cargobob: NativeVehicle): void;
   /**
    *
    * @param {NativeVehicle} cargobob undefined
    */
-  export function DoesCargobobHavePickUpRope(cargobob: NativeVehicle): void;
+  export function doesCargobobHavePickUpRope(cargobob: NativeVehicle): void;
   /**
    *
    * @param {NativeVehicle} cargobob undefined
    */
-  export function CreatePickUpRopeForCargobob(cargobob: NativeVehicle, state: number): void;
+  export function createPickUpRopeForCargobob(cargobob: NativeVehicle, state: number): void;
   /**
    *
    * @param {NativeVehicle} cargobob undefined
    */
-  export function RemovePickUpRopeForCargobob(cargobob: NativeVehicle): void;
+  export function removePickUpRopeForCargobob(cargobob: NativeVehicle): void;
   /**
    *
    * @param {NativeVehicle} cargobob undefined
    */
-  export function SetCargobobHookPosition(cargobob: NativeVehicle, xOffset: number, yOffset: number, state: number): void;
+  export function setCargobobHookPosition(cargobob: NativeVehicle, xOffset: number, yOffset: number, state: number): void;
   /**
    *
    * @param {NativeAny} p0 undefined
@@ -7034,17 +7034,17 @@ declare module "natives" {
    *
    * @param {NativeVehicle} cargobob undefined
    */
-  export function DoesCargobobHavePickupMagnet(cargobob: NativeVehicle): void;
+  export function doesCargobobHavePickupMagnet(cargobob: NativeVehicle): void;
   /**
    *
    * @param {NativeVehicle} cargobob undefined
    */
-  export function SetCargobobPickupMagnetActive(cargobob: NativeVehicle, isActive: NativeBOOL): void;
+  export function setCargobobPickupMagnetActive(cargobob: NativeVehicle, isActive: NativeBOOL): void;
   /**
    *
    * @param {NativeVehicle} cargobob undefined
    */
-  export function SetCargobobPickupMagnetStrength(cargobob: NativeVehicle, strength: number): void;
+  export function setCargobobPickupMagnetStrength(cargobob: NativeVehicle, strength: number): void;
   /**
    *
    * @param {NativeVehicle} cargobob undefined
@@ -7089,7 +7089,7 @@ declare module "natives" {
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function DoesVehicleHaveWeapons(vehicle: NativeVehicle): void;
+  export function doesVehicleHaveWeapons(vehicle: NativeVehicle): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
@@ -7099,7 +7099,7 @@ declare module "natives" {
    *
    * @param {NativeBOOL} disabled undefined
    */
-  export function DisableVehicleWeapon(disabled: NativeBOOL, weaponHash: NativeHash, vehicle: NativeVehicle, owner: NativePed): void;
+  export function disableVehicleWeapon(disabled: NativeBOOL, weaponHash: NativeHash, vehicle: NativeVehicle, owner: NativePed): void;
   /**
    *
    * @param {NativeAny} p0 undefined
@@ -7114,22 +7114,22 @@ declare module "natives" {
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function GetVehicleClass(vehicle: NativeVehicle): void;
+  export function getVehicleClass(vehicle: NativeVehicle): void;
   /**
    *
    * @param {NativeHash} modelHash undefined
    */
-  export function GetVehicleClassFromName(modelHash: NativeHash): void;
+  export function getVehicleClassFromName(modelHash: NativeHash): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function SetPlayersLastVehicle(vehicle: NativeVehicle): void;
+  export function setPlayersLastVehicle(vehicle: NativeVehicle): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function SetVehicleCanBeUsedByFleeingPeds(vehicle: NativeVehicle, toggle: NativeBOOL): void;
+  export function setVehicleCanBeUsedByFleeingPeds(vehicle: NativeVehicle, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
@@ -7139,12 +7139,12 @@ declare module "natives" {
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function SetVehicleCreatesMoneyPickupsWhenExploded(vehicle: NativeVehicle, toggle: NativeBOOL): void;
+  export function setVehicleCreatesMoneyPickupsWhenExploded(vehicle: NativeVehicle, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function SetVehicleJetEngineOn(vehicle: NativeVehicle, toggle: NativeBOOL): void;
+  export function setVehicleJetEngineOn(vehicle: NativeVehicle, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativeAny} p0 undefined
@@ -7164,17 +7164,17 @@ declare module "natives" {
    *
    * @param {NativeVehicle} helicopter undefined
    */
-  export function SetHelicopterRollPitchYawMultHealth(helicopter: NativeVehicle, multiplier: number): void;
+  export function setHelicopterRollPitchYawMultHealth(helicopter: NativeVehicle, multiplier: number): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function SetVehicleFrictionOverride(vehicle: NativeVehicle, friction: number): void;
+  export function setVehicleFrictionOverride(vehicle: NativeVehicle, friction: number): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function SetVehicleWheelsCanBreakOffWhenBlowUp(vehicle: NativeVehicle, toggle: NativeBOOL): void;
+  export function setVehicleWheelsCanBreakOffWhenBlowUp(vehicle: NativeVehicle, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativeAny} p0 undefined
@@ -7184,7 +7184,7 @@ declare module "natives" {
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function SetVehicleCeilingHeight(vehicle: NativeVehicle, p1: number): void;
+  export function setVehicleCeilingHeight(vehicle: NativeVehicle, p1: number): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
@@ -7199,17 +7199,17 @@ declare module "natives" {
    *
    * @param {string} decorator undefined
    */
-  export function DoesVehicleExistWithDecorator(decorator: string): void;
+  export function doesVehicleExistWithDecorator(decorator: string): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function SetVehicleExclusiveDriver(vehicle: NativeVehicle, ped: NativePed): void;
+  export function setVehicleExclusiveDriver(vehicle: NativeVehicle, ped: NativePed): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function SetVehicleExclusiveDriver2(vehicle: NativeVehicle, ped: NativePed, p2: number): void;
+  export function setVehicleExclusiveDriver2(vehicle: NativeVehicle, ped: NativePed, p2: number): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
@@ -7224,27 +7224,27 @@ declare module "natives" {
    *
    * @param {NativeBOOL} toggle undefined
    */
-  export function DisplayDistantVehicles(toggle: NativeBOOL): void;
+  export function displayDistantVehicles(toggle: NativeBOOL): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function SetVehicleNeonLightsColour(vehicle: NativeVehicle, r: number, g: number, b: number): void;
+  export function setVehicleNeonLightsColour(vehicle: NativeVehicle, r: number, g: number, b: number): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function GetVehicleNeonLightsColour(vehicle: NativeVehicle, r: number, g: number, b: number): void;
+  export function getVehicleNeonLightsColour(vehicle: NativeVehicle, r: number, g: number, b: number): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function SetVehicleNeonLightEnabled(vehicle: NativeVehicle, index: number, toggle: NativeBOOL): void;
+  export function setVehicleNeonLightEnabled(vehicle: NativeVehicle, index: number, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function IsVehicleNeonLightEnabled(vehicle: NativeVehicle, index: number): void;
+  export function isVehicleNeonLightEnabled(vehicle: NativeVehicle, index: number): void;
   /**
    *
    * @param {NativeBOOL} p0 undefined
@@ -7259,17 +7259,17 @@ declare module "natives" {
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function RequestVehicleScaleformMovie(vehicle: NativeVehicle): void;
+  export function requestVehicleScaleformMovie(vehicle: NativeVehicle): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function GetVehicleBodyHealth(vehicle: NativeVehicle): void;
+  export function getVehicleBodyHealth(vehicle: NativeVehicle): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function SetVehicleBodyHealth(vehicle: NativeVehicle, value: number): void;
+  export function setVehicleBodyHealth(vehicle: NativeVehicle, value: number): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
@@ -7279,12 +7279,12 @@ declare module "natives" {
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function GetVehicleSuspensionHeight(vehicle: NativeVehicle): void;
+  export function getVehicleSuspensionHeight(vehicle: NativeVehicle): void;
   /**
    *
    * @param {number} multiplier undefined
    */
-  export function SetCarHighSpeedBumpSeverityMultiplier(multiplier: number): void;
+  export function setCarHighSpeedBumpSeverityMultiplier(multiplier: number): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
@@ -7294,7 +7294,7 @@ declare module "natives" {
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function GetVehicleBodyHealth2(vehicle: NativeVehicle): void;
+  export function getVehicleBodyHealth2(vehicle: NativeVehicle): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
@@ -7309,7 +7309,7 @@ declare module "natives" {
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function SetVehicleHudSpecialAbilityBarActive(vehicle: NativeVehicle, active: NativeBOOL): void;
+  export function setVehicleHudSpecialAbilityBarActive(vehicle: NativeVehicle, active: NativeBOOL): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
@@ -7319,52 +7319,52 @@ declare module "natives" {
    *
    * @param {NativeObject} modelHash undefined
    */
-  export function CreateObject(modelHash: NativeObject, x: number, y: number, z: number, isNetwork: NativeBOOL, thisScriptCheck: NativeBOOL, dynamic: NativeBOOL): void;
+  export function createObject(modelHash: NativeObject, x: number, y: number, z: number, isNetwork: NativeBOOL, thisScriptCheck: NativeBOOL, dynamic: NativeBOOL): void;
   /**
    *
    * @param {NativeHash} modelHash undefined
    */
-  export function CreateObjectNoOffset(modelHash: NativeHash, x: number, y: number, z: number, isNetwork: NativeBOOL, thisScriptCheck: NativeBOOL, dynamic: NativeBOOL): void;
+  export function createObjectNoOffset(modelHash: NativeHash, x: number, y: number, z: number, isNetwork: NativeBOOL, thisScriptCheck: NativeBOOL, dynamic: NativeBOOL): void;
   /**
    *
    * @param {NativeObject} object undefined
    */
-  export function DeleteObject(object: NativeObject): void;
+  export function deleteObject(object: NativeObject): void;
   /**
    *
    * @param {NativeObject} object undefined
    */
-  export function PlaceObjectOnGroundProperly(object: NativeObject): void;
+  export function placeObjectOnGroundProperly(object: NativeObject): void;
   /**
    *
    * @param {NativeObject} object undefined
    */
-  export function SlideObject(object: NativeObject, toX: number, toY: number, toZ: number, speedX: number, speedY: number, speedZ: number, collision: NativeBOOL): void;
+  export function slideObject(object: NativeObject, toX: number, toY: number, toZ: number, speedX: number, speedY: number, speedZ: number, collision: NativeBOOL): void;
   /**
    *
    * @param {NativeObject} object undefined
    */
-  export function SetObjectTargettable(object: NativeObject, targettable: NativeBOOL): void;
+  export function setObjectTargettable(object: NativeObject, targettable: NativeBOOL): void;
   /**
    *
    * @param {NativeObject} object undefined
    */
-  export function EnableObjectLod(object: NativeObject, toggle: NativeBOOL): void;
+  export function enableObjectLod(object: NativeObject, toggle: NativeBOOL): void;
   /**
    *
    * @param {number} x undefined
    */
-  export function GetClosestObjectOfType(x: number, y: number, z: number, radius: number, modelHash: NativeHash, isMission: NativeBOOL, p6: NativeBOOL, p7: NativeBOOL): void;
+  export function getClosestObjectOfType(x: number, y: number, z: number, radius: number, modelHash: NativeHash, isMission: NativeBOOL, p6: NativeBOOL, p7: NativeBOOL): void;
   /**
    *
    * @param {NativeObject} object undefined
    */
-  export function HasObjectBeenBroken(object: NativeObject): void;
+  export function hasObjectBeenBroken(object: NativeObject): void;
   /**
    *
    * @param {number} p0 undefined
    */
-  export function HasClosestObjectOfTypeBeenBroken(p0: number, p1: number, p2: number, p3: number, modelHash: NativeHash, p5: NativeAny): void;
+  export function hasClosestObjectOfTypeBeenBroken(p0: number, p1: number, p2: number, p3: number, modelHash: NativeHash, p5: NativeAny): void;
   /**
    *
    * @param {number} p0 undefined
@@ -7374,7 +7374,7 @@ declare module "natives" {
    *
    * @param {number} xPos undefined
    */
-  export function GetObjectOffsetFromCoords(xPos: number, yPos: number, zPos: number, heading: number, xOffset: number, yOffset: number, zOffset: number): void;
+  export function getObjectOffsetFromCoords(xPos: number, yPos: number, zPos: number, heading: number, xOffset: number, yOffset: number, zOffset: number): void;
   /**
    *
    * @param {NativeAny} coords undefined
@@ -7384,32 +7384,32 @@ declare module "natives" {
    *
    * @param {NativeHash} type undefined
    */
-  export function SetStateOfClosestDoorOfType(type: NativeHash, x: number, y: number, z: number, locked: NativeBOOL, heading: number, p6: NativeBOOL): void;
+  export function setStateOfClosestDoorOfType(type: NativeHash, x: number, y: number, z: number, locked: NativeBOOL, heading: number, p6: NativeBOOL): void;
   /**
    *
    * @param {NativeHash} type undefined
    */
-  export function GetStateOfClosestDoorOfType(type: NativeHash, x: number, y: number, z: number, locked: NativeBOOL, heading: number): void;
+  export function getStateOfClosestDoorOfType(type: NativeHash, x: number, y: number, z: number, locked: NativeBOOL, heading: number): void;
   /**
    *
    * @param {NativeHash} doorHash undefined
    */
-  export function DoorControl(doorHash: NativeHash, x: number, y: number, z: number, locked: NativeBOOL, xRotMult: number, yRotMult: number, zRotMult: number): void;
+  export function doorControl(doorHash: NativeHash, x: number, y: number, z: number, locked: NativeBOOL, xRotMult: number, yRotMult: number, zRotMult: number): void;
   /**
    *
    * @param {NativeHash} doorHash undefined
    */
-  export function AddDoorToSystem(doorHash: NativeHash, modelHash: NativeHash, x: number, y: number, z: number, p5: NativeBOOL, p6: NativeBOOL, p7: NativeBOOL): void;
+  export function addDoorToSystem(doorHash: NativeHash, modelHash: NativeHash, x: number, y: number, z: number, p5: NativeBOOL, p6: NativeBOOL, p7: NativeBOOL): void;
   /**
    *
    * @param {NativeHash} doorHash undefined
    */
-  export function RemoveDoorFromSystem(doorHash: NativeHash): void;
+  export function removeDoorFromSystem(doorHash: NativeHash): void;
   /**
    *
    * @param {NativeHash} doorHash undefined
    */
-  export function SetDoorAccelerationLimit(doorHash: NativeHash, limit: number, p2: NativeBOOL, p3: NativeBOOL): void;
+  export function setDoorAccelerationLimit(doorHash: NativeHash, limit: number, p2: NativeBOOL, p3: NativeBOOL): void;
   /**
    *
    * @param {NativeHash} doorHash undefined
@@ -7434,7 +7434,7 @@ declare module "natives" {
    *
    * @param {NativeHash} doorHash undefined
    */
-  export function SetDoorAjarAngle(doorHash: NativeHash, ajar: number, p2: NativeBOOL, p3: NativeBOOL): void;
+  export function setDoorAjarAngle(doorHash: NativeHash, ajar: number, p2: NativeBOOL, p3: NativeBOOL): void;
   /**
    *
    * @param {NativeHash} doorHash undefined
@@ -7459,12 +7459,12 @@ declare module "natives" {
    *
    * @param {NativeHash} doorHash undefined
    */
-  export function DoesDoorExist(doorHash: NativeHash): void;
+  export function doesDoorExist(doorHash: NativeHash): void;
   /**
    *
    * @param {NativeHash} door undefined
    */
-  export function IsDoorClosed(door: NativeHash): void;
+  export function isDoorClosed(door: NativeHash): void;
   /**
    *
    * @param {NativeBOOL} p0 undefined
@@ -7488,7 +7488,7 @@ declare module "natives" {
    *
    * @param {NativeAny} garage undefined
    */
-  export function IsGarageEmpty(garage: NativeAny, p1: NativeBOOL, p2: number): void;
+  export function isGarageEmpty(garage: NativeAny, p1: NativeBOOL, p2: number): void;
   /**
    *
    * @param {NativeAny} p0 undefined
@@ -7537,12 +7537,12 @@ declare module "natives" {
    *
    * @param {number} x undefined
    */
-  export function DoesObjectOfTypeExistAtCoords(x: number, y: number, z: number, radius: number, hash: NativeHash, p5: NativeBOOL): void;
+  export function doesObjectOfTypeExistAtCoords(x: number, y: number, z: number, radius: number, hash: NativeHash, p5: NativeBOOL): void;
   /**
    *
    * @param {number} p0 undefined
    */
-  export function IsPointInAngledArea(p0: number, p1: number, p2: number, p3: number, p4: number, p5: number, p6: number, p7: number, p8: number, p9: number, p10: NativeBOOL, p11: NativeBOOL): void;
+  export function isPointInAngledArea(p0: number, p1: number, p2: number, p3: number, p4: number, p5: number, p6: number, p7: number, p8: number, p9: number, p10: NativeBOOL, p11: NativeBOOL): void;
   /**
    *
    * @param {NativeObject} object undefined
@@ -7552,27 +7552,27 @@ declare module "natives" {
    *
    * @param {NativeObject} object undefined
    */
-  export function SetObjectPhysicsParams(object: NativeObject, mass: number, gravityFactor: number, dampingLinearC: number, dampingLinearV: number, dampingLinearV2: number, dampingAngularC: number, dampingAngularV: number, dampingAngularV2: number, margin: number, default2Pi: number, buoyancyFactor: number): void;
+  export function setObjectPhysicsParams(object: NativeObject, mass: number, gravityFactor: number, dampingLinearC: number, dampingLinearV: number, dampingLinearV2: number, dampingAngularC: number, dampingAngularV: number, dampingAngularV2: number, margin: number, default2Pi: number, buoyancyFactor: number): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function GetObjectFragmentDamageHealth(p0: NativeAny, p1: NativeBOOL): void;
+  export function getObjectFragmentDamageHealth(p0: NativeAny, p1: NativeBOOL): void;
   /**
    *
    * @param {NativeObject} object undefined
    */
-  export function SetActivateObjectPhysicsAsSoonAsItIsUnfrozen(object: NativeObject, toggle: NativeBOOL): void;
+  export function setActivateObjectPhysicsAsSoonAsItIsUnfrozen(object: NativeObject, toggle: NativeBOOL): void;
   /**
    *
    * @param {number} x undefined
    */
-  export function IsAnyObjectNearPoint(x: number, y: number, z: number, range: number, p4: NativeBOOL): void;
+  export function isAnyObjectNearPoint(x: number, y: number, z: number, range: number, p4: NativeBOOL): void;
   /**
    *
    * @param {NativeHash} objectHash undefined
    */
-  export function IsObjectNearPoint(objectHash: NativeHash, x: number, y: number, z: number, range: number): void;
+  export function isObjectNearPoint(objectHash: NativeHash, x: number, y: number, z: number, range: number): void;
   /**
    *
    * @param {NativeAny} p0 undefined
@@ -7592,12 +7592,12 @@ declare module "natives" {
    *
    * @param {NativeAny} p0 undefined
    */
-  export function TrackObjectVisibility(p0: NativeAny): void;
+  export function trackObjectVisibility(p0: NativeAny): void;
   /**
    *
    * @param {NativeObject} object undefined
    */
-  export function IsObjectVisible(object: NativeObject): void;
+  export function isObjectVisible(object: NativeObject): void;
   /**
    *
    * @param {NativeAny} p0 undefined
@@ -7617,22 +7617,22 @@ declare module "natives" {
    *
    * @param {number} x undefined
    */
-  export function GetDesObject(x: number, y: number, z: number, rotation: number, name: string): void;
+  export function getDesObject(x: number, y: number, z: number, rotation: number, name: string): void;
   /**
    *
    * @param {number} handle undefined
    */
-  export function SetDesObjectState(handle: number, state: number): void;
+  export function setDesObjectState(handle: number, state: number): void;
   /**
    *
    * @param {number} handle undefined
    */
-  export function GetDesObjectState(handle: number): void;
+  export function getDesObjectState(handle: number): void;
   /**
    *
    * @param {number} handle undefined
    */
-  export function DoesDesObjectExist(handle: number): void;
+  export function doesDesObjectExist(handle: number): void;
   /**
    *
    * @param {NativeAny} p0 undefined
@@ -7642,37 +7642,37 @@ declare module "natives" {
    *
    * @param {NativeHash} pickupHash undefined
    */
-  export function CreatePickup(pickupHash: NativeHash, posX: number, posY: number, posZ: number, p4: number, value: number, p6: NativeBOOL, modelHash: NativeHash): void;
+  export function createPickup(pickupHash: NativeHash, posX: number, posY: number, posZ: number, p4: number, value: number, p6: NativeBOOL, modelHash: NativeHash): void;
   /**
    *
    * @param {NativeHash} pickupHash undefined
    */
-  export function CreatePickupRotate(pickupHash: NativeHash, posX: number, posY: number, posZ: number, rotX: number, rotY: number, rotZ: number, flag: number, amount: number, p9: NativeAny, p10: NativeBOOL, modelHash: NativeHash): void;
+  export function createPickupRotate(pickupHash: NativeHash, posX: number, posY: number, posZ: number, rotX: number, rotY: number, rotZ: number, flag: number, amount: number, p9: NativeAny, p10: NativeBOOL, modelHash: NativeHash): void;
   /**
    *
    * @param {NativeHash} pickupHash undefined
    */
-  export function CreateAmbientPickup(pickupHash: NativeHash, posX: number, posY: number, posZ: number, p4: number, value: number, modelHash: NativeHash, returnHandle: NativeBOOL, p8: NativeBOOL): void;
+  export function createAmbientPickup(pickupHash: NativeHash, posX: number, posY: number, posZ: number, p4: number, value: number, modelHash: NativeHash, returnHandle: NativeBOOL, p8: NativeBOOL): void;
   /**
    *
    * @param {NativeHash} pickupHash undefined
    */
-  export function CreatePortablePickup(pickupHash: NativeHash, x: number, y: number, z: number, placeOnGround: NativeBOOL, modelHash: NativeHash): void;
+  export function createPortablePickup(pickupHash: NativeHash, x: number, y: number, z: number, placeOnGround: NativeBOOL, modelHash: NativeHash): void;
   /**
    *
    * @param {NativeHash} pickupHash undefined
    */
-  export function CreatePortablePickup2(pickupHash: NativeHash, x: number, y: number, z: number, placeOnGround: NativeBOOL, modelHash: NativeHash): void;
+  export function createPortablePickup2(pickupHash: NativeHash, x: number, y: number, z: number, placeOnGround: NativeBOOL, modelHash: NativeHash): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function AttachPortablePickupToPed(ped: NativePed, p1: NativeAny): void;
+  export function attachPortablePickupToPed(ped: NativePed, p1: NativeAny): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function DetachPortablePickupFromPed(ped: NativePed): void;
+  export function detachPortablePickupFromPed(ped: NativePed): void;
   /**
    *
    * @param {NativeHash} hash undefined
@@ -7687,47 +7687,47 @@ declare module "natives" {
    *
    * @param {number} x undefined
    */
-  export function GetSafePickupCoords(x: number, y: number, z: number, p3: NativeAny, p4: NativeAny): void;
+  export function getSafePickupCoords(x: number, y: number, z: number, p3: NativeAny, p4: NativeAny): void;
   /**
    *
    * @param {NativePickup} pickup undefined
    */
-  export function GetPickupCoords(pickup: NativePickup): void;
+  export function getPickupCoords(pickup: NativePickup): void;
   /**
    *
    * @param {NativeHash} pickupHash undefined
    */
-  export function RemoveAllPickupsOfType(pickupHash: NativeHash): void;
+  export function removeAllPickupsOfType(pickupHash: NativeHash): void;
   /**
    *
    * @param {NativePickup} pickup undefined
    */
-  export function HasPickupBeenCollected(pickup: NativePickup): void;
+  export function hasPickupBeenCollected(pickup: NativePickup): void;
   /**
    *
    * @param {NativePickup} pickup undefined
    */
-  export function RemovePickup(pickup: NativePickup): void;
+  export function removePickup(pickup: NativePickup): void;
   /**
    *
    * @param {number} x undefined
    */
-  export function CreateMoneyPickups(x: number, y: number, z: number, value: number, amount: number, model: NativeHash): void;
+  export function createMoneyPickups(x: number, y: number, z: number, value: number, amount: number, model: NativeHash): void;
   /**
    *
    * @param {NativePickup} pickup undefined
    */
-  export function DoesPickupExist(pickup: NativePickup): void;
+  export function doesPickupExist(pickup: NativePickup): void;
   /**
    *
    * @param {NativeObject} pickupObject undefined
    */
-  export function DoesPickupObjectExist(pickupObject: NativeObject): void;
+  export function doesPickupObjectExist(pickupObject: NativeObject): void;
   /**
    *
    * @param {NativePickup} pickup undefined
    */
-  export function GetPickupObject(pickup: NativePickup): void;
+  export function getPickupObject(pickup: NativePickup): void;
   /**
    *
    * @param {NativeAny} p0 undefined
@@ -7737,12 +7737,12 @@ declare module "natives" {
    *
    * @param {NativeHash} pickupHash undefined
    */
-  export function IsPickupWithinRadius(pickupHash: NativeHash, x: number, y: number, z: number, radius: number): void;
+  export function isPickupWithinRadius(pickupHash: NativeHash, x: number, y: number, z: number, radius: number): void;
   /**
    *
    * @param {NativePickup} pickup undefined
    */
-  export function SetPickupRegenerationTime(pickup: NativePickup, duration: number): void;
+  export function setPickupRegenerationTime(pickup: NativePickup, duration: number): void;
   /**
    *
    * @param {NativePlayer} player undefined
@@ -7757,7 +7757,7 @@ declare module "natives" {
    *
    * @param {NativeObject} object undefined
    */
-  export function SetTeamPickupObject(object: NativeObject, p1: NativeAny, p2: NativeBOOL): void;
+  export function setTeamPickupObject(object: NativeObject, p1: NativeAny, p2: NativeBOOL): void;
   /**
    *
    * @param {NativeObject} object undefined
@@ -7801,7 +7801,7 @@ declare module "natives" {
    *
    * @param {number} x undefined
    */
-  export function HighlightPlacementCoords(x: number, y: number, z: number, colorIndex: number): void;
+  export function highlightPlacementCoords(x: number, y: number, z: number, colorIndex: number): void;
   /**
    *
    * @param {NativeObject} object undefined
@@ -7811,7 +7811,7 @@ declare module "natives" {
    *
    * @param {NativePickup} pickupHash undefined
    */
-  export function GetWeaponHashFromPickup(pickupHash: NativePickup): void;
+  export function getWeaponHashFromPickup(pickupHash: NativePickup): void;
   /**
    *
    * @param {NativeObject} object undefined
@@ -7821,226 +7821,226 @@ declare module "natives" {
    *
    * @param {NativeObject} object undefined
    */
-  export function SetObjectTextureVariant(object: NativeObject, paintIndex: number): void;
+  export function setObjectTextureVariant(object: NativeObject, paintIndex: number): void;
   /**
    *
    * @param {NativePickup} pickupHash undefined
    */
-  export function GetPickupHash(pickupHash: NativePickup): void;
+  export function getPickupHash(pickupHash: NativePickup): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function SetForceObjectThisFrame(p0: NativeAny, p1: NativeAny, p2: NativeAny, p3: NativeAny): void;
+  export function setForceObjectThisFrame(p0: NativeAny, p1: NativeAny, p2: NativeAny, p3: NativeAny): void;
   /**
    *
    * @param {NativeObject} object undefined
    */
-  export function MarkObjectForDeletion(object: NativeObject): void;
+  export function markObjectForDeletion(object: NativeObject): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function TaskPause(ped: NativePed, time: number): void;
+  export function taskPause(ped: NativePed, time: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function TaskStandStill(ped: NativePed, time: number): void;
+  export function taskStandStill(ped: NativePed, time: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function TaskJump(ped: NativePed, unused: NativeBOOL): void;
+  export function taskJump(ped: NativePed, unused: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function TaskCower(ped: NativePed, duration: number): void;
+  export function taskCower(ped: NativePed, duration: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function TaskHandsUp(ped: NativePed, duration: number, facingPed: NativePed, p3: number, p4: NativeBOOL): void;
+  export function taskHandsUp(ped: NativePed, duration: number, facingPed: NativePed, p3: number, p4: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function UpdateTaskHandsUpDuration(ped: NativePed, duration: number): void;
+  export function updateTaskHandsUpDuration(ped: NativePed, duration: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function TaskOpenVehicleDoor(ped: NativePed, vehicle: NativeVehicle, timeOut: number, doorIndex: number, speed: number): void;
+  export function taskOpenVehicleDoor(ped: NativePed, vehicle: NativeVehicle, timeOut: number, doorIndex: number, speed: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function TaskEnterVehicle(ped: NativePed, vehicle: NativeVehicle, timeout: number, seat: number, speed: number, flag: number, p6: NativeAny): void;
+  export function taskEnterVehicle(ped: NativePed, vehicle: NativeVehicle, timeout: number, seat: number, speed: number, flag: number, p6: NativeAny): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function TaskLeaveVehicle(ped: NativePed, vehicle: NativeVehicle, flags: number): void;
+  export function taskLeaveVehicle(ped: NativePed, vehicle: NativeVehicle, flags: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function TaskGetOffBoat(ped: NativePed, boat: NativeVehicle): void;
+  export function taskGetOffBoat(ped: NativePed, boat: NativeVehicle): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function TaskSkyDive(ped: NativePed): void;
+  export function taskSkyDive(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function TaskParachute(ped: NativePed, p1: NativeBOOL): void;
+  export function taskParachute(ped: NativePed, p1: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function TaskParachuteToTarget(ped: NativePed, x: number, y: number, z: number): void;
+  export function taskParachuteToTarget(ped: NativePed, x: number, y: number, z: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetParachuteTaskTarget(ped: NativePed, x: number, y: number, z: number): void;
+  export function setParachuteTaskTarget(ped: NativePed, x: number, y: number, z: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetParachuteTaskThrust(ped: NativePed, thrust: number): void;
+  export function setParachuteTaskThrust(ped: NativePed, thrust: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function TaskRappelFromHeli(ped: NativePed, unused: number): void;
+  export function taskRappelFromHeli(ped: NativePed, unused: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function TaskVehicleDriveToCoord(ped: NativePed, vehicle: NativeVehicle, x: number, y: number, z: number, speed: number, p6: NativeAny, vehicleModel: NativeHash, drivingMode: number, stopRange: number, p10: number): void;
+  export function taskVehicleDriveToCoord(ped: NativePed, vehicle: NativeVehicle, x: number, y: number, z: number, speed: number, p6: NativeAny, vehicleModel: NativeHash, drivingMode: number, stopRange: number, p10: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function TaskVehicleDriveToCoordLongrange(ped: NativePed, vehicle: NativeVehicle, x: number, y: number, z: number, speed: number, driveMode: number, stopRange: number): void;
+  export function taskVehicleDriveToCoordLongrange(ped: NativePed, vehicle: NativeVehicle, x: number, y: number, z: number, speed: number, driveMode: number, stopRange: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function TaskVehicleDriveWander(ped: NativePed, vehicle: NativeVehicle, speed: number, drivingStyle: number): void;
+  export function taskVehicleDriveWander(ped: NativePed, vehicle: NativeVehicle, speed: number, drivingStyle: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function TaskFollowToOffsetOfEntity(ped: NativePed, entity: NativeEntity, offsetX: number, offsetY: number, offsetZ: number, movementSpeed: number, timeout: number, stoppingRange: number, persistFollowing: NativeBOOL): void;
+  export function taskFollowToOffsetOfEntity(ped: NativePed, entity: NativeEntity, offsetX: number, offsetY: number, offsetZ: number, movementSpeed: number, timeout: number, stoppingRange: number, persistFollowing: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function TaskGoStraightToCoord(ped: NativePed, x: number, y: number, z: number, speed: number, timeout: number, targetHeading: number, distanceToSlide: number): void;
+  export function taskGoStraightToCoord(ped: NativePed, x: number, y: number, z: number, speed: number, timeout: number, targetHeading: number, distanceToSlide: number): void;
   /**
    *
    * @param {NativeEntity} entity1 undefined
    */
-  export function TaskGoStraightToCoordRelativeToEntity(entity1: NativeEntity, entity2: NativeEntity, p2: number, p3: number, p4: number, p5: number, p6: NativeAny): void;
+  export function taskGoStraightToCoordRelativeToEntity(entity1: NativeEntity, entity2: NativeEntity, p2: number, p3: number, p4: number, p5: number, p6: NativeAny): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function TaskAchieveHeading(ped: NativePed, heading: number, timeout: number): void;
+  export function taskAchieveHeading(ped: NativePed, heading: number, timeout: number): void;
   /**
    *
    */
-  export function TaskFlushRoute(): void;
+  export function taskFlushRoute(): void;
   /**
    *
    * @param {number} x undefined
    */
-  export function TaskExtendRoute(x: number, y: number, z: number): void;
+  export function taskExtendRoute(x: number, y: number, z: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function TaskFollowPointRoute(ped: NativePed, speed: number, unknown: number): void;
+  export function taskFollowPointRoute(ped: NativePed, speed: number, unknown: number): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function TaskGoToEntity(entity: NativeEntity, target: NativeEntity, duration: number, distance: number, speed: number, p5: number, p6: number): void;
+  export function taskGoToEntity(entity: NativeEntity, target: NativeEntity, duration: number, distance: number, speed: number, p5: number, p6: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function TaskSmartFleeCoord(ped: NativePed, x: number, y: number, z: number, distance: number, time: number, p6: NativeBOOL, p7: NativeBOOL): void;
+  export function taskSmartFleeCoord(ped: NativePed, x: number, y: number, z: number, distance: number, time: number, p6: NativeBOOL, p7: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function TaskSmartFleePed(ped: NativePed, fleeTarget: NativePed, distance: number, fleeTime: NativeAny, p4: NativeBOOL, p5: NativeBOOL): void;
+  export function taskSmartFleePed(ped: NativePed, fleeTarget: NativePed, distance: number, fleeTime: NativeAny, p4: NativeBOOL, p5: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function TaskReactAndFleePed(ped: NativePed, fleeTarget: NativePed): void;
+  export function taskReactAndFleePed(ped: NativePed, fleeTarget: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function TaskShockingEventReact(ped: NativePed, eventHandle: number): void;
+  export function taskShockingEventReact(ped: NativePed, eventHandle: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function TaskWanderInArea(ped: NativePed, x: number, y: number, z: number, radius: number, minimalLength: number, timeBetweenWalks: number): void;
+  export function taskWanderInArea(ped: NativePed, x: number, y: number, z: number, radius: number, minimalLength: number, timeBetweenWalks: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function TaskWanderStandard(ped: NativePed, p1: number, p2: number): void;
+  export function taskWanderStandard(ped: NativePed, p1: number, p2: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function TaskVehiclePark(ped: NativePed, vehicle: NativeVehicle, x: number, y: number, z: number, heading: number, mode: number, radius: number, keepEngineOn: NativeBOOL): void;
+  export function taskVehiclePark(ped: NativePed, vehicle: NativeVehicle, x: number, y: number, z: number, heading: number, mode: number, radius: number, keepEngineOn: NativeBOOL): void;
   /**
    *
    * @param {NativePed} killer undefined
    */
-  export function TaskStealthKill(killer: NativePed, target: NativePed, actionType: NativeHash, p3: number, p4: NativeAny): void;
+  export function taskStealthKill(killer: NativePed, target: NativePed, actionType: NativeHash, p3: number, p4: NativeAny): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function TaskPlantBomb(ped: NativePed, x: number, y: number, z: number, heading: number): void;
+  export function taskPlantBomb(ped: NativePed, x: number, y: number, z: number, heading: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function TaskFollowNavMeshToCoord(ped: NativePed, x: number, y: number, z: number, speed: number, timeout: number, stoppingRange: number, persistFollowing: NativeBOOL, unk: number): void;
+  export function taskFollowNavMeshToCoord(ped: NativePed, x: number, y: number, z: number, speed: number, timeout: number, stoppingRange: number, persistFollowing: NativeBOOL, unk: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function TaskFollowNavMeshToCoordAdvanced(ped: NativePed, x: number, y: number, z: number, speed: number, timeout: number, unkFloat: number, unkInt: number, unkX: number, unkY: number, unkZ: number, unk_40000f: number): void;
+  export function taskFollowNavMeshToCoordAdvanced(ped: NativePed, x: number, y: number, z: number, speed: number, timeout: number, unkFloat: number, unkInt: number, unkX: number, unkY: number, unkZ: number, unk_40000f: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedPathCanUseClimbovers(ped: NativePed, Toggle: NativeBOOL): void;
+  export function setPedPathCanUseClimbovers(ped: NativePed, Toggle: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedPathCanUseLadders(ped: NativePed, Toggle: NativeBOOL): void;
+  export function setPedPathCanUseLadders(ped: NativePed, Toggle: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedPathCanDropFromHeight(ped: NativePed, Toggle: NativeBOOL): void;
+  export function setPedPathCanDropFromHeight(ped: NativePed, Toggle: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
@@ -8050,32 +8050,32 @@ declare module "natives" {
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedPathsWidthPlant(ped: NativePed, mayEnterWater: NativeBOOL): void;
+  export function setPedPathsWidthPlant(ped: NativePed, mayEnterWater: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedPathPreferToAvoidWater(ped: NativePed, avoidWater: NativeBOOL): void;
+  export function setPedPathPreferToAvoidWater(ped: NativePed, avoidWater: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedPathAvoidFire(ped: NativePed, avoidFire: NativeBOOL): void;
+  export function setPedPathAvoidFire(ped: NativePed, avoidFire: NativeBOOL): void;
   /**
    *
    * @param {number} height undefined
    */
-  export function SetGlobalMinBirdFlightHeight(height: number): void;
+  export function setGlobalMinBirdFlightHeight(height: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function GetNavmeshRouteDistanceRemaining(ped: NativePed, distRemaining: number, isPathReady: NativeBOOL): void;
+  export function getNavmeshRouteDistanceRemaining(ped: NativePed, distRemaining: number, isPathReady: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function GetNavmeshRouteResult(ped: NativePed): void;
+  export function getNavmeshRouteResult(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
@@ -8085,653 +8085,653 @@ declare module "natives" {
    *
    * @param {NativePed} ped undefined
    */
-  export function TaskGoToCoordAnyMeans(ped: NativePed, x: number, y: number, z: number, speed: number, p5: NativeAny, p6: NativeBOOL, walkingStyle: number, p8: number): void;
+  export function taskGoToCoordAnyMeans(ped: NativePed, x: number, y: number, z: number, speed: number, p5: NativeAny, p6: NativeBOOL, walkingStyle: number, p8: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function TaskGoToCoordAnyMeansExtraParams(ped: NativePed, x: number, y: number, z: number, speed: number, p5: NativeAny, p6: NativeBOOL, walkingStyle: number, p8: number, p9: NativeAny, p10: NativeAny, p11: NativeAny): void;
+  export function taskGoToCoordAnyMeansExtraParams(ped: NativePed, x: number, y: number, z: number, speed: number, p5: NativeAny, p6: NativeBOOL, walkingStyle: number, p8: number, p9: NativeAny, p10: NativeAny, p11: NativeAny): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function TaskGoToCoordAnyMeansExtraParamsWithCruiseSpeed(ped: NativePed, x: number, y: number, z: number, speed: number, p5: NativeAny, p6: NativeBOOL, walkingStyle: number, p8: number, p9: NativeAny, p10: NativeAny, p11: NativeAny, p12: NativeAny): void;
+  export function taskGoToCoordAnyMeansExtraParamsWithCruiseSpeed(ped: NativePed, x: number, y: number, z: number, speed: number, p5: NativeAny, p6: NativeBOOL, walkingStyle: number, p8: number, p9: NativeAny, p10: NativeAny, p11: NativeAny, p12: NativeAny): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function TaskPlayAnim(ped: NativePed, animDictionary: string, animationName: string, speed: number, speedMultiplier: number, duration: number, flag: number, playbackRate: number, lockX: NativeBOOL, lockY: NativeBOOL, lockZ: NativeBOOL): void;
+  export function taskPlayAnim(ped: NativePed, animDictionary: string, animationName: string, speed: number, speedMultiplier: number, duration: number, flag: number, playbackRate: number, lockX: NativeBOOL, lockY: NativeBOOL, lockZ: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function TaskPlayAnimAdvanced(ped: NativePed, animDict: string, animName: string, posX: number, posY: number, posZ: number, rotX: number, rotY: number, rotZ: number, speed: number, speedMultiplier: number, duration: number, flag: NativeAny, animTime: number, p14: number, p15: number): void;
+  export function taskPlayAnimAdvanced(ped: NativePed, animDict: string, animName: string, posX: number, posY: number, posZ: number, rotX: number, rotY: number, rotZ: number, speed: number, speedMultiplier: number, duration: number, flag: NativeAny, animTime: number, p14: number, p15: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function StopAnimTask(ped: NativePed, animDictionary: string, animationName: string, p3: number): void;
+  export function stopAnimTask(ped: NativePed, animDictionary: string, animationName: string, p3: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function TaskScriptedAnimation(ped: NativePed, p1: NativeAny, p2: NativeAny, p3: NativeAny, p4: number, p5: number): void;
+  export function taskScriptedAnimation(ped: NativePed, p1: NativeAny, p2: NativeAny, p3: NativeAny, p4: number, p5: number): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function PlayEntityScriptedAnim(p0: NativeAny, p1: NativeAny, p2: NativeAny, p3: NativeAny, p4: number, p5: number): void;
+  export function playEntityScriptedAnim(p0: NativeAny, p1: NativeAny, p2: NativeAny, p3: NativeAny, p4: number, p5: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function StopAnimPlayback(ped: NativePed, p1: number, p2: NativeBOOL): void;
+  export function stopAnimPlayback(ped: NativePed, p1: number, p2: NativeBOOL): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function SetAnimWeight(p0: NativeAny, p1: number, p2: NativeAny, p3: NativeAny, p4: NativeBOOL): void;
+  export function setAnimWeight(p0: NativeAny, p1: number, p2: NativeAny, p3: NativeAny, p4: NativeBOOL): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function SetAnimRate(p0: NativeAny, p1: number, p2: NativeAny, p3: NativeBOOL): void;
+  export function setAnimRate(p0: NativeAny, p1: number, p2: NativeAny, p3: NativeBOOL): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function SetAnimLooped(p0: NativeAny, p1: NativeBOOL, p2: NativeAny, p3: NativeBOOL): void;
+  export function setAnimLooped(p0: NativeAny, p1: NativeBOOL, p2: NativeAny, p3: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function TaskPlayPhoneGestureAnimation(ped: NativePed, animDict: string, animation: string, boneMaskType: string, p4: number, p5: number, p6: NativeBOOL, p7: NativeBOOL): void;
+  export function taskPlayPhoneGestureAnimation(ped: NativePed, animDict: string, animation: string, boneMaskType: string, p4: number, p5: number, p6: NativeBOOL, p7: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function TaskStopPhoneGestureAnimation(ped: NativePed): void;
+  export function taskStopPhoneGestureAnimation(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function IsPlayingPhoneGestureAnim(ped: NativePed): void;
+  export function isPlayingPhoneGestureAnim(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function GetPhoneGestureAnimCurrentTime(ped: NativePed): void;
+  export function getPhoneGestureAnimCurrentTime(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function GetPhoneGestureAnimTotalTime(ped: NativePed): void;
+  export function getPhoneGestureAnimTotalTime(ped: NativePed): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function TaskVehiclePlayAnim(vehicle: NativeVehicle, animation_set: string, animation_name: string): void;
+  export function taskVehiclePlayAnim(vehicle: NativeVehicle, animation_set: string, animation_name: string): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function TaskLookAtCoord(entity: NativeEntity, x: number, y: number, z: number, duration: number, p5: NativeAny, p6: NativeAny): void;
+  export function taskLookAtCoord(entity: NativeEntity, x: number, y: number, z: number, duration: number, p5: NativeAny, p6: NativeAny): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function TaskLookAtEntity(ped: NativePed, lookAt: NativeEntity, duration: number, unknown1: number, unknown2: number): void;
+  export function taskLookAtEntity(ped: NativePed, lookAt: NativeEntity, duration: number, unknown1: number, unknown2: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function TaskClearLookAt(ped: NativePed): void;
+  export function taskClearLookAt(ped: NativePed): void;
   /**
    *
    * @param {NativeObject} taskSequence undefined
    */
-  export function OpenSequenceTask(taskSequence: NativeObject): void;
+  export function openSequenceTask(taskSequence: NativeObject): void;
   /**
    *
    * @param {NativeObject} taskSequence undefined
    */
-  export function CloseSequenceTask(taskSequence: NativeObject): void;
+  export function closeSequenceTask(taskSequence: NativeObject): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function TaskPerformSequence(ped: NativePed, taskSequence: NativeObject): void;
+  export function taskPerformSequence(ped: NativePed, taskSequence: NativeObject): void;
   /**
    *
    * @param {NativeObject} taskSequence undefined
    */
-  export function ClearSequenceTask(taskSequence: NativeObject): void;
+  export function clearSequenceTask(taskSequence: NativeObject): void;
   /**
    *
    * @param {NativeObject} taskSequence undefined
    */
-  export function SetSequenceToRepeat(taskSequence: NativeObject, repeat: NativeBOOL): void;
+  export function setSequenceToRepeat(taskSequence: NativeObject, repeat: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function GetSequenceProgress(ped: NativePed): void;
+  export function getSequenceProgress(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function GetIsTaskActive(ped: NativePed, taskNumber: number): void;
+  export function getIsTaskActive(ped: NativePed, taskNumber: number): void;
   /**
    *
    * @param {NativePed} targetPed undefined
    */
-  export function GetScriptTaskStatus(targetPed: NativePed, taskHash: NativeHash): void;
+  export function getScriptTaskStatus(targetPed: NativePed, taskHash: NativeHash): void;
   /**
    *
    * @param {NativeVehicle} veh undefined
    */
-  export function GetActiveVehicleMissionType(veh: NativeVehicle): void;
+  export function getActiveVehicleMissionType(veh: NativeVehicle): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function TaskLeaveAnyVehicle(ped: NativePed, p1: number, p2: number): void;
+  export function taskLeaveAnyVehicle(ped: NativePed, p1: number, p2: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function TaskAimGunScripted(ped: NativePed, scriptTask: NativeHash, p2: NativeBOOL, p3: NativeBOOL): void;
+  export function taskAimGunScripted(ped: NativePed, scriptTask: NativeHash, p2: NativeBOOL, p3: NativeBOOL): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function TaskAimGunScriptedWithTarget(p0: NativeAny, p1: NativeAny, p2: number, p3: number, p4: number, p5: NativeAny, p6: NativeBOOL, p7: NativeBOOL): void;
+  export function taskAimGunScriptedWithTarget(p0: NativeAny, p1: NativeAny, p2: number, p3: number, p4: number, p5: NativeAny, p6: NativeBOOL, p7: NativeBOOL): void;
   /**
    *
    * @param {NativePed} p0 undefined
    */
-  export function UpdateTaskAimGunScriptedTarget(p0: NativePed, p1: NativePed, p2: number, p3: number, p4: number, p5: NativeBOOL): void;
+  export function updateTaskAimGunScriptedTarget(p0: NativePed, p1: NativePed, p2: number, p3: number, p4: number, p5: NativeBOOL): void;
   /**
    *
    * @param {number} p0 undefined
    */
-  export function GetClipSetForScriptedGunTask(p0: number): void;
+  export function getClipSetForScriptedGunTask(p0: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function TaskAimGunAtEntity(ped: NativePed, entity: NativeEntity, duration: number, unk: NativeBOOL): void;
+  export function taskAimGunAtEntity(ped: NativePed, entity: NativeEntity, duration: number, unk: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function TaskTurnPedToFaceEntity(ped: NativePed, entity: NativeEntity, duration: number): void;
+  export function taskTurnPedToFaceEntity(ped: NativePed, entity: NativeEntity, duration: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function TaskAimGunAtCoord(ped: NativePed, x: number, y: number, z: number, time: number, p5: NativeBOOL, p6: NativeBOOL): void;
+  export function taskAimGunAtCoord(ped: NativePed, x: number, y: number, z: number, time: number, p5: NativeBOOL, p6: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function TaskShootAtCoord(ped: NativePed, x: number, y: number, z: number, duration: number, firingPattern: NativeHash): void;
+  export function taskShootAtCoord(ped: NativePed, x: number, y: number, z: number, duration: number, firingPattern: NativeHash): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function TaskShuffleToNextVehicleSeat(ped: NativePed, vehicle: NativeVehicle): void;
+  export function taskShuffleToNextVehicleSeat(ped: NativePed, vehicle: NativeVehicle): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function ClearPedTasks(ped: NativePed): void;
+  export function clearPedTasks(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function ClearPedSecondaryTask(ped: NativePed): void;
+  export function clearPedSecondaryTask(ped: NativePed): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function TaskEveryoneLeaveVehicle(vehicle: NativeVehicle): void;
+  export function taskEveryoneLeaveVehicle(vehicle: NativeVehicle): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function TaskGotoEntityOffset(ped: NativePed, p1: NativeAny, p2: NativeAny, x: number, y: number, z: number, duration: number): void;
+  export function taskGotoEntityOffset(ped: NativePed, p1: NativeAny, p2: NativeAny, x: number, y: number, z: number, duration: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function TaskGotoEntityOffsetXy(ped: NativePed, entity: NativeEntity, duration: number, xOffset: number, yOffset: number, zOffset: number, moveBlendRatio: number, useNavmesh: NativeBOOL): void;
+  export function taskGotoEntityOffsetXy(ped: NativePed, entity: NativeEntity, duration: number, xOffset: number, yOffset: number, zOffset: number, moveBlendRatio: number, useNavmesh: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function TaskTurnPedToFaceCoord(ped: NativePed, x: number, y: number, z: number, duration: number): void;
+  export function taskTurnPedToFaceCoord(ped: NativePed, x: number, y: number, z: number, duration: number): void;
   /**
    *
    * @param {NativePed} driver undefined
    */
-  export function TaskVehicleTempAction(driver: NativePed, vehicle: NativeVehicle, action: number, time: number): void;
+  export function taskVehicleTempAction(driver: NativePed, vehicle: NativeVehicle, action: number, time: number): void;
   /**
    *
    * @param {number} p0 undefined
    */
-  export function TaskVehicleMission(p0: number, p1: number, veh: NativeVehicle, p3: NativeAny, p4: number, p5: NativeAny, p6: number, p7: number, p8: NativeBOOL): void;
+  export function taskVehicleMission(p0: number, p1: number, veh: NativeVehicle, p3: NativeAny, p4: number, p5: NativeAny, p6: number, p7: number, p8: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function TaskVehicleMissionPedTarget(ped: NativePed, vehicle: NativeVehicle, pedTarget: NativePed, mode: number, maxSpeed: number, drivingStyle: number, minDistance: number, p7: number, p8: NativeBOOL): void;
+  export function taskVehicleMissionPedTarget(ped: NativePed, vehicle: NativeVehicle, pedTarget: NativePed, mode: number, maxSpeed: number, drivingStyle: number, minDistance: number, p7: number, p8: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function TaskVehicleMissionCoorsTarget(ped: NativePed, vehicle: NativeVehicle, x: number, y: number, z: number, p5: number, p6: number, p7: number, p8: number, p9: number, p10: NativeBOOL): void;
+  export function taskVehicleMissionCoorsTarget(ped: NativePed, vehicle: NativeVehicle, x: number, y: number, z: number, p5: number, p6: number, p7: number, p8: number, p9: number, p10: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function TaskVehicleEscort(ped: NativePed, vehicle: NativeVehicle, targetVehicle: NativeVehicle, mode: number, speed: number, drivingStyle: number, minDistance: number, p7: number, noRoadsDistance: number): void;
+  export function taskVehicleEscort(ped: NativePed, vehicle: NativeVehicle, targetVehicle: NativeVehicle, mode: number, speed: number, drivingStyle: number, minDistance: number, p7: number, noRoadsDistance: number): void;
   /**
    *
    * @param {NativePed} driver undefined
    */
-  export function TaskVehicleFollow(driver: NativePed, vehicle: NativeVehicle, targetEntity: NativeEntity, speed: number, drivingStyle: number, minDistance: number): void;
+  export function taskVehicleFollow(driver: NativePed, vehicle: NativeVehicle, targetEntity: NativeEntity, speed: number, drivingStyle: number, minDistance: number): void;
   /**
    *
    * @param {NativePed} driver undefined
    */
-  export function TaskVehicleChase(driver: NativePed, targetEnt: NativeEntity): void;
+  export function taskVehicleChase(driver: NativePed, targetEnt: NativeEntity): void;
   /**
    *
    * @param {NativePed} pilot undefined
    */
-  export function TaskVehicleHeliProtect(pilot: NativePed, vehicle: NativeVehicle, entityToFollow: NativeEntity, targetSpeed: number, p4: number, radius: number, altitude: number, p7: number): void;
+  export function taskVehicleHeliProtect(pilot: NativePed, vehicle: NativeVehicle, entityToFollow: NativeEntity, targetSpeed: number, p4: number, radius: number, altitude: number, p7: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetTaskVehicleChaseBehaviorFlag(ped: NativePed, flag: number, set: NativeBOOL): void;
+  export function setTaskVehicleChaseBehaviorFlag(ped: NativePed, flag: number, set: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetTaskVehicleChaseIdealPursuitDistance(ped: NativePed, distance: number): void;
+  export function setTaskVehicleChaseIdealPursuitDistance(ped: NativePed, distance: number): void;
   /**
    *
    * @param {NativePed} pilot undefined
    */
-  export function TaskHeliChase(pilot: NativePed, entityToFollow: NativeEntity, x: number, y: number, z: number): void;
+  export function taskHeliChase(pilot: NativePed, entityToFollow: NativeEntity, x: number, y: number, z: number): void;
   /**
    *
    * @param {NativePed} pilot undefined
    */
-  export function TaskPlaneChase(pilot: NativePed, entityToFollow: NativeEntity, x: number, y: number, z: number): void;
+  export function taskPlaneChase(pilot: NativePed, entityToFollow: NativeEntity, x: number, y: number, z: number): void;
   /**
    *
    * @param {NativePed} pilot undefined
    */
-  export function TaskPlaneLand(pilot: NativePed, plane: NativeVehicle, runwayStartX: number, runwayStartY: number, runwayStartZ: number, runwayEndX: number, runwayEndY: number, runwayEndZ: number): void;
+  export function taskPlaneLand(pilot: NativePed, plane: NativeVehicle, runwayStartX: number, runwayStartY: number, runwayStartZ: number, runwayEndX: number, runwayEndY: number, runwayEndZ: number): void;
   /**
    *
    * @param {NativePed} pilot undefined
    */
-  export function TaskHeliMission(pilot: NativePed, aircraft: NativeVehicle, targetVehicle: NativeVehicle, targetPed: NativePed, destinationX: number, destinationY: number, destinationZ: number, missionFlag: number, maxSpeed: number, landingRadius: number, targetHeading: number, unk1: number, unk2: number, unk3: NativeHash, landingFlags: number): void;
+  export function taskHeliMission(pilot: NativePed, aircraft: NativeVehicle, targetVehicle: NativeVehicle, targetPed: NativePed, destinationX: number, destinationY: number, destinationZ: number, missionFlag: number, maxSpeed: number, landingRadius: number, targetHeading: number, unk1: number, unk2: number, unk3: NativeHash, landingFlags: number): void;
   /**
    *
    * @param {NativePed} pilot undefined
    */
-  export function TaskPlaneMission(pilot: NativePed, aircraft: NativeVehicle, targetVehicle: NativeVehicle, targetPed: NativePed, destinationX: number, destinationY: number, destinationZ: number, missionFlag: number, angularDrag: number, unk: number, targetHeading: number, maxZ: number, minZ: number): void;
+  export function taskPlaneMission(pilot: NativePed, aircraft: NativeVehicle, targetVehicle: NativeVehicle, targetPed: NativePed, destinationX: number, destinationY: number, destinationZ: number, missionFlag: number, angularDrag: number, unk: number, targetHeading: number, maxZ: number, minZ: number): void;
   /**
    *
    * @param {NativePed} pedDriver undefined
    */
-  export function TaskBoatMission(pedDriver: NativePed, boat: NativeVehicle, p2: NativeAny, p3: NativeAny, x: number, y: number, z: number, p7: NativeAny, maxSpeed: number, drivingStyle: number, p10: number, p11: NativeAny): void;
+  export function taskBoatMission(pedDriver: NativePed, boat: NativeVehicle, p2: NativeAny, p3: NativeAny, x: number, y: number, z: number, p7: NativeAny, maxSpeed: number, drivingStyle: number, p10: number, p11: NativeAny): void;
   /**
    *
    * @param {NativePed} driverPed undefined
    */
-  export function TaskDriveBy(driverPed: NativePed, targetPed: NativePed, targetVehicle: NativeVehicle, targetX: number, targetY: number, targetZ: number, distanceToShoot: number, pedAccuracy: number, p8: NativeBOOL, firingPattern: NativeHash): void;
+  export function taskDriveBy(driverPed: NativePed, targetPed: NativePed, targetVehicle: NativeVehicle, targetX: number, targetY: number, targetZ: number, distanceToShoot: number, pedAccuracy: number, p8: NativeBOOL, firingPattern: NativeHash): void;
   /**
    *
    * @param {NativePed} shootingPed undefined
    */
-  export function SetDrivebyTaskTarget(shootingPed: NativePed, targetPed: NativePed, targetVehicle: NativeVehicle, x: number, y: number, z: number): void;
+  export function setDrivebyTaskTarget(shootingPed: NativePed, targetPed: NativePed, targetVehicle: NativeVehicle, x: number, y: number, z: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function ClearDrivebyTaskUnderneathDrivingTask(ped: NativePed): void;
+  export function clearDrivebyTaskUnderneathDrivingTask(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function IsDrivebyTaskUnderneathDrivingTask(ped: NativePed): void;
+  export function isDrivebyTaskUnderneathDrivingTask(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function ControlMountedWeapon(ped: NativePed): void;
+  export function controlMountedWeapon(ped: NativePed): void;
   /**
    *
    * @param {NativePed} shootingPed undefined
    */
-  export function SetMountedWeaponTarget(shootingPed: NativePed, targetPed: NativePed, targetVehicle: NativeVehicle, x: number, y: number, z: number): void;
+  export function setMountedWeaponTarget(shootingPed: NativePed, targetPed: NativePed, targetVehicle: NativeVehicle, x: number, y: number, z: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function IsMountedWeaponTaskUnderneathDrivingTask(ped: NativePed): void;
+  export function isMountedWeaponTaskUnderneathDrivingTask(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function TaskUseMobilePhone(ped: NativePed, p1: number): void;
+  export function taskUseMobilePhone(ped: NativePed, p1: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function TaskUseMobilePhoneTimed(ped: NativePed, duration: number): void;
+  export function taskUseMobilePhoneTimed(ped: NativePed, duration: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function TaskChatToPed(ped: NativePed, target: NativePed, p2: number, p3: number, p4: number, p5: number, p6: number, p7: number): void;
+  export function taskChatToPed(ped: NativePed, target: NativePed, p2: number, p3: number, p4: number, p5: number, p6: number, p7: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function TaskWarpPedIntoVehicle(ped: NativePed, vehicle: NativeVehicle, seat: number): void;
+  export function taskWarpPedIntoVehicle(ped: NativePed, vehicle: NativeVehicle, seat: number): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function TaskShootAtEntity(entity: NativeEntity, target: NativeEntity, duration: number, firingPattern: NativeHash): void;
+  export function taskShootAtEntity(entity: NativeEntity, target: NativeEntity, duration: number, firingPattern: NativeHash): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function TaskClimb(ped: NativePed, unused: NativeBOOL): void;
+  export function taskClimb(ped: NativePed, unused: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function TaskClimbLadder(ped: NativePed, p1: number): void;
+  export function taskClimbLadder(ped: NativePed, p1: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function ClearPedTasksImmediately(ped: NativePed): void;
+  export function clearPedTasksImmediately(ped: NativePed): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function TaskPerformSequenceFromProgress(p0: NativeAny, p1: NativeAny, p2: NativeAny, p3: NativeAny): void;
+  export function taskPerformSequenceFromProgress(p0: NativeAny, p1: NativeAny, p2: NativeAny, p3: NativeAny): void;
   /**
    *
    * @param {number} p0 undefined
    */
-  export function SetNextDesiredMoveState(p0: number): void;
+  export function setNextDesiredMoveState(p0: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedDesiredMoveBlendRatio(ped: NativePed, p1: number): void;
+  export function setPedDesiredMoveBlendRatio(ped: NativePed, p1: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function GetPedDesiredMoveBlendRatio(ped: NativePed): void;
+  export function getPedDesiredMoveBlendRatio(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function TaskGotoEntityAiming(ped: NativePed, target: NativeEntity, distanceToStopAt: number, StartAimingDist: number): void;
+  export function taskGotoEntityAiming(ped: NativePed, target: NativeEntity, distanceToStopAt: number, StartAimingDist: number): void;
   /**
    *
    * @param {NativePed} p0 undefined
    */
-  export function TaskSetDecisionMaker(p0: NativePed, p1: NativeHash): void;
+  export function taskSetDecisionMaker(p0: NativePed, p1: NativeHash): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function TaskSetSphereDefensiveArea(p0: NativeAny, p1: number, p2: number, p3: number, p4: number): void;
+  export function taskSetSphereDefensiveArea(p0: NativeAny, p1: number, p2: number, p3: number, p4: number): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function TaskClearDefensiveArea(p0: NativeAny): void;
+  export function taskClearDefensiveArea(p0: NativeAny): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function TaskPedSlideToCoord(ped: NativePed, x: number, y: number, z: number, heading: number, duration: number): void;
+  export function taskPedSlideToCoord(ped: NativePed, x: number, y: number, z: number, heading: number, duration: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function TaskPedSlideToCoordHdgRate(ped: NativePed, x: number, y: number, z: number, heading: number, p5: number, p6: number): void;
+  export function taskPedSlideToCoordHdgRate(ped: NativePed, x: number, y: number, z: number, heading: number, p5: number, p6: number): void;
   /**
    *
    * @param {number} posX undefined
    */
-  export function AddCoverPoint(posX: number, posY: number, posZ: number, heading: number, p4: NativeBOOL, p5: number, p6: NativeBOOL, p7: NativeBOOL): void;
+  export function addCoverPoint(posX: number, posY: number, posZ: number, heading: number, p4: NativeBOOL, p5: number, p6: NativeBOOL, p7: NativeBOOL): void;
   /**
    *
    * @param {NativeScrHandle} coverpoint undefined
    */
-  export function RemoveCoverPoint(coverpoint: NativeScrHandle): void;
+  export function removeCoverPoint(coverpoint: NativeScrHandle): void;
   /**
    *
    * @param {number} x undefined
    */
-  export function DoesScriptedCoverPointExistAtCoords(x: number, y: number, z: number): void;
+  export function doesScriptedCoverPointExistAtCoords(x: number, y: number, z: number): void;
   /**
    *
    * @param {NativeScrHandle} coverpoint undefined
    */
-  export function GetScriptedCoverPointCoords(coverpoint: NativeScrHandle): void;
+  export function getScriptedCoverPointCoords(coverpoint: NativeScrHandle): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function TaskCombatPed(ped: NativePed, targetPed: NativePed, p2: number, p3: number): void;
+  export function taskCombatPed(ped: NativePed, targetPed: NativePed, p2: number, p3: number): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function TaskCombatPedTimed(p0: NativeAny, ped: NativePed, duration: number, p3: NativeAny): void;
+  export function taskCombatPedTimed(p0: NativeAny, ped: NativePed, duration: number, p3: NativeAny): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function TaskSeekCoverFromPos(ped: NativePed, x: number, y: number, z: number, duration: number, p5: NativeBOOL): void;
+  export function taskSeekCoverFromPos(ped: NativePed, x: number, y: number, z: number, duration: number, p5: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function TaskSeekCoverFromPed(ped: NativePed, target: NativePed, duration: number, p3: NativeBOOL): void;
+  export function taskSeekCoverFromPed(ped: NativePed, target: NativePed, duration: number, p3: NativeBOOL): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function TaskSeekCoverToCoverPoint(p0: NativeAny, p1: NativeAny, p2: number, p3: number, p4: number, p5: NativeAny, p6: NativeBOOL): void;
+  export function taskSeekCoverToCoverPoint(p0: NativeAny, p1: NativeAny, p2: number, p3: number, p4: number, p5: NativeAny, p6: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function TaskSeekCoverToCoords(ped: NativePed, x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, p7: NativeAny, p8: NativeBOOL): void;
+  export function taskSeekCoverToCoords(ped: NativePed, x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, p7: NativeAny, p8: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function TaskPutPedDirectlyIntoCover(ped: NativePed, x: number, y: number, z: number, timeout: NativeAny, p5: NativeBOOL, p6: number, p7: NativeBOOL, p8: NativeBOOL, p9: NativeAny, p10: NativeBOOL): void;
+  export function taskPutPedDirectlyIntoCover(ped: NativePed, x: number, y: number, z: number, timeout: NativeAny, p5: NativeBOOL, p6: number, p7: NativeBOOL, p8: NativeBOOL, p9: NativeAny, p10: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function TaskExitCover(ped: NativePed, p1: number, posX: number, posY: number, posZ: number): void;
+  export function taskExitCover(ped: NativePed, p1: number, posX: number, posY: number, posZ: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function TaskPutPedDirectlyIntoMelee(ped: NativePed, target: NativePed, p2: number, p3: number, p4: number, flag: number): void;
+  export function taskPutPedDirectlyIntoMelee(ped: NativePed, target: NativePed, p2: number, p3: number, p4: number, flag: number): void;
   /**
    *
    * @param {NativeBOOL} p0 undefined
    */
-  export function TaskToggleDuck(p0: NativeBOOL, p1: NativeBOOL): void;
+  export function taskToggleDuck(p0: NativeBOOL, p1: NativeBOOL): void;
   /**
    *
    * @param {NativePed} p0 undefined
    */
-  export function TaskGuardCurrentPosition(p0: NativePed, p1: number, p2: number, p3: NativeBOOL): void;
+  export function taskGuardCurrentPosition(p0: NativePed, p1: number, p2: number, p3: NativeBOOL): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function TaskGuardAssignedDefensiveArea(p0: NativeAny, p1: number, p2: number, p3: number, p4: number, p5: number, p6: NativeAny): void;
+  export function taskGuardAssignedDefensiveArea(p0: NativeAny, p1: number, p2: number, p3: number, p4: number, p5: number, p6: NativeAny): void;
   /**
    *
    * @param {NativePed} p0 undefined
    */
-  export function TaskGuardSphereDefensiveArea(p0: NativePed, p1: number, p2: number, p3: number, p4: number, p5: number, p6: NativeAny, p7: number, p8: number, p9: number, p10: number): void;
+  export function taskGuardSphereDefensiveArea(p0: NativePed, p1: number, p2: number, p3: number, p4: number, p5: number, p6: NativeAny, p7: number, p8: number, p9: number, p10: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function TaskStandGuard(ped: NativePed, x: number, y: number, z: number, heading: number, scenarioName: string): void;
+  export function taskStandGuard(ped: NativePed, x: number, y: number, z: number, heading: number, scenarioName: string): void;
   /**
    *
    * @param {NativePed} driver undefined
    */
-  export function SetDriveTaskCruiseSpeed(driver: NativePed, cruiseSpeed: number): void;
+  export function setDriveTaskCruiseSpeed(driver: NativePed, cruiseSpeed: number): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function SetDriveTaskMaxCruiseSpeed(p0: NativeAny, p1: number): void;
+  export function setDriveTaskMaxCruiseSpeed(p0: NativeAny, p1: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetDriveTaskDrivingStyle(ped: NativePed, drivingStyle: number): void;
+  export function setDriveTaskDrivingStyle(ped: NativePed, drivingStyle: number): void;
   /**
    *
    * @param {number} playerX undefined
    */
-  export function AddCoverBlockingArea(playerX: number, playerY: number, playerZ: number, radiusX: number, radiusY: number, radiusZ: number, p6: NativeBOOL, p7: NativeBOOL, p8: NativeBOOL, p9: NativeBOOL): void;
+  export function addCoverBlockingArea(playerX: number, playerY: number, playerZ: number, radiusX: number, radiusY: number, radiusZ: number, p6: NativeBOOL, p7: NativeBOOL, p8: NativeBOOL, p9: NativeBOOL): void;
   /**
    *
    */
-  export function RemoveAllCoverBlockingAreas(): void;
-  /**
-   *
-   * @param {NativePed} ped undefined
-   */
-  export function TaskStartScenarioInPlace(ped: NativePed, scenarioName: string, unkDelay: number, playEnterAnim: NativeBOOL): void;
+  export function removeAllCoverBlockingAreas(): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function TaskStartScenarioAtPosition(ped: NativePed, scenarioName: string, x: number, y: number, z: number, heading: number, duration: number, sittingScenario: NativeBOOL, teleport: NativeBOOL): void;
+  export function taskStartScenarioInPlace(ped: NativePed, scenarioName: string, unkDelay: number, playEnterAnim: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function TaskUseNearestScenarioToCoord(ped: NativePed, x: number, y: number, z: number, distance: number, duration: number): void;
+  export function taskStartScenarioAtPosition(ped: NativePed, scenarioName: string, x: number, y: number, z: number, heading: number, duration: number, sittingScenario: NativeBOOL, teleport: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function TaskUseNearestScenarioToCoordWarp(ped: NativePed, x: number, y: number, z: number, radius: number, p5: NativeAny): void;
+  export function taskUseNearestScenarioToCoord(ped: NativePed, x: number, y: number, z: number, distance: number, duration: number): void;
+  /**
+   *
+   * @param {NativePed} ped undefined
+   */
+  export function taskUseNearestScenarioToCoordWarp(ped: NativePed, x: number, y: number, z: number, radius: number, p5: NativeAny): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function TaskUseNearestScenarioChainToCoord(p0: NativeAny, p1: number, p2: number, p3: number, p4: number, p5: NativeAny): void;
+  export function taskUseNearestScenarioChainToCoord(p0: NativeAny, p1: number, p2: number, p3: number, p4: number, p5: NativeAny): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function TaskUseNearestScenarioChainToCoordWarp(p0: NativeAny, p1: number, p2: number, p3: number, p4: number, p5: NativeAny): void;
+  export function taskUseNearestScenarioChainToCoordWarp(p0: NativeAny, p1: number, p2: number, p3: number, p4: number, p5: NativeAny): void;
   /**
    *
    * @param {number} x undefined
    */
-  export function DoesScenarioExistInArea(x: number, y: number, z: number, radius: number, b: NativeBOOL): void;
+  export function doesScenarioExistInArea(x: number, y: number, z: number, radius: number, b: NativeBOOL): void;
   /**
    *
    * @param {number} p0 undefined
    */
-  export function DoesScenarioOfTypeExistInArea(p0: number, p1: number, p2: number, p3: NativeAny, p4: number, p5: NativeBOOL): void;
+  export function doesScenarioOfTypeExistInArea(p0: number, p1: number, p2: number, p3: NativeAny, p4: number, p5: NativeBOOL): void;
   /**
    *
    * @param {number} p0 undefined
    */
-  export function IsScenarioOccupied(p0: number, p1: number, p2: number, p3: number, p4: NativeBOOL): void;
+  export function isScenarioOccupied(p0: number, p1: number, p2: number, p3: number, p4: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function PedHasUseScenarioTask(ped: NativePed): void;
+  export function pedHasUseScenarioTask(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function PlayAnimOnRunningScenario(ped: NativePed, animDict: string, animName: string): void;
+  export function playAnimOnRunningScenario(ped: NativePed, animDict: string, animName: string): void;
   /**
    *
    * @param {string} scenarioGroup undefined
    */
-  export function DoesScenarioGroupExist(scenarioGroup: string): void;
+  export function doesScenarioGroupExist(scenarioGroup: string): void;
   /**
    *
    * @param {string} scenarioGroup undefined
    */
-  export function IsScenarioGroupEnabled(scenarioGroup: string): void;
+  export function isScenarioGroupEnabled(scenarioGroup: string): void;
   /**
    *
    * @param {string} scenarioGroup undefined
    */
-  export function SetScenarioGroupEnabled(scenarioGroup: string, p1: NativeBOOL): void;
+  export function setScenarioGroupEnabled(scenarioGroup: string, p1: NativeBOOL): void;
   /**
    *
    */
-  export function ResetScenarioGroupsEnabled(): void;
+  export function resetScenarioGroupsEnabled(): void;
   /**
    *
    * @param {string} scenarioGroup undefined
    */
-  export function SetExclusiveScenarioGroup(scenarioGroup: string): void;
+  export function setExclusiveScenarioGroup(scenarioGroup: string): void;
   /**
    *
    */
-  export function ResetExclusiveScenarioGroup(): void;
+  export function resetExclusiveScenarioGroup(): void;
   /**
    *
    * @param {string} scenarioType undefined
    */
-  export function IsScenarioTypeEnabled(scenarioType: string): void;
+  export function isScenarioTypeEnabled(scenarioType: string): void;
   /**
    *
    * @param {string} scenarioType undefined
    */
-  export function SetScenarioTypeEnabled(scenarioType: string, toggle: NativeBOOL): void;
+  export function setScenarioTypeEnabled(scenarioType: string, toggle: NativeBOOL): void;
   /**
    *
    */
-  export function ResetScenarioTypesEnabled(): void;
+  export function resetScenarioTypesEnabled(): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function IsPedActiveInScenario(ped: NativePed): void;
+  export function isPedActiveInScenario(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
@@ -8746,355 +8746,355 @@ declare module "natives" {
    *
    * @param {NativePed} ped undefined
    */
-  export function TaskCombatHatedTargetsInArea(ped: NativePed, x: number, y: number, z: number, radius: number, p5: NativeAny): void;
+  export function taskCombatHatedTargetsInArea(ped: NativePed, x: number, y: number, z: number, radius: number, p5: NativeAny): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function TaskCombatHatedTargetsAroundPed(ped: NativePed, radius: number, p2: number): void;
+  export function taskCombatHatedTargetsAroundPed(ped: NativePed, radius: number, p2: number): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function TaskCombatHatedTargetsAroundPedTimed(p0: NativeAny, p1: number, p2: NativeAny, p3: NativeAny): void;
+  export function taskCombatHatedTargetsAroundPedTimed(p0: NativeAny, p1: number, p2: NativeAny, p3: NativeAny): void;
   /**
    *
    * @param {number} ped undefined
    */
-  export function TaskThrowProjectile(ped: number, x: number, y: number, z: number): void;
+  export function taskThrowProjectile(ped: number, x: number, y: number, z: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function TaskSwapWeapon(ped: NativePed, p1: NativeBOOL): void;
+  export function taskSwapWeapon(ped: NativePed, p1: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function TaskReloadWeapon(ped: NativePed, unused: NativeBOOL): void;
+  export function taskReloadWeapon(ped: NativePed, unused: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function IsPedGettingUp(ped: NativePed): void;
+  export function isPedGettingUp(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function TaskWrithe(ped: NativePed, target: NativePed, time: number, p3: number): void;
+  export function taskWrithe(ped: NativePed, target: NativePed, time: number, p3: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function IsPedInWrithe(ped: NativePed): void;
+  export function isPedInWrithe(ped: NativePed): void;
   /**
    *
    * @param {string} patrolRoute undefined
    */
-  export function OpenPatrolRoute(patrolRoute: string): void;
+  export function openPatrolRoute(patrolRoute: string): void;
   /**
    *
    */
-  export function ClosePatrolRoute(): void;
+  export function closePatrolRoute(): void;
   /**
    *
    * @param {number} p0 undefined
    */
-  export function AddPatrolRouteNode(p0: number, p1: string, x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, p8: number): void;
+  export function addPatrolRouteNode(p0: number, p1: string, x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, p8: number): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function AddPatrolRouteLink(p0: NativeAny, p1: NativeAny): void;
+  export function addPatrolRouteLink(p0: NativeAny, p1: NativeAny): void;
   /**
    *
    */
-  export function CreatePatrolRoute(): void;
+  export function createPatrolRoute(): void;
   /**
    *
    * @param {string} patrolRoute undefined
    */
-  export function DeletePatrolRoute(patrolRoute: string): void;
+  export function deletePatrolRoute(patrolRoute: string): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function TaskPatrol(ped: NativePed, p1: string, p2: NativeAny, p3: NativeBOOL, p4: NativeBOOL): void;
+  export function taskPatrol(ped: NativePed, p1: string, p2: NativeAny, p3: NativeBOOL, p4: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function TaskStayInCover(ped: NativePed): void;
+  export function taskStayInCover(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function AddVehicleSubtaskAttackCoord(ped: NativePed, x: number, y: number, z: number): void;
+  export function addVehicleSubtaskAttackCoord(ped: NativePed, x: number, y: number, z: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function AddVehicleSubtaskAttackPed(ped: NativePed, ped2: NativePed): void;
+  export function addVehicleSubtaskAttackPed(ped: NativePed, ped2: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function TaskVehicleShootAtPed(ped: NativePed, target: NativePed, flag: number): void;
+  export function taskVehicleShootAtPed(ped: NativePed, target: NativePed, flag: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function TaskVehicleAimAtPed(ped: NativePed, target: NativePed): void;
+  export function taskVehicleAimAtPed(ped: NativePed, target: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function TaskVehicleShootAtCoord(ped: NativePed, x: number, y: number, z: number, p4: number): void;
+  export function taskVehicleShootAtCoord(ped: NativePed, x: number, y: number, z: number, p4: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function TaskVehicleAimAtCoord(ped: NativePed, x: number, y: number, z: number): void;
+  export function taskVehicleAimAtCoord(ped: NativePed, x: number, y: number, z: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function TaskVehicleGotoNavmesh(ped: NativePed, vehicle: NativeVehicle, x: number, y: number, z: number, speed: number, behaviorFlag: number, stoppingRange: number): void;
+  export function taskVehicleGotoNavmesh(ped: NativePed, vehicle: NativeVehicle, x: number, y: number, z: number, speed: number, behaviorFlag: number, stoppingRange: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function TaskGoToCoordWhileAimingAtCoord(ped: NativePed, x: number, y: number, z: number, aimAtX: number, aimAtY: number, aimAtZ: number, moveSpeed: number, p8: NativeBOOL, p9: number, p10: number, p11: NativeBOOL, flags: NativeAny, p13: NativeBOOL, firingPattern: NativeHash): void;
+  export function taskGoToCoordWhileAimingAtCoord(ped: NativePed, x: number, y: number, z: number, aimAtX: number, aimAtY: number, aimAtZ: number, moveSpeed: number, p8: NativeBOOL, p9: number, p10: number, p11: NativeBOOL, flags: NativeAny, p13: NativeBOOL, firingPattern: NativeHash): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function TaskGoToCoordWhileAimingAtEntity(p0: NativeAny, p1: number, p2: number, p3: number, p4: NativeAny, p5: number, p6: NativeBOOL, p7: number, p8: number, p9: NativeBOOL, p10: NativeAny, p11: NativeBOOL, p12: NativeAny, p13: NativeAny): void;
+  export function taskGoToCoordWhileAimingAtEntity(p0: NativeAny, p1: number, p2: number, p3: number, p4: NativeAny, p5: number, p6: NativeBOOL, p7: number, p8: number, p9: NativeBOOL, p10: NativeAny, p11: NativeBOOL, p12: NativeAny, p13: NativeAny): void;
   /**
    *
    * @param {NativePed} pedHandle undefined
    */
-  export function TaskGoToCoordAndAimAtHatedEntitiesNearCoord(pedHandle: NativePed, goToLocationX: number, goToLocationY: number, goToLocationZ: number, focusLocationX: number, focusLocationY: number, focusLocationZ: number, speed: number, shootAtEnemies: NativeBOOL, distanceToStopAt: number, noRoadsDistance: number, unkTrue: NativeBOOL, unkFlag: number, aimingFlag: number, firingPattern: NativeHash): void;
+  export function taskGoToCoordAndAimAtHatedEntitiesNearCoord(pedHandle: NativePed, goToLocationX: number, goToLocationY: number, goToLocationZ: number, focusLocationX: number, focusLocationY: number, focusLocationZ: number, speed: number, shootAtEnemies: NativeBOOL, distanceToStopAt: number, noRoadsDistance: number, unkTrue: NativeBOOL, unkFlag: number, aimingFlag: number, firingPattern: NativeHash): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function TaskGoToEntityWhileAimingAtCoord(p0: NativeAny, p1: NativeAny, p2: number, p3: number, p4: number, p5: number, p6: NativeBOOL, p7: number, p8: number, p9: NativeBOOL, p10: NativeBOOL, p11: NativeAny): void;
+  export function taskGoToEntityWhileAimingAtCoord(p0: NativeAny, p1: NativeAny, p2: number, p3: number, p4: number, p5: number, p6: NativeBOOL, p7: number, p8: number, p9: NativeBOOL, p10: NativeBOOL, p11: NativeAny): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function TaskGoToEntityWhileAimingAtEntity(ped: NativePed, entityToWalkTo: NativeEntity, entityToAimAt: NativeEntity, speed: number, shootatEntity: NativeBOOL, p5: number, p6: number, p7: NativeBOOL, p8: NativeBOOL, firingPattern: NativeHash): void;
+  export function taskGoToEntityWhileAimingAtEntity(ped: NativePed, entityToWalkTo: NativeEntity, entityToAimAt: NativeEntity, speed: number, shootatEntity: NativeBOOL, p5: number, p6: number, p7: NativeBOOL, p8: NativeBOOL, firingPattern: NativeHash): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetHighFallTask(ped: NativePed, p1: NativeAny, p2: NativeAny, p3: NativeAny): void;
+  export function setHighFallTask(ped: NativePed, p1: NativeAny, p2: NativeAny, p3: NativeAny): void;
   /**
    *
    * @param {string} name undefined
    */
-  export function RequestWaypointRecording(name: string): void;
+  export function requestWaypointRecording(name: string): void;
   /**
    *
    * @param {string} name undefined
    */
-  export function GetIsWaypointRecordingLoaded(name: string): void;
+  export function getIsWaypointRecordingLoaded(name: string): void;
   /**
    *
    * @param {string} name undefined
    */
-  export function RemoveWaypointRecording(name: string): void;
+  export function removeWaypointRecording(name: string): void;
   /**
    *
    * @param {string} name undefined
    */
-  export function WaypointRecordingGetNumPoints(name: string, points: number): void;
+  export function waypointRecordingGetNumPoints(name: string, points: number): void;
   /**
    *
    * @param {string} name undefined
    */
-  export function WaypointRecordingGetCoord(name: string, point: number, coord: NativeVector3): void;
+  export function waypointRecordingGetCoord(name: string, point: number, coord: NativeVector3): void;
   /**
    *
    * @param {string} name undefined
    */
-  export function WaypointRecordingGetSpeedAtPoint(name: string, point: number): void;
+  export function waypointRecordingGetSpeedAtPoint(name: string, point: number): void;
   /**
    *
    * @param {string} name undefined
    */
-  export function WaypointRecordingGetClosestWaypoint(name: string, x: number, y: number, z: number, point: number): void;
+  export function waypointRecordingGetClosestWaypoint(name: string, x: number, y: number, z: number, point: number): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function TaskFollowWaypointRecording(p0: NativeAny, p1: NativeAny, p2: NativeAny, p3: NativeAny, p4: NativeAny): void;
+  export function taskFollowWaypointRecording(p0: NativeAny, p1: NativeAny, p2: NativeAny, p3: NativeAny, p4: NativeAny): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function IsWaypointPlaybackGoingOnForPed(p0: NativeAny): void;
+  export function isWaypointPlaybackGoingOnForPed(p0: NativeAny): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function GetPedWaypointProgress(ped: NativePed): void;
+  export function getPedWaypointProgress(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function GetPedWaypointDistance(ped: NativePed): void;
+  export function getPedWaypointDistance(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedWaypointRouteOffset(ped: NativePed, offsetX: number, offsetY: number, offsetZ: number): void;
+  export function setPedWaypointRouteOffset(ped: NativePed, offsetX: number, offsetY: number, offsetZ: number): void;
   /**
    *
    * @param {string} p0 undefined
    */
-  export function GetWaypointDistanceAlongRoute(p0: string, p1: number): void;
+  export function getWaypointDistanceAlongRoute(p0: string, p1: number): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function WaypointPlaybackGetIsPaused(p0: NativeAny): void;
+  export function waypointPlaybackGetIsPaused(p0: NativeAny): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function WaypointPlaybackPause(p0: NativeAny, p1: NativeBOOL, p2: NativeBOOL): void;
+  export function waypointPlaybackPause(p0: NativeAny, p1: NativeBOOL, p2: NativeBOOL): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function WaypointPlaybackResume(p0: NativeAny, p1: NativeBOOL, p2: NativeAny, p3: NativeAny): void;
+  export function waypointPlaybackResume(p0: NativeAny, p1: NativeBOOL, p2: NativeAny, p3: NativeAny): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function WaypointPlaybackOverrideSpeed(p0: NativeAny, p1: number, p2: NativeBOOL): void;
+  export function waypointPlaybackOverrideSpeed(p0: NativeAny, p1: number, p2: NativeBOOL): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function WaypointPlaybackUseDefaultSpeed(p0: NativeAny): void;
+  export function waypointPlaybackUseDefaultSpeed(p0: NativeAny): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function UseWaypointRecordingAsAssistedMovementRoute(p0: NativeAny, p1: NativeBOOL, p2: number, p3: number): void;
+  export function useWaypointRecordingAsAssistedMovementRoute(p0: NativeAny, p1: NativeBOOL, p2: number, p3: number): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function WaypointPlaybackStartAimingAtPed(p0: NativeAny, p1: NativeAny, p2: NativeBOOL): void;
+  export function waypointPlaybackStartAimingAtPed(p0: NativeAny, p1: NativeAny, p2: NativeBOOL): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function WaypointPlaybackStartAimingAtCoord(p0: NativeAny, p1: number, p2: number, p3: number, p4: NativeBOOL): void;
+  export function waypointPlaybackStartAimingAtCoord(p0: NativeAny, p1: number, p2: number, p3: number, p4: NativeBOOL): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function WaypointPlaybackStartShootingAtPed(p0: NativeAny, p1: NativeAny, p2: NativeBOOL, p3: NativeAny): void;
+  export function waypointPlaybackStartShootingAtPed(p0: NativeAny, p1: NativeAny, p2: NativeBOOL, p3: NativeAny): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function WaypointPlaybackStartShootingAtCoord(p0: NativeAny, p1: number, p2: number, p3: number, p4: NativeBOOL, p5: NativeAny): void;
+  export function waypointPlaybackStartShootingAtCoord(p0: NativeAny, p1: number, p2: number, p3: number, p4: NativeBOOL, p5: NativeAny): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function WaypointPlaybackStopAimingOrShooting(p0: NativeAny): void;
+  export function waypointPlaybackStopAimingOrShooting(p0: NativeAny): void;
   /**
    *
    * @param {string} route undefined
    */
-  export function AssistedMovementRequestRoute(route: string): void;
+  export function assistedMovementRequestRoute(route: string): void;
   /**
    *
    * @param {string} route undefined
    */
-  export function AssistedMovementRemoveRoute(route: string): void;
+  export function assistedMovementRemoveRoute(route: string): void;
   /**
    *
    * @param {string} route undefined
    */
-  export function AssistedMovementIsRouteLoaded(route: string): void;
+  export function assistedMovementIsRouteLoaded(route: string): void;
   /**
    *
    * @param {string} route undefined
    */
-  export function AssistedMovementSetRouteProperties(route: string, props: number): void;
+  export function assistedMovementSetRouteProperties(route: string, props: number): void;
   /**
    *
    * @param {number} dist undefined
    */
-  export function AssistedMovementOverrideLoadDistanceThisFrame(dist: number): void;
+  export function assistedMovementOverrideLoadDistanceThisFrame(dist: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function TaskVehicleFollowWaypointRecording(ped: NativePed, vehicle: NativeVehicle, WPRecording: string, p3: number, p4: number, p5: number, p6: number, p7: number, p8: NativeBOOL, p9: number): void;
+  export function taskVehicleFollowWaypointRecording(ped: NativePed, vehicle: NativeVehicle, WPRecording: string, p3: number, p4: number, p5: number, p6: number, p7: number, p8: NativeBOOL, p9: number): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function IsWaypointPlaybackGoingOnForVehicle(p0: NativeAny): void;
+  export function isWaypointPlaybackGoingOnForVehicle(p0: NativeAny): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function GetVehicleWaypointProgress(vehicle: NativeVehicle): void;
+  export function getVehicleWaypointProgress(vehicle: NativeVehicle): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function GetVehicleWaypointTargetPoint(ped: NativePed): void;
+  export function getVehicleWaypointTargetPoint(ped: NativePed): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function VehicleWaypointPlaybackPause(p0: NativeAny): void;
+  export function vehicleWaypointPlaybackPause(p0: NativeAny): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function VehicleWaypointPlaybackResume(p0: NativeAny): void;
+  export function vehicleWaypointPlaybackResume(p0: NativeAny): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function VehicleWaypointPlaybackUseDefaultSpeed(p0: NativeAny): void;
+  export function vehicleWaypointPlaybackUseDefaultSpeed(p0: NativeAny): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function VehicleWaypointPlaybackOverrideSpeed(p0: NativeAny, p1: number): void;
+  export function vehicleWaypointPlaybackOverrideSpeed(p0: NativeAny, p1: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function TaskSetBlockingOfNonTemporaryEvents(ped: NativePed, toggle: NativeBOOL): void;
+  export function taskSetBlockingOfNonTemporaryEvents(ped: NativePed, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function TaskForceMotionState(ped: NativePed, state: NativeHash, p2: NativeBOOL): void;
+  export function taskForceMotionState(ped: NativePed, state: NativeHash, p2: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function TaskMoveNetwork(ped: NativePed, task: string, multiplier: number, p3: NativeBOOL, animDict: string, flags: number): void;
+  export function taskMoveNetwork(ped: NativePed, task: string, multiplier: number, p3: NativeBOOL, animDict: string, flags: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function TaskMoveNetworkAdvanced(ped: NativePed, p1: string, p2: number, p3: number, p4: number, p5: number, p6: number, p7: number, p8: NativeAny, p9: number, p10: NativeBOOL, animDict: string, flags: number): void;
+  export function taskMoveNetworkAdvanced(ped: NativePed, p1: string, p2: number, p3: number, p4: number, p5: number, p6: number, p7: number, p8: NativeAny, p9: number, p10: NativeBOOL, animDict: string, flags: number): void;
   /**
    *
    * @param {number} PlayerID undefined
@@ -9144,138 +9144,138 @@ declare module "natives" {
    *
    * @param {NativePed} ped undefined
    */
-  export function IsMoveBlendRatioStill(ped: NativePed): void;
+  export function isMoveBlendRatioStill(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function IsMoveBlendRatioWalking(ped: NativePed): void;
+  export function isMoveBlendRatioWalking(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function IsMoveBlendRatioRunning(ped: NativePed): void;
+  export function isMoveBlendRatioRunning(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function IsMoveBlendRatioSprinting(ped: NativePed): void;
+  export function isMoveBlendRatioSprinting(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function IsPedStill(ped: NativePed): void;
+  export function isPedStill(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function IsPedWalking(ped: NativePed): void;
+  export function isPedWalking(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function IsPedRunning(ped: NativePed): void;
+  export function isPedRunning(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function IsPedSprinting(ped: NativePed): void;
+  export function isPedSprinting(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function IsPedStrafing(ped: NativePed): void;
+  export function isPedStrafing(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function TaskSynchronizedScene(ped: NativePed, scene: number, animDictionary: string, animationName: string, speed: number, speedMultiplier: number, duration: number, flag: number, playbackRate: number, p9: NativeAny): void;
+  export function taskSynchronizedScene(ped: NativePed, scene: number, animDictionary: string, animationName: string, speed: number, speedMultiplier: number, duration: number, flag: number, playbackRate: number, p9: NativeAny): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function TaskSweepAimEntity(ped: NativePed, animDict: string, animName1: string, animName2: string, animName3: string, duration: number, entity: NativeEntity, p7: number, p8: number): void;
+  export function taskSweepAimEntity(ped: NativePed, animDict: string, animName1: string, animName2: string, animName3: string, duration: number, entity: NativeEntity, p7: number, p8: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function UpdateTaskSweepAimEntity(ped: NativePed, entity: NativeEntity): void;
+  export function updateTaskSweepAimEntity(ped: NativePed, entity: NativeEntity): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function TaskSweepAimPosition(ped: NativePed, animDict: string, animName1: string, animName2: string, animName3: string, timeout: number, X: number, Y: number, Z: number, unk: number, flag: number): void;
+  export function taskSweepAimPosition(ped: NativePed, animDict: string, animName1: string, animName2: string, animName3: string, timeout: number, X: number, Y: number, Z: number, unk: number, flag: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function UpdateTaskSweepAimPosition(ped: NativePed, X: number, Y: number, Z: number): void;
+  export function updateTaskSweepAimPosition(ped: NativePed, X: number, Y: number, Z: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function TaskArrestPed(ped: NativePed, target: NativePed): void;
+  export function taskArrestPed(ped: NativePed, target: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function IsPedRunningArrestTask(ped: NativePed): void;
+  export function isPedRunningArrestTask(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function IsPedBeingArrested(ped: NativePed): void;
+  export function isPedBeingArrested(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function UncuffPed(ped: NativePed): void;
+  export function uncuffPed(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function IsPedCuffed(ped: NativePed): void;
+  export function isPedCuffed(ped: NativePed): void;
   /**
    *
    */
-  export function GetAllocatedStackSize(): void;
+  export function getAllocatedStackSize(): void;
   /**
    *
    * @param {number} threadId undefined
    */
-  export function GetFreeStackSlotsCount(threadId: number): void;
+  export function getFreeStackSlotsCount(threadId: number): void;
   /**
    *
    * @param {number} time undefined
    */
-  export function SetRandomSeed(time: number): void;
+  export function setRandomSeed(time: number): void;
   /**
    *
    * @param {number} time undefined
    */
-  export function SetTimeScale(time: number): void;
+  export function setTimeScale(time: number): void;
   /**
    *
    * @param {NativeBOOL} toggle undefined
    */
-  export function SetMissionFlag(toggle: NativeBOOL): void;
+  export function setMissionFlag(toggle: NativeBOOL): void;
   /**
    *
    */
-  export function GetMissionFlag(): void;
+  export function getMissionFlag(): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function SetRandomEventFlag(p0: NativeAny): void;
+  export function setRandomEventFlag(p0: NativeAny): void;
   /**
    *
    */
-  export function GetRandomEventFlag(): void;
+  export function getRandomEventFlag(): void;
   /**
    *
    */
-  export function GetGlobalCharBuffer(): void;
+  export function getGlobalCharBuffer(): void;
   /**
    *
    * @param {string} p0 undefined
@@ -9342,68 +9342,68 @@ declare module "natives" {
   /**
    *
    */
-  export function GetPrevWeatherTypeHashName(): void;
+  export function getPrevWeatherTypeHashName(): void;
   /**
    *
    */
-  export function GetNextWeatherTypeHashName(): void;
-  /**
-   *
-   * @param {string} weatherType undefined
-   */
-  export function IsPrevWeatherType(weatherType: string): void;
+  export function getNextWeatherTypeHashName(): void;
   /**
    *
    * @param {string} weatherType undefined
    */
-  export function IsNextWeatherType(weatherType: string): void;
+  export function isPrevWeatherType(weatherType: string): void;
   /**
    *
    * @param {string} weatherType undefined
    */
-  export function SetWeatherTypePersist(weatherType: string): void;
+  export function isNextWeatherType(weatherType: string): void;
   /**
    *
    * @param {string} weatherType undefined
    */
-  export function SetWeatherTypeNowPersist(weatherType: string): void;
+  export function setWeatherTypePersist(weatherType: string): void;
   /**
    *
    * @param {string} weatherType undefined
    */
-  export function SetWeatherTypeNow(weatherType: string): void;
+  export function setWeatherTypeNowPersist(weatherType: string): void;
   /**
    *
    * @param {string} weatherType undefined
    */
-  export function SetWeatherTypeOverTime(weatherType: string, time: number): void;
+  export function setWeatherTypeNow(weatherType: string): void;
+  /**
+   *
+   * @param {string} weatherType undefined
+   */
+  export function setWeatherTypeOverTime(weatherType: string, time: number): void;
   /**
    *
    */
-  export function SetRandomWeatherType(): void;
+  export function setRandomWeatherType(): void;
   /**
    *
    */
-  export function ClearWeatherTypePersist(): void;
+  export function clearWeatherTypePersist(): void;
   /**
    *
    * @param {NativeHash} weatherType1 undefined
    */
-  export function GetWeatherTypeTransition(weatherType1: NativeHash, weatherType2: NativeHash, percentWeather2: number): void;
+  export function getWeatherTypeTransition(weatherType1: NativeHash, weatherType2: NativeHash, percentWeather2: number): void;
   /**
    *
    * @param {NativeHash} weatherType1 undefined
    */
-  export function SetWeatherTypeTransition(weatherType1: NativeHash, weatherType2: NativeHash, percentWeather2: number): void;
+  export function setWeatherTypeTransition(weatherType1: NativeHash, weatherType2: NativeHash, percentWeather2: number): void;
   /**
    *
    * @param {string} weatherType undefined
    */
-  export function SetOverrideWeather(weatherType: string): void;
+  export function setOverrideWeather(weatherType: string): void;
   /**
    *
    */
-  export function ClearOverrideWeather(): void;
+  export function clearOverrideWeather(): void;
   /**
    *
    * @param {number} p0 undefined
@@ -9478,42 +9478,42 @@ declare module "natives" {
    *
    * @param {number} speed undefined
    */
-  export function SetWind(speed: number): void;
+  export function setWind(speed: number): void;
   /**
    *
    * @param {number} speed undefined
    */
-  export function SetWindSpeed(speed: number): void;
+  export function setWindSpeed(speed: number): void;
   /**
    *
    */
-  export function GetWindSpeed(): void;
+  export function getWindSpeed(): void;
   /**
    *
    * @param {number} direction undefined
    */
-  export function SetWindDirection(direction: number): void;
+  export function setWindDirection(direction: number): void;
   /**
    *
    */
-  export function GetWindDirection(): void;
+  export function getWindDirection(): void;
   /**
    *
    * @param {number} intensity undefined
    */
-  export function SetRainFxIntensity(intensity: number): void;
+  export function setRainFxIntensity(intensity: number): void;
   /**
    *
    */
-  export function GetRainLevel(): void;
+  export function getRainLevel(): void;
   /**
    *
    */
-  export function GetSnowLevel(): void;
+  export function getSnowLevel(): void;
   /**
    *
    */
-  export function CreateLightningThunder(): void;
+  export function createLightningThunder(): void;
   /**
    *
    * @param {string} p0 undefined
@@ -9528,7 +9528,7 @@ declare module "natives" {
    *
    * @param {string} type undefined
    */
-  export function SetCloudHatTransition(type: string, transitionTime: number): void;
+  export function setCloudHatTransition(type: string, transitionTime: number): void;
   /**
    *
    * @param {string} p0 undefined
@@ -9537,92 +9537,92 @@ declare module "natives" {
   /**
    *
    */
-  export function ClearCloudHat(): void;
+  export function clearCloudHat(): void;
   /**
    *
    * @param {number} opacity undefined
    */
-  export function SetCloudHatOpacity(opacity: number): void;
+  export function setCloudHatOpacity(opacity: number): void;
   /**
    *
    */
-  export function GetCloudHatOpacity(): void;
+  export function getCloudHatOpacity(): void;
   /**
    *
    */
-  export function GetGameTimer(): void;
+  export function getGameTimer(): void;
   /**
    *
    */
-  export function GetFrameTime(): void;
+  export function getFrameTime(): void;
   /**
    *
    */
-  export function GetBenchmarkTime(): void;
+  export function getBenchmarkTime(): void;
   /**
    *
    */
-  export function GetFrameCount(): void;
-  /**
-   *
-   * @param {number} startRange undefined
-   */
-  export function GetRandomFloatInRange(startRange: number, endRange: number): void;
+  export function getFrameCount(): void;
   /**
    *
    * @param {number} startRange undefined
    */
-  export function GetRandomIntInRange(startRange: number, endRange: number): void;
+  export function getRandomFloatInRange(startRange: number, endRange: number): void;
+  /**
+   *
+   * @param {number} startRange undefined
+   */
+  export function getRandomIntInRange(startRange: number, endRange: number): void;
   /**
    *
    * @param {number} x undefined
    */
-  export function GetGroundZFor3dCoord(x: number, y: number, z: number, groundZ: number, unk: NativeBOOL): void;
+  export function getGroundZFor3dCoord(x: number, y: number, z: number, groundZ: number, unk: NativeBOOL): void;
   /**
    *
    * @param {number} x undefined
    */
-  export function GetGroundZCoordWithOffsets(x: number, y: number, z: number, groundZ: number, offsets: NativeVector3): void;
+  export function getGroundZCoordWithOffsets(x: number, y: number, z: number, groundZ: number, offsets: NativeVector3): void;
   /**
    *
    * @param {number} p0 undefined
    */
-  export function Asin(p0: number): void;
+  export function asin(p0: number): void;
   /**
    *
    * @param {number} p0 undefined
    */
-  export function Acos(p0: number): void;
+  export function acos(p0: number): void;
   /**
    *
    * @param {number} p0 undefined
    */
-  export function Tan(p0: number): void;
+  export function tan(p0: number): void;
   /**
    *
    * @param {number} p0 undefined
    */
-  export function Atan(p0: number): void;
+  export function atan(p0: number): void;
   /**
    *
    * @param {number} p0 undefined
    */
-  export function Atan2(p0: number, p1: number): void;
+  export function atan2(p0: number, p1: number): void;
   /**
    *
    * @param {number} x1 undefined
    */
-  export function GetDistanceBetweenCoords(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, useZ: NativeBOOL): void;
+  export function getDistanceBetweenCoords(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, useZ: NativeBOOL): void;
   /**
    *
    * @param {number} x1 undefined
    */
-  export function GetAngleBetween2dVectors(x1: number, y1: number, x2: number, y2: number): void;
+  export function getAngleBetween2dVectors(x1: number, y1: number, x2: number, y2: number): void;
   /**
    *
    * @param {number} dx undefined
    */
-  export function GetHeadingFromVector2d(dx: number, dy: number): void;
+  export function getHeadingFromVector2d(dx: number, dy: number): void;
   /**
    *
    * @param {number} p0 undefined
@@ -9642,17 +9642,17 @@ declare module "natives" {
    *
    * @param {number} address undefined
    */
-  export function SetBit(address: number, offset: number): void;
+  export function setBit(address: number, offset: number): void;
   /**
    *
    * @param {number} address undefined
    */
-  export function ClearBit(address: number, offset: number): void;
+  export function clearBit(address: number, offset: number): void;
   /**
    *
    * @param {string} string undefined
    */
-  export function GetHashKey(string: string): void;
+  export function getHashKey(string: string): void;
   /**
    *
    * @param {number} p0 undefined
@@ -9662,57 +9662,57 @@ declare module "natives" {
    *
    * @param {number} p0 undefined
    */
-  export function IsAreaOccupied(p0: number, p1: number, p2: number, p3: number, p4: number, p5: number, p6: NativeBOOL, p7: NativeBOOL, p8: NativeBOOL, p9: NativeBOOL, p10: NativeBOOL, p11: NativeAny, p12: NativeBOOL): void;
+  export function isAreaOccupied(p0: number, p1: number, p2: number, p3: number, p4: number, p5: number, p6: NativeBOOL, p7: NativeBOOL, p8: NativeBOOL, p9: NativeBOOL, p10: NativeBOOL, p11: NativeAny, p12: NativeBOOL): void;
   /**
    *
    * @param {number} x undefined
    */
-  export function IsPositionOccupied(x: number, y: number, z: number, range: number, p4: NativeBOOL, p5: NativeBOOL, p6: NativeBOOL, p7: NativeBOOL, p8: NativeBOOL, p9: NativeAny, p10: NativeBOOL): void;
+  export function isPositionOccupied(x: number, y: number, z: number, range: number, p4: NativeBOOL, p5: NativeBOOL, p6: NativeBOOL, p7: NativeBOOL, p8: NativeBOOL, p9: NativeAny, p10: NativeBOOL): void;
   /**
    *
    * @param {number} p0 undefined
    */
-  export function IsPointObscuredByAMissionEntity(p0: number, p1: number, p2: number, p3: number, p4: number, p5: number, p6: NativeAny): void;
+  export function isPointObscuredByAMissionEntity(p0: number, p1: number, p2: number, p3: number, p4: number, p5: number, p6: NativeAny): void;
   /**
    *
    * @param {number} X undefined
    */
-  export function ClearArea(X: number, Y: number, Z: number, radius: number, p4: NativeBOOL, ignoreCopCars: NativeBOOL, ignoreObjects: NativeBOOL, p7: NativeBOOL): void;
+  export function clearArea(X: number, Y: number, Z: number, radius: number, p4: NativeBOOL, ignoreCopCars: NativeBOOL, ignoreObjects: NativeBOOL, p7: NativeBOOL): void;
   /**
    *
    * @param {number} x undefined
    */
-  export function ClearAreaOfEverything(x: number, y: number, z: number, radius: number, p4: NativeBOOL, p5: NativeBOOL, p6: NativeBOOL, p7: NativeBOOL): void;
+  export function clearAreaOfEverything(x: number, y: number, z: number, radius: number, p4: NativeBOOL, p5: NativeBOOL, p6: NativeBOOL, p7: NativeBOOL): void;
   /**
    *
    * @param {number} x undefined
    */
-  export function ClearAreaOfVehicles(x: number, y: number, z: number, radius: number, p4: NativeBOOL, p5: NativeBOOL, p6: NativeBOOL, p7: NativeBOOL, p8: NativeBOOL): void;
+  export function clearAreaOfVehicles(x: number, y: number, z: number, radius: number, p4: NativeBOOL, p5: NativeBOOL, p6: NativeBOOL, p7: NativeBOOL, p8: NativeBOOL): void;
   /**
    *
    * @param {number} p0 undefined
    */
-  export function ClearAngledAreaOfVehicles(p0: number, p1: number, p2: number, p3: number, p4: number, p5: number, p6: number, p7: NativeBOOL, p8: NativeBOOL, p9: NativeBOOL, p10: NativeBOOL, p11: NativeBOOL): void;
+  export function clearAngledAreaOfVehicles(p0: number, p1: number, p2: number, p3: number, p4: number, p5: number, p6: number, p7: NativeBOOL, p8: NativeBOOL, p9: NativeBOOL, p10: NativeBOOL, p11: NativeBOOL): void;
   /**
    *
    * @param {number} x undefined
    */
-  export function ClearAreaOfObjects(x: number, y: number, z: number, radius: number, flags: number): void;
+  export function clearAreaOfObjects(x: number, y: number, z: number, radius: number, flags: number): void;
   /**
    *
    * @param {number} x undefined
    */
-  export function ClearAreaOfPeds(x: number, y: number, z: number, radius: number, flags: number): void;
+  export function clearAreaOfPeds(x: number, y: number, z: number, radius: number, flags: number): void;
   /**
    *
    * @param {number} x undefined
    */
-  export function ClearAreaOfCops(x: number, y: number, z: number, radius: number, flags: number): void;
+  export function clearAreaOfCops(x: number, y: number, z: number, radius: number, flags: number): void;
   /**
    *
    * @param {number} x undefined
    */
-  export function ClearAreaOfProjectiles(x: number, y: number, z: number, radius: number, isNetworkGame: NativeBOOL): void;
+  export function clearAreaOfProjectiles(x: number, y: number, z: number, radius: number, isNetworkGame: NativeBOOL): void;
   /**
    *
    */
@@ -9721,7 +9721,7 @@ declare module "natives" {
    *
    * @param {NativeBOOL} unk undefined
    */
-  export function SetSaveMenuActive(unk: NativeBOOL): void;
+  export function setSaveMenuActive(unk: NativeBOOL): void;
   /**
    *
    */
@@ -9730,7 +9730,7 @@ declare module "natives" {
    *
    * @param {NativeBOOL} toggle undefined
    */
-  export function SetCreditsActive(toggle: NativeBOOL): void;
+  export function setCreditsActive(toggle: NativeBOOL): void;
   /**
    *
    * @param {NativeBOOL} toggle undefined
@@ -9744,85 +9744,85 @@ declare module "natives" {
    *
    * @param {string} scriptName undefined
    */
-  export function TerminateAllScriptsWithThisName(scriptName: string): void;
+  export function terminateAllScriptsWithThisName(scriptName: string): void;
   /**
    *
    */
-  export function NetworkSetScriptIsSafeForNetworkGame(): void;
+  export function networkSetScriptIsSafeForNetworkGame(): void;
   /**
    *
    * @param {number} x undefined
    */
-  export function AddHospitalRestart(x: number, y: number, z: number, p3: number, p4: NativeAny): void;
+  export function addHospitalRestart(x: number, y: number, z: number, p3: number, p4: NativeAny): void;
   /**
    *
    * @param {number} hospitalIndex undefined
    */
-  export function DisableHospitalRestart(hospitalIndex: number, toggle: NativeBOOL): void;
+  export function disableHospitalRestart(hospitalIndex: number, toggle: NativeBOOL): void;
   /**
    *
    * @param {number} p0 undefined
    */
-  export function AddPoliceRestart(p0: number, p1: number, p2: number, p3: number, p4: NativeAny): void;
+  export function addPoliceRestart(p0: number, p1: number, p2: number, p3: number, p4: NativeAny): void;
   /**
    *
    * @param {number} policeIndex undefined
    */
-  export function DisablePoliceRestart(policeIndex: number, toggle: NativeBOOL): void;
+  export function disablePoliceRestart(policeIndex: number, toggle: NativeBOOL): void;
   /**
    *
    * @param {number} x undefined
    */
-  export function SetCustomRespawnPosition(x: number, y: number, z: number, heading: number): void;
+  export function setCustomRespawnPosition(x: number, y: number, z: number, heading: number): void;
   /**
    *
    */
-  export function SetNextRespawnToCustom(): void;
+  export function setNextRespawnToCustom(): void;
   /**
    *
    * @param {NativeBOOL} disableRespawn undefined
    */
-  export function DisableAutomaticRespawn(disableRespawn: NativeBOOL): void;
+  export function disableAutomaticRespawn(disableRespawn: NativeBOOL): void;
   /**
    *
    * @param {NativeBOOL} toggle undefined
    */
-  export function IgnoreNextRestart(toggle: NativeBOOL): void;
+  export function ignoreNextRestart(toggle: NativeBOOL): void;
   /**
    *
    * @param {NativeBOOL} toggle undefined
    */
-  export function SetFadeOutAfterDeath(toggle: NativeBOOL): void;
+  export function setFadeOutAfterDeath(toggle: NativeBOOL): void;
   /**
    *
    * @param {NativeBOOL} toggle undefined
    */
-  export function SetFadeOutAfterArrest(toggle: NativeBOOL): void;
+  export function setFadeOutAfterArrest(toggle: NativeBOOL): void;
   /**
    *
    * @param {NativeBOOL} toggle undefined
    */
-  export function SetFadeInAfterDeathArrest(toggle: NativeBOOL): void;
+  export function setFadeInAfterDeathArrest(toggle: NativeBOOL): void;
   /**
    *
    * @param {NativeBOOL} toggle undefined
    */
-  export function SetFadeInAfterLoad(toggle: NativeBOOL): void;
+  export function setFadeInAfterLoad(toggle: NativeBOOL): void;
   /**
    *
    * @param {number} p0 undefined
    */
-  export function RegisterSaveHouse(p0: number, p1: number, p2: number, p3: number, p4: NativeAny, p5: NativeAny, p6: NativeAny): void;
+  export function registerSaveHouse(p0: number, p1: number, p2: number, p3: number, p4: NativeAny, p5: NativeAny, p6: NativeAny): void;
   /**
    *
    * @param {number} index undefined
    */
-  export function SetSaveHouse(index: number, p1: NativeBOOL, p2: NativeBOOL): void;
+  export function setSaveHouse(index: number, p1: NativeBOOL, p2: NativeBOOL): void;
   /**
    *
    * @param {NativeBOOL} p0 undefined
    */
-  export function OverrideSaveHouse(p0: NativeBOOL, p1: number, p2: number, p3: number, p4: number, p5: NativeBOOL, p6: number, p7: number): void;
+  export function overrideSaveHouse(p0: NativeBOOL, p1: number, p2: number, p3: number, p4: number, p5: NativeBOOL, p6: number, p7: number): void;
   /**
    *
    * @param {NativeAny} p0 undefined
@@ -9831,7 +9831,7 @@ declare module "natives" {
   /**
    *
    */
-  export function DoAutoSave(): void;
+  export function doAutoSave(): void;
   /**
    *
    */
@@ -9839,7 +9839,7 @@ declare module "natives" {
   /**
    *
    */
-  export function IsAutoSaveInProgress(): void;
+  export function isAutoSaveInProgress(): void;
   /**
    *
    */
@@ -9852,7 +9852,7 @@ declare module "natives" {
    *
    * @param {NativeAny} p0 undefined
    */
-  export function BeginReplayStats(p0: NativeAny, p1: NativeAny): void;
+  export function beginReplayStats(p0: NativeAny, p1: NativeAny): void;
   /**
    *
    * @param {NativeAny} p0 undefined
@@ -9861,7 +9861,7 @@ declare module "natives" {
   /**
    *
    */
-  export function EndReplayStats(): void;
+  export function endReplayStats(): void;
   /**
    *
    */
@@ -9886,7 +9886,7 @@ declare module "natives" {
   /**
    *
    */
-  export function ClearReplayStats(): void;
+  export function clearReplayStats(): void;
   /**
    *
    */
@@ -9906,46 +9906,46 @@ declare module "natives" {
   /**
    *
    */
-  export function IsMemoryCardInUse(): void;
+  export function isMemoryCardInUse(): void;
   /**
    *
    * @param {number} x1 undefined
    */
-  export function ShootSingleBulletBetweenCoords(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, damage: number, p7: NativeBOOL, weaponHash: NativeHash, ownerPed: NativePed, isAudible: NativeBOOL, isInvisible: NativeBOOL, speed: number): void;
+  export function shootSingleBulletBetweenCoords(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, damage: number, p7: NativeBOOL, weaponHash: NativeHash, ownerPed: NativePed, isAudible: NativeBOOL, isInvisible: NativeBOOL, speed: number): void;
   /**
    *
    * @param {number} x1 undefined
    */
-  export function ShootSingleBulletBetweenCoordsPresetParams(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, damage: number, p7: NativeBOOL, weaponHash: NativeHash, ownerPed: NativePed, isAudible: NativeBOOL, isInvisible: NativeBOOL, speed: number, entity: NativeEntity): void;
+  export function shootSingleBulletBetweenCoordsPresetParams(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, damage: number, p7: NativeBOOL, weaponHash: NativeHash, ownerPed: NativePed, isAudible: NativeBOOL, isInvisible: NativeBOOL, speed: number, entity: NativeEntity): void;
   /**
    *
    * @param {number} x1 undefined
    */
-  export function ShootSingleBulletBetweenCoordsWithExtraParams(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, damage: number, p7: NativeBOOL, weaponHash: NativeHash, ownerPed: NativePed, isAudible: NativeBOOL, isInvisible: NativeBOOL, speed: number, entity: NativeEntity, p14: NativeBOOL, p15: NativeBOOL, p16: NativeBOOL, p17: NativeBOOL): void;
+  export function shootSingleBulletBetweenCoordsWithExtraParams(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, damage: number, p7: NativeBOOL, weaponHash: NativeHash, ownerPed: NativePed, isAudible: NativeBOOL, isInvisible: NativeBOOL, speed: number, entity: NativeEntity, p14: NativeBOOL, p15: NativeBOOL, p16: NativeBOOL, p17: NativeBOOL): void;
   /**
    *
    * @param {NativeHash} modelHash undefined
    */
-  export function GetModelDimensions(modelHash: NativeHash, minimum: NativeVector3, maximum: NativeVector3): void;
+  export function getModelDimensions(modelHash: NativeHash, minimum: NativeVector3, maximum: NativeVector3): void;
   /**
    *
    * @param {number} fakeWantedLevel undefined
    */
-  export function SetFakeWantedLevel(fakeWantedLevel: number): void;
+  export function setFakeWantedLevel(fakeWantedLevel: number): void;
   /**
    *
    */
-  export function GetFakeWantedLevel(): void;
+  export function getFakeWantedLevel(): void;
   /**
    *
    * @param {number} address undefined
    */
-  export function IsBitSet(address: number, offset: number): void;
+  export function isBitSet(address: number, offset: number): void;
   /**
    *
    * @param {NativeBOOL} toggle undefined
    */
-  export function UsingMissionCreator(toggle: NativeBOOL): void;
+  export function usingMissionCreator(toggle: NativeBOOL): void;
   /**
    *
    * @param {NativeBOOL} p0 undefined
@@ -9955,19 +9955,19 @@ declare module "natives" {
    *
    * @param {NativeBOOL} toggle undefined
    */
-  export function SetMinigameInProgress(toggle: NativeBOOL): void;
+  export function setMinigameInProgress(toggle: NativeBOOL): void;
   /**
    *
    */
-  export function IsMinigameInProgress(): void;
+  export function isMinigameInProgress(): void;
   /**
    *
    */
-  export function IsThisAMinigameScript(): void;
+  export function isThisAMinigameScript(): void;
   /**
    *
    */
-  export function IsSniperInverted(): void;
+  export function isSniperInverted(): void;
   /**
    *
    */
@@ -9976,166 +9976,166 @@ declare module "natives" {
    *
    * @param {number} profileSetting undefined
    */
-  export function GetProfileSetting(profileSetting: number): void;
+  export function getProfileSetting(profileSetting: number): void;
   /**
    *
    * @param {string} string1 undefined
    */
-  export function AreStringsEqual(string1: string, string2: string): void;
+  export function areStringsEqual(string1: string, string2: string): void;
   /**
    *
    * @param {string} str1 undefined
    */
-  export function CompareStrings(str1: string, str2: string, matchCase: NativeBOOL, maxLength: number): void;
+  export function compareStrings(str1: string, str2: string, matchCase: NativeBOOL, maxLength: number): void;
   /**
    *
    * @param {number} value undefined
    */
-  export function Absi(value: number): void;
+  export function absi(value: number): void;
   /**
    *
    * @param {number} value undefined
    */
-  export function Absf(value: number): void;
+  export function absf(value: number): void;
   /**
    *
    * @param {number} x1 undefined
    */
-  export function IsSniperBulletInArea(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number): void;
+  export function isSniperBulletInArea(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number): void;
   /**
    *
    * @param {number} x1 undefined
    */
-  export function IsProjectileInArea(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, ownedByPlayer: NativeBOOL): void;
+  export function isProjectileInArea(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, ownedByPlayer: NativeBOOL): void;
   /**
    *
    * @param {number} x1 undefined
    */
-  export function IsProjectileTypeInArea(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, type: number, p7: NativeBOOL): void;
+  export function isProjectileTypeInArea(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, type: number, p7: NativeBOOL): void;
   /**
    *
    * @param {number} p0 undefined
    */
-  export function IsProjectileTypeInAngledArea(p0: number, p1: number, p2: number, p3: number, p4: number, p5: number, p6: number, p7: NativeAny, p8: NativeBOOL): void;
+  export function isProjectileTypeInAngledArea(p0: number, p1: number, p2: number, p3: number, p4: number, p5: number, p6: number, p7: NativeAny, p8: NativeBOOL): void;
   /**
    *
    * @param {number} x undefined
    */
-  export function IsProjectileTypeInRadius(x: number, y: number, z: number, projHash: NativeHash, radius: number, ownedByPlayer: NativeBOOL): void;
+  export function isProjectileTypeInRadius(x: number, y: number, z: number, projHash: NativeHash, radius: number, ownedByPlayer: NativeBOOL): void;
   /**
    *
    * @param {number} x1 undefined
    */
-  export function GetIsProjectileTypeInArea(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, projHash: NativeHash, projPos: NativeVector3, ownedByPlayer: NativeBOOL): void;
+  export function getIsProjectileTypeInArea(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, projHash: NativeHash, projPos: NativeVector3, ownedByPlayer: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function GetProjectileNearPedCoords(ped: NativePed, projHash: NativeHash, radius: number, projPos: NativeVector3, ownedByPlayer: NativeBOOL): void;
+  export function getProjectileNearPedCoords(ped: NativePed, projHash: NativeHash, radius: number, projPos: NativeVector3, ownedByPlayer: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function GetProjectileNearPed(ped: NativePed, projHash: NativeHash, radius: number, projPos: NativeVector3, projEnt: NativeEntity, ownedByPlayer: NativeBOOL): void;
+  export function getProjectileNearPed(ped: NativePed, projHash: NativeHash, radius: number, projPos: NativeVector3, projEnt: NativeEntity, ownedByPlayer: NativeBOOL): void;
   /**
    *
    * @param {number} p0 undefined
    */
-  export function IsBulletInAngledArea(p0: number, p1: number, p2: number, p3: number, p4: number, p5: number, p6: number, p7: NativeBOOL): void;
+  export function isBulletInAngledArea(p0: number, p1: number, p2: number, p3: number, p4: number, p5: number, p6: number, p7: NativeBOOL): void;
   /**
    *
    * @param {number} p0 undefined
    */
-  export function IsBulletInArea(p0: number, p1: number, p2: number, p3: number, p4: NativeBOOL): void;
+  export function isBulletInArea(p0: number, p1: number, p2: number, p3: number, p4: NativeBOOL): void;
   /**
    *
    * @param {number} p0 undefined
    */
-  export function IsBulletInBox(p0: number, p1: number, p2: number, p3: number, p4: number, p5: number, p6: NativeBOOL): void;
+  export function isBulletInBox(p0: number, p1: number, p2: number, p3: number, p4: number, p5: number, p6: NativeBOOL): void;
   /**
    *
    * @param {number} x undefined
    */
-  export function HasBulletImpactedInArea(x: number, y: number, z: number, p3: number, p4: NativeBOOL, p5: NativeBOOL): void;
+  export function hasBulletImpactedInArea(x: number, y: number, z: number, p3: number, p4: NativeBOOL, p5: NativeBOOL): void;
   /**
    *
    * @param {number} p0 undefined
    */
-  export function HasBulletImpactedInBox(p0: number, p1: number, p2: number, p3: number, p4: number, p5: number, p6: NativeBOOL, p7: NativeBOOL): void;
+  export function hasBulletImpactedInBox(p0: number, p1: number, p2: number, p3: number, p4: number, p5: number, p6: NativeBOOL, p7: NativeBOOL): void;
   /**
    *
    */
-  export function IsOrbisVersion(): void;
+  export function isOrbisVersion(): void;
   /**
    *
    */
-  export function IsDurangoVersion(): void;
+  export function isDurangoVersion(): void;
   /**
    *
    */
-  export function IsXbox360Version(): void;
+  export function isXbox360Version(): void;
   /**
    *
    */
-  export function IsPs3Version(): void;
+  export function isPs3Version(): void;
   /**
    *
    */
-  export function IsPcVersion(): void;
+  export function isPcVersion(): void;
   /**
    *
    */
-  export function IsAussieVersion(): void;
-  /**
-   *
-   * @param {string} string undefined
-   */
-  export function IsStringNull(string: string): void;
+  export function isAussieVersion(): void;
   /**
    *
    * @param {string} string undefined
    */
-  export function IsStringNullOrEmpty(string: string): void;
+  export function isStringNull(string: string): void;
   /**
    *
    * @param {string} string undefined
    */
-  export function StringToInt(string: string, outInteger: number): void;
+  export function isStringNullOrEmpty(string: string): void;
+  /**
+   *
+   * @param {string} string undefined
+   */
+  export function stringToInt(string: string, outInteger: number): void;
   /**
    *
    * @param {number} variable undefined
    */
-  export function SetBitsInRange(variable: number, rangeStart: number, rangeEnd: number, p3: number): void;
+  export function setBitsInRange(variable: number, rangeStart: number, rangeEnd: number, p3: number): void;
   /**
    *
    * @param {number} variable undefined
    */
-  export function GetBitsInRange(variable: number, rangeStart: number, rangeEnd: number): void;
+  export function getBitsInRange(variable: number, rangeStart: number, rangeEnd: number): void;
   /**
    *
    * @param {number} p0 undefined
    */
-  export function AddStuntJump(p0: number, p1: number, p2: number, p3: number, p4: number, p5: number, p6: number, p7: number, p8: number, p9: number, p10: number, p11: number, p12: number, p13: number, p14: number, p15: NativeAny, p16: NativeAny): void;
+  export function addStuntJump(p0: number, p1: number, p2: number, p3: number, p4: number, p5: number, p6: number, p7: number, p8: number, p9: number, p10: number, p11: number, p12: number, p13: number, p14: number, p15: NativeAny, p16: NativeAny): void;
   /**
    *
    * @param {number} p0 undefined
    */
-  export function AddStuntJumpAngled(p0: number, p1: number, p2: number, p3: number, p4: number, p5: number, p6: number, p7: number, p8: number, p9: number, p10: number, p11: number, p12: number, p13: number, p14: number, p15: number, p16: number, p17: NativeAny, p18: NativeAny): void;
+  export function addStuntJumpAngled(p0: number, p1: number, p2: number, p3: number, p4: number, p5: number, p6: number, p7: number, p8: number, p9: number, p10: number, p11: number, p12: number, p13: number, p14: number, p15: number, p16: number, p17: NativeAny, p18: NativeAny): void;
   /**
    *
    * @param {number} p0 undefined
    */
-  export function DeleteStuntJump(p0: number): void;
+  export function deleteStuntJump(p0: number): void;
   /**
    *
    * @param {number} p0 undefined
    */
-  export function EnableStuntJumpSet(p0: number): void;
+  export function enableStuntJumpSet(p0: number): void;
   /**
    *
    * @param {number} p0 undefined
    */
-  export function DisableStuntJumpSet(p0: number): void;
+  export function disableStuntJumpSet(p0: number): void;
   /**
    *
    * @param {NativeBOOL} p0 undefined
@@ -10144,11 +10144,11 @@ declare module "natives" {
   /**
    *
    */
-  export function IsStuntJumpInProgress(): void;
+  export function isStuntJumpInProgress(): void;
   /**
    *
    */
-  export function IsStuntJumpMessageShowing(): void;
+  export function isStuntJumpMessageShowing(): void;
   /**
    *
    */
@@ -10160,68 +10160,68 @@ declare module "natives" {
   /**
    *
    */
-  export function CancelStuntJump(): void;
+  export function cancelStuntJump(): void;
   /**
    *
    * @param {NativeBOOL} toggle undefined
    */
-  export function SetGamePaused(toggle: NativeBOOL): void;
+  export function setGamePaused(toggle: NativeBOOL): void;
   /**
    *
    * @param {NativeBOOL} toggle undefined
    */
-  export function SetThisScriptCanBePaused(toggle: NativeBOOL): void;
+  export function setThisScriptCanBePaused(toggle: NativeBOOL): void;
   /**
    *
    * @param {NativeBOOL} toggle undefined
    */
-  export function SetThisScriptCanRemoveBlipsCreatedByAnyScript(toggle: NativeBOOL): void;
+  export function setThisScriptCanRemoveBlipsCreatedByAnyScript(toggle: NativeBOOL): void;
   /**
    *
    * @param {NativeHash} hash undefined
    */
-  export function HasButtonCombinationJustBeenEntered(hash: NativeHash, amount: number): void;
+  export function hasButtonCombinationJustBeenEntered(hash: NativeHash, amount: number): void;
   /**
    *
    * @param {NativeHash} hash undefined
    */
-  export function HasCheatStringJustBeenEntered(hash: NativeHash): void;
+  export function hasCheatStringJustBeenEntered(hash: NativeHash): void;
   /**
    *
    * @param {NativeBOOL} toggle undefined
    */
-  export function UseFreemodeMapBehavior(toggle: NativeBOOL): void;
+  export function useFreemodeMapBehavior(toggle: NativeBOOL): void;
   /**
    *
    * @param {number} flag undefined
    */
-  export function SetUnkMapFlag(flag: number): void;
+  export function setUnkMapFlag(flag: number): void;
   /**
    *
    */
-  export function IsFrontendFading(): void;
+  export function isFrontendFading(): void;
   /**
    *
    */
-  export function PopulateNow(): void;
+  export function populateNow(): void;
   /**
    *
    */
-  export function GetIndexOfCurrentLevel(): void;
+  export function getIndexOfCurrentLevel(): void;
   /**
    *
    * @param {number} level undefined
    */
-  export function SetGravityLevel(level: number): void;
+  export function setGravityLevel(level: number): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function StartSaveData(p0: NativeAny, p1: NativeAny, p2: NativeBOOL): void;
+  export function startSaveData(p0: NativeAny, p1: NativeAny, p2: NativeBOOL): void;
   /**
    *
    */
-  export function StopSaveData(): void;
+  export function stopSaveData(): void;
   /**
    *
    * @param {NativeBOOL} p0 undefined
@@ -10231,7 +10231,7 @@ declare module "natives" {
    *
    * @param {NativeAny} p0 undefined
    */
-  export function RegisterIntToSave(p0: NativeAny, name: string): void;
+  export function registerIntToSave(p0: NativeAny, name: string): void;
   /**
    *
    * @param {NativeAny} p0 undefined
@@ -10241,22 +10241,22 @@ declare module "natives" {
    *
    * @param {NativeAny} p0 undefined
    */
-  export function RegisterEnumToSave(p0: NativeAny, name: string): void;
+  export function registerEnumToSave(p0: NativeAny, name: string): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function RegisterFloatToSave(p0: NativeAny, name: string): void;
+  export function registerFloatToSave(p0: NativeAny, name: string): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function RegisterBoolToSave(p0: NativeAny, name: string): void;
+  export function registerBoolToSave(p0: NativeAny, name: string): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function RegisterTextLabelToSave(p0: NativeAny, name: string): void;
+  export function registerTextLabelToSave(p0: NativeAny, name: string): void;
   /**
    *
    * @param {NativeAny} p0 undefined
@@ -10281,25 +10281,25 @@ declare module "natives" {
    *
    * @param {NativeAny} p0 undefined
    */
-  export function StartSaveStruct(p0: NativeAny, p1: number, structName: string): void;
+  export function startSaveStruct(p0: NativeAny, p1: number, structName: string): void;
   /**
    *
    */
-  export function StopSaveStruct(): void;
+  export function stopSaveStruct(): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function StartSaveArray(p0: NativeAny, p1: number, arrayName: string): void;
+  export function startSaveArray(p0: NativeAny, p1: number, arrayName: string): void;
   /**
    *
    */
-  export function StopSaveArray(): void;
+  export function stopSaveArray(): void;
   /**
    *
    * @param {number} dispatchService undefined
    */
-  export function EnableDispatchService(dispatchService: number, toggle: NativeBOOL): void;
+  export function enableDispatchService(dispatchService: number, toggle: NativeBOOL): void;
   /**
    *
    * @param {number} type undefined
@@ -10309,27 +10309,27 @@ declare module "natives" {
    *
    * @param {number} dispatchService undefined
    */
-  export function GetNumberOfDispatchedUnitsForPlayer(dispatchService: number): void;
+  export function getNumberOfDispatchedUnitsForPlayer(dispatchService: number): void;
   /**
    *
    * @param {number} incidentType undefined
    */
-  export function CreateIncident(incidentType: number, x: number, y: number, z: number, p5: number, radius: number, outIncidentID: number): void;
+  export function createIncident(incidentType: number, x: number, y: number, z: number, p5: number, radius: number, outIncidentID: number): void;
   /**
    *
    * @param {number} incidentType undefined
    */
-  export function CreateIncidentWithEntity(incidentType: number, ped: NativePed, amountOfPeople: number, radius: number, outIncidentID: number): void;
+  export function createIncidentWithEntity(incidentType: number, ped: NativePed, amountOfPeople: number, radius: number, outIncidentID: number): void;
   /**
    *
    * @param {number} incidentId undefined
    */
-  export function DeleteIncident(incidentId: number): void;
+  export function deleteIncident(incidentId: number): void;
   /**
    *
    * @param {number} incidentId undefined
    */
-  export function IsIncidentValid(incidentId: number): void;
+  export function isIncidentValid(incidentId: number): void;
   /**
    *
    * @param {NativeAny} p0 undefined
@@ -10344,7 +10344,7 @@ declare module "natives" {
    *
    * @param {number} x1 undefined
    */
-  export function FindSpawnPointInDirection(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, distance: number, spawnPoint: NativeVector3): void;
+  export function findSpawnPointInDirection(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, distance: number, spawnPoint: NativeVector3): void;
   /**
    *
    * @param {NativeAny} p0 undefined
@@ -10374,12 +10374,12 @@ declare module "natives" {
    *
    * @param {NativePed} ped undefined
    */
-  export function EnableTennisMode(ped: NativePed, toggle: NativeBOOL, p2: NativeBOOL): void;
+  export function enableTennisMode(ped: NativePed, toggle: NativeBOOL, p2: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function IsTennisMode(ped: NativePed): void;
+  export function isTennisMode(ped: NativePed): void;
   /**
    *
    * @param {NativeAny} p0 undefined
@@ -10418,22 +10418,22 @@ declare module "natives" {
   /**
    *
    */
-  export function ResetDispatchIdealSpawnDistance(): void;
+  export function resetDispatchIdealSpawnDistance(): void;
   /**
    *
    * @param {number} p0 undefined
    */
-  export function SetDispatchIdealSpawnDistance(p0: number): void;
+  export function setDispatchIdealSpawnDistance(p0: number): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function SetDispatchTimeBetweenSpawnAttempts(p0: NativeAny, p1: number): void;
+  export function setDispatchTimeBetweenSpawnAttempts(p0: NativeAny, p1: number): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function SetDispatchTimeBetweenSpawnAttemptsMultiplier(p0: NativeAny, p1: number): void;
+  export function setDispatchTimeBetweenSpawnAttemptsMultiplier(p0: NativeAny, p1: number): void;
   /**
    *
    * @param {number} p0 undefined
@@ -10448,11 +10448,11 @@ declare module "natives" {
    *
    * @param {NativeAny} p0 undefined
    */
-  export function RemoveDispatchSpawnBlockingArea(p0: NativeAny): void;
+  export function removeDispatchSpawnBlockingArea(p0: NativeAny): void;
   /**
    *
    */
-  export function ResetDispatchSpawnBlockingAreas(): void;
+  export function resetDispatchSpawnBlockingAreas(): void;
   /**
    *
    */
@@ -10480,20 +10480,20 @@ declare module "natives" {
    *
    * @param {number} p0 undefined
    */
-  export function DisplayOnscreenKeyboard2(p0: number, windowTitle: string, p2: NativeAny, defaultText: string, defaultConcat1: string, defaultConcat2: string, defaultConcat3: string, defaultConcat4: string, defaultConcat5: string, defaultConcat6: string, defaultConcat7: string, maxInputLength: number): void;
+  export function displayOnscreenKeyboard2(p0: number, windowTitle: string, p2: NativeAny, defaultText: string, defaultConcat1: string, defaultConcat2: string, defaultConcat3: string, defaultConcat4: string, defaultConcat5: string, defaultConcat6: string, defaultConcat7: string, maxInputLength: number): void;
   /**
    *
    * @param {number} p0 undefined
    */
-  export function DisplayOnscreenKeyboard(p0: number, windowTitle: string, p2: string, defaultText: string, defaultConcat1: string, defaultConcat2: string, defaultConcat3: string, maxInputLength: number): void;
+  export function displayOnscreenKeyboard(p0: number, windowTitle: string, p2: string, defaultText: string, defaultConcat1: string, defaultConcat2: string, defaultConcat3: string, maxInputLength: number): void;
   /**
    *
    */
-  export function UpdateOnscreenKeyboard(): void;
+  export function updateOnscreenKeyboard(): void;
   /**
    *
    */
-  export function GetOnscreenKeyboardResult(): void;
+  export function getOnscreenKeyboardResult(): void;
   /**
    *
    * @param {number} p0 undefined
@@ -10503,7 +10503,7 @@ declare module "natives" {
    *
    * @param {NativeHash} hash undefined
    */
-  export function RemoveStealthKill(hash: NativeHash, p1: NativeBOOL): void;
+  export function removeStealthKill(hash: NativeHash, p1: NativeBOOL): void;
   /**
    *
    * @param {number} p0 undefined
@@ -10513,22 +10513,22 @@ declare module "natives" {
    *
    * @param {NativePlayer} player undefined
    */
-  export function SetExplosiveAmmoThisFrame(player: NativePlayer): void;
+  export function setExplosiveAmmoThisFrame(player: NativePlayer): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function SetFireAmmoThisFrame(player: NativePlayer): void;
+  export function setFireAmmoThisFrame(player: NativePlayer): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function SetExplosiveMeleeThisFrame(player: NativePlayer): void;
+  export function setExplosiveMeleeThisFrame(player: NativePlayer): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function SetSuperJumpThisFrame(player: NativePlayer): void;
+  export function setSuperJumpThisFrame(player: NativePlayer): void;
   /**
    *
    */
@@ -10548,7 +10548,7 @@ declare module "natives" {
   /**
    *
    */
-  export function ResetLocalplayerState(): void;
+  export function resetLocalplayerState(): void;
   /**
    *
    * @param {NativeAny} p0 undefined
@@ -10607,7 +10607,7 @@ declare module "natives" {
   /**
    *
    */
-  export function ForceSocialClubUpdate(): void;
+  export function forceSocialClubUpdate(): void;
   /**
    *
    */
@@ -10628,11 +10628,11 @@ declare module "natives" {
    *
    * @param {NativeBOOL} toggle undefined
    */
-  export function SetShowPedInPauseMenu(toggle: NativeBOOL): void;
+  export function setShowPedInPauseMenu(toggle: NativeBOOL): void;
   /**
    *
    */
-  export function GetShowPedInPauseMenu(): void;
+  export function getShowPedInPauseMenu(): void;
   /**
    *
    * @param {NativeBOOL} p0 undefined
@@ -10650,21 +10650,21 @@ declare module "natives" {
    *
    * @param {string} ringtoneName undefined
    */
-  export function PlayPedRingtone(ringtoneName: string, ped: NativePed, p2: NativeBOOL): void;
+  export function playPedRingtone(ringtoneName: string, ped: NativePed, p2: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function IsPedRingtonePlaying(ped: NativePed): void;
+  export function isPedRingtonePlaying(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function StopPedRingtone(ped: NativePed): void;
+  export function stopPedRingtone(ped: NativePed): void;
   /**
    *
    */
-  export function IsMobilePhoneCallOngoing(): void;
+  export function isMobilePhoneCallOngoing(): void;
   /**
    *
    */
@@ -10672,17 +10672,17 @@ declare module "natives" {
   /**
    *
    */
-  export function CreateNewScriptedConversation(): void;
+  export function createNewScriptedConversation(): void;
   /**
    *
    * @param {number} p0 undefined
    */
-  export function AddLineToConversation(p0: number, p1: string, p2: string, p3: number, p4: number, p5: NativeBOOL, p6: NativeBOOL, p7: NativeBOOL, p8: NativeBOOL, p9: number, p10: NativeBOOL, p11: NativeBOOL, p12: NativeBOOL): void;
+  export function addLineToConversation(p0: number, p1: string, p2: string, p3: number, p4: number, p5: NativeBOOL, p6: NativeBOOL, p7: NativeBOOL, p8: NativeBOOL, p9: number, p10: NativeBOOL, p11: NativeBOOL, p12: NativeBOOL): void;
   /**
    *
    * @param {number} pedIndex undefined
    */
-  export function AddPedToConversation(pedIndex: number, ped: NativePed, name: string): void;
+  export function addPedToConversation(pedIndex: number, ped: NativePed, name: string): void;
   /**
    *
    * @param {NativeAny} p0 undefined
@@ -10697,7 +10697,7 @@ declare module "natives" {
    *
    * @param {NativeBOOL} p0 undefined
    */
-  export function SetMicrophonePosition(p0: NativeBOOL, x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, x3: number, y3: number, z3: number): void;
+  export function setMicrophonePosition(p0: NativeBOOL, x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, x3: number, y3: number, z3: number): void;
   /**
    *
    * @param {NativeBOOL} p0 undefined
@@ -10712,26 +10712,26 @@ declare module "natives" {
    *
    * @param {NativeBOOL} p0 undefined
    */
-  export function StartScriptPhoneConversation(p0: NativeBOOL, p1: NativeBOOL): void;
+  export function startScriptPhoneConversation(p0: NativeBOOL, p1: NativeBOOL): void;
   /**
    *
    * @param {NativeBOOL} p0 undefined
    */
-  export function PreloadScriptPhoneConversation(p0: NativeBOOL, p1: NativeBOOL): void;
+  export function preloadScriptPhoneConversation(p0: NativeBOOL, p1: NativeBOOL): void;
   /**
    *
    * @param {NativeBOOL} p0 undefined
    */
-  export function StartScriptConversation(p0: NativeBOOL, p1: NativeBOOL, p2: NativeBOOL, p3: NativeBOOL): void;
+  export function startScriptConversation(p0: NativeBOOL, p1: NativeBOOL, p2: NativeBOOL, p3: NativeBOOL): void;
   /**
    *
    * @param {NativeBOOL} p0 undefined
    */
-  export function PreloadScriptConversation(p0: NativeBOOL, p1: NativeBOOL, p2: NativeBOOL, p3: NativeBOOL): void;
+  export function preloadScriptConversation(p0: NativeBOOL, p1: NativeBOOL, p2: NativeBOOL, p3: NativeBOOL): void;
   /**
    *
    */
-  export function StartPreloadedConversation(): void;
+  export function startPreloadedConversation(): void;
   /**
    *
    */
@@ -10739,38 +10739,38 @@ declare module "natives" {
   /**
    *
    */
-  export function IsScriptedConversationOngoing(): void;
+  export function isScriptedConversationOngoing(): void;
   /**
    *
    */
-  export function IsScriptedConversationLoaded(): void;
+  export function isScriptedConversationLoaded(): void;
   /**
    *
    */
-  export function GetCurrentScriptedConversationLine(): void;
-  /**
-   *
-   * @param {NativeBOOL} p0 undefined
-   */
-  export function PauseScriptedConversation(p0: NativeBOOL): void;
-  /**
-   *
-   */
-  export function RestartScriptedConversation(): void;
+  export function getCurrentScriptedConversationLine(): void;
   /**
    *
    * @param {NativeBOOL} p0 undefined
    */
-  export function StopScriptedConversation(p0: NativeBOOL): void;
+  export function pauseScriptedConversation(p0: NativeBOOL): void;
   /**
    *
    */
-  export function SkipToNextScriptedConversationLine(): void;
+  export function restartScriptedConversation(): void;
+  /**
+   *
+   * @param {NativeBOOL} p0 undefined
+   */
+  export function stopScriptedConversation(p0: NativeBOOL): void;
+  /**
+   *
+   */
+  export function skipToNextScriptedConversationLine(): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function InterruptConversation(p0: NativeAny, p1: NativeAny, p2: NativeAny): void;
+  export function interruptConversation(p0: NativeAny, p1: NativeAny, p2: NativeAny): void;
   /**
    *
    * @param {NativePed} p0 undefined
@@ -10790,53 +10790,53 @@ declare module "natives" {
    *
    * @param {number} p0 undefined
    */
-  export function RegisterScriptWithAudio(p0: number): void;
+  export function registerScriptWithAudio(p0: number): void;
   /**
    *
    */
-  export function UnregisterScriptWithAudio(): void;
-  /**
-   *
-   * @param {string} p0 undefined
-   */
-  export function RequestMissionAudioBank(p0: string, p1: NativeBOOL): void;
+  export function unregisterScriptWithAudio(): void;
   /**
    *
    * @param {string} p0 undefined
    */
-  export function RequestAmbientAudioBank(p0: string, p1: NativeBOOL): void;
+  export function requestMissionAudioBank(p0: string, p1: NativeBOOL): void;
   /**
    *
    * @param {string} p0 undefined
    */
-  export function RequestScriptAudioBank(p0: string, p1: NativeBOOL): void;
+  export function requestAmbientAudioBank(p0: string, p1: NativeBOOL): void;
+  /**
+   *
+   * @param {string} p0 undefined
+   */
+  export function requestScriptAudioBank(p0: string, p1: NativeBOOL): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function HintAmbientAudioBank(p0: NativeAny, p1: NativeAny): void;
+  export function hintAmbientAudioBank(p0: NativeAny, p1: NativeAny): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function HintScriptAudioBank(p0: NativeAny, p1: NativeAny): void;
+  export function hintScriptAudioBank(p0: NativeAny, p1: NativeAny): void;
   /**
    *
    */
-  export function ReleaseMissionAudioBank(): void;
+  export function releaseMissionAudioBank(): void;
   /**
    *
    */
-  export function ReleaseAmbientAudioBank(): void;
+  export function releaseAmbientAudioBank(): void;
   /**
    *
    * @param {string} audioBank undefined
    */
-  export function ReleaseNamedScriptAudioBank(audioBank: string): void;
+  export function releaseNamedScriptAudioBank(audioBank: string): void;
   /**
    *
    */
-  export function ReleaseScriptAudioBank(): void;
+  export function releaseScriptAudioBank(): void;
   /**
    *
    */
@@ -10848,22 +10848,22 @@ declare module "natives" {
   /**
    *
    */
-  export function GetSoundId(): void;
+  export function getSoundId(): void;
   /**
    *
    * @param {number} soundId undefined
    */
-  export function ReleaseSoundId(soundId: number): void;
+  export function releaseSoundId(soundId: number): void;
   /**
    *
    * @param {NativePlayer} soundId undefined
    */
-  export function PlaySound(soundId: NativePlayer, audioName: string, audioRef: string, p3: NativeBOOL, p4: NativeAny, p5: NativeBOOL): void;
+  export function playSound(soundId: NativePlayer, audioName: string, audioRef: string, p3: NativeBOOL, p4: NativeAny, p5: NativeBOOL): void;
   /**
    *
    * @param {number} soundId undefined
    */
-  export function PlaySoundFrontend(soundId: number, audioName: string, audioRef: string, p3: NativeBOOL): void;
+  export function playSoundFrontend(soundId: number, audioName: string, audioRef: string, p3: NativeBOOL): void;
   /**
    *
    * @param {string} p0 undefined
@@ -10873,42 +10873,42 @@ declare module "natives" {
    *
    * @param {number} soundId undefined
    */
-  export function PlaySoundFromEntity(soundId: number, audioName: string, entity: NativeEntity, audioRef: string, p4: NativeBOOL, p5: NativeAny): void;
+  export function playSoundFromEntity(soundId: number, audioName: string, entity: NativeEntity, audioRef: string, p4: NativeBOOL, p5: NativeAny): void;
   /**
    *
    * @param {number} soundId undefined
    */
-  export function PlaySoundFromCoord(soundId: number, audioName: string, x: number, y: number, z: number, audioRef: string, p6: NativeBOOL, range: number, p8: NativeBOOL): void;
+  export function playSoundFromCoord(soundId: number, audioName: string, x: number, y: number, z: number, audioRef: string, p6: NativeBOOL, range: number, p8: NativeBOOL): void;
   /**
    *
    * @param {number} soundId undefined
    */
-  export function StopSound(soundId: number): void;
+  export function stopSound(soundId: number): void;
   /**
    *
    * @param {number} soundId undefined
    */
-  export function GetNetworkIdFromSoundId(soundId: number): void;
+  export function getNetworkIdFromSoundId(soundId: number): void;
   /**
    *
    * @param {number} netId undefined
    */
-  export function GetSoundIdFromNetworkId(netId: number): void;
+  export function getSoundIdFromNetworkId(netId: number): void;
   /**
    *
    * @param {number} soundId undefined
    */
-  export function SetVariableOnSound(soundId: number, variableName: string, value: number): void;
+  export function setVariableOnSound(soundId: number, variableName: string, value: number): void;
   /**
    *
    * @param {string} p0 undefined
    */
-  export function SetVariableOnStream(p0: string, p1: number): void;
+  export function setVariableOnStream(p0: string, p1: number): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function OverrideUnderwaterStream(p0: NativeAny, p1: NativeBOOL): void;
+  export function overrideUnderwaterStream(p0: NativeAny, p1: NativeBOOL): void;
   /**
    *
    * @param {string} name undefined
@@ -10918,46 +10918,46 @@ declare module "natives" {
    *
    * @param {number} soundId undefined
    */
-  export function HasSoundFinished(soundId: number): void;
+  export function hasSoundFinished(soundId: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function PlayAmbientSpeech1(ped: NativePed, speechName: string, speechParam: string): void;
+  export function playAmbientSpeech1(ped: NativePed, speechName: string, speechParam: string): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function PlayAmbientSpeech2(ped: NativePed, speechName: string, speechParam: string): void;
+  export function playAmbientSpeech2(ped: NativePed, speechName: string, speechParam: string): void;
   /**
    *
    * @param {NativePed} p0 undefined
    */
-  export function PlayAmbientSpeechWithVoice(p0: NativePed, speechName: string, voiceName: string, speechParam: string, p4: NativeBOOL): void;
+  export function playAmbientSpeechWithVoice(p0: NativePed, speechName: string, voiceName: string, speechParam: string, p4: NativeBOOL): void;
   /**
    *
    * @param {string} speechName undefined
    */
-  export function PlayAmbientSpeechAtCoords(speechName: string, speechParam: string, x: number, y: number, z: number, p5: string): void;
+  export function playAmbientSpeechAtCoords(speechName: string, speechParam: string, x: number, y: number, z: number, p5: string): void;
   /**
    *
    * @param {string} p0 undefined
    */
-  export function OverrideTrevorRage(p0: string): void;
+  export function overrideTrevorRage(p0: string): void;
   /**
    *
    */
-  export function ResetTrevorRage(): void;
+  export function resetTrevorRage(): void;
   /**
    *
    * @param {NativePed} playerPed undefined
    */
-  export function SetPlayerAngry(playerPed: NativePed, value: NativeBOOL): void;
+  export function setPlayerAngry(playerPed: NativePed, value: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function PlayPain(ped: NativePed, painID: number, p1: number): void;
+  export function playPain(ped: NativePed, painID: number, p1: number): void;
   /**
    *
    * @param {string} p0 undefined
@@ -10972,12 +10972,12 @@ declare module "natives" {
    *
    * @param {NativePed} ped undefined
    */
-  export function SetAmbientVoiceName(ped: NativePed, name: string): void;
+  export function setAmbientVoiceName(ped: NativePed, name: string): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function ResetAmbientVoice(ped: NativePed): void;
+  export function resetAmbientVoice(ped: NativePed): void;
   /**
    *
    * @param {NativePed} playerPed undefined
@@ -10992,42 +10992,42 @@ declare module "natives" {
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedMute(ped: NativePed): void;
+  export function setPedMute(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function StopCurrentPlayingAmbientSpeech(ped: NativePed): void;
+  export function stopCurrentPlayingAmbientSpeech(ped: NativePed): void;
   /**
    *
    * @param {NativePed} p0 undefined
    */
-  export function IsAmbientSpeechPlaying(p0: NativePed): void;
+  export function isAmbientSpeechPlaying(p0: NativePed): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function IsScriptedSpeechPlaying(p0: NativeAny): void;
+  export function isScriptedSpeechPlaying(p0: NativeAny): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function IsAnySpeechPlaying(ped: NativePed): void;
+  export function isAnySpeechPlaying(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function CanPedSpeak(ped: NativePed, speechName: string, unk: NativeBOOL): void;
+  export function canPedSpeak(ped: NativePed, speechName: string, unk: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function IsPedInCurrentConversation(ped: NativePed): void;
+  export function isPedInCurrentConversation(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedIsDrunk(ped: NativePed, toggle: NativeBOOL): void;
+  export function setPedIsDrunk(ped: NativePed, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativeAny} p0 undefined
@@ -11042,37 +11042,37 @@ declare module "natives" {
    *
    * @param {NativePed} animal undefined
    */
-  export function SetAnimalMood(animal: NativePed, mood: number): void;
+  export function setAnimalMood(animal: NativePed, mood: number): void;
   /**
    *
    */
-  export function IsMobilePhoneRadioActive(): void;
+  export function isMobilePhoneRadioActive(): void;
   /**
    *
    * @param {NativeBOOL} state undefined
    */
-  export function SetMobilePhoneRadioState(state: NativeBOOL): void;
+  export function setMobilePhoneRadioState(state: NativeBOOL): void;
   /**
    *
    */
-  export function GetPlayerRadioStationIndex(): void;
+  export function getPlayerRadioStationIndex(): void;
   /**
    *
    */
-  export function GetPlayerRadioStationName(): void;
+  export function getPlayerRadioStationName(): void;
   /**
    *
    * @param {number} radioStation undefined
    */
-  export function GetRadioStationName(radioStation: number): void;
+  export function getRadioStationName(radioStation: number): void;
   /**
    *
    */
-  export function GetPlayerRadioStationGenre(): void;
+  export function getPlayerRadioStationGenre(): void;
   /**
    *
    */
-  export function IsRadioRetuning(): void;
+  export function isRadioRetuning(): void;
   /**
    *
    */
@@ -11089,105 +11089,105 @@ declare module "natives" {
    *
    * @param {string} stationName undefined
    */
-  export function SetRadioToStationName(stationName: string): void;
+  export function setRadioToStationName(stationName: string): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function SetVehRadioStation(vehicle: NativeVehicle, radioStation: string): void;
+  export function setVehRadioStation(vehicle: NativeVehicle, radioStation: string): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function SetVehicleAsAmbientEmmitter(vehicle: NativeVehicle): void;
+  export function setVehicleAsAmbientEmmitter(vehicle: NativeVehicle): void;
   /**
    *
    * @param {string} emitterName undefined
    */
-  export function SetEmitterRadioStation(emitterName: string, radioStation: string): void;
+  export function setEmitterRadioStation(emitterName: string, radioStation: string): void;
   /**
    *
    * @param {string} emitterName undefined
    */
-  export function SetStaticEmitterEnabled(emitterName: string, toggle: NativeBOOL): void;
+  export function setStaticEmitterEnabled(emitterName: string, toggle: NativeBOOL): void;
   /**
    *
    * @param {number} radioStation undefined
    */
-  export function SetRadioToStationIndex(radioStation: number): void;
+  export function setRadioToStationIndex(radioStation: number): void;
   /**
    *
    * @param {NativeBOOL} active undefined
    */
-  export function SetFrontendRadioActive(active: NativeBOOL): void;
+  export function setFrontendRadioActive(active: NativeBOOL): void;
   /**
    *
    * @param {number} newsStory undefined
    */
-  export function UnlockMissionNewsStory(newsStory: number): void;
+  export function unlockMissionNewsStory(newsStory: number): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function GetNumberOfPassengerVoiceVariations(p0: NativeAny): void;
+  export function getNumberOfPassengerVoiceVariations(p0: NativeAny): void;
   /**
    *
    */
-  export function GetAudibleMusicTrackTextId(): void;
+  export function getAudibleMusicTrackTextId(): void;
   /**
    *
    * @param {NativeBOOL} play undefined
    */
-  export function PlayEndCreditsMusic(play: NativeBOOL): void;
+  export function playEndCreditsMusic(play: NativeBOOL): void;
   /**
    *
    */
-  export function SkipRadioForward(): void;
-  /**
-   *
-   * @param {string} radioStation undefined
-   */
-  export function FreezeRadioStation(radioStation: string): void;
+  export function skipRadioForward(): void;
   /**
    *
    * @param {string} radioStation undefined
    */
-  export function UnfreezeRadioStation(radioStation: string): void;
+  export function freezeRadioStation(radioStation: string): void;
+  /**
+   *
+   * @param {string} radioStation undefined
+   */
+  export function unfreezeRadioStation(radioStation: string): void;
   /**
    *
    * @param {NativeBOOL} toggle undefined
    */
-  export function SetRadioAutoUnfreeze(toggle: NativeBOOL): void;
+  export function setRadioAutoUnfreeze(toggle: NativeBOOL): void;
   /**
    *
    * @param {string} radioStation undefined
    */
-  export function SetInitialPlayerStation(radioStation: string): void;
+  export function setInitialPlayerStation(radioStation: string): void;
   /**
    *
    * @param {NativeBOOL} toggle undefined
    */
-  export function SetUserRadioControlEnabled(toggle: NativeBOOL): void;
+  export function setUserRadioControlEnabled(toggle: NativeBOOL): void;
   /**
    *
    * @param {string} radioStation undefined
    */
-  export function SetRadioTrack(radioStation: string, radioTrack: string): void;
+  export function setRadioTrack(radioStation: string, radioTrack: string): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function SetVehicleRadioLoud(vehicle: NativeVehicle, toggle: NativeBOOL): void;
+  export function setVehicleRadioLoud(vehicle: NativeVehicle, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function IsVehicleRadioLoud(vehicle: NativeVehicle): void;
+  export function isVehicleRadioLoud(vehicle: NativeVehicle): void;
   /**
    *
    * @param {NativeBOOL} Toggle undefined
    */
-  export function SetMobileRadioEnabledDuringGameplay(Toggle: NativeBOOL): void;
+  export function setMobileRadioEnabledDuringGameplay(Toggle: NativeBOOL): void;
   /**
    *
    */
@@ -11195,12 +11195,12 @@ declare module "natives" {
   /**
    *
    */
-  export function IsPlayerVehicleRadioEnabled(): void;
+  export function isPlayerVehicleRadioEnabled(): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function SetVehicleRadioEnabled(vehicle: NativeVehicle, toggle: NativeBOOL): void;
+  export function setVehicleRadioEnabled(vehicle: NativeVehicle, toggle: NativeBOOL): void;
   /**
    *
    * @param {string} radioStation undefined
@@ -11214,12 +11214,12 @@ declare module "natives" {
   /**
    *
    */
-  export function MaxRadioStationIndex(): void;
+  export function maxRadioStationIndex(): void;
   /**
    *
    * @param {number} station undefined
    */
-  export function FindRadioStationIndex(station: number): void;
+  export function findRadioStationIndex(station: number): void;
   /**
    *
    * @param {string} radioStation undefined
@@ -11244,76 +11244,76 @@ declare module "natives" {
    *
    * @param {NativeAny} p0 undefined
    */
-  export function SetAmbientZoneState(p0: NativeAny, p1: NativeBOOL, p2: NativeBOOL): void;
+  export function setAmbientZoneState(p0: NativeAny, p1: NativeBOOL, p2: NativeBOOL): void;
   /**
    *
    * @param {string} zoneName undefined
    */
-  export function ClearAmbientZoneState(zoneName: string, p1: NativeBOOL): void;
+  export function clearAmbientZoneState(zoneName: string, p1: NativeBOOL): void;
   /**
    *
    * @param {string} p0 undefined
    */
-  export function SetAmbientZoneListState(p0: string, p1: NativeBOOL, p2: NativeBOOL): void;
+  export function setAmbientZoneListState(p0: string, p1: NativeBOOL, p2: NativeBOOL): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function ClearAmbientZoneListState(p0: NativeAny, p1: NativeBOOL): void;
+  export function clearAmbientZoneListState(p0: NativeAny, p1: NativeBOOL): void;
   /**
    *
    * @param {string} ambientZone undefined
    */
-  export function SetAmbientZoneStatePersistent(ambientZone: string, p1: NativeBOOL, p2: NativeBOOL): void;
+  export function setAmbientZoneStatePersistent(ambientZone: string, p1: NativeBOOL, p2: NativeBOOL): void;
   /**
    *
    * @param {string} ambientZone undefined
    */
-  export function SetAmbientZoneListStatePersistent(ambientZone: string, p1: NativeBOOL, p2: NativeBOOL): void;
+  export function setAmbientZoneListStatePersistent(ambientZone: string, p1: NativeBOOL, p2: NativeBOOL): void;
   /**
    *
    * @param {string} ambientZone undefined
    */
-  export function IsAmbientZoneEnabled(ambientZone: string): void;
+  export function isAmbientZoneEnabled(ambientZone: string): void;
   /**
    *
    * @param {string} p0 undefined
    */
-  export function SetCutsceneAudioOverride(p0: string): void;
+  export function setCutsceneAudioOverride(p0: string): void;
   /**
    *
    * @param {string} p0 undefined
    */
-  export function GetPlayerHeadsetSoundAlternate(p0: string, p1: number): void;
+  export function getPlayerHeadsetSoundAlternate(p0: string, p1: number): void;
   /**
    *
    * @param {string} name undefined
    */
-  export function PlayPoliceReport(name: string, p1: number): void;
+  export function playPoliceReport(name: string, p1: number): void;
   /**
    *
    */
-  export function DisablePoliceReports(): void;
-  /**
-   *
-   * @param {NativeVehicle} vehicle undefined
-   */
-  export function BlipSiren(vehicle: NativeVehicle): void;
+  export function disablePoliceReports(): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function OverrideVehHorn(vehicle: NativeVehicle, mute: NativeBOOL, p2: number): void;
+  export function blipSiren(vehicle: NativeVehicle): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function IsHornActive(vehicle: NativeVehicle): void;
+  export function overrideVehHorn(vehicle: NativeVehicle, mute: NativeBOOL, p2: number): void;
+  /**
+   *
+   * @param {NativeVehicle} vehicle undefined
+   */
+  export function isHornActive(vehicle: NativeVehicle): void;
   /**
    *
    * @param {NativeBOOL} toggle undefined
    */
-  export function SetAggressiveHorns(toggle: NativeBOOL): void;
+  export function setAggressiveHorns(toggle: NativeBOOL): void;
   /**
    *
    * @param {NativeBOOL} p0 undefined
@@ -11327,84 +11327,84 @@ declare module "natives" {
   /**
    *
    */
-  export function IsStreamPlaying(): void;
+  export function isStreamPlaying(): void;
   /**
    *
    */
-  export function GetStreamPlayTime(): void;
-  /**
-   *
-   * @param {string} streamName undefined
-   */
-  export function LoadStream(streamName: string, soundSet: string): void;
+  export function getStreamPlayTime(): void;
   /**
    *
    * @param {string} streamName undefined
    */
-  export function LoadStreamWithStartOffset(streamName: string, startOffset: number, soundSet: string): void;
+  export function loadStream(streamName: string, soundSet: string): void;
+  /**
+   *
+   * @param {string} streamName undefined
+   */
+  export function loadStreamWithStartOffset(streamName: string, startOffset: number, soundSet: string): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function PlayStreamFromPed(ped: NativePed): void;
+  export function playStreamFromPed(ped: NativePed): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function PlayStreamFromVehicle(vehicle: NativeVehicle): void;
+  export function playStreamFromVehicle(vehicle: NativeVehicle): void;
   /**
    *
    * @param {NativeObject} object undefined
    */
-  export function PlayStreamFromObject(object: NativeObject): void;
+  export function playStreamFromObject(object: NativeObject): void;
   /**
    *
    */
-  export function PlayStreamFrontend(): void;
+  export function playStreamFrontend(): void;
   /**
    *
    * @param {number} x undefined
    */
-  export function SpecialFrontendEqual(x: number, y: number, z: number): void;
+  export function specialFrontendEqual(x: number, y: number, z: number): void;
   /**
    *
    */
-  export function StopStream(): void;
-  /**
-   *
-   * @param {NativePed} ped undefined
-   */
-  export function StopPedSpeaking(ped: NativePed, speaking: NativeBOOL): void;
+  export function stopStream(): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function DisablePedPainAudio(ped: NativePed, toggle: NativeBOOL): void;
+  export function stopPedSpeaking(ped: NativePed, speaking: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function IsAmbientSpeechDisabled(ped: NativePed): void;
+  export function disablePedPainAudio(ped: NativePed, toggle: NativeBOOL): void;
+  /**
+   *
+   * @param {NativePed} ped undefined
+   */
+  export function isAmbientSpeechDisabled(ped: NativePed): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function SetSirenWithNoDriver(vehicle: NativeVehicle, toggle: NativeBOOL): void;
+  export function setSirenWithNoDriver(vehicle: NativeVehicle, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function SoundVehicleHornThisFrame(vehicle: NativeVehicle): void;
+  export function soundVehicleHornThisFrame(vehicle: NativeVehicle): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function SetHornEnabled(vehicle: NativeVehicle, toggle: NativeBOOL): void;
+  export function setHornEnabled(vehicle: NativeVehicle, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function SetAudioVehiclePriority(vehicle: NativeVehicle, p1: NativeAny): void;
+  export function setAudioVehiclePriority(vehicle: NativeVehicle, p1: NativeAny): void;
   /**
    *
    * @param {NativeAny} p0 undefined
@@ -11414,12 +11414,12 @@ declare module "natives" {
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function UseSirenAsHorn(vehicle: NativeVehicle, toggle: NativeBOOL): void;
+  export function useSirenAsHorn(vehicle: NativeVehicle, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function ForceVehicleEngineAudio(vehicle: NativeVehicle, audioName: string): void;
+  export function forceVehicleEngineAudio(vehicle: NativeVehicle, audioName: string): void;
   /**
    *
    * @param {NativeAny} p0 undefined
@@ -11459,7 +11459,7 @@ declare module "natives" {
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function SetVehicleBoostActive(vehicle: NativeVehicle, toggle: NativeBOOL): void;
+  export function setVehicleBoostActive(vehicle: NativeVehicle, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativeAny} p0 undefined
@@ -11474,12 +11474,12 @@ declare module "natives" {
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function PlayVehicleDoorOpenSound(vehicle: NativeVehicle, p1: number): void;
+  export function playVehicleDoorOpenSound(vehicle: NativeVehicle, p1: number): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function PlayVehicleDoorCloseSound(vehicle: NativeVehicle, p1: number): void;
+  export function playVehicleDoorCloseSound(vehicle: NativeVehicle, p1: number): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
@@ -11488,21 +11488,21 @@ declare module "natives" {
   /**
    *
    */
-  export function IsGameInControlOfMusic(): void;
+  export function isGameInControlOfMusic(): void;
   /**
    *
    * @param {NativeBOOL} active undefined
    */
-  export function SetGpsActive(active: NativeBOOL): void;
+  export function setGpsActive(active: NativeBOOL): void;
   /**
    *
    * @param {string} audioName undefined
    */
-  export function PlayMissionCompleteAudio(audioName: string): void;
+  export function playMissionCompleteAudio(audioName: string): void;
   /**
    *
    */
-  export function IsMissionCompletePlaying(): void;
+  export function isMissionCompletePlaying(): void;
   /**
    *
    */
@@ -11516,26 +11516,26 @@ declare module "natives" {
    *
    * @param {string} scene undefined
    */
-  export function StartAudioScene(scene: string): void;
+  export function startAudioScene(scene: string): void;
   /**
    *
    * @param {string} scene undefined
    */
-  export function StopAudioScene(scene: string): void;
+  export function stopAudioScene(scene: string): void;
   /**
    *
    */
-  export function StopAudioScenes(): void;
-  /**
-   *
-   * @param {string} scene undefined
-   */
-  export function IsAudioSceneActive(scene: string): void;
+  export function stopAudioScenes(): void;
   /**
    *
    * @param {string} scene undefined
    */
-  export function SetAudioSceneVariable(scene: string, variable: string, value: number): void;
+  export function isAudioSceneActive(scene: string): void;
+  /**
+   *
+   * @param {string} scene undefined
+   */
+  export function setAudioSceneVariable(scene: string, variable: string, value: number): void;
   /**
    *
    * @param {NativeAny} p0 undefined
@@ -11545,7 +11545,7 @@ declare module "natives" {
    *
    * @param {NativeEntity} p0 undefined
    */
-  export function DynamicMixerRelatedFn(p0: NativeEntity, p1: string, p2: number): void;
+  export function dynamicMixerRelatedFn(p0: NativeEntity, p1: string, p2: number): void;
   /**
    *
    * @param {NativeAny} p0 undefined
@@ -11554,22 +11554,22 @@ declare module "natives" {
   /**
    *
    */
-  export function AudioIsScriptedMusicPlaying(): void;
+  export function audioIsScriptedMusicPlaying(): void;
   /**
    *
    * @param {string} eventName undefined
    */
-  export function PrepareMusicEvent(eventName: string): void;
+  export function prepareMusicEvent(eventName: string): void;
   /**
    *
    * @param {string} eventName undefined
    */
-  export function CancelMusicEvent(eventName: string): void;
+  export function cancelMusicEvent(eventName: string): void;
   /**
    *
    * @param {string} eventName undefined
    */
-  export function TriggerMusicEvent(eventName: string): void;
+  export function triggerMusicEvent(eventName: string): void;
   /**
    *
    */
@@ -11577,7 +11577,7 @@ declare module "natives" {
   /**
    *
    */
-  export function GetMusicPlaytime(): void;
+  export function getMusicPlaytime(): void;
   /**
    *
    * @param {NativeAny} p0 undefined
@@ -11586,7 +11586,7 @@ declare module "natives" {
   /**
    *
    */
-  export function ClearAllBrokenGlass(): void;
+  export function clearAllBrokenGlass(): void;
   /**
    *
    * @param {NativeBOOL} p0 undefined
@@ -11610,42 +11610,42 @@ declare module "natives" {
    *
    * @param {string} alarmName undefined
    */
-  export function PrepareAlarm(alarmName: string): void;
+  export function prepareAlarm(alarmName: string): void;
   /**
    *
    * @param {string} alarmName undefined
    */
-  export function StartAlarm(alarmName: string, p2: NativeBOOL): void;
+  export function startAlarm(alarmName: string, p2: NativeBOOL): void;
   /**
    *
    * @param {string} alarmName undefined
    */
-  export function StopAlarm(alarmName: string, toggle: NativeBOOL): void;
+  export function stopAlarm(alarmName: string, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativeBOOL} stop undefined
    */
-  export function StopAllAlarms(stop: NativeBOOL): void;
+  export function stopAllAlarms(stop: NativeBOOL): void;
   /**
    *
    * @param {string} alarmName undefined
    */
-  export function IsAlarmPlaying(alarmName: string): void;
+  export function isAlarmPlaying(alarmName: string): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function GetVehicleDefaultHorn(vehicle: NativeVehicle): void;
+  export function getVehicleDefaultHorn(vehicle: NativeVehicle): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function GetVehicleHornHash(vehicle: NativeVehicle): void;
+  export function getVehicleHornHash(vehicle: NativeVehicle): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function ResetPedAudioFlags(ped: NativePed): void;
+  export function resetPedAudioFlags(ped: NativePed): void;
   /**
    *
    * @param {NativeAny} p0 undefined
@@ -11669,7 +11669,7 @@ declare module "natives" {
    *
    * @param {NativeBOOL} value undefined
    */
-  export function ForceAmbientSiren(value: NativeBOOL): void;
+  export function forceAmbientSiren(value: NativeBOOL): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
@@ -11679,27 +11679,27 @@ declare module "natives" {
    *
    * @param {string} flagName undefined
    */
-  export function SetAudioFlag(flagName: string, toggle: NativeBOOL): void;
+  export function setAudioFlag(flagName: string, toggle: NativeBOOL): void;
   /**
    *
    * @param {string} audioName undefined
    */
-  export function PrepareSynchronizedAudioEvent(audioName: string, unk: NativeBOOL): void;
+  export function prepareSynchronizedAudioEvent(audioName: string, unk: NativeBOOL): void;
   /**
    *
    * @param {number} SceneID undefined
    */
-  export function PrepareSynchronizedAudioEventForScene(SceneID: number, audioName: string): void;
+  export function prepareSynchronizedAudioEventForScene(SceneID: number, audioName: string): void;
   /**
    *
    * @param {number} SceneID undefined
    */
-  export function PlaySynchronizedAudioEvent(SceneID: number): void;
+  export function playSynchronizedAudioEvent(SceneID: number): void;
   /**
    *
    * @param {number} SceneID undefined
    */
-  export function StopSynchronizedAudioEvent(SceneID: number): void;
+  export function stopSynchronizedAudioEvent(SceneID: number): void;
   /**
    *
    * @param {NativeAny} p0 undefined
@@ -11709,7 +11709,7 @@ declare module "natives" {
    *
    * @param {string} p0 undefined
    */
-  export function SetSynchronizedAudioEventPositionThisFrame(p0: string, p1: NativeEntity): void;
+  export function setSynchronizedAudioEventPositionThisFrame(p0: string, p1: NativeEntity): void;
   /**
    *
    * @param {number} p0 undefined
@@ -11737,7 +11737,7 @@ declare module "natives" {
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedTalk(ped: NativePed): void;
+  export function setPedTalk(ped: NativePed): void;
   /**
    *
    */
@@ -11763,25 +11763,25 @@ declare module "natives" {
    *
    * @param {string} cutsceneName undefined
    */
-  export function RequestCutscene(cutsceneName: string, p1: number): void;
+  export function requestCutscene(cutsceneName: string, p1: number): void;
   /**
    *
    * @param {string} cutsceneName undefined
    */
-  export function RequestCutsceneEx(cutsceneName: string, p1: number, p2: number): void;
+  export function requestCutsceneEx(cutsceneName: string, p1: number, p2: number): void;
   /**
    *
    */
-  export function RemoveCutscene(): void;
+  export function removeCutscene(): void;
   /**
    *
    */
-  export function HasCutsceneLoaded(): void;
+  export function hasCutsceneLoaded(): void;
   /**
    *
    * @param {string} cutsceneName undefined
    */
-  export function HasThisCutsceneLoaded(cutsceneName: string): void;
+  export function hasThisCutsceneLoaded(cutsceneName: string): void;
   /**
    *
    * @param {number} p0 undefined
@@ -11825,26 +11825,26 @@ declare module "natives" {
    *
    * @param {number} p0 undefined
    */
-  export function StartCutscene(p0: number): void;
+  export function startCutscene(p0: number): void;
   /**
    *
    * @param {number} x undefined
    */
-  export function StartCutsceneAtCoords(x: number, y: number, z: number, p3: number): void;
+  export function startCutsceneAtCoords(x: number, y: number, z: number, p3: number): void;
   /**
    *
    * @param {NativeBOOL} p0 undefined
    */
-  export function StopCutscene(p0: NativeBOOL): void;
+  export function stopCutscene(p0: NativeBOOL): void;
   /**
    *
    */
-  export function StopCutsceneImmediately(): void;
+  export function stopCutsceneImmediately(): void;
   /**
    *
    * @param {number} x undefined
    */
-  export function SetCutsceneOrigin(x: number, y: number, z: number, p3: number, p4: number): void;
+  export function setCutsceneOrigin(x: number, y: number, z: number, p3: number, p4: number): void;
   /**
    *
    * @param {NativeAny} p0 undefined
@@ -11853,36 +11853,36 @@ declare module "natives" {
   /**
    *
    */
-  export function GetCutsceneTime(): void;
+  export function getCutsceneTime(): void;
   /**
    *
    */
-  export function GetCutsceneTotalDuration(): void;
+  export function getCutsceneTotalDuration(): void;
   /**
    *
    */
-  export function WasCutsceneSkipped(): void;
+  export function wasCutsceneSkipped(): void;
   /**
    *
    */
-  export function HasCutsceneFinished(): void;
+  export function hasCutsceneFinished(): void;
   /**
    *
    */
-  export function IsCutsceneActive(): void;
+  export function isCutsceneActive(): void;
   /**
    *
    */
-  export function IsCutscenePlaying(): void;
+  export function isCutscenePlaying(): void;
   /**
    *
    */
-  export function GetCutsceneSectionPlaying(): void;
+  export function getCutsceneSectionPlaying(): void;
   /**
    *
    * @param {string} cutsceneEntName undefined
    */
-  export function GetEntityIndexOfCutsceneEntity(cutsceneEntName: string, modelHash: NativeHash): void;
+  export function getEntityIndexOfCutsceneEntity(cutsceneEntName: string, modelHash: NativeHash): void;
   /**
    *
    */
@@ -11896,12 +11896,12 @@ declare module "natives" {
    *
    * @param {NativePed} cutscenePed undefined
    */
-  export function RegisterEntityForCutscene(cutscenePed: NativePed, cutsceneEntName: string, p2: number, modelHash: NativeHash, p4: number): void;
+  export function registerEntityForCutscene(cutscenePed: NativePed, cutsceneEntName: string, p2: number, modelHash: NativeHash, p4: number): void;
   /**
    *
    * @param {string} cutsceneEntName undefined
    */
-  export function GetEntityIndexOfRegisteredEntity(cutsceneEntName: string, modelHash: NativeHash): void;
+  export function getEntityIndexOfRegisteredEntity(cutsceneEntName: string, modelHash: NativeHash): void;
   /**
    *
    * @param {NativeHash} modelHash undefined
@@ -11911,22 +11911,22 @@ declare module "natives" {
    *
    * @param {number} p0 undefined
    */
-  export function SetCutsceneTriggerArea(p0: number, p1: number, p2: number, p3: number, p4: number, p5: number): void;
+  export function setCutsceneTriggerArea(p0: number, p1: number, p2: number, p3: number, p4: number, p5: number): void;
   /**
    *
    * @param {string} cutsceneEntName undefined
    */
-  export function CanSetEnterStateForRegisteredEntity(cutsceneEntName: string, modelHash: NativeHash): void;
+  export function canSetEnterStateForRegisteredEntity(cutsceneEntName: string, modelHash: NativeHash): void;
   /**
    *
    * @param {string} cutsceneEntName undefined
    */
-  export function CanSetExitStateForRegisteredEntity(cutsceneEntName: string, modelHash: NativeHash): void;
+  export function canSetExitStateForRegisteredEntity(cutsceneEntName: string, modelHash: NativeHash): void;
   /**
    *
    * @param {NativeBOOL} p0 undefined
    */
-  export function CanSetExitStateForCamera(p0: NativeBOOL): void;
+  export function canSetExitStateForCamera(p0: NativeBOOL): void;
   /**
    *
    * @param {NativeBOOL} toggle undefined
@@ -11936,7 +11936,7 @@ declare module "natives" {
    *
    * @param {NativeBOOL} p0 undefined
    */
-  export function SetCutsceneFadeValues(p0: NativeBOOL, p1: NativeBOOL, p2: NativeBOOL, p3: NativeBOOL): void;
+  export function setCutsceneFadeValues(p0: NativeBOOL, p1: NativeBOOL, p2: NativeBOOL, p3: NativeBOOL): void;
   /**
    *
    * @param {NativeBOOL} p0 undefined
@@ -11973,12 +11973,12 @@ declare module "natives" {
   /**
    *
    */
-  export function RegisterSynchronisedScriptSpeech(): void;
+  export function registerSynchronisedScriptSpeech(): void;
   /**
    *
    * @param {string} cutsceneEntName undefined
    */
-  export function SetCutscenePedComponentVariation(cutsceneEntName: string, p1: number, p2: number, p3: number, modelHash: NativeHash): void;
+  export function setCutscenePedComponentVariation(cutsceneEntName: string, p1: number, p2: number, p3: number, modelHash: NativeHash): void;
   /**
    *
    * @param {string} cutsceneEntName undefined
@@ -11988,12 +11988,12 @@ declare module "natives" {
    *
    * @param {string} cutsceneEntName undefined
    */
-  export function DoesCutsceneEntityExist(cutsceneEntName: string, modelHash: NativeHash): void;
+  export function doesCutsceneEntityExist(cutsceneEntName: string, modelHash: NativeHash): void;
   /**
    *
    * @param {string} cutsceneEntName undefined
    */
-  export function SetCutscenePedPropVariation(cutsceneEntName: string, p1: number, p2: number, p3: number, modelHash: NativeHash): void;
+  export function setCutscenePedPropVariation(cutsceneEntName: string, p1: number, p2: number, p3: number, modelHash: NativeHash): void;
   /**
    *
    */
@@ -12002,46 +12002,46 @@ declare module "natives" {
    *
    * @param {number} interiorID undefined
    */
-  export function GetInteriorGroupId(interiorID: number): void;
+  export function getInteriorGroupId(interiorID: number): void;
   /**
    *
    * @param {number} interiorID undefined
    */
-  export function GetOffsetFromInteriorInWorldCoords(interiorID: number, x: number, y: number, z: number): void;
+  export function getOffsetFromInteriorInWorldCoords(interiorID: number, x: number, y: number, z: number): void;
   /**
    *
    */
-  export function IsInteriorScene(): void;
+  export function isInteriorScene(): void;
   /**
    *
    * @param {number} interiorID undefined
    */
-  export function IsValidInterior(interiorID: number): void;
+  export function isValidInterior(interiorID: number): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function ClearRoomForEntity(entity: NativeEntity): void;
+  export function clearRoomForEntity(entity: NativeEntity): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function ForceRoomForEntity(entity: NativeEntity, interiorID: number, roomHashKey: NativeHash): void;
+  export function forceRoomForEntity(entity: NativeEntity, interiorID: number, roomHashKey: NativeHash): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function GetRoomKeyFromEntity(entity: NativeEntity): void;
+  export function getRoomKeyFromEntity(entity: NativeEntity): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function GetKeyForEntityInRoom(entity: NativeEntity): void;
+  export function getKeyForEntityInRoom(entity: NativeEntity): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function GetInteriorFromEntity(entity: NativeEntity): void;
+  export function getInteriorFromEntity(entity: NativeEntity): void;
   /**
    *
    * @param {NativeEntity} entity undefined
@@ -12065,7 +12065,7 @@ declare module "natives" {
   /**
    *
    */
-  export function GetRoomKeyFromGameplayCam(): void;
+  export function getRoomKeyFromGameplayCam(): void;
   /**
    *
    */
@@ -12074,27 +12074,27 @@ declare module "natives" {
    *
    * @param {number} x undefined
    */
-  export function GetInteriorAtCoords(x: number, y: number, z: number): void;
+  export function getInteriorAtCoords(x: number, y: number, z: number): void;
   /**
    *
    * @param {NativePickup} pickup undefined
    */
-  export function AddPickupToInteriorRoomByName(pickup: NativePickup, roomName: string): void;
+  export function addPickupToInteriorRoomByName(pickup: NativePickup, roomName: string): void;
   /**
    *
    * @param {number} interiorID undefined
    */
-  export function LoadInterior(interiorID: number): void;
+  export function loadInterior(interiorID: number): void;
   /**
    *
    * @param {number} interiorID undefined
    */
-  export function UnpinInterior(interiorID: number): void;
+  export function unpinInterior(interiorID: number): void;
   /**
    *
    * @param {number} interiorID undefined
    */
-  export function IsInteriorReady(interiorID: number): void;
+  export function isInteriorReady(interiorID: number): void;
   /**
    *
    * @param {number} interiorID undefined
@@ -12104,67 +12104,67 @@ declare module "natives" {
    *
    * @param {number} x undefined
    */
-  export function GetInteriorAtCoordsWithType(x: number, y: number, z: number, interiorType: string): void;
+  export function getInteriorAtCoordsWithType(x: number, y: number, z: number, interiorType: string): void;
   /**
    *
    * @param {number} x undefined
    */
-  export function UnkGetInteriorAtCoords(x: number, y: number, z: number, unk: number): void;
+  export function unkGetInteriorAtCoords(x: number, y: number, z: number, unk: number): void;
   /**
    *
    * @param {number} x undefined
    */
-  export function AreCoordsCollidingWithExterior(x: number, y: number, z: number): void;
+  export function areCoordsCollidingWithExterior(x: number, y: number, z: number): void;
   /**
    *
    * @param {number} x undefined
    */
-  export function GetInteriorFromCollision(x: number, y: number, z: number): void;
+  export function getInteriorFromCollision(x: number, y: number, z: number): void;
   /**
    *
    * @param {number} interiorID undefined
    */
-  export function EnableInteriorProp(interiorID: number, propName: string): void;
+  export function enableInteriorProp(interiorID: number, propName: string): void;
   /**
    *
    * @param {number} interiorID undefined
    */
-  export function DisableInteriorProp(interiorID: number, propName: string): void;
+  export function disableInteriorProp(interiorID: number, propName: string): void;
   /**
    *
    * @param {number} interiorID undefined
    */
-  export function IsInteriorPropEnabled(interiorID: number, propName: string): void;
+  export function isInteriorPropEnabled(interiorID: number, propName: string): void;
   /**
    *
    * @param {number} interiorID undefined
    */
-  export function RefreshInterior(interiorID: number): void;
+  export function refreshInterior(interiorID: number): void;
   /**
    *
    * @param {NativeHash} mapObjectHash undefined
    */
-  export function HideMapObjectThisFrame(mapObjectHash: NativeHash): void;
+  export function hideMapObjectThisFrame(mapObjectHash: NativeHash): void;
   /**
    *
    * @param {number} interiorID undefined
    */
-  export function DisableInterior(interiorID: number, toggle: NativeBOOL): void;
+  export function disableInterior(interiorID: number, toggle: NativeBOOL): void;
   /**
    *
    * @param {number} interiorID undefined
    */
-  export function IsInteriorDisabled(interiorID: number): void;
+  export function isInteriorDisabled(interiorID: number): void;
   /**
    *
    * @param {number} interiorID undefined
    */
-  export function CapInterior(interiorID: number, toggle: NativeBOOL): void;
+  export function capInterior(interiorID: number, toggle: NativeBOOL): void;
   /**
    *
    * @param {number} interiorID undefined
    */
-  export function IsInteriorCapped(interiorID: number): void;
+  export function isInteriorCapped(interiorID: number): void;
   /**
    *
    * @param {NativeBOOL} toggle undefined
@@ -12174,160 +12174,160 @@ declare module "natives" {
    *
    * @param {NativeBOOL} render undefined
    */
-  export function RenderScriptCams(render: NativeBOOL, ease: NativeBOOL, easeTime: number, p3: NativeBOOL, p4: NativeBOOL): void;
+  export function renderScriptCams(render: NativeBOOL, ease: NativeBOOL, easeTime: number, p3: NativeBOOL, p4: NativeBOOL): void;
   /**
    *
    * @param {NativeBOOL} render undefined
    */
-  export function RenderFirstPersonCam(render: NativeBOOL, p1: number, p2: number): void;
+  export function renderFirstPersonCam(render: NativeBOOL, p1: number, p2: number): void;
   /**
    *
    * @param {string} camName undefined
    */
-  export function CreateCam(camName: string, unk: NativeBOOL): void;
+  export function createCam(camName: string, unk: NativeBOOL): void;
   /**
    *
    * @param {string} camName undefined
    */
-  export function CreateCamWithParams(camName: string, posX: number, posY: number, posZ: number, rotX: number, rotY: number, rotZ: number, fov: number, p8: NativeBOOL, p9: number): void;
+  export function createCamWithParams(camName: string, posX: number, posY: number, posZ: number, rotX: number, rotY: number, rotZ: number, fov: number, p8: NativeBOOL, p9: number): void;
   /**
    *
    * @param {NativeHash} camHash undefined
    */
-  export function CreateCamera(camHash: NativeHash, p1: NativeBOOL): void;
+  export function createCamera(camHash: NativeHash, p1: NativeBOOL): void;
   /**
    *
    * @param {NativeHash} camHash undefined
    */
-  export function CreateCameraWithParams(camHash: NativeHash, posX: number, posY: number, posZ: number, rotX: number, rotY: number, rotZ: number, fov: number, p8: NativeBOOL, p9: NativeAny): void;
+  export function createCameraWithParams(camHash: NativeHash, posX: number, posY: number, posZ: number, rotX: number, rotY: number, rotZ: number, fov: number, p8: NativeBOOL, p9: NativeAny): void;
   /**
    *
    * @param {NativeCam} cam undefined
    */
-  export function DestroyCam(cam: NativeCam, thisScriptCheck: NativeBOOL): void;
+  export function destroyCam(cam: NativeCam, thisScriptCheck: NativeBOOL): void;
   /**
    *
    * @param {NativeBOOL} thisScriptCheck undefined
    */
-  export function DestroyAllCams(thisScriptCheck: NativeBOOL): void;
+  export function destroyAllCams(thisScriptCheck: NativeBOOL): void;
   /**
    *
    * @param {NativeCam} cam undefined
    */
-  export function DoesCamExist(cam: NativeCam): void;
+  export function doesCamExist(cam: NativeCam): void;
   /**
    *
    * @param {NativeCam} cam undefined
    */
-  export function SetCamActive(cam: NativeCam, active: NativeBOOL): void;
+  export function setCamActive(cam: NativeCam, active: NativeBOOL): void;
   /**
    *
    * @param {NativeCam} cam undefined
    */
-  export function IsCamActive(cam: NativeCam): void;
+  export function isCamActive(cam: NativeCam): void;
   /**
    *
    * @param {NativeCam} cam undefined
    */
-  export function IsCamRendering(cam: NativeCam): void;
+  export function isCamRendering(cam: NativeCam): void;
   /**
    *
    */
-  export function GetRenderingCam(): void;
-  /**
-   *
-   * @param {NativeCam} cam undefined
-   */
-  export function GetCamCoord(cam: NativeCam): void;
+  export function getRenderingCam(): void;
   /**
    *
    * @param {NativeCam} cam undefined
    */
-  export function GetCamRot(cam: NativeCam, rotationOrder: number): void;
+  export function getCamCoord(cam: NativeCam): void;
   /**
    *
    * @param {NativeCam} cam undefined
    */
-  export function GetCamFov(cam: NativeCam): void;
+  export function getCamRot(cam: NativeCam, rotationOrder: number): void;
   /**
    *
    * @param {NativeCam} cam undefined
    */
-  export function GetCamNearClip(cam: NativeCam): void;
+  export function getCamFov(cam: NativeCam): void;
   /**
    *
    * @param {NativeCam} cam undefined
    */
-  export function GetCamFarClip(cam: NativeCam): void;
+  export function getCamNearClip(cam: NativeCam): void;
   /**
    *
    * @param {NativeCam} cam undefined
    */
-  export function GetCamFarDof(cam: NativeCam): void;
+  export function getCamFarClip(cam: NativeCam): void;
   /**
    *
    * @param {NativeCam} cam undefined
    */
-  export function SetCamParams(cam: NativeCam, posX: number, posY: number, posZ: number, rotX: number, rotY: number, rotZ: number, fieldOfView: number, p8: NativeAny, p9: number, p10: number, p11: number): void;
+  export function getCamFarDof(cam: NativeCam): void;
   /**
    *
    * @param {NativeCam} cam undefined
    */
-  export function SetCamCoord(cam: NativeCam, posX: number, posY: number, posZ: number): void;
+  export function setCamParams(cam: NativeCam, posX: number, posY: number, posZ: number, rotX: number, rotY: number, rotZ: number, fieldOfView: number, p8: NativeAny, p9: number, p10: number, p11: number): void;
   /**
    *
    * @param {NativeCam} cam undefined
    */
-  export function SetCamRot(cam: NativeCam, pitch: number, roll: number, yaw: number, rotationOrder: number): void;
+  export function setCamCoord(cam: NativeCam, posX: number, posY: number, posZ: number): void;
   /**
    *
    * @param {NativeCam} cam undefined
    */
-  export function SetCamFov(cam: NativeCam, fieldOfView: number): void;
+  export function setCamRot(cam: NativeCam, pitch: number, roll: number, yaw: number, rotationOrder: number): void;
   /**
    *
    * @param {NativeCam} cam undefined
    */
-  export function SetCamNearClip(cam: NativeCam, nearClip: number): void;
+  export function setCamFov(cam: NativeCam, fieldOfView: number): void;
   /**
    *
    * @param {NativeCam} cam undefined
    */
-  export function SetCamFarClip(cam: NativeCam, farClip: number): void;
+  export function setCamNearClip(cam: NativeCam, nearClip: number): void;
   /**
    *
    * @param {NativeCam} cam undefined
    */
-  export function SetCamMotionBlurStrength(cam: NativeCam, strength: number): void;
+  export function setCamFarClip(cam: NativeCam, farClip: number): void;
   /**
    *
    * @param {NativeCam} cam undefined
    */
-  export function SetCamNearDof(cam: NativeCam, nearDOF: number): void;
+  export function setCamMotionBlurStrength(cam: NativeCam, strength: number): void;
   /**
    *
    * @param {NativeCam} cam undefined
    */
-  export function SetCamFarDof(cam: NativeCam, farDOF: number): void;
+  export function setCamNearDof(cam: NativeCam, nearDOF: number): void;
   /**
    *
    * @param {NativeCam} cam undefined
    */
-  export function SetCamDofStrength(cam: NativeCam, dofStrength: number): void;
+  export function setCamFarDof(cam: NativeCam, farDOF: number): void;
   /**
    *
    * @param {NativeCam} cam undefined
    */
-  export function SetCamDofPlanes(cam: NativeCam, p1: number, p2: number, p3: number, p4: number): void;
+  export function setCamDofStrength(cam: NativeCam, dofStrength: number): void;
   /**
    *
    * @param {NativeCam} cam undefined
    */
-  export function SetCamUseShallowDofMode(cam: NativeCam, toggle: NativeBOOL): void;
+  export function setCamDofPlanes(cam: NativeCam, p1: number, p2: number, p3: number, p4: number): void;
+  /**
+   *
+   * @param {NativeCam} cam undefined
+   */
+  export function setCamUseShallowDofMode(cam: NativeCam, toggle: NativeBOOL): void;
   /**
    *
    */
-  export function SetUseHiDof(): void;
+  export function setUseHiDof(): void;
   /**
    *
    * @param {NativeAny} p0 undefined
@@ -12342,67 +12342,67 @@ declare module "natives" {
    *
    * @param {NativeCam} camera undefined
    */
-  export function SetCamDofFnumberOfLens(camera: NativeCam, p1: number): void;
+  export function setCamDofFnumberOfLens(camera: NativeCam, p1: number): void;
   /**
    *
    * @param {NativeCam} camera undefined
    */
-  export function SetCamDofFocusDistanceBias(camera: NativeCam, p1: number): void;
+  export function setCamDofFocusDistanceBias(camera: NativeCam, p1: number): void;
   /**
    *
    * @param {NativeCam} camera undefined
    */
-  export function SetCamDofMaxNearInFocusDistance(camera: NativeCam, p1: number): void;
+  export function setCamDofMaxNearInFocusDistance(camera: NativeCam, p1: number): void;
   /**
    *
    * @param {NativeCam} camera undefined
    */
-  export function SetCamDofMaxNearInFocusDistanceBlendLevel(camera: NativeCam, p1: number): void;
+  export function setCamDofMaxNearInFocusDistanceBlendLevel(camera: NativeCam, p1: number): void;
   /**
    *
    * @param {NativeCam} cam undefined
    */
-  export function AttachCamToEntity(cam: NativeCam, entity: NativeEntity, xOffset: number, yOffset: number, zOffset: number, isRelative: NativeBOOL): void;
+  export function attachCamToEntity(cam: NativeCam, entity: NativeEntity, xOffset: number, yOffset: number, zOffset: number, isRelative: NativeBOOL): void;
   /**
    *
    * @param {NativeCam} cam undefined
    */
-  export function AttachCamToPedBone(cam: NativeCam, ped: NativePed, boneIndex: number, x: number, y: number, z: number, heading: NativeBOOL): void;
+  export function attachCamToPedBone(cam: NativeCam, ped: NativePed, boneIndex: number, x: number, y: number, z: number, heading: NativeBOOL): void;
   /**
    *
    * @param {NativeCam} cam undefined
    */
-  export function DetachCam(cam: NativeCam): void;
+  export function detachCam(cam: NativeCam): void;
   /**
    *
    * @param {NativeCam} cam undefined
    */
-  export function SetCamInheritRollVehicle(cam: NativeCam, p1: NativeBOOL): void;
+  export function setCamInheritRollVehicle(cam: NativeCam, p1: NativeBOOL): void;
   /**
    *
    * @param {NativeCam} cam undefined
    */
-  export function PointCamAtCoord(cam: NativeCam, x: number, y: number, z: number): void;
+  export function pointCamAtCoord(cam: NativeCam, x: number, y: number, z: number): void;
   /**
    *
    * @param {NativeCam} cam undefined
    */
-  export function PointCamAtEntity(cam: NativeCam, entity: NativeEntity, p2: number, p3: number, p4: number, p5: NativeBOOL): void;
+  export function pointCamAtEntity(cam: NativeCam, entity: NativeEntity, p2: number, p3: number, p4: number, p5: NativeBOOL): void;
   /**
    *
    * @param {NativeCam} cam undefined
    */
-  export function PointCamAtPedBone(cam: NativeCam, ped: number, boneIndex: number, x: number, y: number, z: number, p6: NativeBOOL): void;
+  export function pointCamAtPedBone(cam: NativeCam, ped: number, boneIndex: number, x: number, y: number, z: number, p6: NativeBOOL): void;
   /**
    *
    * @param {NativeCam} cam undefined
    */
-  export function StopCamPointing(cam: NativeCam): void;
+  export function stopCamPointing(cam: NativeCam): void;
   /**
    *
    * @param {NativeCam} cam undefined
    */
-  export function SetCamAffectsAiming(cam: NativeCam, toggle: NativeBOOL): void;
+  export function setCamAffectsAiming(cam: NativeCam, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativeAny} p0 undefined
@@ -12422,12 +12422,12 @@ declare module "natives" {
    *
    * @param {NativeCam} camera undefined
    */
-  export function SetCamDebugName(camera: NativeCam, name: string): void;
+  export function setCamDebugName(camera: NativeCam, name: string): void;
   /**
    *
    * @param {NativeCam} camera undefined
    */
-  export function AddCamSplineNode(camera: NativeCam, x: number, y: number, z: number, xRot: number, yRot: number, zRot: number, length: number, p8: number, transitionType: number): void;
+  export function addCamSplineNode(camera: NativeCam, x: number, y: number, z: number, xRot: number, yRot: number, zRot: number, length: number, p8: number, transitionType: number): void;
   /**
    *
    * @param {NativeAny} p0 undefined
@@ -12447,22 +12447,22 @@ declare module "natives" {
    *
    * @param {NativeCam} cam undefined
    */
-  export function SetCamSplinePhase(cam: NativeCam, p1: number): void;
+  export function setCamSplinePhase(cam: NativeCam, p1: number): void;
   /**
    *
    * @param {NativeCam} cam undefined
    */
-  export function GetCamSplinePhase(cam: NativeCam): void;
+  export function getCamSplinePhase(cam: NativeCam): void;
   /**
    *
    * @param {NativeCam} cam undefined
    */
-  export function GetCamSplineNodePhase(cam: NativeCam): void;
+  export function getCamSplineNodePhase(cam: NativeCam): void;
   /**
    *
    * @param {number} cam undefined
    */
-  export function SetCamSplineDuration(cam: number, timeDuration: number): void;
+  export function setCamSplineDuration(cam: number, timeDuration: number): void;
   /**
    *
    * @param {NativeAny} p0 undefined
@@ -12472,7 +12472,7 @@ declare module "natives" {
    *
    * @param {NativeCam} cam undefined
    */
-  export function GetCamSplineNodeIndex(cam: NativeCam): void;
+  export function getCamSplineNodeIndex(cam: NativeCam): void;
   /**
    *
    * @param {NativeAny} p0 undefined
@@ -12487,12 +12487,12 @@ declare module "natives" {
    *
    * @param {NativeCam} cam undefined
    */
-  export function OverrideCamSplineVelocity(cam: NativeCam, p1: number, p2: number, p3: number): void;
+  export function overrideCamSplineVelocity(cam: NativeCam, p1: number, p2: number, p3: number): void;
   /**
    *
    * @param {NativeCam} cam undefined
    */
-  export function OverrideCamSplineMotionBlur(cam: NativeCam, p1: number, p2: number, p3: number): void;
+  export function overrideCamSplineMotionBlur(cam: NativeCam, p1: number, p2: number, p3: number): void;
   /**
    *
    * @param {NativeAny} p0 undefined
@@ -12502,42 +12502,42 @@ declare module "natives" {
    *
    * @param {NativeAny} p0 undefined
    */
-  export function IsCamSplinePaused(p0: NativeAny): void;
+  export function isCamSplinePaused(p0: NativeAny): void;
   /**
    *
    * @param {NativeCam} camTo undefined
    */
-  export function SetCamActiveWithInterp(camTo: NativeCam, camFrom: NativeCam, duration: number, easeLocation: number, easeRotation: number): void;
+  export function setCamActiveWithInterp(camTo: NativeCam, camFrom: NativeCam, duration: number, easeLocation: number, easeRotation: number): void;
   /**
    *
    * @param {NativeCam} cam undefined
    */
-  export function IsCamInterpolating(cam: NativeCam): void;
+  export function isCamInterpolating(cam: NativeCam): void;
   /**
    *
    * @param {NativeCam} cam undefined
    */
-  export function ShakeCam(cam: NativeCam, type: string, amplitude: number): void;
+  export function shakeCam(cam: NativeCam, type: string, amplitude: number): void;
   /**
    *
    * @param {NativeCam} cam undefined
    */
-  export function AnimatedShakeCam(cam: NativeCam, p1: string, p2: string, p3: string, amplitude: number): void;
+  export function animatedShakeCam(cam: NativeCam, p1: string, p2: string, p3: string, amplitude: number): void;
   /**
    *
    * @param {NativeCam} cam undefined
    */
-  export function IsCamShaking(cam: NativeCam): void;
+  export function isCamShaking(cam: NativeCam): void;
   /**
    *
    * @param {NativeCam} cam undefined
    */
-  export function SetCamShakeAmplitude(cam: NativeCam, amplitude: number): void;
+  export function setCamShakeAmplitude(cam: NativeCam, amplitude: number): void;
   /**
    *
    * @param {NativeCam} cam undefined
    */
-  export function StopCamShaking(cam: NativeCam, p1: NativeBOOL): void;
+  export function stopCamShaking(cam: NativeCam, p1: NativeBOOL): void;
   /**
    *
    * @param {string} p0 undefined
@@ -12551,37 +12551,37 @@ declare module "natives" {
   /**
    *
    */
-  export function IsScriptGlobalShaking(): void;
+  export function isScriptGlobalShaking(): void;
   /**
    *
    * @param {NativeBOOL} p0 undefined
    */
-  export function StopScriptGlobalShaking(p0: NativeBOOL): void;
+  export function stopScriptGlobalShaking(p0: NativeBOOL): void;
   /**
    *
    * @param {NativeCam} cam undefined
    */
-  export function PlayCamAnim(cam: NativeCam, animName: string, animDictionary: string, x: number, y: number, z: number, xRot: number, yRot: number, zRot: number, p9: NativeBOOL, p10: number): void;
+  export function playCamAnim(cam: NativeCam, animName: string, animDictionary: string, x: number, y: number, z: number, xRot: number, yRot: number, zRot: number, p9: NativeBOOL, p10: number): void;
   /**
    *
    * @param {NativeCam} cam undefined
    */
-  export function IsCamPlayingAnim(cam: NativeCam, animName: string, animDictionary: string): void;
+  export function isCamPlayingAnim(cam: NativeCam, animName: string, animDictionary: string): void;
   /**
    *
    * @param {NativeCam} cam undefined
    */
-  export function SetCamAnimCurrentPhase(cam: NativeCam, phase: number): void;
+  export function setCamAnimCurrentPhase(cam: NativeCam, phase: number): void;
   /**
    *
    * @param {NativeCam} cam undefined
    */
-  export function GetCamAnimCurrentPhase(cam: NativeCam): void;
+  export function getCamAnimCurrentPhase(cam: NativeCam): void;
   /**
    *
    * @param {NativeCam} camera undefined
    */
-  export function PlaySynchronizedCamAnim(camera: NativeCam, SceneID: number, animName: string, animDictionary: string): void;
+  export function playSynchronizedCamAnim(camera: NativeCam, SceneID: number, animName: string, animDictionary: string): void;
   /**
    *
    * @param {NativeAny} p0 undefined
@@ -12591,7 +12591,7 @@ declare module "natives" {
    *
    * @param {NativeCam} cam undefined
    */
-  export function SetCameraRange(cam: NativeCam, range: number): void;
+  export function setCameraRange(cam: NativeCam, range: number): void;
   /**
    *
    * @param {NativeAny} p0 undefined
@@ -12610,52 +12610,52 @@ declare module "natives" {
   /**
    *
    */
-  export function IsScreenFadedOut(): void;
+  export function isScreenFadedOut(): void;
   /**
    *
    */
-  export function IsScreenFadedIn(): void;
+  export function isScreenFadedIn(): void;
   /**
    *
    */
-  export function IsScreenFadingOut(): void;
+  export function isScreenFadingOut(): void;
   /**
    *
    */
-  export function IsScreenFadingIn(): void;
-  /**
-   *
-   * @param {number} duration undefined
-   */
-  export function DoScreenFadeIn(duration: number): void;
+  export function isScreenFadingIn(): void;
   /**
    *
    * @param {number} duration undefined
    */
-  export function DoScreenFadeOut(duration: number): void;
+  export function doScreenFadeIn(duration: number): void;
+  /**
+   *
+   * @param {number} duration undefined
+   */
+  export function doScreenFadeOut(duration: number): void;
   /**
    *
    * @param {NativeBOOL} p0 undefined
    */
-  export function SetWidescreenBorders(p0: NativeBOOL, p1: number): void;
+  export function setWidescreenBorders(p0: NativeBOOL, p1: number): void;
   /**
    *
    */
-  export function GetGameplayCamCoord(): void;
+  export function getGameplayCamCoord(): void;
   /**
    *
    * @param {number} rotationOrder undefined
    */
-  export function GetGameplayCamRot(rotationOrder: number): void;
+  export function getGameplayCamRot(rotationOrder: number): void;
   /**
    *
    */
-  export function GetGameplayCamFov(): void;
+  export function getGameplayCamFov(): void;
   /**
    *
    * @param {number} p0 undefined
    */
-  export function CustomMenuCoordinates(p0: number): void;
+  export function customMenuCoordinates(p0: number): void;
   /**
    *
    * @param {number} p0 undefined
@@ -12664,31 +12664,31 @@ declare module "natives" {
   /**
    *
    */
-  export function GetGameplayCamRelativeHeading(): void;
+  export function getGameplayCamRelativeHeading(): void;
   /**
    *
    * @param {number} heading undefined
    */
-  export function SetGameplayCamRelativeHeading(heading: number): void;
+  export function setGameplayCamRelativeHeading(heading: number): void;
   /**
    *
    */
-  export function GetGameplayCamRelativePitch(): void;
+  export function getGameplayCamRelativePitch(): void;
   /**
    *
    * @param {number} x undefined
    */
-  export function SetGameplayCamRelativePitch(x: number, Value2: number): void;
+  export function setGameplayCamRelativePitch(x: number, Value2: number): void;
   /**
    *
    * @param {number} yaw undefined
    */
-  export function SetGameplayCamRawYaw(yaw: number): void;
+  export function setGameplayCamRawYaw(yaw: number): void;
   /**
    *
    * @param {number} pitch undefined
    */
-  export function SetGameplayCamRawPitch(pitch: number): void;
+  export function setGameplayCamRawPitch(pitch: number): void;
   /**
    *
    * @param {NativeBOOL} p0 undefined
@@ -12698,21 +12698,21 @@ declare module "natives" {
    *
    * @param {string} shakeName undefined
    */
-  export function ShakeGameplayCam(shakeName: string, intensity: number): void;
+  export function shakeGameplayCam(shakeName: string, intensity: number): void;
   /**
    *
    */
-  export function IsGameplayCamShaking(): void;
+  export function isGameplayCamShaking(): void;
   /**
    *
    * @param {number} amplitude undefined
    */
-  export function SetGameplayCamShakeAmplitude(amplitude: number): void;
+  export function setGameplayCamShakeAmplitude(amplitude: number): void;
   /**
    *
    * @param {NativeBOOL} p0 undefined
    */
-  export function StopGameplayCamShaking(p0: NativeBOOL): void;
+  export function stopGameplayCamShaking(p0: NativeBOOL): void;
   /**
    *
    * @param {NativeAny} p0 undefined
@@ -12721,7 +12721,7 @@ declare module "natives" {
   /**
    *
    */
-  export function IsGameplayCamRendering(): void;
+  export function isGameplayCamRendering(): void;
   /**
    *
    */
@@ -12738,11 +12738,11 @@ declare module "natives" {
   /**
    *
    */
-  export function EnableCrosshairThisFrame(): void;
+  export function enableCrosshairThisFrame(): void;
   /**
    *
    */
-  export function IsGameplayCamLookingBehind(): void;
+  export function isGameplayCamLookingBehind(): void;
   /**
    *
    * @param {NativeEntity} entity undefined
@@ -12766,16 +12766,16 @@ declare module "natives" {
    *
    * @param {number} x undefined
    */
-  export function IsSphereVisible(x: number, y: number, z: number, radius: number): void;
+  export function isSphereVisible(x: number, y: number, z: number, radius: number): void;
   /**
    *
    */
-  export function IsFollowPedCamActive(): void;
+  export function isFollowPedCamActive(): void;
   /**
    *
    * @param {string} p0 undefined
    */
-  export function SetFollowPedCamCutsceneChat(p0: string, p1: number): void;
+  export function setFollowPedCamCutsceneChat(p0: string, p1: number): void;
   /**
    *
    * @param {NativeBOOL} p0 undefined
@@ -12789,17 +12789,17 @@ declare module "natives" {
    *
    * @param {number} minimum undefined
    */
-  export function ClampGameplayCamYaw(minimum: number, maximum: number): void;
+  export function clampGameplayCamYaw(minimum: number, maximum: number): void;
   /**
    *
    * @param {number} minimum undefined
    */
-  export function ClampGameplayCamPitch(minimum: number, maximum: number): void;
+  export function clampGameplayCamPitch(minimum: number, maximum: number): void;
   /**
    *
    * @param {number} p0 undefined
    */
-  export function AnimateGameplayCamZoom(p0: number, distance: number): void;
+  export function animateGameplayCamZoom(p0: number, distance: number): void;
   /**
    *
    * @param {NativeVehicle} p0 undefined
@@ -12808,7 +12808,7 @@ declare module "natives" {
   /**
    *
    */
-  export function DisableFirstPersonCamThisFrame(): void;
+  export function disableFirstPersonCamThisFrame(): void;
   /**
    *
    */
@@ -12816,20 +12816,20 @@ declare module "natives" {
   /**
    *
    */
-  export function GetFollowPedCamZoomLevel(): void;
+  export function getFollowPedCamZoomLevel(): void;
   /**
    *
    */
-  export function GetFollowPedCamViewMode(): void;
+  export function getFollowPedCamViewMode(): void;
   /**
    *
    * @param {number} viewMode undefined
    */
-  export function SetFollowPedCamViewMode(viewMode: number): void;
+  export function setFollowPedCamViewMode(viewMode: number): void;
   /**
    *
    */
-  export function IsFollowVehicleCamActive(): void;
+  export function isFollowVehicleCamActive(): void;
   /**
    *
    * @param {NativeBOOL} p0 undefined
@@ -12839,25 +12839,25 @@ declare module "natives" {
    *
    * @param {NativeBOOL} p0 undefined
    */
-  export function SetTimeIdleDrop(p0: NativeBOOL, p1: NativeBOOL): void;
+  export function setTimeIdleDrop(p0: NativeBOOL, p1: NativeBOOL): void;
   /**
    *
    */
-  export function GetFollowVehicleCamZoomLevel(): void;
+  export function getFollowVehicleCamZoomLevel(): void;
   /**
    *
    * @param {number} zoomLevel undefined
    */
-  export function SetFollowVehicleCamZoomLevel(zoomLevel: number): void;
+  export function setFollowVehicleCamZoomLevel(zoomLevel: number): void;
   /**
    *
    */
-  export function GetFollowVehicleCamViewMode(): void;
+  export function getFollowVehicleCamViewMode(): void;
   /**
    *
    * @param {number} viewMode undefined
    */
-  export function SetFollowVehicleCamViewMode(viewMode: number): void;
+  export function setFollowVehicleCamViewMode(viewMode: number): void;
   /**
    *
    * @param {NativeAny} p0 undefined
@@ -12875,7 +12875,7 @@ declare module "natives" {
   /**
    *
    */
-  export function IsAimCamActive(): void;
+  export function isAimCamActive(): void;
   /**
    *
    */
@@ -12883,15 +12883,15 @@ declare module "natives" {
   /**
    *
    */
-  export function IsFirstPersonAimCamActive(): void;
+  export function isFirstPersonAimCamActive(): void;
   /**
    *
    */
-  export function DisableAimCamThisUpdate(): void;
+  export function disableAimCamThisUpdate(): void;
   /**
    *
    */
-  export function GetGameplayCamZoom(): void;
+  export function getGameplayCamZoom(): void;
   /**
    *
    * @param {number} p0 undefined
@@ -12911,17 +12911,17 @@ declare module "natives" {
    *
    * @param {number} minAngle undefined
    */
-  export function SetFirstPersonCamPitchRange(minAngle: number, maxAngle: number): void;
+  export function setFirstPersonCamPitchRange(minAngle: number, maxAngle: number): void;
   /**
    *
    * @param {number} distance undefined
    */
-  export function SetFirstPersonCamNearClip(distance: number): void;
+  export function setFirstPersonCamNearClip(distance: number): void;
   /**
    *
    * @param {number} distance undefined
    */
-  export function SetThirdPersonAimCamNearClip(distance: number): void;
+  export function setThirdPersonAimCamNearClip(distance: number): void;
   /**
    *
    * @param {NativeBOOL} p0 undefined
@@ -12930,7 +12930,7 @@ declare module "natives" {
   /**
    *
    */
-  export function GetGameplayCamCoords(): void;
+  export function getGameplayCamCoords(): void;
   /**
    *
    * @param {NativeAny} p0 undefined
@@ -12952,15 +12952,15 @@ declare module "natives" {
   /**
    *
    */
-  export function GetGameplayCamFarClip(): void;
+  export function getGameplayCamFarClip(): void;
   /**
    *
    */
-  export function GetGameplayCamNearDof(): void;
+  export function getGameplayCamNearDof(): void;
   /**
    *
    */
-  export function GetGameplayCamFarDof(): void;
+  export function getGameplayCamFarDof(): void;
   /**
    *
    */
@@ -12969,36 +12969,36 @@ declare module "natives" {
    *
    * @param {number} x undefined
    */
-  export function SetGameplayCoordHint(x: number, y: number, z: number, duration: number, blendOutDuration: number, blendInDuration: number, unk: number): void;
+  export function setGameplayCoordHint(x: number, y: number, z: number, duration: number, blendOutDuration: number, blendInDuration: number, unk: number): void;
   /**
    *
    * @param {NativePed} p0 undefined
    */
-  export function SetGameplayPedHint(p0: NativePed, x1: number, y1: number, z1: number, p4: NativeBOOL, p5: NativeAny, p6: NativeAny, p7: NativeAny): void;
+  export function setGameplayPedHint(p0: NativePed, x1: number, y1: number, z1: number, p4: NativeBOOL, p5: NativeAny, p6: NativeAny, p7: NativeAny): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function SetGameplayVehicleHint(p0: NativeAny, p1: number, p2: number, p3: number, p4: NativeBOOL, p5: NativeAny, p6: NativeAny, p7: NativeAny): void;
+  export function setGameplayVehicleHint(p0: NativeAny, p1: number, p2: number, p3: number, p4: NativeBOOL, p5: NativeAny, p6: NativeAny, p7: NativeAny): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function SetGameplayObjectHint(p0: NativeAny, p1: number, p2: number, p3: number, p4: NativeBOOL, p5: NativeAny, p6: NativeAny, p7: NativeAny): void;
+  export function setGameplayObjectHint(p0: NativeAny, p1: number, p2: number, p3: number, p4: NativeBOOL, p5: NativeAny, p6: NativeAny, p7: NativeAny): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function SetGameplayEntityHint(entity: NativeEntity, xOffset: number, yOffset: number, zOffset: number, p4: NativeBOOL, duration: number, fadeInTime: number, fadeOutTime: number, flags: number): void;
+  export function setGameplayEntityHint(entity: NativeEntity, xOffset: number, yOffset: number, zOffset: number, p4: NativeBOOL, duration: number, fadeInTime: number, fadeOutTime: number, flags: number): void;
   /**
    *
    */
-  export function IsGameplayHintActive(): void;
+  export function isGameplayHintActive(): void;
   /**
    *
    * @param {NativeBOOL} p0 undefined
    */
-  export function StopGameplayHint(p0: NativeBOOL): void;
+  export function stopGameplayHint(p0: NativeBOOL): void;
   /**
    *
    * @param {NativeBOOL} p0 undefined
@@ -13017,7 +13017,7 @@ declare module "natives" {
    *
    * @param {number} FOV undefined
    */
-  export function SetGameplayHintFov(FOV: number): void;
+  export function setGameplayHintFov(FOV: number): void;
   /**
    *
    * @param {number} p0 undefined
@@ -13042,39 +13042,39 @@ declare module "natives" {
    *
    * @param {NativeBOOL} p0 undefined
    */
-  export function GetIsMultiplayerBrief(p0: NativeBOOL): void;
+  export function getIsMultiplayerBrief(p0: NativeBOOL): void;
   /**
    *
    * @param {NativeBOOL} p0 undefined
    */
-  export function SetCinematicButtonActive(p0: NativeBOOL): void;
+  export function setCinematicButtonActive(p0: NativeBOOL): void;
   /**
    *
    */
-  export function IsCinematicCamRendering(): void;
+  export function isCinematicCamRendering(): void;
   /**
    *
    * @param {string} p0 undefined
    */
-  export function ShakeCinematicCam(p0: string, p1: number): void;
+  export function shakeCinematicCam(p0: string, p1: number): void;
   /**
    *
    */
-  export function IsCinematicCamShaking(): void;
+  export function isCinematicCamShaking(): void;
   /**
    *
    * @param {number} p0 undefined
    */
-  export function SetCinematicCamShakeAmplitude(p0: number): void;
+  export function setCinematicCamShakeAmplitude(p0: number): void;
   /**
    *
    * @param {NativeBOOL} p0 undefined
    */
-  export function StopCinematicCamShaking(p0: NativeBOOL): void;
+  export function stopCinematicCamShaking(p0: NativeBOOL): void;
   /**
    *
    */
-  export function DisableVehicleFirstPersonCamThisFrame(): void;
+  export function disableVehicleFirstPersonCamThisFrame(): void;
   /**
    *
    */
@@ -13094,22 +13094,22 @@ declare module "natives" {
   /**
    *
    */
-  export function IsInVehicleCamDisabled(): void;
+  export function isInVehicleCamDisabled(): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function CreateCinematicShot(p0: NativeAny, p1: number, p2: NativeAny, entity: NativeEntity): void;
+  export function createCinematicShot(p0: NativeAny, p1: number, p2: NativeAny, entity: NativeEntity): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function IsCinematicShotActive(p0: NativeAny): void;
+  export function isCinematicShotActive(p0: NativeAny): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function StopCinematicShot(p0: NativeAny): void;
+  export function stopCinematicShot(p0: NativeAny): void;
   /**
    *
    * @param {NativeBOOL} p0 undefined
@@ -13123,7 +13123,7 @@ declare module "natives" {
    *
    * @param {NativeBOOL} p0 undefined
    */
-  export function SetCinematicModeActive(p0: NativeBOOL): void;
+  export function setCinematicModeActive(p0: NativeBOOL): void;
   /**
    *
    */
@@ -13135,7 +13135,7 @@ declare module "natives" {
   /**
    *
    */
-  export function StopCutsceneCamShaking(): void;
+  export function stopCutsceneCamShaking(): void;
   /**
    *
    * @param {number} p0 undefined
@@ -13154,7 +13154,7 @@ declare module "natives" {
    *
    * @param {number} p0 undefined
    */
-  export function SetCamEffect(p0: number): void;
+  export function setCamEffect(p0: number): void;
   /**
    *
    * @param {NativeAny} p0 undefined
@@ -13177,212 +13177,212 @@ declare module "natives" {
   /**
    *
    */
-  export function GetReplayFreeCamMaxRange(): void;
+  export function getReplayFreeCamMaxRange(): void;
   /**
    *
    * @param {NativeBOOL} toggle undefined
    */
-  export function EnableLaserSightRendering(toggle: NativeBOOL): void;
+  export function enableLaserSightRendering(toggle: NativeBOOL): void;
   /**
    *
    * @param {NativeHash} componentHash undefined
    */
-  export function GetWeaponComponentTypeModel(componentHash: NativeHash): void;
+  export function getWeaponComponentTypeModel(componentHash: NativeHash): void;
   /**
    *
    * @param {NativeHash} weaponHash undefined
    */
-  export function GetWeapontypeModel(weaponHash: NativeHash): void;
+  export function getWeapontypeModel(weaponHash: NativeHash): void;
   /**
    *
    * @param {NativeHash} weaponHash undefined
    */
-  export function GetWeapontypeSlot(weaponHash: NativeHash): void;
+  export function getWeapontypeSlot(weaponHash: NativeHash): void;
   /**
    *
    * @param {NativeHash} weaponHash undefined
    */
-  export function GetWeapontypeGroup(weaponHash: NativeHash): void;
+  export function getWeapontypeGroup(weaponHash: NativeHash): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetCurrentPedWeapon(ped: NativePed, weaponHash: NativeHash, equipNow: NativeBOOL): void;
+  export function setCurrentPedWeapon(ped: NativePed, weaponHash: NativeHash, equipNow: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function GetCurrentPedWeapon(ped: NativePed, weaponHash: NativeHash, unused: NativeBOOL): void;
+  export function getCurrentPedWeapon(ped: NativePed, weaponHash: NativeHash, unused: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function GetCurrentPedWeaponEntityIndex(ped: NativePed): void;
+  export function getCurrentPedWeaponEntityIndex(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function GetBestPedWeapon(ped: NativePed, p1: NativeBOOL): void;
+  export function getBestPedWeapon(ped: NativePed, p1: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetCurrentPedVehicleWeapon(ped: NativePed, weaponHash: NativeHash): void;
+  export function setCurrentPedVehicleWeapon(ped: NativePed, weaponHash: NativeHash): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function GetCurrentPedVehicleWeapon(ped: NativePed, weaponHash: NativeHash): void;
+  export function getCurrentPedVehicleWeapon(ped: NativePed, weaponHash: NativeHash): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function IsPedArmed(ped: NativePed, p1: number): void;
+  export function isPedArmed(ped: NativePed, p1: number): void;
   /**
    *
    * @param {NativeHash} weaponHash undefined
    */
-  export function IsWeaponValid(weaponHash: NativeHash): void;
+  export function isWeaponValid(weaponHash: NativeHash): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function HasPedGotWeapon(ped: NativePed, weaponHash: NativeHash, p2: NativeBOOL): void;
+  export function hasPedGotWeapon(ped: NativePed, weaponHash: NativeHash, p2: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function IsPedWeaponReadyToShoot(ped: NativePed): void;
+  export function isPedWeaponReadyToShoot(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function GetPedWeapontypeInSlot(ped: NativePed, weaponSlot: NativeHash): void;
+  export function getPedWeapontypeInSlot(ped: NativePed, weaponSlot: NativeHash): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function GetAmmoInPedWeapon(ped: NativePed, weaponhash: NativeHash): void;
+  export function getAmmoInPedWeapon(ped: NativePed, weaponhash: NativeHash): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function AddAmmoToPed(ped: NativePed, weaponHash: NativeHash, ammo: number): void;
+  export function addAmmoToPed(ped: NativePed, weaponHash: NativeHash, ammo: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedAmmo(ped: NativePed, weaponHash: NativeHash, ammo: number): void;
+  export function setPedAmmo(ped: NativePed, weaponHash: NativeHash, ammo: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedInfiniteAmmo(ped: NativePed, toggle: NativeBOOL, weaponHash: NativeHash): void;
+  export function setPedInfiniteAmmo(ped: NativePed, toggle: NativeBOOL, weaponHash: NativeHash): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedInfiniteAmmoClip(ped: NativePed, toggle: NativeBOOL): void;
+  export function setPedInfiniteAmmoClip(ped: NativePed, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function GiveWeaponToPed(ped: NativePed, weaponHash: NativeHash, ammoCount: number, isHidden: NativeBOOL, equipNow: NativeBOOL): void;
+  export function giveWeaponToPed(ped: NativePed, weaponHash: NativeHash, ammoCount: number, isHidden: NativeBOOL, equipNow: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function GiveDelayedWeaponToPed(ped: NativePed, weaponHash: NativeHash, ammoCount: number, equipNow: NativeBOOL): void;
+  export function giveDelayedWeaponToPed(ped: NativePed, weaponHash: NativeHash, ammoCount: number, equipNow: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function RemoveAllPedWeapons(ped: NativePed, p1: NativeBOOL): void;
+  export function removeAllPedWeapons(ped: NativePed, p1: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function RemoveWeaponFromPed(ped: NativePed, weaponHash: NativeHash): void;
+  export function removeWeaponFromPed(ped: NativePed, weaponHash: NativeHash): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function HidePedWeaponForScriptedCutscene(ped: NativePed, toggle: NativeBOOL): void;
+  export function hidePedWeaponForScriptedCutscene(ped: NativePed, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedCurrentWeaponVisible(ped: NativePed, visible: NativeBOOL, deselectWeapon: NativeBOOL, p3: NativeBOOL, p4: NativeBOOL): void;
+  export function setPedCurrentWeaponVisible(ped: NativePed, visible: NativeBOOL, deselectWeapon: NativeBOOL, p3: NativeBOOL, p4: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedDropsWeaponsWhenDead(ped: NativePed, toggle: NativeBOOL): void;
+  export function setPedDropsWeaponsWhenDead(ped: NativePed, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function HasPedBeenDamagedByWeapon(ped: NativePed, weaponHash: NativeHash, weaponType: number): void;
+  export function hasPedBeenDamagedByWeapon(ped: NativePed, weaponHash: NativeHash, weaponType: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function ClearPedLastWeaponDamage(ped: NativePed): void;
+  export function clearPedLastWeaponDamage(ped: NativePed): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function HasEntityBeenDamagedByWeapon(entity: NativeEntity, weaponHash: NativeHash, weaponType: number): void;
+  export function hasEntityBeenDamagedByWeapon(entity: NativeEntity, weaponHash: NativeHash, weaponType: number): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function ClearEntityLastWeaponDamage(entity: NativeEntity): void;
+  export function clearEntityLastWeaponDamage(entity: NativeEntity): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedDropsWeapon(ped: NativePed): void;
+  export function setPedDropsWeapon(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedDropsInventoryWeapon(ped: NativePed, weaponHash: NativeHash, xOffset: number, yOffset: number, zOffset: number, ammoCount: number): void;
+  export function setPedDropsInventoryWeapon(ped: NativePed, weaponHash: NativeHash, xOffset: number, yOffset: number, zOffset: number, ammoCount: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function GetMaxAmmoInClip(ped: NativePed, weaponHash: NativeHash, p2: NativeBOOL): void;
+  export function getMaxAmmoInClip(ped: NativePed, weaponHash: NativeHash, p2: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function GetAmmoInClip(ped: NativePed, weaponHash: NativeHash, ammo: number): void;
+  export function getAmmoInClip(ped: NativePed, weaponHash: NativeHash, ammo: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetAmmoInClip(ped: NativePed, weaponHash: NativeHash, ammo: number): void;
+  export function setAmmoInClip(ped: NativePed, weaponHash: NativeHash, ammo: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function GetMaxAmmo(ped: NativePed, weaponHash: NativeHash, ammo: number): void;
+  export function getMaxAmmo(ped: NativePed, weaponHash: NativeHash, ammo: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedAmmoByType(ped: NativePed, ammoType: NativeAny, ammo: number): void;
+  export function setPedAmmoByType(ped: NativePed, ammoType: NativeAny, ammo: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function GetPedAmmoByType(ped: NativePed, ammoType: NativeAny): void;
+  export function getPedAmmoByType(ped: NativePed, ammoType: NativeAny): void;
   /**
    *
    * @param {NativeAny} ammoType undefined
    */
-  export function SetPedAmmoToDrop(ammoType: NativeAny, ammo: number): void;
+  export function setPedAmmoToDrop(ammoType: NativeAny, ammo: number): void;
   /**
    *
    * @param {number} p0 undefined
@@ -13392,167 +13392,167 @@ declare module "natives" {
    *
    * @param {NativePed} ped undefined
    */
-  export function GetPedAmmoTypeFromWeapon(ped: NativePed, weaponHash: NativeHash): void;
+  export function getPedAmmoTypeFromWeapon(ped: NativePed, weaponHash: NativeHash): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function GetPedLastWeaponImpactCoord(ped: NativePed, coords: NativeVector3): void;
+  export function getPedLastWeaponImpactCoord(ped: NativePed, coords: NativeVector3): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedGadget(ped: NativePed, gadgetHash: NativeHash, p2: NativeBOOL): void;
+  export function setPedGadget(ped: NativePed, gadgetHash: NativeHash, p2: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function GetIsPedGadgetEquipped(ped: NativePed, gadgetHash: NativeHash): void;
+  export function getIsPedGadgetEquipped(ped: NativePed, gadgetHash: NativeHash): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function GetSelectedPedWeapon(ped: NativePed): void;
+  export function getSelectedPedWeapon(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function ExplodeProjectiles(ped: NativePed, weaponHash: NativeHash, p2: NativeBOOL): void;
+  export function explodeProjectiles(ped: NativePed, weaponHash: NativeHash, p2: NativeBOOL): void;
   /**
    *
    * @param {NativeHash} weaponHash undefined
    */
-  export function RemoveAllProjectilesOfType(weaponHash: NativeHash, p1: NativeBOOL): void;
+  export function removeAllProjectilesOfType(weaponHash: NativeHash, p1: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function GetLockonRangeOfCurrentPedWeapon(ped: NativePed): void;
+  export function getLockonRangeOfCurrentPedWeapon(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function GetMaxRangeOfCurrentPedWeapon(ped: NativePed): void;
+  export function getMaxRangeOfCurrentPedWeapon(ped: NativePed): void;
   /**
    *
    * @param {NativePed} driver undefined
    */
-  export function HasVehicleGotProjectileAttached(driver: NativePed, vehicle: NativeVehicle, weaponHash: NativeHash, p3: NativeAny): void;
+  export function hasVehicleGotProjectileAttached(driver: NativePed, vehicle: NativeVehicle, weaponHash: NativeHash, p3: NativeAny): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function GiveWeaponComponentToPed(ped: NativePed, weaponHash: NativeHash, componentHash: NativeHash): void;
+  export function giveWeaponComponentToPed(ped: NativePed, weaponHash: NativeHash, componentHash: NativeHash): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function RemoveWeaponComponentFromPed(ped: NativePed, weaponHash: NativeHash, componentHash: NativeHash): void;
+  export function removeWeaponComponentFromPed(ped: NativePed, weaponHash: NativeHash, componentHash: NativeHash): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function HasPedGotWeaponComponent(ped: NativePed, weaponHash: NativeHash, componentHash: NativeHash): void;
+  export function hasPedGotWeaponComponent(ped: NativePed, weaponHash: NativeHash, componentHash: NativeHash): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function IsPedWeaponComponentActive(ped: NativePed, weaponHash: NativeHash, componentHash: NativeHash): void;
+  export function isPedWeaponComponentActive(ped: NativePed, weaponHash: NativeHash, componentHash: NativeHash): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function PedSkipNextReloading(ped: NativePed): void;
+  export function pedSkipNextReloading(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function MakePedReload(ped: NativePed): void;
+  export function makePedReload(ped: NativePed): void;
   /**
    *
    * @param {NativeHash} weaponHash undefined
    */
-  export function RequestWeaponAsset(weaponHash: NativeHash, p1: number, p2: number): void;
+  export function requestWeaponAsset(weaponHash: NativeHash, p1: number, p2: number): void;
   /**
    *
    * @param {NativeHash} weaponHash undefined
    */
-  export function HasWeaponAssetLoaded(weaponHash: NativeHash): void;
+  export function hasWeaponAssetLoaded(weaponHash: NativeHash): void;
   /**
    *
    * @param {NativeHash} weaponHash undefined
    */
-  export function RemoveWeaponAsset(weaponHash: NativeHash): void;
+  export function removeWeaponAsset(weaponHash: NativeHash): void;
   /**
    *
    * @param {NativeHash} weaponHash undefined
    */
-  export function CreateWeaponObject(weaponHash: NativeHash, ammoCount: number, x: number, y: number, z: number, showWorldModel: NativeBOOL, heading: number, p7: NativeAny): void;
+  export function createWeaponObject(weaponHash: NativeHash, ammoCount: number, x: number, y: number, z: number, showWorldModel: NativeBOOL, heading: number, p7: NativeAny): void;
   /**
    *
    * @param {NativeObject} weaponObject undefined
    */
-  export function GiveWeaponComponentToWeaponObject(weaponObject: NativeObject, addonHash: NativeHash): void;
+  export function giveWeaponComponentToWeaponObject(weaponObject: NativeObject, addonHash: NativeHash): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function RemoveWeaponComponentFromWeaponObject(p0: NativeAny, p1: NativeAny): void;
+  export function removeWeaponComponentFromWeaponObject(p0: NativeAny, p1: NativeAny): void;
   /**
    *
    * @param {NativeObject} weapon undefined
    */
-  export function HasWeaponGotWeaponComponent(weapon: NativeObject, addonHash: NativeHash): void;
+  export function hasWeaponGotWeaponComponent(weapon: NativeObject, addonHash: NativeHash): void;
   /**
    *
    * @param {NativeObject} weaponObject undefined
    */
-  export function GiveWeaponObjectToPed(weaponObject: NativeObject, ped: NativePed): void;
+  export function giveWeaponObjectToPed(weaponObject: NativeObject, ped: NativePed): void;
   /**
    *
    * @param {NativeHash} weaponHash undefined
    */
-  export function DoesWeaponTakeWeaponComponent(weaponHash: NativeHash, componentHash: NativeHash): void;
+  export function doesWeaponTakeWeaponComponent(weaponHash: NativeHash, componentHash: NativeHash): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function GetWeaponObjectFromPed(ped: NativePed, p1: NativeBOOL): void;
+  export function getWeaponObjectFromPed(ped: NativePed, p1: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedWeaponTintIndex(ped: NativePed, weaponHash: NativeHash, tintIndex: number): void;
+  export function setPedWeaponTintIndex(ped: NativePed, weaponHash: NativeHash, tintIndex: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function GetPedWeaponTintIndex(ped: NativePed, weaponHash: NativeHash): void;
+  export function getPedWeaponTintIndex(ped: NativePed, weaponHash: NativeHash): void;
   /**
    *
    * @param {NativeObject} weapon undefined
    */
-  export function SetWeaponObjectTintIndex(weapon: NativeObject, tintIndex: number): void;
+  export function setWeaponObjectTintIndex(weapon: NativeObject, tintIndex: number): void;
   /**
    *
    * @param {NativeObject} weapon undefined
    */
-  export function GetWeaponObjectTintIndex(weapon: NativeObject): void;
+  export function getWeaponObjectTintIndex(weapon: NativeObject): void;
   /**
    *
    * @param {NativeHash} weaponHash undefined
    */
-  export function GetWeaponTintCount(weaponHash: NativeHash): void;
+  export function getWeaponTintCount(weaponHash: NativeHash): void;
   /**
    *
    * @param {NativeHash} weaponHash undefined
    */
-  export function GetWeaponHudStats(weaponHash: NativeHash, outData: NativeAny): void;
+  export function getWeaponHudStats(weaponHash: NativeHash, outData: NativeAny): void;
   /**
    *
    * @param {NativeHash} componentHash undefined
    */
-  export function GetWeaponComponentHudStats(componentHash: NativeHash, outData: number): void;
+  export function getWeaponComponentHudStats(componentHash: NativeHash, outData: number): void;
   /**
    *
    * @param {NativeAny} p0 undefined
@@ -13562,12 +13562,12 @@ declare module "natives" {
    *
    * @param {NativeHash} weaponHash undefined
    */
-  export function GetWeaponClipSize(weaponHash: NativeHash): void;
+  export function getWeaponClipSize(weaponHash: NativeHash): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetPedChanceOfFiringBlanks(ped: NativePed, xBias: number, yBias: number): void;
+  export function setPedChanceOfFiringBlanks(ped: NativePed, xBias: number, yBias: number): void;
   /**
    *
    * @param {NativePed} ped undefined
@@ -13577,32 +13577,32 @@ declare module "natives" {
    *
    * @param {NativeEntity} weaponObject undefined
    */
-  export function RequestWeaponHighDetailModel(weaponObject: NativeEntity): void;
+  export function requestWeaponHighDetailModel(weaponObject: NativeEntity): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function IsPedCurrentWeaponSilenced(ped: NativePed): void;
+  export function isPedCurrentWeaponSilenced(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetWeaponSmokegrenadeAssigned(ped: NativePed): void;
+  export function setWeaponSmokegrenadeAssigned(ped: NativePed): void;
   /**
    *
    * @param {number} distance undefined
    */
-  export function SetFlashLightFadeDistance(distance: number): void;
+  export function setFlashLightFadeDistance(distance: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetWeaponAnimationOverride(ped: NativePed, animStyle: NativeHash): void;
+  export function setWeaponAnimationOverride(ped: NativePed, animStyle: NativeHash): void;
   /**
    *
    * @param {NativeHash} weaponHash undefined
    */
-  export function GetWeaponDamageType(weaponHash: NativeHash): void;
+  export function getWeaponDamageType(weaponHash: NativeHash): void;
   /**
    *
    * @param {NativePed} ped undefined
@@ -13612,284 +13612,284 @@ declare module "natives" {
    *
    * @param {NativeHash} weaponHash undefined
    */
-  export function CanUseWeaponOnParachute(weaponHash: NativeHash): void;
+  export function canUseWeaponOnParachute(weaponHash: NativeHash): void;
   /**
    *
    * @param {NativeVehicle} distri undefined
    */
-  export function CreateItemset(distri: NativeVehicle): void;
+  export function createItemset(distri: NativeVehicle): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function DestroyItemset(p0: NativeAny): void;
+  export function destroyItemset(p0: NativeAny): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function IsItemsetValid(p0: NativeAny): void;
+  export function isItemsetValid(p0: NativeAny): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function AddToItemset(p0: NativeAny, p1: NativeAny): void;
+  export function addToItemset(p0: NativeAny, p1: NativeAny): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function RemoveFromItemset(p0: NativeAny, p1: NativeAny): void;
+  export function removeFromItemset(p0: NativeAny, p1: NativeAny): void;
   /**
    *
    * @param {NativeScrHandle} x undefined
    */
-  export function GetItemsetSize(x: NativeScrHandle): void;
+  export function getItemsetSize(x: NativeScrHandle): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function GetIndexedItemInItemset(p0: NativeAny, p1: NativeAny): void;
+  export function getIndexedItemInItemset(p0: NativeAny, p1: NativeAny): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function IsInItemset(p0: NativeAny, p1: NativeAny): void;
+  export function isInItemset(p0: NativeAny, p1: NativeAny): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function CleanItemset(p0: NativeAny): void;
+  export function cleanItemset(p0: NativeAny): void;
   /**
    *
    */
-  export function LoadAllObjectsNow(): void;
+  export function loadAllObjectsNow(): void;
   /**
    *
    * @param {number} x undefined
    */
-  export function LoadScene(x: number, y: number, z: number): void;
+  export function loadScene(x: number, y: number, z: number): void;
   /**
    *
    */
-  export function NetworkUpdateLoadScene(): void;
+  export function networkUpdateLoadScene(): void;
   /**
    *
    */
-  export function IsNetworkLoadingScene(): void;
+  export function isNetworkLoadingScene(): void;
   /**
    *
    * @param {number} interiorID undefined
    */
-  export function SetInteriorActive(interiorID: number, toggle: NativeBOOL): void;
+  export function setInteriorActive(interiorID: number, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativeHash} model undefined
    */
-  export function RequestModel(model: NativeHash): void;
+  export function requestModel(model: NativeHash): void;
   /**
    *
    * @param {NativeHash} model undefined
    */
-  export function RequestMenuPedModel(model: NativeHash): void;
+  export function requestMenuPedModel(model: NativeHash): void;
   /**
    *
    * @param {NativeHash} model undefined
    */
-  export function HasModelLoaded(model: NativeHash): void;
+  export function hasModelLoaded(model: NativeHash): void;
   /**
    *
    * @param {number} interiorID undefined
    */
-  export function RequestInteriorRoomByName(interiorID: number, roomName: string): void;
+  export function requestInteriorRoomByName(interiorID: number, roomName: string): void;
   /**
    *
    * @param {NativeHash} model undefined
    */
-  export function SetModelAsNoLongerNeeded(model: NativeHash): void;
+  export function setModelAsNoLongerNeeded(model: NativeHash): void;
   /**
    *
    * @param {NativeHash} model undefined
    */
-  export function IsModelInCdimage(model: NativeHash): void;
+  export function isModelInCdimage(model: NativeHash): void;
   /**
    *
    * @param {NativeHash} model undefined
    */
-  export function IsModelValid(model: NativeHash): void;
+  export function isModelValid(model: NativeHash): void;
   /**
    *
    * @param {NativeHash} model undefined
    */
-  export function IsModelAVehicle(model: NativeHash): void;
+  export function isModelAVehicle(model: NativeHash): void;
   /**
    *
    * @param {number} x undefined
    */
-  export function RequestCollisionAtCoord(x: number, y: number, z: number): void;
+  export function requestCollisionAtCoord(x: number, y: number, z: number): void;
   /**
    *
    * @param {NativeHash} model undefined
    */
-  export function RequestCollisionForModel(model: NativeHash): void;
+  export function requestCollisionForModel(model: NativeHash): void;
   /**
    *
    * @param {NativeHash} model undefined
    */
-  export function HasCollisionForModelLoaded(model: NativeHash): void;
+  export function hasCollisionForModelLoaded(model: NativeHash): void;
   /**
    *
    * @param {number} x undefined
    */
-  export function RequestAdditionalCollisionAtCoord(x: number, y: number, z: number): void;
+  export function requestAdditionalCollisionAtCoord(x: number, y: number, z: number): void;
   /**
    *
    * @param {string} animDict undefined
    */
-  export function DoesAnimDictExist(animDict: string): void;
+  export function doesAnimDictExist(animDict: string): void;
   /**
    *
    * @param {string} animDict undefined
    */
-  export function RequestAnimDict(animDict: string): void;
+  export function requestAnimDict(animDict: string): void;
   /**
    *
    * @param {string} animDict undefined
    */
-  export function HasAnimDictLoaded(animDict: string): void;
+  export function hasAnimDictLoaded(animDict: string): void;
   /**
    *
    * @param {string} animDict undefined
    */
-  export function RemoveAnimDict(animDict: string): void;
+  export function removeAnimDict(animDict: string): void;
   /**
    *
    * @param {string} animSet undefined
    */
-  export function RequestAnimSet(animSet: string): void;
+  export function requestAnimSet(animSet: string): void;
   /**
    *
    * @param {string} animSet undefined
    */
-  export function HasAnimSetLoaded(animSet: string): void;
+  export function hasAnimSetLoaded(animSet: string): void;
   /**
    *
    * @param {string} animSet undefined
    */
-  export function RemoveAnimSet(animSet: string): void;
+  export function removeAnimSet(animSet: string): void;
   /**
    *
    * @param {string} clipSet undefined
    */
-  export function RequestClipSet(clipSet: string): void;
+  export function requestClipSet(clipSet: string): void;
   /**
    *
    * @param {string} clipSet undefined
    */
-  export function HasClipSetLoaded(clipSet: string): void;
+  export function hasClipSetLoaded(clipSet: string): void;
   /**
    *
    * @param {string} clipSet undefined
    */
-  export function RemoveClipSet(clipSet: string): void;
+  export function removeClipSet(clipSet: string): void;
   /**
    *
    * @param {string} iplName undefined
    */
-  export function RequestIpl(iplName: string): void;
+  export function requestIpl(iplName: string): void;
   /**
    *
    * @param {string} iplName undefined
    */
-  export function RemoveIpl(iplName: string): void;
+  export function removeIpl(iplName: string): void;
   /**
    *
    * @param {string} iplName undefined
    */
-  export function IsIplActive(iplName: string): void;
+  export function isIplActive(iplName: string): void;
   /**
    *
    * @param {NativeBOOL} toggle undefined
    */
-  export function SetStreaming(toggle: NativeBOOL): void;
+  export function setStreaming(toggle: NativeBOOL): void;
   /**
    *
    * @param {NativeBOOL} toggle undefined
    */
-  export function SetGamePausesForStreaming(toggle: NativeBOOL): void;
+  export function setGamePausesForStreaming(toggle: NativeBOOL): void;
   /**
    *
    * @param {NativeBOOL} toggle undefined
    */
-  export function SetReducePedModelBudget(toggle: NativeBOOL): void;
+  export function setReducePedModelBudget(toggle: NativeBOOL): void;
   /**
    *
    * @param {NativeBOOL} toggle undefined
    */
-  export function SetReduceVehicleModelBudget(toggle: NativeBOOL): void;
+  export function setReduceVehicleModelBudget(toggle: NativeBOOL): void;
   /**
    *
    * @param {NativeBOOL} toggle undefined
    */
-  export function SetDitchPoliceModels(toggle: NativeBOOL): void;
+  export function setDitchPoliceModels(toggle: NativeBOOL): void;
   /**
    *
    */
-  export function GetNumberOfStreamingRequests(): void;
+  export function getNumberOfStreamingRequests(): void;
   /**
    *
    */
-  export function RequestPtfxAsset(): void;
+  export function requestPtfxAsset(): void;
   /**
    *
    */
-  export function HasPtfxAssetLoaded(): void;
+  export function hasPtfxAssetLoaded(): void;
   /**
    *
    */
-  export function RemovePtfxAsset(): void;
+  export function removePtfxAsset(): void;
   /**
    *
    * @param {string} assetName undefined
    */
-  export function RequestNamedPtfxAsset(assetName: string): void;
+  export function requestNamedPtfxAsset(assetName: string): void;
   /**
    *
    * @param {string} assetName undefined
    */
-  export function HasNamedPtfxAssetLoaded(assetName: string): void;
+  export function hasNamedPtfxAssetLoaded(assetName: string): void;
   /**
    *
    * @param {string} assetName undefined
    */
-  export function RemoveNamedPtfxAsset(assetName: string): void;
+  export function removeNamedPtfxAsset(assetName: string): void;
   /**
    *
    * @param {number} budget undefined
    */
-  export function SetVehiclePopulationBudget(budget: number): void;
+  export function setVehiclePopulationBudget(budget: number): void;
   /**
    *
    * @param {number} budget undefined
    */
-  export function SetPedPopulationBudget(budget: number): void;
+  export function setPedPopulationBudget(budget: number): void;
   /**
    *
    */
-  export function ClearFocus(): void;
+  export function clearFocus(): void;
   /**
    *
    * @param {number} x undefined
    */
-  export function SetFocusArea(x: number, y: number, z: number, offsetX: number, offsetY: number, offsetZ: number): void;
+  export function setFocusArea(x: number, y: number, z: number, offsetX: number, offsetY: number, offsetZ: number): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function SetFocusEntity(entity: NativeEntity): void;
+  export function setFocusEntity(entity: NativeEntity): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function IsEntityFocus(entity: NativeEntity): void;
+  export function isEntityFocus(entity: NativeEntity): void;
   /**
    *
    * @param {NativeEntity} p0 undefined
@@ -13909,7 +13909,7 @@ declare module "natives" {
    *
    * @param {number} x undefined
    */
-  export function FormatFocusHeading(x: number, y: number, z: number, rad: number, p4: NativeAny, p5: NativeAny): void;
+  export function formatFocusHeading(x: number, y: number, z: number, rad: number, p4: NativeAny, p5: NativeAny): void;
   /**
    *
    * @param {number} p0 undefined
@@ -13943,24 +13943,24 @@ declare module "natives" {
    *
    * @param {number} p0 undefined
    */
-  export function NewLoadSceneStart(p0: number, p1: number, p2: number, p3: number, p4: number, p5: number, p6: number, p7: NativeAny): void;
+  export function newLoadSceneStart(p0: number, p1: number, p2: number, p3: number, p4: number, p5: number, p6: number, p7: NativeAny): void;
   /**
    *
    * @param {number} x undefined
    */
-  export function NewLoadSceneStartSphere(x: number, y: number, z: number, radius: number, p4: NativeAny): void;
+  export function newLoadSceneStartSphere(x: number, y: number, z: number, radius: number, p4: NativeAny): void;
   /**
    *
    */
-  export function NewLoadSceneStop(): void;
+  export function newLoadSceneStop(): void;
   /**
    *
    */
-  export function IsNewLoadSceneActive(): void;
+  export function isNewLoadSceneActive(): void;
   /**
    *
    */
-  export function IsNewLoadSceneLoaded(): void;
+  export function isNewLoadSceneLoaded(): void;
   /**
    *
    */
@@ -13969,32 +13969,32 @@ declare module "natives" {
    *
    * @param {NativePed} from undefined
    */
-  export function StartPlayerSwitch(from: NativePed, to: NativePed, flags: number, switchType: number): void;
+  export function startPlayerSwitch(from: NativePed, to: NativePed, flags: number, switchType: number): void;
   /**
    *
    */
-  export function StopPlayerSwitch(): void;
+  export function stopPlayerSwitch(): void;
   /**
    *
    */
-  export function IsPlayerSwitchInProgress(): void;
+  export function isPlayerSwitchInProgress(): void;
   /**
    *
    */
-  export function GetPlayerSwitchType(): void;
+  export function getPlayerSwitchType(): void;
   /**
    *
    * @param {number} x1 undefined
    */
-  export function GetIdealPlayerSwitchType(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number): void;
+  export function getIdealPlayerSwitchType(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number): void;
   /**
    *
    */
-  export function GetPlayerSwitchState(): void;
+  export function getPlayerSwitchState(): void;
   /**
    *
    */
-  export function GetPlayerShortSwitchState(): void;
+  export function getPlayerShortSwitchState(): void;
   /**
    *
    * @param {number} p0 undefined
@@ -14008,7 +14008,7 @@ declare module "natives" {
    *
    * @param {number} p0 undefined
    */
-  export function SetPlayerSwitchOutro(p0: number, p1: number, p2: number, p3: number, p4: number, p5: number, p6: number, p7: number, p8: NativeAny): void;
+  export function setPlayerSwitchOutro(p0: number, p1: number, p2: number, p3: number, p4: number, p5: number, p6: number, p7: number, p8: NativeAny): void;
   /**
    *
    * @param {NativeAny} p0 undefined
@@ -14046,7 +14046,7 @@ declare module "natives" {
    *
    * @param {NativePed} ped undefined
    */
-  export function SwitchOutPlayer(ped: NativePed, flags: number, switchType: number): void;
+  export function switchOutPlayer(ped: NativePed, flags: number, switchType: number): void;
   /**
    *
    */
@@ -14054,7 +14054,7 @@ declare module "natives" {
   /**
    *
    */
-  export function SetPlayerInvertedUp(): void;
+  export function setPlayerInvertedUp(): void;
   /**
    *
    */
@@ -14062,7 +14062,7 @@ declare module "natives" {
   /**
    *
    */
-  export function DestroyPlayerInPauseMenu(): void;
+  export function destroyPlayerInPauseMenu(): void;
   /**
    *
    */
@@ -14119,24 +14119,24 @@ declare module "natives" {
    *
    * @param {string} srl undefined
    */
-  export function PrefetchSrl(srl: string): void;
+  export function prefetchSrl(srl: string): void;
   /**
    *
    */
-  export function IsSrlLoaded(): void;
+  export function isSrlLoaded(): void;
   /**
    *
    */
-  export function BeginSrl(): void;
+  export function beginSrl(): void;
   /**
    *
    */
-  export function EndSrl(): void;
+  export function endSrl(): void;
   /**
    *
    * @param {number} p0 undefined
    */
-  export function SetSrlTime(p0: number): void;
+  export function setSrlTime(p0: number): void;
   /**
    *
    * @param {NativeAny} p0 undefined
@@ -14161,19 +14161,19 @@ declare module "natives" {
    *
    * @param {number} x undefined
    */
-  export function SetHdArea(x: number, y: number, z: number, radius: number): void;
+  export function setHdArea(x: number, y: number, z: number, radius: number): void;
   /**
    *
    */
-  export function ClearHdArea(): void;
+  export function clearHdArea(): void;
   /**
    *
    */
-  export function LoadMissionCreatorData(): void;
+  export function loadMissionCreatorData(): void;
   /**
    *
    */
-  export function ShutdownCreatorBudget(): void;
+  export function shutdownCreatorBudget(): void;
   /**
    *
    * @param {NativeHash} modelHash undefined
@@ -14192,124 +14192,124 @@ declare module "natives" {
    *
    * @param {string} scriptName undefined
    */
-  export function RequestScript(scriptName: string): void;
+  export function requestScript(scriptName: string): void;
   /**
    *
    * @param {string} scriptName undefined
    */
-  export function SetScriptAsNoLongerNeeded(scriptName: string): void;
+  export function setScriptAsNoLongerNeeded(scriptName: string): void;
   /**
    *
    * @param {string} scriptName undefined
    */
-  export function HasScriptLoaded(scriptName: string): void;
+  export function hasScriptLoaded(scriptName: string): void;
   /**
    *
    * @param {string} scriptName undefined
    */
-  export function DoesScriptExist(scriptName: string): void;
+  export function doesScriptExist(scriptName: string): void;
   /**
    *
    * @param {NativeHash} scriptHash undefined
    */
-  export function RequestScriptWithNameHash(scriptHash: NativeHash): void;
+  export function requestScriptWithNameHash(scriptHash: NativeHash): void;
   /**
    *
    * @param {NativeHash} scriptHash undefined
    */
-  export function SetScriptWithNameHashAsNoLongerNeeded(scriptHash: NativeHash): void;
+  export function setScriptWithNameHashAsNoLongerNeeded(scriptHash: NativeHash): void;
   /**
    *
    * @param {NativeHash} scriptHash undefined
    */
-  export function HasScriptWithNameHashLoaded(scriptHash: NativeHash): void;
+  export function hasScriptWithNameHashLoaded(scriptHash: NativeHash): void;
   /**
    *
    * @param {NativeHash} scriptHash undefined
    */
-  export function DoesScriptWithNameHashExist(scriptHash: NativeHash): void;
+  export function doesScriptWithNameHashExist(scriptHash: NativeHash): void;
   /**
    *
    * @param {number} threadId undefined
    */
-  export function TerminateThread(threadId: number): void;
+  export function terminateThread(threadId: number): void;
   /**
    *
    * @param {number} threadId undefined
    */
-  export function IsThreadActive(threadId: number): void;
+  export function isThreadActive(threadId: number): void;
   /**
    *
    * @param {number} threadId undefined
    */
-  export function GetNameOfThread(threadId: number): void;
+  export function getNameOfThread(threadId: number): void;
   /**
    *
    */
-  export function BeginEnumeratingThreads(): void;
+  export function beginEnumeratingThreads(): void;
   /**
    *
    */
-  export function GetIdOfNextThreadInEnumeration(): void;
+  export function getIdOfNextThreadInEnumeration(): void;
   /**
    *
    */
-  export function GetIdOfThisThread(): void;
+  export function getIdOfThisThread(): void;
   /**
    *
    */
-  export function TerminateThisThread(): void;
+  export function terminateThisThread(): void;
   /**
    *
    * @param {NativeHash} scriptHash undefined
    */
-  export function GetNumberOfInstancesOfScriptWithNameHash(scriptHash: NativeHash): void;
+  export function getNumberOfInstancesOfScriptWithNameHash(scriptHash: NativeHash): void;
   /**
    *
    */
-  export function GetThisScriptName(): void;
+  export function getThisScriptName(): void;
   /**
    *
    */
-  export function GetHashOfThisScriptName(): void;
-  /**
-   *
-   * @param {number} eventGroup undefined
-   */
-  export function GetNumberOfEvents(eventGroup: number): void;
+  export function getHashOfThisScriptName(): void;
   /**
    *
    * @param {number} eventGroup undefined
    */
-  export function GetEventExists(eventGroup: number, eventIndex: number): void;
+  export function getNumberOfEvents(eventGroup: number): void;
   /**
    *
    * @param {number} eventGroup undefined
    */
-  export function GetEventAtIndex(eventGroup: number, eventIndex: number): void;
+  export function getEventExists(eventGroup: number, eventIndex: number): void;
   /**
    *
    * @param {number} eventGroup undefined
    */
-  export function GetEventData(eventGroup: number, eventIndex: number, argStruct: number, argStructSize: number): void;
+  export function getEventAtIndex(eventGroup: number, eventIndex: number): void;
   /**
    *
    * @param {number} eventGroup undefined
    */
-  export function TriggerScriptEvent(eventGroup: number, args: NativeAny, argCount: number, bit: NativeAny): void;
+  export function getEventData(eventGroup: number, eventIndex: number, argStruct: number, argStructSize: number): void;
+  /**
+   *
+   * @param {number} eventGroup undefined
+   */
+  export function triggerScriptEvent(eventGroup: number, args: NativeAny, argCount: number, bit: NativeAny): void;
   /**
    *
    */
-  export function ShutdownLoadingScreen(): void;
+  export function shutdownLoadingScreen(): void;
   /**
    *
    * @param {NativeBOOL} toggle undefined
    */
-  export function SetNoLoadingScreen(toggle: NativeBOOL): void;
+  export function setNoLoadingScreen(toggle: NativeBOOL): void;
   /**
    *
    */
-  export function GetNoLoadingScreen(): void;
+  export function getNoLoadingScreen(): void;
   /**
    *
    */
@@ -14318,16 +14318,16 @@ declare module "natives" {
    *
    * @param {string} string undefined
    */
-  export function BeginTextCommandBusyString(string: string): void;
+  export function beginTextCommandBusyString(string: string): void;
   /**
    *
    * @param {number} busySpinnerType undefined
    */
-  export function EndTextCommandBusyString(busySpinnerType: number): void;
+  export function endTextCommandBusyString(busySpinnerType: number): void;
   /**
    *
    */
-  export function RemoveLoadingPrompt(): void;
+  export function removeLoadingPrompt(): void;
   /**
    *
    */
@@ -14335,7 +14335,7 @@ declare module "natives" {
   /**
    *
    */
-  export function IsLoadingPromptBeingDisplayed(): void;
+  export function isLoadingPromptBeingDisplayed(): void;
   /**
    *
    */
@@ -14348,12 +14348,12 @@ declare module "natives" {
   /**
    *
    */
-  export function ShowCursorThisFrame(): void;
+  export function showCursorThisFrame(): void;
   /**
    *
    * @param {number} spriteId undefined
    */
-  export function SetCursorSprite(spriteId: number): void;
+  export function setCursorSprite(spriteId: number): void;
   /**
    *
    * @param {NativeBOOL} p0 undefined
@@ -14377,7 +14377,7 @@ declare module "natives" {
    *
    * @param {number} pos undefined
    */
-  export function ClearNotificationsPos(pos: number): void;
+  export function clearNotificationsPos(pos: number): void;
   /**
    *
    */
@@ -14390,7 +14390,7 @@ declare module "natives" {
    *
    * @param {number} notificationId undefined
    */
-  export function RemoveNotification(notificationId: number): void;
+  export function removeNotification(notificationId: number): void;
   /**
    *
    */
@@ -14422,7 +14422,7 @@ declare module "natives" {
   /**
    *
    */
-  export function GetCurrentNotification(): void;
+  export function getCurrentNotification(): void;
   /**
    *
    */
@@ -14435,12 +14435,12 @@ declare module "natives" {
    *
    * @param {number} hudIndex undefined
    */
-  export function SetNotificationBackgroundColor(hudIndex: number): void;
+  export function setNotificationBackgroundColor(hudIndex: number): void;
   /**
    *
    * @param {number} red undefined
    */
-  export function SetNotificationFlashColor(red: number, green: number, blue: number, alpha: number): void;
+  export function setNotificationFlashColor(red: number, green: number, blue: number, alpha: number): void;
   /**
    *
    * @param {NativeAny} p0 undefined
@@ -14477,67 +14477,67 @@ declare module "natives" {
    *
    * @param {string} text undefined
    */
-  export function SetNotificationTextEntry(text: string): void;
+  export function setNotificationTextEntry(text: string): void;
   /**
    *
    * @param {string} picName1 undefined
    */
-  export function SetNotificationMessage(picName1: string, picName2: number, flash: NativeBOOL, iconType: number, p4: NativeBOOL, sender: string, subject: string): void;
+  export function setNotificationMessage(picName1: string, picName2: number, flash: NativeBOOL, iconType: number, p4: NativeBOOL, sender: string, subject: string): void;
   /**
    *
    * @param {string} picName1 undefined
    */
-  export function SetNotificationMessage2(picName1: string, picName2: string, flash: NativeBOOL, iconType: number, sender: string, subject: string): void;
+  export function setNotificationMessage2(picName1: string, picName2: string, flash: NativeBOOL, iconType: number, sender: string, subject: string): void;
   /**
    *
    * @param {string} picName1 undefined
    */
-  export function SetNotificationMessage3(picName1: string, picName2: string, p2: NativeBOOL, p3: NativeAny, p4: string, p5: string): void;
+  export function setNotificationMessage3(picName1: string, picName2: string, p2: NativeBOOL, p3: NativeAny, p4: string, p5: string): void;
   /**
    *
    * @param {string} picName1 undefined
    */
-  export function SetNotificationMessage4(picName1: string, picName2: string, flash: NativeBOOL, iconType: number, sender: string, subject: string, duration: number): void;
+  export function setNotificationMessage4(picName1: string, picName2: string, flash: NativeBOOL, iconType: number, sender: string, subject: string, duration: number): void;
   /**
    *
    * @param {string} picName1 undefined
    */
-  export function SetNotificationMessageClanTag(picName1: string, picName2: string, flash: NativeBOOL, iconType: number, sender: string, subject: string, duration: number, clanTag: string): void;
+  export function setNotificationMessageClanTag(picName1: string, picName2: string, flash: NativeBOOL, iconType: number, sender: string, subject: string, duration: number, clanTag: string): void;
   /**
    *
    * @param {string} picName1 undefined
    */
-  export function SetNotificationMessageClanTag2(picName1: string, picName2: string, flash: NativeBOOL, iconType1: number, sender: string, subject: string, duration: number, clanTag: string, iconType2: number, p9: number): void;
+  export function setNotificationMessageClanTag2(picName1: string, picName2: string, flash: NativeBOOL, iconType1: number, sender: string, subject: string, duration: number, clanTag: string, iconType2: number, p9: number): void;
   /**
    *
    * @param {NativeBOOL} blink undefined
    */
-  export function DrawNotification(blink: NativeBOOL, showInBrief: NativeBOOL): void;
+  export function drawNotification(blink: NativeBOOL, showInBrief: NativeBOOL): void;
   /**
    *
    * @param {NativeBOOL} blink undefined
    */
-  export function DrawNotification2(blink: NativeBOOL, p1: NativeBOOL): void;
+  export function drawNotification2(blink: NativeBOOL, p1: NativeBOOL): void;
   /**
    *
    * @param {NativeBOOL} blink undefined
    */
-  export function DrawNotification3(blink: NativeBOOL, p1: NativeBOOL): void;
+  export function drawNotification3(blink: NativeBOOL, p1: NativeBOOL): void;
   /**
    *
    * @param {string} p0 undefined
    */
-  export function DrawNotificationAward(p0: string, p1: string, p2: number, p3: number, p4: string): void;
+  export function drawNotificationAward(p0: string, p1: string, p2: number, p3: number, p4: string): void;
   /**
    *
    * @param {NativeBOOL} p0 undefined
    */
-  export function DrawNotificationApartmentInvite(p0: NativeBOOL, p1: NativeBOOL, p2: number, p3: number, isLeader: NativeBOOL, unk0: NativeBOOL, clanDesc: number, R: number, G: number, B: number): void;
+  export function drawNotificationApartmentInvite(p0: NativeBOOL, p1: NativeBOOL, p2: number, p3: number, isLeader: NativeBOOL, unk0: NativeBOOL, clanDesc: number, R: number, G: number, B: number): void;
   /**
    *
    * @param {NativeBOOL} p0 undefined
    */
-  export function DrawNotificationClanInvite(p0: NativeBOOL, p1: NativeBOOL, p2: number, p3: number, isLeader: NativeBOOL, unk0: NativeBOOL, clanDesc: number, playerName: string, R: number, G: number, B: number): void;
+  export function drawNotificationClanInvite(p0: NativeBOOL, p1: NativeBOOL, p2: number, p3: number, isLeader: NativeBOOL, unk0: NativeBOOL, clanDesc: number, playerName: string, R: number, G: number, B: number): void;
   /**
    *
    * @param {NativeAny} p0 undefined
@@ -14557,7 +14557,7 @@ declare module "natives" {
    *
    * @param {NativeBOOL} blink undefined
    */
-  export function DrawNotification4(blink: NativeBOOL, p1: NativeBOOL): void;
+  export function drawNotification4(blink: NativeBOOL, p1: NativeBOOL): void;
   /**
    *
    * @param {NativeAny} p0 undefined
@@ -14572,302 +14572,302 @@ declare module "natives" {
    *
    * @param {number} type undefined
    */
-  export function DrawNotificationWithIcon(type: number, image: number, text: string): void;
+  export function drawNotificationWithIcon(type: number, image: number, text: string): void;
   /**
    *
    * @param {number} type undefined
    */
-  export function DrawNotificationWithButton(type: number, button: string, text: string): void;
+  export function drawNotificationWithButton(type: number, button: string, text: string): void;
   /**
    *
    * @param {string} GxtEntry undefined
    */
-  export function BeginTextCommandPrint(GxtEntry: string): void;
+  export function beginTextCommandPrint(GxtEntry: string): void;
   /**
    *
    * @param {number} duration undefined
    */
-  export function EndTextCommandPrint(duration: number, drawImmediately: NativeBOOL): void;
+  export function endTextCommandPrint(duration: number, drawImmediately: NativeBOOL): void;
   /**
    *
    * @param {string} text undefined
    */
-  export function BeginTextCommandIsMessageDisplayed(text: string): void;
+  export function beginTextCommandIsMessageDisplayed(text: string): void;
   /**
    *
    */
-  export function EndTextCommandIsMessageDisplayed(): void;
+  export function endTextCommandIsMessageDisplayed(): void;
   /**
    *
    * @param {string} text undefined
    */
-  export function BeginTextCommandDisplayText(text: string): void;
+  export function beginTextCommandDisplayText(text: string): void;
   /**
    *
    * @param {number} x undefined
    */
-  export function EndTextCommandDisplayText(x: number, y: number): void;
+  export function endTextCommandDisplayText(x: number, y: number): void;
   /**
    *
    * @param {string} text undefined
    */
-  export function BeginTextCommandWidth(text: string): void;
+  export function beginTextCommandWidth(text: string): void;
   /**
    *
    * @param {NativeBOOL} p0 undefined
    */
-  export function EndTextCommandGetWidth(p0: NativeBOOL): void;
+  export function endTextCommandGetWidth(p0: NativeBOOL): void;
   /**
    *
    * @param {string} entry undefined
    */
-  export function BeginTextCommandLineCount(entry: string): void;
+  export function beginTextCommandLineCount(entry: string): void;
   /**
    *
    * @param {number} x undefined
    */
-  export function GetTextScreenLineCount(x: number, y: number): void;
+  export function getTextScreenLineCount(x: number, y: number): void;
   /**
    *
    * @param {string} inputType undefined
    */
-  export function BeginTextCommandDisplayHelp(inputType: string): void;
+  export function beginTextCommandDisplayHelp(inputType: string): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function EndTextCommandDisplayHelp(p0: NativeAny, loop: NativeBOOL, beep: NativeBOOL, duration: number): void;
+  export function endTextCommandDisplayHelp(p0: NativeAny, loop: NativeBOOL, beep: NativeBOOL, duration: number): void;
   /**
    *
    * @param {string} labelName undefined
    */
-  export function BeginTextCommandIsThisHelpMessageBeingDisplayed(labelName: string): void;
+  export function beginTextCommandIsThisHelpMessageBeingDisplayed(labelName: string): void;
   /**
    *
    * @param {number} p0 undefined
    */
-  export function EndTextCommandIsThisHelpMessageBeingDisplayed(p0: number): void;
+  export function endTextCommandIsThisHelpMessageBeingDisplayed(p0: number): void;
   /**
    *
    * @param {string} gxtentry undefined
    */
-  export function BeginTextCommandSetBlipName(gxtentry: string): void;
+  export function beginTextCommandSetBlipName(gxtentry: string): void;
   /**
    *
    * @param {NativeBlip} blip undefined
    */
-  export function EndTextCommandSetBlipName(blip: NativeBlip): void;
+  export function endTextCommandSetBlipName(blip: NativeBlip): void;
   /**
    *
    * @param {string} p0 undefined
    */
-  export function BeginTextCommandObjective(p0: string): void;
+  export function beginTextCommandObjective(p0: string): void;
   /**
    *
    * @param {NativeBOOL} p0 undefined
    */
-  export function EndTextCommandObjective(p0: NativeBOOL): void;
+  export function endTextCommandObjective(p0: NativeBOOL): void;
   /**
    *
    * @param {string} text undefined
    */
-  export function BeginTextCommandClearPrint(text: string): void;
+  export function beginTextCommandClearPrint(text: string): void;
   /**
    *
    */
-  export function EndTextCommandClearPrint(): void;
+  export function endTextCommandClearPrint(): void;
   /**
    *
    * @param {string} p0 undefined
    */
-  export function BeginTextCommandTimer(p0: string): void;
+  export function beginTextCommandTimer(p0: string): void;
   /**
    *
    * @param {NativeBOOL} p0 undefined
    */
-  export function EndTextCommandTimer(p0: NativeBOOL): void;
+  export function endTextCommandTimer(p0: NativeBOOL): void;
   /**
    *
    * @param {number} value undefined
    */
-  export function AddTextComponentInteger(value: number): void;
+  export function addTextComponentInteger(value: number): void;
   /**
    *
    * @param {number} value undefined
    */
-  export function AddTextComponentFloat(value: number, decimalPlaces: number): void;
+  export function addTextComponentFloat(value: number, decimalPlaces: number): void;
   /**
    *
    * @param {string} labelName undefined
    */
-  export function AddTextComponentSubstringTextLabel(labelName: string): void;
+  export function addTextComponentSubstringTextLabel(labelName: string): void;
   /**
    *
    * @param {NativeHash} gxtEntryHash undefined
    */
-  export function AddTextComponentSubstringTextLabelHashKey(gxtEntryHash: NativeHash): void;
+  export function addTextComponentSubstringTextLabelHashKey(gxtEntryHash: NativeHash): void;
   /**
    *
    * @param {NativeBlip} blip undefined
    */
-  export function AddTextComponentSubstringBlipName(blip: NativeBlip): void;
+  export function addTextComponentSubstringBlipName(blip: NativeBlip): void;
   /**
    *
    * @param {string} text undefined
    */
-  export function AddTextComponentSubstringPlayerName(text: string): void;
+  export function addTextComponentSubstringPlayerName(text: string): void;
   /**
    *
    * @param {number} timestamp undefined
    */
-  export function AddTextComponentSubstringTime(timestamp: number, flags: number): void;
+  export function addTextComponentSubstringTime(timestamp: number, flags: number): void;
   /**
    *
    * @param {number} value undefined
    */
-  export function AddTextComponentFormattedInteger(value: number, commaSeparated: NativeBOOL): void;
+  export function addTextComponentFormattedInteger(value: number, commaSeparated: NativeBOOL): void;
   /**
    *
    * @param {string} p0 undefined
    */
-  export function AddTextComponentAppTitle(p0: string, p1: number): void;
+  export function addTextComponentAppTitle(p0: string, p1: number): void;
   /**
    *
    * @param {string} website undefined
    */
-  export function AddTextComponentSubstringWebsite(website: string): void;
+  export function addTextComponentSubstringWebsite(website: string): void;
   /**
    *
    * @param {string} p0 undefined
    */
-  export function AddTextComponentScaleform(p0: string): void;
+  export function addTextComponentScaleform(p0: string): void;
   /**
    *
    * @param {number} hudIndex undefined
    */
-  export function SetNotificationColorNext(hudIndex: number): void;
+  export function setNotificationColorNext(hudIndex: number): void;
   /**
    *
    * @param {string} text undefined
    */
-  export function GetTextSubstring(text: string, position: number, length: number): void;
+  export function getTextSubstring(text: string, position: number, length: number): void;
   /**
    *
    * @param {string} text undefined
    */
-  export function GetTextSubstringSafe(text: string, position: number, length: number, maxLength: number): void;
+  export function getTextSubstringSafe(text: string, position: number, length: number, maxLength: number): void;
   /**
    *
    * @param {string} text undefined
    */
-  export function GetTextSubstringSlice(text: string, startPosition: number, endPosition: number): void;
+  export function getTextSubstringSlice(text: string, startPosition: number, endPosition: number): void;
   /**
    *
    * @param {string} labelName undefined
    */
-  export function GetLabelText(labelName: string): void;
+  export function getLabelText(labelName: string): void;
   /**
    *
    */
-  export function ClearPrints(): void;
+  export function clearPrints(): void;
   /**
    *
    */
-  export function ClearBrief(): void;
+  export function clearBrief(): void;
   /**
    *
    */
-  export function ClearAllHelpMessages(): void;
+  export function clearAllHelpMessages(): void;
   /**
    *
    * @param {string} p0 undefined
    */
-  export function ClearThisPrint(p0: string): void;
+  export function clearThisPrint(p0: string): void;
   /**
    *
    */
-  export function ClearSmallPrints(): void;
-  /**
-   *
-   * @param {string} gxt undefined
-   */
-  export function DoesTextBlockExist(gxt: string): void;
+  export function clearSmallPrints(): void;
   /**
    *
    * @param {string} gxt undefined
    */
-  export function RequestAdditionalText(gxt: string, slot: number): void;
+  export function doesTextBlockExist(gxt: string): void;
   /**
    *
    * @param {string} gxt undefined
    */
-  export function RequestAdditionalText2(gxt: string, slot: number): void;
+  export function requestAdditionalText(gxt: string, slot: number): void;
+  /**
+   *
+   * @param {string} gxt undefined
+   */
+  export function requestAdditionalText2(gxt: string, slot: number): void;
   /**
    *
    * @param {number} slot undefined
    */
-  export function HasAdditionalTextLoaded(slot: number): void;
+  export function hasAdditionalTextLoaded(slot: number): void;
   /**
    *
    * @param {number} p0 undefined
    */
-  export function ClearAdditionalText(p0: number, p1: NativeBOOL): void;
+  export function clearAdditionalText(p0: number, p1: NativeBOOL): void;
   /**
    *
    * @param {number} p0 undefined
    */
-  export function IsStreamingAdditionalText(p0: number): void;
+  export function isStreamingAdditionalText(p0: number): void;
   /**
    *
    * @param {string} gxt undefined
    */
-  export function HasThisAdditionalTextLoaded(gxt: string, slot: number): void;
+  export function hasThisAdditionalTextLoaded(gxt: string, slot: number): void;
   /**
    *
    */
-  export function IsMessageBeingDisplayed(): void;
-  /**
-   *
-   * @param {string} gxt undefined
-   */
-  export function DoesTextLabelExist(gxt: string): void;
+  export function isMessageBeingDisplayed(): void;
   /**
    *
    * @param {string} gxt undefined
    */
-  export function GetLengthOfStringWithThisTextLabel(gxt: string): void;
+  export function doesTextLabelExist(gxt: string): void;
+  /**
+   *
+   * @param {string} gxt undefined
+   */
+  export function getLengthOfStringWithThisTextLabel(gxt: string): void;
   /**
    *
    * @param {string} string undefined
    */
-  export function GetLengthOfLiteralString(string: string): void;
+  export function getLengthOfLiteralString(string: string): void;
   /**
    *
    * @param {string} STRING undefined
    */
-  export function GetLengthOfString(STRING: string): void;
+  export function getLengthOfString(STRING: string): void;
   /**
    *
    * @param {NativeHash} hash undefined
    */
-  export function GetStreetNameFromHashKey(hash: NativeHash): void;
+  export function getStreetNameFromHashKey(hash: NativeHash): void;
   /**
    *
    */
-  export function IsHudPreferenceSwitchedOn(): void;
+  export function isHudPreferenceSwitchedOn(): void;
   /**
    *
    */
-  export function IsRadarPreferenceSwitchedOn(): void;
+  export function isRadarPreferenceSwitchedOn(): void;
   /**
    *
    */
-  export function IsSubtitlePreferenceSwitchedOn(): void;
+  export function isSubtitlePreferenceSwitchedOn(): void;
   /**
    *
    * @param {NativeBOOL} toggle undefined
    */
-  export function DisplayHud(toggle: NativeBOOL): void;
+  export function displayHud(toggle: NativeBOOL): void;
   /**
    *
    */
@@ -14880,34 +14880,34 @@ declare module "natives" {
    *
    * @param {NativeBOOL} Toggle undefined
    */
-  export function DisplayRadar(Toggle: NativeBOOL): void;
+  export function displayRadar(Toggle: NativeBOOL): void;
   /**
    *
    */
-  export function IsHudHidden(): void;
+  export function isHudHidden(): void;
   /**
    *
    */
-  export function IsRadarHidden(): void;
+  export function isRadarHidden(): void;
   /**
    *
    */
-  export function IsRadarEnabled(): void;
-  /**
-   *
-   * @param {NativeBlip} blip undefined
-   */
-  export function SetBlipRoute(blip: NativeBlip, enabled: NativeBOOL): void;
+  export function isRadarEnabled(): void;
   /**
    *
    * @param {NativeBlip} blip undefined
    */
-  export function SetBlipRouteColour(blip: NativeBlip, colour: number): void;
+  export function setBlipRoute(blip: NativeBlip, enabled: NativeBOOL): void;
+  /**
+   *
+   * @param {NativeBlip} blip undefined
+   */
+  export function setBlipRouteColour(blip: NativeBlip, colour: number): void;
   /**
    *
    * @param {NativeBOOL} p0 undefined
    */
-  export function AddNextMessageToPreviousBriefs(p0: NativeBOOL): void;
+  export function addNextMessageToPreviousBriefs(p0: NativeBOOL): void;
   /**
    *
    * @param {NativeBOOL} p0 undefined
@@ -14917,12 +14917,12 @@ declare module "natives" {
    *
    * @param {number} p0 undefined
    */
-  export function RespondingAsTemp(p0: number): void;
+  export function respondingAsTemp(p0: number): void;
   /**
    *
    * @param {number} zoomLevel undefined
    */
-  export function SetRadarZoom(zoomLevel: number): void;
+  export function setRadarZoom(zoomLevel: number): void;
   /**
    *
    * @param {NativeAny} p0 undefined
@@ -14932,7 +14932,7 @@ declare module "natives" {
    *
    * @param {number} zoomLevel undefined
    */
-  export function SetRadarZoomLevelThisFrame(zoomLevel: number): void;
+  export function setRadarZoomLevelThisFrame(zoomLevel: number): void;
   /**
    *
    */
@@ -14941,7 +14941,7 @@ declare module "natives" {
    *
    * @param {number} hudColorIndex undefined
    */
-  export function GetHudColour(hudColorIndex: number, r: number, g: number, b: number, a: number): void;
+  export function getHudColour(hudColorIndex: number, r: number, g: number, b: number, a: number): void;
   /**
    *
    * @param {number} r undefined
@@ -14956,27 +14956,27 @@ declare module "natives" {
    *
    * @param {number} hudColorIndex undefined
    */
-  export function SetHudColoursSwitch(hudColorIndex: number, hudColorIndex2: number): void;
+  export function setHudColoursSwitch(hudColorIndex: number, hudColorIndex2: number): void;
   /**
    *
    * @param {number} hudColorIndex undefined
    */
-  export function SetHudColour(hudColorIndex: number, r: number, g: number, b: number, a: number): void;
+  export function setHudColour(hudColorIndex: number, r: number, g: number, b: number, a: number): void;
   /**
    *
    * @param {NativeBOOL} toggle undefined
    */
-  export function FlashAbilityBar(toggle: NativeBOOL): void;
+  export function flashAbilityBar(toggle: NativeBOOL): void;
   /**
    *
    * @param {number} value undefined
    */
-  export function SetAbilityBarValue(value: number, maxValue: number): void;
+  export function setAbilityBarValue(value: number, maxValue: number): void;
   /**
    *
    * @param {NativeBOOL} p0 undefined
    */
-  export function FlashWantedDisplay(p0: NativeBOOL): void;
+  export function flashWantedDisplay(p0: NativeBOOL): void;
   /**
    *
    * @param {NativeBOOL} p0 undefined
@@ -14986,118 +14986,118 @@ declare module "natives" {
    *
    * @param {number} size undefined
    */
-  export function GetTextScaleHeight(size: number, font: number): void;
+  export function getTextScaleHeight(size: number, font: number): void;
   /**
    *
    * @param {number} scale undefined
    */
-  export function SetTextScale(scale: number, size: number): void;
+  export function setTextScale(scale: number, size: number): void;
   /**
    *
    * @param {number} red undefined
    */
-  export function SetTextColour(red: number, green: number, blue: number, alpha: number): void;
+  export function setTextColour(red: number, green: number, blue: number, alpha: number): void;
   /**
    *
    * @param {NativeBOOL} align undefined
    */
-  export function SetTextCentre(align: NativeBOOL): void;
+  export function setTextCentre(align: NativeBOOL): void;
   /**
    *
    * @param {NativeBOOL} toggle undefined
    */
-  export function SetTextRightJustify(toggle: NativeBOOL): void;
+  export function setTextRightJustify(toggle: NativeBOOL): void;
   /**
    *
    * @param {number} justifyType undefined
    */
-  export function SetTextJustification(justifyType: number): void;
+  export function setTextJustification(justifyType: number): void;
   /**
    *
    * @param {number} start undefined
    */
-  export function SetTextWrap(start: number, end: number): void;
+  export function setTextWrap(start: number, end: number): void;
   /**
    *
    * @param {NativeBOOL} p0 undefined
    */
-  export function SetTextLeading(p0: NativeBOOL): void;
+  export function setTextLeading(p0: NativeBOOL): void;
   /**
    *
    * @param {NativeBOOL} p0 undefined
    */
-  export function SetTextProportional(p0: NativeBOOL): void;
+  export function setTextProportional(p0: NativeBOOL): void;
   /**
    *
    * @param {number} fontType undefined
    */
-  export function SetTextFont(fontType: number): void;
+  export function setTextFont(fontType: number): void;
   /**
    *
    */
-  export function SetTextDropShadow(): void;
+  export function setTextDropShadow(): void;
   /**
    *
    * @param {number} distance undefined
    */
-  export function SetTextDropshadow(distance: number, r: number, g: number, b: number, a: number): void;
+  export function setTextDropshadow(distance: number, r: number, g: number, b: number, a: number): void;
   /**
    *
    */
-  export function SetTextOutline(): void;
+  export function setTextOutline(): void;
   /**
    *
    * @param {number} p0 undefined
    */
-  export function SetTextEdge(p0: number, r: number, g: number, b: number, a: number): void;
+  export function setTextEdge(p0: number, r: number, g: number, b: number, a: number): void;
   /**
    *
    * @param {number} renderId undefined
    */
-  export function SetTextRenderId(renderId: number): void;
+  export function setTextRenderId(renderId: number): void;
   /**
    *
    */
-  export function GetDefaultScriptRendertargetRenderId(): void;
-  /**
-   *
-   * @param {string} p0 undefined
-   */
-  export function RegisterNamedRendertarget(p0: string, p1: NativeBOOL): void;
+  export function getDefaultScriptRendertargetRenderId(): void;
   /**
    *
    * @param {string} p0 undefined
    */
-  export function IsNamedRendertargetRegistered(p0: string): void;
+  export function registerNamedRendertarget(p0: string, p1: NativeBOOL): void;
+  /**
+   *
+   * @param {string} p0 undefined
+   */
+  export function isNamedRendertargetRegistered(p0: string): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function ReleaseNamedRendertarget(p0: NativeAny): void;
+  export function releaseNamedRendertarget(p0: NativeAny): void;
   /**
    *
    * @param {NativeHash} hash undefined
    */
-  export function LinkNamedRendertarget(hash: NativeHash): void;
+  export function linkNamedRendertarget(hash: NativeHash): void;
   /**
    *
    * @param {string} p0 undefined
    */
-  export function GetNamedRendertargetRenderId(p0: string): void;
+  export function getNamedRendertargetRenderId(p0: string): void;
   /**
    *
    * @param {NativeHash} hash undefined
    */
-  export function IsNamedRendertargetLinked(hash: NativeHash): void;
+  export function isNamedRendertargetLinked(hash: NativeHash): void;
   /**
    *
    * @param {NativeBOOL} toggle undefined
    */
-  export function ClearHelp(toggle: NativeBOOL): void;
+  export function clearHelp(toggle: NativeBOOL): void;
   /**
    *
    */
-  export function IsHelpMessageOnScreen(): void;
+  export function isHelpMessageOnScreen(): void;
   /**
    *
    */
@@ -15105,11 +15105,11 @@ declare module "natives" {
   /**
    *
    */
-  export function IsHelpMessageBeingDisplayed(): void;
+  export function isHelpMessageBeingDisplayed(): void;
   /**
    *
    */
-  export function IsHelpMessageFadingOut(): void;
+  export function isHelpMessageFadingOut(): void;
   /**
    *
    */
@@ -15117,71 +15117,71 @@ declare module "natives" {
   /**
    *
    */
-  export function GetBlipInfoIdIterator(): void;
+  export function getBlipInfoIdIterator(): void;
   /**
    *
    */
-  export function GetNumberOfActiveBlips(): void;
-  /**
-   *
-   * @param {number} blipSprite undefined
-   */
-  export function GetNextBlipInfoId(blipSprite: number): void;
+  export function getNumberOfActiveBlips(): void;
   /**
    *
    * @param {number} blipSprite undefined
    */
-  export function GetFirstBlipInfoId(blipSprite: number): void;
+  export function getNextBlipInfoId(blipSprite: number): void;
+  /**
+   *
+   * @param {number} blipSprite undefined
+   */
+  export function getFirstBlipInfoId(blipSprite: number): void;
   /**
    *
    * @param {NativeBlip} blip undefined
    */
-  export function GetBlipInfoIdCoord(blip: NativeBlip): void;
+  export function getBlipInfoIdCoord(blip: NativeBlip): void;
   /**
    *
    * @param {NativeBlip} blip undefined
    */
-  export function GetBlipInfoIdDisplay(blip: NativeBlip): void;
+  export function getBlipInfoIdDisplay(blip: NativeBlip): void;
   /**
    *
    * @param {NativeBlip} blip undefined
    */
-  export function GetBlipInfoIdType(blip: NativeBlip): void;
+  export function getBlipInfoIdType(blip: NativeBlip): void;
   /**
    *
    * @param {NativeBlip} blip undefined
    */
-  export function GetBlipInfoIdEntityIndex(blip: NativeBlip): void;
+  export function getBlipInfoIdEntityIndex(blip: NativeBlip): void;
   /**
    *
    * @param {NativeBlip} blip undefined
    */
-  export function GetBlipInfoIdPickupIndex(blip: NativeBlip): void;
+  export function getBlipInfoIdPickupIndex(blip: NativeBlip): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function GetBlipFromEntity(entity: NativeEntity): void;
+  export function getBlipFromEntity(entity: NativeEntity): void;
   /**
    *
    * @param {number} posX undefined
    */
-  export function AddBlipForRadius(posX: number, posY: number, posZ: number, radius: number): void;
+  export function addBlipForRadius(posX: number, posY: number, posZ: number, radius: number): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function AddBlipForEntity(entity: NativeEntity): void;
+  export function addBlipForEntity(entity: NativeEntity): void;
   /**
    *
    * @param {NativePickup} pickup undefined
    */
-  export function AddBlipForPickup(pickup: NativePickup): void;
+  export function addBlipForPickup(pickup: NativePickup): void;
   /**
    *
    * @param {number} x undefined
    */
-  export function AddBlipForCoord(x: number, y: number, z: number): void;
+  export function addBlipForCoord(x: number, y: number, z: number): void;
   /**
    *
    * @param {number} posX undefined
@@ -15196,92 +15196,92 @@ declare module "natives" {
    *
    * @param {NativeBlip} blip undefined
    */
-  export function SetBlipCoords(blip: NativeBlip, posX: number, posY: number, posZ: number): void;
+  export function setBlipCoords(blip: NativeBlip, posX: number, posY: number, posZ: number): void;
   /**
    *
    * @param {NativeBlip} blip undefined
    */
-  export function GetBlipCoords(blip: NativeBlip): void;
+  export function getBlipCoords(blip: NativeBlip): void;
   /**
    *
    * @param {NativeBlip} blip undefined
    */
-  export function SetBlipSprite(blip: NativeBlip, spriteId: number): void;
+  export function setBlipSprite(blip: NativeBlip, spriteId: number): void;
   /**
    *
    * @param {NativeBlip} blip undefined
    */
-  export function GetBlipSprite(blip: NativeBlip): void;
+  export function getBlipSprite(blip: NativeBlip): void;
   /**
    *
    * @param {NativeBlip} blip undefined
    */
-  export function SetBlipNameFromTextFile(blip: NativeBlip, gxtEntry: string): void;
+  export function setBlipNameFromTextFile(blip: NativeBlip, gxtEntry: string): void;
   /**
    *
    * @param {NativeBlip} blip undefined
    */
-  export function SetBlipNameToPlayerName(blip: NativeBlip, player: NativePlayer): void;
+  export function setBlipNameToPlayerName(blip: NativeBlip, player: NativePlayer): void;
   /**
    *
    * @param {NativeBlip} blip undefined
    */
-  export function SetBlipAlpha(blip: NativeBlip, alpha: number): void;
+  export function setBlipAlpha(blip: NativeBlip, alpha: number): void;
   /**
    *
    * @param {NativeBlip} blip undefined
    */
-  export function GetBlipAlpha(blip: NativeBlip): void;
+  export function getBlipAlpha(blip: NativeBlip): void;
   /**
    *
    * @param {NativeBlip} blip undefined
    */
-  export function SetBlipFade(blip: NativeBlip, opacity: number, duration: number): void;
+  export function setBlipFade(blip: NativeBlip, opacity: number, duration: number): void;
   /**
    *
    * @param {NativeBlip} blip undefined
    */
-  export function SetBlipRotation(blip: NativeBlip, rotation: number): void;
+  export function setBlipRotation(blip: NativeBlip, rotation: number): void;
   /**
    *
    * @param {NativeBlip} blip undefined
    */
-  export function SetBlipFlashTimer(blip: NativeBlip, duration: number): void;
+  export function setBlipFlashTimer(blip: NativeBlip, duration: number): void;
   /**
    *
    * @param {NativeBlip} blip undefined
    */
-  export function SetBlipFlashInterval(blip: NativeBlip, p1: NativeAny): void;
+  export function setBlipFlashInterval(blip: NativeBlip, p1: NativeAny): void;
   /**
    *
    * @param {NativeBlip} blip undefined
    */
-  export function SetBlipColour(blip: NativeBlip, color: number): void;
+  export function setBlipColour(blip: NativeBlip, color: number): void;
   /**
    *
    * @param {NativeBlip} blip undefined
    */
-  export function SetBlipSecondaryColour(blip: NativeBlip, r: number, g: number, b: number): void;
+  export function setBlipSecondaryColour(blip: NativeBlip, r: number, g: number, b: number): void;
   /**
    *
    * @param {NativeBlip} blip undefined
    */
-  export function GetBlipColour(blip: NativeBlip): void;
+  export function getBlipColour(blip: NativeBlip): void;
   /**
    *
    * @param {NativeBlip} blip undefined
    */
-  export function GetBlipHudColour(blip: NativeBlip): void;
+  export function getBlipHudColour(blip: NativeBlip): void;
   /**
    *
    * @param {NativeBlip} blip undefined
    */
-  export function IsBlipShortRange(blip: NativeBlip): void;
+  export function isBlipShortRange(blip: NativeBlip): void;
   /**
    *
    * @param {NativeBlip} blip undefined
    */
-  export function IsBlipOnMinimap(blip: NativeBlip): void;
+  export function isBlipOnMinimap(blip: NativeBlip): void;
   /**
    *
    * @param {NativeAny} p0 undefined
@@ -15296,21 +15296,21 @@ declare module "natives" {
    *
    * @param {NativeBlip} blip undefined
    */
-  export function SetBlipHighDetail(blip: NativeBlip, toggle: NativeBOOL): void;
+  export function setBlipHighDetail(blip: NativeBlip, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativeBlip} blip undefined
    */
-  export function SetBlipAsMissionCreatorBlip(blip: NativeBlip, toggle: NativeBOOL): void;
+  export function setBlipAsMissionCreatorBlip(blip: NativeBlip, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativeBlip} blip undefined
    */
-  export function IsMissionCreatorBlip(blip: NativeBlip): void;
+  export function isMissionCreatorBlip(blip: NativeBlip): void;
   /**
    *
    */
-  export function DisableBlipNameForVar(): void;
+  export function disableBlipNameForVar(): void;
   /**
    *
    */
@@ -15324,67 +15324,67 @@ declare module "natives" {
    *
    * @param {NativeBlip} blip undefined
    */
-  export function SetBlipFlashes(blip: NativeBlip, toggle: NativeBOOL): void;
+  export function setBlipFlashes(blip: NativeBlip, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativeBlip} blip undefined
    */
-  export function SetBlipFlashesAlternate(blip: NativeBlip, toggle: NativeBOOL): void;
+  export function setBlipFlashesAlternate(blip: NativeBlip, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativeBlip} blip undefined
    */
-  export function IsBlipFlashing(blip: NativeBlip): void;
+  export function isBlipFlashing(blip: NativeBlip): void;
   /**
    *
    * @param {NativeBlip} blip undefined
    */
-  export function SetBlipAsShortRange(blip: NativeBlip, toggle: NativeBOOL): void;
+  export function setBlipAsShortRange(blip: NativeBlip, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativeBlip} blip undefined
    */
-  export function SetBlipScale(blip: NativeBlip, scale: number): void;
+  export function setBlipScale(blip: NativeBlip, scale: number): void;
   /**
    *
    * @param {NativeBlip} blip undefined
    */
-  export function SetBlipPriority(blip: NativeBlip, priority: number): void;
+  export function setBlipPriority(blip: NativeBlip, priority: number): void;
   /**
    *
    * @param {NativeBlip} blip undefined
    */
-  export function SetBlipDisplay(blip: NativeBlip, displayId: number): void;
+  export function setBlipDisplay(blip: NativeBlip, displayId: number): void;
   /**
    *
    * @param {NativeBlip} blip undefined
    */
-  export function SetBlipCategory(blip: NativeBlip, index: number): void;
+  export function setBlipCategory(blip: NativeBlip, index: number): void;
   /**
    *
    * @param {NativeBlip} blip undefined
    */
-  export function RemoveBlip(blip: NativeBlip): void;
+  export function removeBlip(blip: NativeBlip): void;
   /**
    *
    * @param {NativeBlip} blip undefined
    */
-  export function SetBlipAsFriendly(blip: NativeBlip, toggle: NativeBOOL): void;
+  export function setBlipAsFriendly(blip: NativeBlip, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativeBlip} blip undefined
    */
-  export function PulseBlip(blip: NativeBlip): void;
+  export function pulseBlip(blip: NativeBlip): void;
   /**
    *
    * @param {NativeBlip} blip undefined
    */
-  export function ShowNumberOnBlip(blip: NativeBlip, number: number): void;
+  export function showNumberOnBlip(blip: NativeBlip, number: number): void;
   /**
    *
    * @param {NativeBlip} blip undefined
    */
-  export function HideNumberOnBlip(blip: NativeBlip): void;
+  export function hideNumberOnBlip(blip: NativeBlip): void;
   /**
    *
    * @param {NativeBlip} blip undefined
@@ -15394,22 +15394,22 @@ declare module "natives" {
    *
    * @param {NativeBlip} blip undefined
    */
-  export function ShowTickOnBlip(blip: NativeBlip, toggle: NativeBOOL): void;
+  export function showTickOnBlip(blip: NativeBlip, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativeBlip} blip undefined
    */
-  export function ShowHeadingIndicatorOnBlip(blip: NativeBlip, toggle: NativeBOOL): void;
+  export function showHeadingIndicatorOnBlip(blip: NativeBlip, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativeBlip} blip undefined
    */
-  export function SetBlipFriendly(blip: NativeBlip, toggle: NativeBOOL): void;
+  export function setBlipFriendly(blip: NativeBlip, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativeBlip} blip undefined
    */
-  export function SetBlipFriend(blip: NativeBlip, toggle: NativeBOOL): void;
+  export function setBlipFriend(blip: NativeBlip, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativeAny} p0 undefined
@@ -15424,7 +15424,7 @@ declare module "natives" {
    *
    * @param {NativeBlip} blip undefined
    */
-  export function SetBlipShrink(blip: NativeBlip, toggle: NativeBOOL): void;
+  export function setBlipShrink(blip: NativeBlip, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativeAny} p0 undefined
@@ -15434,11 +15434,11 @@ declare module "natives" {
    *
    * @param {NativeBlip} blip undefined
    */
-  export function DoesBlipExist(blip: NativeBlip): void;
+  export function doesBlipExist(blip: NativeBlip): void;
   /**
    *
    */
-  export function SetWaypointOff(): void;
+  export function setWaypointOff(): void;
   /**
    *
    */
@@ -15446,26 +15446,26 @@ declare module "natives" {
   /**
    *
    */
-  export function RefreshWaypoint(): void;
+  export function refreshWaypoint(): void;
   /**
    *
    */
-  export function IsWaypointActive(): void;
+  export function isWaypointActive(): void;
   /**
    *
    * @param {number} x undefined
    */
-  export function SetNewWaypoint(x: number, y: number): void;
+  export function setNewWaypoint(x: number, y: number): void;
   /**
    *
    * @param {NativeBlip} blip undefined
    */
-  export function SetBlipBright(blip: NativeBlip, toggle: NativeBOOL): void;
+  export function setBlipBright(blip: NativeBlip, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativeBlip} blip undefined
    */
-  export function SetBlipShowCone(blip: NativeBlip, toggle: NativeBOOL): void;
+  export function setBlipShowCone(blip: NativeBlip, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
@@ -15475,7 +15475,7 @@ declare module "natives" {
    *
    * @param {number} p0 undefined
    */
-  export function SetMinimapComponent(p0: number, p1: NativeBOOL, p2: number): void;
+  export function setMinimapComponent(p0: number, p1: NativeBOOL, p2: number): void;
   /**
    *
    */
@@ -15483,7 +15483,7 @@ declare module "natives" {
   /**
    *
    */
-  export function GetMainPlayerBlipId(): void;
+  export function getMainPlayerBlipId(): void;
   /**
    *
    * @param {NativeBOOL} p0 undefined
@@ -15492,21 +15492,21 @@ declare module "natives" {
   /**
    *
    */
-  export function HideLoadingOnFadeThisFrame(): void;
+  export function hideLoadingOnFadeThisFrame(): void;
   /**
    *
    * @param {NativeHash} interior undefined
    */
-  export function SetRadarAsInteriorThisFrame(interior: NativeHash, x: number, y: number, heading: number, zoom: number): void;
+  export function setRadarAsInteriorThisFrame(interior: NativeHash, x: number, y: number, heading: number, zoom: number): void;
   /**
    *
    */
-  export function SetRadarAsExteriorThisFrame(): void;
+  export function setRadarAsExteriorThisFrame(): void;
   /**
    *
    * @param {number} x undefined
    */
-  export function SetPlayerBlipPositionThisFrame(x: number, y: number): void;
+  export function setPlayerBlipPositionThisFrame(x: number, y: number): void;
   /**
    *
    */
@@ -15514,7 +15514,7 @@ declare module "natives" {
   /**
    *
    */
-  export function DisableRadarThisFrame(): void;
+  export function disableRadarThisFrame(): void;
   /**
    *
    */
@@ -15522,45 +15522,45 @@ declare module "natives" {
   /**
    *
    */
-  export function CenterPlayerOnRadarThisFrame(): void;
+  export function centerPlayerOnRadarThisFrame(): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function SetWidescreenFormat(p0: NativeAny): void;
+  export function setWidescreenFormat(p0: NativeAny): void;
   /**
    *
    * @param {NativeBOOL} toggle undefined
    */
-  export function DisplayAreaName(toggle: NativeBOOL): void;
+  export function displayAreaName(toggle: NativeBOOL): void;
   /**
    *
    * @param {NativeBOOL} toggle undefined
    */
-  export function DisplayCash(toggle: NativeBOOL): void;
+  export function displayCash(toggle: NativeBOOL): void;
   /**
    *
    * @param {NativeBOOL} toggle undefined
    */
-  export function UpdateDisplayCash(toggle: NativeBOOL): void;
+  export function updateDisplayCash(toggle: NativeBOOL): void;
   /**
    *
    * @param {number} cash undefined
    */
-  export function SetPlayerCashChange(cash: number, bank: number): void;
+  export function setPlayerCashChange(cash: number, bank: number): void;
   /**
    *
    * @param {NativeBOOL} display undefined
    */
-  export function DisplayAmmoThisFrame(display: NativeBOOL): void;
+  export function displayAmmoThisFrame(display: NativeBOOL): void;
   /**
    *
    */
-  export function DisplaySniperScopeThisFrame(): void;
+  export function displaySniperScopeThisFrame(): void;
   /**
    *
    */
-  export function HideHudAndRadarThisFrame(): void;
+  export function hideHudAndRadarThisFrame(): void;
   /**
    *
    * @param {NativeBOOL} p0 undefined
@@ -15569,46 +15569,46 @@ declare module "natives" {
   /**
    *
    */
-  export function SetDisplayCash(): void;
+  export function setDisplayCash(): void;
   /**
    *
    */
-  export function RemoveDisplayCash(): void;
+  export function removeDisplayCash(): void;
   /**
    *
    */
-  export function SetMultiplayerBankCash(): void;
+  export function setMultiplayerBankCash(): void;
   /**
    *
    */
-  export function RemoveMultiplayerBankCash(): void;
+  export function removeMultiplayerBankCash(): void;
   /**
    *
    * @param {number} p0 undefined
    */
-  export function SetMultiplayerHudCash(p0: number, p1: number): void;
+  export function setMultiplayerHudCash(p0: number, p1: number): void;
   /**
    *
    */
-  export function RemoveMultiplayerHudCash(): void;
+  export function removeMultiplayerHudCash(): void;
   /**
    *
    */
-  export function HideHelpTextThisFrame(): void;
+  export function hideHelpTextThisFrame(): void;
   /**
    *
    * @param {string} message undefined
    */
-  export function DisplayHelpTextThisFrame(message: string, p1: NativeBOOL): void;
+  export function displayHelpTextThisFrame(message: string, p1: NativeBOOL): void;
   /**
    *
    * @param {NativeBOOL} forcedShow undefined
    */
-  export function ShowWeaponWheel(forcedShow: NativeBOOL): void;
+  export function showWeaponWheel(forcedShow: NativeBOOL): void;
   /**
    *
    */
-  export function BlockWeaponWheelThisFrame(): void;
+  export function blockWeaponWheelThisFrame(): void;
   /**
    *
    */
@@ -15632,11 +15632,11 @@ declare module "natives" {
    *
    * @param {number} p0 undefined
    */
-  export function SetGpsFlags(p0: number, p1: number): void;
+  export function setGpsFlags(p0: number, p1: number): void;
   /**
    *
    */
-  export function ClearGpsFlags(): void;
+  export function clearGpsFlags(): void;
   /**
    *
    * @param {NativeBOOL} p0 undefined
@@ -15645,7 +15645,7 @@ declare module "natives" {
   /**
    *
    */
-  export function ClearGpsRaceTrack(): void;
+  export function clearGpsRaceTrack(): void;
   /**
    *
    * @param {NativeAny} p0 undefined
@@ -15687,12 +15687,12 @@ declare module "natives" {
   /**
    *
    */
-  export function ClearGpsPlayerWaypoint(): void;
+  export function clearGpsPlayerWaypoint(): void;
   /**
    *
    * @param {NativeBOOL} toggle undefined
    */
-  export function SetGpsFlashes(toggle: NativeBOOL): void;
+  export function setGpsFlashes(toggle: NativeBOOL): void;
   /**
    *
    * @param {NativeAny} p0 undefined
@@ -15701,7 +15701,7 @@ declare module "natives" {
   /**
    *
    */
-  export function FlashMinimapDisplay(): void;
+  export function flashMinimapDisplay(): void;
   /**
    *
    * @param {NativeAny} p0 undefined
@@ -15711,22 +15711,22 @@ declare module "natives" {
    *
    * @param {NativeBOOL} toggle undefined
    */
-  export function ToggleStealthRadar(toggle: NativeBOOL): void;
+  export function toggleStealthRadar(toggle: NativeBOOL): void;
   /**
    *
    * @param {NativeBOOL} p0 undefined
    */
-  export function KeyHudColour(p0: NativeBOOL, p1: NativeAny): void;
+  export function keyHudColour(p0: NativeBOOL, p1: NativeAny): void;
   /**
    *
    * @param {NativeBOOL} p0 undefined
    */
-  export function SetMissionName(p0: NativeBOOL, name: string): void;
+  export function setMissionName(p0: NativeBOOL, name: string): void;
   /**
    *
    * @param {NativeBOOL} p0 undefined
    */
-  export function SetMissionName2(p0: NativeBOOL, name: string): void;
+  export function setMissionName2(p0: NativeBOOL, name: string): void;
   /**
    *
    * @param {NativeBOOL} p0 undefined
@@ -15736,17 +15736,17 @@ declare module "natives" {
    *
    * @param {NativeBOOL} toggle undefined
    */
-  export function SetMinimapBlockWaypoint(toggle: NativeBOOL): void;
+  export function setMinimapBlockWaypoint(toggle: NativeBOOL): void;
   /**
    *
    * @param {NativeBOOL} toggle undefined
    */
-  export function SetNorthYanktonMap(toggle: NativeBOOL): void;
+  export function setNorthYanktonMap(toggle: NativeBOOL): void;
   /**
    *
    * @param {NativeBOOL} toggle undefined
    */
-  export function SetMinimapRevealed(toggle: NativeBOOL): void;
+  export function setMinimapRevealed(toggle: NativeBOOL): void;
   /**
    *
    */
@@ -15755,7 +15755,7 @@ declare module "natives" {
    *
    * @param {number} x undefined
    */
-  export function IsMinimapAreaRevealed(x: number, y: number, radius: number): void;
+  export function isMinimapAreaRevealed(x: number, y: number, radius: number): void;
   /**
    *
    * @param {NativeBOOL} p0 undefined
@@ -15779,25 +15779,25 @@ declare module "natives" {
    *
    * @param {number} angle undefined
    */
-  export function LockMinimapAngle(angle: number): void;
+  export function lockMinimapAngle(angle: number): void;
   /**
    *
    */
-  export function UnlockMinimapAngle(): void;
+  export function unlockMinimapAngle(): void;
   /**
    *
    * @param {number} x undefined
    */
-  export function LockMinimapPosition(x: number, y: number): void;
+  export function lockMinimapPosition(x: number, y: number): void;
   /**
    *
    */
-  export function UnlockMinimapPosition(): void;
+  export function unlockMinimapPosition(): void;
   /**
    *
    * @param {number} altitude undefined
    */
-  export function SetMinimapAttitudeIndicatorLevel(altitude: number, p1: NativeBOOL): void;
+  export function setMinimapAttitudeIndicatorLevel(altitude: number, p1: NativeBOOL): void;
   /**
    *
    * @param {NativeAny} p0 undefined
@@ -15817,22 +15817,22 @@ declare module "natives" {
    *
    * @param {NativeBOOL} toggleBigMap undefined
    */
-  export function SetRadarBigmapEnabled(toggleBigMap: NativeBOOL, showFullMap: NativeBOOL): void;
+  export function setRadarBigmapEnabled(toggleBigMap: NativeBOOL, showFullMap: NativeBOOL): void;
   /**
    *
    * @param {number} id undefined
    */
-  export function IsHudComponentActive(id: number): void;
+  export function isHudComponentActive(id: number): void;
   /**
    *
    * @param {number} id undefined
    */
-  export function IsScriptedHudComponentActive(id: number): void;
+  export function isScriptedHudComponentActive(id: number): void;
   /**
    *
    * @param {number} id undefined
    */
-  export function HideScriptedHudComponentThisFrame(id: number): void;
+  export function hideScriptedHudComponentThisFrame(id: number): void;
   /**
    *
    * @param {NativeAny} p0 undefined
@@ -15842,12 +15842,12 @@ declare module "natives" {
    *
    * @param {number} id undefined
    */
-  export function HideHudComponentThisFrame(id: number): void;
+  export function hideHudComponentThisFrame(id: number): void;
   /**
    *
    * @param {number} id undefined
    */
-  export function ShowHudComponentThisFrame(id: number): void;
+  export function showHudComponentThisFrame(id: number): void;
   /**
    *
    */
@@ -15855,35 +15855,35 @@ declare module "natives" {
   /**
    *
    */
-  export function ResetReticuleValues(): void;
+  export function resetReticuleValues(): void;
   /**
    *
    * @param {number} id undefined
    */
-  export function ResetHudComponentValues(id: number): void;
+  export function resetHudComponentValues(id: number): void;
   /**
    *
    * @param {number} id undefined
    */
-  export function SetHudComponentPosition(id: number, x: number, y: number): void;
+  export function setHudComponentPosition(id: number, x: number, y: number): void;
   /**
    *
    * @param {number} id undefined
    */
-  export function GetHudComponentPosition(id: number): void;
+  export function getHudComponentPosition(id: number): void;
   /**
    *
    */
-  export function ClearReminderMessage(): void;
+  export function clearReminderMessage(): void;
   /**
    *
    * @param {number} worldX undefined
    */
-  export function GetScreenCoordFromWorldCoord(worldX: number, worldY: number, worldZ: number, screenX: number, screenY: number): void;
+  export function getScreenCoordFromWorldCoord(worldX: number, worldY: number, worldZ: number, screenX: number, screenY: number): void;
   /**
    *
    */
-  export function DisplayJobReport(): void;
+  export function displayJobReport(): void;
   /**
    *
    */
@@ -15921,89 +15921,89 @@ declare module "natives" {
    *
    * @param {NativeAny} p0 undefined
    */
-  export function ClearFloatingHelp(p0: NativeAny, p1: NativeBOOL): void;
+  export function clearFloatingHelp(p0: NativeAny, p1: NativeBOOL): void;
   /**
    *
    * @param {number} headDisplayId undefined
    */
-  export function SetMpGamerTagColor(headDisplayId: number, username: string, pointedClanTag: NativeBOOL, isRockstarClan: NativeBOOL, clanTag: string, p5: NativeAny, r: number, g: number, b: number): void;
+  export function setMpGamerTagColor(headDisplayId: number, username: string, pointedClanTag: NativeBOOL, isRockstarClan: NativeBOOL, clanTag: string, p5: NativeAny, r: number, g: number, b: number): void;
   /**
    *
    */
-  export function HasMpGamerTag(): void;
+  export function hasMpGamerTag(): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function CreateMpGamerTag(ped: NativePed, username: string, pointedClanTag: NativeBOOL, isRockstarClan: NativeBOOL, clanTag: string, p5: NativeAny): void;
+  export function createMpGamerTag(ped: NativePed, username: string, pointedClanTag: NativeBOOL, isRockstarClan: NativeBOOL, clanTag: string, p5: NativeAny): void;
   /**
    *
    * @param {number} gamerTagId undefined
    */
-  export function RemoveMpGamerTag(gamerTagId: number): void;
+  export function removeMpGamerTag(gamerTagId: number): void;
   /**
    *
    * @param {number} gamerTagId undefined
    */
-  export function IsMpGamerTagActive(gamerTagId: number): void;
+  export function isMpGamerTagActive(gamerTagId: number): void;
   /**
    *
    * @param {number} gamerTagId undefined
    */
-  export function AddTrevorRandomModifier(gamerTagId: number): void;
+  export function addTrevorRandomModifier(gamerTagId: number): void;
   /**
    *
    * @param {number} gamerTagId undefined
    */
-  export function SetMpGamerTagVisibility(gamerTagId: number, component: number, toggle: NativeBOOL): void;
+  export function setMpGamerTagVisibility(gamerTagId: number, component: number, toggle: NativeBOOL): void;
   /**
    *
    * @param {number} headDisplayId undefined
    */
-  export function SetMpGamerTagIcons(headDisplayId: number, p1: NativeBOOL): void;
+  export function setMpGamerTagIcons(headDisplayId: number, p1: NativeBOOL): void;
   /**
    *
    * @param {number} gamerTagId undefined
    */
-  export function SetMpGamerTagColour(gamerTagId: number, flag: number, color: number): void;
+  export function setMpGamerTagColour(gamerTagId: number, flag: number, color: number): void;
   /**
    *
    * @param {number} headDisplayId undefined
    */
-  export function SetMpGamerTagHealthBarColour(headDisplayId: number, color: number): void;
+  export function setMpGamerTagHealthBarColour(headDisplayId: number, color: number): void;
   /**
    *
    * @param {number} gamerTagId undefined
    */
-  export function SetMpGamerTagAlpha(gamerTagId: number, component: number, alpha: number): void;
+  export function setMpGamerTagAlpha(gamerTagId: number, component: number, alpha: number): void;
   /**
    *
    * @param {number} gamerTagId undefined
    */
-  export function SetMpGamerTagWantedLevel(gamerTagId: number, wantedlvl: number): void;
+  export function setMpGamerTagWantedLevel(gamerTagId: number, wantedlvl: number): void;
   /**
    *
    * @param {number} gamerTagId undefined
    */
-  export function SetMpGamerTagName(gamerTagId: number, string: string): void;
+  export function setMpGamerTagName(gamerTagId: number, string: string): void;
   /**
    *
    * @param {number} gamerTagId undefined
    */
-  export function HasMpGamerTag2(gamerTagId: number): void;
+  export function hasMpGamerTag2(gamerTagId: number): void;
   /**
    *
    * @param {number} gamerTagId undefined
    */
-  export function SetMpGamerTagChatting(gamerTagId: number, string: string): void;
+  export function setMpGamerTagChatting(gamerTagId: number, string: string): void;
   /**
    *
    */
-  export function GetActiveWebsiteId(): void;
+  export function getActiveWebsiteId(): void;
   /**
    *
    */
-  export function GetCurrentWebsiteId(): void;
+  export function getCurrentWebsiteId(): void;
   /**
    *
    * @param {NativeAny} p0 undefined
@@ -16022,17 +16022,17 @@ declare module "natives" {
    *
    * @param {string} entryLine1 undefined
    */
-  export function SetWarningMessage(entryLine1: string, instructionalKey: number, entryLine2: string, p3: NativeBOOL, p4: NativeAny, p5: NativeAny, p6: NativeAny, background: NativeBOOL): void;
+  export function setWarningMessage(entryLine1: string, instructionalKey: number, entryLine2: string, p3: NativeBOOL, p4: NativeAny, p5: NativeAny, p6: NativeAny, background: NativeBOOL): void;
   /**
    *
    * @param {string} entryHeader undefined
    */
-  export function SetWarningMessageWithHeader(entryHeader: string, entryLine1: string, instructionalKey: number, entryLine2: string, p4: NativeBOOL, p5: NativeAny, p6: NativeAny, p7: NativeAny, background: NativeBOOL): void;
+  export function setWarningMessageWithHeader(entryHeader: string, entryLine1: string, instructionalKey: number, entryLine2: string, p4: NativeBOOL, p5: NativeAny, p6: NativeAny, p7: NativeAny, background: NativeBOOL): void;
   /**
    *
    * @param {string} entryHeader undefined
    */
-  export function SetWarningMessage3(entryHeader: string, entryLine1: string, instructionalKey: NativeAny, entryLine2: string, p4: NativeBOOL, p5: NativeAny, p6: NativeAny, p7: NativeAny, p8: NativeAny, p9: NativeBOOL): void;
+  export function setWarningMessage3(entryHeader: string, entryLine1: string, instructionalKey: NativeAny, entryLine2: string, p4: NativeBOOL, p5: NativeAny, p6: NativeAny, p7: NativeAny, p8: NativeAny, p9: NativeBOOL): void;
   /**
    *
    * @param {NativeAny} p0 undefined
@@ -16050,7 +16050,7 @@ declare module "natives" {
   /**
    *
    */
-  export function IsWarningMessageActive(): void;
+  export function isWarningMessageActive(): void;
   /**
    *
    */
@@ -16059,7 +16059,7 @@ declare module "natives" {
    *
    * @param {NativeBOOL} toggle undefined
    */
-  export function SetMapFullScreen(toggle: NativeBOOL): void;
+  export function setMapFullScreen(toggle: NativeBOOL): void;
   /**
    *
    * @param {NativeAny} p0 undefined
@@ -16095,25 +16095,25 @@ declare module "natives" {
    *
    * @param {NativeHash} menuhash undefined
    */
-  export function ActivateFrontendMenu(menuhash: NativeHash, Toggle_Pause: NativeBOOL, component: number): void;
+  export function activateFrontendMenu(menuhash: NativeHash, Toggle_Pause: NativeBOOL, component: number): void;
   /**
    *
    * @param {NativeHash} menuHash undefined
    */
-  export function RestartFrontendMenu(menuHash: NativeHash, p1: number): void;
+  export function restartFrontendMenu(menuHash: NativeHash, p1: number): void;
   /**
    *
    */
-  export function GetCurrentFrontendMenu(): void;
+  export function getCurrentFrontendMenu(): void;
   /**
    *
    * @param {NativeBOOL} toggle undefined
    */
-  export function SetPauseMenuActive(toggle: NativeBOOL): void;
+  export function setPauseMenuActive(toggle: NativeBOOL): void;
   /**
    *
    */
-  export function DisableFrontendThisFrame(): void;
+  export function disableFrontendThisFrame(): void;
   /**
    *
    */
@@ -16126,11 +16126,11 @@ declare module "natives" {
    *
    * @param {NativeBOOL} active undefined
    */
-  export function SetFrontendActive(active: NativeBOOL): void;
+  export function setFrontendActive(active: NativeBOOL): void;
   /**
    *
    */
-  export function IsPauseMenuActive(): void;
+  export function isPauseMenuActive(): void;
   /**
    *
    */
@@ -16138,7 +16138,7 @@ declare module "natives" {
   /**
    *
    */
-  export function GetPauseMenuState(): void;
+  export function getPauseMenuState(): void;
   /**
    *
    */
@@ -16146,12 +16146,12 @@ declare module "natives" {
   /**
    *
    */
-  export function IsPauseMenuRestarting(): void;
+  export function isPauseMenuRestarting(): void;
   /**
    *
    * @param {string} p0 undefined
    */
-  export function LogDebugInfo(p0: string): void;
+  export function logDebugInfo(p0: string): void;
   /**
    *
    * @param {number} p0 undefined
@@ -16165,12 +16165,12 @@ declare module "natives" {
    *
    * @param {NativeHash} hash undefined
    */
-  export function AddFrontendMenuContext(hash: NativeHash): void;
+  export function addFrontendMenuContext(hash: NativeHash): void;
   /**
    *
    * @param {NativeHash} hash undefined
    */
-  export function ObjectDecalToggle(hash: NativeHash): void;
+  export function objectDecalToggle(hash: NativeHash): void;
   /**
    *
    * @param {NativeHash} hash undefined
@@ -16201,7 +16201,7 @@ declare module "natives" {
    *
    * @param {NativeBOOL} p0 undefined
    */
-  export function EnableDeathbloodSeethrough(p0: NativeBOOL): void;
+  export function enableDeathbloodSeethrough(p0: NativeBOOL): void;
   /**
    *
    * @param {NativeBOOL} p0 undefined
@@ -16268,7 +16268,7 @@ declare module "natives" {
    *
    * @param {NativeAny} p0 undefined
    */
-  export function SetUseridsUihidden(p0: NativeAny, p1: NativeAny): void;
+  export function setUseridsUihidden(p0: NativeAny, p1: NativeAny): void;
   /**
    *
    * @param {NativeAny} p0 undefined
@@ -16302,12 +16302,12 @@ declare module "natives" {
   /**
    *
    */
-  export function ClearPedInPauseMenu(): void;
+  export function clearPedInPauseMenu(): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function GivePedToPauseMenu(ped: NativePed, p1: number): void;
+  export function givePedToPauseMenu(ped: NativePed, p1: number): void;
   /**
    *
    * @param {NativeBOOL} p0 undefined
@@ -16321,7 +16321,7 @@ declare module "natives" {
   /**
    *
    */
-  export function ShowSocialClubLegalScreen(): void;
+  export function showSocialClubLegalScreen(): void;
   /**
    *
    */
@@ -16346,7 +16346,7 @@ declare module "natives" {
   /**
    *
    */
-  export function IsSocialClubActive(): void;
+  export function isSocialClubActive(): void;
   /**
    *
    * @param {NativeBOOL} p0 undefined
@@ -16359,16 +16359,16 @@ declare module "natives" {
   /**
    *
    */
-  export function IsTextChatActive(): void;
+  export function isTextChatActive(): void;
   /**
    *
    */
-  export function AbortTextChat(): void;
+  export function abortTextChat(): void;
   /**
    *
    * @param {NativeBOOL} p0 undefined
    */
-  export function SetTextChatUnk(p0: NativeBOOL): void;
+  export function setTextChatUnk(p0: NativeBOOL): void;
   /**
    *
    * @param {NativeBOOL} p0 undefined
@@ -16378,32 +16378,32 @@ declare module "natives" {
    *
    * @param {number} pedHandle undefined
    */
-  export function SetPedAiBlip(pedHandle: number, showViewCones: NativeBOOL): void;
+  export function setPedAiBlip(pedHandle: number, showViewCones: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function DoesPedHaveAiBlip(ped: NativePed): void;
+  export function doesPedHaveAiBlip(ped: NativePed): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetAiBlipType(ped: NativePed, type: number): void;
+  export function setAiBlipType(ped: NativePed, type: number): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function HideSpecialAbilityLockonOperation(p0: NativeAny, p1: NativeBOOL): void;
+  export function hideSpecialAbilityLockonOperation(p0: NativeAny, p1: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function IsAiBlipAlwaysShown(ped: NativePed, flag: NativeBOOL): void;
+  export function isAiBlipAlwaysShown(ped: NativePed, flag: NativeBOOL): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetAiBlipMaxDistance(ped: NativePed, distance: number): void;
+  export function setAiBlipMaxDistance(ped: NativePed, distance: number): void;
   /**
    *
    * @param {NativePed} ped undefined
@@ -16413,7 +16413,7 @@ declare module "natives" {
    *
    * @param {NativePed} ped undefined
    */
-  export function GetAiBlip(ped: NativePed): void;
+  export function getAiBlip(ped: NativePed): void;
   /**
    *
    */
@@ -16426,7 +16426,7 @@ declare module "natives" {
    *
    * @param {NativeBOOL} toggle undefined
    */
-  export function SetDirectorMode(toggle: NativeBOOL): void;
+  export function setDirectorMode(toggle: NativeBOOL): void;
   /**
    *
    * @param {NativeBOOL} p0 undefined
@@ -16436,57 +16436,57 @@ declare module "natives" {
    *
    * @param {NativeBOOL} enabled undefined
    */
-  export function SetDebugLinesAndSpheresDrawingActive(enabled: NativeBOOL): void;
+  export function setDebugLinesAndSpheresDrawingActive(enabled: NativeBOOL): void;
   /**
    *
    * @param {number} x1 undefined
    */
-  export function DrawDebugLine(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, red: number, green: number, blue: number, alpha: number): void;
+  export function drawDebugLine(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, red: number, green: number, blue: number, alpha: number): void;
   /**
    *
    * @param {number} x1 undefined
    */
-  export function DrawDebugLineWithTwoColours(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, r1: number, g1: number, b1: number, r2: number, g2: number, b2: number, alpha1: number, alpha2: number): void;
+  export function drawDebugLineWithTwoColours(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, r1: number, g1: number, b1: number, r2: number, g2: number, b2: number, alpha1: number, alpha2: number): void;
   /**
    *
    * @param {number} x undefined
    */
-  export function DrawDebugSphere(x: number, y: number, z: number, radius: number, red: number, green: number, blue: number, alpha: number): void;
+  export function drawDebugSphere(x: number, y: number, z: number, radius: number, red: number, green: number, blue: number, alpha: number): void;
   /**
    *
    * @param {number} x1 undefined
    */
-  export function DrawDebugBox(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, red: number, green: number, blue: number, alpha: number): void;
+  export function drawDebugBox(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, red: number, green: number, blue: number, alpha: number): void;
   /**
    *
    * @param {number} x undefined
    */
-  export function DrawDebugCross(x: number, y: number, z: number, size: number, red: number, green: number, blue: number, alpha: number): void;
+  export function drawDebugCross(x: number, y: number, z: number, size: number, red: number, green: number, blue: number, alpha: number): void;
   /**
    *
    * @param {string} text undefined
    */
-  export function DrawDebugText(text: string, x: number, y: number, z: number, red: number, green: number, blue: number, alpha: number): void;
+  export function drawDebugText(text: string, x: number, y: number, z: number, red: number, green: number, blue: number, alpha: number): void;
   /**
    *
    * @param {string} text undefined
    */
-  export function DrawDebugText2d(text: string, x: number, y: number, z: number, red: number, green: number, blue: number, alpha: number): void;
+  export function drawDebugText2d(text: string, x: number, y: number, z: number, red: number, green: number, blue: number, alpha: number): void;
   /**
    *
    * @param {number} x1 undefined
    */
-  export function DrawLine(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, red: number, green: number, blue: number, alpha: number): void;
+  export function drawLine(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, red: number, green: number, blue: number, alpha: number): void;
   /**
    *
    * @param {number} x1 undefined
    */
-  export function DrawPoly(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, x3: number, y3: number, z3: number, red: number, green: number, blue: number, alpha: number): void;
+  export function drawPoly(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, x3: number, y3: number, z3: number, red: number, green: number, blue: number, alpha: number): void;
   /**
    *
    * @param {number} x1 undefined
    */
-  export function DrawBox(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, red: number, green: number, blue: number, alpha: number): void;
+  export function drawBox(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, red: number, green: number, blue: number, alpha: number): void;
   /**
    *
    * @param {NativeBOOL} toggle undefined
@@ -16574,15 +16574,15 @@ declare module "natives" {
   /**
    *
    */
-  export function GetMaximumNumberOfPhotos(): void;
+  export function getMaximumNumberOfPhotos(): void;
   /**
    *
    */
-  export function GetMaximumNumberOfPhotos2(): void;
+  export function getMaximumNumberOfPhotos2(): void;
   /**
    *
    */
-  export function GetNumberOfPhotos(): void;
+  export function getNumberOfPhotos(): void;
   /**
    *
    * @param {NativeBOOL} p0 undefined
@@ -16611,27 +16611,27 @@ declare module "natives" {
    *
    * @param {NativeAny} p0 undefined
    */
-  export function ReturnTwo(p0: NativeAny): void;
+  export function returnTwo(p0: NativeAny): void;
   /**
    *
    * @param {number} x undefined
    */
-  export function DrawLightWithRangeAndShadow(x: number, y: number, z: number, r: number, g: number, b: number, range: number, intensity: number, shadow: number): void;
+  export function drawLightWithRangeAndShadow(x: number, y: number, z: number, r: number, g: number, b: number, range: number, intensity: number, shadow: number): void;
   /**
    *
    * @param {number} posX undefined
    */
-  export function DrawLightWithRange(posX: number, posY: number, posZ: number, colorR: number, colorG: number, colorB: number, range: number, intensity: number): void;
+  export function drawLightWithRange(posX: number, posY: number, posZ: number, colorR: number, colorG: number, colorB: number, range: number, intensity: number): void;
   /**
    *
    * @param {number} posX undefined
    */
-  export function DrawSpotLight(posX: number, posY: number, posZ: number, dirX: number, dirY: number, dirZ: number, colorR: number, colorG: number, colorB: number, distance: number, brightness: number, hardness: number, radius: number, falloff: number): void;
+  export function drawSpotLight(posX: number, posY: number, posZ: number, dirX: number, dirY: number, dirZ: number, colorR: number, colorG: number, colorB: number, distance: number, brightness: number, hardness: number, radius: number, falloff: number): void;
   /**
    *
    * @param {number} posX undefined
    */
-  export function DrawSpotLightWithShadow(posX: number, posY: number, posZ: number, dirX: number, dirY: number, dirZ: number, colorR: number, colorG: number, colorB: number, distance: number, brightness: number, roundness: number, radius: number, falloff: number, shadowId: number): void;
+  export function drawSpotLightWithShadow(posX: number, posY: number, posZ: number, dirX: number, dirY: number, dirZ: number, colorR: number, colorG: number, colorB: number, distance: number, brightness: number, roundness: number, radius: number, falloff: number, shadowId: number): void;
   /**
    *
    * @param {number} p0 undefined
@@ -16641,37 +16641,37 @@ declare module "natives" {
    *
    * @param {NativeEntity} entity undefined
    */
-  export function EntityDescriptionText(entity: NativeEntity): void;
+  export function entityDescriptionText(entity: NativeEntity): void;
   /**
    *
    * @param {number} type undefined
    */
-  export function DrawMarker(type: number, posX: number, posY: number, posZ: number, dirX: number, dirY: number, dirZ: number, rotX: number, rotY: number, rotZ: number, scaleX: number, scaleY: number, scaleZ: number, red: number, green: number, blue: number, alpha: number, bobUpAndDown: NativeBOOL, faceCamera: NativeBOOL, p19: number, rotate: NativeBOOL, textureDict: string, textureName: string, drawOnEnts: NativeBOOL): void;
+  export function drawMarker(type: number, posX: number, posY: number, posZ: number, dirX: number, dirY: number, dirZ: number, rotX: number, rotY: number, rotZ: number, scaleX: number, scaleY: number, scaleZ: number, red: number, green: number, blue: number, alpha: number, bobUpAndDown: NativeBOOL, faceCamera: NativeBOOL, p19: number, rotate: NativeBOOL, textureDict: string, textureName: string, drawOnEnts: NativeBOOL): void;
   /**
    *
    * @param {number} type undefined
    */
-  export function CreateCheckpoint(type: number, posX1: number, posY1: number, posZ1: number, posX2: number, posY2: number, posZ2: number, radius: number, red: number, green: number, blue: number, alpha: number, reserved: number): void;
+  export function createCheckpoint(type: number, posX1: number, posY1: number, posZ1: number, posX2: number, posY2: number, posZ2: number, radius: number, red: number, green: number, blue: number, alpha: number, reserved: number): void;
   /**
    *
    * @param {number} checkpoint undefined
    */
-  export function SetCheckpointScale(checkpoint: number, p0: number): void;
+  export function setCheckpointScale(checkpoint: number, p0: number): void;
   /**
    *
    * @param {number} checkpoint undefined
    */
-  export function SetCheckpointCylinderHeight(checkpoint: number, nearHeight: number, farHeight: number, radius: number): void;
+  export function setCheckpointCylinderHeight(checkpoint: number, nearHeight: number, farHeight: number, radius: number): void;
   /**
    *
    * @param {number} checkpoint undefined
    */
-  export function SetCheckpointRgba(checkpoint: number, red: number, green: number, blue: number, alpha: number): void;
+  export function setCheckpointRgba(checkpoint: number, red: number, green: number, blue: number, alpha: number): void;
   /**
    *
    * @param {number} checkpoint undefined
    */
-  export function SetCheckpointIconRgba(checkpoint: number, red: number, green: number, blue: number, alpha: number): void;
+  export function setCheckpointIconRgba(checkpoint: number, red: number, green: number, blue: number, alpha: number): void;
   /**
    *
    * @param {number} checkpoint undefined
@@ -16686,7 +16686,7 @@ declare module "natives" {
    *
    * @param {number} checkpoint undefined
    */
-  export function DeleteCheckpoint(checkpoint: number): void;
+  export function deleteCheckpoint(checkpoint: number): void;
   /**
    *
    * @param {NativeBOOL} p0 undefined
@@ -16701,22 +16701,22 @@ declare module "natives" {
    *
    * @param {string} textureDict undefined
    */
-  export function RequestStreamedTextureDict(textureDict: string, unused: NativeBOOL): void;
+  export function requestStreamedTextureDict(textureDict: string, unused: NativeBOOL): void;
   /**
    *
    * @param {string} textureDict undefined
    */
-  export function HasStreamedTextureDictLoaded(textureDict: string): void;
+  export function hasStreamedTextureDictLoaded(textureDict: string): void;
   /**
    *
    * @param {string} textureDict undefined
    */
-  export function SetStreamedTextureDictAsNoLongerNeeded(textureDict: string): void;
+  export function setStreamedTextureDictAsNoLongerNeeded(textureDict: string): void;
   /**
    *
    * @param {number} x undefined
    */
-  export function DrawRect(x: number, y: number, width: number, height: number, r: number, g: number, b: number, a: number): void;
+  export function drawRect(x: number, y: number, width: number, height: number, r: number, g: number, b: number, a: number): void;
   /**
    *
    * @param {NativeBOOL} p0 undefined
@@ -16726,21 +16726,21 @@ declare module "natives" {
    *
    * @param {number} layer undefined
    */
-  export function SetUiLayer(layer: number): void;
+  export function setUiLayer(layer: number): void;
   /**
    *
    * @param {number} x undefined
    */
-  export function ScreenDrawPositionBegin(x: number, y: number): void;
+  export function screenDrawPositionBegin(x: number, y: number): void;
   /**
    *
    */
-  export function ScreenDrawPositionEnd(): void;
+  export function screenDrawPositionEnd(): void;
   /**
    *
    * @param {number} x undefined
    */
-  export function ScreenDrawPositionRatio(x: number, y: number, p2: number, p3: number): void;
+  export function screenDrawPositionRatio(x: number, y: number, p2: number, p3: number): void;
   /**
    *
    * @param {number} p0 undefined
@@ -16749,56 +16749,56 @@ declare module "natives" {
   /**
    *
    */
-  export function GetSafeZoneSize(): void;
+  export function getSafeZoneSize(): void;
   /**
    *
    * @param {string} textureDict undefined
    */
-  export function DrawSprite(textureDict: string, textureName: string, screenX: number, screenY: number, width: number, height: number, heading: number, red: number, green: number, blue: number, alpha: number): void;
+  export function drawSprite(textureDict: string, textureName: string, screenX: number, screenY: number, width: number, height: number, heading: number, red: number, green: number, blue: number, alpha: number): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function AddEntityIcon(entity: NativeEntity, icon: string): void;
+  export function addEntityIcon(entity: NativeEntity, icon: string): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function SetEntityIconVisibility(entity: NativeEntity, toggle: NativeBOOL): void;
+  export function setEntityIconVisibility(entity: NativeEntity, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function SetEntityIconColor(entity: NativeEntity, red: number, green: number, blue: number, alpha: number): void;
+  export function setEntityIconColor(entity: NativeEntity, red: number, green: number, blue: number, alpha: number): void;
   /**
    *
    * @param {number} x undefined
    */
-  export function SetDrawOrigin(x: number, y: number, z: number, p3: NativeAny): void;
+  export function setDrawOrigin(x: number, y: number, z: number, p3: NativeAny): void;
   /**
    *
    */
-  export function ClearDrawOrigin(): void;
+  export function clearDrawOrigin(): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function AttachTvAudioToEntity(entity: NativeEntity): void;
+  export function attachTvAudioToEntity(entity: NativeEntity): void;
   /**
    *
    * @param {NativeBOOL} toggle undefined
    */
-  export function SetTvAudioFrontend(toggle: NativeBOOL): void;
+  export function setTvAudioFrontend(toggle: NativeBOOL): void;
   /**
    *
    * @param {string} movieMeshSetName undefined
    */
-  export function LoadMovieMeshSet(movieMeshSetName: string): void;
+  export function loadMovieMeshSet(movieMeshSetName: string): void;
   /**
    *
    * @param {number} movieMeshSet undefined
    */
-  export function ReleaseMovieMeshSet(movieMeshSet: number): void;
+  export function releaseMovieMeshSet(movieMeshSet: number): void;
   /**
    *
    * @param {NativeAny} p0 undefined
@@ -16808,17 +16808,17 @@ declare module "natives" {
    *
    * @param {number} x undefined
    */
-  export function GetScreenResolution(x: number, y: number): void;
+  export function getScreenResolution(x: number, y: number): void;
   /**
    *
    * @param {number} x undefined
    */
-  export function GetActiveScreenResolution(x: number, y: number): void;
+  export function getActiveScreenResolution(x: number, y: number): void;
   /**
    *
    * @param {NativeBOOL} b undefined
    */
-  export function GetAspectRatio(b: NativeBOOL): void;
+  export function getAspectRatio(b: NativeBOOL): void;
   /**
    *
    */
@@ -16826,11 +16826,11 @@ declare module "natives" {
   /**
    *
    */
-  export function GetIsWidescreen(): void;
+  export function getIsWidescreen(): void;
   /**
    *
    */
-  export function GetIsHidef(): void;
+  export function getIsHidef(): void;
   /**
    *
    */
@@ -16839,7 +16839,7 @@ declare module "natives" {
    *
    * @param {NativeBOOL} toggle undefined
    */
-  export function SetNightvision(toggle: NativeBOOL): void;
+  export function setNightvision(toggle: NativeBOOL): void;
   /**
    *
    */
@@ -16847,7 +16847,7 @@ declare module "natives" {
   /**
    *
    */
-  export function IsNightvisionActive(): void;
+  export function isNightvisionActive(): void;
   /**
    *
    * @param {NativeBOOL} p0 undefined
@@ -16857,17 +16857,17 @@ declare module "natives" {
    *
    * @param {NativeBOOL} toggle undefined
    */
-  export function SetNoiseoveride(toggle: NativeBOOL): void;
+  export function setNoiseoveride(toggle: NativeBOOL): void;
   /**
    *
    * @param {number} value undefined
    */
-  export function SetNoisinessoveride(value: number): void;
+  export function setNoisinessoveride(value: number): void;
   /**
    *
    * @param {string} textureDict undefined
    */
-  export function GetTextureResolution(textureDict: string, textureName: string): void;
+  export function getTextureResolution(textureDict: string, textureName: string): void;
   /**
    *
    * @param {number} p0 undefined
@@ -16877,7 +16877,7 @@ declare module "natives" {
    *
    * @param {number} p0 undefined
    */
-  export function SetFlash(p0: number, p1: number, fadeIn: number, duration: number, fadeOut: number): void;
+  export function setFlash(p0: number, p1: number, fadeIn: number, duration: number, fadeOut: number): void;
   /**
    *
    */
@@ -16886,7 +16886,7 @@ declare module "natives" {
    *
    * @param {NativeBOOL} enable undefined
    */
-  export function SetBlackout(enable: NativeBOOL): void;
+  export function setBlackout(enable: NativeBOOL): void;
   /**
    *
    */
@@ -16894,22 +16894,22 @@ declare module "natives" {
   /**
    *
    */
-  export function CreateTrackedPoint(): void;
+  export function createTrackedPoint(): void;
   /**
    *
    * @param {number} point undefined
    */
-  export function SetTrackedPointInfo(point: number, x: number, y: number, z: number, radius: number): void;
+  export function setTrackedPointInfo(point: number, x: number, y: number, z: number, radius: number): void;
   /**
    *
    * @param {number} point undefined
    */
-  export function IsTrackedPointVisible(point: number): void;
+  export function isTrackedPointVisible(point: number): void;
   /**
    *
    * @param {number} point undefined
    */
-  export function DestroyTrackedPoint(point: number): void;
+  export function destroyTrackedPoint(point: number): void;
   /**
    *
    * @param {NativeAny} p0 undefined
@@ -16988,7 +16988,7 @@ declare module "natives" {
    *
    * @param {NativeBOOL} toggle undefined
    */
-  export function SetFarShadowsSuppressed(toggle: NativeBOOL): void;
+  export function setFarShadowsSuppressed(toggle: NativeBOOL): void;
   /**
    *
    * @param {NativeBOOL} p0 undefined
@@ -17081,11 +17081,11 @@ declare module "natives" {
    *
    * @param {NativeBOOL} toggle undefined
    */
-  export function SetSeethrough(toggle: NativeBOOL): void;
+  export function setSeethrough(toggle: NativeBOOL): void;
   /**
    *
    */
-  export function IsSeethroughActive(): void;
+  export function isSeethroughActive(): void;
   /**
    *
    * @param {NativeAny} p0 undefined
@@ -17114,12 +17114,12 @@ declare module "natives" {
    *
    * @param {number} transitionTime undefined
    */
-  export function TransitionToBlurred(transitionTime: number): void;
+  export function transitionToBlurred(transitionTime: number): void;
   /**
    *
    * @param {number} transitionTime undefined
    */
-  export function TransitionFromBlurred(transitionTime: number): void;
+  export function transitionFromBlurred(transitionTime: number): void;
   /**
    *
    */
@@ -17127,7 +17127,7 @@ declare module "natives" {
   /**
    *
    */
-  export function IsParticleFxDelayedBlink(): void;
+  export function isParticleFxDelayedBlink(): void;
   /**
    *
    */
@@ -17136,7 +17136,7 @@ declare module "natives" {
    *
    * @param {NativeBOOL} enabled undefined
    */
-  export function SetFrozenRenderingDisabled(enabled: NativeBOOL): void;
+  export function setFrozenRenderingDisabled(enabled: NativeBOOL): void;
   /**
    *
    */
@@ -17172,42 +17172,42 @@ declare module "natives" {
    *
    * @param {string} effectName undefined
    */
-  export function StartParticleFxNonLoopedAtCoord(effectName: string, xPos: number, yPos: number, zPos: number, xRot: number, yRot: number, zRot: number, scale: number, xAxis: NativeBOOL, yAxis: NativeBOOL, zAxis: NativeBOOL): void;
+  export function startParticleFxNonLoopedAtCoord(effectName: string, xPos: number, yPos: number, zPos: number, xRot: number, yRot: number, zRot: number, scale: number, xAxis: NativeBOOL, yAxis: NativeBOOL, zAxis: NativeBOOL): void;
   /**
    *
    * @param {string} effectName undefined
    */
-  export function StartNetworkedParticleFxNonLoopedAtCoord(effectName: string, xPos: number, yPos: number, zPos: number, xRot: number, yRot: number, zRot: number, scale: number, xAxis: NativeBOOL, yAxis: NativeBOOL, zAxis: NativeBOOL): void;
+  export function startNetworkedParticleFxNonLoopedAtCoord(effectName: string, xPos: number, yPos: number, zPos: number, xRot: number, yRot: number, zRot: number, scale: number, xAxis: NativeBOOL, yAxis: NativeBOOL, zAxis: NativeBOOL): void;
   /**
    *
    * @param {string} effectName undefined
    */
-  export function StartParticleFxNonLoopedOnPedBone(effectName: string, ped: NativePed, offsetX: number, offsetY: number, offsetZ: number, rotX: number, rotY: number, rotZ: number, boneIndex: number, scale: number, axisX: NativeBOOL, axisY: NativeBOOL, axisZ: NativeBOOL): void;
+  export function startParticleFxNonLoopedOnPedBone(effectName: string, ped: NativePed, offsetX: number, offsetY: number, offsetZ: number, rotX: number, rotY: number, rotZ: number, boneIndex: number, scale: number, axisX: NativeBOOL, axisY: NativeBOOL, axisZ: NativeBOOL): void;
   /**
    *
    * @param {string} effectName undefined
    */
-  export function StartNetworkedParticleFxNonLoopedOnPedBone(effectName: string, ped: NativePed, offsetX: number, offsetY: number, offsetZ: number, rotX: number, rotY: number, rotZ: number, boneIndex: number, scale: number, axisX: NativeBOOL, axisY: NativeBOOL, axisZ: NativeBOOL): void;
+  export function startNetworkedParticleFxNonLoopedOnPedBone(effectName: string, ped: NativePed, offsetX: number, offsetY: number, offsetZ: number, rotX: number, rotY: number, rotZ: number, boneIndex: number, scale: number, axisX: NativeBOOL, axisY: NativeBOOL, axisZ: NativeBOOL): void;
   /**
    *
    * @param {string} effectName undefined
    */
-  export function StartParticleFxNonLoopedOnEntity(effectName: string, entity: NativeEntity, offsetX: number, offsetY: number, offsetZ: number, rotX: number, rotY: number, rotZ: number, scale: number, axisX: NativeBOOL, axisY: NativeBOOL, axisZ: NativeBOOL): void;
+  export function startParticleFxNonLoopedOnEntity(effectName: string, entity: NativeEntity, offsetX: number, offsetY: number, offsetZ: number, rotX: number, rotY: number, rotZ: number, scale: number, axisX: NativeBOOL, axisY: NativeBOOL, axisZ: NativeBOOL): void;
   /**
    *
    * @param {string} effectName undefined
    */
-  export function StartNetworkedParticleFxNonLoopedOnEntity(effectName: string, entity: NativeEntity, offsetX: number, offsetY: number, offsetZ: number, rotX: number, rotY: number, rotZ: number, scale: number, axisX: NativeBOOL, axisY: NativeBOOL, axisZ: NativeBOOL): void;
+  export function startNetworkedParticleFxNonLoopedOnEntity(effectName: string, entity: NativeEntity, offsetX: number, offsetY: number, offsetZ: number, rotX: number, rotY: number, rotZ: number, scale: number, axisX: NativeBOOL, axisY: NativeBOOL, axisZ: NativeBOOL): void;
   /**
    *
    * @param {number} r undefined
    */
-  export function SetParticleFxNonLoopedColour(r: number, g: number, b: number): void;
+  export function setParticleFxNonLoopedColour(r: number, g: number, b: number): void;
   /**
    *
    * @param {number} alpha undefined
    */
-  export function SetParticleFxNonLoopedAlpha(alpha: number): void;
+  export function setParticleFxNonLoopedAlpha(alpha: number): void;
   /**
    *
    * @param {NativeBOOL} p0 undefined
@@ -17217,117 +17217,117 @@ declare module "natives" {
    *
    * @param {string} effectName undefined
    */
-  export function StartParticleFxLoopedAtCoord(effectName: string, x: number, y: number, z: number, xRot: number, yRot: number, zRot: number, scale: number, xAxis: NativeBOOL, yAxis: NativeBOOL, zAxis: NativeBOOL, p11: NativeBOOL): void;
+  export function startParticleFxLoopedAtCoord(effectName: string, x: number, y: number, z: number, xRot: number, yRot: number, zRot: number, scale: number, xAxis: NativeBOOL, yAxis: NativeBOOL, zAxis: NativeBOOL, p11: NativeBOOL): void;
   /**
    *
    * @param {string} effectName undefined
    */
-  export function StartParticleFxLoopedOnPedBone(effectName: string, ped: NativePed, xOffset: number, yOffset: number, zOffset: number, xRot: number, yRot: number, zRot: number, boneIndex: number, scale: number, xAxis: NativeBOOL, yAxis: NativeBOOL, zAxis: NativeBOOL): void;
+  export function startParticleFxLoopedOnPedBone(effectName: string, ped: NativePed, xOffset: number, yOffset: number, zOffset: number, xRot: number, yRot: number, zRot: number, boneIndex: number, scale: number, xAxis: NativeBOOL, yAxis: NativeBOOL, zAxis: NativeBOOL): void;
   /**
    *
    * @param {string} effectName undefined
    */
-  export function StartParticleFxLoopedOnEntity(effectName: string, entity: NativeEntity, xOffset: number, yOffset: number, zOffset: number, xRot: number, yRot: number, zRot: number, scale: number, xAxis: NativeBOOL, yAxis: NativeBOOL, zAxis: NativeBOOL): void;
+  export function startParticleFxLoopedOnEntity(effectName: string, entity: NativeEntity, xOffset: number, yOffset: number, zOffset: number, xRot: number, yRot: number, zRot: number, scale: number, xAxis: NativeBOOL, yAxis: NativeBOOL, zAxis: NativeBOOL): void;
   /**
    *
    * @param {string} effectName undefined
    */
-  export function StartParticleFxLoopedOnEntityBone(effectName: string, entity: NativeEntity, xOffset: number, yOffset: number, zOffset: number, xRot: number, yRot: number, zRot: number, boneIndex: number, scale: number, xAxis: NativeBOOL, yAxis: NativeBOOL, zAxis: NativeBOOL): void;
+  export function startParticleFxLoopedOnEntityBone(effectName: string, entity: NativeEntity, xOffset: number, yOffset: number, zOffset: number, xRot: number, yRot: number, zRot: number, boneIndex: number, scale: number, xAxis: NativeBOOL, yAxis: NativeBOOL, zAxis: NativeBOOL): void;
   /**
    *
    * @param {string} effectName undefined
    */
-  export function StartNetworkedParticleFxLoopedOnEntity(effectName: string, entity: NativeEntity, xOffset: number, yOffset: number, zOffset: number, xRot: number, yRot: number, zRot: number, scale: number, xAxis: NativeBOOL, yAxis: NativeBOOL, zAxis: NativeBOOL): void;
+  export function startNetworkedParticleFxLoopedOnEntity(effectName: string, entity: NativeEntity, xOffset: number, yOffset: number, zOffset: number, xRot: number, yRot: number, zRot: number, scale: number, xAxis: NativeBOOL, yAxis: NativeBOOL, zAxis: NativeBOOL): void;
   /**
    *
    * @param {string} effectName undefined
    */
-  export function StartNetworkedParticleFxLoopedOnEntityBone(effectName: string, entity: NativeEntity, xOffset: number, yOffset: number, zOffset: number, xRot: number, yRot: number, zRot: number, boneIndex: number, scale: number, xAxis: NativeBOOL, yAxis: NativeBOOL, zAxis: NativeBOOL): void;
+  export function startNetworkedParticleFxLoopedOnEntityBone(effectName: string, entity: NativeEntity, xOffset: number, yOffset: number, zOffset: number, xRot: number, yRot: number, zRot: number, boneIndex: number, scale: number, xAxis: NativeBOOL, yAxis: NativeBOOL, zAxis: NativeBOOL): void;
   /**
    *
    * @param {number} ptfxHandle undefined
    */
-  export function StopParticleFxLooped(ptfxHandle: number, p1: NativeBOOL): void;
+  export function stopParticleFxLooped(ptfxHandle: number, p1: NativeBOOL): void;
   /**
    *
    * @param {number} ptfxHandle undefined
    */
-  export function RemoveParticleFx(ptfxHandle: number, p1: NativeBOOL): void;
+  export function removeParticleFx(ptfxHandle: number, p1: NativeBOOL): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function RemoveParticleFxFromEntity(entity: NativeEntity): void;
+  export function removeParticleFxFromEntity(entity: NativeEntity): void;
   /**
    *
    * @param {number} X undefined
    */
-  export function RemoveParticleFxInRange(X: number, Y: number, Z: number, radius: number): void;
+  export function removeParticleFxInRange(X: number, Y: number, Z: number, radius: number): void;
   /**
    *
    * @param {number} ptfxHandle undefined
    */
-  export function DoesParticleFxLoopedExist(ptfxHandle: number): void;
+  export function doesParticleFxLoopedExist(ptfxHandle: number): void;
   /**
    *
    * @param {number} ptfxHandle undefined
    */
-  export function SetParticleFxLoopedOffsets(ptfxHandle: number, x: number, y: number, z: number, rotX: number, rotY: number, rotZ: number): void;
+  export function setParticleFxLoopedOffsets(ptfxHandle: number, x: number, y: number, z: number, rotX: number, rotY: number, rotZ: number): void;
   /**
    *
    * @param {number} ptfxHandle undefined
    */
-  export function SetParticleFxLoopedEvolution(ptfxHandle: number, propertyName: string, amount: number, Id: NativeBOOL): void;
+  export function setParticleFxLoopedEvolution(ptfxHandle: number, propertyName: string, amount: number, Id: NativeBOOL): void;
   /**
    *
    * @param {number} ptfxHandle undefined
    */
-  export function SetParticleFxLoopedColour(ptfxHandle: number, r: number, g: number, b: number, p4: NativeBOOL): void;
+  export function setParticleFxLoopedColour(ptfxHandle: number, r: number, g: number, b: number, p4: NativeBOOL): void;
   /**
    *
    * @param {number} ptfxHandle undefined
    */
-  export function SetParticleFxLoopedAlpha(ptfxHandle: number, alpha: number): void;
+  export function setParticleFxLoopedAlpha(ptfxHandle: number, alpha: number): void;
   /**
    *
    * @param {number} ptfxHandle undefined
    */
-  export function SetParticleFxLoopedScale(ptfxHandle: number, scale: number): void;
+  export function setParticleFxLoopedScale(ptfxHandle: number, scale: number): void;
   /**
    *
    * @param {number} ptfxHandle undefined
    */
-  export function SetParticleFxLoopedFarClipDist(ptfxHandle: number, dist: number): void;
+  export function setParticleFxLoopedFarClipDist(ptfxHandle: number, dist: number): void;
   /**
    *
    * @param {NativeBOOL} p0 undefined
    */
-  export function SetParticleFxCamInsideVehicle(p0: NativeBOOL): void;
+  export function setParticleFxCamInsideVehicle(p0: NativeBOOL): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function SetParticleFxCamInsideNonplayerVehicle(p0: NativeAny, p1: NativeBOOL): void;
+  export function setParticleFxCamInsideNonplayerVehicle(p0: NativeAny, p1: NativeBOOL): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function SetParticleFxShootoutBoat(p0: NativeAny): void;
+  export function setParticleFxShootoutBoat(p0: NativeAny): void;
   /**
    *
    * @param {NativeBOOL} p0 undefined
    */
-  export function SetParticleFxBloodScale(p0: NativeBOOL): void;
+  export function setParticleFxBloodScale(p0: NativeBOOL): void;
   /**
    *
    * @param {NativeBOOL} toggle undefined
    */
-  export function EnableClownBloodVfx(toggle: NativeBOOL): void;
+  export function enableClownBloodVfx(toggle: NativeBOOL): void;
   /**
    *
    * @param {NativeBOOL} Toggle undefined
    */
-  export function EnableAlienBloodVfx(Toggle: NativeBOOL): void;
+  export function enableAlienBloodVfx(Toggle: NativeBOOL): void;
   /**
    *
    * @param {number} p0 undefined
@@ -17362,17 +17362,17 @@ declare module "natives" {
    *
    * @param {string} name undefined
    */
-  export function UseParticleFxAsset(name: string): void;
+  export function useParticleFxAsset(name: string): void;
   /**
    *
    * @param {string} oldAsset undefined
    */
-  export function SetParticleFxAssetOldToNew(oldAsset: string, newAsset: string): void;
+  export function setParticleFxAssetOldToNew(oldAsset: string, newAsset: string): void;
   /**
    *
    * @param {string} name undefined
    */
-  export function ResetParticleFxAssetOldToNew(name: string): void;
+  export function resetParticleFxAssetOldToNew(name: string): void;
   /**
    *
    * @param {NativeBOOL} p0 undefined
@@ -17387,47 +17387,47 @@ declare module "natives" {
    *
    * @param {NativeAny} p0 undefined
    */
-  export function WashDecalsInRange(p0: NativeAny, p1: NativeAny, p2: NativeAny, p3: NativeAny, p4: NativeAny): void;
+  export function washDecalsInRange(p0: NativeAny, p1: NativeAny, p2: NativeAny, p3: NativeAny, p4: NativeAny): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function WashDecalsFromVehicle(vehicle: NativeVehicle, p1: number): void;
+  export function washDecalsFromVehicle(vehicle: NativeVehicle, p1: number): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function FadeDecalsInRange(p0: NativeAny, p1: NativeAny, p2: NativeAny, p3: NativeAny, p4: NativeAny): void;
+  export function fadeDecalsInRange(p0: NativeAny, p1: NativeAny, p2: NativeAny, p3: NativeAny, p4: NativeAny): void;
   /**
    *
    * @param {number} x undefined
    */
-  export function RemoveDecalsInRange(x: number, y: number, z: number, range: number): void;
+  export function removeDecalsInRange(x: number, y: number, z: number, range: number): void;
   /**
    *
    * @param {NativeObject} obj undefined
    */
-  export function RemoveDecalsFromObject(obj: NativeObject): void;
+  export function removeDecalsFromObject(obj: NativeObject): void;
   /**
    *
    * @param {NativeObject} obj undefined
    */
-  export function RemoveDecalsFromObjectFacing(obj: NativeObject, x: number, y: number, z: number): void;
+  export function removeDecalsFromObjectFacing(obj: NativeObject, x: number, y: number, z: number): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function RemoveDecalsFromVehicle(vehicle: NativeVehicle): void;
+  export function removeDecalsFromVehicle(vehicle: NativeVehicle): void;
   /**
    *
    * @param {number} decalType undefined
    */
-  export function AddDecal(decalType: number, posX: number, posY: number, posZ: number, p4: number, p5: number, p6: number, p7: number, p8: number, p9: number, width: number, height: number, rCoef: number, gCoef: number, bCoef: number, opacity: number, timeout: number, p17: NativeBOOL, p18: NativeBOOL, p19: NativeBOOL): void;
+  export function addDecal(decalType: number, posX: number, posY: number, posZ: number, p4: number, p5: number, p6: number, p7: number, p8: number, p9: number, width: number, height: number, rCoef: number, gCoef: number, bCoef: number, opacity: number, timeout: number, p17: NativeBOOL, p18: NativeBOOL, p19: NativeBOOL): void;
   /**
    *
    * @param {number} x undefined
    */
-  export function AddPetrolDecal(x: number, y: number, z: number, groundLvl: number, width: number, transparency: number): void;
+  export function addPetrolDecal(x: number, y: number, z: number, groundLvl: number, width: number, transparency: number): void;
   /**
    *
    * @param {number} p0 undefined
@@ -17446,17 +17446,17 @@ declare module "natives" {
    *
    * @param {NativeObject} decal undefined
    */
-  export function RemoveDecal(decal: NativeObject): void;
+  export function removeDecal(decal: NativeObject): void;
   /**
    *
    * @param {NativeObject} decal undefined
    */
-  export function IsDecalAlive(decal: NativeObject): void;
+  export function isDecalAlive(decal: NativeObject): void;
   /**
    *
    * @param {number} decal undefined
    */
-  export function GetDecalWashLevel(decal: number): void;
+  export function getDecalWashLevel(decal: number): void;
   /**
    *
    */
@@ -17478,7 +17478,7 @@ declare module "natives" {
    *
    * @param {number} decalType undefined
    */
-  export function OverrideDecalTexture(decalType: number, textureDict: string, textureName: string): void;
+  export function overrideDecalTexture(decalType: number, textureDict: string, textureName: string): void;
   /**
    *
    * @param {number} decalType undefined
@@ -17488,12 +17488,12 @@ declare module "natives" {
    *
    * @param {NativeAny} p0 undefined
    */
-  export function MoveVehicleDecals(p0: NativeAny, p1: NativeAny): void;
+  export function moveVehicleDecals(p0: NativeAny, p1: NativeAny): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function AddClanDecalToVehicle(vehicle: NativeVehicle, ped: NativePed, boneIndex: number, x1: number, x2: number, x3: number, y1: number, y2: number, y3: number, z1: number, z2: number, z3: number, scale: number, p13: NativeAny, alpha: number): void;
+  export function addClanDecalToVehicle(vehicle: NativeVehicle, ped: NativePed, boneIndex: number, x1: number, x2: number, x3: number, y1: number, y2: number, y3: number, z1: number, z2: number, z3: number, scale: number, p13: NativeAny, alpha: number): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
@@ -17508,7 +17508,7 @@ declare module "natives" {
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function DoesVehicleHaveDecal(vehicle: NativeVehicle, p1: NativeAny): void;
+  export function doesVehicleHaveDecal(vehicle: NativeVehicle, p1: NativeAny): void;
   /**
    *
    * @param {NativeBOOL} p0 undefined
@@ -17546,7 +17546,7 @@ declare module "natives" {
    *
    * @param {NativeBOOL} toggle undefined
    */
-  export function DisableVehicleDistantlights(toggle: NativeBOOL): void;
+  export function disableVehicleDistantlights(toggle: NativeBOOL): void;
   /**
    *
    * @param {NativeBOOL} p0 undefined
@@ -17560,12 +17560,12 @@ declare module "natives" {
    *
    * @param {NativeBOOL} toggle undefined
    */
-  export function SetForcePedFootstepsTracks(toggle: NativeBOOL): void;
+  export function setForcePedFootstepsTracks(toggle: NativeBOOL): void;
   /**
    *
    * @param {NativeBOOL} toggle undefined
    */
-  export function SetForceVehicleTrails(toggle: NativeBOOL): void;
+  export function setForceVehicleTrails(toggle: NativeBOOL): void;
   /**
    *
    * @param {string} p0 undefined
@@ -17575,17 +17575,17 @@ declare module "natives" {
    *
    * @param {string} modifierName undefined
    */
-  export function SetTimecycleModifier(modifierName: string): void;
+  export function setTimecycleModifier(modifierName: string): void;
   /**
    *
    * @param {number} strength undefined
    */
-  export function SetTimecycleModifierStrength(strength: number): void;
+  export function setTimecycleModifierStrength(strength: number): void;
   /**
    *
    * @param {string} modifierName undefined
    */
-  export function SetTransitionTimecycleModifier(modifierName: string, transition: number): void;
+  export function setTransitionTimecycleModifier(modifierName: string, transition: number): void;
   /**
    *
    * @param {number} p0 undefined
@@ -17594,11 +17594,11 @@ declare module "natives" {
   /**
    *
    */
-  export function ClearTimecycleModifier(): void;
+  export function clearTimecycleModifier(): void;
   /**
    *
    */
-  export function GetTimecycleModifierIndex(): void;
+  export function getTimecycleModifierIndex(): void;
   /**
    *
    */
@@ -17606,11 +17606,11 @@ declare module "natives" {
   /**
    *
    */
-  export function PushTimecycleModifier(): void;
+  export function pushTimecycleModifier(): void;
   /**
    *
    */
-  export function PopTimecycleModifier(): void;
+  export function popTimecycleModifier(): void;
   /**
    *
    * @param {string} p0 undefined
@@ -17662,168 +17662,168 @@ declare module "natives" {
    *
    * @param {string} scaleformName undefined
    */
-  export function RequestScaleformMovie(scaleformName: string): void;
+  export function requestScaleformMovie(scaleformName: string): void;
   /**
    *
    * @param {string} scaleformName undefined
    */
-  export function RequestScaleformMovieInstance(scaleformName: string): void;
+  export function requestScaleformMovieInstance(scaleformName: string): void;
   /**
    *
    * @param {string} scaleformName undefined
    */
-  export function RequestScaleformMovieInteractive(scaleformName: string): void;
+  export function requestScaleformMovieInteractive(scaleformName: string): void;
   /**
    *
    * @param {number} scaleformHandle undefined
    */
-  export function HasScaleformMovieLoaded(scaleformHandle: number): void;
+  export function hasScaleformMovieLoaded(scaleformHandle: number): void;
   /**
    *
    * @param {string} scaleformName undefined
    */
-  export function HasNamedScaleformMovieLoaded(scaleformName: string): void;
+  export function hasNamedScaleformMovieLoaded(scaleformName: string): void;
   /**
    *
    * @param {number} scaleformHandle undefined
    */
-  export function HasScaleformContainerMovieLoadedIntoParent(scaleformHandle: number): void;
+  export function hasScaleformContainerMovieLoadedIntoParent(scaleformHandle: number): void;
   /**
    *
    * @param {number} scaleformHandle undefined
    */
-  export function SetScaleformMovieAsNoLongerNeeded(scaleformHandle: number): void;
+  export function setScaleformMovieAsNoLongerNeeded(scaleformHandle: number): void;
   /**
    *
    * @param {number} scaleform undefined
    */
-  export function SetScaleformMovieToUseSystemTime(scaleform: number, toggle: NativeBOOL): void;
+  export function setScaleformMovieToUseSystemTime(scaleform: number, toggle: NativeBOOL): void;
   /**
    *
    * @param {number} scaleformHandle undefined
    */
-  export function DrawScaleformMovie(scaleformHandle: number, x: number, y: number, width: number, height: number, red: number, green: number, blue: number, alpha: number, unk: number): void;
+  export function drawScaleformMovie(scaleformHandle: number, x: number, y: number, width: number, height: number, red: number, green: number, blue: number, alpha: number, unk: number): void;
   /**
    *
    * @param {number} scaleform undefined
    */
-  export function DrawScaleformMovieFullscreen(scaleform: number, red: number, green: number, blue: number, alpha: number, unk: number): void;
+  export function drawScaleformMovieFullscreen(scaleform: number, red: number, green: number, blue: number, alpha: number, unk: number): void;
   /**
    *
    * @param {number} scaleform1 undefined
    */
-  export function DrawScaleformMovieFullscreenMasked(scaleform1: number, scaleform2: number, red: number, green: number, blue: number, alpha: number): void;
+  export function drawScaleformMovieFullscreenMasked(scaleform1: number, scaleform2: number, red: number, green: number, blue: number, alpha: number): void;
   /**
    *
    * @param {number} scaleform undefined
    */
-  export function DrawScaleformMovie3d(scaleform: number, posX: number, posY: number, posZ: number, rotX: number, rotY: number, rotZ: number, p7: number, sharpness: number, p9: number, scaleX: number, scaleY: number, scaleZ: number, p13: NativeAny): void;
+  export function drawScaleformMovie3d(scaleform: number, posX: number, posY: number, posZ: number, rotX: number, rotY: number, rotZ: number, p7: number, sharpness: number, p9: number, scaleX: number, scaleY: number, scaleZ: number, p13: NativeAny): void;
   /**
    *
    * @param {number} scaleform undefined
    */
-  export function DrawScaleformMovie3dNonAdditive(scaleform: number, posX: number, posY: number, posZ: number, rotX: number, rotY: number, rotZ: number, p7: number, p8: number, p9: number, scaleX: number, scaleY: number, scaleZ: number, p13: NativeAny): void;
+  export function drawScaleformMovie3dNonAdditive(scaleform: number, posX: number, posY: number, posZ: number, rotX: number, rotY: number, rotZ: number, p7: number, p8: number, p9: number, scaleX: number, scaleY: number, scaleZ: number, p13: NativeAny): void;
   /**
    *
    * @param {number} scaleform undefined
    */
-  export function CallScaleformMovieMethod(scaleform: number, method: string): void;
+  export function callScaleformMovieMethod(scaleform: number, method: string): void;
   /**
    *
    * @param {number} scaleform undefined
    */
-  export function CallScaleformMovieFunctionFloatParams(scaleform: number, functionName: string, param1: number, param2: number, param3: number, param4: number, param5: number): void;
+  export function callScaleformMovieFunctionFloatParams(scaleform: number, functionName: string, param1: number, param2: number, param3: number, param4: number, param5: number): void;
   /**
    *
    * @param {number} scaleform undefined
    */
-  export function CallScaleformMovieFunctionStringParams(scaleform: number, functionName: string, param1: string, param2: string, param3: string, param4: string, param5: string): void;
+  export function callScaleformMovieFunctionStringParams(scaleform: number, functionName: string, param1: string, param2: string, param3: string, param4: string, param5: string): void;
   /**
    *
    * @param {number} scaleform undefined
    */
-  export function CallScaleformMovieFunctionMixedParams(scaleform: number, functionName: string, floatParam1: number, floatParam2: number, floatParam3: number, floatParam4: number, floatParam5: number, stringParam1: string, stringParam2: string, stringParam3: string, stringParam4: string, stringParam5: string): void;
+  export function callScaleformMovieFunctionMixedParams(scaleform: number, functionName: string, floatParam1: number, floatParam2: number, floatParam3: number, floatParam4: number, floatParam5: number, stringParam1: string, stringParam2: string, stringParam3: string, stringParam4: string, stringParam5: string): void;
   /**
    *
    * @param {number} hudComponent undefined
    */
-  export function BeginScaleformMovieMethodHudComponent(hudComponent: number, functionName: string): void;
+  export function beginScaleformMovieMethodHudComponent(hudComponent: number, functionName: string): void;
   /**
    *
    * @param {number} scaleform undefined
    */
-  export function BeginScaleformMovieMethod(scaleform: number, functionName: string): void;
+  export function beginScaleformMovieMethod(scaleform: number, functionName: string): void;
   /**
    *
    * @param {string} functionName undefined
    */
-  export function BeginScaleformMovieMethodN(functionName: string): void;
+  export function beginScaleformMovieMethodN(functionName: string): void;
   /**
    *
    * @param {string} functionName undefined
    */
-  export function BeginScaleformMovieMethodV(functionName: string): void;
+  export function beginScaleformMovieMethodV(functionName: string): void;
   /**
    *
    */
-  export function EndScaleformMovieMethod(): void;
+  export function endScaleformMovieMethod(): void;
   /**
    *
    */
-  export function EndScaleformMovieMethodReturn(): void;
-  /**
-   *
-   * @param {number} method_return undefined
-   */
-  export function GetScaleformMovieFunctionReturnBool(method_return: number): void;
+  export function endScaleformMovieMethodReturn(): void;
   /**
    *
    * @param {number} method_return undefined
    */
-  export function GetScaleformMovieFunctionReturnInt(method_return: number): void;
+  export function getScaleformMovieFunctionReturnBool(method_return: number): void;
   /**
    *
    * @param {number} method_return undefined
    */
-  export function SittingTv(method_return: number): void;
+  export function getScaleformMovieFunctionReturnInt(method_return: number): void;
+  /**
+   *
+   * @param {number} method_return undefined
+   */
+  export function sittingTv(method_return: number): void;
   /**
    *
    * @param {number} value undefined
    */
-  export function AddScaleformMovieMethodParameterInt(value: number): void;
+  export function addScaleformMovieMethodParameterInt(value: number): void;
   /**
    *
    * @param {number} value undefined
    */
-  export function AddScaleformMovieMethodParameterFloat(value: number): void;
+  export function addScaleformMovieMethodParameterFloat(value: number): void;
   /**
    *
    * @param {NativeBOOL} value undefined
    */
-  export function AddScaleformMovieMethodParameterBool(value: NativeBOOL): void;
+  export function addScaleformMovieMethodParameterBool(value: NativeBOOL): void;
   /**
    *
    * @param {string} componentType undefined
    */
-  export function BeginTextCommandScaleformString(componentType: string): void;
+  export function beginTextCommandScaleformString(componentType: string): void;
   /**
    *
    */
-  export function EndTextCommandScaleformString(): void;
+  export function endTextCommandScaleformString(): void;
   /**
    *
    */
-  export function EndTextCommandScaleformString2(): void;
+  export function endTextCommandScaleformString2(): void;
   /**
    *
    * @param {string} value undefined
    */
-  export function AddScaleformMovieMethodParameterString(value: string): void;
+  export function addScaleformMovieMethodParameterString(value: string): void;
   /**
    *
    * @param {string} button undefined
    */
-  export function AddScaleformMovieMethodParameterButtonName(button: string): void;
+  export function addScaleformMovieMethodParameterButtonName(button: string): void;
   /**
    *
    * @param {number} p0 undefined
@@ -17838,12 +17838,12 @@ declare module "natives" {
    *
    * @param {number} hudComponent undefined
    */
-  export function RequestHudScaleform(hudComponent: number): void;
+  export function requestHudScaleform(hudComponent: number): void;
   /**
    *
    * @param {number} hudComponent undefined
    */
-  export function HasHudScaleformLoaded(hudComponent: number): void;
+  export function hasHudScaleformLoaded(hudComponent: number): void;
   /**
    *
    * @param {NativeAny} p0 undefined
@@ -17858,30 +17858,30 @@ declare module "natives" {
    *
    * @param {number} channel undefined
    */
-  export function SetTvChannel(channel: number): void;
+  export function setTvChannel(channel: number): void;
   /**
    *
    */
-  export function GetTvChannel(): void;
+  export function getTvChannel(): void;
   /**
    *
    * @param {number} volume undefined
    */
-  export function SetTvVolume(volume: number): void;
+  export function setTvVolume(volume: number): void;
   /**
    *
    */
-  export function GetTvVolume(): void;
+  export function getTvVolume(): void;
   /**
    *
    * @param {number} xPos undefined
    */
-  export function DrawTvChannel(xPos: number, yPos: number, xScale: number, yScale: number, rotation: number, red: number, green: number, blue: number, alpha: number): void;
+  export function drawTvChannel(xPos: number, yPos: number, xScale: number, yScale: number, rotation: number, red: number, green: number, blue: number, alpha: number): void;
   /**
    *
    * @param {number} TV_Channel undefined
    */
-  export function LoadTvChannelSequence(TV_Channel: number, VideoSequence: string, Restart: NativeBOOL): void;
+  export function loadTvChannelSequence(TV_Channel: number, VideoSequence: string, Restart: NativeBOOL): void;
   /**
    *
    * @param {NativeAny} p0 undefined
@@ -17896,7 +17896,7 @@ declare module "natives" {
    *
    * @param {NativeHash} tvChannel undefined
    */
-  export function LoadTvChannel(tvChannel: NativeHash): void;
+  export function loadTvChannel(tvChannel: NativeHash): void;
   /**
    *
    * @param {NativeBOOL} p0 undefined
@@ -17911,7 +17911,7 @@ declare module "natives" {
    *
    * @param {NativeBOOL} toggle undefined
    */
-  export function EnableMovieSubtitles(toggle: NativeBOOL): void;
+  export function enableMovieSubtitles(toggle: NativeBOOL): void;
   /**
    *
    */
@@ -17925,7 +17925,7 @@ declare module "natives" {
    *
    * @param {string} p0 undefined
    */
-  export function DrawShowroom(p0: string, ped: NativePed, p2: number, posX: number, posY: number, posZ: number): void;
+  export function drawShowroom(p0: string, ped: NativePed, p2: number, posX: number, posY: number, posZ: number): void;
   /**
    *
    */
@@ -17954,21 +17954,21 @@ declare module "natives" {
    *
    * @param {string} effectName undefined
    */
-  export function StartScreenEffect(effectName: string, duration: number, looped: NativeBOOL): void;
+  export function startScreenEffect(effectName: string, duration: number, looped: NativeBOOL): void;
   /**
    *
    * @param {string} effectName undefined
    */
-  export function StopScreenEffect(effectName: string): void;
+  export function stopScreenEffect(effectName: string): void;
   /**
    *
    * @param {string} effectName undefined
    */
-  export function GetScreenEffectIsActive(effectName: string): void;
+  export function getScreenEffectIsActive(effectName: string): void;
   /**
    *
    */
-  export function StopAllScreenEffects(): void;
+  export function stopAllScreenEffects(): void;
   /**
    *
    * @param {string} graphicsName undefined
@@ -17978,17 +17978,17 @@ declare module "natives" {
    *
    * @param {number} statSlot undefined
    */
-  export function StatClearSlotForReload(statSlot: number): void;
+  export function statClearSlotForReload(statSlot: number): void;
   /**
    *
    * @param {number} p0 undefined
    */
-  export function StatLoad(p0: number): void;
+  export function statLoad(p0: number): void;
   /**
    *
    * @param {number} p0 undefined
    */
-  export function StatSave(p0: number, p1: NativeBOOL, p2: number): void;
+  export function statSave(p0: number, p1: NativeBOOL, p2: number): void;
   /**
    *
    * @param {NativeAny} p0 undefined
@@ -17998,25 +17998,25 @@ declare module "natives" {
    *
    * @param {NativeAny} p0 undefined
    */
-  export function StatLoadPending(p0: NativeAny): void;
+  export function statLoadPending(p0: NativeAny): void;
   /**
    *
    */
-  export function StatSavePending(): void;
+  export function statSavePending(): void;
   /**
    *
    */
-  export function StatSavePendingOrRequested(): void;
-  /**
-   *
-   * @param {NativeAny} p0 undefined
-   */
-  export function StatDeleteSlot(p0: NativeAny): void;
+  export function statSavePendingOrRequested(): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function StatSlotIsLoaded(p0: NativeAny): void;
+  export function statDeleteSlot(p0: NativeAny): void;
+  /**
+   *
+   * @param {NativeAny} p0 undefined
+   */
+  export function statSlotIsLoaded(p0: NativeAny): void;
   /**
    *
    * @param {NativeAny} p0 undefined
@@ -18058,107 +18058,107 @@ declare module "natives" {
    *
    * @param {NativeHash} statName undefined
    */
-  export function StatSetInt(statName: NativeHash, value: number, save: NativeBOOL): void;
+  export function statSetInt(statName: NativeHash, value: number, save: NativeBOOL): void;
   /**
    *
    * @param {NativeHash} statName undefined
    */
-  export function StatSetFloat(statName: NativeHash, value: number, save: NativeBOOL): void;
+  export function statSetFloat(statName: NativeHash, value: number, save: NativeBOOL): void;
   /**
    *
    * @param {NativeHash} statName undefined
    */
-  export function StatSetBool(statName: NativeHash, value: NativeBOOL, save: NativeBOOL): void;
+  export function statSetBool(statName: NativeHash, value: NativeBOOL, save: NativeBOOL): void;
   /**
    *
    * @param {NativeHash} statName undefined
    */
-  export function StatSetGxtLabel(statName: NativeHash, value: string, save: NativeBOOL): void;
+  export function statSetGxtLabel(statName: NativeHash, value: string, save: NativeBOOL): void;
   /**
    *
    * @param {NativeHash} statName undefined
    */
-  export function StatSetDate(statName: NativeHash, value: NativeAny, numFields: number, save: NativeBOOL): void;
+  export function statSetDate(statName: NativeHash, value: NativeAny, numFields: number, save: NativeBOOL): void;
   /**
    *
    * @param {NativeHash} statName undefined
    */
-  export function StatSetString(statName: NativeHash, value: string, save: NativeBOOL): void;
+  export function statSetString(statName: NativeHash, value: string, save: NativeBOOL): void;
   /**
    *
    * @param {NativeHash} statName undefined
    */
-  export function StatSetPos(statName: NativeHash, x: number, y: number, z: number, save: NativeBOOL): void;
+  export function statSetPos(statName: NativeHash, x: number, y: number, z: number, save: NativeBOOL): void;
   /**
    *
    * @param {NativeHash} statName undefined
    */
-  export function StatSetMaskedInt(statName: NativeHash, p1: NativeAny, p2: NativeAny, p3: number, save: NativeBOOL): void;
+  export function statSetMaskedInt(statName: NativeHash, p1: NativeAny, p2: NativeAny, p3: number, save: NativeBOOL): void;
   /**
    *
    * @param {NativeHash} statName undefined
    */
-  export function StatSetUserId(statName: NativeHash, value: string, save: NativeBOOL): void;
+  export function statSetUserId(statName: NativeHash, value: string, save: NativeBOOL): void;
   /**
    *
    * @param {NativeHash} statName undefined
    */
-  export function StatSetCurrentPosixTime(statName: NativeHash, p1: NativeBOOL): void;
+  export function statSetCurrentPosixTime(statName: NativeHash, p1: NativeBOOL): void;
   /**
    *
    * @param {NativeHash} statHash undefined
    */
-  export function StatGetInt(statHash: NativeHash, outValue: number, p2: number): void;
+  export function statGetInt(statHash: NativeHash, outValue: number, p2: number): void;
   /**
    *
    * @param {NativeHash} statHash undefined
    */
-  export function StatGetFloat(statHash: NativeHash, outValue: number, p2: NativeAny): void;
+  export function statGetFloat(statHash: NativeHash, outValue: number, p2: NativeAny): void;
   /**
    *
    * @param {NativeHash} statHash undefined
    */
-  export function StatGetBool(statHash: NativeHash, outValue: NativeBOOL, p2: NativeAny): void;
+  export function statGetBool(statHash: NativeHash, outValue: NativeBOOL, p2: NativeAny): void;
   /**
    *
    * @param {NativeHash} statHash undefined
    */
-  export function StatGetDate(statHash: NativeHash, p1: NativeAny, p2: NativeAny, p3: NativeAny): void;
+  export function statGetDate(statHash: NativeHash, p1: NativeAny, p2: NativeAny, p3: NativeAny): void;
   /**
    *
    * @param {NativeHash} statHash undefined
    */
-  export function StatGetString(statHash: NativeHash, p1: number): void;
+  export function statGetString(statHash: NativeHash, p1: number): void;
   /**
    *
    * @param {NativeHash} statHash undefined
    */
-  export function StatGetPos(statHash: NativeHash, x: number, y: number, z: number, p4: number): void;
+  export function statGetPos(statHash: NativeHash, x: number, y: number, z: number, p4: number): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function StatGetMaskedInt(p0: NativeAny, p1: NativeAny, p2: NativeAny, p3: NativeAny, p4: NativeAny): void;
+  export function statGetMaskedInt(p0: NativeAny, p1: NativeAny, p2: NativeAny, p3: NativeAny, p4: NativeAny): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function StatGetUserId(p0: NativeAny): void;
+  export function statGetUserId(p0: NativeAny): void;
   /**
    *
    * @param {NativeHash} statName undefined
    */
-  export function StatGetLicensePlate(statName: NativeHash): void;
+  export function statGetLicensePlate(statName: NativeHash): void;
   /**
    *
    * @param {NativeHash} statName undefined
    */
-  export function StatSetLicensePlate(statName: NativeHash, str: string): void;
+  export function statSetLicensePlate(statName: NativeHash, str: string): void;
   /**
    *
    * @param {NativeHash} statName undefined
    */
-  export function StatIncrement(statName: NativeHash, value: number): void;
+  export function statIncrement(statName: NativeHash, value: number): void;
   /**
    *
    */
@@ -18186,27 +18186,27 @@ declare module "natives" {
    *
    * @param {NativeHash} statName undefined
    */
-  export function StatGetNumberOfDays(statName: NativeHash): void;
+  export function statGetNumberOfDays(statName: NativeHash): void;
   /**
    *
    * @param {NativeHash} statName undefined
    */
-  export function StatGetNumberOfHours(statName: NativeHash): void;
+  export function statGetNumberOfHours(statName: NativeHash): void;
   /**
    *
    * @param {NativeHash} statName undefined
    */
-  export function StatGetNumberOfMinutes(statName: NativeHash): void;
+  export function statGetNumberOfMinutes(statName: NativeHash): void;
   /**
    *
    * @param {NativeHash} statName undefined
    */
-  export function StatGetNumberOfSeconds(statName: NativeHash): void;
+  export function statGetNumberOfSeconds(statName: NativeHash): void;
   /**
    *
    * @param {number} profileSetting undefined
    */
-  export function StatSetProfileSetting(profileSetting: number, value: number): void;
+  export function statSetProfileSetting(profileSetting: number, value: number): void;
   /**
    *
    * @param {number} p0 undefined
@@ -18221,42 +18221,42 @@ declare module "natives" {
    *
    * @param {number} index undefined
    */
-  export function GetPstatBoolHash(index: number, spStat: NativeBOOL, charStat: NativeBOOL, character: number): void;
+  export function getPstatBoolHash(index: number, spStat: NativeBOOL, charStat: NativeBOOL, character: number): void;
   /**
    *
    * @param {number} index undefined
    */
-  export function GetPstatIntHash(index: number, spStat: NativeBOOL, charStat: NativeBOOL, character: number): void;
+  export function getPstatIntHash(index: number, spStat: NativeBOOL, charStat: NativeBOOL, character: number): void;
   /**
    *
    * @param {number} index undefined
    */
-  export function GetTupstatBoolHash(index: number, spStat: NativeBOOL, charStat: NativeBOOL, character: number): void;
+  export function getTupstatBoolHash(index: number, spStat: NativeBOOL, charStat: NativeBOOL, character: number): void;
   /**
    *
    * @param {number} index undefined
    */
-  export function GetTupstatIntHash(index: number, spStat: NativeBOOL, charStat: NativeBOOL, character: number): void;
+  export function getTupstatIntHash(index: number, spStat: NativeBOOL, charStat: NativeBOOL, character: number): void;
   /**
    *
    * @param {number} index undefined
    */
-  export function GetNgstatBoolHash(index: number, spStat: NativeBOOL, charStat: NativeBOOL, character: number, section: string): void;
+  export function getNgstatBoolHash(index: number, spStat: NativeBOOL, charStat: NativeBOOL, character: number, section: string): void;
   /**
    *
    * @param {number} index undefined
    */
-  export function GetNgstatIntHash(index: number, spStat: NativeBOOL, charStat: NativeBOOL, character: number, section: string): void;
+  export function getNgstatIntHash(index: number, spStat: NativeBOOL, charStat: NativeBOOL, character: number, section: string): void;
   /**
    *
    * @param {NativeHash} statName undefined
    */
-  export function StatGetBoolMasked(statName: NativeHash, mask: number, p2: number): void;
+  export function statGetBoolMasked(statName: NativeHash, mask: number, p2: number): void;
   /**
    *
    * @param {NativeHash} statName undefined
    */
-  export function StatSetBoolMasked(statName: NativeHash, value: NativeBOOL, mask: number, save: NativeBOOL): void;
+  export function statSetBoolMasked(statName: NativeHash, value: NativeBOOL, mask: number, save: NativeBOOL): void;
   /**
    *
    * @param {string} p0 undefined
@@ -18266,17 +18266,17 @@ declare module "natives" {
    *
    * @param {NativeAny} p0 undefined
    */
-  export function PlaystatsNpcInvite(p0: NativeAny): void;
+  export function playstatsNpcInvite(p0: NativeAny): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function PlaystatsAwardXp(p0: NativeAny, p1: NativeAny, p2: NativeAny): void;
+  export function playstatsAwardXp(p0: NativeAny, p1: NativeAny, p2: NativeAny): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function PlaystatsRankUp(p0: NativeAny): void;
+  export function playstatsRankUp(p0: NativeAny): void;
   /**
    *
    */
@@ -18295,17 +18295,17 @@ declare module "natives" {
    *
    * @param {NativeAny} p0 undefined
    */
-  export function PlaystatsMissionStarted(p0: NativeAny, p1: NativeAny, p2: NativeAny, p3: NativeBOOL): void;
+  export function playstatsMissionStarted(p0: NativeAny, p1: NativeAny, p2: NativeAny, p3: NativeBOOL): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function PlaystatsMissionOver(p0: NativeAny, p1: NativeAny, p2: NativeAny, p3: NativeBOOL, p4: NativeBOOL, p5: NativeBOOL): void;
+  export function playstatsMissionOver(p0: NativeAny, p1: NativeAny, p2: NativeAny, p3: NativeBOOL, p4: NativeBOOL, p5: NativeBOOL): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function PlaystatsMissionCheckpoint(p0: NativeAny, p1: NativeAny, p2: NativeAny, p3: NativeAny): void;
+  export function playstatsMissionCheckpoint(p0: NativeAny, p1: NativeAny, p2: NativeAny, p3: NativeAny): void;
   /**
    *
    * @param {NativeAny} p0 undefined
@@ -18320,7 +18320,7 @@ declare module "natives" {
    *
    * @param {NativeAny} p0 undefined
    */
-  export function PlaystatsRaceCheckpoint(p0: NativeAny, p1: NativeAny, p2: NativeAny, p3: NativeAny, p4: NativeAny): void;
+  export function playstatsRaceCheckpoint(p0: NativeAny, p1: NativeAny, p2: NativeAny, p3: NativeAny, p4: NativeAny): void;
   /**
    *
    * @param {NativeAny} p0 undefined
@@ -18330,12 +18330,12 @@ declare module "natives" {
    *
    * @param {NativeAny} p0 undefined
    */
-  export function PlaystatsMatchStarted(p0: NativeAny, p1: NativeAny, p2: NativeAny, p3: NativeAny, p4: NativeAny, p5: NativeAny, p6: NativeAny): void;
+  export function playstatsMatchStarted(p0: NativeAny, p1: NativeAny, p2: NativeAny, p3: NativeAny, p4: NativeAny, p5: NativeAny, p6: NativeAny): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function PlaystatsShopItem(p0: NativeAny, p1: NativeAny, p2: NativeAny, p3: NativeAny, p4: NativeAny): void;
+  export function playstatsShopItem(p0: NativeAny, p1: NativeAny, p2: NativeAny, p3: NativeAny, p4: NativeAny): void;
   /**
    *
    * @param {NativeAny} p0 undefined
@@ -18345,7 +18345,7 @@ declare module "natives" {
    *
    * @param {number} p0 undefined
    */
-  export function PlaystatsAmbientMissionCrateCreated(p0: number, p1: number, p2: number): void;
+  export function playstatsAmbientMissionCrateCreated(p0: number, p1: number, p2: number): void;
   /**
    *
    * @param {NativeAny} p0 undefined
@@ -18370,27 +18370,27 @@ declare module "natives" {
    *
    * @param {NativeHash} scaleformHash undefined
    */
-  export function PlaystatsWebsiteVisited(scaleformHash: NativeHash, p1: number): void;
+  export function playstatsWebsiteVisited(scaleformHash: NativeHash, p1: number): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function PlaystatsFriendActivity(p0: NativeAny, p1: NativeAny): void;
+  export function playstatsFriendActivity(p0: NativeAny, p1: NativeAny): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function PlaystatsOddjobDone(p0: NativeAny, p1: NativeAny, p2: NativeAny): void;
+  export function playstatsOddjobDone(p0: NativeAny, p1: NativeAny, p2: NativeAny): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function PlaystatsPropChange(p0: NativeAny, p1: NativeAny, p2: NativeAny, p3: NativeAny): void;
+  export function playstatsPropChange(p0: NativeAny, p1: NativeAny, p2: NativeAny, p3: NativeAny): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function PlaystatsClothChange(p0: NativeAny, p1: NativeAny, p2: NativeAny, p3: NativeAny, p4: NativeAny): void;
+  export function playstatsClothChange(p0: NativeAny, p1: NativeAny, p2: NativeAny, p3: NativeAny, p4: NativeAny): void;
   /**
    *
    * @param {NativeAny} p0 undefined
@@ -18400,7 +18400,7 @@ declare module "natives" {
    *
    * @param {string} cheat undefined
    */
-  export function PlaystatsCheatApplied(cheat: string): void;
+  export function playstatsCheatApplied(cheat: string): void;
   /**
    *
    * @param {NativeAny} p0 undefined
@@ -18450,31 +18450,31 @@ declare module "natives" {
    *
    * @param {NativeAny} p0 undefined
    */
-  export function LeaderboardsGetNumberOfColumns(p0: NativeAny, p1: NativeAny): void;
+  export function leaderboardsGetNumberOfColumns(p0: NativeAny, p1: NativeAny): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function LeaderboardsGetColumnId(p0: NativeAny, p1: NativeAny, p2: NativeAny): void;
+  export function leaderboardsGetColumnId(p0: NativeAny, p1: NativeAny, p2: NativeAny): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function LeaderboardsGetColumnType(p0: NativeAny, p1: NativeAny, p2: NativeAny): void;
+  export function leaderboardsGetColumnType(p0: NativeAny, p1: NativeAny, p2: NativeAny): void;
   /**
    *
    */
-  export function LeaderboardsReadClearAll(): void;
-  /**
-   *
-   * @param {NativeAny} p0 undefined
-   */
-  export function LeaderboardsReadClear(p0: NativeAny, p1: NativeAny, p2: NativeAny): void;
+  export function leaderboardsReadClearAll(): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function LeaderboardsReadPending(p0: NativeAny, p1: NativeAny, p2: NativeAny): void;
+  export function leaderboardsReadClear(p0: NativeAny, p1: NativeAny, p2: NativeAny): void;
+  /**
+   *
+   * @param {NativeAny} p0 undefined
+   */
+  export function leaderboardsReadPending(p0: NativeAny, p1: NativeAny, p2: NativeAny): void;
   /**
    *
    */
@@ -18483,42 +18483,42 @@ declare module "natives" {
    *
    * @param {NativeAny} p0 undefined
    */
-  export function LeaderboardsReadSuccessful(p0: NativeAny, p1: NativeAny, p2: NativeAny): void;
+  export function leaderboardsReadSuccessful(p0: NativeAny, p1: NativeAny, p2: NativeAny): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function Leaderboards2ReadFriendsByRow(p0: NativeAny, p1: NativeAny, p2: NativeAny, p3: NativeBOOL, p4: NativeAny, p5: NativeAny): void;
+  export function leaderboards2ReadFriendsByRow(p0: NativeAny, p1: NativeAny, p2: NativeAny, p3: NativeBOOL, p4: NativeAny, p5: NativeAny): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function Leaderboards2ReadByHandle(p0: NativeAny, p1: NativeAny): void;
+  export function leaderboards2ReadByHandle(p0: NativeAny, p1: NativeAny): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function Leaderboards2ReadByRow(p0: NativeAny, p1: NativeAny, p2: NativeAny, p3: NativeAny, p4: NativeAny, p5: NativeAny, p6: NativeAny): void;
+  export function leaderboards2ReadByRow(p0: NativeAny, p1: NativeAny, p2: NativeAny, p3: NativeAny, p4: NativeAny, p5: NativeAny, p6: NativeAny): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function Leaderboards2ReadByRank(p0: NativeAny, p1: NativeAny, p2: NativeAny): void;
+  export function leaderboards2ReadByRank(p0: NativeAny, p1: NativeAny, p2: NativeAny): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function Leaderboards2ReadByRadius(p0: NativeAny, p1: NativeAny, p2: NativeAny): void;
+  export function leaderboards2ReadByRadius(p0: NativeAny, p1: NativeAny, p2: NativeAny): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function Leaderboards2ReadByScoreInt(p0: NativeAny, p1: NativeAny, p2: NativeAny): void;
+  export function leaderboards2ReadByScoreInt(p0: NativeAny, p1: NativeAny, p2: NativeAny): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function Leaderboards2ReadByScoreFloat(p0: NativeAny, p1: number, p2: NativeAny): void;
+  export function leaderboards2ReadByScoreFloat(p0: NativeAny, p1: number, p2: NativeAny): void;
   /**
    *
    * @param {NativeAny} p0 undefined
@@ -18557,7 +18557,7 @@ declare module "natives" {
    *
    * @param {NativeAny} p0 undefined
    */
-  export function Leaderboards2WriteData(p0: NativeAny): void;
+  export function leaderboards2WriteData(p0: NativeAny): void;
   /**
    *
    * @param {NativeAny} p0 undefined
@@ -18572,11 +18572,11 @@ declare module "natives" {
    *
    * @param {NativeAny} p0 undefined
    */
-  export function LeaderboardsCacheDataRow(p0: NativeAny): void;
+  export function leaderboardsCacheDataRow(p0: NativeAny): void;
   /**
    *
    */
-  export function LeaderboardsClearCacheData(): void;
+  export function leaderboardsClearCacheData(): void;
   /**
    *
    * @param {NativeAny} p0 undefined
@@ -18586,12 +18586,12 @@ declare module "natives" {
    *
    * @param {NativeAny} p0 undefined
    */
-  export function LeaderboardsGetCacheExists(p0: NativeAny): void;
+  export function leaderboardsGetCacheExists(p0: NativeAny): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function LeaderboardsGetCacheTime(p0: NativeAny): void;
+  export function leaderboardsGetCacheTime(p0: NativeAny): void;
   /**
    *
    * @param {NativeAny} p0 undefined
@@ -18601,7 +18601,7 @@ declare module "natives" {
    *
    * @param {NativeAny} p0 undefined
    */
-  export function LeaderboardsGetCacheDataRow(p0: NativeAny, p1: NativeAny, p2: NativeAny): void;
+  export function leaderboardsGetCacheDataRow(p0: NativeAny, p1: NativeAny, p2: NativeAny): void;
   /**
    *
    * @param {string} p0 undefined
@@ -18658,7 +18658,7 @@ declare module "natives" {
    *
    * @param {NativeHash} statName undefined
    */
-  export function LeaderboardsDeaths(statName: NativeHash, value: number): void;
+  export function leaderboardsDeaths(statName: NativeHash, value: number): void;
   /**
    *
    */
@@ -18667,7 +18667,7 @@ declare module "natives" {
    *
    * @param {NativeAny} p0 undefined
    */
-  export function Leaderboards2WriteDataEx(p0: NativeAny, p1: NativeAny): void;
+  export function leaderboards2WriteDataEx(p0: NativeAny, p1: NativeAny): void;
   /**
    *
    */
@@ -18756,36 +18756,36 @@ declare module "natives" {
    *
    * @param {string} name undefined
    */
-  export function AddScriptToRandomPed(name: string, model: NativeHash, p2: number, p3: number): void;
+  export function addScriptToRandomPed(name: string, model: NativeHash, p2: number, p3: number): void;
   /**
    *
    * @param {string} scriptName undefined
    */
-  export function RegisterObjectScriptBrain(scriptName: string, objectName: NativeHash, p2: number, p3: number, p4: number, p5: number): void;
+  export function registerObjectScriptBrain(scriptName: string, objectName: NativeHash, p2: number, p3: number, p4: number, p5: number): void;
   /**
    *
    * @param {NativeObject} object undefined
    */
-  export function IsObjectWithinBrainActivationRange(object: NativeObject): void;
+  export function isObjectWithinBrainActivationRange(object: NativeObject): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function RegisterWorldPointScriptBrain(p0: NativeAny, p1: number, p2: NativeAny): void;
+  export function registerWorldPointScriptBrain(p0: NativeAny, p1: number, p2: NativeAny): void;
   /**
    *
    */
-  export function IsWorldPointWithinBrainActivationRange(): void;
-  /**
-   *
-   * @param {number} brainSet undefined
-   */
-  export function EnableScriptBrainSet(brainSet: number): void;
+  export function isWorldPointWithinBrainActivationRange(): void;
   /**
    *
    * @param {number} brainSet undefined
    */
-  export function DisableScriptBrainSet(brainSet: number): void;
+  export function enableScriptBrainSet(brainSet: number): void;
+  /**
+   *
+   * @param {number} brainSet undefined
+   */
+  export function disableScriptBrainSet(brainSet: number): void;
   /**
    *
    */
@@ -18808,65 +18808,65 @@ declare module "natives" {
    *
    * @param {number} p3 undefined
    */
-  export function CreateMobilePhone(p3: number): void;
+  export function createMobilePhone(p3: number): void;
   /**
    *
    */
-  export function DestroyMobilePhone(): void;
+  export function destroyMobilePhone(): void;
   /**
    *
    * @param {number} scale undefined
    */
-  export function SetMobilePhoneScale(scale: number): void;
+  export function setMobilePhoneScale(scale: number): void;
   /**
    *
    * @param {number} rotX undefined
    */
-  export function SetMobilePhoneRotation(rotX: number, rotY: number, rotZ: number, p3: NativeAny): void;
+  export function setMobilePhoneRotation(rotX: number, rotY: number, rotZ: number, p3: NativeAny): void;
   /**
    *
    * @param {NativeVector3} rotation undefined
    */
-  export function GetMobilePhoneRotation(rotation: NativeVector3, p1: NativeVehicle): void;
+  export function getMobilePhoneRotation(rotation: NativeVector3, p1: NativeVehicle): void;
   /**
    *
    * @param {number} posX undefined
    */
-  export function SetMobilePhonePosition(posX: number, posY: number, posZ: number): void;
+  export function setMobilePhonePosition(posX: number, posY: number, posZ: number): void;
   /**
    *
    * @param {NativeVector3} position undefined
    */
-  export function GetMobilePhonePosition(position: NativeVector3): void;
+  export function getMobilePhonePosition(position: NativeVector3): void;
   /**
    *
    * @param {NativeBOOL} toggle undefined
    */
-  export function ScriptIsMovingMobilePhoneOffscreen(toggle: NativeBOOL): void;
+  export function scriptIsMovingMobilePhoneOffscreen(toggle: NativeBOOL): void;
   /**
    *
    */
-  export function CanPhoneBeSeenOnScreen(): void;
+  export function canPhoneBeSeenOnScreen(): void;
   /**
    *
    * @param {number} direction undefined
    */
-  export function MoveFinger(direction: number): void;
+  export function moveFinger(direction: number): void;
   /**
    *
    * @param {NativeBOOL} Toggle undefined
    */
-  export function SetPhoneLean(Toggle: NativeBOOL): void;
+  export function setPhoneLean(Toggle: NativeBOOL): void;
   /**
    *
    * @param {NativeBOOL} p0 undefined
    */
-  export function CellCamActivate(p0: NativeBOOL, p1: NativeBOOL): void;
+  export function cellCamActivate(p0: NativeBOOL, p1: NativeBOOL): void;
   /**
    *
    * @param {NativeBOOL} toggle undefined
    */
-  export function DisablePhoneThisFrame(toggle: NativeBOOL): void;
+  export function disablePhoneThisFrame(toggle: NativeBOOL): void;
   /**
    *
    * @param {number} toggle undefined
@@ -18916,192 +18916,192 @@ declare module "natives" {
    *
    * @param {NativeEntity} entity undefined
    */
-  export function CellCamIsCharVisibleNoFaceCheck(entity: NativeEntity): void;
+  export function cellCamIsCharVisibleNoFaceCheck(entity: NativeEntity): void;
   /**
    *
    * @param {number} renderId undefined
    */
-  export function GetMobilePhoneRenderId(renderId: number): void;
+  export function getMobilePhoneRenderId(renderId: number): void;
   /**
    *
    */
-  export function AppDataValid(): void;
+  export function appDataValid(): void;
   /**
    *
    * @param {NativeScrHandle} property undefined
    */
-  export function AppGetInt(property: NativeScrHandle): void;
+  export function appGetInt(property: NativeScrHandle): void;
   /**
    *
    * @param {string} property undefined
    */
-  export function AppGetFloat(property: string): void;
+  export function appGetFloat(property: string): void;
   /**
    *
    * @param {string} property undefined
    */
-  export function AppGetString(property: string): void;
+  export function appGetString(property: string): void;
   /**
    *
    * @param {number} hour undefined
    */
-  export function SetClockTime(hour: number, minute: number, second: number): void;
+  export function setClockTime(hour: number, minute: number, second: number): void;
   /**
    *
    * @param {NativeBOOL} toggle undefined
    */
-  export function PauseClock(toggle: NativeBOOL): void;
+  export function pauseClock(toggle: NativeBOOL): void;
   /**
    *
    * @param {number} hour undefined
    */
-  export function AdvanceClockTimeTo(hour: number, minute: number, second: number): void;
+  export function advanceClockTimeTo(hour: number, minute: number, second: number): void;
   /**
    *
    * @param {number} hours undefined
    */
-  export function AddToClockTime(hours: number, minutes: number, seconds: number): void;
+  export function addToClockTime(hours: number, minutes: number, seconds: number): void;
   /**
    *
    */
-  export function GetClockHours(): void;
+  export function getClockHours(): void;
   /**
    *
    */
-  export function GetClockMinutes(): void;
+  export function getClockMinutes(): void;
   /**
    *
    */
-  export function GetClockSeconds(): void;
+  export function getClockSeconds(): void;
   /**
    *
    * @param {number} day undefined
    */
-  export function SetClockDate(day: number, month: number, year: number): void;
+  export function setClockDate(day: number, month: number, year: number): void;
   /**
    *
    */
-  export function GetClockDayOfWeek(): void;
+  export function getClockDayOfWeek(): void;
   /**
    *
    */
-  export function GetClockDayOfMonth(): void;
+  export function getClockDayOfMonth(): void;
   /**
    *
    */
-  export function GetClockMonth(): void;
+  export function getClockMonth(): void;
   /**
    *
    */
-  export function GetClockYear(): void;
+  export function getClockYear(): void;
   /**
    *
    */
-  export function GetMillisecondsPerGameMinute(): void;
+  export function getMillisecondsPerGameMinute(): void;
   /**
    *
    */
-  export function GetPosixTime(): void;
-  /**
-   *
-   * @param {number} year undefined
-   */
-  export function GetUtcTime(year: number, month: number, day: number, hour: number, minute: number, second: number): void;
+  export function getPosixTime(): void;
   /**
    *
    * @param {number} year undefined
    */
-  export function GetLocalTime(year: number, month: number, day: number, hour: number, minute: number, second: number): void;
+  export function getUtcTime(year: number, month: number, day: number, hour: number, minute: number, second: number): void;
+  /**
+   *
+   * @param {number} year undefined
+   */
+  export function getLocalTime(year: number, month: number, day: number, hour: number, minute: number, second: number): void;
   /**
    *
    * @param {number} x1 undefined
    */
-  export function SetRoadsInArea(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, unknown1: NativeBOOL, unknown2: NativeBOOL): void;
+  export function setRoadsInArea(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, unknown1: NativeBOOL, unknown2: NativeBOOL): void;
   /**
    *
    * @param {number} x1 undefined
    */
-  export function SetRoadsInAngledArea(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, angle: number, unknown1: NativeBOOL, unknown2: NativeBOOL, unknown3: NativeBOOL): void;
+  export function setRoadsInAngledArea(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, angle: number, unknown1: NativeBOOL, unknown2: NativeBOOL, unknown3: NativeBOOL): void;
   /**
    *
    * @param {number} x1 undefined
    */
-  export function SetPedPathsInArea(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, unknown: NativeBOOL): void;
+  export function setPedPathsInArea(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, unknown: NativeBOOL): void;
   /**
    *
    * @param {number} x undefined
    */
-  export function GetSafeCoordForPed(x: number, y: number, z: number, onGround: NativeBOOL, outPosition: NativeVector3, flags: number): void;
+  export function getSafeCoordForPed(x: number, y: number, z: number, onGround: NativeBOOL, outPosition: NativeVector3, flags: number): void;
   /**
    *
    * @param {number} x undefined
    */
-  export function GetClosestVehicleNode(x: number, y: number, z: number, outPosition: NativeVector3, nodeType: number, p5: number, p6: number): void;
+  export function getClosestVehicleNode(x: number, y: number, z: number, outPosition: NativeVector3, nodeType: number, p5: number, p6: number): void;
   /**
    *
    * @param {number} x undefined
    */
-  export function GetClosestMajorVehicleNode(x: number, y: number, z: number, outPosition: NativeVector3, p5: number, p6: number): void;
+  export function getClosestMajorVehicleNode(x: number, y: number, z: number, outPosition: NativeVector3, p5: number, p6: number): void;
   /**
    *
    * @param {number} x undefined
    */
-  export function GetClosestVehicleNodeWithHeading(x: number, y: number, z: number, outPosition: NativeVector3, outHeading: number, nodeType: number, p6: number, p7: number): void;
+  export function getClosestVehicleNodeWithHeading(x: number, y: number, z: number, outPosition: NativeVector3, outHeading: number, nodeType: number, p6: number, p7: number): void;
   /**
    *
    * @param {number} x undefined
    */
-  export function GetNthClosestVehicleNode(x: number, y: number, z: number, nthClosest: number, outPosition: NativeVector3, p6: NativeBOOL, p7: number, p8: number): void;
+  export function getNthClosestVehicleNode(x: number, y: number, z: number, nthClosest: number, outPosition: NativeVector3, p6: NativeBOOL, p7: number, p8: number): void;
   /**
    *
    * @param {number} x undefined
    */
-  export function GetNthClosestVehicleNodeId(x: number, y: number, z: number, nth: number, nodetype: number, p5: number, p6: number): void;
+  export function getNthClosestVehicleNodeId(x: number, y: number, z: number, nth: number, nodetype: number, p5: number, p6: number): void;
   /**
    *
    * @param {number} x undefined
    */
-  export function GetNthClosestVehicleNodeWithHeading(x: number, y: number, z: number, nthClosest: number, outPosition: NativeVector3, outHeading: number, outInt: number, p6: number, p7: number, p8: number): void;
+  export function getNthClosestVehicleNodeWithHeading(x: number, y: number, z: number, nthClosest: number, outPosition: NativeVector3, outHeading: number, outInt: number, p6: number, p7: number, p8: number): void;
   /**
    *
    * @param {number} x undefined
    */
-  export function GetNthClosestVehicleNodeIdWithHeading(x: number, y: number, z: number, nthClosest: number, outPosition: NativeVector3, outHeading: number, p6: NativeAny, p7: number, p8: number): void;
+  export function getNthClosestVehicleNodeIdWithHeading(x: number, y: number, z: number, nthClosest: number, outPosition: NativeVector3, outHeading: number, p6: NativeAny, p7: number, p8: number): void;
   /**
    *
    * @param {number} x undefined
    */
-  export function GetNthClosestVehicleNodeFavourDirection(x: number, y: number, z: number, desiredX: number, desiredY: number, desiredZ: number, nthClosest: number, outPosition: NativeVector3, outHeading: number, nodetype: number, p10: NativeAny, p11: NativeAny): void;
+  export function getNthClosestVehicleNodeFavourDirection(x: number, y: number, z: number, desiredX: number, desiredY: number, desiredZ: number, nthClosest: number, outPosition: NativeVector3, outHeading: number, nodetype: number, p10: NativeAny, p11: NativeAny): void;
   /**
    *
    * @param {number} x undefined
    */
-  export function GetVehicleNodeProperties(x: number, y: number, z: number, density: number, flags: number): void;
+  export function getVehicleNodeProperties(x: number, y: number, z: number, density: number, flags: number): void;
   /**
    *
    * @param {number} vehicleNodeId undefined
    */
-  export function IsVehicleNodeIdValid(vehicleNodeId: number): void;
+  export function isVehicleNodeIdValid(vehicleNodeId: number): void;
   /**
    *
    * @param {number} nodeId undefined
    */
-  export function GetVehicleNodePosition(nodeId: number, outPosition: NativeVector3): void;
+  export function getVehicleNodePosition(nodeId: number, outPosition: NativeVector3): void;
   /**
    *
    * @param {number} nodeID undefined
    */
-  export function GetSupportsGpsRouteFlag(nodeID: number): void;
+  export function getSupportsGpsRouteFlag(nodeID: number): void;
   /**
    *
    * @param {number} nodeID undefined
    */
-  export function GetIsSlowRoadFlag(nodeID: number): void;
+  export function getIsSlowRoadFlag(nodeID: number): void;
   /**
    *
    * @param {number} x undefined
    */
-  export function GetClosestRoad(x: number, y: number, z: number, p3: number, p4: number, p5: NativeVector3, p6: NativeVector3, p7: NativeAny, p8: NativeAny, p9: number, p10: NativeBOOL): void;
+  export function getClosestRoad(x: number, y: number, z: number, p3: number, p4: number, p5: NativeVector3, p6: NativeVector3, p7: NativeAny, p8: NativeAny, p9: number, p10: NativeBOOL): void;
   /**
    *
    * @param {NativeBOOL} p0 undefined
@@ -19121,12 +19121,12 @@ declare module "natives" {
    *
    * @param {number} p0 undefined
    */
-  export function SetRoadsBackToOriginal(p0: number, p1: number, p2: number, p3: number, p4: number, p5: number): void;
+  export function setRoadsBackToOriginal(p0: number, p1: number, p2: number, p3: number, p4: number, p5: number): void;
   /**
    *
    * @param {number} x1 undefined
    */
-  export function SetRoadsBackToOriginalInAngledArea(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, p6: number): void;
+  export function setRoadsBackToOriginalInAngledArea(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, p6: number): void;
   /**
    *
    * @param {number} p0 undefined
@@ -19141,27 +19141,27 @@ declare module "natives" {
    *
    * @param {NativeAny} p0 undefined
    */
-  export function SetPedPathsBackToOriginal(p0: NativeAny, p1: NativeAny, p2: NativeAny, p3: NativeAny, p4: NativeAny, p5: NativeAny): void;
+  export function setPedPathsBackToOriginal(p0: NativeAny, p1: NativeAny, p2: NativeAny, p3: NativeAny, p4: NativeAny, p5: NativeAny): void;
   /**
    *
    * @param {number} x undefined
    */
-  export function GetRandomVehicleNode(x: number, y: number, z: number, radius: number, p4: NativeBOOL, p5: NativeBOOL, p6: NativeBOOL, outPosition: NativeVector3, nodeId: number): void;
+  export function getRandomVehicleNode(x: number, y: number, z: number, radius: number, p4: NativeBOOL, p5: NativeBOOL, p6: NativeBOOL, outPosition: NativeVector3, nodeId: number): void;
   /**
    *
    * @param {number} x undefined
    */
-  export function GetStreetNameAtCoord(x: number, y: number, z: number, streetName: NativeHash, crossingRoad: NativeHash): void;
+  export function getStreetNameAtCoord(x: number, y: number, z: number, streetName: NativeHash, crossingRoad: NativeHash): void;
   /**
    *
    * @param {number} x undefined
    */
-  export function GenerateDirectionsToCoord(x: number, y: number, z: number, p3: NativeBOOL, direction: number, vehicle: number, distToNxJunction: number): void;
+  export function generateDirectionsToCoord(x: number, y: number, z: number, p3: NativeBOOL, direction: number, vehicle: number, distToNxJunction: number): void;
   /**
    *
    * @param {NativeBOOL} ignore undefined
    */
-  export function SetIgnoreNoGpsFlag(ignore: NativeBOOL): void;
+  export function setIgnoreNoGpsFlag(ignore: NativeBOOL): void;
   /**
    *
    * @param {NativeBOOL} p0 undefined
@@ -19171,7 +19171,7 @@ declare module "natives" {
    *
    * @param {NativeAny} p0 undefined
    */
-  export function SetGpsDisabledZone(p0: NativeAny, p1: NativeAny, p2: NativeAny, p3: NativeAny, p4: NativeAny, p5: NativeAny): void;
+  export function setGpsDisabledZone(p0: NativeAny, p1: NativeAny, p2: NativeAny, p3: NativeAny, p4: NativeAny, p5: NativeAny): void;
   /**
    *
    */
@@ -19189,7 +19189,7 @@ declare module "natives" {
    *
    * @param {number} x undefined
    */
-  export function IsPointOnRoad(x: number, y: number, z: number, vehicle: NativeVehicle): void;
+  export function isPointOnRoad(x: number, y: number, z: number, vehicle: NativeVehicle): void;
   /**
    *
    */
@@ -19208,25 +19208,25 @@ declare module "natives" {
    *
    * @param {number} x undefined
    */
-  export function AddNavmeshRequiredRegion(x: number, y: number, radius: number): void;
+  export function addNavmeshRequiredRegion(x: number, y: number, radius: number): void;
   /**
    *
    */
-  export function RemoveNavmeshRequiredRegions(): void;
+  export function removeNavmeshRequiredRegions(): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function DisableNavmeshInArea(p0: NativeAny, p1: NativeAny, p2: NativeAny, p3: NativeAny, p4: NativeAny, p5: NativeAny, p6: NativeAny): void;
+  export function disableNavmeshInArea(p0: NativeAny, p1: NativeAny, p2: NativeAny, p3: NativeAny, p4: NativeAny, p5: NativeAny, p6: NativeAny): void;
   /**
    *
    */
-  export function AreAllNavmeshRegionsLoaded(): void;
+  export function areAllNavmeshRegionsLoaded(): void;
   /**
    *
    * @param {number} x1 undefined
    */
-  export function IsNavmeshLoadedInArea(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number): void;
+  export function isNavmeshLoadedInArea(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number): void;
   /**
    *
    * @param {number} p0 undefined
@@ -19236,22 +19236,22 @@ declare module "natives" {
    *
    * @param {number} p0 undefined
    */
-  export function AddNavmeshBlockingObject(p0: number, p1: number, p2: number, p3: number, p4: number, p5: number, p6: number, p7: NativeBOOL, p8: NativeAny): void;
+  export function addNavmeshBlockingObject(p0: number, p1: number, p2: number, p3: number, p4: number, p5: number, p6: number, p7: NativeBOOL, p8: NativeAny): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function UpdateNavmeshBlockingObject(p0: NativeAny, p1: number, p2: number, p3: number, p4: number, p5: number, p6: number, p7: number, p8: NativeAny): void;
+  export function updateNavmeshBlockingObject(p0: NativeAny, p1: number, p2: number, p3: number, p4: number, p5: number, p6: number, p7: number, p8: NativeAny): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function RemoveNavmeshBlockingObject(p0: NativeAny): void;
+  export function removeNavmeshBlockingObject(p0: NativeAny): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function DoesNavmeshBlockingObjectExist(p0: NativeAny): void;
+  export function doesNavmeshBlockingObjectExist(p0: NativeAny): void;
   /**
    *
    * @param {number} p0 undefined
@@ -19276,42 +19276,42 @@ declare module "natives" {
    *
    * @param {number} x1 undefined
    */
-  export function CalculateTravelDistanceBetweenPoints(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number): void;
+  export function calculateTravelDistanceBetweenPoints(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number): void;
   /**
    *
    * @param {number} inputGroup undefined
    */
-  export function IsControlEnabled(inputGroup: number, control: number): void;
+  export function isControlEnabled(inputGroup: number, control: number): void;
   /**
    *
    * @param {number} inputGroup undefined
    */
-  export function IsControlPressed(inputGroup: number, control: number): void;
+  export function isControlPressed(inputGroup: number, control: number): void;
   /**
    *
    * @param {number} inputGroup undefined
    */
-  export function IsControlReleased(inputGroup: number, control: number): void;
+  export function isControlReleased(inputGroup: number, control: number): void;
   /**
    *
    * @param {number} inputGroup undefined
    */
-  export function IsControlJustPressed(inputGroup: number, control: number): void;
+  export function isControlJustPressed(inputGroup: number, control: number): void;
   /**
    *
    * @param {number} inputGroup undefined
    */
-  export function IsControlJustReleased(inputGroup: number, control: number): void;
+  export function isControlJustReleased(inputGroup: number, control: number): void;
   /**
    *
    * @param {number} inputGroup undefined
    */
-  export function GetControlValue(inputGroup: number, control: number): void;
+  export function getControlValue(inputGroup: number, control: number): void;
   /**
    *
    * @param {number} inputGroup undefined
    */
-  export function GetControlNormal(inputGroup: number, control: number): void;
+  export function getControlNormal(inputGroup: number, control: number): void;
   /**
    *
    * @param {NativeBOOL} p0 undefined
@@ -19326,27 +19326,27 @@ declare module "natives" {
    *
    * @param {number} inputGroup undefined
    */
-  export function SetControlNormal(inputGroup: number, control: number, amount: number): void;
+  export function setControlNormal(inputGroup: number, control: number, amount: number): void;
   /**
    *
    * @param {number} inputGroup undefined
    */
-  export function IsDisabledControlPressed(inputGroup: number, control: number): void;
+  export function isDisabledControlPressed(inputGroup: number, control: number): void;
   /**
    *
    * @param {number} inputGroup undefined
    */
-  export function IsDisabledControlJustPressed(inputGroup: number, control: number): void;
+  export function isDisabledControlJustPressed(inputGroup: number, control: number): void;
   /**
    *
    * @param {number} inputGroup undefined
    */
-  export function IsDisabledControlJustReleased(inputGroup: number, control: number): void;
+  export function isDisabledControlJustReleased(inputGroup: number, control: number): void;
   /**
    *
    * @param {number} inputGroup undefined
    */
-  export function GetDisabledControlNormal(inputGroup: number, control: number): void;
+  export function getDisabledControlNormal(inputGroup: number, control: number): void;
   /**
    *
    * @param {number} inputGroup undefined
@@ -19361,17 +19361,17 @@ declare module "natives" {
    *
    * @param {number} inputGroup undefined
    */
-  export function IsInputDisabled(inputGroup: number): void;
+  export function isInputDisabled(inputGroup: number): void;
   /**
    *
    * @param {number} inputGroup undefined
    */
-  export function IsInputJustDisabled(inputGroup: number): void;
+  export function isInputJustDisabled(inputGroup: number): void;
   /**
    *
    * @param {number} x undefined
    */
-  export function SetCursorLocation(x: number, y: number): void;
+  export function setCursorLocation(x: number, y: number): void;
   /**
    *
    * @param {NativeBOOL} p0 undefined
@@ -19386,7 +19386,7 @@ declare module "natives" {
    *
    * @param {number} inputGroup undefined
    */
-  export function GetControlInstructionalButton(inputGroup: number, control: number, p2: NativePlayer): void;
+  export function getControlInstructionalButton(inputGroup: number, control: number, p2: NativePlayer): void;
   /**
    *
    * @param {number} inputGroup undefined
@@ -19406,7 +19406,7 @@ declare module "natives" {
    *
    * @param {number} p0 undefined
    */
-  export function SetPadShake(p0: number, duration: number, frequency: number): void;
+  export function setPadShake(p0: number, duration: number, frequency: number): void;
   /**
    *
    * @param {NativeAny} p0 undefined
@@ -19416,7 +19416,7 @@ declare module "natives" {
    *
    * @param {NativeAny} p0 undefined
    */
-  export function StopPadShake(p0: NativeAny): void;
+  export function stopPadShake(p0: NativeAny): void;
   /**
    *
    * @param {NativeAny} p0 undefined
@@ -19430,7 +19430,7 @@ declare module "natives" {
   /**
    *
    */
-  export function IsLookInverted(): void;
+  export function isLookInverted(): void;
   /**
    *
    */
@@ -19438,7 +19438,7 @@ declare module "natives" {
   /**
    *
    */
-  export function GetLocalPlayerAimState(): void;
+  export function getLocalPlayerAimState(): void;
   /**
    *
    */
@@ -19455,32 +19455,32 @@ declare module "natives" {
    *
    * @param {NativeBOOL} toggle undefined
    */
-  export function SetPlayerpadShakesWhenControllerDisabled(toggle: NativeBOOL): void;
+  export function setPlayerpadShakesWhenControllerDisabled(toggle: NativeBOOL): void;
   /**
    *
    * @param {number} inputGroup undefined
    */
-  export function SetInputExclusive(inputGroup: number, control: number): void;
+  export function setInputExclusive(inputGroup: number, control: number): void;
   /**
    *
    * @param {number} inputGroup undefined
    */
-  export function DisableControlAction(inputGroup: number, control: number, disable: NativeBOOL): void;
+  export function disableControlAction(inputGroup: number, control: number, disable: NativeBOOL): void;
   /**
    *
    * @param {number} inputGroup undefined
    */
-  export function EnableControlAction(inputGroup: number, control: number, enable: NativeBOOL): void;
+  export function enableControlAction(inputGroup: number, control: number, enable: NativeBOOL): void;
   /**
    *
    * @param {number} inputGroup undefined
    */
-  export function DisableAllControlActions(inputGroup: number): void;
+  export function disableAllControlActions(inputGroup: number): void;
   /**
    *
    * @param {number} inputGroup undefined
    */
-  export function EnableAllControlActions(inputGroup: number): void;
+  export function enableAllControlActions(inputGroup: number): void;
   /**
    *
    * @param {string} p0 undefined
@@ -19499,7 +19499,7 @@ declare module "natives" {
    *
    * @param {number} inputGroup undefined
    */
-  export function DisableInputGroup(inputGroup: number): void;
+  export function disableInputGroup(inputGroup: number): void;
   /**
    *
    * @param {NativeBlip} x undefined
@@ -19583,15 +19583,15 @@ declare module "natives" {
    *
    * @param {string} filename undefined
    */
-  export function LoadUgcFile(filename: string): void;
+  export function loadUgcFile(filename: string): void;
   /**
    *
    */
-  export function DatafileCreate(): void;
+  export function datafileCreate(): void;
   /**
    *
    */
-  export function DatafileDelete(): void;
+  export function datafileDelete(): void;
   /**
    *
    */
@@ -19603,7 +19603,7 @@ declare module "natives" {
   /**
    *
    */
-  export function DatafileGetFileDict(): void;
+  export function datafileGetFileDict(): void;
   /**
    *
    * @param {string} filename undefined
@@ -19617,212 +19617,212 @@ declare module "natives" {
   /**
    *
    */
-  export function DatafileIsSavePending(): void;
+  export function datafileIsSavePending(): void;
   /**
    *
    * @param {NativeAny} objectData undefined
    */
-  export function ObjectValueAddBoolean(objectData: NativeAny, key: string, value: NativeBOOL): void;
+  export function objectValueAddBoolean(objectData: NativeAny, key: string, value: NativeBOOL): void;
   /**
    *
    * @param {NativeAny} objectData undefined
    */
-  export function ObjectValueAddInteger(objectData: NativeAny, key: string, value: number): void;
+  export function objectValueAddInteger(objectData: NativeAny, key: string, value: number): void;
   /**
    *
    * @param {NativeAny} objectData undefined
    */
-  export function ObjectValueAddFloat(objectData: NativeAny, key: string, value: number): void;
+  export function objectValueAddFloat(objectData: NativeAny, key: string, value: number): void;
   /**
    *
    * @param {NativeAny} objectData undefined
    */
-  export function ObjectValueAddString(objectData: NativeAny, key: string, value: string): void;
+  export function objectValueAddString(objectData: NativeAny, key: string, value: string): void;
   /**
    *
    * @param {NativeAny} objectData undefined
    */
-  export function ObjectValueAddVector3(objectData: NativeAny, key: string, valueX: number, valueY: number, valueZ: number): void;
+  export function objectValueAddVector3(objectData: NativeAny, key: string, valueX: number, valueY: number, valueZ: number): void;
   /**
    *
    * @param {NativeAny} objectData undefined
    */
-  export function ObjectValueAddObject(objectData: NativeAny, key: string): void;
+  export function objectValueAddObject(objectData: NativeAny, key: string): void;
   /**
    *
    * @param {NativeAny} objectData undefined
    */
-  export function ObjectValueAddArray(objectData: NativeAny, key: string): void;
+  export function objectValueAddArray(objectData: NativeAny, key: string): void;
   /**
    *
    * @param {NativeAny} objectData undefined
    */
-  export function ObjectValueGetBoolean(objectData: NativeAny, key: string): void;
+  export function objectValueGetBoolean(objectData: NativeAny, key: string): void;
   /**
    *
    * @param {NativeAny} objectData undefined
    */
-  export function ObjectValueGetInteger(objectData: NativeAny, key: string): void;
+  export function objectValueGetInteger(objectData: NativeAny, key: string): void;
   /**
    *
    * @param {NativeAny} objectData undefined
    */
-  export function ObjectValueGetFloat(objectData: NativeAny, key: string): void;
+  export function objectValueGetFloat(objectData: NativeAny, key: string): void;
   /**
    *
    * @param {NativeAny} objectData undefined
    */
-  export function ObjectValueGetString(objectData: NativeAny, key: string): void;
+  export function objectValueGetString(objectData: NativeAny, key: string): void;
   /**
    *
    * @param {NativeAny} objectData undefined
    */
-  export function ObjectValueGetVector3(objectData: NativeAny, key: string): void;
+  export function objectValueGetVector3(objectData: NativeAny, key: string): void;
   /**
    *
    * @param {NativeAny} sCloudFile undefined
    */
-  export function ObjectValueGetObject(sCloudFile: NativeAny, key: string): void;
+  export function objectValueGetObject(sCloudFile: NativeAny, key: string): void;
   /**
    *
    * @param {NativeAny} objectData undefined
    */
-  export function ObjectValueGetArray(objectData: NativeAny, key: string): void;
+  export function objectValueGetArray(objectData: NativeAny, key: string): void;
   /**
    *
    * @param {NativeAny} objectData undefined
    */
-  export function ObjectValueGetType(objectData: NativeAny, key: string): void;
+  export function objectValueGetType(objectData: NativeAny, key: string): void;
   /**
    *
    * @param {NativeAny} arrayData undefined
    */
-  export function ArrayValueAddBoolean(arrayData: NativeAny, value: NativeBOOL): void;
+  export function arrayValueAddBoolean(arrayData: NativeAny, value: NativeBOOL): void;
   /**
    *
    * @param {NativeAny} arrayData undefined
    */
-  export function ArrayValueAddInteger(arrayData: NativeAny, value: number): void;
+  export function arrayValueAddInteger(arrayData: NativeAny, value: number): void;
   /**
    *
    * @param {NativeAny} arrayData undefined
    */
-  export function ArrayValueAddFloat(arrayData: NativeAny, value: number): void;
+  export function arrayValueAddFloat(arrayData: NativeAny, value: number): void;
   /**
    *
    * @param {NativeAny} arrayData undefined
    */
-  export function ArrayValueAddString(arrayData: NativeAny, value: string): void;
+  export function arrayValueAddString(arrayData: NativeAny, value: string): void;
   /**
    *
    * @param {NativeAny} arrayData undefined
    */
-  export function ArrayValueAddVector3(arrayData: NativeAny, valueX: number, valueY: number, valueZ: number): void;
+  export function arrayValueAddVector3(arrayData: NativeAny, valueX: number, valueY: number, valueZ: number): void;
   /**
    *
    * @param {NativeAny} arrayData undefined
    */
-  export function ArrayValueAddObject(arrayData: NativeAny): void;
+  export function arrayValueAddObject(arrayData: NativeAny): void;
   /**
    *
    * @param {NativeAny} arrayData undefined
    */
-  export function ArrayValueGetBoolean(arrayData: NativeAny, arrayIndex: number): void;
+  export function arrayValueGetBoolean(arrayData: NativeAny, arrayIndex: number): void;
   /**
    *
    * @param {NativeAny} arrayData undefined
    */
-  export function ArrayValueGetInteger(arrayData: NativeAny, arrayIndex: number): void;
+  export function arrayValueGetInteger(arrayData: NativeAny, arrayIndex: number): void;
   /**
    *
    * @param {NativeAny} arrayData undefined
    */
-  export function ArrayValueGetFloat(arrayData: NativeAny, arrayIndex: number): void;
+  export function arrayValueGetFloat(arrayData: NativeAny, arrayIndex: number): void;
   /**
    *
    * @param {NativeAny} arrayData undefined
    */
-  export function ArrayValueGetString(arrayData: NativeAny, arrayIndex: number): void;
+  export function arrayValueGetString(arrayData: NativeAny, arrayIndex: number): void;
   /**
    *
    * @param {NativeAny} arrayData undefined
    */
-  export function ArrayValueGetVector3(arrayData: NativeAny, arrayIndex: number): void;
+  export function arrayValueGetVector3(arrayData: NativeAny, arrayIndex: number): void;
   /**
    *
    * @param {NativeAny} arrayData undefined
    */
-  export function ArrayValueGetObject(arrayData: NativeAny, arrayIndex: number): void;
+  export function arrayValueGetObject(arrayData: NativeAny, arrayIndex: number): void;
   /**
    *
    * @param {NativeAny} arrayData undefined
    */
-  export function ArrayValueGetSize(arrayData: NativeAny): void;
+  export function arrayValueGetSize(arrayData: NativeAny): void;
   /**
    *
    * @param {NativeAny} arrayData undefined
    */
-  export function ArrayValueGetType(arrayData: NativeAny, arrayIndex: number): void;
+  export function arrayValueGetType(arrayData: NativeAny, arrayIndex: number): void;
   /**
    *
    * @param {number} X undefined
    */
-  export function StartScriptFire(X: number, Y: number, Z: number, maxChildren: number, isGasFire: NativeBOOL): void;
+  export function startScriptFire(X: number, Y: number, Z: number, maxChildren: number, isGasFire: NativeBOOL): void;
   /**
    *
    * @param {number} fireHandle undefined
    */
-  export function RemoveScriptFire(fireHandle: number): void;
+  export function removeScriptFire(fireHandle: number): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function StartEntityFire(entity: NativeEntity): void;
+  export function startEntityFire(entity: NativeEntity): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function StopEntityFire(entity: NativeEntity): void;
+  export function stopEntityFire(entity: NativeEntity): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function IsEntityOnFire(entity: NativeEntity): void;
+  export function isEntityOnFire(entity: NativeEntity): void;
   /**
    *
    * @param {number} x undefined
    */
-  export function GetNumberOfFiresInRange(x: number, y: number, z: number, radius: number): void;
+  export function getNumberOfFiresInRange(x: number, y: number, z: number, radius: number): void;
   /**
    *
    * @param {number} x undefined
    */
-  export function StopFireInRange(x: number, y: number, z: number, radius: number): void;
+  export function stopFireInRange(x: number, y: number, z: number, radius: number): void;
   /**
    *
    * @param {NativeVector3} outPosition undefined
    */
-  export function GetClosestFirePos(outPosition: NativeVector3, x: number, y: number, z: number): void;
+  export function getClosestFirePos(outPosition: NativeVector3, x: number, y: number, z: number): void;
   /**
    *
    * @param {number} x undefined
    */
-  export function AddExplosion(x: number, y: number, z: number, explosionType: number, damageScale: number, isAudible: NativeBOOL, isInvisible: NativeBOOL, cameraShake: number): void;
+  export function addExplosion(x: number, y: number, z: number, explosionType: number, damageScale: number, isAudible: NativeBOOL, isInvisible: NativeBOOL, cameraShake: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function AddOwnedExplosion(ped: NativePed, x: number, y: number, z: number, explosionType: number, damageScale: number, isAudible: NativeBOOL, isInvisible: NativeBOOL, cameraShake: number): void;
+  export function addOwnedExplosion(ped: NativePed, x: number, y: number, z: number, explosionType: number, damageScale: number, isAudible: NativeBOOL, isInvisible: NativeBOOL, cameraShake: number): void;
   /**
    *
    * @param {number} x undefined
    */
-  export function AddExplosionWithUserVfx(x: number, y: number, z: number, explosionType: number, explosionFx: NativeHash, damageScale: number, isAudible: NativeBOOL, isInvisible: NativeBOOL, cameraShake: number): void;
+  export function addExplosionWithUserVfx(x: number, y: number, z: number, explosionType: number, explosionFx: NativeHash, damageScale: number, isAudible: NativeBOOL, isInvisible: NativeBOOL, cameraShake: number): void;
   /**
    *
    * @param {number} explosionType undefined
    */
-  export function IsExplosionInArea(explosionType: number, x1: number, y1: number, z1: number, x2: number, y2: number, z2: number): void;
+  export function isExplosionInArea(explosionType: number, x1: number, y1: number, z1: number, x2: number, y2: number, z2: number): void;
   /**
    *
    * @param {number} unk undefined
@@ -19832,194 +19832,194 @@ declare module "natives" {
    *
    * @param {number} explosionType undefined
    */
-  export function IsExplosionInSphere(explosionType: number, x: number, y: number, z: number, radius: number): void;
+  export function isExplosionInSphere(explosionType: number, x: number, y: number, z: number, radius: number): void;
   /**
    *
    * @param {number} explosionType undefined
    */
-  export function IsExplosionInAngledArea(explosionType: number, x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, angle: number): void;
+  export function isExplosionInAngledArea(explosionType: number, x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, angle: number): void;
   /**
    *
    * @param {number} explosionType undefined
    */
-  export function GetPedInsideExplosionArea(explosionType: number, x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, radius: number): void;
+  export function getPedInsideExplosionArea(explosionType: number, x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, radius: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function SetDecisionMaker(ped: NativePed, name: NativeHash): void;
+  export function setDecisionMaker(ped: NativePed, name: NativeHash): void;
   /**
    *
    * @param {NativeHash} name undefined
    */
-  export function ClearDecisionMakerEventResponse(name: NativeHash, type: number): void;
+  export function clearDecisionMakerEventResponse(name: NativeHash, type: number): void;
   /**
    *
    * @param {NativeHash} name undefined
    */
-  export function BlockDecisionMakerEvent(name: NativeHash, type: number): void;
+  export function blockDecisionMakerEvent(name: NativeHash, type: number): void;
   /**
    *
    * @param {NativeHash} name undefined
    */
-  export function UnblockDecisionMakerEvent(name: NativeHash, type: number): void;
+  export function unblockDecisionMakerEvent(name: NativeHash, type: number): void;
   /**
    *
    * @param {number} type undefined
    */
-  export function AddShockingEventAtPosition(type: number, x: number, y: number, z: number, duration: number): void;
+  export function addShockingEventAtPosition(type: number, x: number, y: number, z: number, duration: number): void;
   /**
    *
    * @param {number} type undefined
    */
-  export function AddShockingEventForEntity(type: number, entity: NativeEntity, duration: number): void;
+  export function addShockingEventForEntity(type: number, entity: NativeEntity, duration: number): void;
   /**
    *
    * @param {number} type undefined
    */
-  export function IsShockingEventInSphere(type: number, x: number, y: number, z: number, radius: number): void;
+  export function isShockingEventInSphere(type: number, x: number, y: number, z: number, radius: number): void;
   /**
    *
    * @param {NativeScrHandle} event undefined
    */
-  export function RemoveShockingEvent(event: NativeScrHandle): void;
+  export function removeShockingEvent(event: NativeScrHandle): void;
   /**
    *
    * @param {NativeBOOL} p0 undefined
    */
-  export function RemoveAllShockingEvents(p0: NativeBOOL): void;
+  export function removeAllShockingEvents(p0: NativeBOOL): void;
   /**
    *
    */
-  export function RemoveShockingEventSpawnBlockingAreas(): void;
+  export function removeShockingEventSpawnBlockingAreas(): void;
   /**
    *
    */
-  export function SuppressShockingEventsNextFrame(): void;
+  export function suppressShockingEventsNextFrame(): void;
   /**
    *
    * @param {number} type undefined
    */
-  export function SuppressShockingEventTypeNextFrame(type: number): void;
+  export function suppressShockingEventTypeNextFrame(type: number): void;
   /**
    *
    */
-  export function SuppressAgitationEventsNextFrame(): void;
+  export function suppressAgitationEventsNextFrame(): void;
   /**
    *
    * @param {number} x undefined
    */
-  export function GetZoneAtCoords(x: number, y: number, z: number): void;
+  export function getZoneAtCoords(x: number, y: number, z: number): void;
   /**
    *
    * @param {string} zoneName undefined
    */
-  export function GetZoneFromNameId(zoneName: string): void;
+  export function getZoneFromNameId(zoneName: string): void;
   /**
    *
    * @param {number} zoneId undefined
    */
-  export function GetZonePopschedule(zoneId: number): void;
+  export function getZonePopschedule(zoneId: number): void;
   /**
    *
    * @param {number} x undefined
    */
-  export function GetNameOfZone(x: number, y: number, z: number): void;
+  export function getNameOfZone(x: number, y: number, z: number): void;
   /**
    *
    * @param {number} zoneId undefined
    */
-  export function SetZoneEnabled(zoneId: number, toggle: NativeBOOL): void;
+  export function setZoneEnabled(zoneId: number, toggle: NativeBOOL): void;
   /**
    *
    * @param {number} zoneId undefined
    */
-  export function GetZoneScumminess(zoneId: number): void;
+  export function getZoneScumminess(zoneId: number): void;
   /**
    *
    * @param {number} scheduleId undefined
    */
-  export function OverridePopscheduleVehicleModel(scheduleId: number, vehicleHash: NativeHash): void;
+  export function overridePopscheduleVehicleModel(scheduleId: number, vehicleHash: NativeHash): void;
   /**
    *
    * @param {number} scheduleId undefined
    */
-  export function ClearPopscheduleOverrideVehicleModel(scheduleId: number): void;
+  export function clearPopscheduleOverrideVehicleModel(scheduleId: number): void;
   /**
    *
    * @param {number} x undefined
    */
-  export function GetHashOfMapAreaAtCoords(x: number, y: number, z: number): void;
+  export function getHashOfMapAreaAtCoords(x: number, y: number, z: number): void;
   /**
    *
    * @param {number} x undefined
    */
-  export function AddRope(x: number, y: number, z: number, rotX: number, rotY: number, rotZ: number, length: number, ropeType: number, maxLength: number, minLength: number, p10: number, p11: NativeBOOL, p12: NativeBOOL, rigid: NativeBOOL, p14: number, breakWhenShot: NativeBOOL, unkPtr: NativeAny): void;
+  export function addRope(x: number, y: number, z: number, rotX: number, rotY: number, rotZ: number, length: number, ropeType: number, maxLength: number, minLength: number, p10: number, p11: NativeBOOL, p12: NativeBOOL, rigid: NativeBOOL, p14: number, breakWhenShot: NativeBOOL, unkPtr: NativeAny): void;
   /**
    *
    * @param {NativeObject} rope undefined
    */
-  export function DeleteRope(rope: NativeObject): void;
+  export function deleteRope(rope: NativeObject): void;
   /**
    *
    * @param {NativeObject} rope undefined
    */
-  export function DeleteChildRope(rope: NativeObject): void;
+  export function deleteChildRope(rope: NativeObject): void;
   /**
    *
    * @param {NativeObject} rope undefined
    */
-  export function DoesRopeExist(rope: NativeObject): void;
+  export function doesRopeExist(rope: NativeObject): void;
   /**
    *
    * @param {NativeObject} rope undefined
    */
-  export function RopeDrawShadowEnabled(rope: NativeObject, toggle: NativeBOOL): void;
+  export function ropeDrawShadowEnabled(rope: NativeObject, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativeObject} rope undefined
    */
-  export function LoadRopeData(rope: NativeObject, rope_preset: string): void;
+  export function loadRopeData(rope: NativeObject, rope_preset: string): void;
   /**
    *
    * @param {NativeObject} rope undefined
    */
-  export function PinRopeVertex(rope: NativeObject, vertex: number, x: number, y: number, z: number): void;
+  export function pinRopeVertex(rope: NativeObject, vertex: number, x: number, y: number, z: number): void;
   /**
    *
    * @param {NativeObject} rope undefined
    */
-  export function UnpinRopeVertex(rope: NativeObject, vertex: number): void;
+  export function unpinRopeVertex(rope: NativeObject, vertex: number): void;
   /**
    *
    * @param {NativeObject} rope undefined
    */
-  export function GetRopeVertexCount(rope: NativeObject): void;
+  export function getRopeVertexCount(rope: NativeObject): void;
   /**
    *
    * @param {NativeObject} rope undefined
    */
-  export function AttachEntitiesToRope(rope: NativeObject, ent1: NativeEntity, ent2: NativeEntity, ent1_x: number, ent1_y: number, ent1_z: number, ent2_x: number, ent2_y: number, ent2_z: number, length: number, p10: NativeBOOL, p11: NativeBOOL, boneName1: string, boneName2: string): void;
+  export function attachEntitiesToRope(rope: NativeObject, ent1: NativeEntity, ent2: NativeEntity, ent1_x: number, ent1_y: number, ent1_z: number, ent2_x: number, ent2_y: number, ent2_z: number, length: number, p10: NativeBOOL, p11: NativeBOOL, boneName1: string, boneName2: string): void;
   /**
    *
    * @param {NativeObject} rope undefined
    */
-  export function AttachRopeToEntity(rope: NativeObject, entity: NativeEntity, x: number, y: number, z: number, p5: NativeBOOL): void;
+  export function attachRopeToEntity(rope: NativeObject, entity: NativeEntity, x: number, y: number, z: number, p5: NativeBOOL): void;
   /**
    *
    * @param {NativeObject} rope undefined
    */
-  export function DetachRopeFromEntity(rope: NativeObject, entity: NativeEntity): void;
+  export function detachRopeFromEntity(rope: NativeObject, entity: NativeEntity): void;
   /**
    *
    * @param {NativeObject} rope undefined
    */
-  export function RopeSetUpdatePinverts(rope: NativeObject): void;
+  export function ropeSetUpdatePinverts(rope: NativeObject): void;
   /**
    *
    * @param {NativeObject} rope undefined
    */
-  export function UpdateRope(rope: NativeObject, update: NativeBOOL): void;
+  export function updateRope(rope: NativeObject, update: NativeBOOL): void;
   /**
    *
    * @param {NativeAny} p0 undefined
@@ -20034,49 +20034,49 @@ declare module "natives" {
    *
    * @param {NativeObject} rope undefined
    */
-  export function GetRopeLastVertexCoord(rope: NativeObject): void;
+  export function getRopeLastVertexCoord(rope: NativeObject): void;
   /**
    *
    * @param {NativeObject} rope undefined
    */
-  export function GetRopeVertexCoord(rope: NativeObject, vertex: number): void;
+  export function getRopeVertexCoord(rope: NativeObject, vertex: number): void;
   /**
    *
    * @param {NativeObject} rope undefined
    */
-  export function StartRopeWinding(rope: NativeObject): void;
+  export function startRopeWinding(rope: NativeObject): void;
   /**
    *
    * @param {NativeObject} rope undefined
    */
-  export function StopRopeWinding(rope: NativeObject): void;
+  export function stopRopeWinding(rope: NativeObject): void;
   /**
    *
    * @param {NativeObject} rope undefined
    */
-  export function StartRopeUnwindingFront(rope: NativeObject): void;
+  export function startRopeUnwindingFront(rope: NativeObject): void;
   /**
    *
    * @param {NativeObject} rope undefined
    */
-  export function StopRopeUnwindingFront(rope: NativeObject): void;
+  export function stopRopeUnwindingFront(rope: NativeObject): void;
   /**
    *
    * @param {NativeObject} rope undefined
    */
-  export function RopeConvertToSimple(rope: NativeObject): void;
+  export function ropeConvertToSimple(rope: NativeObject): void;
   /**
    *
    */
-  export function RopeLoadTextures(): void;
+  export function ropeLoadTextures(): void;
   /**
    *
    */
-  export function RopeAreTexturesLoaded(): void;
+  export function ropeAreTexturesLoaded(): void;
   /**
    *
    */
-  export function RopeUnloadTextures(): void;
+  export function ropeUnloadTextures(): void;
   /**
    *
    * @param {NativeObject} rope undefined
@@ -20101,57 +20101,57 @@ declare module "natives" {
    *
    * @param {NativeObject} rope undefined
    */
-  export function GetRopeLength(rope: NativeObject): void;
+  export function getRopeLength(rope: NativeObject): void;
   /**
    *
    * @param {NativeObject} rope undefined
    */
-  export function RopeForceLength(rope: NativeObject, length: number): void;
+  export function ropeForceLength(rope: NativeObject, length: number): void;
   /**
    *
    * @param {NativeObject} rope undefined
    */
-  export function RopeResetLength(rope: NativeObject, length: number): void;
+  export function ropeResetLength(rope: NativeObject, length: number): void;
   /**
    *
    * @param {number} posX undefined
    */
-  export function ApplyImpulseToCloth(posX: number, posY: number, posZ: number, vecX: number, vecY: number, vecZ: number, impulse: number): void;
+  export function applyImpulseToCloth(posX: number, posY: number, posZ: number, vecX: number, vecY: number, vecZ: number, impulse: number): void;
   /**
    *
    * @param {NativeObject} rope undefined
    */
-  export function SetDamping(rope: NativeObject, vertex: number, value: number): void;
+  export function setDamping(rope: NativeObject, vertex: number, value: number): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function ActivatePhysics(entity: NativeEntity): void;
+  export function activatePhysics(entity: NativeEntity): void;
   /**
    *
    * @param {NativeObject} rope undefined
    */
-  export function SetCgoffset(rope: NativeObject, x: number, y: number, z: number): void;
+  export function setCgoffset(rope: NativeObject, x: number, y: number, z: number): void;
   /**
    *
    * @param {NativeObject} rope undefined
    */
-  export function GetCgoffset(rope: NativeObject): void;
+  export function getCgoffset(rope: NativeObject): void;
   /**
    *
    * @param {NativeObject} rope undefined
    */
-  export function SetCgAtBoundcenter(rope: NativeObject): void;
+  export function setCgAtBoundcenter(rope: NativeObject): void;
   /**
    *
    * @param {NativeObject} object undefined
    */
-  export function BreakEntityGlass(object: NativeObject, posX: number, posY: number, posZ: number, p4: number, offsetX: number, offsetY: number, offsetZ: number, p8: number, p9: number, p10: NativeBOOL): void;
+  export function breakEntityGlass(object: NativeObject, posX: number, posY: number, posZ: number, p4: number, offsetX: number, offsetY: number, offsetZ: number, p8: number, p9: number, p10: NativeBOOL): void;
   /**
    *
    * @param {NativeObject} rope undefined
    */
-  export function SetDisableBreaking(rope: NativeObject, enabled: NativeBOOL): void;
+  export function setDisableBreaking(rope: NativeObject, enabled: NativeBOOL): void;
   /**
    *
    * @param {NativeObject} object undefined
@@ -20161,123 +20161,123 @@ declare module "natives" {
    *
    * @param {NativeObject} object undefined
    */
-  export function SetDisableFragDamage(object: NativeObject, toggle: NativeBOOL): void;
+  export function setDisableFragDamage(object: NativeObject, toggle: NativeBOOL): void;
   /**
    *
    * @param {number} x undefined
    */
-  export function GetWaterHeight(x: number, y: number, z: number, height: number): void;
+  export function getWaterHeight(x: number, y: number, z: number, height: number): void;
   /**
    *
    * @param {number} x undefined
    */
-  export function GetWaterHeightNoWaves(x: number, y: number, z: number, height: number): void;
+  export function getWaterHeightNoWaves(x: number, y: number, z: number, height: number): void;
   /**
    *
    * @param {number} x1 undefined
    */
-  export function TestProbeAgainstWater(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, result: NativeVector3): void;
+  export function testProbeAgainstWater(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, result: NativeVector3): void;
   /**
    *
    * @param {number} x1 undefined
    */
-  export function TestProbeAgainstAllWater(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, type: number, unkVector: number): void;
+  export function testProbeAgainstAllWater(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, type: number, unkVector: number): void;
   /**
    *
    * @param {number} x undefined
    */
-  export function TestVerticalProbeAgainstAllWater(x: number, y: number, z: number, p3: NativeAny, height: number): void;
+  export function testVerticalProbeAgainstAllWater(x: number, y: number, z: number, p3: NativeAny, height: number): void;
   /**
    *
    * @param {number} x undefined
    */
-  export function ModifyWater(x: number, y: number, radius: number, height: number): void;
+  export function modifyWater(x: number, y: number, radius: number, height: number): void;
   /**
    *
    * @param {number} xLow undefined
    */
-  export function AddCurrentRise(xLow: number, yLow: number, xHigh: number, yHigh: number, height: number): void;
+  export function addCurrentRise(xLow: number, yLow: number, xHigh: number, yHigh: number, height: number): void;
   /**
    *
    * @param {number} p0 undefined
    */
-  export function RemoveCurrentRise(p0: number): void;
+  export function removeCurrentRise(p0: number): void;
   /**
    *
    * @param {number} intensity undefined
    */
-  export function SetCurrentIntensity(intensity: number): void;
+  export function setCurrentIntensity(intensity: number): void;
   /**
    *
    */
-  export function GetCurrentIntensity(): void;
+  export function getCurrentIntensity(): void;
   /**
    *
    */
-  export function ResetCurrentIntensity(): void;
-  /**
-   *
-   * @param {number} x1 undefined
-   */
-  export function StartShapeTestLosProbe(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, flags: number, ent: NativeEntity, p8: number): void;
+  export function resetCurrentIntensity(): void;
   /**
    *
    * @param {number} x1 undefined
    */
-  export function StartShapeTestRay(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, flags: number, entity: NativeEntity, p8: number): void;
+  export function startShapeTestLosProbe(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, flags: number, ent: NativeEntity, p8: number): void;
+  /**
+   *
+   * @param {number} x1 undefined
+   */
+  export function startShapeTestRay(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, flags: number, entity: NativeEntity, p8: number): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function StartShapeTestBoundingBox(entity: NativeEntity, flags1: number, flags2: number): void;
+  export function startShapeTestBoundingBox(entity: NativeEntity, flags1: number, flags2: number): void;
   /**
    *
    * @param {number} x undefined
    */
-  export function StartShapeTestBox(x: number, y: number, z: number, x1: number, y2: number, z2: number, rotX: number, rotY: number, rotZ: number, p9: NativeAny, p10: NativeAny, entity: NativeAny, p12: NativeAny): void;
+  export function startShapeTestBox(x: number, y: number, z: number, x1: number, y2: number, z2: number, rotX: number, rotY: number, rotZ: number, p9: NativeAny, p10: NativeAny, entity: NativeAny, p12: NativeAny): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function StartShapeTestBound(entity: NativeEntity, flags1: number, flags2: number): void;
+  export function startShapeTestBound(entity: NativeEntity, flags1: number, flags2: number): void;
   /**
    *
    * @param {number} x1 undefined
    */
-  export function StartShapeTestCapsule(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, radius: number, flags: number, entity: NativeEntity, p9: number): void;
+  export function startShapeTestCapsule(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, radius: number, flags: number, entity: NativeEntity, p9: number): void;
   /**
    *
    * @param {number} x1 undefined
    */
-  export function StartShapeTestCapsule2(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, radius: number, flags: number, entity: NativeEntity, p9: NativeAny): void;
+  export function startShapeTestCapsule2(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, radius: number, flags: number, entity: NativeEntity, p9: NativeAny): void;
   /**
    *
    * @param {NativeVector3} pVec1 undefined
    */
-  export function StartShapeTestSurroundingCoords(pVec1: NativeVector3, pVec2: NativeVector3, flag: number, entity: NativeEntity, flag2: number): void;
+  export function startShapeTestSurroundingCoords(pVec1: NativeVector3, pVec2: NativeVector3, flag: number, entity: NativeEntity, flag2: number): void;
   /**
    *
    * @param {number} rayHandle undefined
    */
-  export function GetShapeTestResult(rayHandle: number, hit: NativeBOOL, endCoords: NativeVector3, surfaceNormal: NativeVector3, entityHit: NativeEntity): void;
+  export function getShapeTestResult(rayHandle: number, hit: NativeBOOL, endCoords: NativeVector3, surfaceNormal: NativeVector3, entityHit: NativeEntity): void;
   /**
    *
    * @param {number} rayHandle undefined
    */
-  export function GetShapeTestResultEx(rayHandle: number, hit: NativeBOOL, endCoords: NativeVector3, surfaceNormal: NativeVector3, materialHash: NativeHash, entityHit: NativeEntity): void;
+  export function getShapeTestResultEx(rayHandle: number, hit: NativeBOOL, endCoords: NativeVector3, surfaceNormal: NativeVector3, materialHash: NativeHash, entityHit: NativeEntity): void;
   /**
    *
    * @param {NativeHash} entityHit undefined
    */
-  export function ShapeTestResultEntity(entityHit: NativeHash): void;
+  export function shapeTestResultEntity(entityHit: NativeHash): void;
   /**
    *
    */
-  export function NetworkIsSignedIn(): void;
+  export function networkIsSignedIn(): void;
   /**
    *
    */
-  export function NetworkIsSignedOnline(): void;
+  export function networkIsSignedOnline(): void;
   /**
    *
    */
@@ -20301,15 +20301,15 @@ declare module "natives" {
   /**
    *
    */
-  export function NetworkAreRosAvailable(): void;
+  export function networkAreRosAvailable(): void;
   /**
    *
    */
-  export function NetworkIsPsnAvailable(): void;
+  export function networkIsPsnAvailable(): void;
   /**
    *
    */
-  export function NetworkIsCloudAvailable(): void;
+  export function networkIsCloudAvailable(): void;
   /**
    *
    */
@@ -20321,7 +20321,7 @@ declare module "natives" {
   /**
    *
    */
-  export function NetworkIsHost(): void;
+  export function networkIsHost(): void;
   /**
    *
    */
@@ -20329,11 +20329,11 @@ declare module "natives" {
   /**
    *
    */
-  export function NetworkHaveOnlinePrivileges(): void;
+  export function networkHaveOnlinePrivileges(): void;
   /**
    *
    */
-  export function NetworkHasRestrictedProfile(): void;
+  export function networkHasRestrictedProfile(): void;
   /**
    *
    * @param {NativeAny} p0 undefined
@@ -20382,11 +20382,11 @@ declare module "natives" {
   /**
    *
    */
-  export function NetworkCanBail(): void;
+  export function networkCanBail(): void;
   /**
    *
    */
-  export function NetworkBail(): void;
+  export function networkBail(): void;
   /**
    *
    */
@@ -20395,81 +20395,81 @@ declare module "natives" {
    *
    * @param {number} loadingState undefined
    */
-  export function NetworkCanAccessMultiplayer(loadingState: number): void;
+  export function networkCanAccessMultiplayer(loadingState: number): void;
   /**
    *
    */
-  export function NetworkIsMultiplayerDisabled(): void;
+  export function networkIsMultiplayerDisabled(): void;
   /**
    *
    */
-  export function NetworkCanEnterMultiplayer(): void;
-  /**
-   *
-   * @param {NativeAny} p0 undefined
-   */
-  export function NetworkSessionEnter(p0: NativeAny, p1: NativeAny, p2: NativeAny, maxPlayers: number, p4: NativeAny, p5: NativeAny): void;
-  /**
-   *
-   * @param {number} p0 undefined
-   */
-  export function NetworkSessionFriendMatchmaking(p0: number, p1: number, maxPlayers: number, p3: NativeBOOL): void;
-  /**
-   *
-   * @param {number} p0 undefined
-   */
-  export function NetworkSessionCrewMatchmaking(p0: number, p1: number, p2: number, maxPlayers: number, p4: NativeBOOL): void;
+  export function networkCanEnterMultiplayer(): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function NetworkSessionActivityQuickmatch(p0: NativeAny, p1: NativeAny, p2: NativeAny, p3: NativeAny): void;
+  export function networkSessionEnter(p0: NativeAny, p1: NativeAny, p2: NativeAny, maxPlayers: number, p4: NativeAny, p5: NativeAny): void;
   /**
    *
    * @param {number} p0 undefined
    */
-  export function NetworkSessionHost(p0: number, maxPlayers: number, p2: NativeBOOL): void;
+  export function networkSessionFriendMatchmaking(p0: number, p1: number, maxPlayers: number, p3: NativeBOOL): void;
   /**
    *
    * @param {number} p0 undefined
    */
-  export function NetworkSessionHostClosed(p0: number, maxPlayers: number): void;
+  export function networkSessionCrewMatchmaking(p0: number, p1: number, p2: number, maxPlayers: number, p4: NativeBOOL): void;
+  /**
+   *
+   * @param {NativeAny} p0 undefined
+   */
+  export function networkSessionActivityQuickmatch(p0: NativeAny, p1: NativeAny, p2: NativeAny, p3: NativeAny): void;
   /**
    *
    * @param {number} p0 undefined
    */
-  export function NetworkSessionHostFriendsOnly(p0: number, maxPlayers: number): void;
+  export function networkSessionHost(p0: number, maxPlayers: number, p2: NativeBOOL): void;
+  /**
+   *
+   * @param {number} p0 undefined
+   */
+  export function networkSessionHostClosed(p0: number, maxPlayers: number): void;
+  /**
+   *
+   * @param {number} p0 undefined
+   */
+  export function networkSessionHostFriendsOnly(p0: number, maxPlayers: number): void;
   /**
    *
    */
-  export function NetworkSessionIsClosedFriends(): void;
+  export function networkSessionIsClosedFriends(): void;
   /**
    *
    */
-  export function NetworkSessionIsClosedCrew(): void;
+  export function networkSessionIsClosedCrew(): void;
   /**
    *
    */
-  export function NetworkSessionIsSolo(): void;
+  export function networkSessionIsSolo(): void;
   /**
    *
    */
-  export function NetworkSessionIsPrivate(): void;
+  export function networkSessionIsPrivate(): void;
   /**
    *
    * @param {NativeBOOL} p0 undefined
    */
-  export function NetworkSessionEnd(p0: NativeBOOL, p1: NativeBOOL): void;
+  export function networkSessionEnd(p0: NativeBOOL, p1: NativeBOOL): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function NetworkSessionKickPlayer(player: NativePlayer): void;
+  export function networkSessionKickPlayer(player: NativePlayer): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function NetworkSessionIsPlayerVotedToKick(player: NativePlayer): void;
+  export function networkSessionIsPlayerVotedToKick(player: NativePlayer): void;
   /**
    *
    */
@@ -20482,17 +20482,17 @@ declare module "natives" {
    *
    * @param {number} p0 undefined
    */
-  export function NetworkSctvSlots(p0: number): void;
+  export function networkSctvSlots(p0: number): void;
   /**
    *
    * @param {number} playerType undefined
    */
-  export function NetworkSessionSetMaxPlayers(playerType: number, playerCount: number): void;
+  export function networkSessionSetMaxPlayers(playerType: number, playerCount: number): void;
   /**
    *
    * @param {number} p0 undefined
    */
-  export function NetworkSessionGetUnk(p0: number): void;
+  export function networkSessionGetUnk(p0: number): void;
   /**
    *
    * @param {NativeAny} p0 undefined
@@ -20536,21 +20536,21 @@ declare module "natives" {
    *
    * @param {NativeBOOL} p0 undefined
    */
-  export function NetworkSessionHosted(p0: NativeBOOL): void;
+  export function networkSessionHosted(p0: NativeBOOL): void;
   /**
    *
    * @param {number} p0 undefined
    */
-  export function NetworkAddFollowers(p0: number, p1: number): void;
+  export function networkAddFollowers(p0: number, p1: number): void;
   /**
    *
    */
-  export function NetworkClearFollowers(): void;
+  export function networkClearFollowers(): void;
   /**
    *
    * @param {number} hours undefined
    */
-  export function NetworkGetServerTime(hours: number, minutes: number, seconds: number): void;
+  export function networkGetServerTime(hours: number, minutes: number, seconds: number): void;
   /**
    *
    * @param {NativeAny} p0 undefined
@@ -20560,16 +20560,16 @@ declare module "natives" {
    *
    * @param {NativeAny} p0 undefined
    */
-  export function NetworkXAffectsGamers(p0: NativeAny): void;
+  export function networkXAffectsGamers(p0: NativeAny): void;
   /**
    *
    * @param {number} unk undefined
    */
-  export function NetworkFindMatchedGamers(unk: number, p1: number, neg1a: number, neg1b: number): void;
+  export function networkFindMatchedGamers(unk: number, p1: number, neg1a: number, neg1b: number): void;
   /**
    *
    */
-  export function NetworkIsFindingGamers(): void;
+  export function networkIsFindingGamers(): void;
   /**
    *
    */
@@ -20577,16 +20577,16 @@ declare module "natives" {
   /**
    *
    */
-  export function NetworkGetNumFoundGamers(): void;
+  export function networkGetNumFoundGamers(): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function NetworkGetFoundGamer(p0: NativeAny, p1: NativeAny): void;
+  export function networkGetFoundGamer(p0: NativeAny, p1: NativeAny): void;
   /**
    *
    */
-  export function NetworkClearFoundGamers(): void;
+  export function networkClearFoundGamers(): void;
   /**
    *
    * @param {NativeAny} p0 undefined
@@ -20616,19 +20616,19 @@ declare module "natives" {
   /**
    *
    */
-  export function NetworkIsPlayerAnimationDrawingSynchronized(): void;
+  export function networkIsPlayerAnimationDrawingSynchronized(): void;
   /**
    *
    */
-  export function NetworkSessionCancelInvite(): void;
+  export function networkSessionCancelInvite(): void;
   /**
    *
    */
-  export function NetworkSessionForceCancelInvite(): void;
+  export function networkSessionForceCancelInvite(): void;
   /**
    *
    */
-  export function NetworkHasPendingInvite(): void;
+  export function networkHasPendingInvite(): void;
   /**
    *
    */
@@ -20640,12 +20640,12 @@ declare module "natives" {
   /**
    *
    */
-  export function NetworkSessionWasInvited(): void;
+  export function networkSessionWasInvited(): void;
   /**
    *
    * @param {number} networkHandle undefined
    */
-  export function NetworkSessionGetInviter(networkHandle: number): void;
+  export function networkSessionGetInviter(networkHandle: number): void;
   /**
    *
    */
@@ -20658,12 +20658,12 @@ declare module "natives" {
    *
    * @param {NativeBOOL} toggle undefined
    */
-  export function NetworkSuppressInvite(toggle: NativeBOOL): void;
+  export function networkSuppressInvite(toggle: NativeBOOL): void;
   /**
    *
    * @param {NativeBOOL} toggle undefined
    */
-  export function NetworkBlockInvites(toggle: NativeBOOL): void;
+  export function networkBlockInvites(toggle: NativeBOOL): void;
   /**
    *
    * @param {NativeBOOL} p0 undefined
@@ -20672,12 +20672,12 @@ declare module "natives" {
   /**
    *
    */
-  export function ServerHandler(): void;
+  export function serverHandler(): void;
   /**
    *
    * @param {NativeBOOL} p0 undefined
    */
-  export function NetworkBlockKickedPlayers(p0: NativeBOOL): void;
+  export function networkBlockKickedPlayers(p0: NativeBOOL): void;
   /**
    *
    * @param {NativeBOOL} p0 undefined
@@ -20695,54 +20695,54 @@ declare module "natives" {
    *
    * @param {number} p0 undefined
    */
-  export function NetworkSessionHostSinglePlayer(p0: number): void;
+  export function networkSessionHostSinglePlayer(p0: number): void;
   /**
    *
    */
-  export function NetworkSessionLeaveSinglePlayer(): void;
+  export function networkSessionLeaveSinglePlayer(): void;
   /**
    *
    */
-  export function NetworkIsGameInProgress(): void;
+  export function networkIsGameInProgress(): void;
   /**
    *
    */
-  export function NetworkIsSessionActive(): void;
+  export function networkIsSessionActive(): void;
   /**
    *
    */
-  export function NetworkIsInSession(): void;
+  export function networkIsInSession(): void;
   /**
    *
    */
-  export function NetworkIsSessionStarted(): void;
+  export function networkIsSessionStarted(): void;
   /**
    *
    */
-  export function NetworkIsSessionBusy(): void;
+  export function networkIsSessionBusy(): void;
   /**
    *
    */
-  export function NetworkCanSessionEnd(): void;
-  /**
-   *
-   * @param {NativeBOOL} p0 undefined
-   */
-  export function NetworkSessionMarkVisible(p0: NativeBOOL): void;
-  /**
-   *
-   */
-  export function NetworkSessionIsVisible(): void;
+  export function networkCanSessionEnd(): void;
   /**
    *
    * @param {NativeBOOL} p0 undefined
    */
-  export function NetworkSessionBlockJoinRequests(p0: NativeBOOL): void;
+  export function networkSessionMarkVisible(p0: NativeBOOL): void;
+  /**
+   *
+   */
+  export function networkSessionIsVisible(): void;
+  /**
+   *
+   * @param {NativeBOOL} p0 undefined
+   */
+  export function networkSessionBlockJoinRequests(p0: NativeBOOL): void;
   /**
    *
    * @param {number} p0 undefined
    */
-  export function NetworkSessionChangeSlots(p0: number, p1: NativeBOOL): void;
+  export function networkSessionChangeSlots(p0: number, p1: NativeBOOL): void;
   /**
    *
    */
@@ -20750,21 +20750,21 @@ declare module "natives" {
   /**
    *
    */
-  export function NetworkSessionVoiceHost(): void;
+  export function networkSessionVoiceHost(): void;
   /**
    *
    */
-  export function NetworkSessionVoiceLeave(): void;
+  export function networkSessionVoiceLeave(): void;
   /**
    *
    * @param {NativeAny} globalPtr undefined
    */
-  export function NetworkVoiceConnectToPlayer(globalPtr: NativeAny): void;
+  export function networkVoiceConnectToPlayer(globalPtr: NativeAny): void;
   /**
    *
    * @param {NativeBOOL} p0 undefined
    */
-  export function NetworkSetKeepFocuspoint(p0: NativeBOOL, p1: NativeAny): void;
+  export function networkSetKeepFocuspoint(p0: NativeBOOL, p1: NativeAny): void;
   /**
    *
    * @param {NativeAny} p0 undefined
@@ -20786,55 +20786,55 @@ declare module "natives" {
    *
    * @param {string} message undefined
    */
-  export function NetworkSendTextMessage(message: string, networkHandle: number): void;
+  export function networkSendTextMessage(message: string, networkHandle: number): void;
   /**
    *
    * @param {NativeBOOL} toggle undefined
    */
-  export function NetworkSetActivitySpectator(toggle: NativeBOOL): void;
+  export function networkSetActivitySpectator(toggle: NativeBOOL): void;
   /**
    *
    */
-  export function NetworkIsActivitySpectator(): void;
+  export function networkIsActivitySpectator(): void;
   /**
    *
    * @param {number} maxSpectators undefined
    */
-  export function NetworkSetActivitySpectatorMax(maxSpectators: number): void;
+  export function networkSetActivitySpectatorMax(maxSpectators: number): void;
   /**
    *
    * @param {NativeBOOL} p0 undefined
    */
-  export function NetworkGetActivityPlayerNum(p0: NativeBOOL): void;
+  export function networkGetActivityPlayerNum(p0: NativeBOOL): void;
   /**
    *
    * @param {number} networkHandle undefined
    */
-  export function NetworkIsActivitySpectatorFromHandle(networkHandle: number): void;
+  export function networkIsActivitySpectatorFromHandle(networkHandle: number): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function NetworkHostTransition(p0: NativeAny, p1: NativeAny, p2: NativeAny, p3: NativeAny, p4: NativeAny, p5: NativeAny): void;
+  export function networkHostTransition(p0: NativeAny, p1: NativeAny, p2: NativeAny, p3: NativeAny, p4: NativeAny, p5: NativeAny): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function NetworkDoTransitionQuickmatch(p0: NativeAny, p1: NativeAny, p2: NativeAny, p3: NativeAny): void;
+  export function networkDoTransitionQuickmatch(p0: NativeAny, p1: NativeAny, p2: NativeAny, p3: NativeAny): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function NetworkDoTransitionQuickmatchAsync(p0: NativeAny, p1: NativeAny, p2: NativeAny, p3: NativeAny): void;
+  export function networkDoTransitionQuickmatchAsync(p0: NativeAny, p1: NativeAny, p2: NativeAny, p3: NativeAny): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function NetworkDoTransitionQuickmatchWithGroup(p0: NativeAny, p1: NativeAny, p2: NativeAny, p3: NativeAny, p4: NativeAny, p5: NativeAny): void;
+  export function networkDoTransitionQuickmatchWithGroup(p0: NativeAny, p1: NativeAny, p2: NativeAny, p3: NativeAny, p4: NativeAny, p5: NativeAny): void;
   /**
    *
    */
-  export function NetworkJoinGroupActivity(): void;
+  export function networkJoinGroupActivity(): void;
   /**
    *
    */
@@ -20869,29 +20869,29 @@ declare module "natives" {
    *
    * @param {NativeAny} p0 undefined
    */
-  export function NetworkSetTransitionCreatorHandle(p0: NativeAny): void;
+  export function networkSetTransitionCreatorHandle(p0: NativeAny): void;
   /**
    *
    */
-  export function NetworkClearTransitionCreatorHandle(): void;
+  export function networkClearTransitionCreatorHandle(): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function NetworkInviteGamersToTransition(p0: NativeAny, p1: NativeAny): void;
+  export function networkInviteGamersToTransition(p0: NativeAny, p1: NativeAny): void;
   /**
    *
    * @param {number} networkHandle undefined
    */
-  export function NetworkSetGamerInvitedToTransition(networkHandle: number): void;
+  export function networkSetGamerInvitedToTransition(networkHandle: number): void;
   /**
    *
    */
-  export function NetworkLeaveTransition(): void;
+  export function networkLeaveTransition(): void;
   /**
    *
    */
-  export function NetworkLaunchTransition(): void;
+  export function networkLaunchTransition(): void;
   /**
    *
    * @param {NativeBOOL} p0 undefined
@@ -20900,41 +20900,41 @@ declare module "natives" {
   /**
    *
    */
-  export function NetworkBailTransition(): void;
+  export function networkBailTransition(): void;
   /**
    *
    * @param {NativeBOOL} p0 undefined
    */
-  export function NetworkDoTransitionToGame(p0: NativeBOOL, maxPlayers: number): void;
+  export function networkDoTransitionToGame(p0: NativeBOOL, maxPlayers: number): void;
   /**
    *
    * @param {NativeBOOL} p0 undefined
    */
-  export function NetworkDoTransitionToNewGame(p0: NativeBOOL, maxPlayers: number, p2: NativeBOOL): void;
+  export function networkDoTransitionToNewGame(p0: NativeBOOL, maxPlayers: number, p2: NativeBOOL): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function NetworkDoTransitionToFreemode(p0: NativeAny, p1: NativeAny, p2: NativeBOOL, players: number, p4: NativeBOOL): void;
+  export function networkDoTransitionToFreemode(p0: NativeAny, p1: NativeAny, p2: NativeBOOL, players: number, p4: NativeBOOL): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function NetworkDoTransitionToNewFreemode(p0: NativeAny, p1: NativeAny, players: number, p3: NativeBOOL, p4: NativeBOOL, p5: NativeBOOL): void;
+  export function networkDoTransitionToNewFreemode(p0: NativeAny, p1: NativeAny, players: number, p3: NativeBOOL, p4: NativeBOOL, p5: NativeBOOL): void;
   /**
    *
    */
-  export function NetworkIsTransitionToGame(): void;
-  /**
-   *
-   * @param {NativeAny} p0 undefined
-   */
-  export function NetworkGetTransitionMembers(p0: NativeAny, p1: NativeAny): void;
+  export function networkIsTransitionToGame(): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function NetworkApplyTransitionParameter(p0: NativeAny, p1: NativeAny): void;
+  export function networkGetTransitionMembers(p0: NativeAny, p1: NativeAny): void;
+  /**
+   *
+   * @param {NativeAny} p0 undefined
+   */
+  export function networkApplyTransitionParameter(p0: NativeAny, p1: NativeAny): void;
   /**
    *
    * @param {NativeAny} p0 undefined
@@ -20944,42 +20944,42 @@ declare module "natives" {
    *
    * @param {number} networkHandle undefined
    */
-  export function NetworkSendTransitionGamerInstruction(networkHandle: number, p1: string, p2: number, p3: number, p4: NativeBOOL): void;
+  export function networkSendTransitionGamerInstruction(networkHandle: number, p1: string, p2: number, p3: number, p4: NativeBOOL): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function NetworkMarkTransitionGamerAsFullyJoined(p0: NativeAny): void;
+  export function networkMarkTransitionGamerAsFullyJoined(p0: NativeAny): void;
   /**
    *
    */
-  export function NetworkIsTransitionHost(): void;
-  /**
-   *
-   * @param {number} networkHandle undefined
-   */
-  export function NetworkIsTransitionHostFromHandle(networkHandle: number): void;
+  export function networkIsTransitionHost(): void;
   /**
    *
    * @param {number} networkHandle undefined
    */
-  export function NetworkGetTransitionHost(networkHandle: number): void;
+  export function networkIsTransitionHostFromHandle(networkHandle: number): void;
+  /**
+   *
+   * @param {number} networkHandle undefined
+   */
+  export function networkGetTransitionHost(networkHandle: number): void;
   /**
    *
    */
-  export function NetworkIsInTransition(): void;
+  export function networkIsInTransition(): void;
   /**
    *
    */
-  export function NetworkIsTransitionStarted(): void;
+  export function networkIsTransitionStarted(): void;
   /**
    *
    */
-  export function NetworkIsTransitionBusy(): void;
+  export function networkIsTransitionBusy(): void;
   /**
    *
    */
-  export function NetworkIsTransitionMatchmaking(): void;
+  export function networkIsTransitionMatchmaking(): void;
   /**
    *
    */
@@ -20987,11 +20987,11 @@ declare module "natives" {
   /**
    *
    */
-  export function NetworkOpenTransitionMatchmaking(): void;
+  export function networkOpenTransitionMatchmaking(): void;
   /**
    *
    */
-  export function NetworkCloseTransitionMatchmaking(): void;
+  export function networkCloseTransitionMatchmaking(): void;
   /**
    *
    */
@@ -21009,12 +21009,12 @@ declare module "natives" {
    *
    * @param {NativeAny} p0 undefined
    */
-  export function NetworkSetTransitionActivityId(p0: NativeAny): void;
+  export function networkSetTransitionActivityId(p0: NativeAny): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function NetworkChangeTransitionSlots(p0: NativeAny, p1: NativeAny): void;
+  export function networkChangeTransitionSlots(p0: NativeAny, p1: NativeAny): void;
   /**
    *
    * @param {NativeBOOL} p0 undefined
@@ -21024,22 +21024,22 @@ declare module "natives" {
    *
    * @param {NativePlayer} player undefined
    */
-  export function NetworkHasPlayerStartedTransition(player: NativePlayer): void;
+  export function networkHasPlayerStartedTransition(player: NativePlayer): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function NetworkAreTransitionDetailsValid(p0: NativeAny): void;
+  export function networkAreTransitionDetailsValid(p0: NativeAny): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function NetworkJoinTransition(player: NativePlayer): void;
+  export function networkJoinTransition(player: NativePlayer): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function NetworkHasInvitedGamerToTransition(p0: NativeAny): void;
+  export function networkHasInvitedGamerToTransition(p0: NativeAny): void;
   /**
    *
    * @param {NativeAny} p0 undefined
@@ -21048,22 +21048,22 @@ declare module "natives" {
   /**
    *
    */
-  export function NetworkIsActivitySession(): void;
+  export function networkIsActivitySession(): void;
   /**
    *
    * @param {NativeBOOL} p0 undefined
    */
-  export function NetworkBlockInvites2(p0: NativeBOOL): void;
+  export function networkBlockInvites2(p0: NativeBOOL): void;
   /**
    *
    * @param {number} networkHandle undefined
    */
-  export function NetworkSendPresenceInvite(networkHandle: number, p1: NativeAny, p2: NativeAny, p3: NativeAny): void;
+  export function networkSendPresenceInvite(networkHandle: number, p1: NativeAny, p2: NativeAny, p3: NativeAny): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function NetworkSendPresenceTransitionInvite(p0: NativeAny, p1: NativeAny, p2: NativeAny, p3: NativeAny): void;
+  export function networkSendPresenceTransitionInvite(p0: NativeAny, p1: NativeAny, p2: NativeAny, p3: NativeAny): void;
   /**
    *
    * @param {NativeAny} p0 undefined
@@ -21077,37 +21077,37 @@ declare module "natives" {
   /**
    *
    */
-  export function NetworkGetNumPresenceInvites(): void;
+  export function networkGetNumPresenceInvites(): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function NetworkAcceptPresenceInvite(p0: NativeAny): void;
+  export function networkAcceptPresenceInvite(p0: NativeAny): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function NetworkRemovePresenceInvite(p0: NativeAny): void;
+  export function networkRemovePresenceInvite(p0: NativeAny): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function NetworkGetPresenceInviteId(p0: NativeAny): void;
+  export function networkGetPresenceInviteId(p0: NativeAny): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function NetworkGetPresenceInviteInviter(p0: NativeAny): void;
+  export function networkGetPresenceInviteInviter(p0: NativeAny): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function NetworkGetPresenceInviteHandle(p0: NativeAny, p1: NativeAny): void;
+  export function networkGetPresenceInviteHandle(p0: NativeAny, p1: NativeAny): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function NetworkGetPresenceInviteSessionId(p0: NativeAny): void;
+  export function networkGetPresenceInviteSessionId(p0: NativeAny): void;
   /**
    *
    * @param {NativeAny} p0 undefined
@@ -21132,19 +21132,19 @@ declare module "natives" {
    *
    * @param {NativeAny} p0 undefined
    */
-  export function NetworkAnalPurple777(p0: NativeAny): void;
+  export function networkAnalPurple777(p0: NativeAny): void;
   /**
    *
    */
-  export function NetworkHasFollowInvite(): void;
+  export function networkHasFollowInvite(): void;
   /**
    *
    */
-  export function NetworkActionFollowInvite(): void;
+  export function networkActionFollowInvite(): void;
   /**
    *
    */
-  export function NetworkClearFollowInvite(): void;
+  export function networkClearFollowInvite(): void;
   /**
    *
    */
@@ -21153,11 +21153,11 @@ declare module "natives" {
    *
    * @param {NativeAny} p0 undefined
    */
-  export function NetworkRemoveTransitionInvite(p0: NativeAny): void;
+  export function networkRemoveTransitionInvite(p0: NativeAny): void;
   /**
    *
    */
-  export function NetworkRemoveAllTransitionInvite(): void;
+  export function networkRemoveAllTransitionInvite(): void;
   /**
    *
    */
@@ -21166,22 +21166,22 @@ declare module "natives" {
    *
    * @param {NativeAny} p0 undefined
    */
-  export function NetworkInviteGamers(p0: NativeAny, p1: NativeAny, p2: NativeAny, p3: NativeAny): void;
+  export function networkInviteGamers(p0: NativeAny, p1: NativeAny, p2: NativeAny, p3: NativeAny): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function NetworkHasInvitedGamer(p0: NativeAny): void;
+  export function networkHasInvitedGamer(p0: NativeAny): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function NetworkGetCurrentlySelectedGamerHandleFromInviteMenu(p0: NativeAny): void;
+  export function networkGetCurrentlySelectedGamerHandleFromInviteMenu(p0: NativeAny): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function NetworkSetCurrentlySelectedGamerHandleFromInviteMenu(p0: NativeAny): void;
+  export function networkSetCurrentlySelectedGamerHandleFromInviteMenu(p0: NativeAny): void;
   /**
    *
    * @param {NativeAny} p0 undefined
@@ -21191,7 +21191,7 @@ declare module "natives" {
    *
    * @param {NativePlayer} p0 undefined
    */
-  export function PocakGay(p0: NativePlayer, p1: NativeBOOL): void;
+  export function pocakGay(p0: NativePlayer, p1: NativeBOOL): void;
   /**
    *
    * @param {NativeAny} p0 undefined
@@ -21201,22 +21201,22 @@ declare module "natives" {
    *
    * @param {number} networkHandle undefined
    */
-  export function FilloutPmPlayerList(networkHandle: number, p1: NativeAny, p2: NativeAny): void;
+  export function filloutPmPlayerList(networkHandle: number, p1: NativeAny, p2: NativeAny): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function FilloutPmPlayerListWithNames(p0: NativeAny, p1: NativeAny, p2: NativeAny, p3: NativeAny): void;
+  export function filloutPmPlayerListWithNames(p0: NativeAny, p1: NativeAny, p2: NativeAny, p3: NativeAny): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function UsingNetworkWeapontype(p0: NativeAny): void;
+  export function usingNetworkWeapontype(p0: NativeAny): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function NetworkCheckDataManagerForHandle(p0: NativeAny): void;
+  export function networkCheckDataManagerForHandle(p0: NativeAny): void;
   /**
    *
    */
@@ -21238,7 +21238,7 @@ declare module "natives" {
    *
    * @param {number} networkHandle undefined
    */
-  export function NetworkIsChattingInPlatformParty(networkHandle: number): void;
+  export function networkIsChattingInPlatformParty(networkHandle: number): void;
   /**
    *
    */
@@ -21263,34 +21263,34 @@ declare module "natives" {
   /**
    *
    */
-  export function NetworkGetRandomInt(): void;
+  export function networkGetRandomInt(): void;
   /**
    *
    * @param {number} rangeStart undefined
    */
-  export function NetworkGetRandomIntInRange(rangeStart: number, rangeEnd: number): void;
+  export function networkGetRandomIntInRange(rangeStart: number, rangeEnd: number): void;
   /**
    *
    */
-  export function NetworkPlayerIsCheater(): void;
+  export function networkPlayerIsCheater(): void;
   /**
    *
    */
-  export function NetworkPlayerIsUnk(): void;
+  export function networkPlayerIsUnk(): void;
   /**
    *
    */
-  export function NetworkPlayerIsBadsport(): void;
+  export function networkPlayerIsBadsport(): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function NetworkIsPlayerInScript(player: NativePlayer, p1: number, scriptHash: NativeHash): void;
+  export function networkIsPlayerInScript(player: NativePlayer, p1: number, scriptHash: NativeHash): void;
   /**
    *
    * @param {number} networkHandle undefined
    */
-  export function BadSportPlayerLeftDetected(networkHandle: number, event: number, amountReceived: number): void;
+  export function badSportPlayerLeftDetected(networkHandle: number, event: number, amountReceived: number): void;
   /**
    *
    * @param {NativeEntity} p0 undefined
@@ -21300,38 +21300,38 @@ declare module "natives" {
    *
    * @param {number} lobbySize undefined
    */
-  export function NetworkSetThisScriptIsNetworkScript(lobbySize: number, p1: NativeBOOL, playerId: number): void;
+  export function networkSetThisScriptIsNetworkScript(lobbySize: number, p1: NativeBOOL, playerId: number): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function NetworkIsThisScriptMarked(p0: NativeAny, p1: NativeBOOL, p2: NativeAny): void;
+  export function networkIsThisScriptMarked(p0: NativeAny, p1: NativeBOOL, p2: NativeAny): void;
   /**
    *
    */
-  export function NetworkGetThisScriptIsNetworkScript(): void;
+  export function networkGetThisScriptIsNetworkScript(): void;
   /**
    *
    */
-  export function NetworkGetNumParticipantsHost(): void;
+  export function networkGetNumParticipantsHost(): void;
   /**
    *
    */
-  export function NetworkGetNumParticipants(): void;
+  export function networkGetNumParticipants(): void;
   /**
    *
    */
-  export function NetworkGetScriptStatus(): void;
-  /**
-   *
-   * @param {number} vars undefined
-   */
-  export function NetworkRegisterHostBroadcastVariables(vars: number, sizeofVars: number): void;
+  export function networkGetScriptStatus(): void;
   /**
    *
    * @param {number} vars undefined
    */
-  export function NetworkRegisterPlayerBroadcastVariables(vars: number, numVars: number): void;
+  export function networkRegisterHostBroadcastVariables(vars: number, sizeofVars: number): void;
+  /**
+   *
+   * @param {number} vars undefined
+   */
+  export function networkRegisterPlayerBroadcastVariables(vars: number, numVars: number): void;
   /**
    *
    */
@@ -21344,26 +21344,26 @@ declare module "natives" {
    *
    * @param {NativePlayer} player undefined
    */
-  export function NetworkGetPlayerIndex(player: NativePlayer): void;
+  export function networkGetPlayerIndex(player: NativePlayer): void;
   /**
    *
    * @param {number} index undefined
    */
-  export function NetworkGetParticipantIndex(index: number): void;
+  export function networkGetParticipantIndex(index: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function NetworkGetPlayerIndexFromPed(ped: NativePed): void;
+  export function networkGetPlayerIndexFromPed(ped: NativePed): void;
   /**
    *
    */
-  export function NetworkGetNumConnectedPlayers(): void;
+  export function networkGetNumConnectedPlayers(): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function NetworkIsPlayerConnected(player: NativePlayer): void;
+  export function networkIsPlayerConnected(player: NativePlayer): void;
   /**
    *
    */
@@ -21372,48 +21372,48 @@ declare module "natives" {
    *
    * @param {number} p0 undefined
    */
-  export function NetworkIsParticipantActive(p0: number): void;
+  export function networkIsParticipantActive(p0: number): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function NetworkIsPlayerActive(player: NativePlayer): void;
+  export function networkIsPlayerActive(player: NativePlayer): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function NetworkIsPlayerAParticipant(p0: NativeAny): void;
+  export function networkIsPlayerAParticipant(p0: NativeAny): void;
   /**
    *
    */
-  export function NetworkIsHostOfThisScript(): void;
+  export function networkIsHostOfThisScript(): void;
   /**
    *
    */
-  export function NetworkGetHostOfThisScript(): void;
-  /**
-   *
-   * @param {string} scriptName undefined
-   */
-  export function NetworkGetHostOfScript(scriptName: string, p1: number, p2: number): void;
-  /**
-   *
-   */
-  export function NetworkSetMissionFinished(): void;
+  export function networkGetHostOfThisScript(): void;
   /**
    *
    * @param {string} scriptName undefined
    */
-  export function NetworkIsScriptActive(scriptName: string, player: NativePlayer, p2: NativeBOOL, p3: NativeAny): void;
+  export function networkGetHostOfScript(scriptName: string, p1: number, p2: number): void;
+  /**
+   *
+   */
+  export function networkSetMissionFinished(): void;
+  /**
+   *
+   * @param {string} scriptName undefined
+   */
+  export function networkIsScriptActive(scriptName: string, player: NativePlayer, p2: NativeBOOL, p3: NativeAny): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function NetworkGetNumScriptParticipants(p0: NativeAny, p1: NativeAny, p2: NativeAny): void;
+  export function networkGetNumScriptParticipants(p0: NativeAny, p1: NativeAny, p2: NativeAny): void;
   /**
    *
    */
-  export function NetworkGetPlayerPedFromIndex(): void;
+  export function networkGetPlayerPedFromIndex(): void;
   /**
    *
    * @param {NativePlayer} p0 undefined
@@ -21430,45 +21430,45 @@ declare module "natives" {
   /**
    *
    */
-  export function ParticipantId(): void;
+  export function participantId(): void;
   /**
    *
    */
-  export function ParticipantIdToInt(): void;
+  export function participantIdToInt(): void;
   /**
    *
    * @param {number} netId undefined
    */
-  export function NetworkGetDestroyerOfNetworkId(netId: number, weaponHash: NativeHash): void;
+  export function networkGetDestroyerOfNetworkId(netId: number, weaponHash: NativeHash): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function NetworkGetDesroyerOfEntity(p0: NativeAny, p1: NativeAny, weaponHash: NativeHash): void;
+  export function networkGetDesroyerOfEntity(p0: NativeAny, p1: NativeAny, weaponHash: NativeHash): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function NetworkGetEntityKillerOfPlayer(player: NativePlayer, weaponHash: NativeHash): void;
+  export function networkGetEntityKillerOfPlayer(player: NativePlayer, weaponHash: NativeHash): void;
   /**
    *
    * @param {number} x undefined
    */
-  export function NetworkResurrectLocalPlayer(x: number, y: number, z: number, heading: number, unk: NativeBOOL, changetime: NativeBOOL): void;
+  export function networkResurrectLocalPlayer(x: number, y: number, z: number, heading: number, unk: NativeBOOL, changetime: NativeBOOL): void;
   /**
    *
    * @param {number} time undefined
    */
-  export function NetworkSetLocalPlayerInvincibleTime(time: number): void;
+  export function networkSetLocalPlayerInvincibleTime(time: number): void;
   /**
    *
    */
-  export function NetworkIsLocalPlayerInvincible(): void;
+  export function networkIsLocalPlayerInvincible(): void;
   /**
    *
    * @param {number} player undefined
    */
-  export function NetworkDisableInvincibleFlashing(player: number, p1: NativeBOOL): void;
+  export function networkDisableInvincibleFlashing(player: number, p1: NativeBOOL): void;
   /**
    *
    * @param {NativeAny} p0 undefined
@@ -21483,170 +21483,170 @@ declare module "natives" {
    *
    * @param {NativeEntity} entity undefined
    */
-  export function NetworkGetNetworkIdFromEntity(entity: NativeEntity): void;
+  export function networkGetNetworkIdFromEntity(entity: NativeEntity): void;
   /**
    *
    * @param {number} netId undefined
    */
-  export function NetworkGetEntityFromNetworkId(netId: number): void;
+  export function networkGetEntityFromNetworkId(netId: number): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function NetworkGetEntityIsNetworked(entity: NativeEntity): void;
+  export function networkGetEntityIsNetworked(entity: NativeEntity): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function NetworkGetEntityIsLocal(entity: NativeEntity): void;
+  export function networkGetEntityIsLocal(entity: NativeEntity): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function NetworkRegisterEntityAsNetworked(entity: NativeEntity): void;
+  export function networkRegisterEntityAsNetworked(entity: NativeEntity): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function NetworkUnregisterNetworkedEntity(entity: NativeEntity): void;
+  export function networkUnregisterNetworkedEntity(entity: NativeEntity): void;
   /**
    *
    * @param {number} netID undefined
    */
-  export function NetworkDoesNetworkIdExist(netID: number): void;
+  export function networkDoesNetworkIdExist(netID: number): void;
   /**
    *
    * @param {number} netId undefined
    */
-  export function NetworkDoesEntityExistWithNetworkId(netId: number): void;
+  export function networkDoesEntityExistWithNetworkId(netId: number): void;
   /**
    *
    * @param {number} netId undefined
    */
-  export function NetworkRequestControlOfNetworkId(netId: number): void;
+  export function networkRequestControlOfNetworkId(netId: number): void;
   /**
    *
    * @param {number} netId undefined
    */
-  export function NetworkHasControlOfNetworkId(netId: number): void;
+  export function networkHasControlOfNetworkId(netId: number): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function NetworkRequestControlOfEntity(entity: NativeEntity): void;
+  export function networkRequestControlOfEntity(entity: NativeEntity): void;
   /**
    *
    * @param {number} doorID undefined
    */
-  export function NetworkRequestControlOfDoor(doorID: number): void;
+  export function networkRequestControlOfDoor(doorID: number): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function NetworkHasControlOfEntity(entity: NativeEntity): void;
+  export function networkHasControlOfEntity(entity: NativeEntity): void;
   /**
    *
    * @param {NativePickup} pickup undefined
    */
-  export function NetworkHasControlOfPickup(pickup: NativePickup): void;
+  export function networkHasControlOfPickup(pickup: NativePickup): void;
   /**
    *
    * @param {NativeHash} doorHash undefined
    */
-  export function NetworkHasControlOfDoor(doorHash: NativeHash): void;
+  export function networkHasControlOfDoor(doorHash: NativeHash): void;
   /**
    *
    * @param {NativeHash} doorHash undefined
    */
-  export function NetworkHasControlOfPavementStats(doorHash: NativeHash): void;
+  export function networkHasControlOfPavementStats(doorHash: NativeHash): void;
   /**
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function VehToNet(vehicle: NativeVehicle): void;
+  export function vehToNet(vehicle: NativeVehicle): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function PedToNet(ped: NativePed): void;
+  export function pedToNet(ped: NativePed): void;
   /**
    *
    * @param {NativeObject} object undefined
    */
-  export function ObjToNet(object: NativeObject): void;
+  export function objToNet(object: NativeObject): void;
   /**
    *
    * @param {number} netHandle undefined
    */
-  export function NetToVeh(netHandle: number): void;
+  export function netToVeh(netHandle: number): void;
   /**
    *
    * @param {number} netHandle undefined
    */
-  export function NetToPed(netHandle: number): void;
+  export function netToPed(netHandle: number): void;
   /**
    *
    * @param {number} netHandle undefined
    */
-  export function NetToObj(netHandle: number): void;
+  export function netToObj(netHandle: number): void;
   /**
    *
    * @param {number} netHandle undefined
    */
-  export function NetToEnt(netHandle: number): void;
+  export function netToEnt(netHandle: number): void;
   /**
    *
    * @param {number} networkHandle undefined
    */
-  export function NetworkGetLocalHandle(networkHandle: number, bufferSize: number): void;
+  export function networkGetLocalHandle(networkHandle: number, bufferSize: number): void;
   /**
    *
    * @param {string} userId undefined
    */
-  export function NetworkHandleFromUserId(userId: string, networkHandle: number, bufferSize: number): void;
+  export function networkHandleFromUserId(userId: string, networkHandle: number, bufferSize: number): void;
   /**
    *
    * @param {string} memberId undefined
    */
-  export function NetworkHandleFromMemberId(memberId: string, networkHandle: number, bufferSize: number): void;
+  export function networkHandleFromMemberId(memberId: string, networkHandle: number, bufferSize: number): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function NetworkHandleFromPlayer(player: NativePlayer, networkHandle: number, bufferSize: number): void;
+  export function networkHandleFromPlayer(player: NativePlayer, networkHandle: number, bufferSize: number): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function NetworkHashFromPlayerHandle(player: NativePlayer): void;
+  export function networkHashFromPlayerHandle(player: NativePlayer): void;
   /**
    *
    * @param {number} networkHandle undefined
    */
-  export function NetworkHashFromGamerHandle(networkHandle: number): void;
+  export function networkHashFromGamerHandle(networkHandle: number): void;
   /**
    *
    * @param {NativePlayer} friendIndex undefined
    */
-  export function NetworkHandleFromFriend(friendIndex: NativePlayer, networkHandle: number, bufferSize: number): void;
+  export function networkHandleFromFriend(friendIndex: NativePlayer, networkHandle: number, bufferSize: number): void;
   /**
    *
    * @param {number} networkHandle undefined
    */
-  export function NetworkGamertagFromHandleStart(networkHandle: number): void;
+  export function networkGamertagFromHandleStart(networkHandle: number): void;
   /**
    *
    */
-  export function NetworkGamertagFromHandlePending(): void;
+  export function networkGamertagFromHandlePending(): void;
   /**
    *
    */
-  export function NetworkGamertagFromHandleSucceeded(): void;
+  export function networkGamertagFromHandleSucceeded(): void;
   /**
    *
    * @param {number} networkHandle undefined
    */
-  export function NetworkGetGamertagFromHandle(networkHandle: number): void;
+  export function networkGetGamertagFromHandle(networkHandle: number): void;
   /**
    *
    * @param {NativeAny} p0 undefined
@@ -21661,119 +21661,119 @@ declare module "natives" {
    *
    * @param {number} netHandle1 undefined
    */
-  export function NetworkAreHandlesTheSame(netHandle1: number, netHandle2: number): void;
+  export function networkAreHandlesTheSame(netHandle1: number, netHandle2: number): void;
   /**
    *
    * @param {number} networkHandle undefined
    */
-  export function NetworkIsHandleValid(networkHandle: number, bufferSize: number): void;
+  export function networkIsHandleValid(networkHandle: number, bufferSize: number): void;
   /**
    *
    * @param {number} networkHandle undefined
    */
-  export function NetworkGetPlayerFromGamerHandle(networkHandle: number): void;
+  export function networkGetPlayerFromGamerHandle(networkHandle: number): void;
   /**
    *
    * @param {number} networkHandle undefined
    */
-  export function NetworkMemberIdFromGamerHandle(networkHandle: number): void;
+  export function networkMemberIdFromGamerHandle(networkHandle: number): void;
   /**
    *
    * @param {number} networkHandle undefined
    */
-  export function NetworkIsGamerInMySession(networkHandle: number): void;
+  export function networkIsGamerInMySession(networkHandle: number): void;
   /**
    *
    * @param {number} networkHandle undefined
    */
-  export function NetworkShowProfileUi(networkHandle: number): void;
+  export function networkShowProfileUi(networkHandle: number): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function NetworkPlayerGetName(player: NativePlayer): void;
+  export function networkPlayerGetName(player: NativePlayer): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function NetworkPlayerGetUserid(player: NativePlayer, userID: string): void;
+  export function networkPlayerGetUserid(player: NativePlayer, userID: string): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function NetworkPlayerIsRockstarDev(player: NativePlayer): void;
+  export function networkPlayerIsRockstarDev(player: NativePlayer): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function NetworkPlayerSomething(player: NativePlayer): void;
+  export function networkPlayerSomething(player: NativePlayer): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function NetworkIsInactiveProfile(p0: NativeAny): void;
+  export function networkIsInactiveProfile(p0: NativeAny): void;
   /**
    *
    */
-  export function NetworkGetMaxFriends(): void;
+  export function networkGetMaxFriends(): void;
   /**
    *
    */
-  export function NetworkGetFriendCount(): void;
-  /**
-   *
-   * @param {number} friendIndex undefined
-   */
-  export function NetworkGetFriendName(friendIndex: number): void;
+  export function networkGetFriendCount(): void;
   /**
    *
    * @param {number} friendIndex undefined
    */
-  export function NetworkGetFriendNameFromIndex(friendIndex: number): void;
+  export function networkGetFriendName(friendIndex: number): void;
+  /**
+   *
+   * @param {number} friendIndex undefined
+   */
+  export function networkGetFriendNameFromIndex(friendIndex: number): void;
   /**
    *
    * @param {string} name undefined
    */
-  export function NetworkIsFriendOnline(name: string): void;
+  export function networkIsFriendOnline(name: string): void;
   /**
    *
    * @param {number} networkHandle undefined
    */
-  export function NetworkIsFriendOnline2(networkHandle: number): void;
+  export function networkIsFriendOnline2(networkHandle: number): void;
   /**
    *
    * @param {string} friendName undefined
    */
-  export function NetworkIsFriendInSameTitle(friendName: string): void;
+  export function networkIsFriendInSameTitle(friendName: string): void;
   /**
    *
    * @param {string} friendName undefined
    */
-  export function NetworkIsFriendInMultiplayer(friendName: string): void;
+  export function networkIsFriendInMultiplayer(friendName: string): void;
   /**
    *
    * @param {number} networkHandle undefined
    */
-  export function NetworkIsFriend(networkHandle: number): void;
+  export function networkIsFriend(networkHandle: number): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function NetworkIsPendingFriend(p0: NativeAny): void;
+  export function networkIsPendingFriend(p0: NativeAny): void;
   /**
    *
    */
-  export function NetworkIsAddingFriend(): void;
+  export function networkIsAddingFriend(): void;
   /**
    *
    * @param {number} networkHandle undefined
    */
-  export function NetworkAddFriend(networkHandle: number, message: string): void;
+  export function networkAddFriend(networkHandle: number, message: string): void;
   /**
    *
    * @param {number} friendIndex undefined
    */
-  export function NetworkIsFriendIndexOnline(friendIndex: number): void;
+  export function networkIsFriendIndexOnline(friendIndex: number): void;
   /**
    *
    * @param {NativeBOOL} p0 undefined
@@ -21787,7 +21787,7 @@ declare module "natives" {
   /**
    *
    */
-  export function NetworkCanSetWaypoint(): void;
+  export function networkCanSetWaypoint(): void;
   /**
    *
    * @param {NativeAny} p0 undefined
@@ -21800,7 +21800,7 @@ declare module "natives" {
   /**
    *
    */
-  export function NetworkHasHeadset(): void;
+  export function networkHasHeadset(): void;
   /**
    *
    * @param {NativeBOOL} p0 undefined
@@ -21814,37 +21814,37 @@ declare module "natives" {
    *
    * @param {NativeAny} p0 undefined
    */
-  export function NetworkGamerHasHeadset(p0: NativeAny): void;
+  export function networkGamerHasHeadset(p0: NativeAny): void;
   /**
    *
    * @param {number} p0 undefined
    */
-  export function NetworkIsGamerTalking(p0: number): void;
+  export function networkIsGamerTalking(p0: number): void;
   /**
    *
    * @param {number} player undefined
    */
-  export function NetworkCanCommunicateWithGamer(player: number): void;
+  export function networkCanCommunicateWithGamer(player: number): void;
   /**
    *
    * @param {number} p0 undefined
    */
-  export function NetworkIsGamerMutedByMe(p0: number): void;
+  export function networkIsGamerMutedByMe(p0: number): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function NetworkAmIMutedByGamer(p0: NativeAny): void;
+  export function networkAmIMutedByGamer(p0: NativeAny): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function NetworkIsGamerBlockedByMe(p0: NativeAny): void;
+  export function networkIsGamerBlockedByMe(p0: NativeAny): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function NetworkAmIBlockedByGamer(p0: NativeAny): void;
+  export function networkAmIBlockedByGamer(p0: NativeAny): void;
   /**
    *
    * @param {NativeAny} p0 undefined
@@ -21869,51 +21869,51 @@ declare module "natives" {
    *
    * @param {NativePlayer} player undefined
    */
-  export function NetworkIsPlayerTalking(player: NativePlayer): void;
+  export function networkIsPlayerTalking(player: NativePlayer): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function NetworkPlayerHasHeadset(player: NativePlayer): void;
+  export function networkPlayerHasHeadset(player: NativePlayer): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function NetworkIsPlayerMutedByMe(player: NativePlayer): void;
+  export function networkIsPlayerMutedByMe(player: NativePlayer): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function NetworkAmIMutedByPlayer(player: NativePlayer): void;
+  export function networkAmIMutedByPlayer(player: NativePlayer): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function NetworkIsPlayerBlockedByMe(player: NativePlayer): void;
+  export function networkIsPlayerBlockedByMe(player: NativePlayer): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function NetworkAmIBlockedByPlayer(player: NativePlayer): void;
+  export function networkAmIBlockedByPlayer(player: NativePlayer): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function NetworkGetPlayerLoudness(p0: NativeAny): void;
+  export function networkGetPlayerLoudness(p0: NativeAny): void;
   /**
    *
    * @param {number} p0 undefined
    */
-  export function NetworkSetTalkerProximity(p0: number): void;
+  export function networkSetTalkerProximity(p0: number): void;
   /**
    *
    */
-  export function NetworkGetTalkerProximity(): void;
+  export function networkGetTalkerProximity(): void;
   /**
    *
    * @param {NativeBOOL} toggle undefined
    */
-  export function NetworkSetVoiceActive(toggle: NativeBOOL): void;
+  export function networkSetVoiceActive(toggle: NativeBOOL): void;
   /**
    *
    * @param {NativeBOOL} p0 undefined
@@ -21923,12 +21923,12 @@ declare module "natives" {
    *
    * @param {NativeBOOL} p0 undefined
    */
-  export function NetworkOverrideTransitionChat(p0: NativeBOOL): void;
+  export function networkOverrideTransitionChat(p0: NativeBOOL): void;
   /**
    *
    * @param {NativeBOOL} toggle undefined
    */
-  export function NetworkSetTeamOnlyChat(toggle: NativeBOOL): void;
+  export function networkSetTeamOnlyChat(toggle: NativeBOOL): void;
   /**
    *
    * @param {number} team undefined
@@ -21938,7 +21938,7 @@ declare module "natives" {
    *
    * @param {NativeBOOL} toggle undefined
    */
-  export function NetworkSetOverrideSpectatorMode(toggle: NativeBOOL): void;
+  export function networkSetOverrideSpectatorMode(toggle: NativeBOOL): void;
   /**
    *
    * @param {NativeBOOL} p0 undefined
@@ -21963,22 +21963,22 @@ declare module "natives" {
    *
    * @param {NativePlayer} player undefined
    */
-  export function NetworkOverrideChatRestrictions(player: NativePlayer, toggle: NativeBOOL): void;
+  export function networkOverrideChatRestrictions(player: NativePlayer, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function NetworkOverrideSendRestrictions(player: NativePlayer, toggle: NativeBOOL): void;
+  export function networkOverrideSendRestrictions(player: NativePlayer, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativeBOOL} p0 undefined
    */
-  export function NetworkChatMute(p0: NativeBOOL): void;
+  export function networkChatMute(p0: NativeBOOL): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function NetworkOverrideReceiveRestrictions(player: NativePlayer, toggle: NativeBOOL): void;
+  export function networkOverrideReceiveRestrictions(player: NativePlayer, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativeBOOL} p0 undefined
@@ -21988,16 +21988,16 @@ declare module "natives" {
    *
    * @param {NativeAny} p0 undefined
    */
-  export function NetworkSetVoiceChannel(p0: NativeAny): void;
+  export function networkSetVoiceChannel(p0: NativeAny): void;
   /**
    *
    */
-  export function NetworkClearVoiceChannel(): void;
+  export function networkClearVoiceChannel(): void;
   /**
    *
    * @param {number} x undefined
    */
-  export function IsNetworkVehicleBeenDamagedByAnyObject(x: number, y: number, z: number): void;
+  export function isNetworkVehicleBeenDamagedByAnyObject(x: number, y: number, z: number): void;
   /**
    *
    */
@@ -22020,40 +22020,40 @@ declare module "natives" {
   /**
    *
    */
-  export function NetworkIsTextChatActive(): void;
+  export function networkIsTextChatActive(): void;
   /**
    *
    */
-  export function ShutdownAndLaunchSinglePlayerGame(): void;
+  export function shutdownAndLaunchSinglePlayerGame(): void;
   /**
    *
    * @param {NativeBOOL} toggle undefined
    */
-  export function NetworkSetFriendlyFireOption(toggle: NativeBOOL): void;
+  export function networkSetFriendlyFireOption(toggle: NativeBOOL): void;
   /**
    *
    * @param {number} p0 undefined
    */
-  export function NetworkSetRichPresence(p0: number, p1: NativeAny, p2: NativeAny, p3: NativeAny): void;
+  export function networkSetRichPresence(p0: number, p1: NativeAny, p2: NativeAny, p3: NativeAny): void;
   /**
    *
    * @param {number} p0 undefined
    */
-  export function NetworkSetRichPresence2(p0: number, gxtLabel: string): void;
+  export function networkSetRichPresence2(p0: number, gxtLabel: string): void;
   /**
    *
    */
-  export function NetworkGetTimeoutTime(): void;
-  /**
-   *
-   * @param {NativePlayer} player undefined
-   */
-  export function NetworkRespawnCoords(player: NativePlayer, x: number, y: number, z: number, p4: NativeBOOL, p5: NativeBOOL): void;
+  export function networkGetTimeoutTime(): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function NetworkRespawnPlayer(player: NativePlayer, p1: NativeBOOL): void;
+  export function networkRespawnCoords(player: NativePlayer, x: number, y: number, z: number, p4: NativeBOOL, p5: NativeBOOL): void;
+  /**
+   *
+   * @param {NativePlayer} player undefined
+   */
+  export function networkRespawnPlayer(player: NativePlayer, p1: NativeBOOL): void;
   /**
    *
    * @param {NativeEntity} entity undefined
@@ -22062,17 +22062,17 @@ declare module "natives" {
   /**
    *
    */
-  export function NetworkPlayerIsInClan(): void;
+  export function networkPlayerIsInClan(): void;
   /**
    *
    * @param {number} networkHandle undefined
    */
-  export function NetworkClanPlayerIsActive(networkHandle: number): void;
+  export function networkClanPlayerIsActive(networkHandle: number): void;
   /**
    *
    * @param {number} clanDesc undefined
    */
-  export function NetworkClanPlayerGetDesc(clanDesc: number, bufferSize: number, networkHandle: number): void;
+  export function networkClanPlayerGetDesc(clanDesc: number, bufferSize: number, networkHandle: number): void;
   /**
    *
    * @param {number} clanDesc undefined
@@ -22086,56 +22086,56 @@ declare module "natives" {
   /**
    *
    */
-  export function GetNumMembershipDesc(): void;
+  export function getNumMembershipDesc(): void;
   /**
    *
    * @param {number} memberDesc undefined
    */
-  export function NetworkClanGetMembershipDesc(memberDesc: number, p1: number): void;
+  export function networkClanGetMembershipDesc(memberDesc: number, p1: number): void;
   /**
    *
    * @param {number} networkHandle undefined
    */
-  export function NetworkClanDownloadMembership(networkHandle: number): void;
+  export function networkClanDownloadMembership(networkHandle: number): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function NetworkClanDownloadMembershipPending(p0: NativeAny): void;
+  export function networkClanDownloadMembershipPending(p0: NativeAny): void;
   /**
    *
    */
-  export function NetworkIsClanMembershipFinishedDownloading(): void;
-  /**
-   *
-   * @param {number} p0 undefined
-   */
-  export function NetworkClanRemoteMembershipsAreInCache(p0: number): void;
+  export function networkIsClanMembershipFinishedDownloading(): void;
   /**
    *
    * @param {number} p0 undefined
    */
-  export function NetworkClanGetMembershipCount(p0: number): void;
+  export function networkClanRemoteMembershipsAreInCache(p0: number): void;
   /**
    *
    * @param {number} p0 undefined
    */
-  export function NetworkClanGetMembershipValid(p0: number, p1: NativeAny): void;
+  export function networkClanGetMembershipCount(p0: number): void;
   /**
    *
    * @param {number} p0 undefined
    */
-  export function NetworkClanGetMembership(p0: number, clanMembership: number, p2: number): void;
+  export function networkClanGetMembershipValid(p0: number, p1: NativeAny): void;
+  /**
+   *
+   * @param {number} p0 undefined
+   */
+  export function networkClanGetMembership(p0: number, clanMembership: number, p2: number): void;
   /**
    *
    * @param {number} clanDesc undefined
    */
-  export function NetworkClanJoin(clanDesc: number): void;
+  export function networkClanJoin(clanDesc: number): void;
   /**
    *
    * @param {string} animDict undefined
    */
-  export function NetworkClanAnimation(animDict: string, animName: string): void;
+  export function networkClanAnimation(animDict: string, animName: string): void;
   /**
    *
    * @param {number} p0 undefined
@@ -22149,7 +22149,7 @@ declare module "natives" {
    *
    * @param {NativePlayer} player undefined
    */
-  export function NetworkGetPlayerCrewEmblemTxdName(player: NativePlayer, p1: NativeAny): void;
+  export function networkGetPlayerCrewEmblemTxdName(player: NativePlayer, p1: NativeAny): void;
   /**
    *
    * @param {NativeAny} p0 undefined
@@ -22168,59 +22168,59 @@ declare module "natives" {
   /**
    *
    */
-  export function NetworkGetPrimaryClanDataClear(): void;
+  export function networkGetPrimaryClanDataClear(): void;
   /**
    *
    */
-  export function NetworkGetPrimaryClanDataCancel(): void;
-  /**
-   *
-   * @param {NativeAny} p0 undefined
-   */
-  export function NetworkGetPrimaryClanDataStart(p0: NativeAny, p1: NativeAny): void;
-  /**
-   *
-   */
-  export function NetworkGetPrimaryClanDataPending(): void;
-  /**
-   *
-   */
-  export function NetworkGetPrimaryClanDataSuccess(): void;
+  export function networkGetPrimaryClanDataCancel(): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function NetworkGetPrimaryClanDataNew(p0: NativeAny, p1: NativeAny): void;
+  export function networkGetPrimaryClanDataStart(p0: NativeAny, p1: NativeAny): void;
+  /**
+   *
+   */
+  export function networkGetPrimaryClanDataPending(): void;
+  /**
+   *
+   */
+  export function networkGetPrimaryClanDataSuccess(): void;
+  /**
+   *
+   * @param {NativeAny} p0 undefined
+   */
+  export function networkGetPrimaryClanDataNew(p0: NativeAny, p1: NativeAny): void;
   /**
    *
    * @param {number} netId undefined
    */
-  export function SetNetworkIdCanMigrate(netId: number, toggle: NativeBOOL): void;
+  export function setNetworkIdCanMigrate(netId: number, toggle: NativeBOOL): void;
   /**
    *
    * @param {number} netId undefined
    */
-  export function SetNetworkIdExistsOnAllMachines(netId: number, toggle: NativeBOOL): void;
+  export function setNetworkIdExistsOnAllMachines(netId: number, toggle: NativeBOOL): void;
   /**
    *
    * @param {number} netId undefined
    */
-  export function SetNetworkIdSyncToPlayer(netId: number, player: NativePlayer, toggle: NativeBOOL): void;
+  export function setNetworkIdSyncToPlayer(netId: number, player: NativePlayer, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function NetworkSetEntityCanBlend(entity: NativeEntity, toggle: NativeBOOL): void;
+  export function networkSetEntityCanBlend(entity: NativeEntity, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function NetworkSetEntityInvisibleToNetwork(entity: NativeEntity, toggle: NativeBOOL): void;
+  export function networkSetEntityInvisibleToNetwork(entity: NativeEntity, toggle: NativeBOOL): void;
   /**
    *
    * @param {number} netId undefined
    */
-  export function SetNetworkIdVisibleInCutscene(netId: number, p1: NativeBOOL, p2: NativeBOOL): void;
+  export function setNetworkIdVisibleInCutscene(netId: number, p1: NativeBOOL, p2: NativeBOOL): void;
   /**
    *
    * @param {NativeBOOL} p0 undefined
@@ -22235,47 +22235,47 @@ declare module "natives" {
    *
    * @param {number} netId undefined
    */
-  export function NetworkCanNetworkIdBeSeen(netId: number): void;
+  export function networkCanNetworkIdBeSeen(netId: number): void;
   /**
    *
    * @param {NativeBOOL} p0 undefined
    */
-  export function SetLocalPlayerVisibleInCutscene(p0: NativeBOOL, p1: NativeBOOL): void;
+  export function setLocalPlayerVisibleInCutscene(p0: NativeBOOL, p1: NativeBOOL): void;
   /**
    *
    * @param {NativeBOOL} p0 undefined
    */
-  export function SetLocalPlayerInvisibleLocally(p0: NativeBOOL): void;
+  export function setLocalPlayerInvisibleLocally(p0: NativeBOOL): void;
   /**
    *
    * @param {NativeBOOL} p0 undefined
    */
-  export function SetLocalPlayerVisibleLocally(p0: NativeBOOL): void;
+  export function setLocalPlayerVisibleLocally(p0: NativeBOOL): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function SetPlayerInvisibleLocally(player: NativePlayer, toggle: NativeBOOL): void;
+  export function setPlayerInvisibleLocally(player: NativePlayer, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function SetPlayerVisibleLocally(player: NativePlayer, toggle: NativeBOOL): void;
+  export function setPlayerVisibleLocally(player: NativePlayer, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativeBOOL} p0 undefined
    */
-  export function FadeOutLocalPlayer(p0: NativeBOOL): void;
+  export function fadeOutLocalPlayer(p0: NativeBOOL): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function NetworkFadeOutEntity(entity: NativeEntity, normal: NativeBOOL, slow: NativeBOOL): void;
+  export function networkFadeOutEntity(entity: NativeEntity, normal: NativeBOOL, slow: NativeBOOL): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function NetworkFadeInEntity(entity: NativeEntity, state: NativeBOOL): void;
+  export function networkFadeInEntity(entity: NativeEntity, state: NativeBOOL): void;
   /**
    *
    * @param {NativeAny} p0 undefined
@@ -22290,92 +22290,92 @@ declare module "natives" {
    *
    * @param {NativePlayer} player undefined
    */
-  export function IsPlayerInCutscene(player: NativePlayer): void;
+  export function isPlayerInCutscene(player: NativePlayer): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function SetEntityVisibleInCutscene(p0: NativeAny, p1: NativeBOOL, p2: NativeBOOL): void;
+  export function setEntityVisibleInCutscene(p0: NativeAny, p1: NativeBOOL, p2: NativeBOOL): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function SetEntityLocallyInvisible(entity: NativeEntity): void;
+  export function setEntityLocallyInvisible(entity: NativeEntity): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function SetEntityLocallyVisible(entity: NativeEntity): void;
+  export function setEntityLocallyVisible(entity: NativeEntity): void;
   /**
    *
    * @param {number} netID undefined
    */
-  export function IsDamageTrackerActiveOnNetworkId(netID: number): void;
+  export function isDamageTrackerActiveOnNetworkId(netID: number): void;
   /**
    *
    * @param {number} netID undefined
    */
-  export function ActivateDamageTrackerOnNetworkId(netID: number, p1: NativeBOOL): void;
+  export function activateDamageTrackerOnNetworkId(netID: number, p1: NativeBOOL): void;
   /**
    *
    * @param {number} p0 undefined
    */
-  export function IsSphereVisibleToAnotherMachine(p0: number, p1: number, p2: number, p3: number): void;
+  export function isSphereVisibleToAnotherMachine(p0: number, p1: number, p2: number, p3: number): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function IsSphereVisibleToPlayer(p0: NativeAny, p1: number, p2: number, p3: number, p4: number): void;
+  export function isSphereVisibleToPlayer(p0: NativeAny, p1: number, p2: number, p3: number, p4: number): void;
   /**
    *
    * @param {number} amount undefined
    */
-  export function ReserveNetworkMissionObjects(amount: number): void;
+  export function reserveNetworkMissionObjects(amount: number): void;
   /**
    *
    * @param {number} amount undefined
    */
-  export function ReserveNetworkMissionPeds(amount: number): void;
+  export function reserveNetworkMissionPeds(amount: number): void;
   /**
    *
    * @param {number} amount undefined
    */
-  export function ReserveNetworkMissionVehicles(amount: number): void;
+  export function reserveNetworkMissionVehicles(amount: number): void;
   /**
    *
    * @param {number} amount undefined
    */
-  export function CanRegisterMissionObjects(amount: number): void;
+  export function canRegisterMissionObjects(amount: number): void;
   /**
    *
    * @param {number} amount undefined
    */
-  export function CanRegisterMissionPeds(amount: number): void;
+  export function canRegisterMissionPeds(amount: number): void;
   /**
    *
    * @param {number} amount undefined
    */
-  export function CanRegisterMissionVehicles(amount: number): void;
+  export function canRegisterMissionVehicles(amount: number): void;
   /**
    *
    * @param {number} ped_amt undefined
    */
-  export function CanRegisterMissionEntities(ped_amt: number, vehicle_amt: number, object_amt: number, pickup_amt: number): void;
+  export function canRegisterMissionEntities(ped_amt: number, vehicle_amt: number, object_amt: number, pickup_amt: number): void;
   /**
    *
    * @param {NativeBOOL} p0 undefined
    */
-  export function GetNumReservedMissionObjects(p0: NativeBOOL): void;
+  export function getNumReservedMissionObjects(p0: NativeBOOL): void;
   /**
    *
    * @param {NativeBOOL} p0 undefined
    */
-  export function GetNumReservedMissionPeds(p0: NativeBOOL): void;
+  export function getNumReservedMissionPeds(p0: NativeBOOL): void;
   /**
    *
    * @param {NativeBOOL} p0 undefined
    */
-  export function GetNumReservedMissionVehicles(p0: NativeBOOL): void;
+  export function getNumReservedMissionVehicles(p0: NativeBOOL): void;
   /**
    *
    * @param {NativeBOOL} p0 undefined
@@ -22410,7 +22410,7 @@ declare module "natives" {
   /**
    *
    */
-  export function GetNetworkTime(): void;
+  export function getNetworkTime(): void;
   /**
    *
    */
@@ -22418,47 +22418,47 @@ declare module "natives" {
   /**
    *
    */
-  export function HasNetworkTimeStarted(): void;
+  export function hasNetworkTimeStarted(): void;
   /**
    *
    * @param {number} timeA undefined
    */
-  export function GetTimeOffset(timeA: number, timeB: number): void;
+  export function getTimeOffset(timeA: number, timeB: number): void;
   /**
    *
    * @param {number} timeA undefined
    */
-  export function IsTimeLessThan(timeA: number, timeB: number): void;
+  export function isTimeLessThan(timeA: number, timeB: number): void;
   /**
    *
    * @param {number} timeA undefined
    */
-  export function IsTimeMoreThan(timeA: number, timeB: number): void;
+  export function isTimeMoreThan(timeA: number, timeB: number): void;
   /**
    *
    * @param {number} timeA undefined
    */
-  export function IsTimeEqualTo(timeA: number, timeB: number): void;
+  export function isTimeEqualTo(timeA: number, timeB: number): void;
   /**
    *
    * @param {number} timeA undefined
    */
-  export function GetTimeDifference(timeA: number, timeB: number): void;
+  export function getTimeDifference(timeA: number, timeB: number): void;
   /**
    *
    * @param {number} time undefined
    */
-  export function GetTimeAsString(time: number): void;
+  export function getTimeAsString(time: number): void;
   /**
    *
    * @param {number} unixEpoch undefined
    */
-  export function GetDateAndTimeFromUnixEpoch(unixEpoch: number, timeStructure: NativeAny): void;
+  export function getDateAndTimeFromUnixEpoch(unixEpoch: number, timeStructure: NativeAny): void;
   /**
    *
    * @param {NativeBOOL} toggle undefined
    */
-  export function NetworkSetInSpectatorMode(toggle: NativeBOOL, playerPed: NativePed): void;
+  export function networkSetInSpectatorMode(toggle: NativeBOOL, playerPed: NativePed): void;
   /**
    *
    * @param {NativeBOOL} p0 undefined
@@ -22477,36 +22477,36 @@ declare module "natives" {
   /**
    *
    */
-  export function NetworkIsInSpectatorMode(): void;
+  export function networkIsInSpectatorMode(): void;
   /**
    *
    * @param {NativeBOOL} p0 undefined
    */
-  export function NetworkSetInMpCutscene(p0: NativeBOOL, p1: NativeBOOL): void;
+  export function networkSetInMpCutscene(p0: NativeBOOL, p1: NativeBOOL): void;
   /**
    *
    */
-  export function NetworkIsInMpCutscene(): void;
+  export function networkIsInMpCutscene(): void;
   /**
    *
    * @param {NativePlayer} player undefined
    */
-  export function NetworkIsPlayerInMpCutscene(player: NativePlayer): void;
+  export function networkIsPlayerInMpCutscene(player: NativePlayer): void;
   /**
    *
    * @param {number} netId undefined
    */
-  export function SetNetworkVehicleRespotTimer(netId: number, time: number): void;
+  export function setNetworkVehicleRespotTimer(netId: number, time: number): void;
   /**
    *
    * @param {NativeObject} object undefined
    */
-  export function SetNetworkObjectNonContact(object: NativeObject, toggle: NativeBOOL): void;
+  export function setNetworkObjectNonContact(object: NativeObject, toggle: NativeBOOL): void;
   /**
    *
    * @param {NativeBOOL} toggle undefined
    */
-  export function UsePlayerColourInsteadOfTeamColour(toggle: NativeBOOL): void;
+  export function usePlayerColourInsteadOfTeamColour(toggle: NativeBOOL): void;
   /**
    *
    * @param {NativeAny} p0 undefined
@@ -22521,42 +22521,42 @@ declare module "natives" {
    *
    * @param {number} x undefined
    */
-  export function NetworkCreateSynchronisedScene(x: number, y: number, z: number, xRot: number, yRot: number, zRot: number, p6: number, p7: number, p8: number, p9: number): void;
+  export function networkCreateSynchronisedScene(x: number, y: number, z: number, xRot: number, yRot: number, zRot: number, p6: number, p7: number, p8: number, p9: number): void;
   /**
    *
    * @param {NativePed} ped undefined
    */
-  export function NetworkAddPedToSynchronisedScene(ped: NativePed, netScene: number, animDict: string, animName: string, speed: number, speedMultiplier: number, duration: number, flag: number, playbackRate: number, p9: NativeAny): void;
+  export function networkAddPedToSynchronisedScene(ped: NativePed, netScene: number, animDict: string, animName: string, speed: number, speedMultiplier: number, duration: number, flag: number, playbackRate: number, p9: NativeAny): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function NetworkAddEntityToSynchronisedScene(entity: NativeEntity, netScene: number, animDict: string, animName: string, speed: number, speedMulitiplier: number, flag: number): void;
+  export function networkAddEntityToSynchronisedScene(entity: NativeEntity, netScene: number, animDict: string, animName: string, speed: number, speedMulitiplier: number, flag: number): void;
   /**
    *
    * @param {number} netScene undefined
    */
-  export function NetworkForceLocalUseOfSyncedSceneCamera(netScene: number, animDict: string, animName: string): void;
+  export function networkForceLocalUseOfSyncedSceneCamera(netScene: number, animDict: string, animName: string): void;
   /**
    *
    * @param {number} netScene undefined
    */
-  export function NetworkAttachSynchronisedSceneToEntity(netScene: number, entity: NativeEntity, bone: number): void;
+  export function networkAttachSynchronisedSceneToEntity(netScene: number, entity: NativeEntity, bone: number): void;
   /**
    *
    * @param {number} netScene undefined
    */
-  export function NetworkStartSynchronisedScene(netScene: number): void;
+  export function networkStartSynchronisedScene(netScene: number): void;
   /**
    *
    * @param {number} netScene undefined
    */
-  export function NetworkStopSynchronisedScene(netScene: number): void;
+  export function networkStopSynchronisedScene(netScene: number): void;
   /**
    *
    * @param {number} netScene undefined
    */
-  export function NetworkConvertSynchronisedSceneToSynchronizedScene(netScene: number): void;
+  export function networkConvertSynchronisedSceneToSynchronizedScene(netScene: number): void;
   /**
    *
    * @param {NativeAny} p0 undefined
@@ -22590,7 +22590,7 @@ declare module "natives" {
    *
    * @param {number} randomInt undefined
    */
-  export function NetworkGetRespawnResult(randomInt: number, coordinates: NativeVector3, heading: number): void;
+  export function networkGetRespawnResult(randomInt: number, coordinates: NativeVector3, heading: number): void;
   /**
    *
    * @param {NativeAny} p0 undefined
@@ -22608,11 +22608,11 @@ declare module "natives" {
   /**
    *
    */
-  export function NetworkEndTutorialSession(): void;
+  export function networkEndTutorialSession(): void;
   /**
    *
    */
-  export function NetworkIsInTutorialSession(): void;
+  export function networkIsInTutorialSession(): void;
   /**
    *
    */
@@ -22630,7 +22630,7 @@ declare module "natives" {
    *
    * @param {NativePlayer} player undefined
    */
-  export function NetworkIsPlayerEqualToIndex(player: NativePlayer, index: number): void;
+  export function networkIsPlayerEqualToIndex(player: NativePlayer, index: number): void;
   /**
    *
    * @param {NativeAny} p0 undefined
@@ -22645,25 +22645,25 @@ declare module "natives" {
    *
    * @param {number} Hours undefined
    */
-  export function NetworkOverrideClockTime(Hours: number, Minutes: number, Seconds: number): void;
+  export function networkOverrideClockTime(Hours: number, Minutes: number, Seconds: number): void;
   /**
    *
    */
-  export function NetworkClearClockTimeOverride(): void;
+  export function networkClearClockTimeOverride(): void;
   /**
    *
    */
-  export function NetworkIsClockTimeOverridden(): void;
-  /**
-   *
-   * @param {number} p0 undefined
-   */
-  export function NetworkAddEntityArea(p0: number, p1: number, p2: number, p3: number, p4: number, p5: number): void;
+  export function networkIsClockTimeOverridden(): void;
   /**
    *
    * @param {number} p0 undefined
    */
-  export function NetworkAddEntityAngledArea(p0: number, p1: number, p2: number, p3: number, p4: number, p5: number, p6: number): void;
+  export function networkAddEntityArea(p0: number, p1: number, p2: number, p3: number, p4: number, p5: number): void;
+  /**
+   *
+   * @param {number} p0 undefined
+   */
+  export function networkAddEntityAngledArea(p0: number, p1: number, p2: number, p3: number, p4: number, p5: number, p6: number): void;
   /**
    *
    * @param {number} p0 undefined
@@ -22673,7 +22673,7 @@ declare module "natives" {
    *
    * @param {NativeAny} p0 undefined
    */
-  export function NetworkRemoveEntityArea(p0: NativeAny): void;
+  export function networkRemoveEntityArea(p0: NativeAny): void;
   /**
    *
    * @param {NativeAny} p0 undefined
@@ -22693,23 +22693,23 @@ declare module "natives" {
    *
    * @param {number} netID undefined
    */
-  export function NetworkSetNetworkIdDynamic(netID: number, toggle: NativeBOOL): void;
+  export function networkSetNetworkIdDynamic(netID: number, toggle: NativeBOOL): void;
   /**
    *
    */
-  export function NetworkRequestCloudBackgroundScripts(): void;
+  export function networkRequestCloudBackgroundScripts(): void;
   /**
    *
    */
-  export function HasBgScriptBeenDownloaded(): void;
+  export function hasBgScriptBeenDownloaded(): void;
   /**
    *
    */
-  export function NetworkRequestCloudTunables(): void;
+  export function networkRequestCloudTunables(): void;
   /**
    *
    */
-  export function HasTunablesBeenDownloaded(): void;
+  export function hasTunablesBeenDownloaded(): void;
   /**
    *
    */
@@ -22718,52 +22718,52 @@ declare module "natives" {
    *
    * @param {string} tunableContext undefined
    */
-  export function NetworkDoesTunableExist(tunableContext: string, tunableName: string): void;
+  export function networkDoesTunableExist(tunableContext: string, tunableName: string): void;
   /**
    *
    * @param {string} tunableContext undefined
    */
-  export function NetworkAccessTunableInt(tunableContext: string, tunableName: string, value: number): void;
+  export function networkAccessTunableInt(tunableContext: string, tunableName: string, value: number): void;
   /**
    *
    * @param {string} tunableContext undefined
    */
-  export function NetworkAccessTunableFloat(tunableContext: string, tunableName: string, value: number): void;
+  export function networkAccessTunableFloat(tunableContext: string, tunableName: string, value: number): void;
   /**
    *
    * @param {string} tunableContext undefined
    */
-  export function NetworkAccessTunableBool(tunableContext: string, tunableName: string): void;
+  export function networkAccessTunableBool(tunableContext: string, tunableName: string): void;
   /**
    *
    * @param {NativeHash} tunableContext undefined
    */
-  export function NetworkDoesTunableExistHash(tunableContext: NativeHash, tunableName: NativeHash): void;
+  export function networkDoesTunableExistHash(tunableContext: NativeHash, tunableName: NativeHash): void;
   /**
    *
    * @param {NativeHash} tunableContext undefined
    */
-  export function NetworkAccessTunableIntHash(tunableContext: NativeHash, tunableName: NativeHash, value: number): void;
+  export function networkAccessTunableIntHash(tunableContext: NativeHash, tunableName: NativeHash, value: number): void;
   /**
    *
    * @param {NativeHash} tunableContext undefined
    */
-  export function NetworkAccessTunableFloatHash(tunableContext: NativeHash, tunableName: NativeHash, value: number): void;
+  export function networkAccessTunableFloatHash(tunableContext: NativeHash, tunableName: NativeHash, value: number): void;
   /**
    *
    * @param {NativeHash} tunableContext undefined
    */
-  export function NetworkAccessTunableBoolHash(tunableContext: NativeHash, tunableName: NativeHash): void;
+  export function networkAccessTunableBoolHash(tunableContext: NativeHash, tunableName: NativeHash): void;
   /**
    *
    * @param {NativeHash} tunableContext undefined
    */
-  export function NetworkAccessTunableBoolHashFailVal(tunableContext: NativeHash, tunableName: NativeHash, defaultValue: NativeBOOL): void;
+  export function networkAccessTunableBoolHashFailVal(tunableContext: NativeHash, tunableName: NativeHash, defaultValue: NativeBOOL): void;
   /**
    *
    * @param {NativeHash} contentHash undefined
    */
-  export function GetTunablesContentModifierId(contentHash: NativeHash): void;
+  export function getTunablesContentModifierId(contentHash: NativeHash): void;
   /**
    *
    */
@@ -22771,7 +22771,7 @@ declare module "natives" {
   /**
    *
    */
-  export function NetworkResetBodyTracker(): void;
+  export function networkResetBodyTracker(): void;
   /**
    *
    */
@@ -22790,7 +22790,7 @@ declare module "natives" {
    *
    * @param {NativeVehicle} vehicle undefined
    */
-  export function NetworkExplodeVehicle(vehicle: NativeVehicle, isAudible: NativeBOOL, isInvisible: NativeBOOL, p3: NativeBOOL): void;
+  export function networkExplodeVehicle(vehicle: NativeVehicle, isAudible: NativeBOOL, isInvisible: NativeBOOL, p3: NativeBOOL): void;
   /**
    *
    * @param {NativeEntity} entity undefined
@@ -22810,11 +22810,11 @@ declare module "natives" {
    *
    * @param {NativeAny} p0 undefined
    */
-  export function NetworkSetPropertyId(p0: NativeAny): void;
+  export function networkSetPropertyId(p0: NativeAny): void;
   /**
    *
    */
-  export function NetworkClearPropertyId(): void;
+  export function networkClearPropertyId(): void;
   /**
    *
    * @param {number} p0 undefined
@@ -22838,7 +22838,7 @@ declare module "natives" {
    *
    * @param {NativePed} ped undefined
    */
-  export function NetworkCopyPedBlendData(ped: NativePed, player: NativePlayer): void;
+  export function networkCopyPedBlendData(ped: NativePed, player: NativePlayer): void;
   /**
    *
    */
@@ -22894,7 +22894,7 @@ declare module "natives" {
    *
    * @param {NativeBOOL} toggle undefined
    */
-  export function SetStoreEnabled(toggle: NativeBOOL): void;
+  export function setStoreEnabled(toggle: NativeBOOL): void;
   /**
    *
    * @param {NativeAny} p0 undefined
@@ -22948,7 +22948,7 @@ declare module "natives" {
   /**
    *
    */
-  export function DownloadCheck(): void;
+  export function downloadCheck(): void;
   /**
    *
    */
@@ -22956,7 +22956,7 @@ declare module "natives" {
   /**
    *
    */
-  export function NetworkEnableMotionDrugged(): void;
+  export function networkEnableMotionDrugged(): void;
   /**
    *
    */
@@ -23056,12 +23056,12 @@ declare module "natives" {
    *
    * @param {NativeAny} p0 undefined
    */
-  export function SetBalanceAddMachine(p0: NativeAny, p1: NativeAny): void;
+  export function setBalanceAddMachine(p0: NativeAny, p1: NativeAny): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function SetBalanceAddMachines(p0: NativeAny, p1: NativeAny, p2: NativeAny): void;
+  export function setBalanceAddMachines(p0: NativeAny, p1: NativeAny, p2: NativeAny): void;
   /**
    *
    * @param {NativeAny} p0 undefined
@@ -23071,7 +23071,7 @@ declare module "natives" {
    *
    * @param {NativeAny} p0 undefined
    */
-  export function NetworkGetBackgroundLoadingRecipients(p0: NativeAny, p1: NativeAny, p2: NativeAny, p3: NativeAny): void;
+  export function networkGetBackgroundLoadingRecipients(p0: NativeAny, p1: NativeAny, p2: NativeAny, p3: NativeAny): void;
   /**
    *
    * @param {NativeAny} p0 undefined
@@ -23121,7 +23121,7 @@ declare module "natives" {
    *
    * @param {number} p0 undefined
    */
-  export function GetPlayerAdvancedModifierPrivileges(p0: number): void;
+  export function getPlayerAdvancedModifierPrivileges(p0: number): void;
   /**
    *
    * @param {NativeAny} p0 undefined
@@ -23146,17 +23146,17 @@ declare module "natives" {
    *
    * @param {number} p0 undefined
    */
-  export function GetContentCategory(p0: number): void;
+  export function getContentCategory(p0: number): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function GetContentId(p0: NativeAny): void;
+  export function getContentId(p0: NativeAny): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function GetRootContentId(p0: NativeAny): void;
+  export function getRootContentId(p0: NativeAny): void;
   /**
    *
    * @param {NativeAny} p0 undefined
@@ -23166,7 +23166,7 @@ declare module "natives" {
    *
    * @param {NativeAny} p0 undefined
    */
-  export function GetContentDescriptionHash(p0: NativeAny): void;
+  export function getContentDescriptionHash(p0: NativeAny): void;
   /**
    *
    * @param {number} p0 undefined
@@ -23181,7 +23181,7 @@ declare module "natives" {
    *
    * @param {NativeAny} p0 undefined
    */
-  export function GetContentFileVersion(p0: NativeAny, p1: NativeAny): void;
+  export function getContentFileVersion(p0: NativeAny, p1: NativeAny): void;
   /**
    *
    * @param {NativeAny} p0 undefined
@@ -23361,33 +23361,33 @@ declare module "natives" {
    *
    * @param {string} heistName undefined
    */
-  export function FacebookSetHeistComplete(heistName: string, cashEarned: number, xpEarned: number): void;
+  export function facebookSetHeistComplete(heistName: string, cashEarned: number, xpEarned: number): void;
   /**
    *
    */
-  export function FacebookSetCreateCharacterComplete(): void;
+  export function facebookSetCreateCharacterComplete(): void;
   /**
    *
    * @param {number} milestoneId undefined
    */
-  export function FacebookSetMilestoneComplete(milestoneId: number): void;
+  export function facebookSetMilestoneComplete(milestoneId: number): void;
   /**
    *
    */
-  export function FacebookIsSendingData(): void;
+  export function facebookIsSendingData(): void;
   /**
    *
    */
-  export function FacebookDoUnkCheck(): void;
+  export function facebookDoUnkCheck(): void;
   /**
    *
    */
-  export function FacebookIsAvailable(): void;
+  export function facebookIsAvailable(): void;
   /**
    *
    * @param {number} PlayerHandle undefined
    */
-  export function TextureDownloadRequest(PlayerHandle: number, FilePath: string, Name: string, p3: NativeBOOL): void;
+  export function textureDownloadRequest(PlayerHandle: number, FilePath: string, Name: string, p3: NativeBOOL): void;
   /**
    *
    * @param {NativeAny} p0 undefined
@@ -23402,17 +23402,17 @@ declare module "natives" {
    *
    * @param {number} p0 undefined
    */
-  export function TextureDownloadRelease(p0: number): void;
+  export function textureDownloadRelease(p0: number): void;
   /**
    *
    * @param {number} p0 undefined
    */
-  export function TextureDownloadHasFailed(p0: number): void;
+  export function textureDownloadHasFailed(p0: number): void;
   /**
    *
    * @param {number} p0 undefined
    */
-  export function TextureDownloadGetName(p0: number): void;
+  export function textureDownloadGetName(p0: number): void;
   /**
    *
    * @param {NativeAny} p0 undefined
@@ -23425,7 +23425,7 @@ declare module "natives" {
   /**
    *
    */
-  export function NetworkIsCableConnected(): void;
+  export function networkIsCableConnected(): void;
   /**
    *
    */
@@ -23437,15 +23437,15 @@ declare module "natives" {
   /**
    *
    */
-  export function IsRockstarBanned(): void;
+  export function isRockstarBanned(): void;
   /**
    *
    */
-  export function IsSocialclubBanned(): void;
+  export function isSocialclubBanned(): void;
   /**
    *
    */
-  export function CanPlayOnline(): void;
+  export function canPlayOnline(): void;
   /**
    *
    */
@@ -23485,7 +23485,7 @@ declare module "natives" {
   /**
    *
    */
-  export function NetworkUpdatePlayerScars(): void;
+  export function networkUpdatePlayerScars(): void;
   /**
    *
    * @param {NativeBOOL} p0 undefined
@@ -23517,7 +23517,7 @@ declare module "natives" {
    *
    * @param {number} character undefined
    */
-  export function GetNumDecorations(character: number): void;
+  export function getNumDecorations(character: number): void;
   /**
    *
    * @param {number} character undefined
@@ -23527,12 +23527,12 @@ declare module "natives" {
    *
    * @param {number} outComponent undefined
    */
-  export function InitShopPedComponent(outComponent: number): void;
+  export function initShopPedComponent(outComponent: number): void;
   /**
    *
    * @param {number} outProp undefined
    */
-  export function InitShopPedProp(outProp: number): void;
+  export function initShopPedProp(outProp: number): void;
   /**
    *
    * @param {number} p0 undefined
@@ -23542,22 +23542,22 @@ declare module "natives" {
    *
    * @param {number} character undefined
    */
-  export function GetNumPropsFromOutfit(character: number, p1: number, p2: number, p3: NativeBOOL, p4: number, componentId: number): void;
+  export function getNumPropsFromOutfit(character: number, p1: number, p2: number, p3: NativeBOOL, p4: number, componentId: number): void;
   /**
    *
    * @param {number} componentId undefined
    */
-  export function GetShopPedQueryComponent(componentId: number, outComponent: number): void;
+  export function getShopPedQueryComponent(componentId: number, outComponent: number): void;
   /**
    *
    * @param {NativeHash} p0 undefined
    */
-  export function GetShopPedComponent(p0: NativeHash, p1: NativeAny): void;
+  export function getShopPedComponent(p0: NativeHash, p1: NativeAny): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function GetShopPedQueryProp(p0: NativeAny, p1: NativeAny): void;
+  export function getShopPedQueryProp(p0: NativeAny, p1: NativeAny): void;
   /**
    *
    * @param {NativeAny} p0 undefined
@@ -23567,12 +23567,12 @@ declare module "natives" {
    *
    * @param {NativeEntity} entity undefined
    */
-  export function GetHashNameForComponent(entity: NativeEntity, componentId: number, drawableVariant: number, textureVariant: number): void;
+  export function getHashNameForComponent(entity: NativeEntity, componentId: number, drawableVariant: number, textureVariant: number): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function GetHashNameForProp(entity: NativeEntity, componentId: number, propIndex: number, propTextureIndex: number): void;
+  export function getHashNameForProp(entity: NativeEntity, componentId: number, propIndex: number, propTextureIndex: number): void;
   /**
    *
    * @param {NativeHash} componentHash undefined
@@ -23582,12 +23582,12 @@ declare module "natives" {
    *
    * @param {NativeHash} componentHash undefined
    */
-  export function GetVariantComponent(componentHash: NativeHash, componentId: number, p2: NativeAny, p3: NativeAny, p4: NativeAny): void;
+  export function getVariantComponent(componentHash: NativeHash, componentId: number, p2: NativeAny, p3: NativeAny, p4: NativeAny): void;
   /**
    *
    * @param {NativeHash} componentHash undefined
    */
-  export function GetNumForcedComponents(componentHash: NativeHash): void;
+  export function getNumForcedComponents(componentHash: NativeHash): void;
   /**
    *
    * @param {NativeAny} p0 undefined
@@ -23597,7 +23597,7 @@ declare module "natives" {
    *
    * @param {NativeHash} componentHash undefined
    */
-  export function GetForcedComponent(componentHash: NativeHash, componentId: number, p2: NativeAny, p3: NativeAny, p4: NativeAny): void;
+  export function getForcedComponent(componentHash: NativeHash, componentId: number, p2: NativeAny, p3: NativeAny, p4: NativeAny): void;
   /**
    *
    * @param {NativeAny} p0 undefined
@@ -23617,17 +23617,17 @@ declare module "natives" {
    *
    * @param {NativeAny} p0 undefined
    */
-  export function GetShopPedQueryOutfit(p0: NativeAny, outfit: NativeAny): void;
+  export function getShopPedQueryOutfit(p0: NativeAny, outfit: NativeAny): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function GetShopPedOutfit(p0: NativeAny, p1: NativeAny): void;
+  export function getShopPedOutfit(p0: NativeAny, p1: NativeAny): void;
   /**
    *
    * @param {NativeAny} p0 undefined
    */
-  export function GetShopPedOutfitLocate(p0: NativeAny): void;
+  export function getShopPedOutfitLocate(p0: NativeAny): void;
   /**
    *
    * @param {NativeAny} p0 undefined
@@ -23637,55 +23637,55 @@ declare module "natives" {
    *
    * @param {NativeAny} outfit undefined
    */
-  export function GetPropFromOutfit(outfit: NativeAny, slot: number, item: NativeAny): void;
+  export function getPropFromOutfit(outfit: NativeAny, slot: number, item: NativeAny): void;
   /**
    *
    */
-  export function GetNumDlcVehicles(): void;
-  /**
-   *
-   * @param {number} dlcVehicleIndex undefined
-   */
-  export function GetDlcVehicleModel(dlcVehicleIndex: number): void;
+  export function getNumDlcVehicles(): void;
   /**
    *
    * @param {number} dlcVehicleIndex undefined
    */
-  export function GetDlcVehicleData(dlcVehicleIndex: number, outData: number): void;
+  export function getDlcVehicleModel(dlcVehicleIndex: number): void;
   /**
    *
    * @param {number} dlcVehicleIndex undefined
    */
-  export function GetDlcVehicleFlags(dlcVehicleIndex: number): void;
+  export function getDlcVehicleData(dlcVehicleIndex: number, outData: number): void;
+  /**
+   *
+   * @param {number} dlcVehicleIndex undefined
+   */
+  export function getDlcVehicleFlags(dlcVehicleIndex: number): void;
   /**
    *
    */
-  export function GetNumDlcWeapons(): void;
-  /**
-   *
-   * @param {number} dlcWeaponIndex undefined
-   */
-  export function GetDlcWeaponData(dlcWeaponIndex: number, outData: number): void;
-  /**
-   *
-   * @param {number} dlcWeaponIndex undefined
-   */
-  export function GetNumDlcWeaponComponents(dlcWeaponIndex: number): void;
+  export function getNumDlcWeapons(): void;
   /**
    *
    * @param {number} dlcWeaponIndex undefined
    */
-  export function GetDlcWeaponComponentData(dlcWeaponIndex: number, dlcWeapCompIndex: number, ComponentDataPtr: NativeAny): void;
+  export function getDlcWeaponData(dlcWeaponIndex: number, outData: number): void;
+  /**
+   *
+   * @param {number} dlcWeaponIndex undefined
+   */
+  export function getNumDlcWeaponComponents(dlcWeaponIndex: number): void;
+  /**
+   *
+   * @param {number} dlcWeaponIndex undefined
+   */
+  export function getDlcWeaponComponentData(dlcWeaponIndex: number, dlcWeapCompIndex: number, ComponentDataPtr: NativeAny): void;
   /**
    *
    * @param {NativeAny} dlcData undefined
    */
-  export function IsDlcDataEmpty(dlcData: NativeAny): void;
+  export function isDlcDataEmpty(dlcData: NativeAny): void;
   /**
    *
    * @param {NativeAny} modData undefined
    */
-  export function IsDlcVehicleMod(modData: NativeAny): void;
+  export function isDlcVehicleMod(modData: NativeAny): void;
   /**
    *
    * @param {number} modData undefined
@@ -23695,7 +23695,7 @@ declare module "natives" {
    *
    * @param {NativeHash} dlcHash undefined
    */
-  export function IsDlcPresent(dlcHash: NativeHash): void;
+  export function isDlcPresent(dlcHash: NativeHash): void;
   /**
    *
    */
@@ -23715,12 +23715,12 @@ declare module "natives" {
   /**
    *
    */
-  export function GetIsLoadingScreenActive(): void;
+  export function getIsLoadingScreenActive(): void;
   /**
    *
    * @param {NativeAny} variable undefined
    */
-  export function Nullify(variable: NativeAny, unused: NativeAny): void;
+  export function nullify(variable: NativeAny, unused: NativeAny): void;
   /**
    *
    */
@@ -23728,66 +23728,66 @@ declare module "natives" {
   /**
    *
    */
-  export function LoadMpDlcMaps(): void;
+  export function loadMpDlcMaps(): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function DecorSetTime(entity: NativeEntity, propertyName: string, timestamp: number): void;
+  export function decorSetTime(entity: NativeEntity, propertyName: string, timestamp: number): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function DecorSetBool(entity: NativeEntity, propertyName: string, value: NativeBOOL): void;
+  export function decorSetBool(entity: NativeEntity, propertyName: string, value: NativeBOOL): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function DecorSetFloat(entity: NativeEntity, propertyName: string, value: number): void;
+  export function decorSetFloat(entity: NativeEntity, propertyName: string, value: number): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function DecorSetInt(entity: NativeEntity, propertyName: string, value: number): void;
+  export function decorSetInt(entity: NativeEntity, propertyName: string, value: number): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function DecorGetBool(entity: NativeEntity, propertyName: string): void;
+  export function decorGetBool(entity: NativeEntity, propertyName: string): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function DecorGetFloat(entity: NativeEntity, propertyName: string): void;
+  export function decorGetFloat(entity: NativeEntity, propertyName: string): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function DecorGetInt(entity: NativeEntity, propertyName: string): void;
+  export function decorGetInt(entity: NativeEntity, propertyName: string): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function DecorExistOn(entity: NativeEntity, propertyName: string): void;
+  export function decorExistOn(entity: NativeEntity, propertyName: string): void;
   /**
    *
    * @param {NativeEntity} entity undefined
    */
-  export function DecorRemove(entity: NativeEntity, propertyName: string): void;
+  export function decorRemove(entity: NativeEntity, propertyName: string): void;
   /**
    *
    * @param {string} propertyName undefined
    */
-  export function DecorRegister(propertyName: string, type: number): void;
+  export function decorRegister(propertyName: string, type: number): void;
   /**
    *
    * @param {string} propertyName undefined
    */
-  export function DecorIsRegisteredAsType(propertyName: string, type: number): void;
+  export function decorIsRegisteredAsType(propertyName: string, type: number): void;
   /**
    *
    */
-  export function DecorRegisterLock(): void;
+  export function decorRegisterLock(): void;
   /**
    *
    */
@@ -23795,47 +23795,47 @@ declare module "natives" {
   /**
    *
    */
-  export function GetTotalScInboxIds(): void;
+  export function getTotalScInboxIds(): void;
   /**
    *
    * @param {number} p0 undefined
    */
-  export function ScInboxMessageInit(p0: number): void;
+  export function scInboxMessageInit(p0: number): void;
   /**
    *
    * @param {number} p0 undefined
    */
-  export function IsScInboxValid(p0: number): void;
+  export function isScInboxValid(p0: number): void;
   /**
    *
    * @param {number} p0 undefined
    */
-  export function ScInboxMessagePop(p0: number): void;
+  export function scInboxMessagePop(p0: number): void;
   /**
    *
    * @param {number} p0 undefined
    */
-  export function ScInboxMessageGetDataInt(p0: number, context: string, out: number): void;
+  export function scInboxMessageGetDataInt(p0: number, context: string, out: number): void;
   /**
    *
    * @param {number} p0 undefined
    */
-  export function ScInboxMessageGetDataBool(p0: number, p1: string): void;
+  export function scInboxMessageGetDataBool(p0: number, p1: string): void;
   /**
    *
    * @param {number} p0 undefined
    */
-  export function ScInboxMessageGetDataString(p0: number, context: string, out: string): void;
+  export function scInboxMessageGetDataString(p0: number, context: string, out: string): void;
   /**
    *
    * @param {number} p0 undefined
    */
-  export function ScInboxMessagePush(p0: number): void;
+  export function scInboxMessagePush(p0: number): void;
   /**
    *
    * @param {number} p0 undefined
    */
-  export function ScInboxMessageGetString(p0: number): void;
+  export function scInboxMessageGetString(p0: number): void;
   /**
    *
    * @param {number} networkHandle undefined
@@ -23850,7 +23850,7 @@ declare module "natives" {
    *
    * @param {NativeAny} p0 undefined
    */
-  export function ScInboxMessageGetUgcdata(p0: NativeAny, p1: NativeAny): void;
+  export function scInboxMessageGetUgcdata(p0: NativeAny, p1: NativeAny): void;
   /**
    *
    * @param {string} playerName undefined
@@ -23865,7 +23865,7 @@ declare module "natives" {
    *
    * @param {number} offset undefined
    */
-  export function ScInboxGetEmails(offset: number, limit: number): void;
+  export function scInboxGetEmails(offset: number, limit: number): void;
   /**
    *
    */
@@ -23884,11 +23884,11 @@ declare module "natives" {
    *
    * @param {NativePlayer} player undefined
    */
-  export function ScEmailMessagePushGamerToRecipList(player: NativePlayer): void;
+  export function scEmailMessagePushGamerToRecipList(player: NativePlayer): void;
   /**
    *
    */
-  export function ScEmailMessageClearRecipList(): void;
+  export function scEmailMessageClearRecipList(): void;
   /**
    *
    * @param {string} p0 undefined
@@ -23931,17 +23931,17 @@ declare module "natives" {
    *
    * @param {string} string undefined
    */
-  export function ScStartCheckStringTask(string: string, taskHandle: number): void;
+  export function scStartCheckStringTask(string: string, taskHandle: number): void;
   /**
    *
    * @param {number} taskHandle undefined
    */
-  export function ScHasCheckStringTaskCompleted(taskHandle: number): void;
+  export function scHasCheckStringTaskCompleted(taskHandle: number): void;
   /**
    *
    * @param {number} taskHandle undefined
    */
-  export function ScGetCheckStringStatus(taskHandle: number): void;
+  export function scGetCheckStringStatus(taskHandle: number): void;
   /**
    *
    * @param {NativeAny} p0 undefined
@@ -24071,7 +24071,7 @@ declare module "natives" {
   /**
    *
    */
-  export function InfamousByEnough007Bitch(): void;
+  export function infamousByEnough007Bitch(): void;
   /**
    *
    * @param {number} p0 undefined
@@ -24103,11 +24103,11 @@ declare module "natives" {
    *
    * @param {NativeBOOL} p0 undefined
    */
-  export function IsInLoadingScreen(p0: NativeBOOL): void;
+  export function isInLoadingScreen(p0: NativeBOOL): void;
   /**
    *
    */
-  export function IsUiLoadingMultiplayer(): void;
+  export function isUiLoadingMultiplayer(): void;
   /**
    *
    * @param {NativeBOOL} p0 undefined
@@ -24121,11 +24121,11 @@ declare module "natives" {
   /**
    *
    */
-  export function GetCurrentLanguageId(): void;
+  export function getCurrentLanguageId(): void;
   /**
    *
    */
-  export function GetUserLanguageId(): void;
+  export function getUserLanguageId(): void;
   /**
    *
    * @param {NativeBOOL} p0 undefined
@@ -24170,15 +24170,15 @@ declare module "natives" {
    *
    * @param {number} mode undefined
    */
-  export function StartRecording(mode: number): void;
+  export function startRecording(mode: number): void;
   /**
    *
    */
-  export function StopRecordingAndSaveClip(): void;
+  export function stopRecordingAndSaveClip(): void;
   /**
    *
    */
-  export function StopRecordingAndDiscardClip(): void;
+  export function stopRecordingAndDiscardClip(): void;
   /**
    *
    */
@@ -24186,7 +24186,7 @@ declare module "natives" {
   /**
    *
    */
-  export function IsRecording(): void;
+  export function isRecording(): void;
   /**
    *
    */
@@ -24208,7 +24208,7 @@ declare module "natives" {
   /**
    *
    */
-  export function IsInteriorRenderingDisabled(): void;
+  export function isInteriorRenderingDisabled(): void;
   /**
    *
    */
@@ -24221,15 +24221,15 @@ declare module "natives" {
   /**
    *
    */
-  export function ResetEditorValues(): void;
+  export function resetEditorValues(): void;
   /**
    *
    */
-  export function ActivateRockstarEditor(): void;
+  export function activateRockstarEditor(): void;
   /**
    *
    */
-  export function GetOnlineVersion(): void;
+  export function getOnlineVersion(): void;
 }
 
 declare module "alt" {

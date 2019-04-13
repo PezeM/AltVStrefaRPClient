@@ -3,8 +3,7 @@
 
 import alt from 'alt';
 import game from 'natives';
-import { drawText } from 'src/Helpers/uiHelper.js';
-import { getMinimapAnchor } from 'src/Helpers/uiHelper.js';
+import { drawText, getMinimapAnchor, showUi } from 'src/Helpers/uiHelper.js';
 import { rotToDirection } from 'src/Helpers/mathHelper.js';
 
 let uiView = new alt.WebView('http://resources/AltVStrefaRPClient/html/ui.html');
@@ -13,11 +12,12 @@ let zoneNamesShort = ["AIRP", "ALAMO", "ALTA", "ARMYB", "BANHAMC", "BANNING", "B
 let zoneNames = ["Los Santos International Airport", "Alamo Sea", "Alta", "Fort Zancudo", "Banham Canyon Dr", "Banning", "Vespucci Beach", "Banham Canyon", "Braddock Pass", "Braddock Tunnel", "Burton", "Calafia Bridge", "Raton Canyon", "Cassidy Creek", "Chamberlain Hills", "Vinewood Hills", "Chumash", "Chiliad Mountain State Wilderness", "Cypress Flats", "Davis", "Del Perro Beach", "Del Perro", "La Puerta", "Grand Senora Desert", "Downtown", "Downtown Vinewood", "East Vinewood", "El Burro Heights", "El Gordo Lighthouse", "Elysian Island", "Galilee", "GWC and Golfing Society", "Grapeseed", "Great Chaparral", "Harmony", "Hawick", "Vinewood Racetrack", "Humane Labs and Research", "Bolingbroke Penitentiary", "Little Seoul", "Land Act Reservoir", "Lago Zancudo", "Land Act Dam", "Legion Square", "La Mesa", "La Puerta", "Mirror Park", "Morningwood", "Richards Majestic", "Mount Chiliad", "Mount Gordo", "Mount Josiah", "Murrieta Heights", "North Chumash", "N.O.O.S.E", "Pacific Ocean", "Paleto Cove", "Paleto Bay", "Paleto Forest", "Palomino Highlands", "Palmer-Taylor Power Station", "Pacific Bluffs", "Pillbox Hill", "Procopio Beach", "Rancho", "Richman Glen", "Richman", "Rockford Hills", "Redwood Lights Track", "San Andreas", "San Chianski Mountain Range", "Sandy Shores", "Mission Row", "Stab City", "Maze Bank Arena", "Strawberry", "Tataviam Mountains", "Terminal", "Textile City", "Tongva Hills", "Tongva Valley", "Vespucci Canals", "Vespucci", "Vinewood", "Ron Alternates Wind Farm", "West Vinewood", "Zancudo River", "Port of South Los Santos", "Davis Quartz"];
 let streetName, realZoneName;
 let minimap = {};
-const minimapUpdateInvterval = 1000; // milliseconds, lower value = more accurate, at the cost of performance
+const minimapUpdateInvterval = 500; // milliseconds, lower value = more accurate, at the cost of performance
 
 const controlsIds = {
     Alt: 0x12,
-    F6: 0x75
+    F6: 0x75,
+    G: 0x47,
 };
 
 let cursorShown = false;
@@ -29,6 +29,10 @@ let entityHit = null;
 // let endPos = null;
 // let surface = null;
 let didRaycaystHit = false;
+let lastKeyPressedTime = 0;
+let menuOpened = false;
+let circleMenuOpened = false;
+let circleMenuName = '';
 
 alt.setInterval(() => {
     // only do stuff if radar is enabled and visible
@@ -99,16 +103,102 @@ export function showCefNotification(type, message, time = 5000) {
     }
 }
 
-alt.on('keydown', (key) => {
-    if (key == controlsIds.Alt) {
-        if (localPlayer.vehicle != null || game.isEntityDead(localPlayerId)) return;
-        if (entityHit == null) return;
-        alt.log('Clicked Alt key entity: ' + JSON.stringify(entityHit));
-    } else if (key == controlsIds.F6) {
-        cursorShown = !cursorShown;
-        alt.log('Cursor shown = ' + cursorShown);
-        alt.showCursor(cursorShown);
+uiView.on('circleMenuCallback', (option) => {
+    alt.log(`Circle menu callback: ${option}`);
+    if (option === 'close') {
+        closeAnimationMenu();
+        return;
     }
+
+    closeAnimationMenu(false);
+    switch (circleMenuName) {
+        case "animations":
+            switch (option) {
+                case "someFastDance":
+                    alt.log('Some fast dance');
+                    someTestAnim();
+                    break;
+            }
+            break;
+    }
+});
+
+function someTestAnim() {
+    if (game.isEntityPlayingAnim(localPlayerId, "special_ped@mountain_dancer@monologue_2@monologue_2a", "mnt_dnc_angel", 15)) {
+        alt.log('Entity is playing animation');
+        game.taskPlayAnim(localPlayerId, "special_ped@mountain_dancer@monologue_2@monologue_2a", "exit", 8.0, 1.0, -1, 0, 0.0, false, false, false);
+        alt.setTimeout(() => {
+            game.clearPedSecondaryTask(localPlayerId);
+            alt.log('Canceling animation');
+        }, 400);
+    } else {
+        game.requestAnimDict("special_ped@mountain_dancer@monologue_2@monologue_2a");
+        var requestId = alt.setInterval(() => {
+            if (!game.hasAnimDictLoaded("special_ped@mountain_dancer@monologue_2@monologue_2a")) {
+                game.requestAnimDict("special_ped@mountain_dancer@monologue_2@monologue_2a");
+                alt.log('Loading dict');
+            } else {
+                alt.clearInterval(requestId);
+                alt.log(`Playing anim dict: special_ped@mountain_dancer@monologue_2@monologue_2a name: mnt_dnc_angel flag: 15`);
+                game.taskPlayAnim(localPlayerId, "special_ped@mountain_dancer@monologue_2@monologue_2a", "mnt_dnc_angel", 8.0, 1, -1, 15, 0.0, false, false, false);
+            }
+        }, 5);
+        // alt.log(`Playing anim dict: special_ped@mountain_dancer@monologue_2@monologue_2a name: mnt_dnc_angel flag: 15`);
+        // game.taskPlayAnim(localPlayerId, "special_ped@mountain_dancer@monologue_2@monologue_2a", "mnt_dnc_angel", 8.0, 1, -1, 15, 0.0, false, false, false);
+    }
+}
+
+function openAnimationMenu() {
+    if (circleMenuOpened) return;
+
+    uiView.emit('openCircleMenu', "animations");
+    circleMenuOpened = true;
+    circleMenuName = "animations";
+    showUi(false);
+    alt.showCursor(true);
+    uiView.focus();
+}
+
+function closeAnimationMenu(hideMenu = false) {
+    if (hideMenu)
+        uiView.emit("closeCircleMenu");
+
+    circleMenuOpened = false;
+    showUi(true);
+    alt.showCursor(false);
+}
+
+alt.on('keydown', (key) => {
+    switch (key) {
+        case controlsIds.Alt:
+            if (localPlayer.vehicle != null || game.isEntityDead(localPlayerId)) return;
+            if (entityHit == null) return;
+            alt.log('Clicked Alt key entity: ' + JSON.stringify(entityHit));
+            break;
+        case controlsIds.F6:
+            cursorShown = !cursorShown;
+            alt.log('Cursor shown = ' + cursorShown);
+            alt.showCursor(cursorShown);
+            break;
+        case controlsIds.G:
+            if (game.isEntityDead(localPlayerId) || new Date().getTime() - lastKeyPressedTime < 500) return;
+            if (circleMenuOpened) {
+                closeAnimationMenu(true);
+            } else {
+                openAnimationMenu();
+            }
+            lastKeyPressedTime = new Date().getTime();
+            break;
+    }
+    // if (key == controlsIds.Alt) {
+    //     if (localPlayer.vehicle != null || game.isEntityDead(localPlayerId)) return;
+    //     if (entityHit == null) return;
+    //     alt.log('Clicked Alt key entity: ' + JSON.stringify(entityHit));
+    // } else if (key == controlsIds.F6) {
+    //     cursorShown = !cursorShown;
+    //     alt.log('Cursor shown = ' + cursorShown);
+    //     alt.showCursor(cursorShown);
+    // }
 });
 
 alt.on('update', () => {

@@ -30,7 +30,6 @@ let entityHit = null;
 // let surface = null;
 let didRaycaystHit = false;
 let lastKeyPressedTime = 0;
-let menuOpened = false;
 let circleMenuOpened = false;
 let circleMenuName = '';
 
@@ -106,11 +105,11 @@ export function showCefNotification(type, message, time = 5000) {
 uiView.on('circleMenuCallback', (option) => {
     alt.log(`Circle menu callback: ${option}`);
     if (option === 'close') {
-        closeAnimationMenu();
+        closeCircleMenu();
         return;
     }
 
-    closeAnimationMenu(false);
+    closeCircleMenu();
     switch (circleMenuName) {
         case "animations":
             switch (option) {
@@ -143,23 +142,21 @@ function someTestAnim() {
                 game.taskPlayAnim(localPlayerId, "special_ped@mountain_dancer@monologue_2@monologue_2a", "mnt_dnc_angel", 8.0, 1, -1, 15, 0.0, false, false, false);
             }
         }, 5);
-        // alt.log(`Playing anim dict: special_ped@mountain_dancer@monologue_2@monologue_2a name: mnt_dnc_angel flag: 15`);
-        // game.taskPlayAnim(localPlayerId, "special_ped@mountain_dancer@monologue_2@monologue_2a", "mnt_dnc_angel", 8.0, 1, -1, 15, 0.0, false, false, false);
     }
 }
 
-function openAnimationMenu() {
+function openCircleMenu(menuName) {
     if (circleMenuOpened) return;
 
-    uiView.emit('openCircleMenu', "animations");
+    uiView.emit('openCircleMenu', menuName);
     circleMenuOpened = true;
-    circleMenuName = "animations";
+    circleMenuName = menuName;
     showUi(false);
     alt.showCursor(true);
     uiView.focus();
 }
 
-function closeAnimationMenu(hideMenu = false) {
+function closeCircleMenu(hideMenu = false) {
     if (hideMenu)
         uiView.emit("closeCircleMenu");
 
@@ -183,22 +180,13 @@ alt.on('keydown', (key) => {
         case controlsIds.G:
             if (game.isEntityDead(localPlayerId) || new Date().getTime() - lastKeyPressedTime < 500) return;
             if (circleMenuOpened) {
-                closeAnimationMenu(true);
+                closeCircleMenu(true);
             } else {
-                openAnimationMenu();
+                openCircleMenu("animations");
             }
             lastKeyPressedTime = new Date().getTime();
             break;
     }
-    // if (key == controlsIds.Alt) {
-    //     if (localPlayer.vehicle != null || game.isEntityDead(localPlayerId)) return;
-    //     if (entityHit == null) return;
-    //     alt.log('Clicked Alt key entity: ' + JSON.stringify(entityHit));
-    // } else if (key == controlsIds.F6) {
-    //     cursorShown = !cursorShown;
-    //     alt.log('Cursor shown = ' + cursorShown);
-    //     alt.showCursor(cursorShown);
-    // }
 });
 
 alt.on('update', () => {

@@ -64,6 +64,13 @@ const menusList = {
             icon: "someFastDance",
         }
     },
+    "popularAnims": {
+        "animations": usefullOptions.back,
+        "box": {
+            desc: "Skrzynka",
+            icon: "someFastDance",
+        }
+    },
     "player": {
         "quit": usefullOptions.quit,
     },

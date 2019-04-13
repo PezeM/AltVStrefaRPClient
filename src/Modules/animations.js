@@ -2,6 +2,7 @@ import game from 'natives';
 import alt from 'alt';
 
 const animations = {
+    // Tance
     "dance1": {
         dict: "mp_safehouse",
         name: "lap_dance_girl",
@@ -20,6 +21,16 @@ const animations = {
         name: "mnt_dnc_angel",
         flag: 15,
         exitAnim: "exit",
+    },
+    // Z propami
+    "box": {
+        dict: "anim@heists@box_carry@",
+        name: "idle",
+        flag: 63,
+        exitAnim: "exit",
+        prop: {
+            name: "hei_prop_heist_box",
+        }
     }
 };
 
@@ -57,7 +68,15 @@ export default class Animations {
         }
     }
     playAnimation(animation) {
-        game.taskPlayAnim(this.playerId, animation.dict, animation.name, 8.0, 1.0, -1, animation.flag, 0, false, false, false);
+        if (animation.hasOwnProperty("prop")) {
+            this.holdingProp = true;
+            this.propModel = animation.prop.name;
+            var position = game.getEntityCoords(this.playerId, true);
+            this.propID = game.createObject(game.getHashKey(this.propModel), position.x, position.y, position.z, true, true, true);
+            game.taskPlayAnim(this.playerId, animation.animDict, animation.name, 8.0, 1.0, -1, animation.flag, 0, false, false, false);
+        } else {
+            game.taskPlayAnim(this.playerId, animation.dict, animation.name, 8.0, 1.0, -1, animation.flag, 0, false, false, false);
+        }
     }
     stopAnimation(animation) {
         if (animation.hasOwnProperty("waitTime")) {

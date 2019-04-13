@@ -51,6 +51,10 @@ const menusList = {
         "dance1": {
             desc: "Jakiś szybki taniec",
             icon: "someFastDance",
+        },
+        "dance3": {
+            desc: "Jakiś szybki taniec",
+            icon: "someFastDance",
         }
     },
     "slowDances": {

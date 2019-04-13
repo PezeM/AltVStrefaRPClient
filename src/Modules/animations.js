@@ -45,6 +45,11 @@ export default class Animations {
     }
     setupAnimation(animation) {
         this.loadAnimDict(animation.dict);
+        if (!game.hasAnimDictLoaded(animation.dict)) {
+            alt.log(`Anim dict named: ${animation.dict} didnt load properly`);
+            return;
+        }
+
         if (game.isEntityPlayingAnim(this.playerId, animation.dict, animation.name, animation.flag)) {
             this.stopAnimation(animation);
         } else {
@@ -55,7 +60,7 @@ export default class Animations {
         game.taskPlayAnim(this.playerId, animation.dict, animation.name, 8.0, 1.0, -1, animation.flag, 0, false, false, false);
     }
     stopAnimation(animation) {
-        if (animation.hasOwnProperty(waitTime)) {
+        if (animation.hasOwnProperty("waitTime")) {
             this.waitTime = animation.waitTime;
         }
         game.taskPlayAnim(this.playerId, animation.dict, animation.exitAnim, 8.0, 1.0, -1, animation.flag, 0, false, false, false);
@@ -74,7 +79,7 @@ export default class Animations {
                 } else {
                     alt.clearInterval(requestId);
                 }
-            }, 5);
+            }, 0);
         }
     }
     clearPropState() {

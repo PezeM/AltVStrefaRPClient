@@ -19,6 +19,7 @@ const controlsIds = {
     Alt: 0x12,
     F6: 0x75,
     G: 0x47,
+    Tilde: 0xC0,
 };
 
 let cursorShown = false;
@@ -125,29 +126,6 @@ uiView.on('circleMenuCallback', (option) => {
     }
 });
 
-function someTestAnim() {
-    if (game.isEntityPlayingAnim(localPlayerId, "special_ped@mountain_dancer@monologue_2@monologue_2a", "mnt_dnc_angel", 15)) {
-        alt.log('Entity is playing animation');
-        game.taskPlayAnim(localPlayerId, "special_ped@mountain_dancer@monologue_2@monologue_2a", "exit", 8.0, 1.0, -1, 0, 0.0, false, false, false);
-        alt.setTimeout(() => {
-            game.clearPedSecondaryTask(localPlayerId);
-            alt.log('Canceling animation');
-        }, 400);
-    } else {
-        game.requestAnimDict("special_ped@mountain_dancer@monologue_2@monologue_2a");
-        var requestId = alt.setInterval(() => {
-            if (!game.hasAnimDictLoaded("special_ped@mountain_dancer@monologue_2@monologue_2a")) {
-                game.requestAnimDict("special_ped@mountain_dancer@monologue_2@monologue_2a");
-                alt.log('Loading dict');
-            } else {
-                alt.clearInterval(requestId);
-                alt.log(`Playing anim dict: special_ped@mountain_dancer@monologue_2@monologue_2a name: mnt_dnc_angel flag: 15`);
-                game.taskPlayAnim(localPlayerId, "special_ped@mountain_dancer@monologue_2@monologue_2a", "mnt_dnc_angel", 8.0, 1, -1, 15, 0.0, false, false, false);
-            }
-        }, 5);
-    }
-}
-
 function openCircleMenu(menuName) {
     if (circleMenuOpened) return;
 
@@ -188,6 +166,11 @@ alt.on('keydown', (key) => {
                 openCircleMenu("animations");
             }
             lastKeyPressedTime = new Date().getTime();
+            break;
+        case controlsIds.Tilde:
+            if (game.isEntityDead(localPlayerId) || new Date().getTime() - lastKeyPressedTime < 500) return;
+            lastKeyPressedTime = new Date().getTime();
+            animations.forceAnimationStop();
             break;
     }
 });

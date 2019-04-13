@@ -69,6 +69,14 @@ export default class Animations {
         }, this.waitTime);
         this.clearPropState();
     }
+    forceAnimationStop() {
+        if (this.currentAnimation) {
+            this.stopAnimation(this.currentAnimation);
+        } else {
+            game.clearPedTasks(this.playerId);
+            this.clearPropState();
+        }
+    }
     loadAnimDict(animDict) {
         game.requestAnimDict(animDict);
         if (!game.hasAnimDictLoaded(animDict)) {

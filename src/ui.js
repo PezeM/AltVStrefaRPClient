@@ -164,6 +164,7 @@ alt.on('keydown', (key) => {
             break;
         case controlsIds.Tilde:
             if (game.isEntityDead(localPlayerId) || chat.isOpen() || new Date().getTime() - lastKeyPressedTime < 500) return;
+            alt.log('Pressed tilde');
             lastKeyPressedTime = new Date().getTime();
             animations.forceAnimationStop();
             break;

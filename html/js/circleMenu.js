@@ -69,6 +69,10 @@ const menusList = {
         "box": {
             desc: "Skrzynka",
             icon: "someFastDance",
+        },
+        "metal": {
+            desc: "Skrzynka",
+            icon: "someFastDance",
         }
     },
     "player": {

@@ -20,7 +20,7 @@ const controlsIds = {
 };
 
 const AnimList = [
-    ["anim@heists@box_carry@", ["idle", "run", "walk"]]
+    ["anim@heists@box_carry@", ["idle", "run", "walk"]],
     ["abigail_mcs_1_concat-0", ["exportcamera-0", "player_zero_dual-0", "csb_abigail_dual-0"]],
     ["abigail_mcs_1_concat-10", ["player_zero_dual-10", "csb_abigail_dual-10", "exportcamera-10"]],
     ["abigail_mcs_1_concat-11", ["exportcamera-11", "csb_abigail_dual-11", "player_zero_dual-11"]],

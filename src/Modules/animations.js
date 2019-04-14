@@ -34,15 +34,16 @@ const animations = {
             name: "hei_prop_heist_box",
             bone: 60309,
             position: {
-                x: 0.1,
-                y: 0.1,
+                x: 0.025,
+                y: 0.08,
                 z: 0.255
             },
             rotation: {
                 x: -145.0,
                 y: 290.0,
                 z: 0.0
-            }
+            },
+            extraZPosition: 0.2
         }
     },
     "metal": {
@@ -64,7 +65,8 @@ const animations = {
                 x: 150.0,
                 y: 290.0,
                 z: 0.0
-            }
+            },
+            extraZPosition: 0.2
         }
     }
 };
@@ -82,7 +84,6 @@ export default class Animations {
     findAnimation(animationName) {
         alt.log('Looking for animation named ' + animationName);
         if (animations[animationName]) {
-            // this.currentAnimation = animations[animationName];
             this.setupAnimation(animations[animationName]);
         } else {
             alt.log(`Nie znaleziono animacji z nazwą ${animationName}.`);
@@ -130,7 +131,8 @@ export default class Animations {
         this.holdingProp = true;
         this.propModel = animation.prop.name;
         var position = game.getEntityCoords(this.playerId, true);
-        this.propID = game.createObject(game.getHashKey(this.propModel), position.x, position.y, position.z, true, true, true);
+        this.propID = game.createObject(game.getHashKey(this.propModel),
+            position.x, position.y, position.z + animation.prop.extraZPosition, true, true, true);
         alt.log(`Created prop with id: ${this.propID}`);
         game.attachEntityToEntity(this.propID, this.playerId, game.getPedBoneIndex(this.playerId, animation.prop.bone),
             animation.prop.position.x, animation.prop.position.y, animation.prop.position.z,
@@ -138,8 +140,6 @@ export default class Animations {
         game.taskPlayAnim(this.playerId, animation.dict, animation.name, 3.0, -8, -1, animation.flag, 0, false, false, false);
     }
     stopAnimation(animation, cb = null) {
-        alt.log('Stopping animation, cb = ' + JSON.stringify(cb));
-
         if (animation.hasOwnProperty("prop")) {
             this.stopPropAnimation(animation, cb);
         } else {
@@ -158,20 +158,17 @@ export default class Animations {
             game.clearPedSecondaryTask(this.playerId);
             this.currentAnimation = null;
             this.clearPropState();
-            if (cb != null) {
-                alt.log('Calling callback function cb: ' + JSON.stringify(cb));
+            if (cb != null)
                 cb();
-            } else {
-                alt.log('Doesnt have callback function');
-                alt.log('CB = ' + JSON.stringify(cb));
-            }
         }, this.waitTime);
 
     }
     stopPropAnimation(animation, cb = null) {
-        this.holdingProp = false;
-        game.detachEntity(this.propID, true, true);
-        game.deleteObject(this.propID);
+        if (game.doesEntityExist(this.propID) || this.holdingProp) {
+            this.holdingProp = false;
+            game.detachEntity(this.propID, true, true);
+            game.deleteObject(this.propID);
+        }
         this.stopNormalAnimation(animation, cb);
     }
     forceAnimationStop() {

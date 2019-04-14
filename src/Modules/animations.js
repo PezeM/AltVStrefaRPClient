@@ -68,6 +68,144 @@ const animations = {
             },
             extraZPosition: 0.2
         }
+    },
+    "toolbox": {
+        dict: "rcmepsilonism8",
+        name: "bag_handler_idle_a",
+        flag: 63,
+        exitFlag: 49,
+        exitAnim: "exit",
+        waitTime: 1000,
+        prop: {
+            name: "prop_tool_box_04",
+            bone: 57005,
+            position: {
+                x: 0.043,
+                y: 0.0,
+                z: -0.02
+            },
+            rotation: {
+                x: -90.0,
+                y: 0.0,
+                z: 90.0
+            },
+            extraZPosition: 0.0
+        }
+    },
+    "toolbox2": {
+        dict: "rcmepsilonism8",
+        name: "bag_handler_idle_a",
+        flag: 63,
+        exitFlag: 49,
+        exitAnim: "exit",
+        waitTime: 1000,
+        prop: {
+            name: "prop_tool_box_01",
+            bone: 57005,
+            position: {
+                x: 0.5,
+                y: 0.0,
+                z: 0.01
+            },
+            rotation: {
+                x: -100.0,
+                y: 0.0,
+                z: 90.0
+            },
+            extraZPosition: 0.0
+        }
+    },
+    "toolbox3": {
+        dict: "rcmepsilonism8",
+        name: "bag_handler_idle_a",
+        flag: 63,
+        exitFlag: 49,
+        exitAnim: "exit",
+        waitTime: 1000,
+        prop: {
+            name: "prop_toolchest_01",
+            bone: 57005,
+            position: {
+                x: 0.5,
+                y: 0.0,
+                z: 0.05
+            },
+            rotation: {
+                x: -100.0,
+                y: 0.0,
+                z: 90.0
+            },
+            extraZPosition: 0.0
+        }
+    },
+    "suitcase": {
+        dict: "anim@heists@narcotics@trash",
+        name: "walk",
+        flag: 50,
+        exitFlag: 49,
+        exitAnim: "exit",
+        waitTime: 1000,
+        prop: {
+            name: "prop_suitcase_03",
+            bone: 57005,
+            position: {
+                x: 0.36,
+                y: -0.5,
+                z: 0.0
+            },
+            rotation: {
+                x: -50.0,
+                y: -60.0,
+                z: 15.0
+            },
+            extraZPosition: 0.0
+        }
+    },
+    "walizka": {
+        dict: "rcmepsilonism8",
+        name: "bag_handler_idle_a",
+        flag: 63,
+        exitFlag: 49,
+        exitAnim: "exit",
+        waitTime: 1000,
+        prop: {
+            name: "prop_ld_case_01",
+            bone: 57005,
+            position: {
+                x: 0.13,
+                y: 0.0,
+                z: -0.02
+            },
+            rotation: {
+                x: -90.0,
+                y: 0.0,
+                z: 90.0
+            },
+            extraZPosition: 0.2
+        }
+    },
+    "walizka2": {
+        dict: "rcmepsilonism8",
+        name: "bag_handler_idle_a",
+        flag: 63,
+        exitFlag: 49,
+        exitAnim: "exit",
+        waitTime: 1000,
+        prop: {
+            name: "prop_ld_suitcase_01",
+            bone: 57005,
+            position: {
+                x: 0.36,
+                y: 0.0,
+                z: -0.02
+            },
+            rotation: {
+                x: -90.0,
+                y: 0.0,
+                z: 90.0
+            },
+            extraZPosition: 0.2
+        }
     }
 };
 

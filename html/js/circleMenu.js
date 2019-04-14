@@ -23,6 +23,10 @@ const menusList = {
             desc: "Animacje taneczne",
             icon: "dancingAnims"
         },
+        "usefulAnims": {
+            desc: "Użyteczne animacje",
+            icon: "dancingAnims"
+        },
         "popularAnims": {
             desc: "Najpopularniejsze animacje",
             icon: "popular",
@@ -34,6 +38,32 @@ const menusList = {
     },
     "favorite": {
         "animations": usefullOptions.back,
+    },
+    "usefulAnims": {
+        "animations": usefullOptions.back,
+        "mechanicAnims": {
+            desc: "Animacje dla mechaników",
+            icon: "fastDance",
+        },
+    },
+    "mechanicAnims": {
+        "usefulAnims": usefullOptions.back,
+        "box": {
+            desc: "Pudełko",
+            icon: "fastDance",
+        },
+        "toolbox": {
+            desc: "Narzędzia 1",
+            icon: "fastDance",
+        },
+        "toolbox2": {
+            desc: "Narzędzia 2",
+            icon: "fastDance",
+        },
+        "toolbox3": {
+            desc: "Narzędzia 3",
+            icon: "fastDance",
+        }
     },
     "dancingAnims": {
         "animations": usefullOptions.back,

@@ -25,7 +25,7 @@ const menusList = {
         },
         "usefulAnims": {
             desc: "Użyteczne animacje",
-            icon: "dancingAnims"
+            icon: "usefulAnims"
         },
         "popularAnims": {
             desc: "Najpopularniejsze animacje",
@@ -43,27 +43,46 @@ const menusList = {
         "animations": usefullOptions.back,
         "mechanicAnims": {
             desc: "Animacje dla mechaników",
-            icon: "fastDance",
+            icon: "carMechanic",
         },
+        "extraProps": {
+            desc: "Dodatkowe rzeczy",
+            icon: "misc",
+        }
     },
     "mechanicAnims": {
         "usefulAnims": usefullOptions.back,
         "box": {
             desc: "Pudełko",
-            icon: "fastDance",
+            icon: "box",
         },
         "toolbox": {
             desc: "Narzędzia 1",
-            icon: "fastDance",
+            icon: "toolbox",
         },
         "toolbox2": {
             desc: "Narzędzia 2",
-            icon: "fastDance",
+            icon: "toolbox",
         },
         "toolbox3": {
             desc: "Narzędzia 3",
-            icon: "fastDance",
+            icon: "toolbox",
         }
+    },
+    "extraProps": {
+        "usefulAnims": usefullOptions.back,
+        "suitcase": {
+            desc: "Walizka",
+            icon: "suitcase",
+        },
+        "walizka": {
+            desc: "Walizka 2",
+            icon: "suitcase",
+        },
+        "walizka2": {
+            desc: "Walizka 3",
+            icon: "suitcase",
+        },
     },
     "dancingAnims": {
         "animations": usefullOptions.back,

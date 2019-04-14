@@ -180,3 +180,23 @@
 #circleMenu .someFastDance {
     background-image: url('../images/circleIcons/someFastDance.png');
 }
+
+#circleMenu .usefulAnims {
+    background-image: url('../images/circleIcons/usefulAnims.png');
+}
+
+#circleMenu .box {
+    background-image: url('../images/circleIcons/box.png');
+}
+
+#circleMenu .toolbox {
+    background-image: url('../images/circleIcons/toolbox.png');
+}
+
+#circleMenu .suitcase {
+    background-image: url('../images/circleIcons/suitcase.png');
+}
+
+#circleMenu .carMechanic {
+    background-image: url('../images/circleIcons/carMechanic.png');
+}

@@ -6,6 +6,7 @@ import game from 'natives';
 import { showUiAndFreezePlayer } from 'src/Helpers/uiHelper.js';
 import { showCefNotification } from 'src/ui.js';
 import Bank from 'src/Modules/banking.js';
+import Business from 'src/Modules/business.js';
 
 let menusView = new alt.WebView('http://resources/AltVStrefaRPClient/html/menus.html');
 let bank = new Bank();
@@ -56,4 +57,14 @@ menusView.on('depositMoney', (amount) => {
 
 menusView.on('showNotification', (type, message, time) => {
     showCefNotification(type, message, time);
+});
+
+// Business menu
+
+alt.onServer('openBusinessMenu', (businessInfo) => {
+    alt.log(`BusinessInfo type: ${typeof businessInfo} data: ${JSON.stringify(businessInfo)}`);
+    menusView.emit('openBusinessMenu');
+    showUiAndFreezePlayer(false);
+    menusView.focus();
+    alt.showCursor(true);
 });

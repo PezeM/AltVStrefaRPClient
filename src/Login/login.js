@@ -1,15 +1,12 @@
 import alt from 'alt';
 import game from 'natives';
-import { showUi } from 'src/Helpers/uiHelper.js';
+import { showUiAndFreezePlayer } from 'src/Helpers/uiHelper.js';
 
 let localPlayer = alt.getLocalPlayer();
 let loginView = null;
 let viewLoaded = () => {
     return loginView == null ? false : true;
 }
-
-// Startup
-game.freezeEntityPosition(localPlayer.scriptID, true);
 
 alt.log('Login.js loaded');
 
@@ -35,11 +32,11 @@ function loadLoginView() {
 
     loginView.focus();
     alt.showCursor(true);
-    showUi(false);
+    showUiAndFreezePlayer(false);
 }
 
 function hideLoginView() {
-    showUi(true);
+    showUiAndFreezePlayer(true);
     alt.showCursor(false);
     alt.nextTick(() => {
         alt.setCamFrozen(false);

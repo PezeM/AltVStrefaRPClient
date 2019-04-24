@@ -5,10 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <!-- <link rel="stylesheet" href="packages/css/jquery.toast.css"> -->
     <link rel="stylesheet" href="css/bank.css">
     <link rel="stylesheet" href="packages/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/menus.css">
+    <link rel="stylesheet" href="css/business.css">
 
     <script src="packages/js/moment.min.js"></script>
     <script src="packages/js/Chart.bundle.min.js"></script>
@@ -239,10 +239,111 @@
         </div>
     </div>
 
-    <div id="businessApp" v-show="businessMenuVisible">
-        <h1>Test business app menu</h1>
-        <button>Some button to click</button>
+    <div id="businessApp" v-if="businessMenuVisible">
+        <nav class="navbar navbar-dark bg-dark navbar-expand-lg shadow p-0">
+            <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">{{ businessInfo.BusinessName }}</a>
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active" @click="showPage('mainPage')">
+                        <a class="nav-link">Strona główna</a>
+                    </li>
+                    <li class="nav-item" @click="showPage('employeesPage')">
+                        <a class="nav-link">Pracownicy</a>
+                    </li>
+                    <li class="nav-item" @click="showPage('rolesPage')">
+                        <a class="nav-link">Role</a>
+                    </li>
+                    <li class="nav-item" @click="showPage('businessInfoPage')">
+                        <a class="nav-link">Informacje o biznesie</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item p-1" @click="closeBusinessMenu">
+                        <a class="nav-link">Zamknij</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <div id="businessAppContainer" class="container">
+            <div class="row">
+                <div class="col-md-12 ml-sm-auto col-lg-12 px-4" v-if="currentMenuVisible == 'mainPage'">
+                    <div class="row">
+                        <div class="col-md-12 pt-3 pb-2 mb-3">
+                            <div class="content-box shadow">
+                                <div class="business-info">
+                                    <h3>Witaj w menu bizesu - {{ businessInfo.BusinessName }}</h3>
+                                    <p>Biznes został założony - {{ createdAt }}</p>
+                                    <p>Typ bizesu - {{ businessType }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pt-3 pb-2 mb-3 row">
+                        <div class="col-md-4">
+                            <div class="content-box shadow">
+                                <div class="info">
+                                    <h3>{{ businessInfo.Money }}</h3>
+                                    <span>$</span>
+                                    <p>Ilość pieniędzy w firmie</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="content-box shadow">
+                                <div class="info">
+                                    <h3>{{ businessInfo.Transactions }}</h3>
+                                    <span>Transakcji</span>
+                                    <p>Ilość przeprowadzonych transakcji</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="content-box shadow">
+                                <div class="info">
+                                    <h3>{{ businessInfo.EmployeesCount }}</h3>
+                                    <span>Pracowników</span>
+                                    <p>Ilość zatrudnionych pracowników</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h2 class="text-center p-2">Lista pracowników</h2>
+                    <div class="table-responsive rounded">
+                        <table class="table table-striped table-sm shadow">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th>#</th>
+                                    <th>Id</th>
+                                    <th>Imie</th>
+                                    <th>Nazwisko</th>
+                                    <th>Rola</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr v-for="(employee, index) in businessInfo.Employees">
+                                    <td>{{ index + 1}}</td>
+                                    <td>{{ employee.Id }}</td>
+                                    <td>{{ employee.Name }}</td>
+                                    <td>{{ employee.LastName }}</td>
+                                    <td>{{ employee.RankName }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="col-md-12 ml-sm-auto col-lg-12 px-4" v-if="currentMenuVisible == 'employeesPage'">
+
+                </div>
+            </div>
+        </div>
     </div>
+
 </body>
 
 <script src="js/bank.js"></script>

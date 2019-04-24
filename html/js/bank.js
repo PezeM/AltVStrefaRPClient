@@ -191,9 +191,9 @@ var bankMenu = new Vue({
                 this.closeBankMenu();
             }
         },
-        // showBankMenu: function () {
-        //     this.bankMenuVisible = true;
-        // },
+        showBankMenu: function () {
+            this.bankMenuVisible = true;
+        },
         generateChartData: function () {
             this.transactionChartData = this.transactionHistory.reduce(function (transactions, currentTransaction) {
                 const [date] = currentTransaction.Date.split(/\s/u);

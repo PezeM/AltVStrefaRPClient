@@ -63,8 +63,12 @@ menusView.on('showNotification', (type, message, time) => {
 
 alt.onServer('openBusinessMenu', (businessInfo) => {
     alt.log(`BusinessInfo type: ${typeof businessInfo} data: ${JSON.stringify(businessInfo)}`);
-    menusView.emit('openBusinessMenu');
+    menusView.emit('openBusinessMenu', businessInfo);
     showUiAndFreezePlayer(false);
     menusView.focus();
     alt.showCursor(true);
+});
+
+menusView.on('getBusinessesEmployess', (businessId) => {
+
 });

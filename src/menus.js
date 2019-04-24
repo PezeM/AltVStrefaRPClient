@@ -10,6 +10,7 @@ import Business from 'src/Modules/business.js';
 
 let menusView = new alt.WebView('http://resources/AltVStrefaRPClient/html/menus.html');
 let bank = new Bank();
+let business = new Business();
 
 // Bank menu
 alt.onServer('openBankMenu', (bankAccountInformations) => {
@@ -70,5 +71,5 @@ alt.onServer('openBusinessMenu', (businessInfo) => {
 });
 
 menusView.on('getBusinessesEmployess', (businessId) => {
-
+    business.getBusinessesEmployess(businessId);
 });

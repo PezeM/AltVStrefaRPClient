@@ -6,4 +6,11 @@ export default class Business {
     constructor() {
         alt.log('Initialized business class');
     }
+    getBusinessesEmployess(businessId) {
+        if (typeof businessId !== number) {
+            showCefNotification(3, 'Błędne ID biznesu.', 5000);
+            return;
+        }
+        alt.emitServer('GetBusinessesEmployess', businessId);
+    }
 }

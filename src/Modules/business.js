@@ -7,7 +7,7 @@ export default class Business {
         alt.log('Initialized business class');
     }
     getBusinessesEmployees(businessId) {
-        if (typeof businessId !== number) {
+        if (typeof businessId !== 'number') {
             showCefNotification(3, 'Błędne ID biznesu.', 5000);
             return;
         }

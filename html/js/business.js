@@ -36,6 +36,7 @@ var businessApp = new Vue({
             if (businessInfo !== null) {
                 this.businessInfo = JSON.parse(businessInfo);
                 this.businessMenuVisible = true;
+                this.currentMenuVisible = "mainPage";
 
                 console.log(`Business info: ${JSON.stringify(this.businessInfo)}`);
             }

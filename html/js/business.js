@@ -28,6 +28,7 @@ var businessApp = new Vue({
     data: {
         businessMenuVisible: false,
         businessInfo: null,
+        employeesInfo: null,
         currentMenuVisible: "mainPage",
     },
     methods: {
@@ -55,8 +56,8 @@ var businessApp = new Vue({
         },
         showPage: function (pageName) {
             switch (pageName) {
-                case 'employessPage':
-                    alt.emit('getBusinessesEmployess', this.businessInfo.BusinessId);
+                case 'employeesPage':
+                    alt.emit('getBusinessesEmployees', this.businessInfo.BusinessId);
                     break;
 
                 default:
@@ -65,6 +66,17 @@ var businessApp = new Vue({
             }
             console.log(pageName);
         },
+        populateBusinessEmployees: function (employeesInfo) {
+            if (employeesInfo !== null) {
+                this.employeesInfo = JSON.parse(employeesInfo);
+                this.businessMenuVisible = 'employeesPage';
+
+                console.log(`Opened business employees page with data: ${JSON.stringify(this.employeesInfo)}`);
+            }
+            else {
+                alt.emit('closeBusinessMenu');
+            }
+        }
     },
     computed: {
         businessType: function () {
@@ -79,4 +91,8 @@ var businessApp = new Vue({
 alt.on('openBusinessMenu', (businessInfo) => {
     console.log('Opening business menu');
     businessApp.showBusinessMenu(businessInfo);
+});
+
+alt.on('populateBusinessEmployees', (employeesInfo) => {
+    businessApp.populateBusinessEmployees(employeesInfo);
 });

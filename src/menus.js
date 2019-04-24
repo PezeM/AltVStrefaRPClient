@@ -70,6 +70,19 @@ alt.onServer('openBusinessMenu', (businessInfo) => {
     alt.showCursor(true);
 });
 
-menusView.on('getBusinessesEmployess', (businessId) => {
-    business.getBusinessesEmployess(businessId);
+alt.onServer('populateBusinessEmployees', (employeesInfo) => {
+    alt.log(`Business employess info type: ${typeof employeesInfo} data: ${JSON.stringify(employeesInfo)}`);
+    if (menusView) {
+        menusView.emit('populateBusinessEmployees', employeesInfo);
+    }
 });
+
+menusView.on('getBusinessesEmployees', (businessId) => {
+    business.getBusinessesEmployees(businessId);
+});
+
+menusView.on('closeBusinessMenu', () => {
+    showUiAndFreezePlayer(true);
+    alt.showCursor(false);
+});
+

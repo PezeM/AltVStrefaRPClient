@@ -70,7 +70,7 @@ var businessApp = new Vue({
         populateBusinessEmployees: function (employeesInfo) {
             if (employeesInfo !== null) {
                 this.employeesInfo = JSON.parse(employeesInfo);
-                this.businessMenuVisible = 'employeesPage';
+                this.currentMenuVisible = 'employeesPage';
 
                 console.log(`Opened business employees page with data: ${JSON.stringify(this.employeesInfo)}`);
             }

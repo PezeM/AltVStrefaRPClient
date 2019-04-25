@@ -340,6 +340,18 @@
 
                 <div class="col-md-12 ml-sm-auto col-lg-12 px-4" v-if="currentMenuVisible == 'employeesPage'">
 
+                    <div class="row">
+                        <div class="col-md-12 pt-3 pb-2 mb-3">
+                            <div class="content-box shadow box-hover" @click="addNewEmployee">
+                                <div class="business-info">
+                                    <h3>Dodaj nowego pracownika</h3>
+                                    <p>{{ businessInfo.EmployeesCount }} / {{ businessInfo.MaxMembersCount }}
+                                        Pracowników</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     <!-- Modal -->
                     <div class="modal fade" id="employeeInfoModal" tabindex="-1" role="dialog" aria-hidden="true"
                         v-if="selectedEmployee">
@@ -410,7 +422,7 @@
 
                     <h2 class="text-center p-2">Lista pracowników</h2>
                     <div class="table-responsive rounded">
-                        <table class="table table-striped table-sm shadow">
+                        <table class="table table-striped table-sm shadow hover-table">
                             <thead class="thead-dark">
                                 <tr>
                                     <th>#</th>

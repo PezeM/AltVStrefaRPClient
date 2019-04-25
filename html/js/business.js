@@ -124,7 +124,11 @@ var businessApp = new Vue({
                 alt.emit('updateEmployeeRank', this.selectedEmployee.Id, this.newRankId);
                 return;
             }
-        }
+        },
+        addNewEmployee: function () {
+            // Show modal with option to add new employee
+            // Adding by Name and LastName
+        },
     },
     computed: {
         businessType: function () {

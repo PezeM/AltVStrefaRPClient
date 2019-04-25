@@ -81,6 +81,10 @@ menusView.on('getBusinessesEmployees', (businessId) => {
     business.getBusinessesEmployees(businessId);
 });
 
+menusView.on('updateEmployeeRank', (employeeId, newRankId) => {
+    business.updateEmployeeRank(employeeId, newRankId);
+});
+
 menusView.on('closeBusinessMenu', () => {
     showUiAndFreezePlayer(true);
     alt.showCursor(false);

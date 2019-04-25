@@ -389,11 +389,12 @@
                                     <div class="form-group row">
                                         <label class="col-sm-4 col-form-label">Stanowisko</label>
                                         <div class="col-sm-8">
-                                            <select class="custom-select" v-model="selectedEmployee.RankId">
+                                            <select class="custom-select" v-model="newRankId">
                                                 <option v-for="rank in getBusinessRanks" v-bind:value="rank.Id">
                                                     {{ rank.RankName }}
                                                 </option>
                                             </select>
+                                            <span>RankID: {{selectedEmployee.RankId}} NewRankId: {{ newRankId }}</span>
                                         </div>
                                     </div>
                                 </div>

@@ -40,6 +40,7 @@ var businessApp = new Vue({
         employeesInfo: null,
         currentMenuVisible: "mainPage",
         selectedEmployee: null,
+        newRankId: null,
     },
     methods: {
         showBusinessMenu: function (businessInfo) {
@@ -104,6 +105,8 @@ var businessApp = new Vue({
                 return;
             }
             this.selectedEmployee = employee;
+            this.newRankId = this.selectedEmployee.RankId;
+            console.log(JSON.stringify(this.selectedEmployee));
             setTimeout(() => {
                 $('#employeeInfoModal').modal({
                     backdrop: 'static',
@@ -112,12 +115,16 @@ var businessApp = new Vue({
             }, 0);
         },
         closeEmployeeInfo: function () {
-            console.log('Closing');
             this.selectedEmployee = null;
             $('#employeeInfoModal').modal('hide');
         },
         saveEmployeeChanges: function () {
-            console.log('Saving employee ' + JSON.stringify(this.selectedEmployee));
+            if (this.newRankId !== this.selectedEmployee.RankId) {
+                // Call server to make a change
+                console.log('Saving... with new rank id: ' + this.newRankId);
+                alt.emit('updateEmployeeRank', this.selectedEmployee.Id, this.newRankId);
+                return;
+            }
         }
     },
     computed: {
@@ -129,7 +136,7 @@ var businessApp = new Vue({
         },
         getBusinessRanks: function () {
             return this.employeesInfo.BusinessRanks;
-        }
+        },
     }
 });
 

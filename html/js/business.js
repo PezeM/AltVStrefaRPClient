@@ -23,6 +23,15 @@ var exampleJson = {
     ]
 }
 
+var exampleJsonEmployess = {
+    "BusinessRanks": [
+        { "Id": 5, "IsDefaultRank": false, "RankName": "W�a�ciciel" },
+        { "Id": 6, "IsDefaultRank": true, "RankName": "Pracownik" }
+    ], "BusinessEmployees": [
+        { "Id": 3, "Name": "2", "LastName": "2", "Age": 10, "Gender": 0, "RankId": 5, "RankName": "W�a�ciciel" }
+    ]
+}
+
 var businessApp = new Vue({
     el: "#businessApp",
     data: {
@@ -30,6 +39,7 @@ var businessApp = new Vue({
         businessInfo: null,
         employeesInfo: null,
         currentMenuVisible: "mainPage",
+        selectedEmployee: null,
     },
     methods: {
         showBusinessMenu: function (businessInfo) {
@@ -77,6 +87,37 @@ var businessApp = new Vue({
             else {
                 alt.emit('closeBusinessMenu');
             }
+        },
+        populateBusinessEmployeesTest: function () {
+            this.businessInfo = exampleJson;
+            this.employeesInfo = exampleJsonEmployess;
+            this.businessMenuVisible = true;
+            this.currentMenuVisible = 'employeesPage';
+
+            console.log(`Opened business employees page with data: ${JSON.stringify(this.employeesInfo)}`);
+        },
+        showEmployeeInfo: function (employeeId) {
+            var employee = this.businessInfo.Employees.find(e => e.Id == employeeId);
+            if (employee == null) {
+                // Show error
+                console.log("Couldnt find employee with given ID.");
+                return;
+            }
+            this.selectedEmployee = employee;
+            setTimeout(() => {
+                $('#employeeInfoModal').modal({
+                    backdrop: 'static',
+                    keyboard: false
+                });
+            }, 0);
+        },
+        closeEmployeeInfo: function () {
+            console.log('Closing');
+            this.selectedEmployee = null;
+            $('#employeeInfoModal').modal('hide');
+        },
+        saveEmployeeChanges: function () {
+            console.log('Saving employee ' + JSON.stringify(this.selectedEmployee));
         }
     },
     computed: {
@@ -85,6 +126,9 @@ var businessApp = new Vue({
         },
         createdAt: function () {
             return this.businessInfo.CreatedAt.substr(0, this.businessInfo.CreatedAt.indexOf('T'));
+        },
+        getBusinessRanks: function () {
+            return this.employeesInfo.BusinessRanks;
         }
     }
 });

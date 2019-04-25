@@ -100,8 +100,7 @@ var businessApp = new Vue({
         showEmployeeInfo: function (employeeId) {
             var employee = this.businessInfo.Employees.find(e => e.Id == employeeId);
             if (employee == null) {
-                // Show error
-                console.log("Couldnt find employee with given ID.");
+                alt.emit('showNotification', 3, 'Wystąpił błąd. Nie znaleziono takiego pracownika.', 7000);
                 return;
             }
             this.selectedEmployee = employee;
@@ -115,13 +114,13 @@ var businessApp = new Vue({
             }, 0);
         },
         closeEmployeeInfo: function () {
+            this.newRankId = null;
             this.selectedEmployee = null;
             $('#employeeInfoModal').modal('hide');
         },
         saveEmployeeChanges: function () {
             if (this.newRankId !== this.selectedEmployee.RankId) {
                 // Call server to make a change
-                console.log('Saving... with new rank id: ' + this.newRankId);
                 alt.emit('updateEmployeeRank', this.selectedEmployee.Id, this.newRankId);
                 return;
             }

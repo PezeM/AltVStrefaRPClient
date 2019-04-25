@@ -119,11 +119,16 @@ var businessApp = new Vue({
             $('#employeeInfoModal').modal('hide');
         },
         saveEmployeeChanges: function () {
-            if (this.newRankId !== this.selectedEmployee.RankId) {
-                // Call server to make a change
-                alt.emit('updateEmployeeRank', this.selectedEmployee.Id, this.newRankId);
+            if (this.newRankId === this.selectedEmployee.RankId) return;
+
+            // Call server to make a change
+            if (this.selectedEmployee == null || this.businessInfo == null) {
+                alt.emit('showNotification', 3, 'Wystąpił błąd. Otwórz ponownie menu biznesu.', 6000);
                 return;
             }
+
+            alt.emit('updateEmployeeRank', this.selectedEmployee.Id, this.newRankId, this.businessInfo.BusinessId);
+            return;
         },
         addNewEmployee: function () {
             // Show modal with option to add new employee

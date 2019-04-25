@@ -13,11 +13,12 @@ export default class Business {
         }
         alt.emitServer('GetBusinessesEmployees', businessId);
     }
-    updateEmployeeRank(employeeId, newRankId) {
-        if (typeof employeeId !== 'number' || typeof newRankId !== 'number') {
+    updateEmployeeRank(employeeId, newRankId, businessId) {
+        if (typeof employeeId !== 'number' || typeof newRankId !== 'number' || typeof businessId !== 'number') {
             showCefNotification(3, 'Błędne ID postaci lub zły numer stanowiska.', 7000);
             return;
         }
-        alt.emitServer('UpdateEmployeeRank', employeeId, newRankId);
+
+        alt.emitServer('UpdateEmployeeRank', employeeId, newRankId, businessId);
     }
 }

@@ -17,6 +17,7 @@ var exampleJson = {
             "Id": 3,
             "Name": "2",
             "LastName": "2",
+            "Gender": 0,
             "RankId": 5,
             "RankName": "Właściciel"
         }
@@ -32,6 +33,8 @@ var exampleJsonEmployess = {
     ]
 }
 
+Vue.component('v-select', VueSelect.VueSelect)
+
 var businessApp = new Vue({
     el: "#businessApp",
     data: {
@@ -40,9 +43,26 @@ var businessApp = new Vue({
         employeesInfo: null,
         currentMenuVisible: "mainPage",
         selectedEmployee: null,
-        newRankId: null,
+        newRank: 0,
+        something: [
+            {
+                RankId: "Eldo",
+                Cos: 3
+            },
+            {
+                RankId: "Eldo1",
+                Cos: 4
+            },
+            {
+                RankId: "Eldo2",
+                Cos: 4
+            },
+        ]
     },
     methods: {
+        test: function (value) {
+            console.log('Eldo');
+        },
         showBusinessMenu: function (businessInfo) {
             if (businessInfo !== null) {
                 this.businessInfo = JSON.parse(businessInfo);
@@ -104,7 +124,7 @@ var businessApp = new Vue({
                 return;
             }
             this.selectedEmployee = employee;
-            this.newRankId = this.selectedEmployee.RankId;
+            this.newRank = this.employeesInfo.BusinessRanks.find(e => e.Id == this.selectedEmployee.RankId);
             console.log(JSON.stringify(this.selectedEmployee));
             setTimeout(() => {
                 $('#employeeInfoModal').modal({
@@ -114,12 +134,12 @@ var businessApp = new Vue({
             }, 0);
         },
         closeEmployeeInfo: function () {
-            this.newRankId = null;
+            this.newRank = null;
             this.selectedEmployee = null;
             $('#employeeInfoModal').modal('hide');
         },
         saveEmployeeChanges: function () {
-            if (this.newRankId === this.selectedEmployee.RankId) return;
+            if (this.newRank.Id === this.selectedEmployee.RankId) return;
 
             // Call server to make a change
             if (this.selectedEmployee == null || this.businessInfo == null) {
@@ -127,7 +147,8 @@ var businessApp = new Vue({
                 return;
             }
 
-            alt.emit('updateEmployeeRank', this.selectedEmployee.Id, this.newRankId, this.businessInfo.BusinessId);
+            console.log(this.newRank.Id);
+            alt.emit('updateEmployeeRank', this.selectedEmployee.Id, this.newRank.Id, this.businessInfo.BusinessId);
             return;
         },
         addNewEmployee: function () {

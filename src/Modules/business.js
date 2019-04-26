@@ -21,12 +21,12 @@ export default class Business {
 
         alt.emitServer('UpdateEmployeeRank', employeeId, newRankId, businessId);
     }
-    addNewEmployee(name, lastName) {
-        if (typeof name !== 'string' || typeof lastName !== 'string') {
+    addNewEmployee(name, lastName, businessId) {
+        if (typeof name !== 'string' || typeof lastName !== 'string' || typeof businessId !== 'number') {
             showCefNotification(3, 'Błędne imię lub nazwisko pracownika.', 6000);
             return;
         }
 
-        alt.emitServer('AddNewEmployee', name, lastName);
+        alt.emitServer('AddNewEmployee', name, lastName, businessId);
     }
 }

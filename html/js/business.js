@@ -165,13 +165,13 @@ var businessApp = new Vue({
             // Adding by Name and LastName
         },
         addNewEmployee: function () {
-            if (this.newEmployee === null || this.newEmployee.Name.length < 1 || this.newEmployee.LastName.length < 1) {
+            if (this.newEmployee === null || this.newEmployee.Name.length < 1 || this.newEmployee.LastName.length < 1 || this.businessInfo == null) {
                 alt.emit('showNotification', 3, 'Wystąpił błąd. Podano błędne dane pracownika.', 7000);
                 return;
             }
 
             console.log(JSON.stringify(this.newEmployee));
-            alt.emit('addNewEmployee', this.newEmployee.Name, this.newEmployee.LastName);
+            alt.emit('addNewEmployee', this.newEmployee.Name, this.newEmployee.LastName, this.businessInfo.BusinessId);
         },
         closeNewEmployeeModal: function () {
             this.newEmployee = null;
@@ -202,4 +202,8 @@ alt.on('populateBusinessEmployees', (employeesInfo) => {
 
 alt.on('successfullyUpdatedEmployeeRank', (employeeId, newRankId) => {
     businessApp.updateEmployeeRank(employeeId, newRankId);
+});
+
+alt.on('successfullyAddedNewEmployee', () => {
+    businessApp.closeNewEmployeeModal();
 });

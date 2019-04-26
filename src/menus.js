@@ -84,6 +84,13 @@ alt.onServer('successfullyUpdatedEmployeeRank', (employeeId, newRankId) => {
     }
 });
 
+alt.onServer('successfullyAddedNewEmployee', () => {
+    if (menusView) {
+        menusView.emit('successfullyAddedNewEmployee');
+        showCefNotification(1, "Pomyślnie dodano nowego pracownika.", 5000);
+    }
+});
+
 menusView.on('getBusinessesEmployees', (businessId) => {
     business.getBusinessesEmployees(businessId);
 });
@@ -92,12 +99,13 @@ menusView.on('updateEmployeeRank', (employeeId, newRankId, businessId) => {
     business.updateEmployeeRank(employeeId, newRankId, businessId);
 });
 
-menusView.on('addNewEmployee', (name, lastName) => {
-    business.addNewEmployee(name, lastName);
+menusView.on('addNewEmployee', (name, lastName, businessId) => {
+    business.addNewEmployee(name, lastName, businessId);
 });
 
 menusView.on('closeBusinessMenu', () => {
     showUiAndFreezePlayer(true);
     alt.showCursor(false);
 });
+
 

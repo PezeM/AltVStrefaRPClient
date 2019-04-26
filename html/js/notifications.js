@@ -9,7 +9,17 @@ const stackInfo = {
     context: document.body
 }
 
-function showNotification(type, message, title, duration = 5000, icon = true) {
+
+alt.on('showNotification', (type, title, message, duration, icon) => {
+    showNotification(type, title, message, duration, icon);
+});
+
+
+alt.on('showConfirmModal', (title, message, confirmCallback, cancelCallback) => {
+    showConfirmModal(title, message, confirmCallback, cancelCallback);
+});
+
+function showNotification(type, title, message, duration = 5000, icon = true) {
     PNotify.alert({
         title: title,
         text: message,
@@ -24,7 +34,7 @@ function showNotification(type, message, title, duration = 5000, icon = true) {
     });
 }
 
-function showConfirmNotification(message, title, confirmCallback, cancelCallback) {
+function showConfirmModal(title, message, confirmCallback, cancelCallback) {
     var notice = PNotify.notice({
         title: title,
         text: message,
@@ -33,9 +43,7 @@ function showConfirmNotification(message, title, confirmCallback, cancelCallback
         // icon: 'fas fa-question-circle',
         hide: false,
         stack: {
-            'dir1': 'down',
             'modal': true,
-            'firstpos1': 25
         },
         modules: {
             Confirm: {

@@ -86,23 +86,47 @@ export function poitingAt(maxDistance = 4) {
     alt.log(`Raycast result: ${result}`);
 }
 
-alt.onServer("showNotification", (type, message, time) => {
-    showCefNotification(type, message, time);
+alt.onServer("showNotification", (type, title, message, duration, icon) => {
+    showCefNotification(type, title, message, duration, icon);
 });
 
-alt.on('showNotification', (type, message, time) => {
+alt.onServer('showConfirmModal', (title, message, type, ...args) => {
+    switch (type) {
+        case 1: // Business invite
+            showConfirmModal(title, message, () => {
+                console.log('Kurwa dziala?' + JSON.stringify(args));
+            });
+            break;
+
+        default:
+            showConfirmModal(title, message);
+            break;
+    }
+});
+
+alt.on('showNotification', (type, title, message, duration, icon) => {
     alt.log('Triggering client-side showNotification')
-    showCefNotification(type, message, time);
+    showCefNotification(type, title, message, duration, icon);
 });
 
 // Shows notification in Cef ui for 5000ms
-export function showCefNotification(type, message, time = 5000) {
+export function showCefNotification(type, title, message, duration = 5000, icon = true) {
     try {
-        if (typeof type == 'number' && typeof message == 'string') {
-            uiView.emit('showNotification', type, message, time);
+        if (typeof type === 'number' && typeof message === 'string') {
+            uiView.emit('showNotification', type, title, message, duration, icon);
         }
     } catch (error) {
         alt.log('showCefNotification -> error -> ' + error);
+    }
+}
+
+export function showConfirmModal(title, message, confirmCallback = null, cancelCallback = null) {
+    try {
+        if (typeof message == 'string') {
+            uiView.emit('showConfirmModal', title, message, confirmCallback, cancelCallback);
+        }
+    } catch (error) {
+        alt.log('showConfirmModal -> error -> ' + error);
     }
 }
 

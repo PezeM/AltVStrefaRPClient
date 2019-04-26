@@ -44,20 +44,7 @@ var businessApp = new Vue({
         currentMenuVisible: "mainPage",
         selectedEmployee: null,
         newRank: 0,
-        something: [
-            {
-                RankId: "Eldo",
-                Cos: 3
-            },
-            {
-                RankId: "Eldo1",
-                Cos: 4
-            },
-            {
-                RankId: "Eldo2",
-                Cos: 4
-            },
-        ]
+        newEmployee: null,
     },
     methods: {
         test: function (value) {
@@ -149,12 +136,47 @@ var businessApp = new Vue({
 
             console.log(this.newRank.Id);
             alt.emit('updateEmployeeRank', this.selectedEmployee.Id, this.newRank.Id, this.businessInfo.BusinessId);
-            return;
         },
-        addNewEmployee: function () {
+        updateEmployeeRank: function (employeeId, newRankId) {
+            console.log(`Changing employee ${employeeId} to new rank id: ${newRankId}`);
+            if (!this.employeesInfo.BusinessEmployees) return;
+
+            var employee = this.employeesInfo.BusinessEmployees.find(e => e.Id == employeeId);
+            if (employee == null) {
+                console.log('Employee is null');
+                return;
+            }
+
+            employee.RankId = newRankId;
+            console.log('New employee rank: ' + employee.RankId);
+            this.closeEmployeeInfo();
+        },
+        openNewEmployeeModal: function () {
+            this.newEmployee = {};
+            this.newEmployee.Name = "";
+            this.newEmployee.LastName = "";
+            setTimeout(() => {
+                $('#addEmployeeModal').modal({
+                    backdrop: 'static',
+                    keyboard: false
+                });
+            }, 0);
             // Show modal with option to add new employee
             // Adding by Name and LastName
         },
+        addNewEmployee: function () {
+            if (this.newEmployee === null || this.newEmployee.Name.length < 1 || this.newEmployee.LastName.length < 1) {
+                alt.emit('showNotification', 3, 'Wystąpił błąd. Podano błędne dane pracownika.', 7000);
+                return;
+            }
+
+            console.log(JSON.stringify(this.newEmployee));
+            alt.emit('addNewEmployee', this.newEmployee.Name, this.newEmployee.LastName);
+        },
+        closeNewEmployeeModal: function () {
+            this.newEmployee = null;
+            $('#addEmployeeModal').modal('hide');
+        }
     },
     computed: {
         businessType: function () {
@@ -176,4 +198,8 @@ alt.on('openBusinessMenu', (businessInfo) => {
 
 alt.on('populateBusinessEmployees', (employeesInfo) => {
     businessApp.populateBusinessEmployees(employeesInfo);
+});
+
+alt.on('successfullyUpdatedEmployeeRank', (employeeId, newRankId) => {
+    businessApp.updateEmployeeRank(employeeId, newRankId);
 });

@@ -77,12 +77,23 @@ alt.onServer('populateBusinessEmployees', (employeesInfo) => {
     }
 });
 
+alt.onServer('successfullyUpdatedEmployeeRank', (employeeId, newRankId) => {
+    if (menusView) {
+        menusView.emit('successfullyUpdatedEmployeeRank', employeeId, newRankId);
+        showCefNotification(1, "Pomyślnie zaktualizowano stanowiska pracownika.", 5000);
+    }
+});
+
 menusView.on('getBusinessesEmployees', (businessId) => {
     business.getBusinessesEmployees(businessId);
 });
 
 menusView.on('updateEmployeeRank', (employeeId, newRankId, businessId) => {
     business.updateEmployeeRank(employeeId, newRankId, businessId);
+});
+
+menusView.on('addNewEmployee', (name, lastName) => {
+    business.addNewEmployee(name, lastName);
 });
 
 menusView.on('closeBusinessMenu', () => {

@@ -346,7 +346,7 @@
 
                     <div class="row">
                         <div class="col-md-12 pt-3 pb-2 mb-3">
-                            <div class="content-box shadow box-hover" @click="addNewEmployee">
+                            <div class="content-box shadow box-hover" @click="openNewEmployeeModal">
                                 <div class="business-info">
                                     <h3>Dodaj nowego pracownika</h3>
                                     <p>{{ businessInfo.EmployeesCount }} / {{ businessInfo.MaxMembersCount }}
@@ -356,13 +356,50 @@
                         </div>
                     </div>
 
-                    <!-- Modal -->
+                    <!-- Add employee modal -->
+                    <div class="modal fade" id="addEmployeeModal" tabindex="-1" role="dialog" aria-hidden="true"
+                        v-if="newEmployee">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="modalCenterTitle">Dodaj nowego pracownika</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+                                        @click="closeNewEmployeeModal">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="form-group row">
+                                        <label class="col-sm-4 col-form-label">Imię</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" v-model="newEmployee.Name">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label class="col-sm-4 col-form-label">Nazwisko</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" v-model="newEmployee.LastName">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                                        @click="closeNewEmployeeModal">Zamknij</button>
+                                    <button type="button" class="btn btn-primary" @click="addNewEmployee">Dodaj
+                                        pracownika</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Employee info modal -->
                     <div class="modal fade" id="employeeInfoModal" tabindex="-1" role="dialog" aria-hidden="true"
                         v-if="selectedEmployee">
                         <div class="modal-dialog modal-dialog-centered" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalCenterTitle">
+                                    <h5 class="modal-title" id="modalCenterTitle">
                                         {{ selectedEmployee.Name }} {{ selectedEmployee.LastName }}</h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"
                                         @click="closeEmployeeInfo">

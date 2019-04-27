@@ -5,6 +5,7 @@ import alt from 'alt';
 class _MainUi {
     constructor() {
         alt.log('Initialized MainUi Class');
+        this.uiFocused = false;
         this.uiView = new alt.WebView('http://resources/AltVStrefaRPClient/html/ui.html');
     }
 
@@ -47,12 +48,8 @@ class _MainUi {
         }
     }
 
-    get testowyTekst() {
-        return 'test klasy main ui';
-    }
-
-    get isMenuOpened() {
-        return true;
+    focusView() {
+        this.uiView.focus();
     }
 }
 

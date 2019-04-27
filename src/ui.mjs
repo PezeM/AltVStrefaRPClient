@@ -9,6 +9,7 @@ import { rotToDirection } from 'src/Helpers/mathHelper.js';
 import mainUi from 'src/Modules/Ui/mainUi.js';
 import Animations from 'src/Modules/animations.js';
 import ZoneNames from 'src/Modules/ui/zoneNames.js';
+import menusManager from 'src/Modules/Ui/menusManager.js';
 
 const controlsIds = {
     Alt: 0x12,
@@ -64,7 +65,7 @@ export function poitingAt(maxDistance = 4) {
 function openCircleMenu(menuName) {
     if (circleMenuOpened) return;
 
-    uiView.emit('openCircleMenu', menuName);
+    mainUi.uiView.emit('openCircleMenu', menuName);
     circleMenuOpened = true;
     circleMenuName = menuName;
     showUi(false);
@@ -74,7 +75,7 @@ function openCircleMenu(menuName) {
 
 function closeCircleMenu(hideMenu = false) {
     if (hideMenu)
-        uiView.emit("closeCircleMenu");
+        mainUi.uiView.emit("closeCircleMenu");
 
     circleMenuOpened = false;
     showUi(true);
@@ -127,10 +128,6 @@ alt.on('update', () => {
     if (entityHit != null && localPlayer.vehicle == null) {
         // Draw entity
     }
-
-    if (mainUi) {
-        drawText(mainUi.testowyTekst, [0.5, 0.8], 4, [255, 255, 255, 255], 1, true, false);
-    }
 });
 
 mainUi.onServerEvent('showNotification', (type, title, message, duration, icon) => {
@@ -162,10 +159,20 @@ mainUi.onUiEvent('acceptBusinessInvite', (businessId) => {
         alt.log('Accept business invite client-side, arg is ' + typeof businessId + ' = ' + JSON.stringify(businessId));
         alt.emitServer('AcceptInviteToBusiness', businessId);
     }
+
+    if (menusManager.viewOpened) {
+        menusManager.focusView();
+    } else if (uiView.uiFocused) {
+        uiView.focusView();
+    }
 });
 
 mainUi.onUiEvent('dismissBusinessInvite', (businessId) => {
-
+    if (menusManager.viewOpened) {
+        menusManager.focusView();
+    } else if (uiView.uiFocused) {
+        uiView.focusView();
+    }
 });
 
 mainUi.onUiEvent('circleMenuCallback', (option) => {

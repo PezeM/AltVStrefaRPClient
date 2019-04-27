@@ -105,7 +105,7 @@ var businessApp = new Vue({
             console.log(`Opened business employees page with data: ${JSON.stringify(this.employeesInfo)}`);
         },
         showEmployeeInfo: function (employeeId) {
-            var employee = this.businessInfo.Employees.find(e => e.Id == employeeId);
+            var employee = this.employeesInfo.BusinessEmployees.find(e => e.Id == employeeId);
             if (employee == null) {
                 alt.emit('showNotification', 3, "Błąd", 'Wystąpił błąd. Nie znaleziono takiego pracownika.', 7000);
                 return;
@@ -141,17 +141,17 @@ var businessApp = new Vue({
             console.log(`Changing employee ${employeeId} to new rank id: ${newRankId}`);
             if (!this.employeesInfo.BusinessEmployees) return;
 
-            // var employee = this.employeesInfo.BusinessEmployees.find(e => e.Id == employeeId);
-            // if (employee == null) {
-            //     console.log('Employee is null');
-            //     return;
-            // }
-            if (this.employeesInfo.BusinessEmployees.find(e => e.Id == employeeId) != null) {
-                this.employeesInfo.BusinessEmployees.find(e => e.Id == employeeId).RankId = newRankId;
-                console.log('Updated rank. New employee: ' + JSON.stringify(this.employeesInfo.BusinessEmployees.find(e => e.Id == employeeId)));
+            var employee = this.employeesInfo.BusinessEmployees.find(e => e.Id == employeeId);
+            if (employee == null) {
+                alt.emit('showNotification', 3, "Błąd", 'Wystąpił błąd podczas wczytywania zmian.', 6000);
+                this.closeEmployeeInfo();
+                return;
             }
-            // employee.RankId = newRankId;
-            // console.log('New employee rank: ' + employee.RankId);
+
+            Vue.set(employee, 'RankId', newRankId);
+            Vue.set(employee, 'RankName', this.employeesInfo.BusinessRanks.find(r => r.Id == newRankId).RankName);
+            console.log('Updated rank. New employee: ' + JSON.stringify(employee));
+
             this.closeEmployeeInfo();
         },
         openNewEmployeeModal: function () {

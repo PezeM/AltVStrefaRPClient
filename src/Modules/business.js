@@ -1,5 +1,5 @@
 import alt from 'alt';
-import { showCefNotification } from 'src/ui.mjs';
+import mainUi from 'src/Modules/Ui/mainUi.js';
 
 export default class Business {
     constructor() {
@@ -7,14 +7,14 @@ export default class Business {
     }
     getBusinessesEmployees(businessId) {
         if (typeof businessId !== 'number') {
-            showCefNotification(3, "Błąd", 'Błędne ID biznesu.', 5000);
+            mainUi.showCefNotification(3, "Błąd", 'Błędne ID biznesu.', 5000);
             return;
         }
         alt.emitServer('GetBusinessesEmployees', businessId);
     }
     updateEmployeeRank(employeeId, newRankId, businessId) {
         if (typeof employeeId !== 'number' || typeof newRankId !== 'number' || typeof businessId !== 'number') {
-            showCefNotification(3, "Błąd", 'Błędne ID postaci lub zły numer stanowiska.', 7000);
+            mainUi.showCefNotification(3, "Błąd", 'Błędne ID postaci lub zły numer stanowiska.', 7000);
             return;
         }
 
@@ -22,7 +22,7 @@ export default class Business {
     }
     addNewEmployee(name, lastName, businessId) {
         if (typeof name !== 'string' || typeof lastName !== 'string' || typeof businessId !== 'number') {
-            showCefNotification(3, "Błąd", 'Błędne imię lub nazwisko pracownika.', 6000);
+            mainUi.showCefNotification(3, "Błąd", 'Błędne imię lub nazwisko pracownika.', 6000);
             return;
         }
 

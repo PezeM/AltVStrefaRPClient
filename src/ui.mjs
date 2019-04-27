@@ -148,12 +148,11 @@ mainUi.onServerEvent('showConfirmModal', (title, message, type, args) => {
     switch (type) {
         case 1: // Business invite
             alt.showCursor(true);
-            mainUi.uiView.focus();
-            showConfirmModal(title, message, "acceptBusinessInvite", null, args);
+            mainUi.showConfirmModal(title, message, "acceptBusinessInvite", null, args);
             break;
 
         default:
-            showConfirmModal(title, message, null, null);
+            mainUi.showConfirmModal(title, message, null, null);
             break;
     }
 });

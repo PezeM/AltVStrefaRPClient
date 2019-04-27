@@ -38,7 +38,8 @@ class _MainUi {
     showConfirmModal(title, message, confirmCallback = null, cancelCallback = null, args = null) {
         try {
             if (typeof message == 'string') {
-                alt.log('Ui.mjs confirmCallback = ' + typeof confirmCallback);
+                alt.log('Confirm callback type = ' + typeof confirmCallback);
+                this.uiView.focus();
                 this.uiView.emit('showConfirmModal', title, message, confirmCallback, cancelCallback, args);
             }
         } catch (error) {

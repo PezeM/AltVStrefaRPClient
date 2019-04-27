@@ -4,12 +4,11 @@
 import alt from 'alt';
 import game from 'natives';
 import chat from 'chat';
-import { drawText, getMinimapAnchor, showUi } from 'src/Helpers/uiHelper.js';
+import { drawText, showUi } from 'src/Helpers/uiHelper.js';
 import { rotToDirection } from 'src/Helpers/mathHelper.js';
+import mainUi from 'src/Modules/Ui/mainUi.js';
 import Animations from 'src/Modules/animations.js';
 import ZoneNames from 'src/Modules/ui/zoneNames.js';
-
-let uiView = new alt.WebView('http://resources/AltVStrefaRPClient/html/ui.html');
 
 const controlsIds = {
     Alt: 0x12,
@@ -61,69 +60,6 @@ export function poitingAt(maxDistance = 4) {
     var result = game.getShapeTestResult(rayTest, didRaycaystHit, endPos, surface, entityHit);
     alt.log(`Raycast result: ${result}`);
 }
-
-alt.onServer("showNotification", (type, title, message, duration, icon) => {
-    showCefNotification(type, title, message, duration, icon == null ? true : icon);
-});
-
-alt.onServer('showConfirmModal', (title, message, type, args) => {
-    alt.log(`Args: ${JSON.stringify(args)}`);
-    switch (type) {
-        case 1: // Business invite
-            alt.showCursor(true);
-            uiView.focus();
-            showConfirmModal(title, message, "acceptBusinessInvite", null, args);
-            break;
-
-        default:
-            showConfirmModal(title, message, null, null);
-            break;
-    }
-
-});
-
-alt.on('showNotification', (type, title, message, duration) => {
-    alt.log('Triggering client-side showNotification')
-    showCefNotification(type, title, message, duration);
-});
-
-// Shows notification in Cef ui for 5000ms
-export function showCefNotification(type, title, message, duration = 5000, icon = true) {
-    try {
-        if (typeof type === 'number' && typeof message === 'string') {
-            uiView.emit('showNotification', type, title, message, duration, icon);
-        }
-    } catch (error) {
-        alt.log('showCefNotification -> error -> ' + error);
-    }
-}
-
-export function showConfirmModal(title, message, confirmCallback = null, cancelCallback = null, args = null) {
-    try {
-        if (typeof message == 'string') {
-            alt.log('Ui.mjs confirmCallback = ' + typeof confirmCallback);
-            uiView.emit('showConfirmModal', title, message, confirmCallback, cancelCallback, args);
-        }
-    } catch (error) {
-        alt.log('showConfirmModal -> error -> ' + error);
-    }
-}
-
-uiView.on('circleMenuCallback', (option) => {
-    alt.log(`Circle menu callback: ${option}`);
-    if (option === 'close') {
-        closeCircleMenu();
-        return;
-    }
-
-    closeCircleMenu();
-    switch (circleMenuName) {
-        case "animations":
-            animations.findAnimation(option);
-            break;
-    }
-});
-
 
 function openCircleMenu(menuName) {
     if (circleMenuOpened) return;
@@ -191,18 +127,59 @@ alt.on('update', () => {
     if (entityHit != null && localPlayer.vehicle == null) {
         // Draw entity
     }
+
+    if (mainUi) {
+        drawText(mainUi.testowyTekst, [0.5, 0.8], 4, [255, 255, 255, 255], 1, true, false);
+    }
 });
 
+mainUi.onServerEvent('showNotification', (type, title, message, duration, icon) => {
+    alt.log('Adding server event named showNotification');
+    mainUi.showCefNotification(type, title, message, duration, icon == null ? true : icon);
+});
 
-// Business
-uiView.on('acceptBusinessInvite', (businessId) => {
+mainUi.onClientEvent('showNotification', (type, title, message, duration) => {
+    alt.log('Triggering client-side showNotification')
+    mainUi.showCefNotification(type, title, message, duration);
+});
+
+mainUi.onServerEvent('showConfirmModal', (title, message, type, args) => {
+    alt.log(`Args: ${JSON.stringify(args)}`);
+    switch (type) {
+        case 1: // Business invite
+            alt.showCursor(true);
+            mainUi.uiView.focus();
+            showConfirmModal(title, message, "acceptBusinessInvite", null, args);
+            break;
+
+        default:
+            showConfirmModal(title, message, null, null);
+            break;
+    }
+});
+
+mainUi.onUiEvent('acceptBusinessInvite', (businessId) => {
     if (businessId) {
         alt.log('Accept business invite client-side, arg is ' + typeof businessId + ' = ' + JSON.stringify(businessId));
         alt.emitServer('AcceptInviteToBusiness', businessId);
     }
 });
 
-uiView.on('dismissBusinessInvite', (businessId) => {
+mainUi.onUiEvent('dismissBusinessInvite', (businessId) => {
 
 });
 
+mainUi.onUiEvent('circleMenuCallback', (option) => {
+    alt.log(`Circle menu callback: ${option}`);
+    if (option === 'close') {
+        closeCircleMenu();
+        return;
+    }
+
+    closeCircleMenu();
+    switch (circleMenuName) {
+        case "animations":
+            animations.findAnimation(option);
+            break;
+    }
+});

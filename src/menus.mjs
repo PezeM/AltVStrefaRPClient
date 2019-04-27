@@ -3,7 +3,7 @@
 
 import alt from 'alt';
 import { showUiAndFreezePlayer } from 'src/Helpers/uiHelper.js';
-import { showCefNotification } from 'src/ui.mjs';
+import mainUi from 'src/Modules/Ui/mainUi.js';
 import Bank from 'src/Modules/banking.js';
 import Business from 'src/Modules/business.js';
 
@@ -27,7 +27,7 @@ alt.onServer('openBankMenu', (bankAccountInformations) => {
 
 alt.onServer('updateBankMoneyWithNotification', (notificationMessage, money) => {
     menusView.emit('updateBankMoney', money);
-    showCefNotification(1, "Aktualizacja", notificationMessage, 6000);
+    mainUi.showCefNotification(1, "Aktualizacja", notificationMessage, 6000);
 });
 
 alt.onServer('openTransactionHistory', (transactionHistory) => {
@@ -56,7 +56,7 @@ menusView.on('depositMoney', (amount) => {
 });
 
 menusView.on('showNotification', (type, title, message, time) => {
-    showCefNotification(type, title, message, time);
+    mainUi.showCefNotification(type, title, message, time);
 });
 
 // Business menu
@@ -79,14 +79,14 @@ alt.onServer('populateBusinessEmployees', (employeesInfo) => {
 alt.onServer('successfullyUpdatedEmployeeRank', (employeeId, newRankId) => {
     if (menusView) {
         menusView.emit('successfullyUpdatedEmployeeRank', employeeId, newRankId);
-        showCefNotification(1, "Zaktualizowano pracownika", "Pomyślnie zaktualizowano stanowiska pracownika.", 5000);
+        mainUi.showCefNotification(1, "Zaktualizowano pracownika", "Pomyślnie zaktualizowano stanowiska pracownika.", 5000);
     }
 });
 
 alt.onServer('successfullyInvitedNewEmployee', () => {
     if (menusView) {
         menusView.emit('successfullyInvitedNewEmployee');
-        showCefNotification(1, "Wysłano ofertę", "Pomyślnie wysłano zaproszenie do biznesu.", 5000);
+        mainUi.showCefNotification(1, "Wysłano ofertę", "Pomyślnie wysłano zaproszenie do biznesu.", 5000);
     }
 });
 

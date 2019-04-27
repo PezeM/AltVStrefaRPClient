@@ -2,7 +2,6 @@
 /// <reference path="../alt.d.ts" />
 
 import alt from 'alt';
-import game from 'natives';
 import { showUiAndFreezePlayer } from 'src/Helpers/uiHelper.js';
 import { showCefNotification } from 'src/ui.mjs';
 import Bank from 'src/Modules/banking.js';
@@ -11,11 +10,6 @@ import Business from 'src/Modules/business.js';
 let menusView = new alt.WebView('http://resources/AltVStrefaRPClient/html/menus.html');
 let bank = new Bank();
 let business = new Business();
-let menuOpened = false;
-
-export function isMenuOpen() {
-    alt.log('Test');
-}
 
 // Bank menu
 alt.onServer('openBankMenu', (bankAccountInformations) => {
@@ -29,7 +23,6 @@ alt.onServer('openBankMenu', (bankAccountInformations) => {
     showUiAndFreezePlayer(false);
     menusView.focus();
     alt.showCursor(true);
-    menuOpened = true;
 });
 
 alt.onServer('updateBankMoneyWithNotification', (notificationMessage, money) => {

@@ -6,16 +6,10 @@ import game from 'natives';
 import chat from 'chat';
 import { drawText, getMinimapAnchor, showUi } from 'src/Helpers/uiHelper.js';
 import { rotToDirection } from 'src/Helpers/mathHelper.js';
-// import { isMenuOpen } from 'src/menus.mjs';
 import Animations from 'src/Modules/animations.js';
+import ZoneNames from 'src/Modules/ui/zoneNames.js';
 
 let uiView = new alt.WebView('http://resources/AltVStrefaRPClient/html/ui.html');
-
-let zoneNamesShort = ["AIRP", "ALAMO", "ALTA", "ARMYB", "BANHAMC", "BANNING", "BEACH", "BHAMCA", "BRADP", "BRADT", "BURTON", "CALAFB", "CANNY", "CCREAK", "CHAMH", "CHIL", "CHU", "CMSW", "CYPRE", "DAVIS", "DELBE", "DELPE", "DELSOL", "DESRT", "DOWNT", "DTVINE", "EAST_V", "EBURO", "ELGORL", "ELYSIAN", "GALFISH", "GOLF", "GRAPES", "GREATC", "HARMO", "HAWICK", "HORS", "HUMLAB", "JAIL", "KOREAT", "LACT", "LAGO", "LDAM", "LEGSQU", "LMESA", "LOSPUER", "MIRR", "MORN", "MOVIE", "MTCHIL", "MTGORDO", "MTJOSE", "MURRI", "NCHU", "NOOSE", "OCEANA", "PALCOV", "PALETO", "PALFOR", "PALHIGH", "PALMPOW", "PBLUFF", "PBOX", "PROCOB", "RANCHO", "RGLEN", "RICHM", "ROCKF", "RTRAK", "SANAND", "SANCHIA", "SANDY", "SKID", "SLAB", "STAD", "STRAW", "TATAMO", "TERMINA", "TEXTI", "TONGVAH", "TONGVAV", "VCANA", "VESP", "VINE", "WINDF", "WVINE", "ZANCUDO", "ZP_ORT", "ZQ_UAR"];
-let zoneNames = ["Los Santos International Airport", "Alamo Sea", "Alta", "Fort Zancudo", "Banham Canyon Dr", "Banning", "Vespucci Beach", "Banham Canyon", "Braddock Pass", "Braddock Tunnel", "Burton", "Calafia Bridge", "Raton Canyon", "Cassidy Creek", "Chamberlain Hills", "Vinewood Hills", "Chumash", "Chiliad Mountain State Wilderness", "Cypress Flats", "Davis", "Del Perro Beach", "Del Perro", "La Puerta", "Grand Senora Desert", "Downtown", "Downtown Vinewood", "East Vinewood", "El Burro Heights", "El Gordo Lighthouse", "Elysian Island", "Galilee", "GWC and Golfing Society", "Grapeseed", "Great Chaparral", "Harmony", "Hawick", "Vinewood Racetrack", "Humane Labs and Research", "Bolingbroke Penitentiary", "Little Seoul", "Land Act Reservoir", "Lago Zancudo", "Land Act Dam", "Legion Square", "La Mesa", "La Puerta", "Mirror Park", "Morningwood", "Richards Majestic", "Mount Chiliad", "Mount Gordo", "Mount Josiah", "Murrieta Heights", "North Chumash", "N.O.O.S.E", "Pacific Ocean", "Paleto Cove", "Paleto Bay", "Paleto Forest", "Palomino Highlands", "Palmer-Taylor Power Station", "Pacific Bluffs", "Pillbox Hill", "Procopio Beach", "Rancho", "Richman Glen", "Richman", "Rockford Hills", "Redwood Lights Track", "San Andreas", "San Chianski Mountain Range", "Sandy Shores", "Mission Row", "Stab City", "Maze Bank Arena", "Strawberry", "Tataviam Mountains", "Terminal", "Textile City", "Tongva Hills", "Tongva Valley", "Vespucci Canals", "Vespucci", "Vinewood", "Ron Alternates Wind Farm", "West Vinewood", "Zancudo River", "Port of South Los Santos", "Davis Quartz"];
-let streetName, realZoneName;
-let minimap = {};
-const minimapUpdateInvterval = 500; // milliseconds, lower value = more accurate, at the cost of performance
 
 const controlsIds = {
     Alt: 0x12,
@@ -28,6 +22,7 @@ let cursorShown = false;
 const localPlayer = alt.getLocalPlayer();
 const localPlayerId = localPlayer.scriptID;
 let animations = new Animations();
+let zoneNames = new ZoneNames();
 
 // Raycasting
 let entityHit = null;
@@ -37,26 +32,6 @@ let didRaycaystHit = false;
 let lastKeyPressedTime = 0;
 let circleMenuOpened = false;
 let circleMenuName = '';
-
-alt.setInterval(() => {
-    // only do stuff if radar is enabled and visible
-    if (game.isRadarEnabled() && !game.isRadarHidden()) {
-        minimap = getMinimapAnchor(); // Gets coords of minimap
-
-        const position = game.getEntityCoords(localPlayerId, true);
-        let getStreet = game.getStreetNameAtCoord(position.x, position.y, position.z, 0, 0); // Returns array of 3 items, second one is hash
-        streetName = game.getStreetNameFromHashKey(getStreet[1]);
-        let zoneName = game.getNameOfZone(position.x, position.y, position.z);
-        if (zoneNamesShort.includes(zoneName)) {
-            let zoneID = zoneNamesShort.indexOf(zoneName);
-            realZoneName = zoneNames[zoneID];
-        }
-    } else {
-        streetName = null;
-        realZoneName = null;
-    }
-}, minimapUpdateInvterval);
-
 
 function calculateRaycastDistance(maxDistance = 4) {
     var viewModel = game.getFollowPedCamViewMode();
@@ -201,9 +176,9 @@ alt.on('keydown', (key) => {
 });
 
 alt.on('update', () => {
-    if (realZoneName && streetName) {
-        drawText(streetName, [minimap.rightX, minimap.bottomY - 0.065], 4, [255, 255, 255, 255], 0.5, true, false);
-        drawText(realZoneName, [minimap.rightX, minimap.bottomY - 0.035], 4, [255, 255, 255, 255], 0.55, true, false);
+    if (zoneNames.realZoneName && zoneNames.streetName) {
+        drawText(zoneNames.streetName, [zoneNames.minimap.rightX, zoneNames.minimap.bottomY - 0.065], 4, [255, 255, 255, 255], 0.5, true, false);
+        drawText(zoneNames.realZoneName, [zoneNames.minimap.rightX, zoneNames.minimap.bottomY - 0.035], 4, [255, 255, 255, 255], 0.55, true, false);
     }
 
     // if (!game.isPedInAnyVehicle(localPlayerId, false) && !game.isPlayerDead(localPlayerId)) {

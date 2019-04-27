@@ -324,12 +324,9 @@ export default class Animations {
         return new Promise((resolve, reject) => {
             game.requestAnimDict(animDict);
             if (!game.hasAnimDictLoaded(animDict)) {
-                const requestId = alt.setInterval(() => {
-                    if (!game.hasAnimDictLoaded(animDict)) {
-                        game.requestAnimDict(animDict);
-                        alt.log('Loading dict ' + animDict);
-                    } else {
-                        alt.clearInterval(requestId);
+                const request = alt.setInterval(() => {
+                    if (game.hasAnimDictLoaded(animDict)) {
+                        alt.clearInterval(request);
                         resolve();
                     }
                 }, 0);

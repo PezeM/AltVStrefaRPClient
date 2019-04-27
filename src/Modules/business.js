@@ -1,4 +1,3 @@
-import game from 'natives';
 import alt from 'alt';
 import { showCefNotification } from 'src/ui.mjs';
 

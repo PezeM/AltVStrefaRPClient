@@ -70,7 +70,7 @@ function openCircleMenu(menuName) {
     circleMenuName = menuName;
     showUi(false);
     alt.showCursor(true);
-    uiView.focus();
+    mainUi.uiView.focus();
 }
 
 function closeCircleMenu(hideMenu = false) {
@@ -83,9 +83,11 @@ function closeCircleMenu(hideMenu = false) {
 }
 
 alt.on('keydown', (key) => {
+    if (chat.isOpen() || menusManager.viewOpened) return;
+
     switch (key) {
         case controlsIds.Alt:
-            if (localPlayer.vehicle != null || game.isEntityDead(localPlayerId) || chat.isOpen()) return;
+            if (localPlayer.vehicle != null || game.isEntityDead(localPlayerId) || new Date().getTime() - lastKeyPressedTime < 500) return;
             if (entityHit == null) return;
             alt.log('Clicked Alt key entity: ' + JSON.stringify(entityHit));
             break;
@@ -95,7 +97,7 @@ alt.on('keydown', (key) => {
             alt.showCursor(cursorShown);
             break;
         case controlsIds.G:
-            if (game.isEntityDead(localPlayerId) || chat.isOpen() || new Date().getTime() - lastKeyPressedTime < 500) return;
+            if (game.isEntityDead(localPlayerId) || new Date().getTime() - lastKeyPressedTime < 500) return;
             if (circleMenuOpened) {
                 closeCircleMenu(true);
             } else {
@@ -104,7 +106,7 @@ alt.on('keydown', (key) => {
             lastKeyPressedTime = new Date().getTime();
             break;
         case controlsIds.Tilde:
-            if (game.isEntityDead(localPlayerId) || chat.isOpen() || new Date().getTime() - lastKeyPressedTime < 500) return;
+            if (game.isEntityDead(localPlayerId) || new Date().getTime() - lastKeyPressedTime < 500) return;
             alt.log('Pressed tilde');
             lastKeyPressedTime = new Date().getTime();
             animations.forceAnimationStop();

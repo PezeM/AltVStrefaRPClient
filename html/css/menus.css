@@ -8,8 +8,13 @@
 }
 
 body {
-    font-family: "Roboto";
+    font-family: "Roboto" !important;
     background-color: transparent !important;
-    padding: 0;
-    margin: 0;
+}
+
+[ui-pnotify].ui-pnotify.own-style .ui-pnotify-container {
+    border-radius: 8px;
+    padding: 10px;
+    font-size: 15px;
+    z-index: 1000;
 }

@@ -4,13 +4,18 @@
 import alt from 'alt';
 import game from 'natives';
 import { showUiAndFreezePlayer } from 'src/Helpers/uiHelper.js';
-import { showCefNotification } from 'src/ui.js';
+import { showCefNotification } from 'src/ui.mjs';
 import Bank from 'src/Modules/banking.js';
 import Business from 'src/Modules/business.js';
 
 let menusView = new alt.WebView('http://resources/AltVStrefaRPClient/html/menus.html');
 let bank = new Bank();
 let business = new Business();
+let menuOpened = false;
+
+export function isMenuOpen() {
+    alt.log('Test');
+}
 
 // Bank menu
 alt.onServer('openBankMenu', (bankAccountInformations) => {
@@ -24,11 +29,12 @@ alt.onServer('openBankMenu', (bankAccountInformations) => {
     showUiAndFreezePlayer(false);
     menusView.focus();
     alt.showCursor(true);
+    menuOpened = true;
 });
 
 alt.onServer('updateBankMoneyWithNotification', (notificationMessage, money) => {
     menusView.emit('updateBankMoney', money);
-    showCefNotification(1, notificationMessage, 6000);
+    showCefNotification(1, "Aktualizacja", notificationMessage, 6000);
 });
 
 alt.onServer('openTransactionHistory', (transactionHistory) => {
@@ -56,8 +62,8 @@ menusView.on('depositMoney', (amount) => {
     bank.depositMoney(amount);
 });
 
-menusView.on('showNotification', (type, message, time) => {
-    showCefNotification(type, message, time);
+menusView.on('showNotification', (type, title, message, time) => {
+    showCefNotification(type, title, message, time);
 });
 
 // Business menu
@@ -80,14 +86,14 @@ alt.onServer('populateBusinessEmployees', (employeesInfo) => {
 alt.onServer('successfullyUpdatedEmployeeRank', (employeeId, newRankId) => {
     if (menusView) {
         menusView.emit('successfullyUpdatedEmployeeRank', employeeId, newRankId);
-        showCefNotification(1, "Pomyślnie zaktualizowano stanowiska pracownika.", 5000);
+        showCefNotification(1, "Zaktualizowano pracownika", "Pomyślnie zaktualizowano stanowiska pracownika.", 5000);
     }
 });
 
-alt.onServer('successfullyAddedNewEmployee', () => {
+alt.onServer('successfullyInvitedNewEmployee', () => {
     if (menusView) {
-        menusView.emit('successfullyAddedNewEmployee');
-        showCefNotification(1, "Pomyślnie dodano nowego pracownika.", 5000);
+        menusView.emit('successfullyInvitedNewEmployee');
+        showCefNotification(1, "Wysłano ofertę", "Pomyślnie wysłano zaproszenie do biznesu.", 5000);
     }
 });
 

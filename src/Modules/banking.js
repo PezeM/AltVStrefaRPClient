@@ -1,6 +1,6 @@
 import game from 'natives';
 import alt from 'alt';
-import { showCefNotification } from 'src/ui.js';
+import { showCefNotification } from 'src/ui.mjs';
 
 const pedPositions = [
     { x: -111.9647, y: 6471.319, z: 31.6267, rot: 138.7 },
@@ -26,21 +26,21 @@ export default class Bank {
     }
     withdrawMoney(amount) {
         if (typeof amount !== 'number') {
-            showCefNotification(3, 'Podano błędną ilość pieniędzy do wypłacenia.', 5000);
+            showCefNotification(3, "Błąd", 'Podano błędną ilość pieniędzy do wypłacenia.', 5000);
             return;
         }
         alt.emitServer('WithdrawMoneyFromBank', amount);
     }
     depositMoney(amount) {
         if (typeof amount !== 'number') {
-            showCefNotification(3, 'Podano błędną ilość pieniędzy do wpłaty.', 5000);
+            showCefNotification(3, "Błąd", 'Podano błędną ilość pieniędzy do wpłaty.', 5000);
             return;
         }
         alt.emitServer('DepositMoneyToBank', amount);
     }
     transferMoney(amount, receiver) {
         if (amount <= 0 || typeof receiver === 'undefined' || receiver == null) {
-            showCefNotification(3, 'Podano błędne dane do transferu pieniędzy.', 4000);
+            showCefNotification(3, "Błąd", 'Podano błędne dane do transferu pieniędzy.', 4000);
             return;
         }
         alt.emitServer('TransferMoneyFromBankToBank', amount, receiver);

@@ -107,7 +107,7 @@ var businessApp = new Vue({
         showEmployeeInfo: function (employeeId) {
             var employee = this.businessInfo.Employees.find(e => e.Id == employeeId);
             if (employee == null) {
-                alt.emit('showNotification', 3, 'Wystąpił błąd. Nie znaleziono takiego pracownika.', 7000);
+                alt.emit('showNotification', 3, "Błąd", 'Wystąpił błąd. Nie znaleziono takiego pracownika.', 7000);
                 return;
             }
             this.selectedEmployee = employee;
@@ -130,7 +130,7 @@ var businessApp = new Vue({
 
             // Call server to make a change
             if (this.selectedEmployee == null || this.businessInfo == null) {
-                alt.emit('showNotification', 3, 'Wystąpił błąd. Otwórz ponownie menu biznesu.', 6000);
+                alt.emit('showNotification', 3, "Błąd", 'Wystąpił błąd. Otwórz ponownie menu biznesu.', 6000);
                 return;
             }
 
@@ -141,14 +141,17 @@ var businessApp = new Vue({
             console.log(`Changing employee ${employeeId} to new rank id: ${newRankId}`);
             if (!this.employeesInfo.BusinessEmployees) return;
 
-            var employee = this.employeesInfo.BusinessEmployees.find(e => e.Id == employeeId);
-            if (employee == null) {
-                console.log('Employee is null');
-                return;
+            // var employee = this.employeesInfo.BusinessEmployees.find(e => e.Id == employeeId);
+            // if (employee == null) {
+            //     console.log('Employee is null');
+            //     return;
+            // }
+            if (this.employeesInfo.BusinessEmployees.find(e => e.Id == employeeId) != null) {
+                this.employeesInfo.BusinessEmployees.find(e => e.Id == employeeId).RankId = newRankId;
+                console.log('Updated rank. New employee: ' + JSON.stringify(this.employeesInfo.BusinessEmployees.find(e => e.Id == employeeId)));
             }
-
-            employee.RankId = newRankId;
-            console.log('New employee rank: ' + employee.RankId);
+            // employee.RankId = newRankId;
+            // console.log('New employee rank: ' + employee.RankId);
             this.closeEmployeeInfo();
         },
         openNewEmployeeModal: function () {
@@ -166,11 +169,10 @@ var businessApp = new Vue({
         },
         addNewEmployee: function () {
             if (this.newEmployee === null || this.newEmployee.Name.length < 1 || this.newEmployee.LastName.length < 1 || this.businessInfo == null) {
-                alt.emit('showNotification', 3, 'Wystąpił błąd. Podano błędne dane pracownika.', 7000);
+                alt.emit('showNotification', 3, "Błąd", 'Wystąpił błąd. Podano błędne dane pracownika.', 7000);
                 return;
             }
 
-            console.log(JSON.stringify(this.newEmployee));
             alt.emit('addNewEmployee', this.newEmployee.Name, this.newEmployee.LastName, this.businessInfo.BusinessId);
         },
         closeNewEmployeeModal: function () {
@@ -204,6 +206,6 @@ alt.on('successfullyUpdatedEmployeeRank', (employeeId, newRankId) => {
     businessApp.updateEmployeeRank(employeeId, newRankId);
 });
 
-alt.on('successfullyAddedNewEmployee', () => {
+alt.on('successfullyInvitedNewEmployee', () => {
     businessApp.closeNewEmployeeModal();
 });

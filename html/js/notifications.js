@@ -15,32 +15,46 @@ alt.on('showNotification', (type, title, message, duration, icon) => {
 });
 
 
-alt.on('showConfirmModal', (title, message, confirmCallback, cancelCallback) => {
-    showConfirmModal(title, message, confirmCallback, cancelCallback);
+alt.on('showConfirmModal', (title, message, confirmCallback, cancelCallback, args) => {
+    console.log('Alt on show confirm ui ' + typeof confirmCallback + ' ' + JSON.stringify(confirmCallback) + ' args: ' + JSON.stringify(args));
+    showConfirmModal(title, message, confirmCallback, cancelCallback, args);
 });
 
 function showNotification(type, title, message, duration = 5000, icon = true) {
     PNotify.alert({
         title: title,
         text: message,
-        type: type,
-        icon: icon,
+        type: notificationTypes[type],
         styling: "bootstrap4",
+        addClass: 'own-style',
+        icons: 'fontawesome5',
+        icon: icon,
         animation: 'fade',
         hide: true,
         delay: duration,
         mouseReset: true,
         stack: stackInfo,
+        modules: {
+            Buttons: {
+                sticker: false
+            },
+            History: {
+                maxInStack: 3
+            },
+        }
     });
 }
 
-function showConfirmModal(title, message, confirmCallback, cancelCallback) {
-    var notice = PNotify.notice({
+function showConfirmModal(title, message, confirmCallback, cancelCallback, args) {
+    var notice = PNotify.alert({
         title: title,
         text: message,
+        type: 'info',
         styling: "bootstrap4",
+        addClass: 'own-style',
         animation: 'fade',
-        // icon: 'fas fa-question-circle',
+        icons: 'fontawesome5',
+        icon: 'fas fa-question-circle',
         hide: false,
         stack: {
             'modal': true,
@@ -58,41 +72,35 @@ function showConfirmModal(title, message, confirmCallback, cancelCallback) {
             },
         }
     });
-    if (typeof confirmCallback === 'function') {
+    if (confirmCallback !== null) {
         notice.on('pnotify.confirm', () => {
             console.log('Confirm callback');
-            confirmCallback();
+            if (args == null) {
+                console.log('Triggered confirm callback without args');
+                alt.emit(confirmCallback);
+            } else {
+                console.log('Triggered confirm callback with args ' + args);
+                alt.emit(confirmCallback, JSON.stringify(args));
+            }
         });
     }
-    if (typeof cancelCallback === 'function') {
+    else {
+        console.log('Confirm callback is null');
+    }
+
+    if (cancelCallback !== null) {
         notice.on('pnotify.cancel', () => {
-            console.log('Cancell callback');
-            cancelCallback();
+            if (args == null) {
+                console.log('Triggered cancel callback without args');
+                alt.emit(cancelCallback);
+            } else {
+                console.log('Triggered cancel callback with args ' + args);
+                alt.emit(cancelCallback, JSON.stringify(args));
+            }
         });
     }
 }
 
 function showTestNotification() {
-    showNotification('error', 'Testowa dłuższa wiadomość.', 'Tytuł', 5000);
+    showNotification(1, 'Testowa dłuższa wiadomość.', 'Tytuł', 5000);
 }
-
-
-// alt.on('showNotification', (type, message, time) => {
-//     showNotification(type, message, time);
-// });
-
-// function showNotification(type, message, time) {
-//     var types = ['info', 'success', 'warning', 'error'];
-//     $.toast({
-//         text: message,
-//         showHideTransition: 'fade',
-//         icon: types[type],
-//         hideAfter: time,
-//         stack: 3,
-//         position: 'bottom-right',
-//     })
-// }
-
-
-
-

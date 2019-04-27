@@ -6,6 +6,7 @@ import game from 'natives';
 import chat from 'chat';
 import { drawText, getMinimapAnchor, showUi } from 'src/Helpers/uiHelper.js';
 import { rotToDirection } from 'src/Helpers/mathHelper.js';
+// import { isMenuOpen } from 'src/menus.mjs';
 import Animations from 'src/Modules/animations.js';
 
 let uiView = new alt.WebView('http://resources/AltVStrefaRPClient/html/ui.html');
@@ -87,26 +88,28 @@ export function poitingAt(maxDistance = 4) {
 }
 
 alt.onServer("showNotification", (type, title, message, duration, icon) => {
-    showCefNotification(type, title, message, duration, icon);
+    showCefNotification(type, title, message, duration, icon == null ? true : icon);
 });
 
-alt.onServer('showConfirmModal', (title, message, type, ...args) => {
+alt.onServer('showConfirmModal', (title, message, type, args) => {
+    alt.log(`Args: ${JSON.stringify(args)}`);
     switch (type) {
         case 1: // Business invite
-            showConfirmModal(title, message, () => {
-                console.log('Kurwa dziala?' + JSON.stringify(args));
-            });
+            alt.showCursor(true);
+            uiView.focus();
+            showConfirmModal(title, message, "acceptBusinessInvite", null, args);
             break;
 
         default:
-            showConfirmModal(title, message);
+            showConfirmModal(title, message, null, null);
             break;
     }
+
 });
 
-alt.on('showNotification', (type, title, message, duration, icon) => {
+alt.on('showNotification', (type, title, message, duration) => {
     alt.log('Triggering client-side showNotification')
-    showCefNotification(type, title, message, duration, icon);
+    showCefNotification(type, title, message, duration);
 });
 
 // Shows notification in Cef ui for 5000ms
@@ -120,10 +123,11 @@ export function showCefNotification(type, title, message, duration = 5000, icon 
     }
 }
 
-export function showConfirmModal(title, message, confirmCallback = null, cancelCallback = null) {
+export function showConfirmModal(title, message, confirmCallback = null, cancelCallback = null, args = null) {
     try {
         if (typeof message == 'string') {
-            uiView.emit('showConfirmModal', title, message, confirmCallback, cancelCallback);
+            alt.log('Ui.mjs confirmCallback = ' + typeof confirmCallback);
+            uiView.emit('showConfirmModal', title, message, confirmCallback, cancelCallback, args);
         }
     } catch (error) {
         alt.log('showConfirmModal -> error -> ' + error);
@@ -144,6 +148,7 @@ uiView.on('circleMenuCallback', (option) => {
             break;
     }
 });
+
 
 function openCircleMenu(menuName) {
     if (circleMenuOpened) return;
@@ -212,3 +217,17 @@ alt.on('update', () => {
         // Draw entity
     }
 });
+
+
+// Business
+uiView.on('acceptBusinessInvite', (businessId) => {
+    if (businessId) {
+        alt.log('Accept business invite client-side, arg is ' + typeof businessId + ' = ' + JSON.stringify(businessId));
+        alt.emitServer('AcceptInviteToBusiness', businessId);
+    }
+});
+
+uiView.on('dismissBusinessInvite', (businessId) => {
+
+});
+

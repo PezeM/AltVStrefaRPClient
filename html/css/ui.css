@@ -1,3 +1,7 @@
+*:focus {
+    outline: none !important
+}
+
 @font-face {
     font-family: 'Roboto';
     src: url('../packages/fonts/Roboto-Regular.ttf');
@@ -5,5 +9,6 @@
 
 html,
 body {
-    font-family: "Roboto";
+    font-family: "Roboto" !important;
+    background-color: transparent !important;
 }

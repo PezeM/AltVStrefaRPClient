@@ -295,7 +295,7 @@ var bankMenu = new Vue({
             if (money > 0) {
                 alt.emit('depositMoney', money);
             } else {
-                alt.emit('showNotification', 3, 'Podaj wartość większą od 0', 5000);
+                alt.emit('showNotification', 3, "Błąd", 'Podaj wartość większą od 0', 5000);
             }
         },
         closeDepositDiv: function () {
@@ -310,7 +310,7 @@ var bankMenu = new Vue({
             if (money > 0) {
                 alt.emit('withdrawMoney', money);
             } else {
-                alt.emit('showNotification', 3, 'Podaj wartość większą od 0', 5000);
+                alt.emit('showNotification', 3, "Błąd", 'Podaj wartość większą od 0', 5000);
             }
         },
         closeWithdrawDiv: function () {
@@ -325,15 +325,15 @@ var bankMenu = new Vue({
             var receiver = parseInt(this.transferReceiver);
             this.transferReceiver = 0;
             if (this.transferReceiver === this.characterData.AccountNumber) {
-                alt.emit('showNotification', 3, 'Nie możesz wysłać pieniędzy sam do siebie.', 5000);
+                alt.emit('showNotification', 3, "Błąd", 'Nie możesz wysłać pieniędzy sam do siebie.', 5000);
                 return;
             }
             else if (money <= 0) {
-                alt.emit('showNotification', 3, 'Podaj wartość większą od 0.', 5000);
+                alt.emit('showNotification', 3, "Błąd", 'Podaj wartość większą od 0.', 5000);
                 return;
             }
             else if (!receiver || receiver < 100000 || receiver > 999999 || typeof receiver !== 'number') { // 100_000 the lowest, 999_999 the highest possible numbers
-                alt.emit('showNotification', 3, 'Podaj dobry number konta odbiorcy.', 5000);
+                alt.emit('showNotification', 3, "Błąd", 'Podaj dobry number konta odbiorcy.', 5000);
                 return;
             }
 
@@ -353,7 +353,7 @@ var bankMenu = new Vue({
                 this.currentMenuShown = 'historyScreen';
             }
             else {
-                alt.emit('showNotification', 3, "Nie masz jeszcze żadnych transkacji.", 5000);
+                alt.emit('showNotification', 3, "Błąd", "Nie masz jeszcze żadnych transkacji.", 5000);
             }
         },
         closeHistoryDiv: function () {

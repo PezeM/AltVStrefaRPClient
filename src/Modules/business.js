@@ -40,4 +40,27 @@ export default class Business {
 
         alt.emitServer('GetBusinessRoles', businessId);
     }
+
+    updateBusinessRank(rank, businessId) {
+        if (typeof businessId !== 'number') {
+            mainUi.showCefNotification(3, "Błąd", "Błędne ID biznesu.", 4000);
+            return;
+        }
+
+        if (rank == null || typeof rank !== 'object') {
+            mainUi.showCefNotification(3, "Błąd", "Wystąpił błąd ze stanowiskiem. Otwórz menu biznesu ponownie.", 4000);
+            return;
+        }
+
+        alt.emitServer('UpdateBusinessRank', JSON.stringify(rank), businessId);
+    }
+
+    addNewRole(newRole, businessId) {
+        if (typeof newRole !== 'object' || typeof businessId !== 'number') {
+            mainUi.showCefNotification(3, "Błąd", 'Błędne nowe stanowisko.', 6000);
+            return;
+        }
+
+        alt.emitServer('AddNewRole', JSON.stringify(newRole), businessId);
+    }
 }

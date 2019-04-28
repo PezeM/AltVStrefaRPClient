@@ -56,6 +56,7 @@ var businessApp = new Vue({
         selectedRank: null,
         newRank: 0,
         newEmployee: null,
+        newRole: null,
     },
     methods: {
         showBusinessMenu: function (businessInfo) {
@@ -187,6 +188,7 @@ var businessApp = new Vue({
             }
 
             alt.emit('addNewEmployee', this.newEmployee.Name, this.newEmployee.LastName, this.businessInfo.BusinessId);
+            this.closeNewEmployeeModal();
         },
         closeNewEmployeeModal: function () {
             this.newEmployee = null;
@@ -235,10 +237,45 @@ var businessApp = new Vue({
 
             $("#saveRankChangesButton").addClass('disabled');
             alt.emit('updateBusinessRank', this.selectedRank, this.businessInfo.BusinessId);
+            this.closeRankInfo();
         },
         betterPermissionDisplay: function (rolePermission) {
             return rolePermission ? 'Tak' : 'Nie';
-        }
+        },
+        openNewRoleModal: function () {
+            this.newRole = {
+                RankName: "",
+                Permissions: {
+                    HaveVehicleKeys: false,
+                    HaveBusinessKeys: false,
+                    CanOpenBusinessMenu: false,
+                    CanOpenBusinessInventory: false,
+                    CanInviteNewMembers: false,
+                    CanManageRanks: false,
+                    CanManageEmployees: false
+                }
+            };
+
+            setTimeout(() => {
+                $('#addRoleModal').modal({
+                    backdrop: 'static',
+                    keyboard: false
+                });
+            }, 0);
+        },
+        closeNewRoleModal: function () {
+            this.newRole = null;
+            $('#addRoleModal').modal('hide');
+        },
+        addNewRole: function () {
+            if (this.newRole === null || this.newRole.RankName.length < 3 || this.newRole.Permissions == null || this.businessInfo == null) {
+                alt.emit('showNotification', 3, "Błąd", 'Wystąpił błąd. Podano błędne dane nowego stanowiska.', 7000);
+                return;
+            }
+
+            alt.emit('addNewRole', this.newRole, this.businessInfo.BusinessId);
+            this.closeNewRoleModal();
+        },
     },
     computed: {
         businessType: function () {
@@ -273,6 +310,10 @@ alt.on('successfullyUpdatedEmployeeRank', (employeeId, newRankId) => {
     businessApp.updateEmployeeRank(employeeId, newRankId);
 });
 
-alt.on('successfullyInvitedNewEmployee', () => {
-    businessApp.closeNewEmployeeModal();
+alt.on('successfullyUpdatedRankPermissions', () => {
+    businessApp.closeRankInfo();
+});
+
+alt.on('successfullyAddedNewRole', () => {
+    businessApp.closeNewRoleModal();
 });

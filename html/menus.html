@@ -469,6 +469,72 @@
                 </div>
 
                 <div class="col-md-12 ml-sm-auto col-lg-12 px-4" v-if="currentMenuVisible == 'rolesPage'">
+                    <!-- Add employee modal -->
+                    <div class="modal fade" id="addRoleModal" tabindex="-1" role="dialog" aria-hidden="true"
+                        v-if="newRole">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="modalCenterTitle">Dodaj nowe stanowisko</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+                                        @click="closeNewRoleModal">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="row">
+                                        <label class="col-sm-6 col-form-label">Nazwa stanowiska</label>
+                                        <div class="col-sm-6">
+                                            <input type="text" class="form-control" v-model="newRole.RankName"
+                                                placeholder="Podaj nazwę">
+                                        </div>
+                                    </div>
+                                    <div class="form-check row">
+                                        <label class="col-sm-10 form-check-label">Otwieranie menu biznesu</label>
+                                        <input class="col-sm-1" type="checkbox" class="form-check-input"
+                                            v-model="newRole.Permissions.CanOpenBusinessMenu">
+                                    </div>
+                                    <div class="form-check row">
+                                        <label class="col-sm-10 form-check-label">Klucze do budynków</label>
+                                        <input class="col-sm-1" type="checkbox" class="form-check-input"
+                                            v-model="newRole.Permissions.HaveBusinessKeys">
+                                    </div>
+                                    <div class="form-check row">
+                                        <label class="col-sm-10 form-check-label">Otwieranie inwentarza</label>
+                                        <input class="col-sm-1" type="checkbox" class="form-check-input"
+                                            v-model="newRole.Permissions.CanOpenBusinessInventory">
+                                    </div>
+                                    <div class="form-check row">
+                                        <label class="col-sm-10 form-check-label">Klucze do pojazdów</label>
+                                        <input class="col-sm-1" type="checkbox" class="form-check-input"
+                                            v-model="newRole.Permissions.HaveVehicleKeys">
+                                    </div>
+                                    <div class="form-check row">
+                                        <label class="col-sm-10 form-check-label">Rekrutowanie pracowników</label>
+                                        <input class="col-sm-1" type="checkbox" class="form-check-input"
+                                            v-model="newRole.Permissions.CanInviteNewMembers">
+                                    </div>
+                                    <div class="form-check row">
+                                        <label class="col-sm-10 form-check-label">Zarządzanie pracownikami</label>
+                                        <input class="col-sm-1" type="checkbox" class="form-check-input"
+                                            v-model="newRole.Permissions.CanManageEmployees">
+                                    </div>
+                                    <div class="form-check row">
+                                        <label class="col-sm-10 form-check-label">Zarządzanie stanowiskami</label>
+                                        <input class="col-sm-1" type="checkbox" class="form-check-input"
+                                            v-model="newRole.Permissions.CanManageRanks">
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                                        @click="closeNewRoleModal">Zamknij</button>
+                                    <button type="button" class="btn btn-primary" @click="addNewRole">Dodaj
+                                        pracownika</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     <!-- Business rank info modal -->
                     <div class="modal fade" id="businessRankInfoModal" tabindex="-1" role="dialog" aria-hidden="true"
                         v-if="selectedRank">
@@ -530,7 +596,7 @@
 
                     <div class="row">
                         <div class="col-md-12 pt-3 pb-2 mb-3">
-                            <div class="content-box shadow box-hover" @click="openNewEmployeeModal">
+                            <div class="content-box shadow box-hover" @click="openNewRoleModal">
                                 <div class="business-info">
                                     <h3>Dodaj nową rolę</h3>
                                     <p>Można jeszcze dodać {{ getFreeRolesSpots }} stanowisk</p>
@@ -557,7 +623,7 @@
                             </thead>
                             <tbody>
                                 <tr v-for="rank in businessRanksInfo" @click="openRankInfo(rank)">
-                                    <td>{{ rank.Id }}</td>
+                                    <td>{{ rank.RankId }}</td>
                                     <td>{{ rank.RankName }}</td>
                                     <td>{{ betterPermissionDisplay(rank.CanOpenBusinessMenu) }}</td>
                                     <td>{{ betterPermissionDisplay(rank.HaveBusinessKeys) }}</td>

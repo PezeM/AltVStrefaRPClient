@@ -70,22 +70,39 @@ alt.onServer('openBusinessMenu', (businessInfo) => {
 
 alt.onServer('populateEmployeeRanks', (employeesRanks) => {
     alt.log(`Business employess info type: ${typeof employeesRanks} data: ${JSON.stringify(employeesRanks)}`);
-    menusManager.menusView.emit('populateEmployeeRanks', employeesRanks);
+    if (menusManager.viewOpened)
+        menusManager.menusView.emit('populateEmployeeRanks', employeesRanks);
 });
 
 alt.onServer('populateBusinessRanksInfo', (permissionsInfo) => {
     alt.log(`Business permissions: ${typeof permissionsInfo} data: ${JSON.stringify(permissionsInfo)}`);
-    menusManager.menusView.emit('populateBusinessRanksInfo', permissionsInfo);
+    if (menusManager.viewOpened)
+        menusManager.menusView.emit('populateBusinessRanksInfo', permissionsInfo);
 });
 
 alt.onServer('successfullyUpdatedEmployeeRank', (employeeId, newRankId) => {
-    menusManager.menusView.emit('successfullyUpdatedEmployeeRank', employeeId, newRankId);
+    if (menusManager.viewOpened)
+        menusManager.menusView.emit('successfullyUpdatedEmployeeRank', employeeId, newRankId);
+
     mainUi.showCefNotification(1, "Zaktualizowano pracownika", "Pomyślnie zaktualizowano stanowiska pracownika.", 5000);
 });
 
 alt.onServer('successfullyInvitedNewEmployee', () => {
-    menusManager.menusView.emit('successfullyInvitedNewEmployee');
     mainUi.showCefNotification(1, "Wysłano ofertę", "Pomyślnie wysłano zaproszenie do biznesu.", 5000);
+});
+
+alt.onServer('successfullyUpdatedRankPermissions', () => {
+    if (menusManager.viewOpened)
+        menusManager.menusView.emit('successfullyUpdatedRankPermissions');
+
+    mainUi.showCefNotification(1, "Zaktualizowano stanowisko", "Pomyślnie zaktualizowano stanowisko.", 5000);
+});
+
+alt.onServer('successfullyAddedNewRole', () => {
+    if (menusManager.viewOpened)
+        menusManager.menusView.emit('successfullyAddedNewRole');
+
+    mainUi.showCefNotification(1, "Dodano stanowisko", "Pomyślnie dodano nowe stanowisko do biznesu.", 6000);
 });
 
 menusManager.menusView.on('getBusinessEmployees', (businessId) => {
@@ -102,6 +119,14 @@ menusManager.menusView.on('addNewEmployee', (name, lastName, businessId) => {
 
 menusManager.menusView.on('getBusinessRolesInfo', (businessId) => {
     business.getBusinessRolesInfo(businessId);
+});
+
+menusManager.menusView.on('updateBusinessRank', (rank, businessId) => {
+    business.updateBusinessRank(rank, businessId);
+});
+
+menusManager.menusView.on('addNewRole', (newRole, businessId) => {
+    business.addNewRole(newRole, businessId);
 });
 
 menusManager.menusView.on('closeBusinessMenu', () => {

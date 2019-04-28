@@ -72,6 +72,7 @@ function showConfirmModal(title, message, confirmCallback, cancelCallback, args)
             },
         }
     });
+
     if (confirmCallback !== null) {
         notice.on('pnotify.confirm', () => {
             console.log('Confirm callback');

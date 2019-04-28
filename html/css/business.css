@@ -25,6 +25,14 @@
     transition: background-color 0.25s ease;
 }
 
+#businessApp .form-check {
+    padding-left: 0 !important;
+}
+
+#businessApp p {
+    font-family: "Roboto";
+}
+
 .content-box .business-info {
     float: left;
     color: rgb(235, 232, 232);

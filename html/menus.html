@@ -249,16 +249,16 @@
             <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">{{ businessInfo.BusinessName }}</a>
             <div class="collapse navbar-collapse">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active" @click="showPage('mainPage')">
+                    <li class="nav-item active" id="mainPageNav" @click="showPage('mainPage')">
                         <a class="nav-link">Strona główna</a>
                     </li>
-                    <li class="nav-item" @click="showPage('employeesPage')">
+                    <li class="nav-item" id="employeesPageNav" @click="showPage('employeesPage')">
                         <a class="nav-link">Pracownicy</a>
                     </li>
-                    <li class="nav-item" @click="showPage('rolesPage')">
-                        <a class="nav-link">Role</a>
+                    <li class="nav-item" id="rolesPageNav" @click="showPage('rolesPage')">
+                        <a class="nav-link">Stanowiska</a>
                     </li>
-                    <li class="nav-item" @click="showPage('businessInfoPage')">
+                    <li class="nav-item" id="businessInfoPageNav" @click="showPage('businessInfoPage')">
                         <a class="nav-link">Informacje o biznesie</a>
                     </li>
                 </ul>
@@ -315,30 +315,6 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-
-                    <h2 class="text-center p-2">Lista pracowników</h2>
-                    <div class="table-responsive rounded">
-                        <table class="table table-striped table-sm shadow">
-                            <thead class="thead-dark">
-                                <tr>
-                                    <th>#</th>
-                                    <th>Id</th>
-                                    <th>Imię</th>
-                                    <th>Nazwisko</th>
-                                    <th>Rola</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr v-for="(employee, index) in businessInfo.Employees">
-                                    <td>{{ index + 1}}</td>
-                                    <td>{{ employee.Id }}</td>
-                                    <td>{{ employee.Name }}</td>
-                                    <td>{{ employee.LastName }}</td>
-                                    <td>{{ employee.RankName }}</td>
-                                </tr>
-                            </tbody>
-                        </table>
                     </div>
                 </div>
 
@@ -447,7 +423,7 @@
                                             <v-select v-model="newRank" label="RankName" :options="getBusinessRanks"
                                                 :clearable="false" :filterable="true">
                                             </v-select>
-                                            <span>RankID: {{selectedEmployee.RankId}} newRank: {{ newRank }}</span>
+                                            <!-- <span>RankID: {{selectedEmployee.RankId}} newRank: {{ newRank }}</span> -->
                                         </div>
                                     </div>
                                 </div>
@@ -470,8 +446,9 @@
                                     <th>Id</th>
                                     <th>Imię</th>
                                     <th>Nazwisko</th>
+                                    <th>Wiek</th>
                                     <th>Płeć</th>
-                                    <th>Rola</th>
+                                    <th>Stanowisko</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -481,6 +458,7 @@
                                     <td>{{ employee.Id }}</td>
                                     <td>{{ employee.Name }}</td>
                                     <td>{{ employee.LastName }}</td>
+                                    <td>{{ employee.Age }}</td>
                                     <td v-if="employee.Gender == 0">M</td>
                                     <td v-else>K</td>
                                     <td>{{ employee.RankName }}</td>
@@ -488,6 +466,265 @@
                             </tbody>
                         </table>
                     </div>
+                </div>
+
+                <div class="col-md-12 ml-sm-auto col-lg-12 px-4" v-if="currentMenuVisible == 'rolesPage'">
+                    <!-- Add employee modal -->
+                    <div class="modal fade" id="addRoleModal" tabindex="-1" role="dialog" aria-hidden="true"
+                        v-if="newRole">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="modalCenterTitle">Dodaj nowe stanowisko</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+                                        @click="closeNewRoleModal">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="row">
+                                        <label class="col-sm-6 col-form-label">Nazwa stanowiska</label>
+                                        <div class="col-sm-6">
+                                            <input type="text" class="form-control" v-model="newRole.RankName"
+                                                placeholder="Podaj nazwę">
+                                        </div>
+                                    </div>
+                                    <div class="form-check row">
+                                        <label class="col-sm-10 form-check-label">Otwieranie menu biznesu</label>
+                                        <input class="col-sm-1" type="checkbox" class="form-check-input"
+                                            v-model="newRole.Permissions.CanOpenBusinessMenu">
+                                    </div>
+                                    <div class="form-check row">
+                                        <label class="col-sm-10 form-check-label">Klucze do budynków</label>
+                                        <input class="col-sm-1" type="checkbox" class="form-check-input"
+                                            v-model="newRole.Permissions.HaveBusinessKeys">
+                                    </div>
+                                    <div class="form-check row">
+                                        <label class="col-sm-10 form-check-label">Otwieranie inwentarza</label>
+                                        <input class="col-sm-1" type="checkbox" class="form-check-input"
+                                            v-model="newRole.Permissions.CanOpenBusinessInventory">
+                                    </div>
+                                    <div class="form-check row">
+                                        <label class="col-sm-10 form-check-label">Klucze do pojazdów</label>
+                                        <input class="col-sm-1" type="checkbox" class="form-check-input"
+                                            v-model="newRole.Permissions.HaveVehicleKeys">
+                                    </div>
+                                    <div class="form-check row">
+                                        <label class="col-sm-10 form-check-label">Rekrutowanie pracowników</label>
+                                        <input class="col-sm-1" type="checkbox" class="form-check-input"
+                                            v-model="newRole.Permissions.CanInviteNewMembers">
+                                    </div>
+                                    <div class="form-check row">
+                                        <label class="col-sm-10 form-check-label">Zarządzanie pracownikami</label>
+                                        <input class="col-sm-1" type="checkbox" class="form-check-input"
+                                            v-model="newRole.Permissions.CanManageEmployees">
+                                    </div>
+                                    <div class="form-check row">
+                                        <label class="col-sm-10 form-check-label">Zarządzanie stanowiskami</label>
+                                        <input class="col-sm-1" type="checkbox" class="form-check-input"
+                                            v-model="newRole.Permissions.CanManageRanks">
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                                        @click="closeNewRoleModal">Zamknij</button>
+                                    <button type="button" class="btn btn-primary" @click="addNewRole">Dodaj
+                                        pracownika</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Business rank info modal -->
+                    <div class="modal fade" id="businessRankInfoModal" tabindex="-1" role="dialog" aria-hidden="true"
+                        v-if="selectedRank">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="modalCenterTitle">{{ selectedRank.RankName }}</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+                                        @click="closeRankInfo">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="form-check row">
+                                        <label class="col-sm-10 form-check-label">Otwieranie menu biznesu</label>
+                                        <input class="col-sm-1" type="checkbox" class="form-check-input"
+                                            v-model="selectedRank.CanOpenBusinessMenu">
+                                    </div>
+                                    <div class="form-check row">
+                                        <label class="col-sm-10 form-check-label">Klucze do budynków</label>
+                                        <input class="col-sm-1" type="checkbox" class="form-check-input"
+                                            v-model="selectedRank.HaveBusinessKeys">
+                                    </div>
+                                    <div class="form-check row">
+                                        <label class="col-sm-10 form-check-label">Otwieranie inwentarza</label>
+                                        <input class="col-sm-1" type="checkbox" class="form-check-input"
+                                            v-model="selectedRank.CanOpenBusinessInventory">
+                                    </div>
+                                    <div class="form-check row">
+                                        <label class="col-sm-10 form-check-label">Klucze do pojazdów</label>
+                                        <input class="col-sm-1" type="checkbox" class="form-check-input"
+                                            v-model="selectedRank.HaveVehicleKeys">
+                                    </div>
+                                    <div class="form-check row">
+                                        <label class="col-sm-10 form-check-label">Rekrutowanie pracowników</label>
+                                        <input class="col-sm-1" type="checkbox" class="form-check-input"
+                                            v-model="selectedRank.CanInviteNewMembers">
+                                    </div>
+                                    <div class="form-check row">
+                                        <label class="col-sm-10 form-check-label">Zarządzanie pracownikami</label>
+                                        <input class="col-sm-1" type="checkbox" class="form-check-input"
+                                            v-model="selectedRank.CanManageEmployees">
+                                    </div>
+                                    <div class="form-check row">
+                                        <label class="col-sm-10 form-check-label">Zarządzanie stanowiskami</label>
+                                        <input class="col-sm-1" type="checkbox" class="form-check-input"
+                                            v-model="selectedRank.CanManageRanks">
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                                        @click="closeRankInfo">Zamknij</button>
+                                    <button type="button" class="btn btn-primary" id="saveRankChangesButton"
+                                        @click="saveRankChanges">Zapisz zmiany</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12 pt-3 pb-2 mb-3">
+                            <div class="content-box shadow box-hover" @click="openNewRoleModal">
+                                <div class="business-info">
+                                    <h3>Dodaj nową rolę</h3>
+                                    <p>{{ businessInfo.Ranks }} / {{ businessInfo.MaxRanksCount }} stanowisk</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h2 class="text-center p-2">Lista stanowisk</h2>
+                    <div class="table-responsive rounded">
+                        <table class="table table-striped table-sm shadow hover-table">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Stanowisko</th>
+                                    <th>Otwieranie menu biznesu</th>
+                                    <th>Klucze do budynków</th>
+                                    <th>Otwieranie inwentarza</th>
+                                    <th>Klucze do pojazdów</th>
+                                    <th>Rekrutowanie pracowników</th>
+                                    <th>Zarządzanie pracownikami</th>
+                                    <th>Zarządzanie stanowiskami</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr v-for="rank in businessRanksInfo" @click="openRankInfo(rank)">
+                                    <td>{{ rank.RankId }}</td>
+                                    <td>{{ rank.RankName }}</td>
+                                    <td>{{ betterPermissionDisplay(rank.CanOpenBusinessMenu) }}</td>
+                                    <td>{{ betterPermissionDisplay(rank.HaveBusinessKeys) }}</td>
+                                    <td>{{ betterPermissionDisplay(rank.CanOpenBusinessInventory) }}</td>
+                                    <td>{{ betterPermissionDisplay(rank.HaveVehicleKeys) }}</td>
+                                    <td>{{ betterPermissionDisplay(rank.CanInviteNewMembers) }}</td>
+                                    <td>{{ betterPermissionDisplay(rank.CanManageEmployees) }}</td>
+                                    <td>{{ betterPermissionDisplay(rank.CanManageRanks) }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="col-md-12 ml-sm-auto col-lg-12 px-4" v-if="currentMenuVisible == 'businessInfoPage'">
+                    <div class="pt-3 pb-2 mb-3 row">
+                        <div class="col-md-4">
+                            <div class="content-box shadow">
+                                <div class="info">
+                                    <h3>{{ businessInfo.Money }}</h3>
+                                    <span>$</span>
+                                    <p>Ilość pieniędzy w firmie</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="content-box shadow">
+                                <div class="info">
+                                    <h3>{{ businessInfo.Transactions }}</h3>
+                                    <span>Transakcji</span>
+                                    <p>Ilość przeprowadzonych transakcji</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="content-box shadow">
+                                <div class="info">
+                                    <h3>{{ businessInfo.EmployeesCount }}</h3>
+                                    <span>Pracowników</span>
+                                    <p>Ilość zatrudnionych pracowników</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pt-3 pb-2 mb-3 row">
+                        <div class="col-md-4">
+                            <div class="content-box shadow">
+                                <div class="info">
+                                    <h3>{{ businessInfo.BusinessId }}</h3>
+                                    <span>Numer</span>
+                                    <p>Numer biznesu</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="content-box shadow">
+                                <div class="info">
+                                    <h3>{{ businessType }}</h3>
+                                    <span>Typ</span>
+                                    <p>Rodzaj biznesu</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="content-box shadow">
+                                <div class="info">
+                                    <h3>{{ businessInfo.MaxMembersCount }}</h3>
+                                    <span>Miejsc</span>
+                                    <p>Maksymalna liczba pracowników</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pt-3 pb-2 mb-3 row">
+                        <div class="col-md-4">
+                            <div class="content-box shadow">
+                                <div class="info">
+                                    <h3>{{ businessInfo.Ranks }}</h3>
+                                    <span>Stanowisk</span>
+                                    <p>Liczba stanowisk w biznesie</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="content-box shadow">
+                                <div class="info">
+                                    <h3>{{ businessInfo.MaxRanksCount }}</h3>
+                                    <span>Stanowisk</span>
+                                    <p>Maksymalna liczba stanowisk</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>

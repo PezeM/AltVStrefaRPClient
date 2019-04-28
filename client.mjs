@@ -29,6 +29,24 @@ alt.onServer('setPedIntoVehicle', () => {
 	game.taskWarpPedIntoVehicle(localPlayer.scriptID, closestVehicle, -1);
 });
 
+alt.on('connectionComplete', (mapChanged) => {
+	alt.log('All scripts compmletely loaded');
+	if (mapChanged) {
+		alt.log('Reloading map store');
+		game.loadSpDlcMaps();
+		alt.log('Map store reloaded');
+	}
+});
+
+alt.on('consoleCommand', (command, ...args) => {
+	if (command == 'reloadMap') {
+		alt.log('Reloading map store');
+		game.loadSpDlcMaps();
+		alt.log('Map store reloaded');
+	}
+})
+
+
 game.requestIpl('chop_props');
 game.requestIpl('FIBlobby');
 game.removeIpl('FIBlobbyfake');

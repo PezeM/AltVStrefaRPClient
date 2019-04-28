@@ -3,11 +3,11 @@
 
 import alt from 'alt';
 import { showUiAndFreezePlayer } from 'src/Helpers/uiHelper.js';
-import { showCefNotification } from 'src/ui.mjs';
+import mainUi from 'src/Modules/Ui/mainUi.js';
 import Bank from 'src/Modules/banking.js';
 import Business from 'src/Modules/business.js';
+import menusManager from 'src/Modules/Ui/menusManager.js';
 
-let menusView = new alt.WebView('http://resources/AltVStrefaRPClient/html/menus.html');
 let bank = new Bank();
 let business = new Business();
 
@@ -19,92 +19,97 @@ alt.onServer('openBankMenu', (bankAccountInformations) => {
         return;
     }
 
-    menusView.emit('openBankMenuView', bankAccountInformations);
-    showUiAndFreezePlayer(false);
-    menusView.focus();
-    alt.showCursor(true);
+    menusManager.openMenu('openBankMenuView', true, true, bankAccountInformations);
 });
 
 alt.onServer('updateBankMoneyWithNotification', (notificationMessage, money) => {
-    menusView.emit('updateBankMoney', money);
-    showCefNotification(1, "Aktualizacja", notificationMessage, 6000);
+    menusManager.menusView.emit('updateBankMoney', money);
+    mainUi.showCefNotification(1, "Aktualizacja", notificationMessage, 6000);
 });
 
 alt.onServer('openTransactionHistory', (transactionHistory) => {
-    menusView.emit('openTransactionHistory', transactionHistory);
+    menusManager.menusView.emit('openTransactionHistory', transactionHistory);
 });
 
-menusView.on('closeBankMenu', () => {
+menusManager.onUiEvent('closeBankMenu', () => {
     showUiAndFreezePlayer(true);
     alt.showCursor(false);
+    menusManager.viewOpened = false;
 });
 
-menusView.on('getTransferHistoryInfo', () => {
+menusManager.onUiEvent('getTransferHistoryInfo', () => {
     alt.emitServer('GetTransferHistoryInfo');
 });
 
-menusView.on('tryTransferMoney', (money, receiver) => {
+menusManager.onUiEvent('tryTransferMoney', (money, receiver) => {
     bank.transferMoney(money, receiver);
 });
 
-menusView.on('withdrawMoney', (amount) => {
+menusManager.onUiEvent('withdrawMoney', (amount) => {
     bank.withdrawMoney(amount);
 });
 
-menusView.on('depositMoney', (amount) => {
+menusManager.onUiEvent('depositMoney', (amount) => {
     bank.depositMoney(amount);
 });
 
-menusView.on('showNotification', (type, title, message, time) => {
-    showCefNotification(type, title, message, time);
+menusManager.onUiEvent('showNotification', (type, title, message, time) => {
+    mainUi.showCefNotification(type, title, message, time);
 });
 
 // Business menu
-
 alt.onServer('openBusinessMenu', (businessInfo) => {
     alt.log(`BusinessInfo type: ${typeof businessInfo} data: ${JSON.stringify(businessInfo)}`);
-    menusView.emit('openBusinessMenu', businessInfo);
-    showUiAndFreezePlayer(false);
-    menusView.focus();
-    alt.showCursor(true);
+    menusManager.openMenu('openBusinessMenu', true, true, businessInfo);
 });
 
-alt.onServer('populateBusinessEmployees', (employeesInfo) => {
-    alt.log(`Business employess info type: ${typeof employeesInfo} data: ${JSON.stringify(employeesInfo)}`);
-    if (menusView) {
-        menusView.emit('populateBusinessEmployees', employeesInfo);
-    }
+alt.onServer('populateEmployeeRanks', (employeesRanks) => {
+    alt.log(`Business employess info type: ${typeof employeesRanks} data: ${JSON.stringify(employeesRanks)}`);
+    if (menusManager.viewOpened)
+        menusManager.menusView.emit('populateEmployeeRanks', employeesRanks);
+});
+
+alt.onServer('populateBusinessRanksInfo', (permissionsInfo) => {
+    alt.log(`Business permissions: ${typeof permissionsInfo} data: ${JSON.stringify(permissionsInfo)}`);
+    if (menusManager.viewOpened)
+        menusManager.menusView.emit('populateBusinessRanksInfo', permissionsInfo);
 });
 
 alt.onServer('successfullyUpdatedEmployeeRank', (employeeId, newRankId) => {
-    if (menusView) {
-        menusView.emit('successfullyUpdatedEmployeeRank', employeeId, newRankId);
-        showCefNotification(1, "Zaktualizowano pracownika", "Pomyślnie zaktualizowano stanowiska pracownika.", 5000);
-    }
+    if (menusManager.viewOpened)
+        menusManager.menusView.emit('successfullyUpdatedEmployeeRank', employeeId, newRankId);
+
+    mainUi.showCefNotification(1, "Zaktualizowano pracownika", "Pomyślnie zaktualizowano stanowiska pracownika.", 5000);
 });
 
-alt.onServer('successfullyInvitedNewEmployee', () => {
-    if (menusView) {
-        menusView.emit('successfullyInvitedNewEmployee');
-        showCefNotification(1, "Wysłano ofertę", "Pomyślnie wysłano zaproszenie do biznesu.", 5000);
-    }
+menusManager.menusView.on('getBusinessEmployees', (businessId) => {
+    business.getBusinessEmployees(businessId);
 });
 
-menusView.on('getBusinessesEmployees', (businessId) => {
-    business.getBusinessesEmployees(businessId);
-});
-
-menusView.on('updateEmployeeRank', (employeeId, newRankId, businessId) => {
+menusManager.menusView.on('updateEmployeeRank', (employeeId, newRankId, businessId) => {
     business.updateEmployeeRank(employeeId, newRankId, businessId);
 });
 
-menusView.on('addNewEmployee', (name, lastName, businessId) => {
+menusManager.menusView.on('addNewEmployee', (name, lastName, businessId) => {
     business.addNewEmployee(name, lastName, businessId);
 });
 
-menusView.on('closeBusinessMenu', () => {
+menusManager.menusView.on('getBusinessRolesInfo', (businessId) => {
+    business.getBusinessRolesInfo(businessId);
+});
+
+menusManager.menusView.on('updateBusinessRank', (rank, businessId) => {
+    business.updateBusinessRank(rank, businessId);
+});
+
+menusManager.menusView.on('addNewRole', (newRole, businessId) => {
+    business.addNewRole(newRole, businessId);
+});
+
+menusManager.menusView.on('closeBusinessMenu', () => {
     showUiAndFreezePlayer(true);
     alt.showCursor(false);
+    menusManager.viewOpened = false;
 });
 
 

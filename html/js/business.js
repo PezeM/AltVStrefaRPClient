@@ -12,26 +12,35 @@ var exampleJson = {
     "CreatedAt": "2019-04-23T17:04:11.963349",
     "Type": 1,
     "EmployeesCount": 1,
-    "Employees": [
-        {
-            "Id": 3,
-            "Name": "2",
-            "LastName": "2",
-            "Gender": 0,
-            "RankId": 5,
-            "RankName": "Właściciel"
-        }
-    ]
+    "Ranks": 2,
+    "MaxRanksCount": 5,
 }
 
 var exampleJsonEmployess = {
     "BusinessRanks": [
-        { "Id": 5, "IsDefaultRank": false, "RankName": "W�a�ciciel" },
-        { "Id": 6, "IsDefaultRank": true, "RankName": "Pracownik" }
-    ], "BusinessEmployees": [
+        { "Id": 5, "IsDefaultRank": false, "IsOwnerRank": true, "RankName": "Właściciel" },
+        { "Id": 6, "IsDefaultRank": true, "IsOwnerRank": false, "RankName": "Pracownik" }
+    ],
+    "BusinessEmployees": [
         { "Id": 3, "Name": "2", "LastName": "2", "Age": 10, "Gender": 0, "RankId": 5, "RankName": "W�a�ciciel" }
     ]
 }
+
+
+var exampleRankInfo = [
+    {
+        "Id": 3,
+        "RankId": 5,
+        "RankName": "Właściciel",
+        "HaveVehicleKeys": true, "HaveBusinessKeys": true, "CanOpenBusinessMenu": true, "CanOpenBusinessInventory": true, "CanInviteNewMembers": true, "CanManageRanks": true, "CanManageEmployees": true
+    },
+    {
+        "Id": 4,
+        "RankId": 6,
+        "RankName": "Pracownik",
+        "HaveVehicleKeys": false, "HaveBusinessKeys": false, "CanOpenBusinessMenu": true, "CanOpenBusinessInventory": false, "CanInviteNewMembers": false, "CanManageRanks": true, "CanManageEmployees": true
+    }
+];
 
 Vue.component('v-select', VueSelect.VueSelect)
 
@@ -41,22 +50,20 @@ var businessApp = new Vue({
         businessMenuVisible: false,
         businessInfo: null,
         employeesInfo: null,
+        businessRanksInfo: null,
         currentMenuVisible: "mainPage",
         selectedEmployee: null,
+        selectedRank: null,
         newRank: 0,
         newEmployee: null,
+        newRole: null,
     },
     methods: {
-        test: function (value) {
-            console.log('Eldo');
-        },
         showBusinessMenu: function (businessInfo) {
             if (businessInfo !== null) {
                 this.businessInfo = JSON.parse(businessInfo);
                 this.businessMenuVisible = true;
                 this.currentMenuVisible = "mainPage";
-
-                console.log(`Business info: ${JSON.stringify(this.businessInfo)}`);
             }
             else {
                 alt.emit('closeBusinessMenu');
@@ -65,30 +72,39 @@ var businessApp = new Vue({
         showBusinessMenuTest: function () {
             this.businessInfo = exampleJson;
             this.businessMenuVisible = true;
-
-            console.log(`Business info: ${JSON.stringify(this.businessInfo)}`);
         },
         closeBusinessMenu: function () {
             this.businessMenuVisible = false;
             this.businessInfo = null;
+            this.selectedEmployee = null;
+            this.selectedRank = null;
+            this.businessRanksInfo = null;
             alt.emit('closeBusinessMenu');
         },
         showPage: function (pageName) {
             switch (pageName) {
                 case 'employeesPage':
-                    alt.emit('getBusinessesEmployees', this.businessInfo.BusinessId);
+                    alt.emit('getBusinessEmployees', this.businessInfo.BusinessId);
+                    break;
+
+                case 'rolesPage':
+                    alt.emit('getBusinessRolesInfo', this.businessInfo.BusinessId);
                     break;
 
                 default:
-                    this.currentMenuVisible = pageName;
+                    this.setActiveMenu(pageName);
                     break;
             }
-            console.log(pageName);
         },
-        populateBusinessEmployees: function (employeesInfo) {
+        setActiveMenu: function (menuName) {
+            $(`#${this.currentMenuVisible}Nav`).removeClass('active');
+            this.currentMenuVisible = menuName;
+            $(`#${this.currentMenuVisible}Nav`).addClass('active');
+        },
+        populateEmployeeRanks: function (employeesInfo) {
             if (employeesInfo !== null) {
                 this.employeesInfo = JSON.parse(employeesInfo);
-                this.currentMenuVisible = 'employeesPage';
+                this.setActiveMenu('employeesPage');
 
                 console.log(`Opened business employees page with data: ${JSON.stringify(this.employeesInfo)}`);
             }
@@ -96,7 +112,7 @@ var businessApp = new Vue({
                 alt.emit('closeBusinessMenu');
             }
         },
-        populateBusinessEmployeesTest: function () {
+        populateEmployeeRanksTest: function () {
             this.businessInfo = exampleJson;
             this.employeesInfo = exampleJsonEmployess;
             this.businessMenuVisible = true;
@@ -105,7 +121,7 @@ var businessApp = new Vue({
             console.log(`Opened business employees page with data: ${JSON.stringify(this.employeesInfo)}`);
         },
         showEmployeeInfo: function (employeeId) {
-            var employee = this.businessInfo.Employees.find(e => e.Id == employeeId);
+            var employee = this.employeesInfo.BusinessEmployees.find(e => e.Id == employeeId);
             if (employee == null) {
                 alt.emit('showNotification', 3, "Błąd", 'Wystąpił błąd. Nie znaleziono takiego pracownika.', 7000);
                 return;
@@ -134,38 +150,37 @@ var businessApp = new Vue({
                 return;
             }
 
-            console.log(this.newRank.Id);
             alt.emit('updateEmployeeRank', this.selectedEmployee.Id, this.newRank.Id, this.businessInfo.BusinessId);
+            this.closeEmployeeInfo();
         },
         updateEmployeeRank: function (employeeId, newRankId) {
             console.log(`Changing employee ${employeeId} to new rank id: ${newRankId}`);
             if (!this.employeesInfo.BusinessEmployees) return;
 
-            // var employee = this.employeesInfo.BusinessEmployees.find(e => e.Id == employeeId);
-            // if (employee == null) {
-            //     console.log('Employee is null');
-            //     return;
-            // }
-            if (this.employeesInfo.BusinessEmployees.find(e => e.Id == employeeId) != null) {
-                this.employeesInfo.BusinessEmployees.find(e => e.Id == employeeId).RankId = newRankId;
-                console.log('Updated rank. New employee: ' + JSON.stringify(this.employeesInfo.BusinessEmployees.find(e => e.Id == employeeId)));
+            var employee = this.employeesInfo.BusinessEmployees.find(e => e.Id == employeeId);
+            if (employee == null) {
+                alt.emit('showNotification', 3, "Błąd", 'Wystąpił błąd podczas wczytywania zmian.', 6000);
+                this.closeEmployeeInfo();
+                return;
             }
-            // employee.RankId = newRankId;
-            // console.log('New employee rank: ' + employee.RankId);
+
+            Vue.set(employee, 'RankId', newRankId);
+            Vue.set(employee, 'RankName', this.employeesInfo.BusinessRanks.find(r => r.Id == newRankId).RankName);
+            console.log('Updated rank. New employee: ' + JSON.stringify(employee));
             this.closeEmployeeInfo();
         },
         openNewEmployeeModal: function () {
-            this.newEmployee = {};
-            this.newEmployee.Name = "";
-            this.newEmployee.LastName = "";
+            this.newEmployee = {
+                Name: "",
+                LastName: ""
+            };
+
             setTimeout(() => {
                 $('#addEmployeeModal').modal({
                     backdrop: 'static',
                     keyboard: false
                 });
             }, 0);
-            // Show modal with option to add new employee
-            // Adding by Name and LastName
         },
         addNewEmployee: function () {
             if (this.newEmployee === null || this.newEmployee.Name.length < 1 || this.newEmployee.LastName.length < 1 || this.businessInfo == null) {
@@ -174,11 +189,88 @@ var businessApp = new Vue({
             }
 
             alt.emit('addNewEmployee', this.newEmployee.Name, this.newEmployee.LastName, this.businessInfo.BusinessId);
+            this.closeNewEmployeeModal();
         },
         closeNewEmployeeModal: function () {
             this.newEmployee = null;
             $('#addEmployeeModal').modal('hide');
-        }
+        },
+        populateBusinessRanksInfo: function (businessRanksInfo) {
+            if (businessRanksInfo !== null) {
+                this.businessRanksInfo = JSON.parse(businessRanksInfo);
+                this.setActiveMenu('rolesPage');
+            }
+            else {
+                alt.emit('closeBusinessMenu');
+            }
+        },
+        populateEmployeeRanksTest: function () {
+            this.businessInfo = exampleJson;
+            this.employeesInfo = exampleJsonEmployess;
+            this.businessRanksInfo = exampleRankInfo;
+            this.businessMenuVisible = true;
+            this.currentMenuVisible = 'rolesPage';
+        },
+        openRankInfo: function (rankToOpen) {
+            this.selectedRank = rankToOpen;
+            setTimeout(() => {
+                $('#businessRankInfoModal').modal({
+                    backdrop: 'static',
+                    keyboard: false
+                });
+            }, 0);
+        },
+        closeRankInfo: function () {
+            this.selectedRank = null;
+            $('#businessRankInfoModal').modal('hide');
+        },
+        saveRankChanges: function () {
+            if (this.selectedRank == null || this.businessInfo == null) {
+                alt.emit('showNotification', 3, "Błąd", 'Wystąpił błąd. Otwórz ponownie menu biznesu.', 6000);
+                return;
+            }
+
+            $("#saveRankChangesButton").addClass('disabled');
+            alt.emit('updateBusinessRank', this.selectedRank, this.businessInfo.BusinessId);
+            this.closeRankInfo();
+        },
+        betterPermissionDisplay: function (rolePermission) {
+            return rolePermission ? 'Tak' : 'Nie';
+        },
+        openNewRoleModal: function () {
+            this.newRole = {
+                RankName: "",
+                Permissions: {
+                    HaveVehicleKeys: false,
+                    HaveBusinessKeys: false,
+                    CanOpenBusinessMenu: false,
+                    CanOpenBusinessInventory: false,
+                    CanInviteNewMembers: false,
+                    CanManageRanks: false,
+                    CanManageEmployees: false
+                }
+            };
+
+            setTimeout(() => {
+                $('#addRoleModal').modal({
+                    backdrop: 'static',
+                    keyboard: false
+                });
+            }, 0);
+        },
+        closeNewRoleModal: function () {
+            this.newRole = null;
+            $('#addRoleModal').modal('hide');
+        },
+        addNewRole: function () {
+            if (this.newRole === null || this.newRole.RankName.length < 3 || this.newRole.Permissions == null || this.businessInfo == null) {
+                alt.emit('showNotification', 3, "Błąd", 'Wystąpił błąd. Podano błędne dane nowego stanowiska.', 7000);
+                return;
+            }
+
+            alt.emit('addNewRole', this.newRole, this.businessInfo.BusinessId);
+            this.closeNewRoleModal();
+        },
     },
     computed: {
         businessType: function () {
@@ -198,14 +290,18 @@ alt.on('openBusinessMenu', (businessInfo) => {
     businessApp.showBusinessMenu(businessInfo);
 });
 
-alt.on('populateBusinessEmployees', (employeesInfo) => {
-    businessApp.populateBusinessEmployees(employeesInfo);
+alt.on('populateEmployeeRanks', (employeesRanks) => {
+    businessApp.populateEmployeeRanks(employeesRanks);
+});
+
+alt.on('populateBusinessRanksInfo', (businessRanksInfo) => {
+    businessApp.populateBusinessRanksInfo(businessRanksInfo);
 });
 
 alt.on('successfullyUpdatedEmployeeRank', (employeeId, newRankId) => {
     businessApp.updateEmployeeRank(employeeId, newRankId);
 });
 
-alt.on('successfullyInvitedNewEmployee', () => {
-    businessApp.closeNewEmployeeModal();
+alt.on('successfullyUpdatedRankPermissions', () => {
+    businessApp.closeRankInfo();
 });

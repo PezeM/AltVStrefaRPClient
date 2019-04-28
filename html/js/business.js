@@ -64,8 +64,6 @@ var businessApp = new Vue({
                 this.businessInfo = JSON.parse(businessInfo);
                 this.businessMenuVisible = true;
                 this.currentMenuVisible = "mainPage";
-
-                console.log(`Business info: ${JSON.stringify(this.businessInfo)}`);
             }
             else {
                 alt.emit('closeBusinessMenu');
@@ -74,8 +72,6 @@ var businessApp = new Vue({
         showBusinessMenuTest: function () {
             this.businessInfo = exampleJson;
             this.businessMenuVisible = true;
-
-            console.log(`Business info: ${JSON.stringify(this.businessInfo)}`);
         },
         closeBusinessMenu: function () {
             this.businessMenuVisible = false;
@@ -96,14 +92,19 @@ var businessApp = new Vue({
                     break;
 
                 default:
-                    this.currentMenuVisible = pageName;
+                    this.setActiveMenu(pageName);
                     break;
             }
+        },
+        setActiveMenu: function (menuName) {
+            $(`#${this.currentMenuVisible}Nav`).removeClass('active');
+            this.currentMenuVisible = menuName;
+            $(`#${this.currentMenuVisible}Nav`).addClass('active');
         },
         populateEmployeeRanks: function (employeesInfo) {
             if (employeesInfo !== null) {
                 this.employeesInfo = JSON.parse(employeesInfo);
-                this.currentMenuVisible = 'employeesPage';
+                this.setActiveMenu('employeesPage');
 
                 console.log(`Opened business employees page with data: ${JSON.stringify(this.employeesInfo)}`);
             }
@@ -150,6 +151,7 @@ var businessApp = new Vue({
             }
 
             alt.emit('updateEmployeeRank', this.selectedEmployee.Id, this.newRank.Id, this.businessInfo.BusinessId);
+            this.closeEmployeeInfo();
         },
         updateEmployeeRank: function (employeeId, newRankId) {
             console.log(`Changing employee ${employeeId} to new rank id: ${newRankId}`);
@@ -165,7 +167,6 @@ var businessApp = new Vue({
             Vue.set(employee, 'RankId', newRankId);
             Vue.set(employee, 'RankName', this.employeesInfo.BusinessRanks.find(r => r.Id == newRankId).RankName);
             console.log('Updated rank. New employee: ' + JSON.stringify(employee));
-
             this.closeEmployeeInfo();
         },
         openNewEmployeeModal: function () {
@@ -197,9 +198,7 @@ var businessApp = new Vue({
         populateBusinessRanksInfo: function (businessRanksInfo) {
             if (businessRanksInfo !== null) {
                 this.businessRanksInfo = JSON.parse(businessRanksInfo);
-                this.currentMenuVisible = 'rolesPage';
-
-                console.log(`Opened business employees page with data: ${JSON.stringify(this.businessRanksInfo)}`);
+                this.setActiveMenu('rolesPage');
             }
             else {
                 alt.emit('closeBusinessMenu');
@@ -211,13 +210,9 @@ var businessApp = new Vue({
             this.businessRanksInfo = exampleRankInfo;
             this.businessMenuVisible = true;
             this.currentMenuVisible = 'rolesPage';
-
-            console.log(`Opened business employees page with data: ${JSON.stringify(this.businessRanksInfo)}`);
         },
         openRankInfo: function (rankToOpen) {
             this.selectedRank = rankToOpen;
-
-            console.log(JSON.stringify(this.selectedRank));
             setTimeout(() => {
                 $('#businessRankInfoModal').modal({
                     backdrop: 'static',
@@ -287,9 +282,6 @@ var businessApp = new Vue({
         getBusinessRanks: function () {
             return this.employeesInfo.BusinessRanks;
         },
-        getFreeRolesSpots: function () {
-            return this.businessInfo.MaxRanksCount - this.businessInfo.Ranks;
-        },
     }
 });
 
@@ -312,8 +304,4 @@ alt.on('successfullyUpdatedEmployeeRank', (employeeId, newRankId) => {
 
 alt.on('successfullyUpdatedRankPermissions', () => {
     businessApp.closeRankInfo();
-});
-
-alt.on('successfullyAddedNewRole', () => {
-    businessApp.closeNewRoleModal();
 });

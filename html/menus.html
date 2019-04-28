@@ -249,16 +249,16 @@
             <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">{{ businessInfo.BusinessName }}</a>
             <div class="collapse navbar-collapse">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active" @click="showPage('mainPage')">
+                    <li class="nav-item active" id="mainPageNav" @click="showPage('mainPage')">
                         <a class="nav-link">Strona główna</a>
                     </li>
-                    <li class="nav-item" @click="showPage('employeesPage')">
+                    <li class="nav-item" id="employeesPageNav" @click="showPage('employeesPage')">
                         <a class="nav-link">Pracownicy</a>
                     </li>
-                    <li class="nav-item" @click="showPage('rolesPage')">
+                    <li class="nav-item" id="rolesPageNav" @click="showPage('rolesPage')">
                         <a class="nav-link">Stanowiska</a>
                     </li>
-                    <li class="nav-item" @click="showPage('businessInfoPage')">
+                    <li class="nav-item" id="businessInfoPageNav" @click="showPage('businessInfoPage')">
                         <a class="nav-link">Informacje o biznesie</a>
                     </li>
                 </ul>
@@ -599,7 +599,7 @@
                             <div class="content-box shadow box-hover" @click="openNewRoleModal">
                                 <div class="business-info">
                                     <h3>Dodaj nową rolę</h3>
-                                    <p>Można jeszcze dodać {{ getFreeRolesSpots }} stanowisk</p>
+                                    <p>{{ businessInfo.Ranks }} / {{ businessInfo.MaxRanksCount }} stanowisk</p>
                                 </div>
                             </div>
                         </div>
@@ -698,6 +698,28 @@
                                     <h3>{{ businessInfo.MaxMembersCount }}</h3>
                                     <span>Miejsc</span>
                                     <p>Maksymalna liczba pracowników</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pt-3 pb-2 mb-3 row">
+                        <div class="col-md-4">
+                            <div class="content-box shadow">
+                                <div class="info">
+                                    <h3>{{ businessInfo.Ranks }}</h3>
+                                    <span>Stanowisk</span>
+                                    <p>Liczba stanowisk w biznesie</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="content-box shadow">
+                                <div class="info">
+                                    <h3>{{ businessInfo.MaxRanksCount }}</h3>
+                                    <span>Stanowisk</span>
+                                    <p>Maksymalna liczba stanowisk</p>
                                 </div>
                             </div>
                         </div>

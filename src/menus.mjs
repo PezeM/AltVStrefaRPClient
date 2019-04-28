@@ -20,10 +20,6 @@ alt.onServer('openBankMenu', (bankAccountInformations) => {
     }
 
     menusManager.openMenu('openBankMenuView', true, true, bankAccountInformations);
-    // menusManager.menusView.emit('openBankMenuView', bankAccountInformations);
-    // showUiAndFreezePlayer(false);
-    // menusView.focus();
-    // alt.showCursor(true);
 });
 
 alt.onServer('updateBankMoneyWithNotification', (notificationMessage, money) => {
@@ -62,7 +58,6 @@ menusManager.onUiEvent('showNotification', (type, title, message, time) => {
 });
 
 // Business menu
-
 alt.onServer('openBusinessMenu', (businessInfo) => {
     alt.log(`BusinessInfo type: ${typeof businessInfo} data: ${JSON.stringify(businessInfo)}`);
     menusManager.openMenu('openBusinessMenu', true, true, businessInfo);
@@ -85,24 +80,6 @@ alt.onServer('successfullyUpdatedEmployeeRank', (employeeId, newRankId) => {
         menusManager.menusView.emit('successfullyUpdatedEmployeeRank', employeeId, newRankId);
 
     mainUi.showCefNotification(1, "Zaktualizowano pracownika", "Pomyślnie zaktualizowano stanowiska pracownika.", 5000);
-});
-
-alt.onServer('successfullyInvitedNewEmployee', () => {
-    mainUi.showCefNotification(1, "Wysłano ofertę", "Pomyślnie wysłano zaproszenie do biznesu.", 5000);
-});
-
-alt.onServer('successfullyUpdatedRankPermissions', () => {
-    if (menusManager.viewOpened)
-        menusManager.menusView.emit('successfullyUpdatedRankPermissions');
-
-    mainUi.showCefNotification(1, "Zaktualizowano stanowisko", "Pomyślnie zaktualizowano stanowisko.", 5000);
-});
-
-alt.onServer('successfullyAddedNewRole', () => {
-    if (menusManager.viewOpened)
-        menusManager.menusView.emit('successfullyAddedNewRole');
-
-    mainUi.showCefNotification(1, "Dodano stanowisko", "Pomyślnie dodano nowe stanowisko do biznesu.", 6000);
 });
 
 menusManager.menusView.on('getBusinessEmployees', (businessId) => {

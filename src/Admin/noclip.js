@@ -124,7 +124,7 @@ alt.on('update', () => {
 });
 
 alt.on('keydown', (key) => {
-    if (chat.isOpen || menusManager.viewOpened) return;
+    if (chat.isOpen() || menusManager.viewOpened) return;
 
     if (key == 0x69) { // NUM PAD 9 KEY
         toggleFlying();

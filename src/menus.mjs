@@ -66,15 +66,11 @@ menusManager.onUiEvent('showNotification', (type, title, message, time) => {
 alt.onServer('openBusinessMenu', (businessInfo) => {
     alt.log(`BusinessInfo type: ${typeof businessInfo} data: ${JSON.stringify(businessInfo)}`);
     menusManager.openMenu('openBusinessMenu', true, true, businessInfo);
-    // menusView.emit('openBusinessMenu', businessInfo);
-    // showUiAndFreezePlayer(false);
-    // menusView.focus();
-    // alt.showCursor(true);
 });
 
-alt.onServer('populateBusinessEmployees', (employeesInfo) => {
-    alt.log(`Business employess info type: ${typeof employeesInfo} data: ${JSON.stringify(employeesInfo)}`);
-    menusManager.menusView.emit('populateBusinessEmployees', employeesInfo);
+alt.onServer('populateEmployeeRanks', (employeesRanks) => {
+    alt.log(`Business employess info type: ${typeof employeesRanks} data: ${JSON.stringify(employeesRanks)}`);
+    menusManager.menusView.emit('populateEmployeeRanks', employeesRanks);
 });
 
 alt.onServer('successfullyUpdatedEmployeeRank', (employeeId, newRankId) => {

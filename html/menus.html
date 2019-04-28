@@ -470,17 +470,19 @@
                                     <th>Id</th>
                                     <th>Imię</th>
                                     <th>Nazwisko</th>
+                                    <th>Wiek</th>
                                     <th>Płeć</th>
                                     <th>Rola</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr v-for="(employee, index) in employeesInfo.BusinessEmployees"
+                                <tr v-for="(employee, index) in businessInfo.Employees"
                                     @click="showEmployeeInfo(employee.Id)">
                                     <td>{{ index + 1}}</td>
                                     <td>{{ employee.Id }}</td>
                                     <td>{{ employee.Name }}</td>
                                     <td>{{ employee.LastName }}</td>
+                                    <td>{{ employee.Age }}</td>
                                     <td v-if="employee.Gender == 0">M</td>
                                     <td v-else>K</td>
                                     <td>{{ employee.RankName }}</td>

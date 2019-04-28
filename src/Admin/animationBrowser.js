@@ -545,7 +545,7 @@ alt.on('update', () => {
 });
 
 alt.on('keydown', (key) => {
-    if (chat.isOpen || menusManager.viewOpened) return;
+    if (chat.isOpen() || menusManager.viewOpened) return;
 
     if (key == 0x67) { // NUM PAD 7 KEY
         if (animPlayer == null) {

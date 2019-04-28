@@ -17,6 +17,7 @@ var exampleJson = {
             "Id": 3,
             "Name": "2",
             "LastName": "2",
+            "Age": 10,
             "Gender": 0,
             "RankId": 5,
             "RankName": "Właściciel"
@@ -26,11 +27,9 @@ var exampleJson = {
 
 var exampleJsonEmployess = {
     "BusinessRanks": [
-        { "Id": 5, "IsDefaultRank": false, "RankName": "W�a�ciciel" },
-        { "Id": 6, "IsDefaultRank": true, "RankName": "Pracownik" }
-    ], "BusinessEmployees": [
-        { "Id": 3, "Name": "2", "LastName": "2", "Age": 10, "Gender": 0, "RankId": 5, "RankName": "W�a�ciciel" }
-    ]
+        { "Id": 5, "IsDefaultRank": false, "IsOwnerRank": true, "RankName": "Właściciel" },
+        { "Id": 6, "IsDefaultRank": true, "IsOwnerRank": false, "RankName": "Pracownik" }
+    ],
 }
 
 Vue.component('v-select', VueSelect.VueSelect)
@@ -40,7 +39,7 @@ var businessApp = new Vue({
     data: {
         businessMenuVisible: false,
         businessInfo: null,
-        employeesInfo: null,
+        employeesRanksInfo: null,
         currentMenuVisible: "mainPage",
         selectedEmployee: null,
         newRank: 0,
@@ -85,33 +84,33 @@ var businessApp = new Vue({
             }
             console.log(pageName);
         },
-        populateBusinessEmployees: function (employeesInfo) {
+        populateEmployeeRanks: function (employeesInfo) {
             if (employeesInfo !== null) {
-                this.employeesInfo = JSON.parse(employeesInfo);
+                this.employeesRanksInfo = JSON.parse(employeesInfo);
                 this.currentMenuVisible = 'employeesPage';
 
-                console.log(`Opened business employees page with data: ${JSON.stringify(this.employeesInfo)}`);
+                console.log(`Opened business employees page with data: ${JSON.stringify(this.employeesRanksInfo)}`);
             }
             else {
                 alt.emit('closeBusinessMenu');
             }
         },
-        populateBusinessEmployeesTest: function () {
+        populateEmployeeRanksTest: function () {
             this.businessInfo = exampleJson;
-            this.employeesInfo = exampleJsonEmployess;
+            this.employeesRanksInfo = exampleJsonEmployess;
             this.businessMenuVisible = true;
             this.currentMenuVisible = 'employeesPage';
 
-            console.log(`Opened business employees page with data: ${JSON.stringify(this.employeesInfo)}`);
+            console.log(`Opened business employees page with data: ${JSON.stringify(this.employeesRanksInfo)}`);
         },
         showEmployeeInfo: function (employeeId) {
-            var employee = this.employeesInfo.BusinessEmployees.find(e => e.Id == employeeId);
+            var employee = this.businessInfo.Employees.find(e => e.Id == employeeId);
             if (employee == null) {
                 alt.emit('showNotification', 3, "Błąd", 'Wystąpił błąd. Nie znaleziono takiego pracownika.', 7000);
                 return;
             }
             this.selectedEmployee = employee;
-            this.newRank = this.employeesInfo.BusinessRanks.find(e => e.Id == this.selectedEmployee.RankId);
+            this.newRank = this.employeesRanksInfo.BusinessRanks.find(e => e.Id == this.selectedEmployee.RankId);
             console.log(JSON.stringify(this.selectedEmployee));
             setTimeout(() => {
                 $('#employeeInfoModal').modal({
@@ -134,14 +133,13 @@ var businessApp = new Vue({
                 return;
             }
 
-            console.log(this.newRank.Id);
             alt.emit('updateEmployeeRank', this.selectedEmployee.Id, this.newRank.Id, this.businessInfo.BusinessId);
         },
         updateEmployeeRank: function (employeeId, newRankId) {
             console.log(`Changing employee ${employeeId} to new rank id: ${newRankId}`);
-            if (!this.employeesInfo.BusinessEmployees) return;
+            if (!this.businessInfo.Employees) return;
 
-            var employee = this.employeesInfo.BusinessEmployees.find(e => e.Id == employeeId);
+            var employee = this.businessInfo.Employees.find(e => e.Id == employeeId);
             if (employee == null) {
                 alt.emit('showNotification', 3, "Błąd", 'Wystąpił błąd podczas wczytywania zmian.', 6000);
                 this.closeEmployeeInfo();
@@ -149,23 +147,23 @@ var businessApp = new Vue({
             }
 
             Vue.set(employee, 'RankId', newRankId);
-            Vue.set(employee, 'RankName', this.employeesInfo.BusinessRanks.find(r => r.Id == newRankId).RankName);
+            Vue.set(employee, 'RankName', this.employeesRanksInfo.BusinessRanks.find(r => r.Id == newRankId).RankName);
             console.log('Updated rank. New employee: ' + JSON.stringify(employee));
 
             this.closeEmployeeInfo();
         },
         openNewEmployeeModal: function () {
-            this.newEmployee = {};
-            this.newEmployee.Name = "";
-            this.newEmployee.LastName = "";
+            this.newEmployee = {
+                Name: "",
+                LastName: ""
+            };
+
             setTimeout(() => {
                 $('#addEmployeeModal').modal({
                     backdrop: 'static',
                     keyboard: false
                 });
             }, 0);
-            // Show modal with option to add new employee
-            // Adding by Name and LastName
         },
         addNewEmployee: function () {
             if (this.newEmployee === null || this.newEmployee.Name.length < 1 || this.newEmployee.LastName.length < 1 || this.businessInfo == null) {
@@ -188,7 +186,7 @@ var businessApp = new Vue({
             return this.businessInfo.CreatedAt.substr(0, this.businessInfo.CreatedAt.indexOf('T'));
         },
         getBusinessRanks: function () {
-            return this.employeesInfo.BusinessRanks;
+            return this.employeesRanksInfo.BusinessRanks;
         },
     }
 });
@@ -198,8 +196,8 @@ alt.on('openBusinessMenu', (businessInfo) => {
     businessApp.showBusinessMenu(businessInfo);
 });
 
-alt.on('populateBusinessEmployees', (employeesInfo) => {
-    businessApp.populateBusinessEmployees(employeesInfo);
+alt.on('populateEmployeeRanks', (employeesRanks) => {
+    businessApp.populateEmployeeRanks(employeesRanks);
 });
 
 alt.on('successfullyUpdatedEmployeeRank', (employeeId, newRankId) => {

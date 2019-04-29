@@ -10,7 +10,6 @@ class _MainUi {
     }
 
     onServerEvent(eventName, callback) {
-        alt.log(`Add server event named ${eventName} with options: ${JSON.stringify(callback)}`);
         alt.onServer(eventName, callback);
     }
 

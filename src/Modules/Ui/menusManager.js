@@ -11,7 +11,6 @@ class _MenusManager {
     }
 
     onServerEvent(eventName, callback) {
-        alt.log(`Add server event named ${eventName} with options: ${JSON.stringify(callback)}`);
         alt.onServer(eventName, callback);
     }
 
@@ -44,6 +43,19 @@ class _MenusManager {
         this.menusView.focus();
         this.viewOpened = true;
         alt.showCursor(true);
+    }
+
+    closeMenu(showUi = true, unFreezePlayer = true, hideCursor = true) {
+        if (showUi && unFreezePlayer) {
+            showUiAndFreezePlayer(showUi);
+        } else if (showUi) {
+            showUi(showUi)
+        } else if (unFreezePlayer) {
+            game.freezeEntityPosition(alt.getLocalPlayer().scriptID, true);
+        }
+        alt.showCursor(!hideCursor);
+
+        this.viewOpened = false;
     }
 }
 

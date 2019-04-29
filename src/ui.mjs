@@ -22,7 +22,7 @@ let cursorShown = false;
 const localPlayer = alt.getLocalPlayer();
 const localPlayerId = localPlayer.scriptID;
 let animations = new Animations();
-let zoneNames = new ZoneNames();
+let zoneNames = new ZoneNames(localPlayerId);
 
 // Raycasting
 let entityHit = null;

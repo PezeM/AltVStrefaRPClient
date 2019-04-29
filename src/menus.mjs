@@ -12,7 +12,7 @@ let bank = new Bank();
 let business = new Business();
 
 // Bank menu
-alt.onServer('openBankMenu', (bankAccountInformations) => {
+menusManager.onServerEvent('openBankMenu', (bankAccountInformations) => {
     alt.log(`BankAccountInformation type: ${typeof bankAccountInformations} : ${JSON.stringify(bankAccountInformations)}`);
     if (bankAccountInformations == null) {
         alt.log('openBankMenu -> BankAccountInformation was null');
@@ -22,19 +22,17 @@ alt.onServer('openBankMenu', (bankAccountInformations) => {
     menusManager.openMenu('openBankMenuView', true, true, bankAccountInformations);
 });
 
-alt.onServer('updateBankMoneyWithNotification', (notificationMessage, money) => {
-    menusManager.menusView.emit('updateBankMoney', money);
+menusManager.onServerEvent('updateBankMoneyWithNotification', (notificationMessage, money) => {
+    menusManager.emitUiEvent('updateBankMoney', money);
     mainUi.showCefNotification(1, "Aktualizacja", notificationMessage, 6000);
 });
 
-alt.onServer('openTransactionHistory', (transactionHistory) => {
-    menusManager.menusView.emit('openTransactionHistory', transactionHistory);
+menusManager.onServerEvent('openTransactionHistory', (transactionHistory) => {
+    menusManager.emitUiEvent('openTransactionHistory', transactionHistory);
 });
 
 menusManager.onUiEvent('closeBankMenu', () => {
-    showUiAndFreezePlayer(true);
-    alt.showCursor(false);
-    menusManager.viewOpened = false;
+    menusManager.closeMenu();
 });
 
 menusManager.onUiEvent('getTransferHistoryInfo', () => {
@@ -58,58 +56,56 @@ menusManager.onUiEvent('showNotification', (type, title, message, time) => {
 });
 
 // Business menu
-alt.onServer('openBusinessMenu', (businessInfo) => {
+menusManager.onServerEvent('openBusinessMenu', (businessInfo) => {
     alt.log(`BusinessInfo type: ${typeof businessInfo} data: ${JSON.stringify(businessInfo)}`);
     menusManager.openMenu('openBusinessMenu', true, true, businessInfo);
 });
 
-alt.onServer('populateEmployeeRanks', (employeesRanks) => {
+menusManager.onServerEvent('populateEmployeeRanks', (employeesRanks) => {
     alt.log(`Business employess info type: ${typeof employeesRanks} data: ${JSON.stringify(employeesRanks)}`);
     if (menusManager.viewOpened)
         menusManager.menusView.emit('populateEmployeeRanks', employeesRanks);
 });
 
-alt.onServer('populateBusinessRanksInfo', (permissionsInfo) => {
+menusManager.onServerEvent('populateBusinessRanksInfo', (permissionsInfo) => {
     alt.log(`Business permissions: ${typeof permissionsInfo} data: ${JSON.stringify(permissionsInfo)}`);
     if (menusManager.viewOpened)
         menusManager.menusView.emit('populateBusinessRanksInfo', permissionsInfo);
 });
 
-alt.onServer('successfullyUpdatedEmployeeRank', (employeeId, newRankId) => {
+menusManager.onServerEvent('successfullyUpdatedEmployeeRank', (employeeId, newRankId) => {
     if (menusManager.viewOpened)
         menusManager.menusView.emit('successfullyUpdatedEmployeeRank', employeeId, newRankId);
 
     mainUi.showCefNotification(1, "Zaktualizowano pracownika", "Pomyślnie zaktualizowano stanowiska pracownika.", 5000);
 });
 
-menusManager.menusView.on('getBusinessEmployees', (businessId) => {
+menusManager.onUiEvent('getBusinessEmployees', (businessId) => {
     business.getBusinessEmployees(businessId);
 });
 
-menusManager.menusView.on('updateEmployeeRank', (employeeId, newRankId, businessId) => {
+menusManager.onUiEvent('updateEmployeeRank', (employeeId, newRankId, businessId) => {
     business.updateEmployeeRank(employeeId, newRankId, businessId);
 });
 
-menusManager.menusView.on('addNewEmployee', (name, lastName, businessId) => {
+menusManager.onUiEvent('addNewEmployee', (name, lastName, businessId) => {
     business.addNewEmployee(name, lastName, businessId);
 });
 
-menusManager.menusView.on('getBusinessRolesInfo', (businessId) => {
+menusManager.onUiEvent('getBusinessRolesInfo', (businessId) => {
     business.getBusinessRolesInfo(businessId);
 });
 
-menusManager.menusView.on('updateBusinessRank', (rank, businessId) => {
+menusManager.onUiEvent('updateBusinessRank', (rank, businessId) => {
     business.updateBusinessRank(rank, businessId);
 });
 
-menusManager.menusView.on('addNewRole', (newRole, businessId) => {
+menusManager.onUiEvent('addNewRole', (newRole, businessId) => {
     business.addNewRole(newRole, businessId);
 });
 
-menusManager.menusView.on('closeBusinessMenu', () => {
-    showUiAndFreezePlayer(true);
-    alt.showCursor(false);
-    menusManager.viewOpened = false;
+menusManager.onUiEvent('closeBusinessMenu', () => {
+    menusManager.closeMenu();
 });
 
 

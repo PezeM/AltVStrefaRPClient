@@ -257,37 +257,28 @@ alt.on('update', () => {
 
         const playerPosition = game.getEntityCoords(playerId, true);
         var startTime = new Date().getTime();
-        for (var i = 0; i < objects.length; i++) {
+
+        for (const key in sittable) {
+            if (!sittable.hasOwnProperty(key)) continue;
             var closestBench = game.getClosestObjectOfType(playerPosition.x, playerPosition.y, playerPosition.z,
-                5, game.getHashKey(objects[i]), false, false, false);
+                5, game.getHashKey(key), false, false, false)
             if (closestBench == 0) continue;
 
             var closestBenchCoords = game.getEntityCoords(closestBench, true);
             if (game.getDistanceBetweenCoords(closestBenchCoords.x, closestBenchCoords.y, closestBenchCoords.z,
                 playerPosition.x, playerPosition.y, playerPosition.z, false) > distance) continue;
 
-            alt.log('Closest bench: ' + JSON.stringify(closestBench) + ' position ' + JSON.stringify(closestBenchCoords) + ' model ' + objects[i]);
+            alt.log('Closest bench model: ' + key);
 
-            var found = false;
-            var objectData = null;
-            for (const key in sittable) {
-                if (!sittable.hasOwnProperty(key)) continue;
-
-                if (key === objects[i]) {
-                    objectData = sittable[key];
-                    found = true;
-                    break;
-                }
-            }
-
-            if (found && !sitting) {
+            if (!sitting) {
                 alt.log('Found bench with id: ' + closestBench + ' in ' + (new Date().getTime() - startTime) + ' ms.');
-                tryToSit(closestBench, objectData, closestBenchCoords);
+                tryToSit(closestBench, sittable[key], closestBenchCoords);
                 return;
             }
         }
     }
 });
+
 
 function tryToSit(objectId, objectData, coords) {
     currentSittingObjectId = objectId;

@@ -133,7 +133,6 @@ alt.on('update', () => {
 });
 
 mainUi.onServerEvent('showNotification', (type, title, message, duration, icon) => {
-    alt.log('Adding server event named showNotification');
     mainUi.showCefNotification(type, title, message, duration, icon == null ? true : icon);
 });
 

@@ -65,7 +65,10 @@ export function drawText(text, position, font, color, scale, outline = true, cen
 export function draw3DText(text, position, font, color, scale, outline = true) {
     var camCoord = game.getGameplayCamCoords();
     var distance = game.getDistanceBetweenCoords(position[0], position[1], position[2], camCoord.x, camCoord.y, camCoord.z, true);
-    var newScale = ((1 / distance) * 2) * (1 / game.getGameplayCamFov()) * 100;
+
+    if (distance > 20) distance = 20;
+    let scaleFix = 1 - (distance / 20);
+    scale = scale * scaleFix;
 
     game.setTextScale(scale, scale);
     game.setTextFont(font);
@@ -77,8 +80,6 @@ export function draw3DText(text, position, font, color, scale, outline = true) {
 
     if (outline)
         game.setTextOutline();
-
-    game.setTextCentre(1);
 
     game.setDrawOrigin(position[0], position[1], position[2], 0);
     game.beginTextCommandDisplayText("STRING");

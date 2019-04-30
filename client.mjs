@@ -11,15 +11,32 @@ import * as noclipModule from 'src/Admin/noclip.js';
 import * as adminTeleports from 'src/Admin/adminTeleports.js';
 import * as animationBrowser from 'src/Admin/animationBrowser.js';
 import * as sitting from 'src/Environment/sitting.js';
+import { drawText } from 'src/Helpers/uiHelper.js';
 
 let localPlayer = alt.getLocalPlayer();
-
+let timeStart = Date.now();
+let frame = 0, fps = 0, showFps = true, timeStart = Date.now();
 alt.log('Client side script loaded');
 
 alt.on('update', () => {
 	// DEV Constant running
 	if (game.isPedSprinting(localPlayer.scriptID))
 		game.restorePlayerStamina(localPlayer.scriptID, 100);
+
+	// Showing fps
+	if (typeof showFps !== 'undefined' && showFps) {
+		frame++;
+
+		let timeNow = Date.now() - timeStart;
+
+		fps = Math.round(frame / (timeNow / 1000.0));
+		drawText(fps.toString(), [0.01, 0.01], 4, [255, 255, 255, 128], 0.4, false, false);
+
+		if (frame > 130) {
+			frame = 0;
+			timeStart = Date.now();
+		}
+	}
 });
 
 alt.onServer('setPedIntoVehicle', () => {

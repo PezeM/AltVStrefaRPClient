@@ -82,6 +82,6 @@ export default class Business {
         if (typeof businessId !== 'number' || typeof employeeId !== 'number')
             return;
 
-        alt.emitServer('DeleteRole', employeeId, businessId);
+        alt.emitServer('DeleteEmployee', employeeId, businessId);
     }
 }

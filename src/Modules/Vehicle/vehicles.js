@@ -8,22 +8,24 @@ import { drawText, draw3DText } from 'src/Helpers/uiHelper.js';
 let localPlayer = alt.getLocalPlayer();
 
 alt.on('update', () => {
-    if (game.isPedInAnyVehicle(localPlayer.scriptID, true) && localPlayer.vehicle) {
+    if (game.isPedInAnyVehicle(localPlayer.scriptID, false) && localPlayer.vehicle) {
         drawText(`KM/H`, [0.9, 0.83], 4, [255, 255, 255, 255], 0.6, true, false);
         drawText(`~r~${(game.getEntitySpeed(localPlayer.vehicle.scriptID) * 3.6).toFixed(0)}`, [0.9, 0.86], 4, [255, 255, 255, 255], 0.6, true, false);
 
         if (game.isHudHidden())
             game.displayHud(true);
 
-        if (game.isRadarHidden())
-            game.displayRadar(true);
+        // if (game.isRadarHidden() || !game.isRadarEnabled())
+        //     game.displayRadar(true);
+
     } else {
         if (!game.isHudHidden()) {
             game.displayHud(false);
         }
-        if (!game.isRadarHidden()) {
-            game.displayRadar(false);
-        }
+
+        // if (!game.isRadarHidden() || game.isRadarEnabled()) {
+        //     game.displayRadar(false);
+        // }
     }
 
 

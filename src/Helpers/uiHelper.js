@@ -44,7 +44,6 @@ function streamTextureDict(dict) {
 }
 
 export function drawText(text, position, font, color, scale, outline = true, center = true) {
-    // alt.nextTick(() => {
     game.setTextFont(font);
     game.setTextProportional(0);
     game.setTextScale(scale, scale);
@@ -59,24 +58,23 @@ export function drawText(text, position, font, color, scale, outline = true, cen
     game.beginTextCommandDisplayText("STRING");
     game.addTextComponentSubstringPlayerName(text);
     game.endTextCommandDisplayText(position[0], position[1]);
-    // });
 }
 
-export function draw3DText(text, position, font, color, scale, outline = true) {
+export function draw3DText(text, position, font, color, scale, outline = true, drawBackground = true, backgroundColor = [0, 0, 0, 60]) {
     var camCoord = game.getGameplayCamCoords();
     var distance = game.getDistanceBetweenCoords(position[0], position[1], position[2], camCoord.x, camCoord.y, camCoord.z, true);
 
     if (distance > 20) distance = 20;
-    let scaleFix = 1 - (distance / 20);
-    scale = scale * scaleFix;
+    scale *= 1 - (distance / 20);
 
     game.setTextScale(scale, scale);
     game.setTextFont(font);
     game.setTextProportional(1);
     game.setTextColour(color[0], color[1], color[2], color[3]);
-    game.setTextDropshadow(0, 0, 0, 0, 255);
+    game.setTextDropshadow(10, 0, 0, 0, 255);
     game.setTextEdge(2, 0, 0, 0, 150);
     game.setTextDropShadow();
+    game.setTextCentre(1);
 
     if (outline)
         game.setTextOutline();
@@ -84,8 +82,25 @@ export function draw3DText(text, position, font, color, scale, outline = true) {
     game.setDrawOrigin(position[0], position[1], position[2], 0);
     game.beginTextCommandDisplayText("STRING");
     game.addTextComponentSubstringPlayerName(text);
+
     game.endTextCommandDisplayText(0, 0);
+
+    if (drawBackground)
+        drawRectangleBackground(text, scale, font, backgroundColor);
+
     game.clearDrawOrigin();
+}
+
+export function drawRectangleBackground(text, scale, font, backgroundColor) {
+    game.beginTextCommandWidth("STRING");
+    game.addTextComponentSubstringPlayerName(text);
+    game.setTextFont(font);
+    game.setTextScale(scale, scale);
+
+    var height = game.getTextScaleHeight(1.2 * scale, font);
+    var width = game.endTextCommandGetWidth(font);
+
+    game.drawRect(0, 0 + scale / 25, width, height, backgroundColor[0], backgroundColor[1], backgroundColor[2], backgroundColor[3]);
 }
 
 export function getMinimapAnchor() {

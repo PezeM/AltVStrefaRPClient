@@ -30,6 +30,16 @@ const controlsIds = {
 };
 
 alt.on('update', () => {
+	var coords = game.getEntityCoords(localPlayer.scriptID, true);
+	var vehicle = game.getClosestVehicle(coords.x, coords.y, coords.z, 80, 0, 71);
+	if (vehicle == 0) return;
+	let vehiclePosition = game.getEntityCoords(vehicle, true);
+
+	draw3DText('Jakis testowy dluzszy tekst jeszcze bardziej id: ' + vehicle, [vehiclePosition.x, vehiclePosition.y, vehiclePosition.z + 1],
+		4, [255, 255, 255, 200], 0.5, true);
+});
+
+alt.on('update', () => {
 	// DEV Constant running
 	if (game.isPedSprinting(localPlayer.scriptID))
 		game.restorePlayerStamina(localPlayer.scriptID, 100);
@@ -104,10 +114,6 @@ alt.on('keydown', (key) => {
 	if (chat.isOpen() || menusManager.viewOpened) return;
 
 	switch (key) {
-		case controlsIds.H:
-			if (localPlayer.vehicle == null || game.isEntityDead(localPlayer.scriptID) || new Date().getTime() - lastKeyPressedTime < 500) return;
-			// toggleLightState();
-			break;
 		case controlsIds.E:
 			if (localPlayer.vehicle != null || game.isEntityDead(localPlayer.scriptID) || new Date().getTime() - lastKeyPressedTime < 750) return;
 			lastKeyPressedTime = new Date().getTime();
@@ -120,14 +126,6 @@ alt.on('keydown', (key) => {
 			break;
 	}
 });
-
-function toggleLightState() {
-	const vehicle = localPlayer.vehicle;
-	alt.log(`Player vehicle: ${JSON.stringify(vehicle)}`);
-	if (!isDriver(vehicle, localPlayer)) return;
-	let lights = game.getVehicleLightsState(vehicle.scriptID, true, true);
-	alt.log('LIGHT: ' + JSON.stringify(lights));
-}
 
 alt.onServer('toggleLockState', (state) => {
 	var startTime = Date.now();

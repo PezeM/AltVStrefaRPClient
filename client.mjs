@@ -11,8 +11,8 @@ import * as noclipModule from 'src/Admin/noclip.js';
 import * as adminTeleports from 'src/Admin/adminTeleports.js';
 import * as animationBrowser from 'src/Admin/animationBrowser.js';
 import * as sitting from 'src/Environment/sitting.js';
+import * as vehicles from 'src/Modules/Vehicle/vehicles.js';
 import { drawText, draw3DText } from 'src/Helpers/uiHelper.js';
-import { isDriver } from 'src/Helpers/playerHelpers.js';
 import menusManager from 'src/Modules/Ui/menusManager.js';
 
 let localPlayer = alt.getLocalPlayer();
@@ -35,7 +35,7 @@ alt.on('update', () => {
 	if (vehicle == 0) return;
 	let vehiclePosition = game.getEntityCoords(vehicle, true);
 
-	draw3DText('Jakis testowy dluzszy tekst jeszcze bardziej id: ' + vehicle, [vehiclePosition.x, vehiclePosition.y, vehiclePosition.z + 1],
+	draw3DText('ID: ' + vehicle, [vehiclePosition.x, vehiclePosition.y, vehiclePosition.z + 1],
 		4, [255, 255, 255, 200], 0.5, true);
 });
 
@@ -323,9 +323,6 @@ alt.on('connectionComplete', (mapChanged) => {
 		game.loadSpDlcMaps();
 		alt.log('Map store reloaded');
 	}
-	alt.nextTick(() => {
-		alt.setCamFrozen(true);
-	});
 });
 
 alt.on('consoleCommand', (command, ...args) => {

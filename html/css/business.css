@@ -33,6 +33,20 @@
     font-family: "Roboto";
 }
 
+#businessApp .delete-box {
+    background-color: #b71c1c;
+}
+
+#businessApp .delete-box p {
+    color: #e0e0e0;
+}
+
+#businessApp .delete-box:hover {
+    cursor: pointer;
+    background-color: #8b1313;
+    transition: background-color 0.3s ease;
+}
+
 .content-box .business-info {
     float: left;
     color: rgb(235, 232, 232);

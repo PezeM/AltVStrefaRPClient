@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="css/bank.css">
     <link rel="stylesheet" href="packages/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
     <link rel="stylesheet" href="css/menus.css">
     <link rel="stylesheet" href="css/business.css">
 
@@ -321,12 +322,53 @@
                 <div class="col-md-12 ml-sm-auto col-lg-12 px-4" v-if="currentMenuVisible == 'employeesPage'">
 
                     <div class="row">
-                        <div class="col-md-12 pt-3 pb-2 mb-3">
+                        <div class="col-md-6 pt-3 pb-2 mb-3">
                             <div class="content-box shadow box-hover" @click="openNewEmployeeModal">
                                 <div class="business-info">
                                     <h3>Dodaj nowego pracownika</h3>
                                     <p>{{ businessInfo.EmployeesCount }} / {{ businessInfo.MaxMembersCount }}
                                         Pracowników</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 pt-3 pb-2 mb-3">
+                            <div class="content-box shadow box-hover delete-box" @click="openDeleteEmployeeModal">
+                                <div class="business-info">
+                                    <h3>Usuń pracownika</h3>
+                                    <p>Usuń wybranego pracownika</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Delete employee modal -->
+                    <div class="modal fade" id="deleteEmployeeModal" v-if="deleteEmployeeModalVisible">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="modalCenterTitle">
+                                        Usuwanie pracowników</h5>
+                                    <button type="button" class="close" @click="closeDeleteEmployeeModal">
+                                        <span>&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="form-group row">
+                                        <label class="col-sm-4 col-form-label">Wybierz pracownika</label>
+                                        <div class="col-sm-8">
+                                            <v-select v-model="employeeToDelete" label="FullName"
+                                                :options="getAllEmployees" :clearable="false" :filterable="true">
+                                            </v-select>
+                                            <span>employeeToDelete: {{ employeeToDelete }}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary"
+                                        @click="closeDeleteEmployeeModal">Zamknij</button>
+                                    <button type="button" class="btn btn-danger" @click="deleteEmployee">Usuń
+                                        pracownika</button>
                                 </div>
                             </div>
                         </div>
@@ -470,15 +512,13 @@
 
                 <div class="col-md-12 ml-sm-auto col-lg-12 px-4" v-if="currentMenuVisible == 'rolesPage'">
                     <!-- Add employee modal -->
-                    <div class="modal fade" id="addRoleModal" tabindex="-1" role="dialog" aria-hidden="true"
-                        v-if="newRole">
-                        <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal fade" id="addRoleModal" v-if="newRole">
+                        <div class="modal-dialog modal-dialog-centered">
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <h5 class="modal-title" id="modalCenterTitle">Dodaj nowe stanowisko</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"
-                                        @click="closeNewRoleModal">
-                                        <span aria-hidden="true">&times;</span>
+                                    <button type="button" class="close" @click="closeNewRoleModal">
+                                        <span>&times;</span>
                                     </button>
                                 </div>
                                 <div class="modal-body">
@@ -526,7 +566,7 @@
                                     </div>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                                    <button type="button" class="btn btn-secondary"
                                         @click="closeNewRoleModal">Zamknij</button>
                                     <button type="button" class="btn btn-primary" @click="addNewRole">Dodaj
                                         pracownika</button>
@@ -536,15 +576,13 @@
                     </div>
 
                     <!-- Business rank info modal -->
-                    <div class="modal fade" id="businessRankInfoModal" tabindex="-1" role="dialog" aria-hidden="true"
-                        v-if="selectedRank">
-                        <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal fade" id="businessRankInfoModal" v-if="selectedRank">
+                        <div class="modal-dialog modal-dialog-centered">
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <h5 class="modal-title" id="modalCenterTitle">{{ selectedRank.RankName }}</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"
-                                        @click="closeRankInfo">
-                                        <span aria-hidden="true">&times;</span>
+                                    <button type="button" class="close" @click="closeRankInfo">
+                                        <span>&times;</span>
                                     </button>
                                 </div>
                                 <div class="modal-body">
@@ -594,12 +632,51 @@
                         </div>
                     </div>
 
+                    <!-- Delete role modal -->
+                    <div class="modal fade" id="deleteRoleModal" v-if="deleteRoleModalVisible">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="modalCenterTitle">Usuwanie stanowiska</h5>
+                                    <button type="button" class="close" @click="closeDeleteRoleModal">
+                                        <span>&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="form-group row">
+                                        <label class="col-sm-6 col-form-label">Wybierz stanowisko</label>
+                                        <div class="col-sm-6">
+                                            <v-select v-model="rankToDelete" label="RankName" :options="getAllRanks"
+                                                :clearable="false" :filterable="true">
+                                            </v-select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary"
+                                        @click="closeDeleteRoleModal">Zamknij</button>
+                                    <button type="button" class="btn btn-danger" @click="deleteRole">Usuń
+                                        stanowisko</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="row">
-                        <div class="col-md-12 pt-3 pb-2 mb-3">
+                        <div class="col-md-6 pt-3 pb-2 mb-3">
                             <div class="content-box shadow box-hover" @click="openNewRoleModal">
                                 <div class="business-info">
-                                    <h3>Dodaj nową rolę</h3>
+                                    <h3>Dodaj nową stanowisko</h3>
                                     <p>{{ businessInfo.Ranks }} / {{ businessInfo.MaxRanksCount }} stanowisk</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 pt-3 pb-2 mb-3">
+                            <div class="content-box shadow box-hover delete-box" @click="openDeleteRoleModal">
+                                <div class="business-info">
+                                    <h3>Usuń stanowisko</h3>
+                                    <p>Usuń wybrane stanowisko</p>
                                 </div>
                             </div>
                         </div>
@@ -723,8 +800,38 @@
                                 </div>
                             </div>
                         </div>
+
+                        <div class="col-md-4">
+                            <div class="content-box shadow delete-box" @click="showDeleteBusiness">
+                                <div class="info">
+                                    <h3>Usuń</h3>
+                                    <span>biznes</span>
+                                    <p>Permamentnie usuń biznes</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
+                    <!-- Business rank info modal -->
+                    <div class="modal fade" id="deletBusinessModal" v-if="showDeleteBusinessModal">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="modalCenterTitle">Czy na pewno chcesz usunąć biznes?
+                                    </h5>
+                                    <button type="button" class="close" @click="closeDeleteBusinessModal">
+                                        <span>&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary"
+                                        @click="closeDeleteBusinessModal">Zamknij</button>
+                                    <button type="button" class="btn btn-danger" @click="deleteBusiness">Usuń
+                                        biznes</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

@@ -57,6 +57,11 @@ var businessApp = new Vue({
         newRank: 0,
         newEmployee: null,
         newRole: null,
+        showDeleteBusinessModal: false,
+        deleteRoleModalVisible: false,
+        rankToDelete: null,
+        deleteEmployeeModalVisible: false,
+        employeeToDelete: null,
     },
     methods: {
         showBusinessMenu: function (businessInfo) {
@@ -195,6 +200,30 @@ var businessApp = new Vue({
             this.newEmployee = null;
             $('#addEmployeeModal').modal('hide');
         },
+        openDeleteEmployeeModal: function () {
+            this.deleteEmployeeModalVisible = true;
+
+            setTimeout(() => {
+                $('#deleteEmployeeModal').modal({
+                    backdrop: 'static',
+                    keyboard: false
+                });
+            }, 0);
+        },
+        closeDeleteEmployeeModal: function () {
+            this.deleteEmployeeModalVisible = false;
+            this.employeeToDelete = null;
+            $('#deleteEmployeeModal').modal('hide');
+        },
+        deleteEmployee: function () {
+            if (!this.employeeToDelete || typeof this.employeeToDelete === 'undefined' || this.businessInfo == null) {
+                this.closeDeleteEmployeeModal();
+                return;
+            }
+
+            alt.emit('deleteEmployee', this.employeeToDelete.Id, this.businessInfo.BusinessId);
+            this.closeDeleteEmployeeModal();
+        },
         populateBusinessRanksInfo: function (businessRanksInfo) {
             if (businessRanksInfo !== null) {
                 this.businessRanksInfo = JSON.parse(businessRanksInfo);
@@ -204,7 +233,7 @@ var businessApp = new Vue({
                 alt.emit('closeBusinessMenu');
             }
         },
-        populateEmployeeRanksTest: function () {
+        populateBusinessRanksTest: function () {
             this.businessInfo = exampleJson;
             this.employeesInfo = exampleJsonEmployess;
             this.businessRanksInfo = exampleRankInfo;
@@ -230,7 +259,6 @@ var businessApp = new Vue({
                 return;
             }
 
-            $("#saveRankChangesButton").addClass('disabled');
             alt.emit('updateBusinessRank', this.selectedRank, this.businessInfo.BusinessId);
             this.closeRankInfo();
         },
@@ -265,12 +293,63 @@ var businessApp = new Vue({
         addNewRole: function () {
             if (this.newRole === null || this.newRole.RankName.length < 3 || this.newRole.Permissions == null || this.businessInfo == null) {
                 alt.emit('showNotification', 3, "Błąd", 'Wystąpił błąd. Podano błędne dane nowego stanowiska.', 7000);
+                this.closeNewRoleModal();
                 return;
             }
 
             alt.emit('addNewRole', this.newRole, this.businessInfo.BusinessId);
             this.closeNewRoleModal();
         },
+        openDeleteRoleModal: function () {
+            this.deleteRoleModalVisible = true;
+            setTimeout(() => {
+                $('#deleteRoleModal').modal({
+                    backdrop: 'static',
+                    keyboard: false
+                });
+            }, 0);
+        },
+        closeDeleteRoleModal: function () {
+            this.deleteRoleModalVisible = false;
+            this.rankToDelete = null;
+            $('#deleteRoleModal').modal('hide');
+        },
+        deleteRole: function () {
+            if (this.rankToDelete == null || typeof this.rankToDelete == 'undefined' || this.businessInfo == null) {
+                this.closeDeleteRoleModal();
+                return;
+            }
+
+            alt.emit('deleteRole', this.rankToDelete.RankId, this.businessInfo.BusinessId);
+            this.closeDeleteRoleModal();
+        },
+        showDeleteBusiness: function () {
+            if (this.businessInfo) {
+                this.showDeleteBusinessModal = true;
+                setTimeout(() => {
+                    $('#deletBusinessModal').modal({
+                        backdrop: 'static',
+                        keyboard: false
+                    });
+                }, 0);
+            }
+        },
+        closeDeleteBusinessModal: function () {
+            this.showDeleteBusinessModal = false;
+            $('#deletBusinessModal').modal('hide');
+        },
+        deleteBusiness: function () {
+            if (this.businessInfo) {
+                if (typeof this.businessInfo.BusinessId === 'undefined') {
+                    alt.emit('showNotification', 3, "Błąd", 'Wystąpił błąd podczas pobierania ID biznesu.', 7000);
+                    this.closeDeleteBusinessModal();
+                    return;
+                }
+
+                alt.emit('deleteBusiness', this.businessInfo.BusinessId);
+                this.closeDeleteBusinessModal();
+            }
+        }
     },
     computed: {
         businessType: function () {
@@ -281,6 +360,17 @@ var businessApp = new Vue({
         },
         getBusinessRanks: function () {
             return this.employeesInfo.BusinessRanks;
+        },
+        getAllRanks: function () {
+            return this.businessRanksInfo;
+        },
+        getAllEmployees: function () {
+            let newEmploeeList = [];
+            this.employeesInfo.BusinessEmployees.forEach(employee => {
+                employee.FullName = employee.Name + ' ' + employee.LastName;
+                newEmploeeList.push(employee);
+            });
+            return newEmploeeList;
         },
     }
 });

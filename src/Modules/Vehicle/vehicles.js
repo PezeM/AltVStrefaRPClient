@@ -3,7 +3,7 @@
 
 import alt from 'alt';
 import game from 'natives';
-import { drawText } from 'src/Helpers/uiHelper.js';
+import { drawText, draw3DText } from 'src/Helpers/uiHelper.js';
 
 let localPlayer = alt.getLocalPlayer();
 
@@ -26,4 +26,12 @@ alt.on('update', () => {
         }
     }
 
+
+    var coords = game.getEntityCoords(localPlayer.scriptID, true);
+    var vehicle = game.getClosestVehicle(coords.x, coords.y, coords.z, 80, 0, 71);
+    if (vehicle == 0) return;
+    let vehiclePosition = game.getEntityCoords(vehicle, true);
+
+    draw3DText('ID: ' + vehicle, [vehiclePosition.x, vehiclePosition.y, vehiclePosition.z + 1],
+        4, [255, 255, 255, 200], 0.5, true);
 });

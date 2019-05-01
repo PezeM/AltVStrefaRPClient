@@ -63,4 +63,25 @@ export default class Business {
 
         alt.emitServer('AddNewRole', JSON.stringify(newRole), businessId);
     }
+
+    deleteBusiness(businessId) {
+        if (typeof businessId !== 'number')
+            return;
+
+        alt.emitServer('DeleteBusiness', businessId);
+    }
+
+    deleteRole(roleId, businessId) {
+        if (typeof businessId !== 'number' || typeof roleId !== 'number')
+            return;
+
+        alt.emitServer('DeleteRole', roleId, businessId);
+    }
+
+    deleteEmployee(employeeId, businessId) {
+        if (typeof businessId !== 'number' || typeof employeeId !== 'number')
+            return;
+
+        alt.emitServer('DeleteRole', employeeId, businessId);
+    }
 }

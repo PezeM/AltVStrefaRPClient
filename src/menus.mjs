@@ -104,6 +104,18 @@ menusManager.onUiEvent('addNewRole', (newRole, businessId) => {
     business.addNewRole(newRole, businessId);
 });
 
+menusManager.onUiEvent('deleteBusiness', (businessId) => {
+    business.deleteBusiness(businessId);
+});
+
+menusManager.onUiEvent('deleteRole', (rankId, businessId) => {
+    business.deleteRole(rankId, businessId)
+});
+
+menusManager.onUiEvent('deleteEmployee', (employeeId, businessId) => {
+    business.deleteEmployee(employeeId, businessId);
+});
+
 menusManager.onUiEvent('closeBusinessMenu', () => {
     menusManager.closeMenu();
 });

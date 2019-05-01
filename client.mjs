@@ -30,16 +30,6 @@ const controlsIds = {
 };
 
 alt.on('update', () => {
-	var coords = game.getEntityCoords(localPlayer.scriptID, true);
-	var vehicle = game.getClosestVehicle(coords.x, coords.y, coords.z, 80, 0, 71);
-	if (vehicle == 0) return;
-	let vehiclePosition = game.getEntityCoords(vehicle, true);
-
-	draw3DText('ID: ' + vehicle, [vehiclePosition.x, vehiclePosition.y, vehiclePosition.z + 1],
-		4, [255, 255, 255, 200], 0.5, true);
-});
-
-alt.on('update', () => {
 	// DEV Constant running
 	if (game.isPedSprinting(localPlayer.scriptID))
 		game.restorePlayerStamina(localPlayer.scriptID, 100);

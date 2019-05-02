@@ -8,24 +8,21 @@ import { drawText, draw3DText } from 'src/Helpers/uiHelper.js';
 let localPlayer = alt.getLocalPlayer();
 
 alt.on('update', () => {
-    if (game.isPedInAnyVehicle(localPlayer.scriptID, false) && localPlayer.vehicle) {
+    if (game.isPedInAnyVehicle(localPlayer.scriptID, false)) {
+        var vehicle = game.getVehiclePedIsIn(localPlayer.scriptID, false);
         drawText(`KM/H`, [0.9, 0.83], 4, [255, 255, 255, 255], 0.6, true, false);
-        drawText(`~r~${(game.getEntitySpeed(localPlayer.vehicle.scriptID) * 3.6).toFixed(0)}`, [0.9, 0.86], 4, [255, 255, 255, 255], 0.6, true, false);
+        drawText(`~r~${(game.getEntitySpeed(vehicle) * 3.6).toFixed(0)}`, [0.9, 0.86], 4, [255, 255, 255, 255], 0.6, true, false);
 
-        if (game.isHudHidden())
-            game.displayHud(true);
-
-        // if (game.isRadarHidden() || !game.isRadarEnabled())
-        //     game.displayRadar(true);
-
-    } else {
-        if (!game.isHudHidden()) {
-            game.displayHud(false);
+        if (game.isRadarHidden() || !game.isRadarEnabled()) {
+            alt.log('Radar was hidden, enabling it');
+            game.displayRadar(true);
         }
 
-        // if (!game.isRadarHidden() || game.isRadarEnabled()) {
-        //     game.displayRadar(false);
-        // }
+    } else {
+        if (!game.isRadarHidden() || game.isRadarEnabled()) {
+            alt.log('Radar was enabled, hiding it');
+            game.displayRadar(false);
+        }
     }
 
 
@@ -36,4 +33,8 @@ alt.on('update', () => {
 
     draw3DText('ID: ' + vehicle, [vehiclePosition.x, vehiclePosition.y, vehiclePosition.z + 1],
         4, [255, 255, 255, 200], 0.5, true);
+});
+
+alt.onServer('putIntoVehicle', veh => {
+    game.setPedIntoVehicle(localPlayer.scriptID, veh.getScriptID(), -1);
 });

@@ -30,7 +30,7 @@ export default class ZoneNames {
                 this.realZoneName = this.zoneNames[this.zoneNamesShort.indexOf(zoneName)];
             }
         } else {
-            alt.log('Radar is hidden or not enabled');
+            // alt.log('Radar is hidden or not enabled');
             this.streetName = null;
             this.realZoneName = null;
         }

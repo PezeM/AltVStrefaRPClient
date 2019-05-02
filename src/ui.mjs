@@ -4,7 +4,7 @@
 import alt from 'alt';
 import game from 'natives';
 import chat from 'chat';
-import { drawText, showUi } from 'src/Helpers/uiHelper.js';
+import { drawText, showUi, draw3DText } from 'src/Helpers/uiHelper.js';
 import { rotToDirection } from 'src/Helpers/mathHelper.js';
 import mainUi from 'src/Modules/Ui/mainUi.js';
 import Animations from 'src/Modules/animations.js';
@@ -16,7 +16,10 @@ const controlsIds = {
     F6: 0x75,
     G: 0x47,
     Tilde: 0xC0,
+    N: 0x4E,
 };
+
+const HUDElementsToHide = [1, 2, 3, 4, 6, 7, 8, 9];
 
 let cursorShown = false;
 const localPlayer = alt.getLocalPlayer();
@@ -120,6 +123,31 @@ alt.on('update', () => {
         drawText(zoneNames.realZoneName, [zoneNames.minimap.rightX, zoneNames.minimap.bottomY - 0.035], 4, [255, 255, 255, 255], 0.55, true, false);
     }
 
+    HUDElementsToHide.forEach((hudElement) => {
+        game.hideHudComponentThisFrame(hudElement);
+    });
+
+    var myPosition = game.getEntityCoords(localPlayer.scriptID, true);
+    // alt.log('All players: ' + JSON.stringify(alt.players));
+    alt.players.forEach((player) => {
+        var playerPosition = game.getEntityCoords(player.scriptID, true);
+        if (game.getDistanceBetweenCoords(myPosition.x, myPosition.y, myPosition.z, playerPosition.x, playerPosition.y, playerPosition.z, true) > 35) return;
+        if (typeof player.isTalking === 'undefined') player.isTalking = false;
+
+        if (player.isTalking) {
+            draw3DText('~g~Rozmawia', [playerPosition.x, playerPosition.y, playerPosition.z + 1], 4, [255, 255, 255, 255], 0.6, false, false);
+        } else {
+            draw3DText('~r~Nie rozmawia', [playerPosition.x, playerPosition.y, playerPosition.z + 1], 4, [255, 255, 255, 255], 0.6, false, false);
+        }
+    });
+
+    if (game.isControlJustPressed(0, 249)) {
+        localPlayer.isTalking = true;
+    }
+    else if (game.isControlJustReleased(0, 249)) {
+        localPlayer.isTalking = false;
+    }
+
     // if (!game.isPedInAnyVehicle(localPlayerId, false) && !game.isPlayerDead(localPlayerId)) {
     //     poitingAt(4);
     // }
@@ -127,9 +155,9 @@ alt.on('update', () => {
     //     entityHit = null;
     // }
 
-    if (entityHit != null && localPlayer.vehicle == null) {
-        // Draw entity
-    }
+    // if (entityHit != null && localPlayer.vehicle == null) {
+    //     // Draw entity
+    // }
 });
 
 mainUi.onServerEvent('showNotification', (type, title, message, duration, icon) => {

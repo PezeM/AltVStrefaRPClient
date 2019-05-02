@@ -58,10 +58,10 @@ export function poitingAt(maxDistance = 4) {
     game.drawLine(pos.x, pos.y, pos.z, farAway.x, farAway.y, farAway.z, 255, 255, 255, 255);
     alt.log(`RayTest = ${JSON.stringify(rayTest)}`);
     // var surface = new alt.Position();
-    var surface = { x: 0.0, y: 0.0, z: 0.0 };
-    var endPos = { x: 0.0, y: 0.0, z: 0.0 };
+    var surface;
+    var endPos;
     alt.log(`Surface: ${JSON.stringify(surface)} Endpos: ${JSON.stringify(endPos)}`);
-    var result = game.getShapeTestResult(rayTest, didRaycaystHit, endPos, surface, entityHit);
+    var result = game.getShapeTestResult(rayTest, didRaycaystHit, surface, endPos, entityHit);
     alt.log(`Raycast result: ${result}`);
 }
 

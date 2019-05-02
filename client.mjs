@@ -329,19 +329,116 @@ alt.on('consoleCommand', (command, ...args) => {
 })
 
 
+let cinemaObject = null;
+let cinemaView = null;
+let cinemaPosition = {
+	x: -1426.553,
+	y: -259.5351,
+	z: 20.40091
+};
+
+alt.onServer('enterCinema', () => {
+	alt.log('Entering cinema');
+	test3DView();
+});
+
 function test3DView() {
-	let position = game.getEntityCoords(localPlayer.scriptID, true);
-	let gameObject = game.createObject(game.getHashKey('xm_prop_x17dlc_monitor_wall_01a'), position.x, position.y, position.z, 0, 0, 0);
-	alt.log('Exists ' + alt.isTextureExistInArchetype(game.getHashKey('xm_prop_x17dlc_monitor_wall_01a'), 'script_rt_prop_x17dlc_monitor_wall_01a'));
-	let inter = alt.setInterval(() => {
-		if (alt.isTextureExistInArchetype(game.getHashKey('xm_prop_x17dlc_monitor_wall_01a'), 'script_rt_prop_x17dlc_monitor_wall_01a')) {
-			let view = new alt.WebView("https://www.youtube.com/embed/kQcB8QpjfSo?start=56&autoplay=1", game.getHashKey('xm_prop_x17dlc_monitor_wall_01a'), 'script_rt_prop_x17dlc_monitor_wall_01a');
-			view.focus();
-			alt.clearInterval(inter);
-			return;
-		}
-	}, 10);
+	if (cinemaView) {
+		alt.log('Deleting cinema view');
+		cinemaView.destroy();
+		cinemaView = null;
+	}
+
+	if (cinemaObject) {
+		alt.log('Deleting cinema object');
+		game.deleteObject(cinemaObject);
+		cinemaObject = null;
+	}
+
+	alt.log('Inside test3DView');
+	var modelHash = game.getHashKey("v_ilev_cin_screen");
+
+	// alt.log('Loading model async');
+	// await loadModelAsync(function () {
+	// 	alt.log('Inside load model async');
+	// 	game.hasModelLoaded(modelHash);
+	// });
+
+	// alt.log('After loading model async');
+
+	// cinemaObject = game.createObject(game.getHashKey('v_ilev_cin_screen'), cinemaPosition.x, cinemaPosition.y, cinemaPosition.z - 1, 0, 0, 0);
+	// alt.log('Exists ' + alt.isTextureExistInArchetype(game.getHashKey('v_ilev_cin_screen'), 'script_rt_cinscreen'));
+
+	// await loadModelAsync(() => {
+	// 	alt.isTextureExistInArchetype(game.getHashKey('v_ilev_cin_screen'), 'script_rt_cinscreen');
+	// });
+
+	// alt.log('Cinema view loaded');
+	// cinemaView = new alt.WebView("https://www.youtube.com/embed/kQcB8QpjfSo?start=56&autoplay=1", game.getHashKey('v_ilev_cin_screen'), 'script_rt_cinscreen');
+
+	alt.log('Loading model');
+	loadModel(modelHash).then(() => {
+		cinemaObject = game.createObject(game.getHashKey('v_ilev_cin_screen'), cinemaPosition.x, cinemaPosition.y, cinemaPosition.z - 1, 0, 0, 0);
+		alt.log('Exists ' + alt.isTextureExistInArchetype(game.getHashKey('v_ilev_cin_screen'), 'script_rt_cinscreen'));
+
+		let inter = alt.setInterval(() => {
+			if (alt.isTextureExistInArchetype(game.getHashKey('v_ilev_cin_screen'), 'script_rt_cinscreen')) {
+				alt.log('Cinema view loaded');
+				cinemaView = new alt.WebView("https://www.youtube.com/embed/kQcB8QpjfSo?start=56&autoplay=1", game.getHashKey('v_ilev_cin_screen'), 'script_rt_cinscreen');
+				// cinemaView.focus();
+				alt.clearInterval(inter);
+				return;
+			}
+		}, 10);
+	});
+
 }
+
+function loadModelAsync(data) {
+	return new Promise(function (resolve, reject) {
+		const loader = alt.setInterval(() => {
+			alt.log('Inside interval')
+			if (data() == true) {
+				resolve(true);
+				alt.clearInterval(loader);
+			}
+		}, 10);
+	});
+}
+
+function loadModel(modelHash) {
+	return new Promise((resolve, reject) => {
+		game.requestModel(modelHash);
+		if (!game.hasModelLoaded(modelHash)) {
+			const request = alt.setInterval(() => {
+				alt.log('Inside interval');
+				if (game.hasModelLoaded(modelHash)) {
+					resolve();
+					alt.clearInterval(request);
+				}
+			}, 5);
+		} else {
+			resolve();
+		}
+	});
+}
+
+alt.on('update', () => {
+	if (cinemaView != null) {
+		var coords = game.getEntityCoords(localPlayer.scriptID, true);
+		if (game.getDistanceBetweenCoords(coords.x, coords.y, coords.z, cinemaPosition.x, cinemaPosition.y, cinemaPosition.z, false) > 100) {
+			// Destroy the view
+			alt.log('Deleting cinema object');
+			cinemaView.unfocus();
+			cinemaView.destroy();
+			cinemaView = null;
+
+			game.deleteObject(cinemaObject);
+			cinemaObject = null;
+		}
+	}
+});
+
 
 import Animations from 'src/Modules/animations.js';
 let animations = new Animations();

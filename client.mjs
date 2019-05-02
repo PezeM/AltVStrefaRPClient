@@ -20,6 +20,7 @@ let frame = 0, fps = 0, showFps = true, timeStart = Date.now();
 let lastKeyPressedTime = new Date().getTime();
 let openedTrunks = [];
 let openedHoods = [];
+let strefaView = null;
 
 const controlsIds = {
 	H: 0x48,
@@ -320,9 +321,70 @@ alt.on('consoleCommand', (command, ...args) => {
 		alt.log('Reloading map store');
 		game.loadSpDlcMaps();
 		alt.log('Map store reloaded');
+	} else if (command == 'youtube') {
+		test3DView();
+	} else if (command == 'strefa') {
+		testStrefa();
 	}
 })
 
+
+function test3DView() {
+	let position = game.getEntityCoords(localPlayer.scriptID, true);
+	let gameObject = game.createObject(game.getHashKey('xm_prop_x17dlc_monitor_wall_01a'), position.x, position.y, position.z, 0, 0, 0);
+	alt.log('Exists ' + alt.isTextureExistInArchetype(game.getHashKey('xm_prop_x17dlc_monitor_wall_01a'), 'script_rt_prop_x17dlc_monitor_wall_01a'));
+	let inter = alt.setInterval(() => {
+		if (alt.isTextureExistInArchetype(game.getHashKey('xm_prop_x17dlc_monitor_wall_01a'), 'script_rt_prop_x17dlc_monitor_wall_01a')) {
+			let view = new alt.WebView("https://www.youtube.com/embed/kQcB8QpjfSo?start=56&autoplay=1", game.getHashKey('xm_prop_x17dlc_monitor_wall_01a'), 'script_rt_prop_x17dlc_monitor_wall_01a');
+			view.focus();
+			alt.clearInterval(inter);
+			return;
+		}
+	}, 10);
+}
+
+import Animations from 'src/Modules/animations.js';
+let animations = new Animations();
+let strefaObject = null;
+
+function testStrefa() {
+	if (strefaView !== null) {
+		alt.toggleGameControls(false);
+		alt.showCursor(false);
+		strefaView.destroy();
+
+		alt.setTimeout(() => {
+			game.clearPedSecondaryTask(localPlayer.scriptID);
+			game.detachEntity(strefaObject, true, true);
+			game.deleteObject(strefaObject);
+		}, 10);
+
+	} else {
+		let position = game.getEntityCoords(localPlayer.scriptID, true);
+		strefaObject = game.createObject(game.getHashKey('xm_prop_x17_sec_panel_01'), position.x, position.y, position.z + 0.5, 0, 0, 0);
+		alt.log('Exists ' + alt.isTextureExistInArchetype(game.getHashKey('xm_prop_x17_sec_panel_01'), 'script_rt_prop_x17_p_01'));
+		game.attachEntityToEntity(strefaObject, localPlayer.scriptID, game.getPedBoneIndex(localPlayer.scriptID, 60309),
+			0.035, 0.015, 0.012, 0.0, 0, 0, true, true, false, true, 1, true);
+
+		let inter = alt.setInterval(() => {
+			if (alt.isTextureExistInArchetype(game.getHashKey('xm_prop_x17_sec_panel_01'), 'script_rt_prop_x17_p_01')) {
+				strefaView = new alt.WebView("https://forum.strefarp.pl/", game.getHashKey('xm_prop_x17_sec_panel_01'), 'script_rt_prop_x17_p_01');
+				strefaView.focus();
+				if (alt.gameControlsEnabled()) {
+					alt.toggleGameControls(false);
+				}
+				alt.showCursor(true);
+				alt.clearInterval(inter);
+				return;
+			}
+		}, 30);
+
+		animations.loadAnimDict("amb@world_human_clipboard@male@base").then(() => {
+			alt.log('Playing animation');
+			game.taskPlayAnim(localPlayer.scriptID, "amb@world_human_clipboard@male@base", "base", 8.0, 1.0, -1, 63, 0, false, false, false);
+		});
+	}
+}
 
 game.requestIpl('chop_props');
 game.requestIpl('FIBlobby');

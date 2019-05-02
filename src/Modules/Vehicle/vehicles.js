@@ -4,14 +4,17 @@
 import alt from 'alt';
 import game from 'natives';
 import { drawText, draw3DText } from 'src/Helpers/uiHelper.js';
+import { isDriver } from 'src/Helpers/playerHelpers.js';
 
 let localPlayer = alt.getLocalPlayer();
 
 alt.on('update', () => {
     if (game.isPedInAnyVehicle(localPlayer.scriptID, false)) {
         var vehicle = game.getVehiclePedIsIn(localPlayer.scriptID, false);
-        drawText(`KM/H`, [0.9, 0.83], 4, [255, 255, 255, 255], 0.6, true, false);
-        drawText(`~r~${(game.getEntitySpeed(vehicle) * 3.6).toFixed(0)}`, [0.9, 0.86], 4, [255, 255, 255, 255], 0.6, true, false);
+        if (isDriver(vehicle, localPlayer)) { // Speed only for driver
+            drawText(`KM/H`, [0.9, 0.83], 4, [255, 255, 255, 255], 0.6, true, false);
+            drawText(`~r~${(game.getEntitySpeed(vehicle) * 3.6).toFixed(0)}`, [0.9, 0.86], 4, [255, 255, 255, 255], 0.6, true, false);
+        }
 
         if (game.isRadarHidden() || !game.isRadarEnabled()) {
             alt.log('Radar was hidden, enabling it');
@@ -35,6 +38,11 @@ alt.on('update', () => {
         4, [255, 255, 255, 200], 0.5, true);
 });
 
-alt.onServer('putIntoVehicle', veh => {
-    game.setPedIntoVehicle(localPlayer.scriptID, veh.getScriptID(), -1);
+alt.onServer('putIntoVehicle', () => {
+    alt.setTimeout(() => {
+        var coords = game.getEntityCoords(localPlayer.scriptID, true);
+        var vehicle = game.getClosestVehicle(coords.x, coords.y, coords.z, 80, 0, 71);
+        alt.log('Closest vehicle is ' + vehicle);
+        game.setPedIntoVehicle(localPlayer.scriptID, vehicle, -1);
+    }, 250);
 });

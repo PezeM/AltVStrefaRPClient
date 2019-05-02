@@ -10,6 +10,8 @@ var loginApp = new Vue({
         userPasswordRegisterRetry: '',
         showErrorWindow: false,
         errorMessage: '',
+        registerDisabled: false,
+        loginDisabled: false,
     },
     methods: {
         switchToRegister: function () {
@@ -20,6 +22,7 @@ var loginApp = new Vue({
         },
         setAsLogged: function () {
             this.loggedIn = true;
+            this.loginDisabled = false;
         },
         login: function () {
             if ((this.userName == '' || this.userName === undefined) || (this.userPassword == '' || this.userName === undefined)) {
@@ -29,7 +32,10 @@ var loginApp = new Vue({
                 return this.showError('Podano złe dane.');
             }
 
+            if (this.loginDisabled) return;
+
             alt.emit('tryToLogin', this.userName, this.userPassword);
+            this.loginDisabled = true;
         },
         register: function () {
             if ((this.userNameRegister == '' || this.userPasswordRegister == '' || this.userPasswordRegisterRetry == '') ||
@@ -51,7 +57,10 @@ var loginApp = new Vue({
                 return this.showError('Hasło musi mieć 6-18 znaków, jedną cyfrę i jeden znak specjalny.')
             }
 
+            if (this.registerDisabled) return;
+
             alt.emit('tryToRegister', this.userNameRegister, this.userPasswordRegister);
+            this.registerDisabled = true;
         },
         showError: function (message) {
             if (!message || typeof message !== 'string') return;
@@ -61,6 +70,8 @@ var loginApp = new Vue({
         hideErrorWindow: function () {
             this.showErrorWindow = false;
             this.errorMessage = '';
+            if (this.registerDisabled) this.registerDisabled = false;
+            if (this.loginDisabled) this.loginDisabled = false;
         },
     },
 });

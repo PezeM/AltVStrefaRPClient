@@ -38,6 +38,7 @@ function loadLoginView() {
 function hideLoginView() {
     showUiAndFreezePlayer(true);
     alt.showCursor(false);
+    loginView.destroy();
     // alt.nextTick(() => {
     //     alt.setCamFrozen(false);
     // });

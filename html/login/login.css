@@ -63,6 +63,18 @@ body {
     border-radius: 10px;
 }
 
+.disabled {
+    background: rgb(0, 0, 0) !important;
+    color: rgb(255, 255, 255) !important;
+    cursor: auto !important;
+}
+
+.disabled:hover {
+    background: rgb(53, 34, 34);
+    color: red;
+    box-shadow: none !important;
+}
+
 .login-box button:hover {
     background: #FF2020;
     color: rgb(224, 224, 224);

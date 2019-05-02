@@ -446,8 +446,9 @@ let strefaObject = null;
 
 function testStrefa() {
 	if (strefaView !== null) {
-		alt.toggleGameControls(false);
+		alt.toggleGameControls(true);
 		alt.showCursor(false);
+		strefaView.unfocus();
 		strefaView.destroy();
 
 		alt.setTimeout(() => {

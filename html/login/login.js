@@ -52,10 +52,10 @@ var loginApp = new Vue({
             }
 
             // 6-18 characters, one numeric digit, atleast one special character
-            var passwordPattern = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,18}$/;
-            if (!this.userPasswordRegister.match(passwordPattern)) {
-                return this.showError('Hasło musi mieć 6-18 znaków, jedną cyfrę i jeden znak specjalny.')
-            }
+            // var passwordPattern = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,18}$/;
+            // if (!this.userPasswordRegister.match(passwordPattern)) {
+            //     return this.showError('Hasło musi mieć 6-18 znaków, jedną cyfrę i jeden znak specjalny.')
+            // }
 
             if (this.registerDisabled) return;
 

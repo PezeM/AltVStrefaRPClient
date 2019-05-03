@@ -185,7 +185,6 @@ mainUi.onServerEvent('showConfirmModal', (title, message, type, args) => {
 
 mainUi.onUiEvent('acceptBusinessInvite', (businessId) => {
     if (businessId) {
-        alt.log('Accept business invite client-side, arg is ' + typeof businessId + ' = ' + JSON.stringify(businessId));
         alt.emitServer('AcceptInviteToBusiness', businessId);
     }
 
@@ -193,14 +192,18 @@ mainUi.onUiEvent('acceptBusinessInvite', (businessId) => {
         menusManager.focusView();
     } else if (uiView.uiFocused) {
         uiView.focusView();
+    } else {
+        alt.showCursor(false);
     }
 });
 
-mainUi.onUiEvent('dismissBusinessInvite', (businessId) => {
+mainUi.onUiEvent('defaultCancelModalCallback', () => {
     if (menusManager.viewOpened) {
         menusManager.focusView();
     } else if (uiView.uiFocused) {
         uiView.focusView();
+    } else {
+        alt.showCursor(false);
     }
 });
 

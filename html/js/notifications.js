@@ -99,6 +99,10 @@ function showConfirmModal(title, message, confirmCallback, cancelCallback, args)
                 alt.emit(cancelCallback, JSON.stringify(args));
             }
         });
+    } else {
+        notice.on('pnotify.cancel', () => {
+            alt.emit('defaultCancelModalCallback');
+        });
     }
 }
 

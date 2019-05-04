@@ -5,11 +5,11 @@ import alt from 'alt';
 import game from 'natives';
 import chat from 'chat';
 import { drawText, showUi, draw3DText } from 'src/Helpers/uiHelper.js';
-import { rotToDirection } from 'src/Helpers/mathHelper.js';
 import mainUi from 'src/Modules/Ui/mainUi.js';
 import Animations from 'src/Modules/animations.js';
 import ZoneNames from 'src/Modules/ui/zoneNames.js';
 import menusManager from 'src/Modules/Ui/menusManager.js';
+import raycast from 'src/Modules/raycast.js';
 
 const controlsIds = {
     Alt: 0x12,
@@ -27,58 +27,24 @@ const localPlayerId = localPlayer.scriptID;
 let animations = new Animations();
 let zoneNames = new ZoneNames(localPlayerId);
 
-// Raycasting
-let entityHit = null;
-// let endPos = null;
-// let surface = null;
-let didRaycaystHit = false;
 let lastKeyPressedTime = 0;
 let circleMenuOpened = false;
 let circleMenuName = '';
 
-function calculateRaycastDistance(maxDistance = 4) {
-    var viewModel = game.getFollowPedCamViewMode();
-    var zoomDistance = (viewModel < 4 && viewModel > 0) ? viewModel * 2 : 0;
-    return zoomDistance + maxDistance;
-}
-
-// Confirmed to be not working by one of the devs
-export function poitingAt(maxDistance = 4) {
-    var pos = game.getGameplayCamCoord();
-    var dir = rotToDirection(game.getGameplayCamRot(2));
-    var distance = calculateRaycastDistance(maxDistance);
-
-    var farAway = {
-        x: (dir.x * distance) + pos.x,
-        y: (dir.y * distance) + pos.y,
-        z: (dir.z * distance) + pos.z,
-    };
-
-    var rayTest = game.startShapeTestRay(pos.x, pos.y, pos.z, farAway.x, farAway.y, farAway.z, 0, localPlayerId, 0);
-    game.drawLine(pos.x, pos.y, pos.z, farAway.x, farAway.y, farAway.z, 255, 255, 255, 255);
-    alt.log(`RayTest = ${JSON.stringify(rayTest)}`);
-    // var surface = new alt.Position();
-    var surface;
-    var endPos;
-    alt.log(`Surface: ${JSON.stringify(surface)} Endpos: ${JSON.stringify(endPos)}`);
-    var result = game.getShapeTestResult(rayTest, didRaycaystHit, surface, endPos, entityHit);
-    alt.log(`Raycast result: ${result}`);
-}
-
 function openCircleMenu(menuName) {
     if (circleMenuOpened) return;
 
-    mainUi.uiView.emit('openCircleMenu', menuName);
+    mainUi.emitUiEvent('openCircleMenu', menuName);
     circleMenuOpened = true;
     circleMenuName = menuName;
     showUi(false);
     alt.showCursor(true);
-    mainUi.uiView.focus();
+    mainUi.focusView();
 }
 
 function closeCircleMenu(hideMenu = false) {
     if (hideMenu)
-        mainUi.uiView.emit("closeCircleMenu");
+        mainUi.emitUiEvent("closeCircleMenu");
 
     circleMenuOpened = false;
     showUi(true);
@@ -90,8 +56,8 @@ alt.on('keydown', (key) => {
 
     switch (key) {
         case controlsIds.Alt:
-            if (localPlayer.vehicle != null || game.isEntityDead(localPlayerId) || new Date().getTime() - lastKeyPressedTime < 500) return;
-            if (entityHit == null) return;
+            if (game.isPedInAnyVehicle(localPlayerId, false) || game.isEntityDead(localPlayerId) || new Date().getTime() - lastKeyPressedTime < 500) return;
+            if (raycast.entityHit == null) return;
             alt.log('Clicked Alt key entity: ' + JSON.stringify(entityHit));
             break;
         case controlsIds.F6:
@@ -110,7 +76,6 @@ alt.on('keydown', (key) => {
             break;
         case controlsIds.Tilde:
             if (game.isEntityDead(localPlayerId) || new Date().getTime() - lastKeyPressedTime < 500) return;
-            alt.log('Pressed tilde');
             lastKeyPressedTime = new Date().getTime();
             animations.forceAnimationStop();
             break;
@@ -128,7 +93,6 @@ alt.on('update', () => {
     });
 
     var myPosition = game.getEntityCoords(localPlayer.scriptID, true);
-    // alt.log('All players: ' + JSON.stringify(alt.players));
     alt.players.forEach((player) => {
         var playerPosition = game.getEntityCoords(player.scriptID, true);
         if (game.getDistanceBetweenCoords(myPosition.x, myPosition.y, myPosition.z, playerPosition.x, playerPosition.y, playerPosition.z, true) > 35) return;
@@ -148,16 +112,18 @@ alt.on('update', () => {
         localPlayer.isTalking = false;
     }
 
-    // if (!game.isPedInAnyVehicle(localPlayerId, false) && !game.isPlayerDead(localPlayerId)) {
-    //     poitingAt(4);
-    // }
-    // else {
-    //     entityHit = null;
-    // }
+    if (!game.isPedInAnyVehicle(localPlayerId, false) && !game.isPlayerDead(localPlayerId) && menusManager.viewOpened) {
+        if (!circleMenuOpened)
+            raycast.poitingAt(4);
+    }
+    else {
+        raycast.entityHit = null;
+    }
 
-    // if (entityHit != null && localPlayer.vehicle == null) {
-    //     // Draw entity
-    // }
+    if (raycast.entityHit != null && !game.isPedInAnyVehicle(localPlayerId, false)) {
+        var hitEntityPosition = game.getEntityCoords(raycast.entityHit, true);
+        draw3DText('[ ALT ]', [hitEntityPosition.X, hitEntityPosition.Y, hitEntityPosition.Z], 4, [255, 255, 255, 200], 0.5);
+    }
 });
 
 mainUi.onServerEvent('showNotification', (type, title, message, duration, icon) => {

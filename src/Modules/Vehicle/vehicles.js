@@ -224,9 +224,7 @@ alt.on('update', () => {
             alt.log('Radar was enabled, hiding it');
             game.displayRadar(false);
         }
-    }
 
-    if (localPlayer.vehicle == null) {
         var coords = game.getEntityCoords(localPlayer.scriptID, true);
         var vehicle = game.getClosestVehicle(coords.x, coords.y, coords.z, 8, 0, 71);
         if (vehicle != 0) {
@@ -274,8 +272,8 @@ alt.on('update', () => {
                 }
             }
         }
-    }
 
+    }
 
     var coords = game.getEntityCoords(localPlayer.scriptID, true);
     var vehicle = game.getClosestVehicle(coords.x, coords.y, coords.z, 80, 0, 71);

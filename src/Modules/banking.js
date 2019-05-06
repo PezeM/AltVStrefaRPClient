@@ -19,6 +19,7 @@ export default class Bank {
     initializePeds() {
         pedPositions.forEach(bankPed => {
             var ped = game.createPed(26, this.pedHash, bankPed.x, bankPed.y, bankPed.z, bankPed.rot, false, true);
+            game.setEntityCanBeDamaged(ped, false);
             game.setPedCanRagdoll(ped, false);
             this.pedList.push(ped);
         });

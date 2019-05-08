@@ -233,6 +233,7 @@ export default class Animations {
             game.detachEntity(this.propID, true, true);
             game.deleteObject(this.propID);
             this.holdingProp = false;
+            this.propID = -1;
         } else {
             alt.log(`Holding prop set to false`);
         }
@@ -306,6 +307,7 @@ export default class Animations {
             this.holdingProp = false;
             game.detachEntity(this.propID, true, true);
             game.deleteObject(this.propID);
+            this.propID = -1;
         }
         this.stopNormalAnimation(animation, cb);
     }
@@ -326,10 +328,10 @@ export default class Animations {
             if (!game.hasAnimDictLoaded(animDict)) {
                 const request = alt.setInterval(() => {
                     if (game.hasAnimDictLoaded(animDict)) {
-                        alt.clearInterval(request);
                         resolve();
+                        alt.clearInterval(request);
                     }
-                }, 0);
+                }, 5);
             } else {
                 resolve();
             }

@@ -57,8 +57,8 @@ alt.on('keydown', (key) => {
     switch (key) {
         case controlsIds.Alt:
             if (game.isPedInAnyVehicle(localPlayerId, false) || game.isEntityDead(localPlayerId) || new Date().getTime() - lastKeyPressedTime < 500) return;
-            if (raycast.entityHit == null) return;
-            alt.log('Clicked Alt key entity: ' + JSON.stringify(entityHit));
+            if (raycast.entityHit == 0) return;
+            alt.log('Clicked Alt key entity: ' + JSON.stringify(raycast.entityHit));
             break;
         case controlsIds.F6:
             cursorShown = !cursorShown;
@@ -112,17 +112,18 @@ alt.on('update', () => {
         localPlayer.isTalking = false;
     }
 
-    if (!game.isPedInAnyVehicle(localPlayerId, false) && !game.isPlayerDead(localPlayerId) && menusManager.viewOpened) {
+    if (!game.isPedInAnyVehicle(localPlayerId, false) && !game.isPlayerDead(localPlayerId) && !menusManager.viewOpened) {
         if (!circleMenuOpened)
             raycast.poitingAt(4);
     }
     else {
-        raycast.entityHit = null;
+        raycast.didRaycastHit = false;
     }
 
-    if (raycast.entityHit != null && !game.isPedInAnyVehicle(localPlayerId, false)) {
-        var hitEntityPosition = game.getEntityCoords(raycast.entityHit, true);
-        draw3DText('[ ALT ]', [hitEntityPosition.X, hitEntityPosition.Y, hitEntityPosition.Z], 4, [255, 255, 255, 200], 0.5);
+    if (raycast.didRaycastHit && !game.isPedInAnyVehicle(localPlayerId, false)) {
+        var entityType = game.getEntityType(raycast.entityHit);
+        draw3DText(`[ ALT ] E: ${raycast.entityHit} T: ${entityType}`,
+            [raycast.endCoords.x, raycast.endCoords.y, raycast.endCoords.z], 4, [255, 255, 255, 200], 0.5);
     }
 });
 

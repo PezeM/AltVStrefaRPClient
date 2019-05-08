@@ -7,6 +7,8 @@ import { drawText, draw3DText } from 'src/Helpers/uiHelper.js';
 import { isDriver } from 'src/Helpers/playerHelpers.js';
 
 let localPlayer = alt.getLocalPlayer();
+let openedTrunks = [];
+let openedHoods = [];
 
 alt.onServer('putIntoVehicle', () => {
     alt.setTimeout(() => {

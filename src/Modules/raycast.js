@@ -9,6 +9,9 @@ class _Raycast {
         alt.log('Initialized raycast Class');
         this.didRaycastHit = false;
         this.entityHit = null;
+        this.usless = null;
+        this.endCoords = null;
+        this.surfaceNormal = null;
         this.localPlayerId = alt.getLocalPlayer().scriptID;
     }
 
@@ -23,14 +26,9 @@ class _Raycast {
             z: (dir.z * distance) + pos.z,
         };
 
-        var rayTest = game.startShapeTestRay(pos.x, pos.y, pos.z, farAway.x, farAway.y, farAway.z, 0, this.localPlayerId, 0);
+        var rayTest = game.startShapeTestRay(pos.x, pos.y, pos.z, farAway.x, farAway.y, farAway.z, (2 | 4 | 8 | 16), this.localPlayerId, 0);
         game.drawLine(pos.x, pos.y, pos.z, farAway.x, farAway.y, farAway.z, 255, 255, 255, 255);
-        alt.log(`RayTest = ${JSON.stringify(rayTest)}`);
-        var surface = null;
-        var endPos = null;
-        // alt.log(`Surface: ${JSON.stringify(surface)} Endpos: ${JSON.stringify(endPos)}`);
-        var result = game.getShapeTestResult(rayTest, this.didRaycaystHit, surface, endPos, this.entityHit);
-        alt.log(`Raycast result: ${result}`);
+        [this.usless, this.didRaycastHit, this.endCoords, this.surfaceNormal, this.entityHit] = game.getShapeTestResult(rayTest, 0, 0, 0, 0);
     }
 
     calculateRaycastDistance(maxDistance = 4) {

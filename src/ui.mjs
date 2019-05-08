@@ -7,6 +7,7 @@ import chat from 'chat';
 import { drawText, showUi, draw3DText } from 'src/Helpers/uiHelper.js';
 import mainUi from 'src/Modules/Ui/mainUi.js';
 import Animations from 'src/Modules/animations.js';
+import banking from 'src/Modules/banking.js';
 import ZoneNames from 'src/Modules/ui/zoneNames.js';
 import menusManager from 'src/Modules/Ui/menusManager.js';
 import raycast from 'src/Modules/raycast.js';
@@ -57,7 +58,9 @@ alt.on('keydown', (key) => {
     switch (key) {
         case controlsIds.Alt:
             if (game.isPedInAnyVehicle(localPlayerId, false) || game.isEntityDead(localPlayerId) || new Date().getTime() - lastKeyPressedTime < 500) return;
+            if (circleMenuOpened) closeCircleMenu(true);
             if (raycast.entityHit == 0) return;
+            onAltKeydown();
             alt.log('Clicked Alt key entity: ' + JSON.stringify(raycast.entityHit));
             break;
         case controlsIds.F6:
@@ -81,6 +84,37 @@ alt.on('keydown', (key) => {
             break;
     }
 });
+
+function onAltKeydown() {
+    var entityType = game.getEntityType(raycast.entityHit);
+    switch (entityType) {
+        case 1:
+            onPedFound();
+            break;
+        case 2:
+            onVehicleFound();
+            break;
+        case 3:
+            onObjectFound();
+            break;
+    }
+}
+
+function onPedFound() {
+    alt.log('Ped found');
+    if (banking.pedList.includes(raycast.entityHit)) {
+        alt.log('Ped is in bank pedlist');
+        openCircleMenu("bank");
+    }
+}
+
+function onVehicleFound() {
+
+}
+
+function onObjectFound() {
+
+}
 
 alt.on('update', () => {
     if (zoneNames.realZoneName && zoneNames.streetName) {

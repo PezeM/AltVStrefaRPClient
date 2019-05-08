@@ -79,12 +79,12 @@ class _MenusManager {
             game.freezeEntityPosition(alt.getLocalPlayer().scriptID, true);
         }
 
-        alt.setTimeout(() => {
-            game.clearPedSecondaryTask(alt.getLocalPlayer().scriptID);
-            game.detachEntity(this.tablet, true, true);
-            game.deleteObject(this.tablet);
-            this.tabletView.destroy();
-        }, 0);
+        // alt.setTimeout(() => {
+        //     game.clearPedSecondaryTask(alt.getLocalPlayer().scriptID);
+        //     game.detachEntity(this.tablet, true, true);
+        //     game.deleteObject(this.tablet);
+        //     this.tabletView.destroy();
+        // }, 0);
 
         alt.showCursor(!hideCursor);
         this.viewOpened = false;

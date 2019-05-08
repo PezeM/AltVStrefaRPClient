@@ -4,11 +4,11 @@
 import alt from 'alt';
 import { showUiAndFreezePlayer } from 'src/Helpers/uiHelper.js';
 import mainUi from 'src/Modules/Ui/mainUi.js';
-import Bank from 'src/Modules/banking.js';
+import bank from 'src/Modules/banking.js';
 import Business from 'src/Modules/business.js';
 import menusManager from 'src/Modules/Ui/menusManager.js';
 
-let bank = new Bank();
+// let bank = new Bank();
 let business = new Business();
 
 // Bank menu

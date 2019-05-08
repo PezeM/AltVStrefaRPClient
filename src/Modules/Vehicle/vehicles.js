@@ -213,7 +213,8 @@ alt.on('update', () => {
         var vehicle = game.getVehiclePedIsIn(localPlayer.scriptID, false);
         if (isDriver(vehicle, localPlayer)) { // Speed only for driver
             drawText(`KM/H`, [0.9, 0.83], 4, [255, 255, 255, 255], 0.6, true, false);
-            drawText(`~r~${(game.getEntitySpeed(vehicle) * 3.6).toFixed(0)}`, [0.9, 0.86], 4, [255, 255, 255, 255], 0.6, true, false);
+            // drawText(`~r~${(game.getEntitySpeed(vehicle) * 3.6).toFixed(0)}`, [0.9, 0.86], 4, [255, 255, 255, 255], 0.6, true, false);
+            drawText(`~r~${(localPlayer.vehicle.speed * 3.6).toFixed(0)}`, [0.9, 0.86], 4, [255, 255, 255, 255], 0.6, true, false);
         }
 
         if (game.isRadarHidden() || !game.isRadarEnabled()) {

@@ -9,7 +9,7 @@ const pedPositions = [
     { x: 243.9872, y: 227.0842, z: 106.2874, rot: 161.6292 }
 ];
 
-export default class Bank {
+class Bank {
     constructor() {
         this.pedList = [];
         this.pedHash = 3272005365;
@@ -47,3 +47,7 @@ export default class Bank {
         alt.emitServer('TransferMoneyFromBankToBank', amount, receiver);
     }
 }
+
+
+let Banking = new Bank();
+export default Banking;

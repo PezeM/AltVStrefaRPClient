@@ -30,6 +30,7 @@ const controlsIds = {
 	E: 0x45,
 };
 
+let carStatsScaleform = null;
 
 alt.on('update', () => {
 	// DEV Constant running
@@ -50,6 +51,37 @@ alt.on('update', () => {
 			timeStart = Date.now();
 		}
 	}
+
+	if (cinemaView != null) {
+		var coords = game.getEntityCoords(localPlayer.scriptID, true);
+		if (game.getDistanceBetweenCoords(coords.x, coords.y, coords.z, cinemaPosition.x, cinemaPosition.y, cinemaPosition.z, false) > 100) {
+			// Destroy the view
+			alt.log('Deleting cinema object');
+			cinemaView.unfocus();
+			cinemaView.destroy();
+			cinemaView = null;
+
+			game.deleteObject(cinemaObject);
+			cinemaObject = null;
+		}
+	}
+
+
+	// if (carStatsScaleform == null) {
+	// 	carStatsScaleform = game.requestScaleformMovie("mp_car_stats_02");
+	// }
+
+	// if (carStatsScaleform != null) {
+	// 	let coords = game.getEntityCoords(localPlayer.scriptID, true);
+	// 	var vehicle = game.getClosestVehicle(coords.x, coords.y, coords.z, 10, 0, 71);
+	// 	if (vehicle == 0) return false;
+	// 	coords = game.getEntityCoords(vehicle, true);
+	// 	drawText('Scaleform requested', [0.8, 0.2], 4, [255, 255, 255, 225], 0.5);
+	// 	game.callScaleformMovieFunctionMixedParams(carStatsScaleform, "SET_VEHICLE_INFOR_AND_STATS", "Text1", "Text2",
+	// 		"MPCarHUD", "Dinka", "stat1", "stat2", "stat2", "stat2", 24, 55, 85, 45);
+
+	// 	game.drawScaleformMovie3dNonAdditive(carStatsScaleform, coords.x, coords.y, coords.z, 0, 0, 90, 10, 1.0, 1, 1, 1, 1, 2);
+	// }
 });
 
 alt.on('keydown', (key) => {
@@ -184,23 +216,6 @@ function loadModel(modelHash) {
 		}
 	});
 }
-
-alt.on('update', () => {
-	if (cinemaView != null) {
-		var coords = game.getEntityCoords(localPlayer.scriptID, true);
-		if (game.getDistanceBetweenCoords(coords.x, coords.y, coords.z, cinemaPosition.x, cinemaPosition.y, cinemaPosition.z, false) > 100) {
-			// Destroy the view
-			alt.log('Deleting cinema object');
-			cinemaView.unfocus();
-			cinemaView.destroy();
-			cinemaView = null;
-
-			game.deleteObject(cinemaObject);
-			cinemaObject = null;
-		}
-	}
-});
-
 
 import Animations from 'src/Modules/animations.js';
 let animations = new Animations();

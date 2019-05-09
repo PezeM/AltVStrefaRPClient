@@ -177,11 +177,9 @@ var circleMenu = new Vue({
             console.log(`Current item = ${JSON.stringify(this.currentMenuSet)}`);
             var i = 0;
             Object.entries(this.currentMenuSet).forEach(([key, value]) => {
-                // console.log(`Key: ${key} value: ${JSON.stringify(value)}`);
                 this.optionIcons[i] = value.icon;
                 i++;
             });
-            // console.log(`Icons: ${JSON.stringify(this.optionIcons)}`);
             $('#circleMenu').css('width', '480px');
             $('#circleMenu').css('height', '480px');
             console.log(`Displayed in ${this.getTime()}ms.`);

@@ -126,16 +126,16 @@ alt.on('update', () => {
         game.hideHudComponentThisFrame(hudElement);
     });
 
-    var myPosition = game.getEntityCoords(localPlayer.scriptID, true);
+    // var myPosition = game.getEntityCoords(localPlayer.scriptID, true);
     alt.players.forEach((player) => {
-        var playerPosition = game.getEntityCoords(player.scriptID, true);
-        if (game.getDistanceBetweenCoords(myPosition.x, myPosition.y, myPosition.z, playerPosition.x, playerPosition.y, playerPosition.z, true) > 35) return;
+        // var playerPosition = game.getEntityCoords(player.scriptID, true);
+        if (game.getDistanceBetweenCoords(localPlayer.pos.x, localPlayer.pos.y, localPlayer.pos.z, player.pos.x, player.pos.y, player.pos.z, true) > 35) return;
         if (typeof player.isTalking === 'undefined') player.isTalking = false;
 
         if (player.isTalking) {
-            draw3DText('~g~Rozmawia', [playerPosition.x, playerPosition.y, playerPosition.z + 1], 4, [255, 255, 255, 255], 0.6, false, false);
+            draw3DText('~g~Rozmawia', [player.pos.x, player.pos.y, player.pos.z + 1], 4, [255, 255, 255, 255], 0.6, false, false);
         } else {
-            draw3DText('~r~Nie rozmawia', [playerPosition.x, playerPosition.y, playerPosition.z + 1], 4, [255, 255, 255, 255], 0.6, false, false);
+            draw3DText('~r~Nie rozmawia', [player.pos.x, player.pos.y, player.pos.z + 1], 4, [255, 255, 255, 255], 0.6, false, false);
         }
     });
 

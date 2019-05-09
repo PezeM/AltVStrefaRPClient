@@ -4,11 +4,6 @@ import { showUiAndFreezePlayer } from 'src/Helpers/uiHelper.js';
 
 let localPlayer = alt.getLocalPlayer();
 let loginView = null;
-let viewLoaded = () => {
-    return loginView == null ? false : true;
-}
-
-alt.log('Login.js loaded');
 
 function loadLoginView() {
     loginView = new alt.WebView('http://resources/AltVStrefaRPClient/html/login/login.html');
@@ -88,7 +83,6 @@ alt.onServer('successfullyRegistered', () => {
 alt.onServer('loginSuccesfully', (characterList) => {
     if (characterList) {
         alt.log('Character list: ' + characterList);
-        // alt.log('Character list as json: ' + JSON.parse(characterList));
         loginView.emit('loggedIn', characterList);
     }
 });
@@ -98,14 +92,14 @@ alt.onServer('CharacterCreatedSuccessfully', () => {
     alt.log('Character created succesfully');
     game.freezeEntityPosition(localPlayer.scriptID, false);
     game.setPedDefaultComponentVariation(localPlayer.scriptID);
-    loginView.emit('hideCharacterSelectWindow');
+    // loginView.emit('hideCharacterSelectWindow');
     hideLoginView();
 });
 
 alt.onServer('loadedCharacter', () => {
     game.freezeEntityPosition(localPlayer.scriptID, false);
-    alt.log('Setting player component variation');
+    // alt.log('Setting player component variation');
     game.setPedDefaultComponentVariation(localPlayer.scriptID);
-    loginView.emit('hideCharacterSelectWindow');
+    // loginView.emit('hideCharacterSelectWindow');
     hideLoginView();
 });

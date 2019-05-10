@@ -57,11 +57,14 @@ alt.on('keydown', (key) => {
 
     switch (key) {
         case controlsIds.Alt:
-            if (game.isPedInAnyVehicle(localPlayerId, false) || game.isEntityDead(localPlayerId) || new Date().getTime() - lastKeyPressedTime < 500) return;
+            alt.log('Clicked alt');
+            if (game.isPedInAnyVehicle(localPlayer.scriptID, false) || game.isEntityDead(localPlayer.scriptID) || new Date().getTime() - lastKeyPressedTime < 500) return;
+            alt.log('Clicked alt 2');
             if (circleMenuOpened) closeCircleMenu(true);
-            if (raycast.entityHit == 0) return;
+            if (!raycast.didRaycastHit) return;
             onAltKeydown();
-            alt.log('Clicked Alt key entity: ' + JSON.stringify(raycast.entityHit));
+            alt.log('Clicked Alt key entity: ' + raycast.entityHit);
+            lastKeyPressedTime = new Date().getTime();
             break;
         case controlsIds.F6:
             cursorShown = !cursorShown;
@@ -69,7 +72,8 @@ alt.on('keydown', (key) => {
             alt.showCursor(cursorShown);
             break;
         case controlsIds.G:
-            if (game.isEntityDead(localPlayerId) || new Date().getTime() - lastKeyPressedTime < 500) return;
+            alt.log('Clicked g');
+            if (game.isEntityDead(localPlayer.scriptID) || new Date().getTime() - lastKeyPressedTime < 500) return;
             if (circleMenuOpened) {
                 closeCircleMenu(true);
             } else {
@@ -78,7 +82,7 @@ alt.on('keydown', (key) => {
             lastKeyPressedTime = new Date().getTime();
             break;
         case controlsIds.Tilde:
-            if (game.isEntityDead(localPlayerId) || new Date().getTime() - lastKeyPressedTime < 500) return;
+            if (game.isEntityDead(localPlayer.scriptID) || new Date().getTime() - lastKeyPressedTime < 500) return;
             lastKeyPressedTime = new Date().getTime();
             animations.forceAnimationStop();
             break;
@@ -102,18 +106,83 @@ function onAltKeydown() {
 
 function onPedFound() {
     alt.log('Ped found');
-    if (banking.pedList.includes(raycast.entityHit)) {
+    var isPlayer = false;
+    isPlayer = alt.players.some(p => p.scriptID === raycast.entityHit);
+    // alt.players.forEach((player) => {
+    //     if (player.scriptID === raycast.entityHit) {
+    //         isPlayer = true;
+    //         return;
+    //     }
+    // });
+    alt.log(JSON.stringify(alt.players));
+    if (isPlayer) {
+        alt.log('Found player');
+        openCircleMenu("player");
+    } else if (banking.pedList.includes(raycast.entityHit)) {
         alt.log('Ped is in bank pedlist');
         openCircleMenu("bank");
     }
 }
 
 function onVehicleFound() {
-
+    alt.log('Vehicle found');
+    openCircleMenu("vehicle");
 }
 
 function onObjectFound() {
+    let entityModel = game.getEntityModel(raycast.entityHit);
+    alt.log(`Entity model found: ${entityModel}`);
 
+    if (banking.atmModels.includes(entityModel)) {
+        alt.log('Found atm hash');
+        openCircleMenu("atm");
+    }
+}
+
+mainUi.onUiEvent('circleMenuCallback', (option) => {
+    alt.log(`Circle menu callback: ${option}`);
+    if (option === 'close') {
+        closeCircleMenu();
+        return;
+    }
+
+    closeCircleMenu();
+    switch (circleMenuName) {
+        case "animations":
+            animations.findAnimation(option);
+            break;
+        case "bank":
+            bankCircleMenuCallback(option);
+            break;
+        case "atm":
+            atmCircleMenuCallback(option);
+            break;
+    }
+});
+
+function bankCircleMenuCallback(option) {
+    switch (option) {
+        case "openBank":
+            alt.emitServer("TryToOpenBankMenu");
+            break;
+        case "createAccount":
+            alt.emitServer("CreateBankAccount");
+            break;
+        case "information":
+            mainUi.showCefNotification(0, "Bank", "Widzisz bankiera, możesz u niego zarządzać aktualnym kontem bankowym lub założyć nowe", 6000);
+            break;
+    }
+}
+
+function atmCircleMenuCallback(option) {
+    switch (option) {
+        case "openAtm":
+            alt.emitServer("TryToOpenBankMenu");
+            break;
+        case "information":
+            mainUi.showCefNotification(0, "Bankomat", "Widzisz bankomat w którym możesz zarządząć swoim kontem bankowym.", 5500);
+            break;
+    }
 }
 
 alt.on('update', () => {
@@ -131,9 +200,12 @@ alt.on('update', () => {
         // var playerPosition = game.getEntityCoords(player.scriptID, true);
         if (game.getDistanceBetweenCoords(localPlayer.pos.x, localPlayer.pos.y, localPlayer.pos.z, player.pos.x, player.pos.y, player.pos.z, true) > 35) return;
         if (typeof player.isTalking === 'undefined') player.isTalking = false;
+        if (typeof player.remoteId === 'undefined' || player.remoteId == null) {
+            player.remoteId = player.getSyncedMeta("remoteId");
+        }
 
         if (player.isTalking) {
-            draw3DText('~g~Rozmawia', [player.pos.x, player.pos.y, player.pos.z + 1], 4, [255, 255, 255, 255], 0.6, false, false);
+            draw3DText(`~g~Rozmawia \n ~w~ID: ${player.remoteId}`, [player.pos.x, player.pos.y, player.pos.z + 1], 4, [255, 255, 255, 255], 0.6, false, false);
         } else {
             draw3DText('~r~Nie rozmawia', [player.pos.x, player.pos.y, player.pos.z + 1], 4, [255, 255, 255, 255], 0.6, false, false);
         }
@@ -205,21 +277,6 @@ mainUi.onUiEvent('defaultCancelModalCallback', () => {
         uiView.focusView();
     } else {
         alt.showCursor(false);
-    }
-});
-
-mainUi.onUiEvent('circleMenuCallback', (option) => {
-    alt.log(`Circle menu callback: ${option}`);
-    if (option === 'close') {
-        closeCircleMenu();
-        return;
-    }
-
-    closeCircleMenu();
-    switch (circleMenuName) {
-        case "animations":
-            animations.findAnimation(option);
-            break;
     }
 });
 

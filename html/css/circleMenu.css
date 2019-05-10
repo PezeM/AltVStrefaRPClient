@@ -153,6 +153,14 @@
     background-image: url('../images/circleIcons/back.png');
 }
 
+#circleMenu .information {
+    background-image: url('../images/circleIcons/info.png');
+}
+
+#circleMenu .quit {
+    background-image: url('../images/circleIcons/quit.png');
+}
+
 #circleMenu .popular {
     background-image: url('../images/circleIcons/popular.png');
 }
@@ -199,4 +207,18 @@
 
 #circleMenu .carMechanic {
     background-image: url('../images/circleIcons/carMechanic.png');
+}
+
+/* Banking */
+
+#circleMenu .openBank {
+    background-image: url('../images/circleIcons/open-bank.png');
+}
+
+#circleMenu .openAtm {
+    background-image: url('../images/circleIcons/open-atm.png');
+}
+
+#circleMenu .createAccount {
+    background-image: url('../images/circleIcons/create-account.png');
 }

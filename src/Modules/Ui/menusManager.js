@@ -91,6 +91,5 @@ class _MenusManager {
     }
 }
 
-
 let MenusManager = new _MenusManager();
 export default MenusManager;

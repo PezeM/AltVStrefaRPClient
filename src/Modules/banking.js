@@ -9,8 +9,17 @@ const pedPositions = [
     { x: 243.9872, y: 227.0842, z: 106.2874, rot: 161.6292 }
 ];
 
+
 class Bank {
     constructor() {
+        this.atmModels = [
+            2930269768,
+            3424098598,
+            3168729781,
+            506770882,
+            2594689830,
+            3839570722
+        ];
         this.pedList = [];
         this.pedHash = 3272005365;
         alt.loadModel(this.pedHash);

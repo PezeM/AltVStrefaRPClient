@@ -14,8 +14,6 @@ import * as sitting from 'src/Environment/sitting.js';
 import * as vehicles from 'src/Modules/Vehicle/vehicles.js';
 import { drawText, draw3DText } from 'src/Helpers/uiHelper.js';
 import menusManager from 'src/Modules/Ui/menusManager.js';
-import { toggleTrunkOrHoodState, toggleLockState } from 'src/Modules/Vehicle/vehicles.js';
-
 
 let localPlayer = alt.getLocalPlayer();
 let frame = 0, fps = 0, showFps = true, timeStart = Date.now();
@@ -91,12 +89,12 @@ alt.on('keydown', (key) => {
 		case controlsIds.E:
 			if (localPlayer.vehicle != null || game.isEntityDead(localPlayer.scriptID) || new Date().getTime() - lastKeyPressedTime < 750) return;
 			lastKeyPressedTime = new Date().getTime();
-			if (toggleTrunkOrHoodState()) return;
+			if (vehicles.toggleTrunkOrHoodState()) return;
 			break;
 		case controlsIds.L:
 			if (game.isEntityDead(localPlayer.scriptID) || new Date().getTime() - lastKeyPressedTime < 750) return;
 			lastKeyPressedTime = new Date().getTime();
-			if (toggleLockState()) return;
+			if (vehicles.toggleLockState()) return;
 			break;
 	}
 });

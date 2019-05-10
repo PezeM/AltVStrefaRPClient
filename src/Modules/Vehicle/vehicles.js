@@ -228,17 +228,16 @@ alt.on('update', () => {
             game.displayRadar(false);
         }
 
-        var coords = game.getEntityCoords(localPlayer.scriptID, true);
-        var vehicle = game.getClosestVehicle(coords.x, coords.y, coords.z, 8, 0, 71);
+        var vehicle = game.getClosestVehicle(localPlayer.pos.x, localPlayer.pos.y, localPlayer.pos.z, 8, 0, 71);
         if (vehicle != 0) {
             let hoodIndex = game.getEntityBoneIndexByName(vehicle, "bonnet");
             let trunkIndex = game.getEntityBoneIndexByName(vehicle, "boot");
+            let vehiclePosition = game.getEntityCoords(vehicle, true);
 
             if (trunkIndex != 0) {
                 let trunkPosition = game.getWorldPositionOfEntityBone(vehicle, trunkIndex);
                 let hoodPosition = game.getWorldPositionOfEntityBone(vehicle, hoodIndex);
 
-                let vehiclePosition = game.getEntityCoords(vehicle, true);
                 let trunkDistance = game.getDistanceBetweenCoords(trunkPosition.x, trunkPosition.y, trunkPosition.z,
                     vehiclePosition.x, vehiclePosition.y, vehiclePosition.z, false);
                 let hoodDistance = game.getDistanceBetweenCoords(hoodPosition.x, hoodPosition.y, hoodPosition.z,
@@ -247,43 +246,43 @@ alt.on('update', () => {
                 let bootPosition = game.getOffsetFromEntityInWorldCoords(vehicle, 0, -trunkDistance - 1, 0);
                 let frontPosition = game.getOffsetFromEntityInWorldCoords(vehicle, 0, hoodDistance + 1, 0);
 
-                if (game.getDistanceBetweenCoords(coords.x, coords.y, coords.z, bootPosition.x, bootPosition.y, bootPosition.z, true) < 2.3) {
+                if (game.getDistanceBetweenCoords(localPlayer.pos.x, localPlayer.pos.y, localPlayer.pos.z, bootPosition.x, bootPosition.y, bootPosition.z, true) < 2.3) {
                     if (openedTrunks.includes(vehicle))
                         draw3DText("Naciśnij [~b~E~w~] aby ~r~zamknąć~w~ bagażnik", [trunkPosition.x, trunkPosition.y, trunkPosition.z], 4, [255, 255, 255, 200], 0.45, true);
                     else
                         draw3DText("Naciśnij [~b~E~w~] aby ~g~otworzyć~w~ bagażnik", [trunkPosition.x, trunkPosition.y, trunkPosition.z], 4, [255, 255, 255, 200], 0.45, true);
                 }
 
-                if (game.getDistanceBetweenCoords(coords.x, coords.y, coords.z, frontPosition.x, frontPosition.y, frontPosition.z, true) < 2.6) {
+                if (game.getDistanceBetweenCoords(localPlayer.pos.x, localPlayer.pos.y, localPlayer.pos.z, frontPosition.x, frontPosition.y, frontPosition.z, true) < 2.6) {
                     if (openedHoods.includes(vehicle))
                         draw3DText("Naciśnij [~b~E~w~] aby ~r~zamknąć~w~ maskę", [hoodPosition.x, hoodPosition.y, hoodPosition.z], 4, [255, 255, 255, 200], 0.45, true);
                     else
                         draw3DText("Naciśnij [~b~E~w~] aby ~g~otworzyć~w~ maskę", [hoodPosition.x, hoodPosition.y, hoodPosition.z], 4, [255, 255, 255, 200], 0.45, true);
                 }
             } else {
-                let vehiclePosition = game.getEntityCoords(vehicle, true);
                 let hoodPosition = game.getWorldPositionOfEntityBone(vehicle, hoodIndex);
                 let hoodDistance = game.getDistanceBetweenCoords(hoodPosition.x, hoodPosition.y, hoodPosition.z,
                     vehiclePosition.x, vehiclePosition.y, vehiclePosition.z, false);
 
                 let frontPosition = game.getOffsetFromEntityInWorldCoords(vehicle, 0, hoodDistance + 1, 0);
-                if (game.getDistanceBetweenCoords(coords.x, coords.y, coords.z, frontPosition.x, frontPosition.y, frontPosition.z, true) < 2.6) {
+                if (game.getDistanceBetweenCoords(localPlayer.pos.x, localPlayer.pos.y, localPlayer.pos.z, frontPosition.x, frontPosition.y, frontPosition.z, true) < 2.6) {
                     if (openedHoods.includes(vehicle))
                         draw3DText("Naciśnij [~b~E~w~] aby ~r~zamknąć~w~ maskę", [hoodPosition.x, hoodPosition.y, hoodPosition.z], 4, [255, 255, 255, 200], 0.45, true);
                     else
                         draw3DText("Naciśnij [~b~E~w~] aby ~g~otworzyć~w~ maskę", [hoodPosition.x, hoodPosition.y, hoodPosition.z], 4, [255, 255, 255, 200], 0.45, true);
                 }
             }
+
+            // let vehicleSynced = vehicle.getSyncedMeta("vehicleId");
+            // alt.log(`Vehicle synced = ${JSON.stringify(vehicleSynced)}`);
+            // // if (vehicleSynced) {
+            // //     text += `SERVER: ${vehicleSynced}`
+            // // }
+
+            draw3DText("ID: " + vehicle, [vehiclePosition.x, vehiclePosition.y, vehiclePosition.z + 1],
+                4, [255, 255, 255, 200], 0.5, true);
         }
 
     }
-
-    var coords = game.getEntityCoords(localPlayer.scriptID, true);
-    var vehicle = game.getClosestVehicle(coords.x, coords.y, coords.z, 80, 0, 71);
-    if (vehicle == 0) return;
-    let vehiclePosition = game.getEntityCoords(vehicle, true);
-
-    draw3DText('ID: ' + vehicle, [vehiclePosition.x, vehiclePosition.y, vehiclePosition.z + 1],
-        4, [255, 255, 255, 200], 0.5, true);
 });
 

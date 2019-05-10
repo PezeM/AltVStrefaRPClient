@@ -1,7 +1,7 @@
 const usefullOptions = {
     quit: {
         desc: "Zamknij menu",
-        icon: "trunk"
+        icon: "quit"
     },
     back: {
         desc: "Wróć",
@@ -9,7 +9,7 @@ const usefullOptions = {
     },
     information: {
         desc: "Wyświetl informacje",
-        icon: "licenses",
+        icon: "information",
     }
 }
 
@@ -125,16 +125,21 @@ const menusList = {
         }
     },
     "player": {
+        "information": usefullOptions.information,
+        "quit": usefullOptions.quit,
+    },
+    "vehicle": {
+        "information": usefullOptions.information,
         "quit": usefullOptions.quit,
     },
     "bank": {
         "openBank": {
             desc: "Otwórz bank",
-            icon: "handshake",
+            icon: "openBank",
         },
         "createAccount": {
             desc: "Załóż konto bankowe",
-            icon: "handshake",
+            icon: "createAccount",
         },
         "information": usefullOptions.information,
         "quit": usefullOptions.quit,
@@ -142,7 +147,7 @@ const menusList = {
     "atm": {
         "openAtm": {
             desc: "Otwórz bankomat",
-            icon: "handshake",
+            icon: "openAtm",
         },
         "information": usefullOptions.information,
         "quit": usefullOptions.quit,

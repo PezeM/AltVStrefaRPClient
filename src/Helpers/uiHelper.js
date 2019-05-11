@@ -3,7 +3,7 @@
 
 import alt from 'alt';
 import game from 'natives';
-let playerId = alt.getLocalPlayer().scriptID;
+let localPlayer = alt.getLocalPlayer();
 
 export function showUi(toogle) {
     alt.toggleGameControls(toogle);
@@ -13,7 +13,11 @@ export function showUi(toogle) {
 
 export function showUiAndFreezePlayer(toggle) {
     showUi(toggle);
-    game.freezeEntityPosition(playerId, !toggle);
+    game.freezeEntityPosition(localPlayer.scriptID, !toggle);
+}
+
+export function freezePlayer(toggle) {
+    game.freezeEntityPosition(localPlayer.scriptID, toggle);
 }
 
 export function showNotification(title, subtitle, message, char = "CHAR_DEFAULT", flashing = false, icon = 7) {

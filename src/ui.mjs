@@ -11,6 +11,7 @@ import banking from 'src/Modules/banking.js';
 import ZoneNames from 'src/Modules/ui/zoneNames.js';
 import menusManager from 'src/Modules/Ui/menusManager.js';
 import raycast from 'src/Modules/raycast.js';
+import { showUiAndFreezePlayer } from 'src/Helpers/uiHelper.js';
 
 const controlsIds = {
     Alt: 0x12,
@@ -32,7 +33,7 @@ let lastKeyPressedTime = 0;
 let circleMenuOpened = false;
 let circleMenuName = '';
 
-function openCircleMenu(menuName) {
+function openCircleMenu(menuName, freezePosition = true) {
     if (circleMenuOpened) return;
 
     mainUi.emitUiEvent('openCircleMenu', menuName);
@@ -40,6 +41,10 @@ function openCircleMenu(menuName) {
     circleMenuName = menuName;
     showUi(false);
     alt.showCursor(true);
+    if (freezePosition) {
+        showUiAndFreezePlayer(!freezePosition);
+    }
+
     mainUi.focusView();
 }
 
@@ -50,6 +55,7 @@ function closeCircleMenu(hideMenu = false) {
     circleMenuOpened = false;
     showUi(true);
     alt.showCursor(false);
+    showUiAndFreezePlayer(true);
 }
 
 alt.on('keydown', (key) => {
@@ -59,7 +65,6 @@ alt.on('keydown', (key) => {
         case controlsIds.Alt:
             alt.log('Clicked alt');
             if (game.isPedInAnyVehicle(localPlayer.scriptID, false) || game.isEntityDead(localPlayer.scriptID) || new Date().getTime() - lastKeyPressedTime < 500) return;
-            alt.log('Clicked alt 2');
             if (circleMenuOpened) closeCircleMenu(true);
             if (!raycast.didRaycastHit) return;
             onAltKeydown();

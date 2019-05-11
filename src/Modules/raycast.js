@@ -12,7 +12,7 @@ class _Raycast {
         this.usless = null;
         this.endCoords = null;
         this.surfaceNormal = null;
-        this.localPlayerId = alt.getLocalPlayer().scriptID;
+        this.localPlayer = alt.getLocalPlayer();
     }
 
     poitingAt(maxDistance = 4) {
@@ -26,7 +26,7 @@ class _Raycast {
             z: (dir.z * distance) + pos.z,
         };
 
-        var rayTest = game.startShapeTestRay(pos.x, pos.y, pos.z, farAway.x, farAway.y, farAway.z, (2 | 4 | 8 | 16), this.localPlayerId, 0);
+        var rayTest = game.startShapeTestRay(pos.x, pos.y, pos.z, farAway.x, farAway.y, farAway.z, (2 | 4 | 8 | 16), this.localPlayer.scriptID, 0);
         game.drawLine(pos.x, pos.y, pos.z, farAway.x, farAway.y, farAway.z, 255, 255, 255, 255);
         [this.usless, this.didRaycastHit, this.endCoords, this.surfaceNormal, this.entityHit] = game.getShapeTestResult(rayTest, 0, 0, 0, 0);
     }

@@ -212,7 +212,7 @@ const animations = {
 export default class Animations {
     constructor() {
         alt.log('Animations class initialized');
-        this.playerId = alt.getLocalPlayer().scriptID;
+        this.localPlayer = alt.getLocalPlayer();
         this.currentAnimation = null;
         this.waitTime = 600;
         this.propID = null;
@@ -228,20 +228,20 @@ export default class Animations {
         }
     }
     setupAnimation(animation) {
-        if (this.holdingProp) {
-            alt.log(`Deleting prop with id ${this.propID}`);
-            game.detachEntity(this.propID, true, true);
-            game.deleteObject(this.propID);
-            this.holdingProp = false;
-            this.propID = -1;
-        } else {
-            alt.log(`Holding prop set to false`);
-        }
+        // if (this.holdingProp) {
+        //     alt.log(`Deleting prop with id ${this.propID}`);
+        //     game.detachEntity(this.propID, true, true);
+        //     game.deleteObject(this.propID);
+        //     this.holdingProp = false;
+        //     this.propID = -1;
+        // } else {
+        //     alt.log(`Holding prop set to false`);
+        // }
 
-        if (game.isEntityPlayingAnim(this.playerId, animation.dict, animation.name, 3)) {
+        if (game.isEntityPlayingAnim(this.localPlayer.scriptID, animation.dict, animation.name, 3)) {
             alt.log('Entity is playing animation');
             this.stopAnimation(animation);
-        } else if (this.currentAnimation && game.isEntityPlayingAnim(this.playerId, this.currentAnimation.dict, this.currentAnimation.name, 3)) {
+        } else if (this.currentAnimation && game.isEntityPlayingAnim(this.localPlayer.scriptID, this.currentAnimation.dict, this.currentAnimation.name, 3)) {
             alt.log('Entity is playing previous animation and want to play next anim.');
             this.stopAnimation(this.currentAnimation, () => {
                 alt.log('Some callback function');
@@ -253,6 +253,7 @@ export default class Animations {
     }
     loadAnimationAndPlay(animation) {
         this.loadAnimDict(animation.dict).then(() => {
+            alt.log('Anim dict found');
             this.playAnimation(animation);
         });
     }
@@ -263,20 +264,35 @@ export default class Animations {
             this.playPropAnimation(animation);
         } else {
             alt.log(`Playing normal animation`);
-            game.taskPlayAnim(this.playerId, animation.dict, animation.name, 8.0, 1.0, -1, animation.flag, 0, false, false, false);
+            game.taskPlayAnim(this.localPlayer.scriptID, animation.dict, animation.name, 8.0, 1.0, -1, animation.flag, 0, false, false, false);
         }
     }
     playPropAnimation(animation) {
         this.holdingProp = true;
         this.propModel = animation.prop.name;
-        var position = game.getEntityCoords(this.playerId, true);
+        var position = game.getEntityCoords(this.localPlayer.scriptID, true);
         this.propID = game.createObject(game.getHashKey(this.propModel),
-            position.x, position.y, position.z + animation.prop.extraZPosition, true, true, true);
+            position.x, position.y, position.z + animation.prop.extraZPosition, true, false, false);
         alt.log(`Created prop with id: ${this.propID}`);
-        game.attachEntityToEntity(this.propID, this.playerId, game.getPedBoneIndex(this.playerId, animation.prop.bone),
+        game.attachEntityToEntity(this.propID, this.localPlayer.scriptID, game.getPedBoneIndex(this.localPlayer.scriptID, animation.prop.bone),
             animation.prop.position.x, animation.prop.position.y, animation.prop.position.z,
             animation.prop.rotation.x, animation.prop.rotation.y, animation.prop.rotation.z, true, true, false, true, 1, true);
-        game.taskPlayAnim(this.playerId, animation.dict, animation.name, 3.0, -8, -1, animation.flag, 0, false, false, false);
+        game.taskPlayAnim(this.localPlayer.scriptID, animation.dict, animation.name, 3.0, -8, -1, animation.flag, 0, false, false, false);
+
+        let syncObject = {
+            // objectModel: game.getHashKey(this.propModel),
+            objectModel: this.propModel,
+            boneIndex: animation.prop.bone,
+            propExtraZ: animation.prop.extraZPosition,
+            positionX: animation.prop.position.x,
+            positionY: animation.prop.position.y,
+            positionZ: animation.prop.position.z,
+            rotationX: animation.prop.rotation.x,
+            rotationY: animation.prop.rotation.y,
+            rotationZ: animation.prop.rotation.z,
+        }
+
+        alt.emitServer('SyncObject', JSON.stringify(syncObject));
     }
     stopAnimation(animation, cb = null) {
         if (animation.hasOwnProperty("prop")) {
@@ -291,10 +307,10 @@ export default class Animations {
             this.waitTime = animation.waitTime;
         }
 
-        game.taskPlayAnim(this.playerId, animation.dict, animation.exitAnim, 8.0, 1.0, -1,
+        game.taskPlayAnim(this.localPlayer.scriptID, animation.dict, animation.exitAnim, 8.0, 1.0, -1,
             animation.exitFlag ? animation.exitFlag : animation.flag, 0, false, false, false);
         alt.setTimeout(() => {
-            game.clearPedSecondaryTask(this.playerId);
+            game.clearPedSecondaryTask(this.localPlayer.scriptID);
             this.currentAnimation = null;
             this.clearPropState();
             if (cb != null)
@@ -308,6 +324,7 @@ export default class Animations {
             game.detachEntity(this.propID, true, true);
             game.deleteObject(this.propID);
             this.propID = -1;
+            alt.emitServer("SyncObject", null);
         }
         this.stopNormalAnimation(animation, cb);
     }
@@ -316,18 +333,20 @@ export default class Animations {
             alt.log('Found animation to force stop');
             this.stopAnimation(this.currentAnimation);
         } else {
-            game.clearPedTasks(this.playerId);
-            game.clearPedSecondaryTask(this.playerId);
+            game.clearPedTasks(this.localPlayer.scriptID);
+            game.clearPedSecondaryTask(this.localPlayer.scriptID);
             this.currentAnimation = null;
             this.clearPropState();
         }
     }
     loadAnimDict(animDict) {
         return new Promise((resolve, reject) => {
+            alt.log('Loading anim dict');
             game.requestAnimDict(animDict);
             if (!game.hasAnimDictLoaded(animDict)) {
                 const request = alt.setInterval(() => {
                     if (game.hasAnimDictLoaded(animDict)) {
+                        alt.log('Still Loading anim dict');
                         resolve();
                         alt.clearInterval(request);
                     }

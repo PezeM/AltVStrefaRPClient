@@ -179,7 +179,6 @@ var circleMenu = new Vue({
             this.startTimer();
             this.circleMenuActive = true;
             this.currentMenuSet = menusList[name];
-            console.log(`Current item = ${JSON.stringify(this.currentMenuSet)}`);
             var i = 0;
             Object.entries(this.currentMenuSet).forEach(([key, value]) => {
                 this.optionIcons[i] = value.icon;

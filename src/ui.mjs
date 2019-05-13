@@ -11,7 +11,7 @@ import banking from 'src/Modules/banking.js';
 import ZoneNames from 'src/Modules/ui/zoneNames.js';
 import menusManager from 'src/Modules/Ui/menusManager.js';
 import raycast from 'src/Modules/raycast.js';
-import thrashBins from 'src/Environment/thrashBins.js';
+import trashBins from 'src/Environment/trashBins.js';
 import { showUiAndFreezePlayer } from 'src/Helpers/uiHelper.js';
 
 const controlsIds = {
@@ -134,9 +134,9 @@ function onObjectFound() {
     if (banking.atmModels.includes(entityModel)) {
         alt.log('Found atm hash');
         openCircleMenu("atm");
-    } else if (thrashBins.includesBin(entityModel)) {
-        alt.log('Found thrash bin');
-        openCircleMenu("thrashBin");
+    } else if (trashBins.includesBin(entityModel)) {
+        alt.log('Found trash bin');
+        openCircleMenu("trashBin");
     }
 }
 
@@ -158,8 +158,8 @@ mainUi.onUiEvent('circleMenuCallback', (option) => {
         case "atm":
             atmCircleMenuCallback(option);
             break;
-        case "thrashBin":
-            thrashBins.searchBinMenuCallback(option, raycast.entityHit);
+        case "trashBin":
+            trashBins.searchBinMenuCallback(option, raycast.entityHit);
             break;
     }
 });
@@ -235,7 +235,7 @@ alt.on('update', () => {
             [raycast.endCoords.x, raycast.endCoords.y, raycast.endCoords.z], 4, [255, 255, 255, 200], 0.5);
     }
 
-    thrashBins.onUpdate();
+    trashBins.onUpdate();
 
     if (circleMenuOpened || chat.isOpen() || menusManager.viewOpened) {
         game.disableControlAction(0, 1, true); // Mouse Look, Left/Right

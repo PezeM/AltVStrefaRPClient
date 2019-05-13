@@ -6,7 +6,7 @@ import game from 'natives';
 import mainUi from 'src/Modules/Ui/mainUi.js';
 import { draw3DText } from 'src/Helpers/uiHelper.js';
 
-alt.log('thrashBins.js loaded');
+alt.log('trashBin.js loaded');
 let searchedBins = [];
 const binObjects = [
     {

@@ -155,7 +155,7 @@ const menusList = {
     "thrashBin": {
         "searchBin": {
             desc: "Przeszukaj śmieci",
-            icon: "openAtm",
+            icon: "trashBin",
         },
         "information": usefullOptions.information,
         "quit": usefullOptions.quit,

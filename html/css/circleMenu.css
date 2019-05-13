@@ -222,3 +222,8 @@
 #circleMenu .createAccount {
     background-image: url('../images/circleIcons/create-account.png');
 }
+
+/* Trash bin */
+#circleMenu .trashBin {
+    background-image: url('../images/circleIcons/trashBin.png');
+}

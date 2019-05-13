@@ -8,6 +8,10 @@
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
 }
 
+#businessApp .bg-dark {
+    background-color: #000000da !important;
+}
+
 #businessAppContainer {
     height: 95%;
     overflow-y: auto;

@@ -110,8 +110,6 @@ var businessApp = new Vue({
             if (employeesInfo !== null) {
                 this.employeesInfo = JSON.parse(employeesInfo);
                 this.setActiveMenu('employeesPage');
-
-                console.log(`Opened business employees page with data: ${JSON.stringify(this.employeesInfo)}`);
             }
             else {
                 alt.emit('closeBusinessMenu');
@@ -122,8 +120,6 @@ var businessApp = new Vue({
             this.employeesInfo = exampleJsonEmployess;
             this.businessMenuVisible = true;
             this.currentMenuVisible = 'employeesPage';
-
-            console.log(`Opened business employees page with data: ${JSON.stringify(this.employeesInfo)}`);
         },
         showEmployeeInfo: function (employeeId) {
             var employee = this.employeesInfo.BusinessEmployees.find(e => e.Id == employeeId);
@@ -133,7 +129,6 @@ var businessApp = new Vue({
             }
             this.selectedEmployee = employee;
             this.newRank = this.employeesInfo.BusinessRanks.find(e => e.Id == this.selectedEmployee.RankId);
-            console.log(JSON.stringify(this.selectedEmployee));
             setTimeout(() => {
                 $('#employeeInfoModal').modal({
                     backdrop: 'static',
@@ -147,13 +142,13 @@ var businessApp = new Vue({
             $('#employeeInfoModal').modal('hide');
         },
         saveEmployeeChanges: function () {
-            if (this.newRank.Id === this.selectedEmployee.RankId) return;
-
-            // Call server to make a change
             if (this.selectedEmployee == null || this.businessInfo == null) {
                 alt.emit('showNotification', 3, "Błąd", 'Wystąpił błąd. Otwórz ponownie menu biznesu.', 6000);
                 return;
             }
+
+            // No changes
+            if (this.newRank.Id === this.selectedEmployee.RankId) return;
 
             alt.emit('updateEmployeeRank', this.selectedEmployee.Id, this.newRank.Id, this.businessInfo.BusinessId);
             this.closeEmployeeInfo();
@@ -376,7 +371,6 @@ var businessApp = new Vue({
 });
 
 alt.on('openBusinessMenu', (businessInfo) => {
-    console.log('Opening business menu');
     businessApp.showBusinessMenu(businessInfo);
 });
 

@@ -11,6 +11,7 @@ import banking from 'src/Modules/banking.js';
 import ZoneNames from 'src/Modules/ui/zoneNames.js';
 import menusManager from 'src/Modules/Ui/menusManager.js';
 import raycast from 'src/Modules/raycast.js';
+import thrashBins from 'src/Environment/thrashBins.js';
 import { showUiAndFreezePlayer } from 'src/Helpers/uiHelper.js';
 
 const controlsIds = {
@@ -44,7 +45,7 @@ function openCircleMenu(menuName, freezePosition = true) {
     if (freezePosition) {
         showUiAndFreezePlayer(!freezePosition);
     }
-
+    alt.toggleGameControls(false);
     mainUi.focusView();
 }
 
@@ -111,14 +112,7 @@ function onAltKeydown() {
 
 function onPedFound() {
     alt.log('Ped found');
-    var isPlayer = false;
-    isPlayer = alt.players.some(p => p.scriptID === raycast.entityHit);
-    // alt.players.forEach((player) => {
-    //     if (player.scriptID === raycast.entityHit) {
-    //         isPlayer = true;
-    //         return;
-    //     }
-    // });
+    let isPlayer = alt.players.some(p => p.scriptID === raycast.entityHit);
     alt.log(JSON.stringify(alt.players));
     if (isPlayer) {
         alt.log('Found player');
@@ -141,6 +135,9 @@ function onObjectFound() {
     if (banking.atmModels.includes(entityModel)) {
         alt.log('Found atm hash');
         openCircleMenu("atm");
+    } else if (thrashBins.includesBin(entityModel)) {
+        alt.log('Found thrash bin');
+        openCircleMenu("thrashBin");
     }
 }
 
@@ -161,6 +158,9 @@ mainUi.onUiEvent('circleMenuCallback', (option) => {
             break;
         case "atm":
             atmCircleMenuCallback(option);
+            break;
+        case "thrashBin":
+            thrashBins.searchBinMenuCallback(option, raycast.entityHit);
             break;
     }
 });
@@ -236,6 +236,16 @@ alt.on('update', () => {
         draw3DText(`[ ALT ] E: ${raycast.entityHit} T: ${entityType}`,
             [raycast.endCoords.x, raycast.endCoords.y, raycast.endCoords.z], 4, [255, 255, 255, 200], 0.5);
     }
+
+    // if (circleMenuOpened) {
+    //     game.disableControlAction(0, 1, true); // Mouse Look, Left/Right
+    //     game.disableControlAction(0, 2, true); // Mouse Look, Up/Down
+    //     game.disableControlAction(0, 142, true); // Right Click
+    // } else {
+    //     game.enableControlAction(0, 1, false); // Mouse Look, Left/Right
+    //     game.enableControlAction(0, 2, false); // Mouse Look, Up/Down
+    //     game.enableControlAction(0, 142, false); // Right Click
+    // }
 });
 
 mainUi.onServerEvent('showNotification', (type, title, message, duration, icon) => {

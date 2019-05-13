@@ -151,6 +151,14 @@ const menusList = {
         },
         "information": usefullOptions.information,
         "quit": usefullOptions.quit,
+    },
+    "thrashBin": {
+        "searchBin": {
+            desc: "Przeszukaj śmieci",
+            icon: "openAtm",
+        },
+        "information": usefullOptions.information,
+        "quit": usefullOptions.quit,
     }
 }
 

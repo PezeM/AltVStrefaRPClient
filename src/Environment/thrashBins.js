@@ -37,10 +37,6 @@ export function getBin(binModel) {
     return binObjects.find(b => b.model == binModel);
 }
 
-export function getAllBins() {
-    return binObjects;
-}
-
 export function includesBin(model) {
     return binObjects.some(b => b.model == model);
 }
@@ -56,12 +52,11 @@ export function searchBinMenuCallback(option, thrashBinId) {
     }
 }
 
-
 function searchThrashbin(thrashBinId) {
     if (!checkIfValid(thrashBinId)) return;
 
     if (searchedBins.includes(thrashBinId)) {
-        mainUi.showCefNotification(2, "Śmietnik przeszukany", "Ten śmietnik był już ciebie przeszukiwany.", 5000);
+        mainUi.showCefNotification(3, "Śmietnik przeszukany", "Ten śmietnik był już ciebie przeszukiwany.", 5000);
         return;
     }
 
@@ -75,7 +70,7 @@ function searchThrashbin(thrashBinId) {
     game.taskStartScenarioInPlace(localPlayer.scriptID, "PROP_HUMAN_BUM_BIN", 0, true);
 
     percentage = 100;
-    let interval = alt.setInterval(() => {
+    let binInterval = alt.setInterval(() => {
         percentage += 100;
         alt.log(`Updating percentage to ${percentage}`);
     }, 100);
@@ -86,7 +81,7 @@ function searchThrashbin(thrashBinId) {
         searchingInBin = false;
         currentBinId = -1;
         percentage = 0;
-        alt.clearInterval(interval);
+        alt.clearInterval(binInterval);
     }, 10100);
 }
 
@@ -95,13 +90,12 @@ function checkIfValid(thrashBinId) {
     else return true;
 }
 
-alt.on('update', () => {
+export function onUpdate() {
     if (searchingInBin) {
         var binCoords = game.getEntityCoords(currentBinId, true);
         draw3DText(`Przeszukiwanie śmietnika ~g~ ${Math.floor((percentage / 10000) * 100)} ~r~%`,
             [binCoords.x, binCoords.y, binCoords.z], 4, [255, 255, 255, 255], 0.5, true);
     }
-});
+}
 
-
-export default { getBin, getAllBins, includesBin, searchBinMenuCallback };
+export default { includesBin, searchBinMenuCallback, onUpdate };

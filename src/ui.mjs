@@ -25,10 +25,9 @@ const controlsIds = {
 const HUDElementsToHide = [1, 2, 3, 4, 6, 7, 8, 9];
 
 let cursorShown = false;
-const localPlayer = alt.getLocalPlayer();
-const localPlayerId = localPlayer.scriptID;
+let localPlayer = alt.getLocalPlayer();
 let animations = new Animations();
-let zoneNames = new ZoneNames(localPlayerId);
+let zoneNames = new ZoneNames(localPlayer.scriptID);
 
 let lastKeyPressedTime = 0;
 let circleMenuOpened = false;
@@ -200,9 +199,7 @@ alt.on('update', () => {
         game.hideHudComponentThisFrame(hudElement);
     });
 
-    // var myPosition = game.getEntityCoords(localPlayer.scriptID, true);
     alt.players.forEach((player) => {
-        // var playerPosition = game.getEntityCoords(player.scriptID, true);
         if (game.getDistanceBetweenCoords(localPlayer.pos.x, localPlayer.pos.y, localPlayer.pos.z, player.pos.x, player.pos.y, player.pos.z, true) > 35) return;
         if (typeof player.isTalking === 'undefined') player.isTalking = false;
         if (typeof player.remoteId === 'undefined' || player.remoteId == null) {
@@ -218,12 +215,14 @@ alt.on('update', () => {
 
     if (game.isControlJustPressed(0, 249)) {
         localPlayer.isTalking = true;
+        game.playFacialAnim(localPlayer.scriptID, "mic_chatter", "mp_facial");
     }
     else if (game.isControlJustReleased(0, 249)) {
         localPlayer.isTalking = false;
+        game.playFacialAnim(localPlayer.scriptID, "mood_normal_1", "facials@gen_male@variations@normal");
     }
 
-    if (!game.isPedInAnyVehicle(localPlayerId, false) && !game.isPlayerDead(localPlayerId) && !menusManager.viewOpened) {
+    if (localPlayer.vehicle == null && !game.isPlayerDead(localPlayer.scriptID) && !menusManager.viewOpened) {
         if (!circleMenuOpened)
             raycast.poitingAt(4);
     }
@@ -231,21 +230,22 @@ alt.on('update', () => {
         raycast.didRaycastHit = false;
     }
 
-    if (raycast.didRaycastHit && !game.isPedInAnyVehicle(localPlayerId, false)) {
-        var entityType = game.getEntityType(raycast.entityHit);
-        draw3DText(`[ ALT ] E: ${raycast.entityHit} T: ${entityType}`,
+    if (raycast.didRaycastHit && localPlayer.vehicle == null) {
+        draw3DText(`[ALT] E: ${raycast.entityHit} T: ${game.getEntityType(raycast.entityHit)} M: ${game.getEntityModel(raycast.entityHit)}`,
             [raycast.endCoords.x, raycast.endCoords.y, raycast.endCoords.z], 4, [255, 255, 255, 200], 0.5);
     }
 
-    // if (circleMenuOpened) {
-    //     game.disableControlAction(0, 1, true); // Mouse Look, Left/Right
-    //     game.disableControlAction(0, 2, true); // Mouse Look, Up/Down
-    //     game.disableControlAction(0, 142, true); // Right Click
-    // } else {
-    //     game.enableControlAction(0, 1, false); // Mouse Look, Left/Right
-    //     game.enableControlAction(0, 2, false); // Mouse Look, Up/Down
-    //     game.enableControlAction(0, 142, false); // Right Click
-    // }
+    thrashBins.onUpdate();
+
+    if (circleMenuOpened || chat.isOpen() || menusManager.viewOpened) {
+        game.disableControlAction(0, 1, true); // Mouse Look, Left/Right
+        game.disableControlAction(0, 2, true); // Mouse Look, Up/Down
+        game.disableControlAction(0, 142, true); // Right Click
+    } else {
+        game.enableControlAction(0, 1, false); // Mouse Look, Left/Right
+        game.enableControlAction(0, 2, false); // Mouse Look, Up/Down
+        game.enableControlAction(0, 142, false); // Right Click
+    }
 });
 
 mainUi.onServerEvent('showNotification', (type, title, message, duration, icon) => {

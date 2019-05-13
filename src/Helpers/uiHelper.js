@@ -64,7 +64,7 @@ export function drawText(text, position, font, color, scale, outline = true, cen
     game.endTextCommandDisplayText(position[0], position[1]);
 }
 
-export function draw3DText(text, position, font, color, scale, outline = true, drawBackground = true, backgroundColor = [0, 0, 0, 60]) {
+export function draw3DText(text, position, font, color, scale, outline = true, drawBackground = true, backgroundColor = [0, 0, 0, 90]) {
     var camCoord = game.getGameplayCamCoords();
     var distance = game.getDistanceBetweenCoords(position[0], position[1], position[2], camCoord.x, camCoord.y, camCoord.z, true);
 

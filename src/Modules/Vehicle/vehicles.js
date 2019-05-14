@@ -217,14 +217,12 @@ alt.on('update', () => {
             drawText(`~r~${(localPlayer.vehicle.speed * 3.6).toFixed(0)}`, [0.9, 0.86], 4, [255, 255, 255, 255], 0.6, true, false);
         }
 
-        if (game.isRadarHidden() || !game.isRadarEnabled()) {
-            alt.log('Radar was hidden, enabling it');
+        if (game.isRadarHidden()) {
             game.displayRadar(true);
         }
 
     } else {
-        if (!game.isRadarHidden() || game.isRadarEnabled()) {
-            alt.log('Radar was enabled, hiding it');
+        if (!game.isRadarHidden()) {
             game.displayRadar(false);
         }
 

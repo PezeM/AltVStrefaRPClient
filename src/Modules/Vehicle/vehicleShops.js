@@ -3,6 +3,7 @@
 
 import alt from 'alt';
 import game from 'natives';
+import mainUi from 'src/Modules/Ui/mainUi.js';
 
 let localPlayer = alt.getLocalPlayer();
 let currentVehicleShop = null;
@@ -32,3 +33,26 @@ alt.on('playerConnect', () => {
         vehicleSellers.push({ pedId: ped, id: shopPed.id });
     });
 });
+
+export function isVehicleSeller(entityHit) {
+    return vehicleSellers.some(s => s.pedId == entityHit);
+}
+
+export function openShopMenuCallback(option, entityHit) {
+    switch (option) {
+        case "openMenu":
+            openVehicleShopMenu(entityHit);
+            break;
+        case "information":
+            mainUi.showCefNotification(0, "Sprzedawca", "Widzisz sprzedawcę pojazdów. Możesz u niego zakupić swój upragiony samochód.", 6000);
+            break;
+    }
+}
+
+function openVehicleShopMenu(entityHit) {
+    var sellerPed = vehicleSellers.find(s => s.pedId == entityHit);
+    if (sellerPed == null || typeof sellerPed == 'undefined') return;
+    alt.emitServer('OpenVehicleShop', sellerPed.id);
+}
+
+export default { isVehicleSeller, searchBinMenuCallback, onUpdate };

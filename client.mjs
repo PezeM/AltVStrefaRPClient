@@ -12,7 +12,7 @@ import * as adminTeleports from 'src/Admin/adminTeleports.js';
 import * as animationBrowser from 'src/Admin/animationBrowser.js';
 import * as sitting from 'src/Environment/sitting.js';
 import * as vehicles from 'src/Modules/Vehicle/vehicles.js';
-import * as vehicleShops from 'src/Modules/Vehicle/vehicleShops.js';
+// import * as vehicleShops from 'src/Modules/Vehicle/vehicleShops.js';
 import * as objectSync from 'src/Modules/objectSync.js';
 import { drawText, draw3DText } from 'src/Helpers/uiHelper.js';
 import menusManager from 'src/Modules/Ui/menusManager.js';

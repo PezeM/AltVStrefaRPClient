@@ -159,7 +159,15 @@ const menusList = {
         },
         "information": usefullOptions.information,
         "quit": usefullOptions.quit,
-    }
+    },
+    "vehicleShop": {
+        "openMenu": {
+            desc: "Przeglądnij katalog",
+            icon: "trashBin",
+        },
+        "information": usefullOptions.information,
+        "quit": usefullOptions.quit,
+    },
 }
 
 var circleMenu = new Vue({

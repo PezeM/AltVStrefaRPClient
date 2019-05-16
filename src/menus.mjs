@@ -2,11 +2,13 @@
 /// <reference path="../alt.d.ts" />
 
 import alt from 'alt';
+import game from 'natives';
 import { showUiAndFreezePlayer } from 'src/Helpers/uiHelper.js';
 import mainUi from 'src/Modules/Ui/mainUi.js';
 import bank from 'src/Modules/banking.js';
 import Business from 'src/Modules/business.js';
 import menusManager from 'src/Modules/Ui/menusManager.js';
+import { setupVehicleShop } from 'src/Modules/Vehicle/vehicleShops.js';
 
 // let bank = new Bank();
 let business = new Business();
@@ -120,4 +122,10 @@ menusManager.onUiEvent('closeBusinessMenu', () => {
     menusManager.closeMenu();
 });
 
+// Vehicle shops
+menusManager.onServerEvent('openVehicleShop', (vehicleShopId, vehicleShopData) => {
+    alt.log(`Vehicle shop data = ${JSON.stringify(vehicleShopData)}`);
+    var shopData = setupVehicleShop(vehicleShopId, vehicleShopData);
+    menusManager.openMenu("openVehicleShop", true, true, JSON.stringify(shopData));
+});
 

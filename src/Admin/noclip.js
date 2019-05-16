@@ -59,9 +59,10 @@ alt.on('update', () => {
         let positionUpdated = false;
         const currentSpeed = fly.speeds[fly.currentSpeedIndex];
         const position = game.getEntityCoords(localPlayer.scriptID, true);
+        const rotation = game.getEntityRotation(localPlayer.scriptID, 2);
 
-        drawText(`Player position: X: ${position.x} Y: ${position.y} Z: ${position.z}`, [0.5, 0.01], 0, [200, 200, 200, 200], 0.35);
-        drawText(`Speed: ${currentSpeed}`, [0.5, 0.04], 0, [200, 200, 200, 200], 0.35);
+        drawText(`Player position: X: ${position.x} Y: ${position.y} Z: ${position.z} R: ${rotation}`, [0.5, 0.01], 0, [200, 200, 200, 225], 0.35);
+        drawText(`Speed: ${currentSpeed}`, [0.5, 0.04], 0, [200, 200, 200, 225], 0.35);
 
         if (game.isControlJustReleased(0, controlsIds.Shift) && (new Date().getTime() - lastChecked > 100)) {
             if (fly.currentSpeedIndex + 1 < fly.speeds.length) {

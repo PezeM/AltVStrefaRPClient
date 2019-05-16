@@ -64,7 +64,6 @@ alt.on('keydown', (key) => {
 
     switch (key) {
         case controlsIds.Alt:
-            alt.log('Clicked alt');
             if (game.isPedInAnyVehicle(localPlayer.scriptID, false) || game.isEntityDead(localPlayer.scriptID) || new Date().getTime() - lastKeyPressedTime < 500) return;
             if (circleMenuOpened) closeCircleMenu(true);
             if (!raycast.didRaycastHit) return;

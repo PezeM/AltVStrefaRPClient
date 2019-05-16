@@ -4,26 +4,26 @@ import { showUi } from 'src/Helpers/uiHelper.js';
 
 let camera = null;
 
-export const createCam = (position, rotation, fov) => {
+export const createCam = (position, rotation, fov, delay = 0) => {
     destroyCam();
-    alt.setTimeout(() => {
-        camera = game.createCam("DEFAULT_SCRIPTED_CAMERA", true);
-        game.setCamCoord(camera, position.x, position.y, position.z);
-        game.setCamRot(camera, rotation.x, rotation.y, rotation.z, 2);
-        game.setCamFov(camera, fov);
-        game.setCamActive(camera, true);
-        game.renderScriptCams(true, false, 0, true, false);
-    }, 0);
+    camera = game.createCam("DEFAULT_SCRIPTED_CAMERA", true);
+    game.setCamCoord(camera, position.x, position.y, position.z);
+    game.setCamRot(camera, rotation.x, rotation.y, rotation.z, 2);
+    game.setCamFov(camera, fov);
+    game.setCamActive(camera, true);
+    game.renderScriptCams(true, false, delay, true, false);
 }
 
 export const destroyCam = () => {
-    alt.setTimeout(() => {
-        if (!game.doesCamExist(camera)) return;
-        game.setCamActive(camera, false);
-        game.destroyCam(camera, true);
-        game.renderScriptCams(false, true, 0, true, true);
-        camera = null;
-    }, 0)
+    if (!game.doesCamExist(camera)) return;
+    game.setCamActive(camera, false);
+    game.destroyCam(camera, true);
+    game.renderScriptCams(false, true, 0, true, true);
+    camera = null;
+}
+
+export const pointAt = (entity) => {
+    game.pointCamAtEntity(camera, entity, 0, 0, 0, 0);
 }
 
 function checkCamInAir(showGui) {

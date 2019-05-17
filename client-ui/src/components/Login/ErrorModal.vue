@@ -1,27 +1,32 @@
 <template>
-    <div class="error-frame" v-show="showErrorWindow">
-        <div class="center">
-            <div class="notification" v-bind:class="{ open: showErrorWindow }">
-                <div class="notification-content">
-                    <h3 class="notification-title">{{ errorMessage }}</h3>
-                    <p class="notification-text"></p>
-                </div>
-                <button class="notification-button" @click="hideErrorWindow()">
-                    Okej
-                </button>
-            </div>
+  <div class="error-frame" v-if="isErrorMessage">
+    <div class="center">
+      <div class="notification" v-bind:class="{ open: isErrorMessage }">
+        <div class="notification-content">
+          <h3 class="notification-title">{{ errorMessage }}</h3>
+          <p class="notification-text"></p>
         </div>
+        <button class="notification-button" @click="hideErrorWindow()">Okej</button>
+      </div>
     </div>
+  </div>
 </template>
 
 <script>
 export default {
     name: 'errorModal',
-    data() {
-        return {
-            showErrorWindow: false,
-            errorMessage: ''
-        };
+    props: {
+        errorMessage: String
+    },
+    methods: {
+        hideErrorWindow() {
+            this.$emit('hide-error-window');
+        }
+    },
+    computed: {
+        isErrorMessage() {
+            return this.errorMessage.length > 1;
+        }
     }
 };
 </script>

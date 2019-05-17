@@ -1,83 +1,51 @@
 <template>
-    <div id="login">
-        <!-- Errow window -->
-        <error-modal></error-modal>
+  <div id="login">
+    <!-- Errow window -->
+    <error-modal v-bind:errorMessage="errorMessage" v-on:hide-error-window="hideErrorWindow"></error-modal>
 
-        <div class="login-box" v-if="activeMenu == 'login'">
-            <h1 class="login-header-text">Zaloguj się</h1>
-            <div class="group">
-                <input
-                    class="inputMaterial"
-                    type="text"
-                    v-model="userName"
-                    required
-                />
-                <span class="highlight"></span>
-                <span class="bar"></span>
-                <label>Nazwa użytkownika</label>
-            </div>
-            <div class="group">
-                <input
-                    class="inputMaterial"
-                    type="password"
-                    v-model="userPassword"
-                    required
-                />
-                <span class="highlight"></span>
-                <span class="bar"></span>
-                <label>Hasło</label>
-            </div>
-            <button @click="login()" v-bind:class="{ disabled: loginDisabled }">
-                Zaloguj się
-            </button>
-            <p class="change-window" @click="switchToRegister()">Rejestracja</p>
-        </div>
-
-        <div class="login-box" v-if="activeMenu == 'register'">
-            <h1 class="login-header-text">Rejestracja</h1>
-            <div class="group">
-                <input
-                    class="inputMaterial"
-                    type="text"
-                    v-model="userNameRegister"
-                    required
-                />
-                <span class="highlight"></span>
-                <span class="bar"></span>
-                <label>Nazwa użytkownika</label>
-            </div>
-            <div class="group">
-                <input
-                    class="inputMaterial"
-                    type="password"
-                    v-model="userPasswordRegister"
-                    required
-                />
-                <span class="highlight"></span>
-                <span class="bar"></span>
-                <label>Hasło</label>
-            </div>
-            <div class="group">
-                <input
-                    class="inputMaterial"
-                    type="password"
-                    v-model="userPasswordRegisterRetry"
-                    required
-                />
-                <span class="highlight"></span>
-                <span class="bar"></span>
-                <label>Powtórz hasło</label>
-            </div>
-
-            <button
-                @click="register()"
-                v-bind:class="{ disabled: registerDisabled }"
-            >
-                Zarejestuj się
-            </button>
-            <p class="change-window" @click="switchToLogin()">Logowanie</p>
-        </div>
+    <div class="login-box" v-if="activeMenu == 'login'">
+      <h1 class="login-header-text">Zaloguj się</h1>
+      <div class="group">
+        <input class="inputMaterial" type="text" v-model="userName" required>
+        <span class="highlight"></span>
+        <span class="bar"></span>
+        <label>Nazwa użytkownika</label>
+      </div>
+      <div class="group">
+        <input class="inputMaterial" type="password" v-model="userPassword" required>
+        <span class="highlight"></span>
+        <span class="bar"></span>
+        <label>Hasło</label>
+      </div>
+      <button @click="login()" v-bind:class="{ disabled: loginDisabled }">Zaloguj się</button>
+      <p class="change-window" @click="switchToRegister()">Rejestracja</p>
     </div>
+
+    <div class="login-box" v-if="activeMenu == 'register'">
+      <h1 class="login-header-text">Rejestracja</h1>
+      <div class="group">
+        <input class="inputMaterial" type="text" v-model="userNameRegister" required>
+        <span class="highlight"></span>
+        <span class="bar"></span>
+        <label>Nazwa użytkownika</label>
+      </div>
+      <div class="group">
+        <input class="inputMaterial" type="password" v-model="userPasswordRegister" required>
+        <span class="highlight"></span>
+        <span class="bar"></span>
+        <label>Hasło</label>
+      </div>
+      <div class="group">
+        <input class="inputMaterial" type="password" v-model="userPasswordRegisterRetry" required>
+        <span class="highlight"></span>
+        <span class="bar"></span>
+        <label>Powtórz hasło</label>
+      </div>
+
+      <button @click="register()" v-bind:class="{ disabled: registerDisabled }">Zarejestuj się</button>
+      <p class="change-window" @click="switchToLogin()">Logowanie</p>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -97,7 +65,6 @@ export default {
             userNameRegister: '',
             userPasswordRegister: '',
             userPasswordRegisterRetry: '',
-            showErrorWindow: false,
             errorMessage: '',
             registerDisabled: false,
             loginDisabled: false
@@ -173,12 +140,10 @@ export default {
             this.registerDisabled = true;
         },
         showError(message) {
-            if (!message || typeof message !== 'string') return;
             this.errorMessage = message;
-            this.showErrorWindow = true;
         },
         hideErrorWindow() {
-            this.showErrorWindow = false;
+            console.log('Hide error window loginWIndow.vue');
             this.errorMessage = '';
             if (this.registerDisabled) this.registerDisabled = false;
             if (this.loginDisabled) this.loginDisabled = false;
@@ -201,8 +166,8 @@ export default {
 
 html,
 body {
-    height: 100%;
-    font-family: 'Roboto';
+    /* height: 100%; */
+    /* font-family: 'Roboto'; */
 }
 
 #login {

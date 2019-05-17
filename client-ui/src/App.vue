@@ -12,8 +12,6 @@
 
 <script>
 export default {};
-
-alt.on('cos', () => {});
 </script>
 
 <style>

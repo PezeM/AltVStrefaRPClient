@@ -150,6 +150,28 @@ export default {
         }
     }
 };
+
+// alt.on('showError', message => {
+//     console.log('Showing error in login.js ' + message);
+//     loginApp.showError(message);
+// });
+
+// alt.on('registeredSuccessfully', () => {
+//     console.log('Registered successfully');
+//     loginApp.showError(
+//         `Pomyślnie założono konto z loginem ${
+//             loginApp.userNameRegister
+//         }. Możesz się teraz zalogować.`
+//     );
+//     loginApp.switchToLogin();
+// });
+
+// alt.on('loggedIn', characterList => {
+//     if (characterList) {
+//         loginApp.setAsLogged();
+//         characterSelect.populateCharacterList(characterList);
+//     }
+// });
 </script>
 
 <style scoped>

@@ -93,7 +93,3 @@ alt.on('loggedIn', (characterList) => {
         characterSelect.populateCharacterList(characterList);
     }
 });
-
-window.addEventListener('load', () => {
-    alt.emit('loginViewLoaded');
-});

@@ -1,7 +1,7 @@
 <template>
-    <div class="login">
-        <login-window></login-window>
-    </div>
+  <div class="login">
+    <login-window></login-window>
+  </div>
 </template>
 
 <script>
@@ -14,3 +14,4 @@ export default {
     }
 };
 </script>
+

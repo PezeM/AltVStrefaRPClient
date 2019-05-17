@@ -20,10 +20,6 @@ function loadLoginView() {
     loginView.on('tryToCreateNewCharacter', () => {
         tryToCreateNewCharacter();
     });
-    loginView.on('loginViewLoaded', () => {
-        // alt.setCamFrozen(true);
-        loginView.focus();
-    });
 
     loginView.focus();
     alt.showCursor(true);

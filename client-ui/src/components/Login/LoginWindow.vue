@@ -77,7 +77,7 @@ export default {
         switchToLogin() {
             this.activeMenu = 'login';
         },
-        setAsLogged() {
+        setAsLogged: function() {
             this.loggedIn = true;
             this.loginDisabled = false;
         },
@@ -150,49 +150,11 @@ export default {
         }
     }
 };
-
-// alt.on('showError', message => {
-//     console.log('Showing error in login.js ' + message);
-//     loginApp.showError(message);
-// });
-
-// alt.on('registeredSuccessfully', () => {
-//     console.log('Registered successfully');
-//     loginApp.showError(
-//         `Pomyślnie założono konto z loginem ${
-//             loginApp.userNameRegister
-//         }. Możesz się teraz zalogować.`
-//     );
-//     loginApp.switchToLogin();
-// });
-
-// alt.on('loggedIn', characterList => {
-//     if (characterList) {
-//         loginApp.setAsLogged();
-//         characterSelect.populateCharacterList(characterList);
-//     }
-// });
 </script>
 
 <style scoped>
-* {
-    padding: 0;
-    margin: 0;
-    outline: none;
-}
-
-/* @font-face {
-    font-family: 'Roboto';
-    src: url('../packages/fonts/Roboto-Regular.ttf');
-} */
-
-html,
-body {
-    /* height: 100%; */
-    /* font-family: 'Roboto'; */
-}
-
 #login {
+    position: absolute;
     width: 100%;
     height: 100%;
     display: flex;

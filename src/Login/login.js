@@ -6,8 +6,14 @@ let localPlayer = alt.getLocalPlayer();
 let loginView = null;
 
 function loadLoginView() {
-    loginView = new alt.WebView('http://resources/AltVStrefaRPClient/html/login/login.html');
+    // loginView = new alt.WebView('http://resources/AltVStrefaRPClient/html/login/login.html');
+    loginView = new alt.WebView('http://resources/AltVStrefaRPClient/client-ui/dist/index.html#');
+    alt.log('Created vue view');
 
+    loginView.on('windowReady', () => {
+        alt.log('On window ready client-side');
+        loginView.emit('openLoginView');
+    });
     loginView.on('tryToLogin', (username, password) => {
         tryToLogin(username, password)
     });
@@ -88,7 +94,7 @@ alt.onServer('CharacterCreatedSuccessfully', () => {
     alt.log('Character created succesfully');
     game.freezeEntityPosition(localPlayer.scriptID, false);
     game.setPedDefaultComponentVariation(localPlayer.scriptID);
-    // loginView.emit('hideCharacterSelectWindow');
+    loginView.emit('hideCharacterSelectWindow');
     hideLoginView();
 });
 
@@ -96,6 +102,6 @@ alt.onServer('loadedCharacter', () => {
     game.freezeEntityPosition(localPlayer.scriptID, false);
     // alt.log('Setting player component variation');
     game.setPedDefaultComponentVariation(localPlayer.scriptID);
-    // loginView.emit('hideCharacterSelectWindow');
+    loginView.emit('hideCharacterSelectWindow');
     hideLoginView();
 });

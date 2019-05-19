@@ -12,7 +12,19 @@ class _MenusManager {
         this.tablet = null;
         this.tabletView = null;
         this.viewOpened = false;
-        this.menusView = new alt.WebView('http://resources/AltVStrefaRPClient/html/menus.html');
+        this.menusView = {
+            uiDebug: true,
+            on(ev, cb) {
+                alt.log('Alt on', ev, cb);
+            },
+            emit(ev, ...args) {
+                alt.log('Event triggered', ev, args);
+            },
+            focus() {
+                alt.log('Focus view');
+            }
+        }
+        // this.menusView = new alt.WebView('http://resources/AltVStrefaRPClient/html/menus.html');
     }
 
     onServerEvent(eventName, callback) {

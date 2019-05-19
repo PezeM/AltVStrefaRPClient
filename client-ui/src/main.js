@@ -10,7 +10,9 @@ Vue.config.productionTip = false;
 if (!global.alt) {
     global.alt = {
         uiDebug: true,
-        on(ev, cb) { },
+        on(ev, cb) {
+            console.log('Alt on', ev, cb);
+        },
         emit(ev, ...args) {
             console.log('Event triggered', ev, args);
         }
@@ -21,4 +23,3 @@ new Vue({
     router,
     render: h => h(App)
 }).$mount('#app');
-

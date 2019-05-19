@@ -1,5 +1,6 @@
 /// <reference path="../../../altv.d.ts" />
-/// <reference path="../../../alt.d.ts" />
+/// <reference path="../../../altv-client.d.ts" />
+
 import alt from 'alt';
 import game from 'natives';
 import Animations from 'src/Modules/animations.js';
@@ -12,19 +13,20 @@ class _MenusManager {
         this.tablet = null;
         this.tabletView = null;
         this.viewOpened = false;
-        this.menusView = {
-            uiDebug: true,
-            on(ev, cb) {
-                alt.log('Alt on', ev, cb);
-            },
-            emit(ev, ...args) {
-                alt.log('Event triggered', ev, args);
-            },
-            focus() {
-                alt.log('Focus view');
-            }
-        }
-        // this.menusView = new alt.WebView('http://resources/AltVStrefaRPClient/html/menus.html');
+        this.viewLoaded = false;
+        // this.menusView = {
+        //     uiDebug: true,
+        //     on(ev, cb) {
+        //         alt.log('Alt on', ev, cb);
+        //     },
+        //     emit(ev, ...args) {
+        //         alt.log('Event triggered', ev, args);
+        //     },
+        //     focus() {
+        //         alt.log('Focus view');
+        //     }
+        // }
+        this.menusView = new alt.WebView('http://resources/AltVStrefaRPClient/client-ui/dist/index.html#');
     }
 
     onServerEvent(eventName, callback) {
@@ -104,4 +106,9 @@ class _MenusManager {
 }
 
 let MenusManager = new _MenusManager();
+
+menusManager.onUiEvent('viewLoaded', () => {
+    menusManager.viewLoaded = true;
+});
+
 export default MenusManager;

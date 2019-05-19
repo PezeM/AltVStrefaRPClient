@@ -1,91 +1,57 @@
 import alt from 'alt';
 import game from 'natives';
-import { showUiAndFreezePlayer } from 'src/Helpers/uiHelper.js';
+import menusManager from 'src/Modules/Ui/menusManager.js';
 
 let localPlayer = alt.getLocalPlayer();
-let loginView = null;
 
-function loadLoginView() {
-    // loginView = new alt.WebView('http://resources/AltVStrefaRPClient/html/login/login.html');
-    loginView = new alt.WebView('http://resources/AltVStrefaRPClient/client-ui/dist/index.html#');
-    alt.log('Created vue view');
+menusManager.onUiEvent('viewLoaded', () => {
+    menusManager.openMenu('openLoginView', true, true);
+});
 
-    loginView.on('windowReady', () => {
-        alt.log('On window ready client-side');
-        loginView.emit('openLoginView');
-    });
-    loginView.on('tryToLogin', (username, password) => {
-        tryToLogin(username, password)
-    });
-    loginView.on('tryToRegister', (username, password) => {
-        tryToRegister(username, password)
-    });
-    loginView.on('loadCharacter', (characterId) => {
-        tryToLoadCharacter(characterId);
-    });
-    loginView.on('tryToCreateNewCharacter', () => {
-        tryToCreateNewCharacter();
-    });
-
-    loginView.focus();
-    alt.showCursor(true);
-    showUiAndFreezePlayer(false);
-}
-
-function hideLoginView() {
-    showUiAndFreezePlayer(true);
-    alt.showCursor(false);
-    loginView.destroy();
-    // alt.nextTick(() => {
-    //     alt.setCamFrozen(false);
-    // });
-    // loginView.destroy();
-}
-
-function tryToLogin(username, password) {
+menusManager.onUiEvent('tryToLogin', (username, password) => {
     if (!username || !password) {
-        return loginView.emit('showError', 'Wysłano puste dane');
+        return menusManager.emitUiEvent('showError', 'Wysłano puste dane');
     }
 
     alt.emitServer('loginAccount', username, password);
-}
+});
 
-function tryToRegister(username, password) {
+menusManager.onUiEvent('tryToRegister', (username, password) => {
     if (!username || !password) {
-        return loginView.emit('showError', 'Wysłano puste dane');
+        return menusManager.emitUiEvent('showError', 'Wysłano puste dane');
     }
+
     alt.emitServer('registerAccount', username, password);
-}
+});
 
-function tryToCreateNewCharacter() {
-    // For now just sends requests to server and creates new default character
-    alt.emitServer('tryToCreateNewCharacter');
-}
-
-function tryToLoadCharacter(characterId) {
+menusManager.onUiEvent('loadCharacter', (characterId) => {
     characterId = Number(characterId);
     alt.log('Loading character with id: ' + characterId);
     alt.emitServer('tryToLoadCharacter', characterId);
-}
+});
+
+menusManager.onUiEvent('tryToCreateNewCharacter', () => {
+    alt.emitServer('tryToCreateNewCharacter');
+});
 
 alt.onServer('showAuthenticateWindow', () => {
     alt.log('Loading login view');
-    loadLoginView();
+    showLoginWindow();
 });
 
 alt.onServer('showLoginError', (message) => {
-    loginView.emit('showError', message);
+    menusManager.emitUiEvent('showError', message);
 });
 
 alt.onServer('successfullyRegistered', () => {
     alt.log('Client - registered succ');
-    loginView.emit('registeredSuccessfully');
+    menusManager.emitUiEvent('registeredSuccessfully');
 });
 
 alt.onServer('loginSuccesfully', (characterList) => {
     if (characterList) {
         alt.log('Character list: ' + characterList);
-        loginView.emit('loggedIn', characterList);
+        menusManager.emitUiEvent('loggedIn', characterList);
     }
 });
 
@@ -94,7 +60,7 @@ alt.onServer('CharacterCreatedSuccessfully', () => {
     alt.log('Character created succesfully');
     game.freezeEntityPosition(localPlayer.scriptID, false);
     game.setPedDefaultComponentVariation(localPlayer.scriptID);
-    loginView.emit('hideCharacterSelectWindow');
+    menusManager.emitUiEvent('hideCharacterSelectWindow');
     hideLoginView();
 });
 
@@ -102,6 +68,23 @@ alt.onServer('loadedCharacter', () => {
     game.freezeEntityPosition(localPlayer.scriptID, false);
     // alt.log('Setting player component variation');
     game.setPedDefaultComponentVariation(localPlayer.scriptID);
-    loginView.emit('hideCharacterSelectWindow');
+    menusManager.emitUiEvent('hideCharacterSelectWindow');
     hideLoginView();
 });
+
+function showLoginWindow() {
+    if (menusManager.viewLoaded) {
+        menusManager.openMenu('openLoginView', true, true);
+    } else {
+        let interval = alt.setInterval(() => {
+            if (menusManager.viewLoaded) {
+                menusManager.openMenu('openLoginView', true, true);
+                alt.clearInterval(interval);
+            }
+        }, 50);
+    }
+}
+
+function hideLoginView() {
+    menusManager.closeMenu();
+}

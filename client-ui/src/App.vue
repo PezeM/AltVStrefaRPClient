@@ -17,7 +17,7 @@ export default {
 };
 
 window.onload = function() {
-    alt.emit('windowReady');
+    alt.emit('viewLoaded');
 };
 
 alt.on('openLoginView', () => {

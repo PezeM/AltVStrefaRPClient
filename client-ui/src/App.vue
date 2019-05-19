@@ -20,10 +20,10 @@ window.onload = function() {
     alt.emit('windowReady');
 };
 
-// alt.on('openLoginView', () => {
-//     console.log('Open login view inside App.vue');
-//     router.push('/login');
-// });
+alt.on('openLoginView', () => {
+    console.log('Open login view inside App.vue');
+    router.push('/login');
+});
 </script>
 
 <style>

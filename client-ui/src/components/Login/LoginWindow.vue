@@ -50,6 +50,7 @@
 
 <script>
 import ErrorModal from '@/components/Login/ErrorModal.vue';
+import { EventBus } from '@/event-bus.js';
 
 export default {
     name: 'login',
@@ -77,7 +78,7 @@ export default {
         switchToLogin() {
             this.activeMenu = 'login';
         },
-        setAsLogged: function() {
+        setAsLogged() {
             this.loggedIn = true;
             this.loginDisabled = false;
         },
@@ -148,6 +149,11 @@ export default {
             if (this.registerDisabled) this.registerDisabled = false;
             if (this.loginDisabled) this.loginDisabled = false;
         }
+    },
+    mounted() {
+        EventBus.$on('loggedIn', () => {
+            this.setAsLogged();
+        });
     }
 };
 </script>

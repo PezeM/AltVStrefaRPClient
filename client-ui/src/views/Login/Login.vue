@@ -6,11 +6,7 @@
 
 <script>
 import LoginWindow from '@/components/Login/LoginWindow.vue';
-
-alt.on('openLoginView', () => {
-    console.log('OpenLoginView inside Login.vue');
-    // this.$router.push('/login');
-});
+import { EventBus } from '@/event-bus.js';
 
 alt.on('showError', message => {
     console.log('Showing error in login.js ' + message);
@@ -30,6 +26,7 @@ alt.on('registeredSuccessfully', () => {
 alt.on('loggedIn', characterList => {
     if (characterList) {
         console.log('Setting as logged and changing route');
+        EventBus.$emit('loggedIn');
         LoginWindow.setAsLogged();
         // this.$router.push('/');
         // characterSelect.populateCharacterList(characterList);

@@ -1,12 +1,5 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-console */
-import 'bootstrap/dist/css/bootstrap.css';
-import Vue from 'vue';
-import App from './App.vue';
-import router from './router';
-
-Vue.config.productionTip = false;
-
 if (!global.alt) {
     global.alt = {
         uiDebug: true,
@@ -18,6 +11,13 @@ if (!global.alt) {
         }
     };
 }
+
+import 'bootstrap/dist/css/bootstrap.css';
+import Vue from 'vue';
+import App from './App.vue';
+import router from './router';
+
+Vue.config.productionTip = false;
 
 new Vue({
     router,

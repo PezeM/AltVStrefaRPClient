@@ -52,7 +52,7 @@
 import ErrorModal from '@/components/Login/ErrorModal.vue';
 import { EventBus } from '@/event-bus.js';
 
-export default {
+let loginApp = {
     name: 'login',
     components: {
         ErrorModal
@@ -156,6 +156,18 @@ export default {
         });
     }
 };
+
+alt.on('registeredSuccessfully', () => {
+    console.log('Registered successfully');
+    loginApp.methods.showError(
+        `Pomyślnie założono konto z loginem ${
+            loginApp.userNameRegister
+        }. Możesz się teraz zalogować.`
+    );
+    loginApp.methods.switchToLogin();
+});
+
+export default loginApp;
 </script>
 
 <style scoped>

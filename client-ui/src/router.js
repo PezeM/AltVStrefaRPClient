@@ -18,7 +18,19 @@ export default new Router({
         {
             path: '/login',
             name: 'login',
-            component: () => import('./views/Login/Login.vue')
+            component: () => import('./views/Login/Login.vue'),
+            children: [
+                {
+                    path: '',
+                    name: 'loginWindow',
+                    component: () => import('@/components/Login/LoginWindow.vue')
+                },
+                {
+                    path: 'characters',
+                    name: 'characters',
+                    component: () => import('@/components/Login/CharacterSelect.vue')
+                }
+            ]
         },
         {
             path: '/about',

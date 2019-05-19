@@ -4,9 +4,9 @@ import menusManager from 'src/Modules/Ui/menusManager.js';
 
 let localPlayer = alt.getLocalPlayer();
 
-menusManager.onUiEvent('viewLoaded', () => {
-    menusManager.openMenu('openLoginView', true, true);
-});
+// menusManager.onUiEvent('viewLoaded', () => {
+//     menusManager.openMenu('openLoginView', true, true);
+// });
 
 menusManager.onUiEvent('tryToLogin', (username, password) => {
     if (!username || !password) {
@@ -51,7 +51,7 @@ alt.onServer('successfullyRegistered', () => {
 alt.onServer('loginSuccesfully', (characterList) => {
     if (characterList) {
         alt.log('Character list: ' + characterList);
-        menusManager.emitUiEvent('loggedIn', characterList);
+        menusManager.emitUiEvent('succesfullyLoggedIn', characterList);
     }
 });
 

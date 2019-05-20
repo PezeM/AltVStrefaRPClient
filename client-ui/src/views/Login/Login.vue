@@ -27,3 +27,11 @@ alt.on('hideCharacterSelectWindow', () => {
 });
 </script>
 
+<style scoped>
+#login-window {
+    height: 100%;
+    width: 100%;
+}
+</style>
+
+

@@ -11,7 +11,7 @@
 </head>
 
 <body>
-    <div id="login" v-if="!loggedIn">
+    <div id="login" v-if="loggedIn">
         <!-- Errow window -->
         <div class="error-frame" v-show="showErrorWindow">
             <div class="center">
@@ -72,7 +72,7 @@
         </div>
     </div>
 
-    <div id="charSelect" v-show="showCharacterSelect">
+    <div id="charSelect" v-show="!showCharacterSelect">
         <div class="char-select-title">
             <h1>Witaj na serwerze! Wybierz swoją postać</h1>
         </div>

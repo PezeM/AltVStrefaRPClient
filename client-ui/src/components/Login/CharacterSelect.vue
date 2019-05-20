@@ -28,12 +28,12 @@
         >
           <div
             class="card-top"
-            :style="{ backgroundImage: 'url(' + character.BackgroundImage + ')' }"
+            :style="{ backgroundImage: `url(${require(`@/assets/images/${character.BackgroundImage}`)})` }"
           ></div>
           <div class="card-profile">
             <div
               class="profile-image"
-              :style="{ backgroundImage: 'url(' + character.ProfileImage + ')' }"
+              :style="{ backgroundImage: `url(${require(`@/assets/images/${character.ProfileImage}`)})` }"
             ></div>
           </div>
           <div class="card-info">
@@ -85,59 +85,48 @@ export default {
             //         TimePlayed: 7,
             //         Name: 'Anna',
             //         LastName: 'Anna2',
-            //         BackgroundImage:
-            //             '../../assets/images/profile-card-background.jpg',
-            //         ProfileImage: '../../assets/images/strefa-logo.png'
+            //         BackgroundImage: 'profile-card-background.jpg',
+            //         ProfileImage: 'default-profile-image.jpg'
             //     },
             //     {
             //         Id: 'characters/1-A',
             //         TimePlayed: 2,
             //         Name: 'Kurwa',
             //         LastName: 'Maciek',
-            //         BackgroundImage:
-            //             '../../assets/images/profile-card-background.jpg',
-            //         ProfileImage:
-            //             '../../assets/images/default-profile-image.jpg'
+            //         BackgroundImage: 'profile-card-background.jpg',
+            //         ProfileImage: 'default-profile-image.jpg'
             //     },
             //     {
             //         Id: 'characters/97-A',
             //         TimePlayed: 16,
             //         Name: 'Edward',
             //         LastName: 'Testowy',
-            //         BackgroundImage:
-            //             '../../assets/images/profile-card-background.jpg',
-            //         ProfileImage:
-            //             '../../assets/images/default-profile-image.jpg'
+            //         BackgroundImage: 'profile-card-background.jpg',
+            //         ProfileImage: 'default-profile-image.jpg'
             //     },
             //     {
             //         Id: 'characters/161-A',
             //         TimePlayed: 8,
             //         Name: 'Ed',
             //         LastName: 'Eddy',
-            //         BackgroundImage:
-            //             '../../assets/images/profile-card-background.jpg',
-            //         ProfileImage:
-            //             '../../assets/images/default-profile-image.jpg'
+            //         BackgroundImage: 'profile-card-background.jpg',
+            //         ProfileImage: 'default-profile-image.jpg'
             //     },
             //     {
             //         Id: 'characters/162-A',
             //         TimePlayed: 8,
             //         Name: 'Ed',
             //         LastName: 'Eddy',
-            //         BackgroundImage:
-            //             '../../assets/images/profile-card-background.jpg',
-            //         ProfileImage:
-            //             '../../assets/images/default-profile-image.jpg'
+            //         BackgroundImage: 'profile-card-background.jpg',
+            //         ProfileImage: 'default-profile-image.jpg'
             //     },
             //     {
             //         Id: 'characters/163-A',
             //         TimePlayed: 8,
             //         Name: 'Ed',
             //         LastName: 'Eddy',
-            //         BackgroundImage:
-            //             '../../assets/images/profile-card-background.jpg',
-            //         ProfileImage:
-            //             '../../assets/images/default-profile-image.jpg'
+            //         BackgroundImage: 'profile-card-background.jpg',
+            //         ProfileImage: 'default-profile-image.jpg'
             //     }
             // ]
         };
@@ -181,8 +170,8 @@ export default {
 .charSelect {
     display: grid;
     width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.418);
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.65);
     grid-template-rows: 25% auto;
     grid-template-columns: auto;
 }
@@ -279,6 +268,16 @@ export default {
     text-align: center;
     display: flex;
     flex-direction: column;
+}
+
+.card-info h2 {
+    font-size: 1.5em;
+    font-weight: 700;
+}
+
+.card-info h3 {
+    font-size: 1.2em;
+    font-weight: 400;
 }
 
 .card .card-info .info-title {

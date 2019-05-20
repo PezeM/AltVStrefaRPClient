@@ -34,6 +34,8 @@ alt.on('openLoginView', () => {
 </script>
 
 <style>
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
 * {
     padding: 0;
     margin: 0;
@@ -47,5 +49,12 @@ alt.on('openLoginView', () => {
 html,
 body {
     background-color: transparent !important;
+    user-select: none;
+    font-family: 'Roboto', sans-serif;
+}
+
+#app {
+    height: 100%;
+    width: 100%;
 }
 </style>

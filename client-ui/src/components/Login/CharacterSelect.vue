@@ -62,77 +62,84 @@
 
 <script>
 import ErrorModal from '@/components/Login/ErrorModal.vue';
-import { EventBus } from '@/event-bus.js';
+import EventBus from '@/event-bus.js';
 
 export default {
     name: 'characterSelect',
     components: {
         ErrorModal
     },
+    mounted() {
+        EventBus.$on('succesfullyLoggedIn', characterList => {
+            console.log('Succesfully logged in event.');
+            this.populateCharacterList(characterList);
+        });
+    },
     data() {
         return {
             errorMessage: '',
-            charactersList: [
-                {
-                    Id: 'characters/33-A',
-                    TimePlayed: 7,
-                    Name: 'Anna',
-                    LastName: 'Anna2',
-                    BackgroundImage:
-                        '../../assets/images/profile-card-background.jpg',
-                    ProfileImage: '../../assets/images/strefa-logo.png'
-                },
-                {
-                    Id: 'characters/1-A',
-                    TimePlayed: 2,
-                    Name: 'Kurwa',
-                    LastName: 'Maciek',
-                    BackgroundImage:
-                        '../../assets/images/profile-card-background.jpg',
-                    ProfileImage:
-                        '../../assets/images/default-profile-image.jpg'
-                },
-                {
-                    Id: 'characters/97-A',
-                    TimePlayed: 16,
-                    Name: 'Edward',
-                    LastName: 'Testowy',
-                    BackgroundImage:
-                        '../../assets/images/profile-card-background.jpg',
-                    ProfileImage:
-                        '../../assets/images/default-profile-image.jpg'
-                },
-                {
-                    Id: 'characters/161-A',
-                    TimePlayed: 8,
-                    Name: 'Ed',
-                    LastName: 'Eddy',
-                    BackgroundImage:
-                        '../../assets/images/profile-card-background.jpg',
-                    ProfileImage:
-                        '../../assets/images/default-profile-image.jpg'
-                },
-                {
-                    Id: 'characters/162-A',
-                    TimePlayed: 8,
-                    Name: 'Ed',
-                    LastName: 'Eddy',
-                    BackgroundImage:
-                        '../../assets/images/profile-card-background.jpg',
-                    ProfileImage:
-                        '../../assets/images/default-profile-image.jpg'
-                },
-                {
-                    Id: 'characters/163-A',
-                    TimePlayed: 8,
-                    Name: 'Ed',
-                    LastName: 'Eddy',
-                    BackgroundImage:
-                        '../../assets/images/profile-card-background.jpg',
-                    ProfileImage:
-                        '../../assets/images/default-profile-image.jpg'
-                }
-            ]
+            charactersList: []
+            // charactersList: [
+            //     {
+            //         Id: 'characters/33-A',
+            //         TimePlayed: 7,
+            //         Name: 'Anna',
+            //         LastName: 'Anna2',
+            //         BackgroundImage:
+            //             '../../assets/images/profile-card-background.jpg',
+            //         ProfileImage: '../../assets/images/strefa-logo.png'
+            //     },
+            //     {
+            //         Id: 'characters/1-A',
+            //         TimePlayed: 2,
+            //         Name: 'Kurwa',
+            //         LastName: 'Maciek',
+            //         BackgroundImage:
+            //             '../../assets/images/profile-card-background.jpg',
+            //         ProfileImage:
+            //             '../../assets/images/default-profile-image.jpg'
+            //     },
+            //     {
+            //         Id: 'characters/97-A',
+            //         TimePlayed: 16,
+            //         Name: 'Edward',
+            //         LastName: 'Testowy',
+            //         BackgroundImage:
+            //             '../../assets/images/profile-card-background.jpg',
+            //         ProfileImage:
+            //             '../../assets/images/default-profile-image.jpg'
+            //     },
+            //     {
+            //         Id: 'characters/161-A',
+            //         TimePlayed: 8,
+            //         Name: 'Ed',
+            //         LastName: 'Eddy',
+            //         BackgroundImage:
+            //             '../../assets/images/profile-card-background.jpg',
+            //         ProfileImage:
+            //             '../../assets/images/default-profile-image.jpg'
+            //     },
+            //     {
+            //         Id: 'characters/162-A',
+            //         TimePlayed: 8,
+            //         Name: 'Ed',
+            //         LastName: 'Eddy',
+            //         BackgroundImage:
+            //             '../../assets/images/profile-card-background.jpg',
+            //         ProfileImage:
+            //             '../../assets/images/default-profile-image.jpg'
+            //     },
+            //     {
+            //         Id: 'characters/163-A',
+            //         TimePlayed: 8,
+            //         Name: 'Ed',
+            //         LastName: 'Eddy',
+            //         BackgroundImage:
+            //             '../../assets/images/profile-card-background.jpg',
+            //         ProfileImage:
+            //             '../../assets/images/default-profile-image.jpg'
+            //     }
+            // ]
         };
     },
     methods: {
@@ -140,11 +147,14 @@ export default {
             alt.emit('tryToCreateNewCharacter');
         },
         populateCharacterList(characterJson) {
-            this.charactersList = JSON.parse(characterJson);
+            console.log('Data inside populateCharacterList = ' + characterJson);
+            this.charactersList = characterJson;
+            console.log(
+                'New characterList = ' + JSON.stringify(this.characterList)
+            );
         },
         chooseCharacter(characterId) {
             if (characterId) {
-                characterId = Number(characterId);
                 alt.emit('loadCharacter', characterId);
             } else {
                 this.errorMessage = 'Złe ID postaci!';
@@ -162,11 +172,6 @@ export default {
                 return a.Id - b.Id;
             });
         }
-    },
-    mounted() {
-        EventBus.$on('succesfullyLoggedIn', charactersList => {
-            this.populateCharacterList(charactersList);
-        });
     }
 };
 </script>

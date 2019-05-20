@@ -50,7 +50,7 @@
 
 <script>
 import ErrorModal from '@/components/Login/ErrorModal.vue';
-import { EventBus } from '@/event-bus.js';
+import EventBus from '@/event-bus.js';
 
 let loginApp = {
     name: 'login',
@@ -100,6 +100,7 @@ let loginApp = {
             if (this.loginDisabled) return;
 
             alt.emit('tryToLogin', this.userName, this.userPassword);
+            EventBus.$emit('loggedIn');
             this.loginDisabled = true;
         },
         register() {
@@ -144,29 +145,33 @@ let loginApp = {
             this.errorMessage = message;
         },
         hideErrorWindow() {
-            console.log('Hide error window loginWIndow.vue');
             this.errorMessage = '';
             if (this.registerDisabled) this.registerDisabled = false;
             if (this.loginDisabled) this.loginDisabled = false;
         }
     },
     mounted() {
-        EventBus.$on('loggedIn', () => {
-            this.setAsLogged();
+        EventBus.$on('showError', message => {
+            this.showError(message);
+        });
+        EventBus.$on('registeredSuccesfully', message => {
+            this.showError(JSON.parse(message));
+            this.switchToLogin();
         });
     }
 };
 
 alt.on('registeredSuccessfully', () => {
     console.log('Registered successfully');
-    loginApp.methods.showError(
-        `Pomyślnie założono konto z loginem ${
-            loginApp.userNameRegister
-        }. Możesz się teraz zalogować.`
+    EventBus.$emit(
+        'registeredSuccesfully',
+        JSON.stringify(`Pomyślnie założono konto. Możesz się teraz zalogować`)
     );
-    loginApp.methods.switchToLogin();
 });
 
+alt.on('showError', message => {
+    EventBus.$emit('showError', message);
+});
 export default loginApp;
 </script>
 

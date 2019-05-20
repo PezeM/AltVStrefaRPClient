@@ -17,7 +17,6 @@ export default new Router({
         },
         {
             path: '/login',
-            name: 'login',
             component: () => import('./views/Login/Login.vue'),
             children: [
                 {
@@ -33,9 +32,9 @@ export default new Router({
             ]
         },
         {
-            path: '/about',
-            name: 'about',
-            component: () => import('./views/About.vue')
+            path: '/empty',
+            name: 'empty',
+            component: () => import('./views/Empty.vue')
         }
     ]
 });

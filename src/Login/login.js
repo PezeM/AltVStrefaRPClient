@@ -44,7 +44,6 @@ alt.onServer('showLoginError', (message) => {
 });
 
 alt.onServer('successfullyRegistered', () => {
-    alt.log('Client - registered succ');
     menusManager.emitUiEvent('registeredSuccessfully');
 });
 
@@ -81,7 +80,7 @@ function showLoginWindow() {
                 menusManager.openMenu('openLoginView', true, true);
                 alt.clearInterval(interval);
             }
-        }, 50);
+        }, 100);
     }
 }
 

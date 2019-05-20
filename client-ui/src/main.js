@@ -14,6 +14,7 @@ if (!global.alt) {
 
 import 'bootstrap/dist/css/bootstrap.css';
 import Vue from 'vue';
+import EventBus from './event-bus';
 import App from './App.vue';
 import router from './router';
 

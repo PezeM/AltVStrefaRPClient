@@ -101,14 +101,15 @@ class _MenusManager {
         // }, 0);
 
         alt.showCursor(!hideCursor);
+        this.menusView.unfocus();
         this.viewOpened = false;
     }
 }
 
 let MenusManager = new _MenusManager();
 
-menusManager.onUiEvent('viewLoaded', () => {
-    menusManager.viewLoaded = true;
+MenusManager.onUiEvent('viewLoaded', () => {
+    MenusManager.viewLoaded = true;
 });
 
 export default MenusManager;

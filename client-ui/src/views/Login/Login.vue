@@ -1,13 +1,12 @@
 <template>
   <div id="login-window">
-    <!-- <login-window></login-window> -->
     <router-view></router-view>
   </div>
 </template>
 
 <script>
 import router from '../../router';
-import { EventBus } from '@/event-bus.js';
+import EventBus from '@/event-bus.js';
 
 export default {
     name: 'login'
@@ -15,7 +14,16 @@ export default {
 
 alt.on('succesfullyLoggedIn', characterList => {
     router.push('/login/characters');
-    EventBus.$emit('succesfullyLoggedIn', characterList);
+    console.log(
+        'Inside Login.vue succesfullyLoggedIn with data ' +
+            JSON.stringify(characterList)
+    );
+    let newCharacterList = JSON.parse(characterList);
+    EventBus.$emit('succesfullyLoggedIn', newCharacterList);
+});
+
+alt.on('hideCharacterSelectWindow', () => {
+    router.push('/empty');
 });
 </script>
 

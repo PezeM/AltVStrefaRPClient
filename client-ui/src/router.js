@@ -3,7 +3,6 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import Home from './views/Home.vue';
-import CharacterSelect from './components/Login/CharacterSelect.vue';
 
 Vue.use(Router);
 
@@ -14,7 +13,7 @@ export default new Router({
         {
             path: '/',
             name: 'home',
-            component: Home
+            component: Home,
         },
         {
             path: '/login',
@@ -23,20 +22,20 @@ export default new Router({
                 {
                     path: '',
                     name: 'loginWindow',
-                    component: () => import('@/components/Login/LoginWindow.vue')
+                    component: () => import('@/components/Login/LoginWindow.vue'),
                 },
                 {
                     path: 'characters',
                     name: 'characters',
-                    component: CharacterSelect,
-                    props: true
-                }
-            ]
+                    component: () => import('@/components/Login/CharacterSelect.vue'),
+                    props: true,
+                },
+            ],
         },
         {
             path: '/empty',
             name: 'empty',
-            component: () => import('./views/Empty.vue')
-        }
-    ]
+            component: () => import('./views/Empty.vue'),
+        },
+    ],
 });

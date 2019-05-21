@@ -9,17 +9,14 @@ import router from '../../router';
 import EventBus from '@/event-bus.js';
 
 export default {
-    name: 'login'
+    name: 'login',
 };
 
 alt.on('succesfullyLoggedIn', characterList => {
-    console.log(
-        'Inside Login.vue succesfullyLoggedIn with data ' +
-            JSON.stringify(characterList)
-    );
+    console.log('Inside Login.vue succesfullyLoggedIn with data ' + JSON.stringify(characterList));
     router.push({
         name: 'characters',
-        params: { charactersList: JSON.parse(characterList) }
+        params: { charactersList: JSON.parse(characterList) },
     });
 });
 
@@ -35,8 +32,8 @@ EventBus.$on('loggedIn', () => {
             LastName: '2',
             BackgroundImage: 'profile-card-background.jpg',
             ProfileImage: 'default-profile-image.jpg',
-            TimePlayed: 55
-        }
+            TimePlayed: 55,
+        },
     ];
 
     router.push({ name: 'characters', params: { charactersList: data } });
@@ -49,5 +46,3 @@ EventBus.$on('loggedIn', () => {
     width: 100%;
 }
 </style>
-
-

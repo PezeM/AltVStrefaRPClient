@@ -1,51 +1,51 @@
 <template>
-  <div id="login">
-    <!-- Errow window -->
-    <error-modal v-bind:errorMessage="errorMessage" v-on:hide-error-window="hideErrorWindow"></error-modal>
+    <div id="login">
+        <!-- Errow window -->
+        <error-modal v-bind:errorMessage="errorMessage" v-on:hide-error-window="hideErrorWindow"></error-modal>
 
-    <div class="login-box" v-if="activeMenu == 'login'">
-      <h1 class="login-header-text">Zaloguj się</h1>
-      <div class="group">
-        <input class="inputMaterial" type="text" v-model="userName" required>
-        <span class="highlight"></span>
-        <span class="bar"></span>
-        <label>Nazwa użytkownika</label>
-      </div>
-      <div class="group">
-        <input class="inputMaterial" type="password" v-model="userPassword" required>
-        <span class="highlight"></span>
-        <span class="bar"></span>
-        <label>Hasło</label>
-      </div>
-      <button @click="login()" v-bind:class="{ disabled: loginDisabled }">Zaloguj się</button>
-      <p class="change-window" @click="switchToRegister()">Rejestracja</p>
+        <div class="login-box" v-if="activeMenu == 'login'">
+            <h1 class="login-header-text">Zaloguj się</h1>
+            <div class="group">
+                <input class="inputMaterial" type="text" v-model="userName" required />
+                <span class="highlight"></span>
+                <span class="bar"></span>
+                <label>Nazwa użytkownika</label>
+            </div>
+            <div class="group">
+                <input class="inputMaterial" type="password" v-model="userPassword" required />
+                <span class="highlight"></span>
+                <span class="bar"></span>
+                <label>Hasło</label>
+            </div>
+            <button @click="login()" v-bind:class="{ disabled: loginDisabled }">Zaloguj się</button>
+            <p class="change-window" @click="switchToRegister()">Rejestracja</p>
+        </div>
+
+        <div class="login-box" v-if="activeMenu == 'register'">
+            <h1 class="login-header-text">Rejestracja</h1>
+            <div class="group">
+                <input class="inputMaterial" type="text" v-model="userNameRegister" required />
+                <span class="highlight"></span>
+                <span class="bar"></span>
+                <label>Nazwa użytkownika</label>
+            </div>
+            <div class="group">
+                <input class="inputMaterial" type="password" v-model="userPasswordRegister" required />
+                <span class="highlight"></span>
+                <span class="bar"></span>
+                <label>Hasło</label>
+            </div>
+            <div class="group">
+                <input class="inputMaterial" type="password" v-model="userPasswordRegisterRetry" required />
+                <span class="highlight"></span>
+                <span class="bar"></span>
+                <label>Powtórz hasło</label>
+            </div>
+
+            <button @click="register()" v-bind:class="{ disabled: registerDisabled }">Zarejestuj się</button>
+            <p class="change-window" @click="switchToLogin()">Logowanie</p>
+        </div>
     </div>
-
-    <div class="login-box" v-if="activeMenu == 'register'">
-      <h1 class="login-header-text">Rejestracja</h1>
-      <div class="group">
-        <input class="inputMaterial" type="text" v-model="userNameRegister" required>
-        <span class="highlight"></span>
-        <span class="bar"></span>
-        <label>Nazwa użytkownika</label>
-      </div>
-      <div class="group">
-        <input class="inputMaterial" type="password" v-model="userPasswordRegister" required>
-        <span class="highlight"></span>
-        <span class="bar"></span>
-        <label>Hasło</label>
-      </div>
-      <div class="group">
-        <input class="inputMaterial" type="password" v-model="userPasswordRegisterRetry" required>
-        <span class="highlight"></span>
-        <span class="bar"></span>
-        <label>Powtórz hasło</label>
-      </div>
-
-      <button @click="register()" v-bind:class="{ disabled: registerDisabled }">Zarejestuj się</button>
-      <p class="change-window" @click="switchToLogin()">Logowanie</p>
-    </div>
-  </div>
 </template>
 
 <script>
@@ -55,7 +55,7 @@ import EventBus from '@/event-bus.js';
 let loginApp = {
     name: 'login',
     components: {
-        ErrorModal
+        ErrorModal,
     },
     data() {
         return {
@@ -68,7 +68,7 @@ let loginApp = {
             userPasswordRegisterRetry: '',
             errorMessage: '',
             registerDisabled: false,
-            loginDisabled: false
+            loginDisabled: false,
         };
     },
     methods: {
@@ -86,17 +86,10 @@ let loginApp = {
             this.loginDisabled = false;
         },
         login() {
-            if (
-                this.userName == '' ||
-                this.userName === undefined ||
-                (this.userPassword == '' || this.userName === undefined)
-            ) {
+            if (this.userName == '' || this.userName === undefined || (this.userPassword == '' || this.userName === undefined)) {
                 return this.showError('Uzupełnij wszystkie pola.');
             }
-            if (
-                typeof this.userName !== 'string' ||
-                typeof this.userPassword !== 'string'
-            ) {
+            if (typeof this.userName !== 'string' || typeof this.userPassword !== 'string') {
                 return this.showError('Podano złe dane.');
             }
 
@@ -137,11 +130,7 @@ let loginApp = {
 
             if (this.registerDisabled) return;
 
-            alt.emit(
-                'tryToRegister',
-                this.userNameRegister,
-                this.userPasswordRegister
-            );
+            alt.emit('tryToRegister', this.userNameRegister, this.userPasswordRegister);
             this.registerDisabled = true;
         },
         showError(message) {
@@ -151,7 +140,7 @@ let loginApp = {
             this.errorMessage = '';
             if (this.registerDisabled) this.registerDisabled = false;
             if (this.loginDisabled) this.loginDisabled = false;
-        }
+        },
     },
     mounted() {
         EventBus.$on('showError', message => {
@@ -161,15 +150,12 @@ let loginApp = {
             this.showError(JSON.parse(message));
             this.switchToLogin();
         });
-    }
+    },
 };
 
 alt.on('registeredSuccessfully', () => {
     console.log('Registered successfully');
-    EventBus.$emit(
-        'registeredSuccesfully',
-        JSON.stringify(`Pomyślnie założono konto. Możesz się teraz zalogować`)
-    );
+    EventBus.$emit('registeredSuccesfully', JSON.stringify(`Pomyślnie założono konto. Możesz się teraz zalogować`));
 });
 
 alt.on('showError', message => {

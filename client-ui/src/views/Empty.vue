@@ -1,9 +1,9 @@
 <template>
-  <div class="empty"></div>
+    <div class="empty"></div>
 </template>
 
 <script>
 export default {
-    name: 'empty'
+    name: 'empty',
 };
 </script>

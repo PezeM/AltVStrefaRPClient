@@ -1,9 +1,7 @@
 /// <reference path="../altv.d.ts" />
-/// <reference path="../alt.d.ts" />
+/// <reference path="../altv-client.d.ts" />
 
 import alt from 'alt';
-import game from 'natives';
-import { showUiAndFreezePlayer } from 'src/Helpers/uiHelper.js';
 import mainUi from 'src/Modules/Ui/mainUi.js';
 import bank from 'src/Modules/banking.js';
 import Business from 'src/Modules/business.js';

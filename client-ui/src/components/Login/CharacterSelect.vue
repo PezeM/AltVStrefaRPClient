@@ -67,14 +67,14 @@ import EventBus from '@/event-bus.js';
 export default {
     name: 'characterSelect',
     components: {
-        ErrorModal
+        ErrorModal,
     },
     props: {
-        charactersList: Array
+        charactersList: Array,
     },
     data() {
         return {
-            errorMessage: ''
+            errorMessage: '',
             // charactersList: [
             //     {
             //         Id: 'characters/33-A',
@@ -117,7 +117,7 @@ export default {
         hideErrorWindow() {
             console.log('Hide error window loginWIndow.vue');
             this.errorMessage = '';
-        }
+        },
     },
     computed: {
         filteredCharacterList() {
@@ -125,11 +125,10 @@ export default {
             return this.charactersList.sort(function(a, b) {
                 return a.Id - b.Id;
             });
-        }
-    }
+        },
+    },
 };
 </script>
-
 
 <style scoped>
 .charSelect {
@@ -186,8 +185,7 @@ export default {
     height: 32vh;
     border-radius: 8px;
     cursor: pointer;
-    box-shadow: 0 12px 18px rgba(0, 0, 0, 0.479),
-        0 12px 18px rgba(0, 0, 0, 0.644);
+    box-shadow: 0 12px 18px rgba(0, 0, 0, 0.479), 0 12px 18px rgba(0, 0, 0, 0.644);
     transform: perspective(350px) rotateY(10deg);
 }
 
@@ -264,7 +262,6 @@ export default {
     flex-basis: 1px;
     min-height: 20px;
     max-height: 80px;
-    /* max-height: 30px; */
 }
 
 .card.new-char .card-top {
@@ -272,7 +269,6 @@ export default {
 }
 
 .card.new-char .profile-image {
-    /* background-image: url('../../assets/images/profile-card-background.jpg'); */
     background-image: url('../../assets/images/strefa-logo.png');
 }
 </style>

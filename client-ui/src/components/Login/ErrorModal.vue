@@ -16,18 +16,18 @@
 export default {
     name: 'errorModal',
     props: {
-        errorMessage: String
+        errorMessage: String,
     },
     methods: {
         hideErrorWindow() {
             this.$emit('hide-error-window');
-        }
+        },
     },
     computed: {
         isErrorMessage() {
             return this.errorMessage.length > 1;
-        }
-    }
+        },
+    },
 };
 </script>
 
@@ -58,8 +58,7 @@ export default {
     text-align: center;
     width: 30rem;
     background: -webkit-linear-gradient(45deg, #17171b 0%, #191d30 100%);
-    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
-        10px 12px 10px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 10px 12px 10px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
     transition: transform 0.5s ease 0.4s;
     transition: transform 0.5s ease 0.4s, -webkit-transform 0.5s ease 0.4s;

@@ -4,10 +4,6 @@ import menusManager from 'src/Modules/Ui/menusManager.js';
 
 let localPlayer = alt.getLocalPlayer();
 
-// menusManager.onUiEvent('viewLoaded', () => {
-//     menusManager.openMenu('openLoginView', true, true);
-// });
-
 menusManager.onUiEvent('tryToLogin', (username, password) => {
     if (!username || !password) {
         return menusManager.emitUiEvent('showError', 'Wysłano puste dane');
@@ -65,7 +61,6 @@ alt.onServer('CharacterCreatedSuccessfully', () => {
 
 alt.onServer('loadedCharacter', () => {
     game.freezeEntityPosition(localPlayer.scriptID, false);
-    // alt.log('Setting player component variation');
     game.setPedDefaultComponentVariation(localPlayer.scriptID);
     menusManager.emitUiEvent('hideCharacterSelectWindow');
     hideLoginView();

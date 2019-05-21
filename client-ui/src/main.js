@@ -8,7 +8,7 @@ if (!global.alt) {
         },
         emit(ev, ...args) {
             console.log('Event triggered', ev, args);
-        }
+        },
     };
 }
 
@@ -22,5 +22,5 @@ Vue.config.productionTip = false;
 
 new Vue({
     router,
-    render: h => h(App)
+    render: h => h(App),
 }).$mount('#app');

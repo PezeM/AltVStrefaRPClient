@@ -13,14 +13,14 @@ if (!global.alt) {
         },
         emit(ev, ...args) {
             console.log('Event triggered', ev, args);
-        }
+        },
     };
 }
 
 import router from './router';
 
 export default {
-    name: 'App'
+    name: 'App',
 };
 
 window.onload = function() {

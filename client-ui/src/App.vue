@@ -31,6 +31,15 @@ alt.on('openLoginView', () => {
     console.log('Open login view inside App.vue');
     router.push('/login');
 });
+
+alt.on('openBankMenuView', bankMenuInformation => {
+    console.log('openBankMenuView inside App.vue');
+    router.push({ name: 'bank', params: { bankData: JSON.parse(bankMenuInformation) } });
+});
+
+alt.on('closeMenu', () => {
+    router.push('/empty');
+});
 </script>
 
 <style>

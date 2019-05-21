@@ -96,7 +96,6 @@ let loginApp = {
             if (this.loginDisabled) return;
 
             alt.emit('tryToLogin', this.userName, this.userPassword);
-            EventBus.$emit('loggedIn');
             this.loginDisabled = true;
         },
         register() {

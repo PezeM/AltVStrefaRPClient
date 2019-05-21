@@ -99,7 +99,7 @@ class _MenusManager {
         //     game.deleteObject(this.tablet);
         //     this.tabletView.destroy();
         // }, 0);
-
+        this.menusView.emit('closeMenu');
         alt.showCursor(!hideCursor);
         this.menusView.unfocus();
         this.viewOpened = false;

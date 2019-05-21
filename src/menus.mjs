@@ -27,7 +27,7 @@ menusManager.onServerEvent('updateBankMoneyWithNotification', (notificationMessa
     mainUi.showCefNotification(1, "Aktualizacja", notificationMessage, 6000);
 });
 
-menusManager.onServerEvent('openTransactionHistory', (transactionHistory) => {
+menusManager.onServerEvent('openTransactionHistory', transactionHistory => {
     menusManager.emitUiEvent('openTransactionHistory', transactionHistory);
 });
 

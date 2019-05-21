@@ -33,6 +33,12 @@ export default new Router({
             ],
         },
         {
+            path: '/bank',
+            name: 'bank',
+            component: () => import('./views/BankView.vue'),
+            props: true,
+        },
+        {
             path: '/empty',
             name: 'empty',
             component: () => import('./views/Empty.vue'),

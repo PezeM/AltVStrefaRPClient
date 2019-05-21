@@ -86,7 +86,6 @@ export function setupVehicleShop(shopId, vehicleInfo) {
         vehicleData.maxBreaking = (game.getVehicleModelMaxBraking(vehicle.VehicleModel) / game.getVehicleClassMaxBraking(vehicleData.vehicleClass)).toFixed(3);
         currentVehicleShopData.push(vehicleData);
     });
-    alt.log('New vehicle info = ' + JSON.stringify(currentVehicleShopData));
 
     var vehicleShopData = getVehicleShopData(shopId);
     shopCamera = new Camera('DEFAULT_SCRIPTED_CAMERA', vehicleShopData.cameraPosition, vehicleShopData.cameraRotation, 45);
@@ -99,8 +98,7 @@ export function setupVehicleShop(shopId, vehicleInfo) {
     game.setVehicleOnGroundProperly(currentVehicle);
 
     var vehiclePos = game.getEntityCoords(currentVehicle, true);
-    cameraRotator.start(shopCamera, vehicleShopData.cameraPosition, vehiclePos, { x: 5.5, y: 3, z: 0 }, 180);
-    // cameraRotator.setXBound(10, 360);
+    cameraRotator.start(shopCamera, vehicleShopData.cameraPosition, vehiclePos, { x: 5, y: 2.5, z: 0 }, 180);
     cameraRotator.setZBound(-0.8, 1.6);
     cameraRotator.setZUpMultipler(3);
     return currentVehicleShopData;

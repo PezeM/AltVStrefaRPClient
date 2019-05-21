@@ -28,7 +28,8 @@ export default new Router({
                 {
                     path: 'characters',
                     name: 'characters',
-                    component: CharacterSelect
+                    component: CharacterSelect,
+                    props: true
                 }
             ]
         },

@@ -69,14 +69,12 @@ export default {
     components: {
         ErrorModal
     },
-    mounted() {
-        console.log('Mounted');
-        EventBus.$on('succesfullyLoggedIn', this.populateCharacterList);
+    props: {
+        charactersList: Array
     },
     data() {
         return {
-            errorMessage: '',
-            charactersList: []
+            errorMessage: ''
             // charactersList: [
             //     {
             //         Id: 'characters/33-A',
@@ -102,42 +100,12 @@ export default {
             //         BackgroundImage: 'profile-card-background.jpg',
             //         ProfileImage: 'default-profile-image.jpg'
             //     },
-            //     {
-            //         Id: 'characters/161-A',
-            //         TimePlayed: 8,
-            //         Name: 'Ed',
-            //         LastName: 'Eddy',
-            //         BackgroundImage: 'profile-card-background.jpg',
-            //         ProfileImage: 'default-profile-image.jpg'
-            //     },
-            //     {
-            //         Id: 'characters/162-A',
-            //         TimePlayed: 8,
-            //         Name: 'Ed',
-            //         LastName: 'Eddy',
-            //         BackgroundImage: 'profile-card-background.jpg',
-            //         ProfileImage: 'default-profile-image.jpg'
-            //     },
-            //     {
-            //         Id: 'characters/163-A',
-            //         TimePlayed: 8,
-            //         Name: 'Ed',
-            //         LastName: 'Eddy',
-            //         BackgroundImage: 'profile-card-background.jpg',
-            //         ProfileImage: 'default-profile-image.jpg'
-            //     }
             // ]
         };
     },
     methods: {
         createCharacter() {
             alt.emit('tryToCreateNewCharacter');
-        },
-        populateCharacterList(characterJson) {
-            this.charactersList = characterJson;
-            console.log(
-                'New characterList = ' + JSON.stringify(this.charactersList)
-            );
         },
         chooseCharacter(characterId) {
             if (characterId) {
@@ -158,9 +126,6 @@ export default {
                 return a.Id - b.Id;
             });
         }
-    },
-    beforeDestroy() {
-        EventBus.$off('succesfullyLoggedIn', this.populateCharacterList);
     }
 };
 </script>

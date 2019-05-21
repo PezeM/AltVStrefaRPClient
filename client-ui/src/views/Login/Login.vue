@@ -13,12 +13,14 @@ export default {
 };
 
 alt.on('succesfullyLoggedIn', characterList => {
-    router.push('/login/characters');
     console.log(
         'Inside Login.vue succesfullyLoggedIn with data ' +
             JSON.stringify(characterList)
     );
-    EventBus.$emit('succesfullyLoggedIn', JSON.parse(characterList));
+    router.push({
+        name: 'characters',
+        params: { charactersList: JSON.parse(characterList) }
+    });
 });
 
 alt.on('hideCharacterSelectWindow', () => {
@@ -36,10 +38,8 @@ EventBus.$on('loggedIn', () => {
             TimePlayed: 55
         }
     ];
-    router.push('/login/characters');
-    setTimeout(() => {
-        EventBus.$emit('succesfullyLoggedIn', data);
-    }, 1);
+
+    router.push({ name: 'characters', params: { charactersList: data } });
 });
 </script>
 

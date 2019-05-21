@@ -3,6 +3,7 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import Home from './views/Home.vue';
+import CharacterSelect from './components/Login/CharacterSelect.vue';
 
 Vue.use(Router);
 
@@ -27,7 +28,7 @@ export default new Router({
                 {
                     path: 'characters',
                     name: 'characters',
-                    component: () => import('@/components/Login/CharacterSelect.vue')
+                    component: CharacterSelect
                 }
             ]
         },

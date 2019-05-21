@@ -18,12 +18,28 @@ alt.on('succesfullyLoggedIn', characterList => {
         'Inside Login.vue succesfullyLoggedIn with data ' +
             JSON.stringify(characterList)
     );
-    let newCharacterList = JSON.parse(characterList);
-    EventBus.$emit('succesfullyLoggedIn', newCharacterList);
+    EventBus.$emit('succesfullyLoggedIn', JSON.parse(characterList));
 });
 
 alt.on('hideCharacterSelectWindow', () => {
     router.push('/empty');
+});
+
+EventBus.$on('loggedIn', () => {
+    var data = [
+        {
+            Id: 15,
+            FirstName: '2',
+            LastName: '2',
+            BackgroundImage: 'profile-card-background.jpg',
+            ProfileImage: 'default-profile-image.jpg',
+            TimePlayed: 55
+        }
+    ];
+    router.push('/login/characters');
+    setTimeout(() => {
+        EventBus.$emit('succesfullyLoggedIn', data);
+    }, 1);
 });
 </script>
 

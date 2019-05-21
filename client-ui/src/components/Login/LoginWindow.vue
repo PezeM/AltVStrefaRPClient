@@ -77,6 +77,9 @@ let loginApp = {
         },
         switchToLogin() {
             this.activeMenu = 'login';
+            this.userPasswordRegister = '';
+            this.userPasswordRegisterRetry = '';
+            this.userNameRegister = '';
         },
         setAsLogged() {
             this.loggedIn = true;

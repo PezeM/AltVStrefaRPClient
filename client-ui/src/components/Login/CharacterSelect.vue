@@ -23,7 +23,7 @@
         <div
           class="character-card card"
           v-for="character in filteredCharacterList"
-          v-bind:key="character.Id"
+          :key="character.Id"
           @click="chooseCharacter(character.Id)"
         >
           <div
@@ -70,10 +70,8 @@ export default {
         ErrorModal
     },
     mounted() {
-        EventBus.$on('succesfullyLoggedIn', characterList => {
-            console.log('Succesfully logged in event.');
-            this.populateCharacterList(characterList);
-        });
+        console.log('Mounted');
+        EventBus.$on('succesfullyLoggedIn', this.populateCharacterList);
     },
     data() {
         return {
@@ -136,10 +134,9 @@ export default {
             alt.emit('tryToCreateNewCharacter');
         },
         populateCharacterList(characterJson) {
-            console.log('Data inside populateCharacterList = ' + characterJson);
             this.charactersList = characterJson;
             console.log(
-                'New characterList = ' + JSON.stringify(this.characterList)
+                'New characterList = ' + JSON.stringify(this.charactersList)
             );
         },
         chooseCharacter(characterId) {
@@ -161,6 +158,9 @@ export default {
                 return a.Id - b.Id;
             });
         }
+    },
+    beforeDestroy() {
+        EventBus.$off('succesfullyLoggedIn', this.populateCharacterList);
     }
 };
 </script>

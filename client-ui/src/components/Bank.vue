@@ -1,6 +1,6 @@
 <template>
-  <div id="bankApp" @mousedown="mouseDown" @mouseup="mouseUp">
-    <div class="bankWindow">
+  <div class="bankApp">
+    <div class="bankWindow" @mousedown="mouseDown" @mouseup="mouseUp">
       <header class="bankWindow-header">
         <div class="main-title">
           <img src="@/assets/images/icons/bank.png" class="icon">
@@ -471,12 +471,13 @@ export default {
             }
         },
         closeBankMenu() {
-            alt.emit('closeBankMenu');
             $('.login-screen').removeClass('success');
             $('.fingerprint').removeClass('active');
-            this.currentMenuShown = '';
+            this.currentMenuShown = 'mainScreen';
+            this.authTimer = null;
             this.isAuthed = false;
             this.transactionHistory = [];
+            alt.emit('closeBankMenu');
         },
         openDepositDiv() {
             this.currentMenuShown = 'depositScreen';
@@ -590,7 +591,7 @@ alt.on('openTransactionHistory', transactionHistory => {
 </script>
 
 <style scoped>
-#bankApp {
+.bankApp {
     padding: 0;
     margin: 0;
     display: flex;
@@ -606,7 +607,7 @@ alt.on('openTransactionHistory', transactionHistory => {
     display: none;
 }
 
-#bankApp button {
+.bankApp button {
     border: none;
     outline: none;
 }

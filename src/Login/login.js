@@ -55,14 +55,14 @@ alt.onServer('CharacterCreatedSuccessfully', () => {
     alt.log('Character created succesfully');
     game.freezeEntityPosition(localPlayer.scriptID, false);
     game.setPedDefaultComponentVariation(localPlayer.scriptID);
-    menusManager.emitUiEvent('hideCharacterSelectWindow');
+    // menusManager.emitUiEvent('hideCharacterSelectWindow');
     hideLoginView();
 });
 
 alt.onServer('loadedCharacter', () => {
     game.freezeEntityPosition(localPlayer.scriptID, false);
     game.setPedDefaultComponentVariation(localPlayer.scriptID);
-    menusManager.emitUiEvent('hideCharacterSelectWindow');
+    // menusManager.emitUiEvent('hideCharacterSelectWindow');
     hideLoginView();
 });
 

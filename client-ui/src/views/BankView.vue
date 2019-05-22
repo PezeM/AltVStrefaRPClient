@@ -1,6 +1,6 @@
 <template>
-  <div id="bank-window">
-    <bank :characterData="bankData"></bank>
+  <div class="bank-window" @mousedown="onMouseDown">
+    <Bank :characterData="bankData"></Bank>
   </div>
 </template>
 
@@ -15,11 +15,16 @@ export default {
     components: {
         Bank,
     },
+    methods: {
+        onMouseDown() {
+            console.log(`On mouse down inside BankView.vue`);
+        },
+    },
 };
 </script>
 
 <style scoped>
-#bank-window {
+.bank-window {
     width: 100%;
     height: 100%;
 }

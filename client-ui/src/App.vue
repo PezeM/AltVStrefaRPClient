@@ -38,6 +38,7 @@ alt.on('openBankMenuView', bankMenuInformation => {
 });
 
 alt.on('closeMenu', () => {
+    console.log('Changing the router to emtpy');
     router.push('/empty');
 });
 </script>

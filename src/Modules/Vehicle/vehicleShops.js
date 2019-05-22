@@ -98,7 +98,7 @@ export function setupVehicleShop(shopId, vehicleInfo) {
     game.setVehicleOnGroundProperly(currentVehicle);
 
     var vehiclePos = game.getEntityCoords(currentVehicle, true);
-    cameraRotator.start(shopCamera, vehicleShopData.cameraPosition, vehiclePos, { x: 5, y: 2.5, z: 0 }, 180);
+    cameraRotator.start(shopCamera, vehicleShopData.cameraPosition, vehiclePos, { x: 4.5, y: 2.5, z: 0 }, 180);
     cameraRotator.setZBound(-0.8, 1.6);
     cameraRotator.setZUpMultipler(3);
     return currentVehicleShopData;

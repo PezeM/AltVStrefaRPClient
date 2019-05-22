@@ -66,9 +66,9 @@ class _MenusManager {
         //     0.035, 0.015, 0.012, 0.0, 0, 0, true, true, false, true, 1, true);
 
         this.menusView.emit(name, ...args);
-        this.menusView.focus();
         this.viewOpened = true;
         alt.showCursor(true);
+        this.menusView.focus();
 
         // let inter = alt.setInterval(() => {
         //     if (alt.isTextureExistInArchetype(game.getHashKey('xm_prop_x17_sec_panel_01'), 'script_rt_prop_x17_p_01')) {
@@ -99,10 +99,12 @@ class _MenusManager {
         //     game.deleteObject(this.tablet);
         //     this.tabletView.destroy();
         // }, 0);
-        this.menusView.emit('closeMenu');
+        alt.log('Inside closeMenu function');
         alt.showCursor(!hideCursor);
-        this.menusView.unfocus();
+        // this.menusView.unfocus();
         this.viewOpened = false;
+        this.menusView.emit('closeMenu');
+        alt.log(`Setting the cursor to ${!hideCursor}`);
     }
 }
 

@@ -243,6 +243,7 @@ alt.on('update', () => {
 
     trashBin.onUpdate();
 
+    // Disable moving camera/attacking while UI is open
     if (circleMenuOpened || chat.isOpen() || menusManager.viewOpened) {
         game.disableControlAction(0, 1, true); // Mouse Look, Left/Right
         game.disableControlAction(0, 2, true); // Mouse Look, Up/Down

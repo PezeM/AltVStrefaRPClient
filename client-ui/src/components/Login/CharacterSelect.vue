@@ -38,8 +38,8 @@
           </div>
           <div class="card-info">
             <div class="info-title">
-              <h2>{{ character.Name }} {{ character.LastName }}</h2>
-              <h3>Pieniądze: {{ character.Id }}$</h3>
+              <h2>{{ getCharacterFullName }}</h2>
+              <h3>Pieniądze: {{ character.Money }}$</h3>
             </div>
             <div class="info-follow">
               <div>
@@ -125,6 +125,9 @@ export default {
             return this.charactersList.sort(function(a, b) {
                 return a.Id - b.Id;
             });
+        },
+        getCharacterFullName(character) {
+            return character.Name + ' ' + character.LastName;
         },
     },
 };

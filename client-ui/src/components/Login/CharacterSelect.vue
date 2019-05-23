@@ -127,7 +127,7 @@ export default {
             });
         },
         getCharacterFullName(character) {
-            return character.Name + ' ' + character.LastName;
+            return character.FirstName + ' ' + character.LastName;
         },
     },
 };

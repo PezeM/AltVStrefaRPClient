@@ -678,7 +678,7 @@ export default {
         },
         populateEmployeeRanks(employeesInfo) {
             if (employeesInfo !== null) {
-                this.employeesInfo = JSON.parse(employeesInfo);
+                this.employeesInfo = employeesInfo;
                 this.setActiveMenu('employeesPage');
             }
             else {
@@ -790,7 +790,7 @@ export default {
         },
         populateBusinessRanksInfo (businessRanksInfo) {
             if (businessRanksInfo !== null) {
-                this.businessRanksInfo = JSON.parse(businessRanksInfo);
+                this.businessRanksInfo = businessRanksInfo;
                 this.setActiveMenu('rolesPage');
             }
             else {

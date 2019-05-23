@@ -602,7 +602,6 @@ const businessTypes = [
 export default {
     data() {
         return{
-            businessMenuVisible: false,
             employeesInfo: null,
             businessRanksInfo: null,
             currentMenuVisible: "mainPage",
@@ -639,29 +638,14 @@ export default {
         }
     },
     methods: {
-        showBusinessMenu: function (businessInfo) {
-            if (businessInfo !== null) {
-                this.businessInfo = JSON.parse(businessInfo);
-                this.businessMenuVisible = true;
-                this.currentMenuVisible = "mainPage";
-            }
-            else {
-                alt.emit('closeBusinessMenu');
-            }
-        },
-        showBusinessMenuTest: function () {
-            this.businessInfo = exampleJson;
-            this.businessMenuVisible = true;
-        },
-        closeBusinessMenu: function () {
-            this.businessMenuVisible = false;
+        closeBusinessMenu () {
             this.businessInfo = null;
             this.selectedEmployee = null;
             this.selectedRank = null;
             this.businessRanksInfo = null;
             alt.emit('closeBusinessMenu');
         },
-        showPage: function (pageName) {
+        showPage (pageName) {
             switch (pageName) {
                 case 'employeesPage':
                     alt.emit('getBusinessEmployees', this.businessInfo.BusinessId);
@@ -676,12 +660,12 @@ export default {
                     break;
             }
         },
-        setActiveMenu: function (menuName) {
+        setActiveMenu (menuName) {
             $(`#${this.currentMenuVisible}Nav`).removeClass('active');
             this.currentMenuVisible = menuName;
             $(`#${this.currentMenuVisible}Nav`).addClass('active');
         },
-        populateEmployeeRanks: function (employeesInfo) {
+        populateEmployeeRanks(employeesInfo) {
             if (employeesInfo !== null) {
                 this.employeesInfo = JSON.parse(employeesInfo);
                 this.setActiveMenu('employeesPage');
@@ -690,13 +674,12 @@ export default {
                 alt.emit('closeBusinessMenu');
             }
         },
-        populateEmployeeRanksTest: function () {
+        populateEmployeeRanksTest() {
             this.businessInfo = exampleJson;
             this.employeesInfo = exampleJsonEmployess;
-            this.businessMenuVisible = true;
             this.currentMenuVisible = 'employeesPage';
         },
-        showEmployeeInfo: function (employeeId) {
+        showEmployeeInfo (employeeId) {
             var employee = this.employeesInfo.BusinessEmployees.find(e => e.Id == employeeId);
             if (employee == null) {
                 alt.emit('showNotification', 3, "Błąd", 'Wystąpił błąd. Nie znaleziono takiego pracownika.', 7000);
@@ -711,12 +694,12 @@ export default {
                 });
             }, 0);
         },
-        closeEmployeeInfo: function () {
+        closeEmployeeInfo() {
             this.newRank = null;
             this.selectedEmployee = null;
             $('#employeeInfoModal').modal('hide');
         },
-        saveEmployeeChanges: function () {
+        saveEmployeeChanges () {
             if (this.selectedEmployee == null || this.businessInfo == null) {
                 alt.emit('showNotification', 3, "Błąd", 'Wystąpił błąd. Otwórz ponownie menu biznesu.', 6000);
                 return;
@@ -728,7 +711,7 @@ export default {
             alt.emit('updateEmployeeRank', this.selectedEmployee.Id, this.newRank.Id, this.businessInfo.BusinessId);
             this.closeEmployeeInfo();
         },
-        updateEmployeeRank: function (employeeId, newRankId) {
+        updateEmployeeRank (employeeId, newRankId) {
             console.log(`Changing employee ${employeeId} to new rank id: ${newRankId}`);
             if (!this.employeesInfo.BusinessEmployees) return;
 
@@ -744,7 +727,7 @@ export default {
             console.log('Updated rank. New employee: ' + JSON.stringify(employee));
             this.closeEmployeeInfo();
         },
-        openNewEmployeeModal: function () {
+        openNewEmployeeModal () {
             this.newEmployee = {
                 Name: "",
                 LastName: ""
@@ -757,7 +740,7 @@ export default {
                 });
             }, 0);
         },
-        addNewEmployee: function () {
+        addNewEmployee() {
             if (this.newEmployee === null || this.newEmployee.Name.length < 1 || this.newEmployee.LastName.length < 1 || this.businessInfo == null) {
                 alt.emit('showNotification', 3, "Błąd", 'Wystąpił błąd. Podano błędne dane pracownika.', 7000);
                 return;
@@ -766,11 +749,11 @@ export default {
             alt.emit('addNewEmployee', this.newEmployee.Name, this.newEmployee.LastName, this.businessInfo.BusinessId);
             this.closeNewEmployeeModal();
         },
-        closeNewEmployeeModal: function () {
+        closeNewEmployeeModal() {
             this.newEmployee = null;
             $('#addEmployeeModal').modal('hide');
         },
-        openDeleteEmployeeModal: function () {
+        openDeleteEmployeeModal() {
             this.deleteEmployeeModalVisible = true;
 
             setTimeout(() => {
@@ -780,12 +763,12 @@ export default {
                 });
             }, 0);
         },
-        closeDeleteEmployeeModal: function () {
+        closeDeleteEmployeeModal() {
             this.deleteEmployeeModalVisible = false;
             this.employeeToDelete = null;
             $('#deleteEmployeeModal').modal('hide');
         },
-        deleteEmployee: function () {
+        deleteEmployee () {
             if (!this.employeeToDelete || typeof this.employeeToDelete === 'undefined' || this.businessInfo == null) {
                 this.closeDeleteEmployeeModal();
                 return;
@@ -794,7 +777,7 @@ export default {
             alt.emit('deleteEmployee', this.employeeToDelete.Id, this.businessInfo.BusinessId);
             this.closeDeleteEmployeeModal();
         },
-        populateBusinessRanksInfo: function (businessRanksInfo) {
+        populateBusinessRanksInfo (businessRanksInfo) {
             if (businessRanksInfo !== null) {
                 this.businessRanksInfo = JSON.parse(businessRanksInfo);
                 this.setActiveMenu('rolesPage');
@@ -803,14 +786,13 @@ export default {
                 alt.emit('closeBusinessMenu');
             }
         },
-        populateBusinessRanksTest: function () {
+        populateBusinessRanksTest () {
             this.businessInfo = exampleJson;
             this.employeesInfo = exampleJsonEmployess;
             this.businessRanksInfo = exampleRankInfo;
-            this.businessMenuVisible = true;
             this.currentMenuVisible = 'rolesPage';
         },
-        openRankInfo: function (rankToOpen) {
+        openRankInfo(rankToOpen) {
             this.selectedRank = rankToOpen;
             setTimeout(() => {
                 $('#businessRankInfoModal').modal({
@@ -819,11 +801,11 @@ export default {
                 });
             }, 0);
         },
-        closeRankInfo: function () {
+        closeRankInfo () {
             this.selectedRank = null;
             $('#businessRankInfoModal').modal('hide');
         },
-        saveRankChanges: function () {
+        saveRankChanges () {
             if (this.selectedRank == null || this.businessInfo == null) {
                 alt.emit('showNotification', 3, "Błąd", 'Wystąpił błąd. Otwórz ponownie menu biznesu.', 6000);
                 return;
@@ -832,10 +814,10 @@ export default {
             alt.emit('updateBusinessRank', this.selectedRank, this.businessInfo.BusinessId);
             this.closeRankInfo();
         },
-        betterPermissionDisplay: function (rolePermission) {
+        betterPermissionDisplay (rolePermission) {
             return rolePermission ? 'Tak' : 'Nie';
         },
-        openNewRoleModal: function () {
+        openNewRoleModal() {
             this.newRole = {
                 RankName: "",
                 Permissions: {
@@ -856,11 +838,11 @@ export default {
                 });
             }, 0);
         },
-        closeNewRoleModal: function () {
+        closeNewRoleModal() {
             this.newRole = null;
             $('#addRoleModal').modal('hide');
         },
-        addNewRole: function () {
+        addNewRole () {
             if (this.newRole === null || this.newRole.RankName.length < 3 || this.newRole.Permissions == null || this.businessInfo == null) {
                 alt.emit('showNotification', 3, "Błąd", 'Wystąpił błąd. Podano błędne dane nowego stanowiska.', 7000);
                 this.closeNewRoleModal();
@@ -870,7 +852,7 @@ export default {
             alt.emit('addNewRole', this.newRole, this.businessInfo.BusinessId);
             this.closeNewRoleModal();
         },
-        openDeleteRoleModal: function () {
+        openDeleteRoleModal() {
             this.deleteRoleModalVisible = true;
             setTimeout(() => {
                 $('#deleteRoleModal').modal({
@@ -879,12 +861,12 @@ export default {
                 });
             }, 0);
         },
-        closeDeleteRoleModal: function () {
+        closeDeleteRoleModal () {
             this.deleteRoleModalVisible = false;
             this.rankToDelete = null;
             $('#deleteRoleModal').modal('hide');
         },
-        deleteRole: function () {
+        deleteRole () {
             if (this.rankToDelete == null || typeof this.rankToDelete == 'undefined' || this.businessInfo == null) {
                 this.closeDeleteRoleModal();
                 return;
@@ -893,7 +875,7 @@ export default {
             alt.emit('deleteRole', this.rankToDelete.RankId, this.businessInfo.BusinessId);
             this.closeDeleteRoleModal();
         },
-        showDeleteBusiness: function () {
+        showDeleteBusiness () {
             if (this.businessInfo) {
                 this.showDeleteBusinessModal = true;
                 setTimeout(() => {
@@ -904,11 +886,11 @@ export default {
                 }, 0);
             }
         },
-        closeDeleteBusinessModal: function () {
+        closeDeleteBusinessModal () {
             this.showDeleteBusinessModal = false;
             $('#deletBusinessModal').modal('hide');
         },
-        deleteBusiness: function () {
+        deleteBusiness () {
             if (this.businessInfo) {
                 if (typeof this.businessInfo.BusinessId === 'undefined') {
                     alt.emit('showNotification', 3, "Błąd", 'Wystąpił błąd podczas pobierania ID biznesu.', 7000);
@@ -922,19 +904,19 @@ export default {
         }
     },
     computed: {
-        businessType: function () {
+        businessType () {
             return businessTypes[this.businessInfo.Type];
         },
-        createdAt: function () {
+        createdAt () {
             return this.businessInfo.CreatedAt.substr(0, this.businessInfo.CreatedAt.indexOf('T'));
         },
-        getBusinessRanks: function () {
+        getBusinessRanks () {
             return this.employeesInfo.BusinessRanks;
         },
-        getAllRanks: function () {
+        getAllRanks () {
             return this.businessRanksInfo;
         },
-        getAllEmployees: function () {
+        getAllEmployees () {
             let newEmploeeList = [];
             this.employeesInfo.BusinessEmployees.forEach(employee => {
                 employee.FullName = employee.Name + ' ' + employee.LastName;

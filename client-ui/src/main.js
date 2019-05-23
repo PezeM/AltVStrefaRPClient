@@ -13,6 +13,7 @@ if (!global.alt) {
 }
 
 import 'bootstrap/dist/css/bootstrap.css';
+import '../node_modules/bootswatch/dist/litera/bootstrap.min.css';
 import Vue from 'vue';
 import EventBus from './event-bus';
 import App from './App.vue';

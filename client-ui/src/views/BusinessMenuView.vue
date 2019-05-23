@@ -1,6 +1,6 @@
 <template>
   <div id="businessMenu">
-    <BusinessMenu></BusinessMenu>
+    <BusinessMenu :businessInfo="businessMenuInfo"></BusinessMenu>
   </div>
 </template>
 
@@ -11,6 +11,9 @@ export default {
     name: 'businessMenu',
     components: {
         BusinessMenu,
+    },
+    props: {
+        businessMenuInfo: Object,
     },
 };
 </script>

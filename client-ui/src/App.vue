@@ -37,6 +37,10 @@ alt.on('openBankMenuView', bankMenuInformation => {
     router.push({ name: 'bank', params: { bankData: JSON.parse(bankMenuInformation) } });
 });
 
+alt.on('openBusinessMenu', businessInformation => {
+    router.push({ name: 'businessMenu', params: { businessMenuInfo: JSON.parse(businessInformation) } });
+});
+
 alt.on('closeMenu', () => {
     console.log('Changing the router to emtpy');
     router.push('/empty');

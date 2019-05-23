@@ -264,7 +264,7 @@ import EventBus from '@/event-bus.js';
 import $ from 'jquery';
 
 export default {
-    name: 'bankWindow',
+    name: 'bankApp',
     components: {
         BankChart,
     },

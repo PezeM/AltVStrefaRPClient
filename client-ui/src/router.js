@@ -39,6 +39,12 @@ export default new Router({
             props: true,
         },
         {
+            path: '/businessMenu',
+            name: 'businessMenu',
+            component: () => import('./views/BusinessMenuView.vue'),
+            props: true,
+        },
+        {
             path: '/empty',
             name: 'empty',
             component: () => import('./views/Empty.vue'),

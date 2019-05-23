@@ -1,5 +1,5 @@
 <template>
-  <div class="bank-window" @mousedown="onMouseDown">
+  <div id="bankWindow" @mousedown="onMouseDown">
     <Bank :characterData="bankData"></Bank>
   </div>
 </template>
@@ -24,7 +24,7 @@ export default {
 </script>
 
 <style scoped>
-.bank-window {
+#bankWindow {
     width: 100%;
     height: 100%;
 }

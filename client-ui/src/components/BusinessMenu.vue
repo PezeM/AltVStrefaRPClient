@@ -1,7 +1,7 @@
 <template>
     <div class="businessApp">
         <nav class="navbar navbar-dark bg-dark navbar-expand-lg shadow p-0">
-            <a class="navbar-brand col-sm-3 col-md-2 mr-0">{{ businessInfo.BusinessName }}</a>
+            <a class="navbar-brand col-sm-3 col-md-3 mr-0 navbarText">{{ businessInfo.BusinessName }}</a>
             <div class="collapse navbar-collapse">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active" id="mainPageNav" @click="showPage('mainPage')">
@@ -637,6 +637,17 @@ export default {
             }
         }
     },
+    mounted(){
+        EventBus.$on('populateEmployeeRanks', employeesRanks => {
+            this.populateEmployeeRanks(employeesRanks);
+        });
+        EventBus.$on('populateBusinessRanksInfo', permissionsInfo => {
+            this.populateBusinessRanksInfo(permissionsInfo);
+        });
+        EventBus.$on('successfullyUpdatedEmployeeRank', (employeeId, newRankId) => {
+            this.updateEmployeeRank(employeeId, newRankId);
+        });
+    },
     methods: {
         closeBusinessMenu () {
             this.businessInfo = null;
@@ -926,6 +937,18 @@ export default {
         },
     }
 };
+
+alt.on('populateEmployeeRanks', employeesRanks =>{
+    EventBus.$emit('populateEmployeeRanks', JSON.parse(employeesRanks));
+});
+
+alt.on('populateBusinessRanksInfo', permissionsInfo =>{
+    EventBus.$emit('populateBusinessRanksInfo', JSON.parse(permissionsInfo));
+})
+
+alt.on('successfullyUpdatedEmployeeRank', (employeeId, newRankId) => {
+    EventBus.$emit('successfullyUpdatedEmployeeRank', employeeId, newRankId);
+});
 </script>
 
 
@@ -943,6 +966,18 @@ export default {
 
 .businessApp .bg-dark {
     background-color: #000000da !important;
+}
+
+.businessApp .navbarText{
+    text-align: center;
+    word-wrap: break-word;
+    font-size: 1rem;
+    color: #f8f6f6;
+    font-weight: 600;
+}
+
+.businessApp .navbarText:hover{
+    color: #f8f6f6;
 }
 
 .businessAppContainer {

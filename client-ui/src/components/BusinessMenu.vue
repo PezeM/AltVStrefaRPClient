@@ -96,40 +96,9 @@
                         </div>
                     </div>
 
-                    <!-- Delete employee modal -->
-                    <div class="modal fade" id="deleteEmployeeModal" v-if="deleteEmployeeModalVisible">
-                        <div class="modal-dialog modal-dialog-centered" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="modalCenterTitle">
-                                        Usuwanie pracowników</h5>
-                                    <button type="button" class="close" @click="closeDeleteEmployeeModal">
-                                        <span>&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    <div class="form-group row">
-                                        <label class="col-sm-4 col-form-label">Wybierz pracownika</label>
-                                        <div class="col-sm-8">
-                                            <v-select v-model="employeeToDelete" label="FullName"
-                                                :options="getAllEmployees" :clearable="false" :filterable="true">
-                                            </v-select>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary"
-                                        @click="closeDeleteEmployeeModal">Zamknij</button>
-                                    <button type="button" class="btn btn-danger" @click="deleteEmployee">Usuń
-                                        pracownika</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <!-- Add employee modal -->
+                    <!-- Employee modals -->
                     <AddNewEmployeeModal v-on:add-new-employee="addNewEmployee"/>
+                    <DeleteEmployeeModal v-on:delete-employee="deleteEmployee"/>
 
                     <!-- Employee info modal -->
                     <div class="modal fade" id="employeeInfoModal" tabindex="-1" role="dialog" aria-hidden="true"
@@ -560,6 +529,7 @@
 import EventBus from '@/event-bus.js';
 import $ from 'jquery';
 import AddNewEmployeeModal from '@/components/Modals/AddNewEmployee.vue';
+import DeleteEmployeeModal from '@/components/Modals/DeleteEmployeeModal.vue';
 
 const businessTypes = [
     "Brak", "Mechanik", "Restauracja", "Pub"
@@ -616,7 +586,8 @@ export default {
         }
     },
     components:{
-        AddNewEmployeeModal
+        AddNewEmployeeModal,
+        DeleteEmployeeModal
     },
     mounted(){
         EventBus.$on('populateEmployeeRanks', employeesRanks => {
@@ -744,21 +715,22 @@ export default {
             this.$modal.hide('add-new-employee-modal');
         },
         openDeleteEmployeeModal() {
-            this.deleteEmployeeModalVisible = true;
-
-            setTimeout(() => {
-                $('#deleteEmployeeModal').modal({
-                    backdrop: 'static',
-                    keyboard: false
-                });
-            }, 0);
+            this.$modal.show('delete-employee-modal', this.getAllEmployees());
+        },
+        getAllEmployees(){
+            let newEmploeeList = [];
+            this.employeesInfo.BusinessEmployees.forEach(employee => {
+                employee.FullName = employee.Name + ' ' + employee.LastName;
+                newEmploeeList.push(employee);
+            });
+            return newEmploeeList;
         },
         closeDeleteEmployeeModal() {
-            this.deleteEmployeeModalVisible = false;
             this.employeeToDelete = null;
             $('#deleteEmployeeModal').modal('hide');
         },
-        deleteEmployee () {
+        deleteEmployee (employeeToDelete) {
+            this.employeeToDelete = employeeToDelete;
             if (!this.employeeToDelete || typeof this.employeeToDelete === 'undefined' || this.businessInfo == null) {
                 this.closeDeleteEmployeeModal();
                 return;
@@ -905,14 +877,6 @@ export default {
         },
         getAllRanks () {
             return this.businessRanksInfo;
-        },
-        getAllEmployees () {
-            let newEmploeeList = [];
-            this.employeesInfo.BusinessEmployees.forEach(employee => {
-                employee.FullName = employee.Name + ' ' + employee.LastName;
-                newEmploeeList.push(employee);
-            });
-            return newEmploeeList;
         },
     }
 };

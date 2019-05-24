@@ -4,7 +4,6 @@
 import alt from 'alt';
 import game from 'natives';
 import mainUi from 'src/Modules/Ui/mainUi.js';
-// import { showCefNotification } from 'src/ui.mjs';
 let localPlayerId = alt.getLocalPlayer();
 
 alt.onServer('teleportToWaypoint', () => {
@@ -12,7 +11,6 @@ alt.onServer('teleportToWaypoint', () => {
     alt.log('Waypoint blip info: ' + JSON.stringify(waypointBlip));
     if (waypointBlip <= 0) {
         mainUi.showCefNotification(3, "Brak blipa", "Nie znaleziono żadnego blipa.", 4000);
-        // showCefNotification(3, "Brak blipa", "Nie znaleziono żadnego blipa.", 4000);
         return;
     }
 

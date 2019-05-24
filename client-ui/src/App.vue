@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <div class="canClick" @click="clickApp"></div>
     <router-view/>
   </div>
 </template>
@@ -21,6 +22,11 @@ import router from './router';
 
 export default {
     name: 'App',
+    methods: {
+        clickApp() {
+            console.log(`Clicked inside App.vue in div`);
+        },
+    },
 };
 
 window.onload = function() {
@@ -70,5 +76,14 @@ body {
 #app {
     height: 100%;
     width: 100%;
+}
+
+.canClick {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    display: block;
+    border: 5px solid black;
+    background-color: red;
 }
 </style>

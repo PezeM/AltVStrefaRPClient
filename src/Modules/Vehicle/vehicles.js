@@ -19,57 +19,50 @@ alt.onServer('putIntoVehicle', () => {
     }, 250);
 });
 
-alt.onServer('toggleLockState', (state) => {
+alt.onServer('toggleLockState', vehicle => {
     var startTime = Date.now();
-    alt.log(`Toggle lock state: ${state} typeof ${typeof state}`);
-    let coords = game.getEntityCoords(localPlayer.scriptID, true);
-    var vehicle = game.getClosestVehicle(coords.x, coords.y, coords.z, 10, 0, 71);
-    alt.log(`Closest vehicle = ${JSON.stringify(vehicle)}`);
-    if (vehicle == 0) return false;
+    if (game.getDistanceBetweenCoords(localPlayer.pos.x, localPlayer.pos.y, localPlayer.pos.z, vehicle.pos.x, vehicle.pos.y, vehicle.pos.z, true) > 10) return false;
+    let lockStatus = game.getVehicleDoorLockStatus(vehicle.scriptID); // 1 or 0
 
-    let vehiclePosition = game.getEntityCoords(vehicle, true);
-    if (game.getDistanceBetweenCoords(coords.x, coords.y, coords.z, vehiclePosition.x, vehiclePosition.y, vehiclePosition.z, true) > 10) return false;
-
-
-    switch (state) {
-        case true:
+    switch (lockStatus) {
+        case 1:
             // Lock
-            game.setVehicleInteriorlight(vehicle, false);
-            game.setVehicleLightMultiplier(vehicle, 1.0);
-            game.setVehicleLights(vehicle, 2);
+            game.setVehicleInteriorlight(vehicle.scriptID, false);
+            game.setVehicleLightMultiplier(vehicle.scriptID, 1.0);
+            game.setVehicleLights(vehicle.scriptID, 2);
             var lightFadingCount = 300;
             alt.setInterval(() => {
                 if (lightFadingCount > 0) {
                     lightFadingCount--;
 
                     if (lightFadingCount > 100) {
-                        game.setVehicleLightMultiplier(vehicle, (lightFadingCount - 100) / 300);
-                    } else game.setVehicleLights(vehicle, 0);
+                        game.setVehicleLightMultiplier(vehicle.scriptID, (lightFadingCount - 100) / 300);
+                    } else game.setVehicleLights(vehicle.scriptID, 0);
                 }
             }, 10);
             break;
-        case false:
+        case 0:
             // Unlock
-            game.setVehicleInteriorlight(vehicle, true);
-            game.setVehicleLightMultiplier(vehicle, 0.0);
-            game.setVehicleLights(vehicle, 2);
+            game.setVehicleInteriorlight(vehicle.scriptID, true);
+            game.setVehicleLightMultiplier(vehicle.scriptID, 0.0);
+            game.setVehicleLights(vehicle.scriptID, 2);
             var lightFadingCount = 300;
 
             alt.setInterval(() => {
                 if (lightFadingCount < 300) {
                     lightFadingCount++;
 
-                    if (lightFadingCount > 100) game.setVehicleLightMultiplier(vehicle, (lightFadingCount - 99) / 300);
+                    if (lightFadingCount > 100) game.setVehicleLightMultiplier(vehicle.scriptID, (lightFadingCount - 99) / 300);
                 }
             }, 10);
             break;
     }
 
-    let time = 7000;
     alt.setTimeout(() => {
-        game.setVehicleInteriorlight(vehicle, false);
-        game.setVehicleLights(vehicle, 0);
-    }, time);
+        game.setVehicleInteriorlight(vehicle.scriptID, false);
+        game.setVehicleLights(vehicle.scriptID, 0);
+        alt.log(`Some timeout inside toggleLockState`);
+    }, 7000);
 
     alt.log(`Executed toggleLockState in ${Date.now() - startTime} ms.`);
     return true;

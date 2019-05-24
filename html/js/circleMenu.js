@@ -129,6 +129,18 @@ const menusList = {
         "quit": usefullOptions.quit,
     },
     "vehicle": {
+        "openVehicle": {
+            desc: "Otwórz pojazd",
+            icon: "information"
+        },
+        "sellVehicle": {
+            desc: "Sprzedaj pojazd",
+            icon: "information"
+        },
+        "despawnVehicle": {
+            desc: "Zdespawnuj pojazd",
+            icon: "information",
+        },
         "information": usefullOptions.information,
         "quit": usefullOptions.quit,
     },

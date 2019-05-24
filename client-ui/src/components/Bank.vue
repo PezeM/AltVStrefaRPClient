@@ -616,7 +616,7 @@ alt.on('openTransactionHistory', transactionHistory => {
     width: 50rem;
     height: 32rem;
     background: #21223f;
-    position: relative;
+    /* position: relative; */
     overflow: hidden;
     border-radius: 10px;
     box-shadow: 0 0.8rem 3rem rgba(0, 0, 0, 0.5);
@@ -746,7 +746,6 @@ alt.on('openTransactionHistory', transactionHistory => {
     padding: 0 1rem;
     text-align: center;
     transition: color 0.1s ease;
-    pointer-events: none;
 }
 
 .panel-icon {
@@ -775,7 +774,7 @@ alt.on('openTransactionHistory', transactionHistory => {
 
 input[type='checkbox']:checked + .section {
     animation: section--animate-in 0.4s both ease-in-out;
-    pointer-events: all;
+    /* pointer-events: all; */
 }
 
 input[type='checkbox']:checked + .section ~ .intro-logo {

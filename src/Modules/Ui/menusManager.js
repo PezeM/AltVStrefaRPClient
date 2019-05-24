@@ -100,10 +100,10 @@ class _MenusManager {
         //     this.tabletView.destroy();
         // }, 0);
         alt.log('Inside closeMenu function');
-        alt.showCursor(!hideCursor);
-        // this.menusView.unfocus();
-        this.viewOpened = false;
         this.menusView.emit('closeMenu');
+        this.menusView.unfocus();
+        this.viewOpened = false;
+        alt.showCursor(!hideCursor);
         alt.log(`Setting the cursor to ${!hideCursor}`);
     }
 }

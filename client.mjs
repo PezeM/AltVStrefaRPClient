@@ -4,7 +4,7 @@
 import alt from 'alt';
 import game from 'natives';
 import chat from 'chat';
-import * as ui from 'src/ui.mjs';
+import * as ui from 'src/ui.js';
 import * as menus from 'src/menus.mjs';
 import * as loginModule from 'src/Login/login.js';
 import * as noclipModule from 'src/Admin/noclip.js';

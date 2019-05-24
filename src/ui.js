@@ -1,5 +1,5 @@
 /// <reference path="../altv.d.ts" />
-/// <reference path="../alt.d.ts" />
+/// <reference path="../altv-client.d.ts" />
 
 import alt from 'alt';
 import game from 'natives';
@@ -60,6 +60,12 @@ function closeCircleMenu(hideMenu = false) {
 }
 
 alt.on('keydown', (key) => {
+    if (key == controlsIds.F6) {
+        cursorShown = !cursorShown;
+        alt.log('Cursor shown = ' + cursorShown);
+        alt.showCursor(cursorShown);
+        return;
+    }
     if (chat.isOpen() || menusManager.viewOpened) return;
 
     switch (key) {
@@ -96,6 +102,7 @@ alt.on('keydown', (key) => {
 
 function onAltKeydown() {
     var entityType = game.getEntityType(raycast.entityHit);
+    console.log(`Entity type = ${entityType}`);
     switch (entityType) {
         case 1:
             onPedFound();
@@ -126,8 +133,13 @@ function onPedFound() {
 }
 
 function onVehicleFound() {
-    alt.log('Vehicle found');
-    openCircleMenu("vehicle");
+    alt.log(JSON.stringify(alt.vehicles));
+    let vehicleFound = alt.vehicles.some(v => v.scriptID === raycast.entityHit);
+    alt.log(`Found vehicle = ${vehicleFound}`);
+    if (vehicleFound) {
+        alt.log('Vehicle found');
+        openCircleMenu("vehicle");
+    }
 }
 
 function onObjectFound() {
@@ -152,6 +164,9 @@ mainUi.onUiEvent('circleMenuCallback', (option) => {
 
     closeCircleMenu();
     switch (circleMenuName) {
+        case "vehicle":
+            vehicleCircleMenuCallback(option);
+            break;
         case "animations":
             animations.findAnimation(option);
             break;
@@ -169,6 +184,30 @@ mainUi.onUiEvent('circleMenuCallback', (option) => {
             break;
     }
 });
+
+function vehicleCircleMenuCallback(option) {
+    switch (option) {
+        case "openVehicle":
+            let vehicle = alt.vehicles.find(v => v.scriptID === raycast.entityHit);
+            alt.log(`Found vehicle ${JSON.stringify(vehicle)}`);
+            alt.emitServer("TryToOpenVehicle", vehicle);
+            break;
+        case "sellVehicle":
+            alt.log(`Sell vehicle`);
+            break;
+        // case "despawnVehicle":
+        //     let vehicle = alt.vehicles.find(v => v.scriptID === raycast.entityHit);
+        //     alt.emitServer("DespawnVehicle", vehicle.id);
+        //     break;
+        // case "information":
+        //     let vehicle = alt.vehicles.find(v => v.scriptID === raycast.entityHit);
+        //     if (vehicle == null) break;
+        //     let vehicleDisplayName = game.getDisplayNameFromVehicleModel(vehicle.scriptID);
+        //     let vehiclePlate = game.getVehicleNumberPlateText(vehicle.scriptID);
+        //     mainUi.showCefNotification(0, "Pojazd", `VehicleDisplayName = ${vehicleDisplayName} VehiclePlateText = ${vehiclePlate}`, 6000);
+        //     break;
+    }
+}
 
 function bankCircleMenuCallback(option) {
     switch (option) {

@@ -99,71 +99,7 @@
                     <!-- Employee modals -->
                     <AddNewEmployeeModal v-on:add-new-employee="addNewEmployee"/>
                     <DeleteEmployeeModal v-on:delete-employee="deleteEmployee"/>
-
-                    <!-- Employee info modal -->
-                    <div class="modal fade" id="employeeInfoModal" tabindex="-1" role="dialog" aria-hidden="true"
-                        v-if="selectedEmployee">
-                        <div class="modal-dialog modal-dialog-centered" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="modalCenterTitle">
-                                        {{ selectedEmployee.Name }} {{ selectedEmployee.LastName }}</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"
-                                        @click="closeEmployeeInfo">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    <div class="form-group row">
-                                        <label class="col-sm-4 col-form-label">ID</label>
-                                        <div class="col-sm-8">
-                                            <input type="text" readonly class="form-control-plaintext"
-                                                v-model="selectedEmployee.Id">
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group row">
-                                        <label class="col-sm-4 col-form-label">Imię</label>
-                                        <div class="col-sm-8">
-                                            <input type="text" readonly class="form-control-plaintext"
-                                                v-model="selectedEmployee.Name">
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group row">
-                                        <label class="col-sm-4 col-form-label">Nazwisko</label>
-                                        <div class="col-sm-8">
-                                            <input type="text" readonly class="form-control-plaintext"
-                                                v-model="selectedEmployee.LastName">
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group row">
-                                        <label class="col-sm-4 col-form-label">Płeć</label>
-                                        <div class="col-sm-8">
-                                            <input type="text" readonly class="form-control-plaintext" v-model="selectedEmployee.Gender">
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group row">
-                                        <label class="col-sm-4 col-form-label">Stanowisko</label>
-                                        <div class="col-sm-8">
-                                            <v-select v-model="newRank" label="RankName" :options="getBusinessRanks"
-                                                :clearable="false" :filterable="true">
-                                            </v-select>
-                                            <!-- <span>RankID: {{selectedEmployee.RankId}} newRank: {{ newRank }}</span> -->
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal"
-                                        @click="closeEmployeeInfo">Zamknij</button>
-                                    <button type="button" class="btn btn-primary" @click="saveEmployeeChanges">Zapisz
-                                        zmiany</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <EmployeeInfoModal v-on:save-employee-changes="saveEmployeeChanges"/>
 
                     <h2 class="text-center p-2">Lista pracowników</h2>
                     <div class="table-responsive rounded">
@@ -530,6 +466,7 @@ import EventBus from '@/event-bus.js';
 import $ from 'jquery';
 import AddNewEmployeeModal from '@/components/Modals/AddNewEmployee.vue';
 import DeleteEmployeeModal from '@/components/Modals/DeleteEmployeeModal.vue';
+import EmployeeInfoModal from '@/components/Modals/EmployeeInfoModal.vue';
 
 const businessTypes = [
     "Brak", "Mechanik", "Restauracja", "Pub"
@@ -587,7 +524,8 @@ export default {
     },
     components:{
         AddNewEmployeeModal,
-        DeleteEmployeeModal
+        DeleteEmployeeModal,
+        EmployeeInfoModal
     },
     mounted(){
         EventBus.$on('populateEmployeeRanks', employeesRanks => {
@@ -641,11 +579,6 @@ export default {
                 alt.emit('closeBusinessMenu');
             }
         },
-        populateEmployeeRanksTest() {
-            this.businessInfo = exampleJson;
-            this.employeesInfo = exampleJsonEmployess;
-            this.currentMenuVisible = 'employeesPage';
-        },
         showEmployeeInfo (employeeId) {
             var employee = this.employeesInfo.BusinessEmployees.find(e => e.Id == employeeId);
             if (employee == null) {
@@ -654,22 +587,20 @@ export default {
             }
             this.selectedEmployee = employee;
             this.newRank = this.employeesInfo.BusinessRanks.find(e => e.Id == this.selectedEmployee.RankId);
-            setTimeout(() => {
-                $('#employeeInfoModal').modal({
-                    backdrop: 'static',
-                    keyboard: false
-                });
-            }, 0);
+
+            this.$modal.show('employee-info-modal', { businessRanks: this.employeesInfo.BusinessRanks, selectedEmployee: this.selectedEmployee, newRank: this.newRank});
         },
         closeEmployeeInfo() {
+            this.$modal.hide('employee-info-modal');
             this.newRank = null;
             this.selectedEmployee = null;
-            $('#employeeInfoModal').modal('hide');
         },
-        saveEmployeeChanges () {
+        saveEmployeeChanges (selectedEmployee, newRank) {
+            this.selectedEmployee = selectedEmployee;
+            this.newRank = newRank;
             if (this.selectedEmployee == null || this.businessInfo == null) {
                 alt.emit('showNotification', 3, "Błąd", 'Wystąpił błąd. Otwórz ponownie menu biznesu.', 6000);
-                return;
+                return this.closeEmployeeInfo();
             }
 
             // No changes
@@ -727,7 +658,7 @@ export default {
         },
         closeDeleteEmployeeModal() {
             this.employeeToDelete = null;
-            $('#deleteEmployeeModal').modal('hide');
+            this.$modal.hide('delete-employee-modal');
         },
         deleteEmployee (employeeToDelete) {
             this.employeeToDelete = employeeToDelete;
@@ -872,11 +803,11 @@ export default {
         createdAt () {
             return this.businessInfo.CreatedAt.substr(0, this.businessInfo.CreatedAt.indexOf('T'));
         },
-        getBusinessRanks () {
-            return this.employeesInfo.BusinessRanks;
-        },
         getAllRanks () {
             return this.businessRanksInfo;
+        },
+        getBusinessRanks () {
+            return this.employeesInfo.BusinessRanks;
         },
     }
 };

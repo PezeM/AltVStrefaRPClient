@@ -66,7 +66,6 @@
               :clearable="false"
               :filterable="true"
             />
-            <span>RankID: {{selectedEmployee.RankId}} newRank: {{ newRank }}</span>
           </div>
         </div>
       </div>

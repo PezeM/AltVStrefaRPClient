@@ -18,8 +18,14 @@ import Vue from 'vue';
 import EventBus from './event-bus';
 import App from './App.vue';
 import router from './router';
+import VModal from 'vue-js-modal';
 
 Vue.config.productionTip = false;
+
+Vue.use(VModal, {
+    dialog: true,
+    dynamic: true,
+});
 
 new Vue({
     router,

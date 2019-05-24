@@ -127,44 +127,9 @@
                         </div>
                     </div>
 
-                    <!-- Add employee modal -->
-                    <div class="modal fade" id="addEmployeeModal" tabindex="-1" role="dialog" aria-hidden="true"
-                        v-if="newEmployee">
-                        <div class="modal-dialog modal-dialog-centered" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="modalCenterTitle">Dodaj nowego pracownika</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"
-                                        @click="closeNewEmployeeModal">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    <div class="form-group row">
-                                        <label class="col-sm-4 col-form-label">Imię</label>
-                                        <div class="col-sm-8">
-                                            <input type="text" class="form-control" v-model="newEmployee.Name"
-                                                placeholder="Podaj imię">
-                                        </div>
-                                    </div>
 
-                                    <div class="form-group row">
-                                        <label class="col-sm-4 col-form-label">Nazwisko</label>
-                                        <div class="col-sm-8">
-                                            <input type="text" class="form-control" v-model="newEmployee.LastName"
-                                                placeholder="Podaj nazwisko">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal"
-                                        @click="closeNewEmployeeModal">Zamknij</button>
-                                    <button type="button" class="btn btn-primary" @click="addNewEmployee">Dodaj
-                                        pracownika</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <!-- Add employee modal -->
+                    <AddNewEmployeeModal v-on:add-new-employee="addNewEmployee"/>
 
                     <!-- Employee info modal -->
                     <div class="modal fade" id="employeeInfoModal" tabindex="-1" role="dialog" aria-hidden="true"
@@ -594,14 +559,27 @@
 <script>
 import EventBus from '@/event-bus.js';
 import $ from 'jquery';
+import AddNewEmployeeModal from '@/components/Modals/AddNewEmployee.vue';
 
 const businessTypes = [
     "Brak", "Mechanik", "Restauracja", "Pub"
 ];
 
+const testEmployeeRanks = {
+    "BusinessRanks":[
+        {"Id":9,"IsDefaultRank":false,"IsOwnerRank":true,"RankName":"Właściciel"},
+        {"Id":10,"IsDefaultRank":true,"IsOwnerRank":false,"RankName":"Pracownik"}
+    ],
+    "BusinessEmployees":[
+        {"Id":5,"Name":"2","LastName":"2","Age":10,"Gender":0,"RankId":10,"RankName":"Pracownik"}
+    ]
+}
+const testBusinessRankInfo = "[{\"Id\":7,\"RankId\":9,\"RankName\":\"Właściciel\",\"HaveVehicleKeys\":true,\"HaveBusinessKeys\":true,\"CanOpenBusinessMenu\":true,\"CanOpenBusinessInventory\":true,\"CanInviteNewMembers\":true,\"CanManageRanks\":true,\"CanManageEmployees\":true},{\"Id\":8,\"RankId\":10,\"RankName\":\"Pracownik\",\"HaveVehicleKeys\":false,\"HaveBusinessKeys\":false,\"CanOpenBusinessMenu\":true,\"CanOpenBusinessInventory\":false,\"CanInviteNewMembers\":false,\"CanManageRanks\":true,\"CanManageEmployees\":true}]";
+
 export default {
     data() {
         return{
+            isDev: true,
             employeesInfo: null,
             businessRanksInfo: null,
             currentMenuVisible: "mainPage",
@@ -637,6 +615,9 @@ export default {
             }
         }
     },
+    components:{
+        AddNewEmployeeModal
+    },
     mounted(){
         EventBus.$on('populateEmployeeRanks', employeesRanks => {
             this.populateEmployeeRanks(employeesRanks);
@@ -660,10 +641,14 @@ export default {
             switch (pageName) {
                 case 'employeesPage':
                     alt.emit('getBusinessEmployees', this.businessInfo.BusinessId);
+                    // For dev
+                    if(this.isDev) this.populateEmployeeRanks(testEmployeeRanks);
                     break;
 
                 case 'rolesPage':
                     alt.emit('getBusinessRolesInfo', this.businessInfo.BusinessId);
+                    // For dev
+                    if(this.isDev) this.populateBusinessRanksInfo(JSON.parse(testBusinessRankInfo));
                     break;
 
                 default:
@@ -744,25 +729,19 @@ export default {
                 LastName: ""
             };
 
-            setTimeout(() => {
-                $('#addEmployeeModal').modal({
-                    backdrop: 'static',
-                    keyboard: false
-                });
-            }, 0);
+            this.$modal.show('add-new-employee-modal', this.newEmployee);
         },
-        addNewEmployee() {
+        addNewEmployee(newEmploee) {
+            console.log(`New employee coming from event = ${JSON.stringify(newEmploee)}`);
+            this.newEmploee = newEmploee;
             if (this.newEmployee === null || this.newEmployee.Name.length < 1 || this.newEmployee.LastName.length < 1 || this.businessInfo == null) {
                 alt.emit('showNotification', 3, "Błąd", 'Wystąpił błąd. Podano błędne dane pracownika.', 7000);
                 return;
             }
 
             alt.emit('addNewEmployee', this.newEmployee.Name, this.newEmployee.LastName, this.businessInfo.BusinessId);
-            this.closeNewEmployeeModal();
-        },
-        closeNewEmployeeModal() {
             this.newEmployee = null;
-            $('#addEmployeeModal').modal('hide');
+            this.$modal.hide('add-new-employee-modal');
         },
         openDeleteEmployeeModal() {
             this.deleteEmployeeModalVisible = true;

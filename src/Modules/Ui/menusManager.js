@@ -46,7 +46,8 @@ class _MenusManager {
     }
 
     focusView() {
-        this.menusView.focus();
+        if (this.viewOpened)
+            this.menusView.focus();
     }
 
     openMenu(name, hideUi, freezePlayer, ...args) {

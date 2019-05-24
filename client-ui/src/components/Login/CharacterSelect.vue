@@ -38,7 +38,7 @@
           </div>
           <div class="card-info">
             <div class="info-title">
-              <h2>{{ getCharacterFullName }}</h2>
+              <h2>{{ getCharacterFullName(character) }}</h2>
               <h3>Pieniądze: {{ character.Money }}$</h3>
             </div>
             <div class="info-follow">

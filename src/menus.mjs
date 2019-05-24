@@ -127,3 +127,19 @@ menusManager.onServerEvent('openVehicleShop', (vehicleShopId, vehicleShopData) =
     menusManager.openMenu("openVehicleShop", true, true, JSON.stringify(shopData));
 });
 
+
+alt.on('consoleCommand', (command, ...args) => {
+    if (command == 'testMenu') {
+        if (menusManager.viewOpened) {
+            alt.log('Closing test menu');
+            menusManager.closeMenu();
+        } else {
+            alt.log('Showing test menu');
+            let simpleObject = { name: 'Wtf', age: 15, nextData: 221313 };
+            let json = JSON.stringify(simpleObject);
+            menusManager.openMenu('testMenu', true, true, json);
+        }
+    } else if (command == 'focus') {
+        menusManager.focusView();
+    }
+})

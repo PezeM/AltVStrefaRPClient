@@ -1,6 +1,5 @@
 <template>
-  <div id="app">
-    <div class="canClick" @click="clickApp"></div>
+  <div id="app" @click="clickApp">
     <router-view/>
   </div>
 </template>
@@ -24,7 +23,7 @@ export default {
     name: 'App',
     methods: {
         clickApp() {
-            console.log(`Clicked inside App.vue in div`);
+            console.log(`Clicked inside App.vue`);
         },
     },
 };
@@ -47,6 +46,9 @@ alt.on('openBusinessMenu', businessInformation => {
     router.push({ name: 'businessMenu', params: { businessMenuInfo: JSON.parse(businessInformation) } });
 });
 
+alt.on('testMenu', someData => {
+    router.push({ name: 'testMenu', params: { testData: JSON.parse(someData) } });
+});
 alt.on('closeMenu', () => {
     console.log('Changing the router to emtpy');
     router.push('/empty');
@@ -76,14 +78,5 @@ body {
 #app {
     height: 100%;
     width: 100%;
-}
-
-.canClick {
-    position: absolute;
-    width: 150px;
-    height: 150px;
-    display: block;
-    border: 5px solid black;
-    background-color: red;
 }
 </style>

@@ -206,6 +206,8 @@
           class="col-md-12 ml-sm-auto col-lg-12 px-4"
           v-if="currentMenuVisible == 'businessInfoPage'"
         >
+          <DeleteBusinessModal v-on:delete-business="deleteBusiness"/>
+
           <div class="pt-3 pb-2 mb-3 row">
             <div class="col-md-4">
               <div class="content-box shadow">
@@ -301,31 +303,6 @@
               </div>
             </div>
           </div>
-
-          <!-- Business rank info modal -->
-          <div class="modal fade" id="deletBusinessModal" v-if="showDeleteBusinessModal">
-            <div class="modal-dialog modal-dialog-centered">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="modalCenterTitle">Czy na pewno chcesz usunąć biznes?</h5>
-                  <button type="button" class="close" @click="closeDeleteBusinessModal">
-                    <span>&times;</span>
-                  </button>
-                </div>
-                <div class="modal-footer">
-                  <button
-                    type="button"
-                    class="btn btn-secondary"
-                    @click="closeDeleteBusinessModal"
-                  >Zamknij</button>
-                  <button type="button" class="btn btn-danger" @click="deleteBusiness">
-                    Usuń
-                    biznes
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </div>
@@ -342,6 +319,7 @@ import EmployeeInfoModal from '@/components/Modals/EmployeeInfoModal.vue';
 import AddNewRoleModal from '@/components/Modals/AddNewRoleModal.vue';
 import DeleteRoleModal from '@/components/Modals/DeleteRoleModal.vue';
 import RankInfoModal from '@/components/Modals/RankInfoModal.vue';
+import DeleteBusinessModal from '@/components/Modals/DeleteBusinessModal.vue';
 
 const businessTypes = ['Brak', 'Mechanik', 'Restauracja', 'Pub'];
 
@@ -398,6 +376,7 @@ export default {
         AddNewRoleModal,
         DeleteRoleModal,
         RankInfoModal,
+        DeleteBusinessModal,
     },
     mounted() {
         EventBus.$on('populateEmployeeRanks', employeesRanks => {
@@ -632,25 +611,17 @@ export default {
         },
         showDeleteBusiness() {
             if (this.businessInfo) {
-                this.showDeleteBusinessModal = true;
-                setTimeout(() => {
-                    $('#deletBusinessModal').modal({
-                        backdrop: 'static',
-                        keyboard: false,
-                    });
-                }, 0);
+                this.$modal.show('delete-business-modal');
             }
         },
         closeDeleteBusinessModal() {
-            this.showDeleteBusinessModal = false;
-            $('#deletBusinessModal').modal('hide');
+            this.$modal.hide('delete-business-modal');
         },
         deleteBusiness() {
             if (this.businessInfo) {
                 if (typeof this.businessInfo.BusinessId === 'undefined') {
                     alt.emit('showNotification', 3, 'Błąd', 'Wystąpił błąd podczas pobierania ID biznesu.', 7000);
-                    this.closeDeleteBusinessModal();
-                    return;
+                    return this.closeDeleteBusinessModal();
                 }
 
                 alt.emit('deleteBusiness', this.businessInfo.BusinessId);

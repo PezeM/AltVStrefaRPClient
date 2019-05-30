@@ -1,6 +1,5 @@
 <template>
-  <div id="login">
-    <!-- Errow window -->
+  <div id="login" @click="onClick">
     <error-modal v-bind:errorMessage="errorMessage" v-on:hide-error-window="hideErrorWindow"></error-modal>
 
     <div class="login-box" v-if="activeMenu == 'login'">
@@ -52,7 +51,7 @@
 import ErrorModal from '@/components/Login/ErrorModal.vue';
 import EventBus from '@/event-bus.js';
 
-let loginApp = {
+export default {
     name: 'login',
     components: {
         ErrorModal,
@@ -72,6 +71,9 @@ let loginApp = {
         };
     },
     methods: {
+        onClick() {
+            console.log(`Click inside LoginWindow.vue`);
+        },
         switchToRegister() {
             this.activeMenu = 'register';
         },
@@ -160,7 +162,6 @@ alt.on('registeredSuccessfully', () => {
 alt.on('showError', message => {
     EventBus.$emit('showError', message);
 });
-export default loginApp;
 </script>
 
 <style scoped>

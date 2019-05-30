@@ -391,11 +391,11 @@ export default {
     },
     methods: {
         closeBusinessMenu() {
+            alt.emit('closeBusinessMenu');
             this.businessInfo = null;
             this.selectedEmployee = null;
             this.selectedRank = null;
             this.businessRanksInfo = null;
-            alt.emit('closeBusinessMenu');
         },
         showPage(pageName) {
             switch (pageName) {
@@ -474,8 +474,8 @@ export default {
                 return;
             }
 
-            Vue.set(employee, 'RankId', newRankId);
-            Vue.set(employee, 'RankName', this.employeesInfo.BusinessRanks.find(r => r.Id == newRankId).RankName);
+            this.$set(employee, 'RankId', newRankId);
+            this.$set(employee, 'RankName', this.employeesInfo.BusinessRanks.find(r => r.Id == newRankId).RankName);
             console.log('Updated rank. New employee: ' + JSON.stringify(employee));
             this.closeEmployeeInfo();
         },
@@ -538,6 +538,7 @@ export default {
             }
         },
         openRankInfo(rankToOpen) {
+            console.log(`Opening rank-info-modal`);
             this.$modal.show('rank-info-modal', rankToOpen);
         },
         closeRankInfo() {

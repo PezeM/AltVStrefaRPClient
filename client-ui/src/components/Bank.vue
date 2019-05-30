@@ -1,5 +1,5 @@
 <template>
-  <div class="bankApp">
+  <div class="bankApp" @click="onClick">
     <div class="bankWindow" @mousedown="mouseDown" @mouseup="mouseUp">
       <header class="bankWindow-header">
         <div class="main-title">
@@ -337,6 +337,9 @@ export default {
         };
     },
     methods: {
+        onClick() {
+            console.log('On mouse click inside Bank.vue');
+        },
         applyChartData() {
             this.generateChartData();
             console.log('Transactions: ' + JSON.stringify(this.transactionChartData));
@@ -581,6 +584,18 @@ export default {
     },
 };
 
+if (!global.alt) {
+    global.alt = {
+        uiDebug: true,
+        on(ev, cb) {
+            console.log('Alt on', ev, cb);
+        },
+        emit(ev, ...args) {
+            console.log('Event triggered', ev, args);
+        },
+    };
+}
+
 alt.on('updateBankMoney', money => {
     EventBus.$emit('updateBankMoney', money);
 });
@@ -592,13 +607,13 @@ alt.on('openTransactionHistory', transactionHistory => {
 
 <style scoped>
 .bankApp {
-    padding: 0;
-    margin: 0;
-    display: flex;
+    /* display: flex;
     align-items: center;
-    justify-content: center;
-    width: 100vw;
-    height: 100vh;
+    justify-content: center; */
+    top: 25%;
+    position: absolute;
+    /* height: 100vh; */
+    z-index: 1;
     letter-spacing: 1px;
     color: #fff;
 }

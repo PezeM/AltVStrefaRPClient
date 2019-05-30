@@ -118,6 +118,9 @@ export default {
             console.log('Hide error window loginWIndow.vue');
             this.errorMessage = '';
         },
+        getCharacterFullName(character) {
+            return character.FirstName + ' ' + character.LastName;
+        },
     },
     computed: {
         filteredCharacterList() {
@@ -125,9 +128,6 @@ export default {
             return this.charactersList.sort(function(a, b) {
                 return a.Id - b.Id;
             });
-        },
-        getCharacterFullName(character) {
-            return character.FirstName + ' ' + character.LastName;
         },
     },
 };

@@ -14,18 +14,7 @@ class _MenusManager {
         this.tabletView = null;
         this.viewOpened = false;
         this.viewLoaded = false;
-        // this.menusView = {
-        //     uiDebug: true,
-        //     on(ev, cb) {
-        //         alt.log('Alt on', ev, cb);
-        //     },
-        //     emit(ev, ...args) {
-        //         alt.log('Event triggered', ev, args);
-        //     },
-        //     focus() {
-        //         alt.log('Focus view');
-        //     }
-        // }
+
         this.menusView = new alt.WebView('http://resources/AltVStrefaRPClient/client-ui/dist/index.html#');
     }
 
@@ -85,7 +74,7 @@ class _MenusManager {
         // });
     }
 
-    closeMenu(showUi = true, unFreezePlayer = true, hideCursor = true) {
+    closeMenu(showUi = true, unFreezePlayer = true, showCursor = false) {
         if (showUi && unFreezePlayer) {
             showUiAndFreezePlayer(showUi);
         } else if (showUi) {
@@ -104,8 +93,8 @@ class _MenusManager {
         this.menusView.emit('closeMenu');
         this.menusView.unfocus();
         this.viewOpened = false;
-        alt.showCursor(!hideCursor);
-        alt.log(`Setting the cursor to ${!hideCursor}`);
+        alt.showCursor(showCursor);
+        alt.log(`Setting the cursor to ${showCursor}`);
     }
 }
 

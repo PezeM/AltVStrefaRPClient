@@ -43,12 +43,14 @@ alt.on('openBankMenuView', bankMenuInformation => {
 });
 
 alt.on('openBusinessMenu', businessInformation => {
+    console.log(`Open business menu inside App.vue`);
     router.push({ name: 'businessMenu', params: { businessMenuInfo: JSON.parse(businessInformation) } });
 });
 
 alt.on('testMenu', someData => {
     router.push({ name: 'testMenu', params: { testData: JSON.parse(someData) } });
 });
+
 alt.on('closeMenu', () => {
     console.log('Changing the router to emtpy');
     router.push('/empty');

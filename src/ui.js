@@ -21,6 +21,7 @@ const controlsIds = {
     G: 0x47,
     Tilde: 0xC0,
     N: 0x4E,
+    U: 0x55,
 };
 
 const HUDElementsToHide = [1, 2, 3, 4, 6, 7, 8, 9];
@@ -96,6 +97,13 @@ alt.on('keydown', (key) => {
             if (game.isEntityDead(localPlayer.scriptID) || new Date().getTime() - lastKeyPressedTime < 500) return;
             lastKeyPressedTime = new Date().getTime();
             animations.forceAnimationStop();
+            break;
+        case controlsIds.U:
+            if (localPlayer.vehicle == null || game.isEntityDead(localPlayer.scriptID) || new Date().getTime() - lastKeyPressedTime < 250) return;
+            lastKeyPressedTime = new Date().getTime();
+            var vehicle = alt.vehicles.find(v => v.scriptID === localPlayer.vehicle.scriptID);
+            if (vehicle == null) return;
+            alt.emitServer('ToggleVehicleEngine', vehicle);
             break;
     }
 });
@@ -188,17 +196,18 @@ mainUi.onUiEvent('circleMenuCallback', (option) => {
 function vehicleCircleMenuCallback(option) {
     switch (option) {
         case "openVehicle":
-            let vehicle = alt.vehicles.find(v => v.scriptID === raycast.entityHit);
+            var vehicle = alt.vehicles.find(v => v.scriptID === raycast.entityHit);
             alt.log(`Found vehicle ${JSON.stringify(vehicle)}`);
             alt.emitServer("TryToOpenVehicle", vehicle);
             break;
         case "sellVehicle":
             alt.log(`Sell vehicle`);
             break;
-        // case "despawnVehicle":
-        //     let vehicle = alt.vehicles.find(v => v.scriptID === raycast.entityHit);
-        //     alt.emitServer("DespawnVehicle", vehicle.id);
-        //     break;
+        case "despawnVehicle":
+            var vehicleToDespawn = alt.vehicles.find(v => v.scriptID === raycast.entityHit);
+            if (vehicleToDespawn == null) return;
+            alt.emitServer("DespawnVehicle", vehicleToDespawn);
+            break;
         // case "information":
         //     let vehicle = alt.vehicles.find(v => v.scriptID === raycast.entityHit);
         //     if (vehicle == null) break;

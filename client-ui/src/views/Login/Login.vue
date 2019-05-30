@@ -1,5 +1,5 @@
 <template>
-  <div id="login-window">
+  <div id="login-window" @click="clickOnLogin">
     <router-view></router-view>
   </div>
 </template>
@@ -10,6 +10,11 @@ import EventBus from '@/event-bus.js';
 
 export default {
     name: 'login',
+    methods: {
+        clickOnLogin() {
+            console.log(`Click inside Login.vue`);
+        },
+    },
 };
 
 alt.on('succesfullyLoggedIn', characterList => {

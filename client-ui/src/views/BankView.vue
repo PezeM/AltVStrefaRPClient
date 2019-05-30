@@ -25,8 +25,9 @@ export default {
 
 <style scoped>
 #bankWindow {
-    width: 100%;
-    height: 100%;
-    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
 }
 </style>

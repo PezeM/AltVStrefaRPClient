@@ -11,5 +11,5 @@ export function isPlayerDriver(localPlayer) {
 }
 
 export function isDriver(vehicle, localPlayer) {
-    return game.getPedInVehicleSeat(vehicle, -1) === localPlayer.scriptID;
+    return game.getPedInVehicleSeat(vehicle.scriptID, -1) === localPlayer.scriptID;
 }

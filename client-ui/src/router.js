@@ -50,6 +50,12 @@ export default new Router({
             props: true,
         },
         {
+            path: '/vehicleShop',
+            name: 'vehicleShop',
+            component: () => import('./views/VehicleShopView.vue'),
+            props: true,
+        },
+        {
             path: '/empty',
             name: 'empty',
             component: () => import('./views/Empty.vue'),

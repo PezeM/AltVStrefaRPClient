@@ -51,6 +51,10 @@ alt.on('testMenu', someData => {
     router.push({ name: 'testMenu', params: { testData: JSON.parse(someData) } });
 });
 
+alt.on('openVehicleShop', (vehicleData, vehicleShopId) => {
+    router.push({ name: 'vehicleShop', params: { shopId: vehicleShopId, vehicleShopData: JSON.parse(vehicleData) } });
+});
+
 alt.on('closeMenu', () => {
     console.log('Changing the router to emtpy');
     router.push('/empty');

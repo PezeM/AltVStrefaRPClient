@@ -6,7 +6,7 @@ import mainUi from 'src/Modules/Ui/mainUi.js';
 import bank from 'src/Modules/banking.js';
 import Business from 'src/Modules/business.js';
 import menusManager from 'src/Modules/Ui/menusManager.js';
-import { setupVehicleShop } from 'src/Modules/Vehicle/vehicleShops.js';
+import { setupVehicleShop, exitVehicleShop } from 'src/Modules/Vehicle/vehicleShops.js';
 
 // let bank = new Bank();
 let business = new Business();
@@ -124,9 +124,13 @@ menusManager.onUiEvent('closeBusinessMenu', () => {
 menusManager.onServerEvent('openVehicleShop', (vehicleShopId, vehicleShopData) => {
     alt.log(`Vehicle shop data = ${JSON.stringify(vehicleShopData)}`);
     var shopData = setupVehicleShop(vehicleShopId, vehicleShopData);
-    menusManager.openMenu("openVehicleShop", true, true, JSON.stringify(shopData));
+    menusManager.openMenu("openVehicleShop", true, true, JSON.stringify(shopData), vehicleShopId);
 });
 
+menusManager.onUiEvent('closeVehicleShop', () => {
+    exitVehicleShop();
+    menusManager.closeMenu();
+});
 
 alt.on('consoleCommand', (command, ...args) => {
     if (command == 'testMenu') {

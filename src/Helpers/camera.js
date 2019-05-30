@@ -1,5 +1,4 @@
 import game from 'natives'
-import alt from 'alt';
 
 export default class Camera {
     constructor(name, position, rotation, fov) {

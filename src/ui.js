@@ -12,8 +12,8 @@ import ZoneNames from 'src/Modules/ui/zoneNames.js';
 import menusManager from 'src/Modules/Ui/menusManager.js';
 import raycast from 'src/Modules/raycast.js';
 import trashBin from 'src/Environment/trashBin.js';
+import { isVehicleSeller, openVehicleShopMenuCallback } from 'src/Modules/Vehicle/vehicleShops.js';
 import { showUiAndFreezePlayer } from 'src/Helpers/uiHelper.js';
-import vehicleShop from 'src/Modules/Vehicle/vehicleShops.js';
 
 const controlsIds = {
     Alt: 0x12,
@@ -134,7 +134,7 @@ function onPedFound() {
     } else if (banking.pedList.includes(raycast.entityHit)) {
         alt.log('Ped is in bank pedlist');
         openCircleMenu("bank");
-    } else if (vehicleShop.isVehicleSeller(raycast.entityHit)) {
+    } else if (isVehicleSeller(raycast.entityHit)) {
         alt.log('Vehicle seller found');
         openCircleMenu("vehicleShop");
     }
@@ -188,7 +188,7 @@ mainUi.onUiEvent('circleMenuCallback', (option) => {
             trashBin.searchBinMenuCallback(option, raycast.entityHit);
             break;
         case "vehicleShop":
-            vehicleShop.openShopMenuCallback(option, raycast.entityHit);
+            openVehicleShopMenuCallback(option, raycast.entityHit);
             break;
     }
 });

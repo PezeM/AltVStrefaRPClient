@@ -124,6 +124,7 @@ menusManager.onUiEvent('closeBusinessMenu', () => {
 menusManager.onServerEvent('openVehicleShop', (vehicleShopId, vehicleShopData) => {
     alt.log(`Vehicle shop data = ${JSON.stringify(vehicleShopData)}`);
     var shopData = setupVehicleShop(vehicleShopId, vehicleShopData);
+    alt.log(JSON.stringify(shopData));
     menusManager.openMenu("openVehicleShop", true, true, JSON.stringify(shopData), vehicleShopId);
 });
 

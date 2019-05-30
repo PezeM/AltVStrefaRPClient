@@ -45,7 +45,7 @@ function initializePeds() {
 }
 initializePeds();
 
-export function getVehicleShopData(vehicleShopId) {
+function getVehicleShopData(vehicleShopId) {
     return vehicleShopData.find(s => s.id == vehicleShopId);
 }
 
@@ -53,7 +53,7 @@ export function isVehicleSeller(entityHit) {
     return vehicleSellers.some(s => s.pedId == entityHit);
 }
 
-export function openShopMenuCallback(option, entityHit) {
+export function openVehicleShopMenuCallback(option, entityHit) {
     switch (option) {
         case "openMenu":
             openVehicleShopMenu(entityHit);
@@ -127,15 +127,13 @@ function setupCameraRotator(vehicleShopData) {
 }
 
 export function setupVehicleShop(shopId, vehicleShopData) {
-    game.doScreenFadeOut(500);
     let vehiclesData = generateVehicleData(vehicleShopData);
-    let vehicleShopData = getVehicleShopData(shopId);
+    let currentVehicleShopData = getVehicleShopData(shopId);
 
-    renderShopCamera(vehicleShopData);
-    createVehicle(vehiclesData[0].vehicleModel, vehicleShopData);
-    setupCameraRotator(vehicleShopData);
+    renderShopCamera(currentVehicleShopData);
+    createVehicle(vehiclesData[0].vehicleModel, currentVehicleShopData);
+    setupCameraRotator(currentVehicleShopData);
 
-    game.doScreenFadeIn(500);
     return vehiclesData;
 }
 
@@ -149,22 +147,3 @@ export function exitVehicleShop() {
 
     game.renderScriptCams(false, true, 300, true, false);
 }
-
-alt.on('update', () => {
-    if (currentVehicleShopData) {
-
-    }
-});
-
-alt.on('consoleCommand', (command, ...args) => {
-    if (command == 'camera') {
-        alt.log('Stoping camera');
-        cameraRotator.pause(true);
-        cameraRotator.stop();
-        shopCamera.destroy(true);
-        game.renderScriptCams(false, false, 0, true, false);
-        shopCamera = null;
-    }
-})
-
-export default { isVehicleSeller, openShopMenuCallback };

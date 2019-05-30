@@ -98,7 +98,7 @@ class _MenusManager {
     }
 }
 
-let MenusManager = new _MenusManager();
+const MenusManager = new _MenusManager();
 
 MenusManager.onUiEvent('viewLoaded', () => {
     MenusManager.viewLoaded = true;

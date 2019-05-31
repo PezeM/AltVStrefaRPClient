@@ -17,6 +17,7 @@
 
     <carousel-3d
       @before-slide-change="onBeforeSlideChange"
+      :border="0"
       :controls-visible="true"
       :controls-prev-html="'&#10092;'"
       :controls-next-html="'&#10093;'"
@@ -28,9 +29,83 @@
     >
       <slide v-for="(vehicle, index) in currentVehicles" :index="index" v-bind:key="index">
         <div class="test-item">
-          <h1>{{ vehicle.name }}</h1>
-          <h2>{{ vehicle.price }}$</h2>
-          <h2>{{ vehicle.maxSpeed }}KM/H</h2>
+          <div class="card h-100 text-dark vehicle-card">
+            <div class="card-body">
+              <h5 class="card-title">{{ vehicle.name }}</h5>
+
+              <div class="row pt-2">
+                <div class="col">
+                  <p class="card-text">Cena</p>
+                </div>
+                <div class="col">
+                  <p class="card-text price-text">{{ vehicle.price }} $</p>
+                </div>
+              </div>
+
+              <div class="row pt-2">
+                <div class="col">
+                  <p class="card-text">Prędkość</p>
+                </div>
+                <div class="col">
+                  <p class="card-text">{{ vehicle.maxSpeed }} Km/h</p>
+                </div>
+              </div>
+
+              <div class="row pt-2">
+                <div class="col">
+                  <p class="card-text">Przyspieszenie</p>
+                </div>
+                <div class="col">
+                  <div class="progress h-100">
+                    <div
+                      class="progress-bar"
+                      role="progressbar"
+                      :style="{width: vehicle.maxAcceleration + '%'}"
+                      :aria-valuenow="vehicle.maxAcceleration"
+                      aria-valuemin="0"
+                      aria-valuemax="100"
+                    >{{ vehicle.maxAcceleration }}</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row pt-2">
+                <div class="col">
+                  <p class="card-text">Hamowanie</p>
+                </div>
+                <div class="col">
+                  <div class="progress h-100">
+                    <div
+                      class="progress-bar"
+                      role="progressbar"
+                      :style="{width: vehicle.maxBraking + '%'}"
+                      :aria-valuenow="vehicle.maxBraking"
+                      aria-valuemin="0"
+                      aria-valuemax="100"
+                    >{{ vehicle.maxBraking }}</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row pt-2">
+                <div class="col">
+                  <p class="card-text">Trakcja</p>
+                </div>
+                <div class="col">
+                  <div class="progress h-100">
+                    <div
+                      class="progress-bar"
+                      role="progressbar"
+                      :style="{width: vehicle.maxTraction + '%'}"
+                      :aria-valuenow="vehicle.maxTraction"
+                      aria-valuemin="0"
+                      aria-valuemax="100"
+                    >{{ vehicle.maxTraction }}</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </slide>
     </carousel-3d>
@@ -86,6 +161,7 @@ export default {
                         maxSpeed: '178',
                         maxAcceleration: '91.67',
                         maxBraking: '100.00',
+                        maxTraction: '85.00',
                     },
                     {
                         vehicleModel: 3253274834,
@@ -95,6 +171,7 @@ export default {
                         maxSpeed: '171',
                         maxAcceleration: '94.44',
                         maxBraking: '100.00',
+                        maxTraction: '85.00',
                     },
                     {
                         vehicleModel: 2891838741,
@@ -104,6 +181,7 @@ export default {
                         maxSpeed: '179',
                         maxAcceleration: '104.12',
                         maxBraking: '100.00',
+                        maxTraction: '85.00',
                     },
                     {
                         vehicleModel: 1922255844,
@@ -113,6 +191,7 @@ export default {
                         maxSpeed: '135',
                         maxAcceleration: '71.15',
                         maxBraking: '91.11',
+                        maxTraction: '85.00',
                     },
                     {
                         vehicleModel: 2537130571,
@@ -122,6 +201,7 @@ export default {
                         maxSpeed: '183',
                         maxAcceleration: '93.06',
                         maxBraking: '100.00',
+                        maxTraction: '85.00',
                     },
                     {
                         vehicleModel: 1663218586,
@@ -131,6 +211,7 @@ export default {
                         maxSpeed: '179',
                         maxAcceleration: '107.35',
                         maxBraking: '110.00',
+                        maxTraction: '85.00',
                     },
                     {
                         vehicleModel: 1504306544,
@@ -140,6 +221,7 @@ export default {
                         maxSpeed: '171',
                         maxAcceleration: '100.00',
                         maxBraking: '71.43',
+                        maxTraction: '85.00',
                     },
                     {
                         vehicleModel: 142944341,
@@ -149,6 +231,7 @@ export default {
                         maxSpeed: '162',
                         maxAcceleration: '100.00',
                         maxBraking: '75.00',
+                        maxTraction: '85.00',
                     },
                     {
                         vehicleModel: 470404958,
@@ -158,6 +241,7 @@ export default {
                         maxSpeed: '162',
                         maxAcceleration: '100.00',
                         maxBraking: '72.50',
+                        maxTraction: '85.00',
                     },
                     {
                         vehicleModel: 330661258,
@@ -167,6 +251,7 @@ export default {
                         maxSpeed: '163',
                         maxAcceleration: '96.30',
                         maxBraking: '66.67',
+                        maxTraction: '85.00',
                     },
                     {
                         vehicleModel: 704435172,
@@ -176,6 +261,7 @@ export default {
                         maxSpeed: '165',
                         maxAcceleration: '100.00',
                         maxBraking: '61.11',
+                        maxTraction: '85.00',
                     },
                 ];
             },
@@ -196,6 +282,7 @@ export default {
                     maxSpeed: '178',
                     maxAcceleration: '91.67',
                     maxBraking: '100.00',
+                    maxTraction: '85.00',
                 },
             ],
         };
@@ -264,11 +351,21 @@ export default {
 
 <style scoped>
 .test-item {
-    display: block;
-    border: 2px solid black;
     width: 100%;
     height: 100%;
-    background-color: rgb(71, 71, 71);
+}
+
+.price-text {
+    font-size: 1.2em;
+    color: rgb(1, 105, 27);
+}
+
+.vehicle-card {
+    background-color: rgba(255, 255, 255, 0.92);
+}
+
+p {
+    font-family: 'Roboto', sans-serif !important;
 }
 </style>
 
@@ -276,6 +373,11 @@ export default {
 .vehicle-shop-carousel .carousel-3d-controls .next,
 .prev {
     font-size: 5em !important;
+}
+
+.vehicle-shop-carousel .carousel-3d-slide {
+    box-shadow: 6px 2px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24) !important;
+    border-radius: 8px !important;
 }
 </style>
 

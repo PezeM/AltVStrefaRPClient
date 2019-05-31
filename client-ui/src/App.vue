@@ -80,7 +80,7 @@ html,
 body {
     background-color: transparent !important;
     user-select: none;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Roboto', sans-serif !important;
 }
 
 #app {

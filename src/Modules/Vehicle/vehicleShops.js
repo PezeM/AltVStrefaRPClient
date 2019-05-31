@@ -98,8 +98,8 @@ function generateVehicleData(shopData) {
             name: game.getDisplayNameFromVehicleModel(vehicle.VehicleModel),
             maxSpeed: (game.getVehicleModelMaxSpeed(vehicle.VehicleModel) * 3.6).toFixed(0),
         };
-        vehicleData.maxAcceleration = (game.getVehicleModelAcceleration(vehicle.VehicleModel) / game.getVehicleClassMaxAcceleration(vehicleData.vehicleClass)).toFixed(2);
-        vehicleData.maxBreaking = (game.getVehicleModelMaxBraking(vehicle.VehicleModel) / game.getVehicleClassMaxBraking(vehicleData.vehicleClass)).toFixed(3);
+        vehicleData.maxAcceleration = (game.getVehicleModelAcceleration(vehicle.VehicleModel) / game.getVehicleClassMaxAcceleration(vehicleData.vehicleClass) * 100).toFixed(2);
+        vehicleData.maxBraking = (game.getVehicleModelMaxBraking(vehicle.VehicleModel) / game.getVehicleClassMaxBraking(vehicleData.vehicleClass) * 100).toFixed(2);
         currentVehicleShopData.push(vehicleData);
     });
 
@@ -116,6 +116,8 @@ function createVehicle(vehicleModel, vehicleShopData) {
     alt.loadModel(vehicleModel);
     currentVehicle = game.createVehicle(vehicleModel, vehicleShopData.vehicleSpawn.x, vehicleShopData.vehicleSpawn.y,
         vehicleShopData.vehicleSpawn.z, 180, true, true);
+    game.setVehicleDoorsLocked(currentVehicle, 1);
+    alt.log(`Doors are currently: ${game.getVehicleDoorLockStatus(JSON.stringify(currentVehicle))}`);
     game.setVehicleOnGroundProperly(currentVehicle);
 }
 

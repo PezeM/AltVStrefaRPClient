@@ -127,7 +127,8 @@ menusManager.onServerEvent('openVehicleShop', (vehicleShopId, vehicleShopData) =
     menusManager.openMenu("openVehicleShop", true, true, JSON.stringify(shopData), vehicleShopId);
 });
 
-menusManager.onUiEvent('getNextVehicleInShop', (shopId, vehicleModel) => {
+menusManager.onUiEvent('spawnNextVehicle', (shopId, vehicleModel) => {
+    alt.log(`Inside spawnNextVehicle event with shopId = ${shopId} and vehicleModel = ${vehicleModel}`);
     let vehicleShopData = getVehicleShopData(shopId);
     if (vehicleShopData == null) return;
     changeVehicle(vehicleModel, vehicleShopData);

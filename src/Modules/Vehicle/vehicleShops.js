@@ -67,6 +67,7 @@ export function changeVehicle(newVehicleModel, vehicleShopData) {
     try {
         if (currentVehicle || currentVehicle !== 0) {
             game.deleteEntity(currentVehicle);
+            alt.log(`Deleted old vehicle`);
         }
 
         alt.loadModel(newVehicleModel);
@@ -74,6 +75,7 @@ export function changeVehicle(newVehicleModel, vehicleShopData) {
             vehicleShopData.vehicleSpawn.z, 180, true, true);
         game.setVehicleOnGroundProperly(currentVehicle);
         game.setVehicleUndriveable(currentVehicle, true);
+        alt.log('Created new vehicle');
     } catch (error) {
         alt.log(`Error while changing vehicle in vehicleShops.js = ${e}`);
     }
@@ -107,16 +109,6 @@ function renderShopCamera(vehicleShopData) {
     shopCamera = new Camera('DEFAULT_SCRIPTED_CAMERA', vehicleShopData.cameraPosition, vehicleShopData.cameraRotation, 45);
     shopCamera.setActive(true);
     game.renderScriptCams(true, true, 300, true, false);
-}
-
-function createVehicle(vehicleModel, vehicleShopData) {
-    alt.loadModel(vehicleModel);
-    currentVehicle = game.createVehicle(vehicleModel, vehicleShopData.vehicleSpawn.x, vehicleShopData.vehicleSpawn.y,
-        vehicleShopData.vehicleSpawn.z, 180, true, true);
-    game.setVehicleDoorsLocked(currentVehicle, 1);
-    alt.log(`Doors are currently: ${game.getVehicleDoorLockStatus(JSON.stringify(currentVehicle))}`);
-    game.setVehicleUndriveable(currentVehicle, true);
-    game.setVehicleOnGroundProperly(currentVehicle);
 }
 
 function setupCameraRotator(vehicleShopData) {

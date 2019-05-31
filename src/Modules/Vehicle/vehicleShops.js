@@ -7,7 +7,6 @@ import mainUi from 'src/Modules/Ui/mainUi.js';
 import Camera from 'src/Helpers/camera.js';
 import cameraRotator from 'src/Helpers/cameraRotator.js';
 
-let localPlayer = alt.getLocalPlayer();
 let currentVehicleShopData = null;
 let currentVehicle = null;
 let shopCamera = null;
@@ -45,7 +44,7 @@ function initializePeds() {
 }
 initializePeds();
 
-function getVehicleShopData(vehicleShopId) {
+export function getVehicleShopData(vehicleShopId) {
     return vehicleShopData.find(s => s.id === vehicleShopId);
 }
 
@@ -64,19 +63,17 @@ export function openVehicleShopMenuCallback(option, entityHit) {
     }
 }
 
-export function changeVehicle(newVehicleData, shopId) {
+export function changeVehicle(newVehicleModel, vehicleShopData) {
     try {
         if (currentVehicle || currentVehicle !== 0) {
             game.deleteEntity(currentVehicle);
         }
 
-        let vehicleShopData = getVehicleShopData(shopId);
-        if (vehicleShopData == null) return;
-
-        alt.loadModel(newVehicleData.model);
-        currentVehicle = game.createVehicle(newVehicleData.model, vehicleShopData.vehicleSpawn.x, vehicleShopData.vehicleSpawn.y,
+        alt.loadModel(newVehicleModel);
+        currentVehicle = game.createVehicle(newVehicleModel, vehicleShopData.vehicleSpawn.x, vehicleShopData.vehicleSpawn.y,
             vehicleShopData.vehicleSpawn.z, 180, true, true);
         game.setVehicleOnGroundProperly(currentVehicle);
+        game.setVehicleUndriveable(currentVehicle, true);
     } catch (error) {
         alt.log(`Error while changing vehicle in vehicleShops.js = ${e}`);
     }
@@ -118,6 +115,7 @@ function createVehicle(vehicleModel, vehicleShopData) {
         vehicleShopData.vehicleSpawn.z, 180, true, true);
     game.setVehicleDoorsLocked(currentVehicle, 1);
     alt.log(`Doors are currently: ${game.getVehicleDoorLockStatus(JSON.stringify(currentVehicle))}`);
+    game.setVehicleUndriveable(currentVehicle, true);
     game.setVehicleOnGroundProperly(currentVehicle);
 }
 
@@ -133,7 +131,8 @@ export function setupVehicleShop(shopId, vehicleShopData) {
     let currentVehicleShopData = getVehicleShopData(shopId);
 
     renderShopCamera(currentVehicleShopData);
-    createVehicle(vehiclesData[0].vehicleModel, currentVehicleShopData);
+    changeVehicle(vehiclesData[0].vehicleModel, currentVehicleShopData);
+    // createVehicle(vehiclesData[0].vehicleModel, currentVehicleShopData);
     setupCameraRotator(currentVehicleShopData);
 
     return vehiclesData;

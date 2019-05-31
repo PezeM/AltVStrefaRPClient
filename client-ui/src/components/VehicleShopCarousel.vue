@@ -178,6 +178,7 @@ export default {
                 ];
             },
         },
+        shopId: Number,
     },
     data() {
         return {
@@ -220,15 +221,13 @@ export default {
             this.updateCurrentVehicle(0);
         },
         changeVehicleClasses(index) {
-            console.log(`Index = ${index}`);
             this.currentVehicles = [];
-
             this.vehiclesData.forEach(vehicleData => {
                 if (vehicleData.vehicleClass == index) {
                     this.currentVehicles.push(vehicleData);
                 }
             });
-            console.log(JSON.stringify(this.currentVehicles));
+
             this.currentVehicleClassNumber = index;
             this.updateCurrentVehicle(0);
             this.spawnNextVehicle(index);
@@ -237,7 +236,9 @@ export default {
             this.currentVehicle = this.currentVehicles[index];
         },
         spawnNextVehicle(index) {
-            alt.emit('spawnNextVehicle', this.currentVehicle.vehicleModel);
+            if (this.currentVehicle && this.shopId) {
+                alt.emit('spawnNextVehicle', this.shopId, this.currentVehicle.vehicleModel);
+            }
         },
     },
     computed: {

@@ -6,7 +6,7 @@ import mainUi from 'src/Modules/Ui/mainUi.js';
 import bank from 'src/Modules/banking.js';
 import Business from 'src/Modules/business.js';
 import menusManager from 'src/Modules/Ui/menusManager.js';
-import { setupVehicleShop, exitVehicleShop } from 'src/Modules/Vehicle/vehicleShops.js';
+import { setupVehicleShop, exitVehicleShop, getVehicleShopData, changeVehicle } from 'src/Modules/Vehicle/vehicleShops.js';
 
 // let bank = new Bank();
 let business = new Business();
@@ -122,14 +122,15 @@ menusManager.onUiEvent('closeBusinessMenu', () => {
 
 // Vehicle shops
 menusManager.onServerEvent('openVehicleShop', (vehicleShopId, vehicleShopData) => {
-    alt.log(`Vehicle shop data = ${JSON.stringify(vehicleShopData)}`);
     var shopData = setupVehicleShop(vehicleShopId, vehicleShopData);
     alt.log(JSON.stringify(shopData));
     menusManager.openMenu("openVehicleShop", true, true, JSON.stringify(shopData), vehicleShopId);
 });
 
-menusManager.onUiEvent('getNextVehicleInShop', () => {
-
+menusManager.onUiEvent('getNextVehicleInShop', (shopId, vehicleModel) => {
+    let vehicleShopData = getVehicleShopData(shopId);
+    if (vehicleShopData == null) return;
+    changeVehicle(vehicleModel, vehicleShopData);
 });
 
 menusManager.onUiEvent('closeVehicleShop', () => {

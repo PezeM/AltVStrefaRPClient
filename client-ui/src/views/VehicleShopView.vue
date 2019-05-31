@@ -14,7 +14,7 @@
 
       <div class="row fixed-bottom">
         <div class="col-12">
-          <Vehicle-shop-carousel :vehiclesData="vehicleShopData"/>
+          <Vehicle-shop-carousel :vehiclesData="vehicleShopData" :shopId="shopId"/>
         </div>
       </div>
     </div>

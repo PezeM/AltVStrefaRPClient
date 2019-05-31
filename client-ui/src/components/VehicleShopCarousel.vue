@@ -1,6 +1,6 @@
 <template>
   <div class="vehicle-shop-carousel">
-    <ul id="vehicle-classes-list">
+    <ul class="vehicle-classes-list">
       <li
         v-for="vehicleClass in vehicleClasses"
         :key="vehicleClass.classNumber"
@@ -14,7 +14,6 @@
       :controls-prev-html="'&#10092;'"
       :controls-next-html="'&#10093;'"
       :controls-width="30"
-      :controls-height="60"
       :inverse-scaling="400"
       :space="320"
       :count="getSlidesNumber"
@@ -237,3 +236,11 @@ export default {
     background-color: rgb(71, 71, 71);
 }
 </style>
+
+<style>
+.vehicle-shop-carousel .carousel-3d-controls .next,
+.prev {
+    font-size: 5em !important;
+}
+</style>
+

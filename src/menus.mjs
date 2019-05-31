@@ -6,7 +6,7 @@ import mainUi from 'src/Modules/Ui/mainUi.js';
 import bank from 'src/Modules/banking.js';
 import Business from 'src/Modules/business.js';
 import menusManager from 'src/Modules/Ui/menusManager.js';
-import { setupVehicleShop, exitVehicleShop, getVehicleShopData, changeVehicle } from 'src/Modules/Vehicle/vehicleShops.js';
+import { setupVehicleShop, exitVehicleShop, getVehicleShopData, changeVehicle, buyVehicle } from 'src/Modules/Vehicle/vehicleShops.js';
 
 // let bank = new Bank();
 let business = new Business();
@@ -132,6 +132,10 @@ menusManager.onUiEvent('spawnNextVehicle', (shopId, vehicleModel) => {
     let vehicleShopData = getVehicleShopData(shopId);
     if (vehicleShopData == null) return;
     changeVehicle(vehicleModel, vehicleShopData);
+});
+
+menusManager.onUiEvent('buyVehicle', (shopId, vehicleModel) => {
+    buyVehicle(shopId, vehicleModel)
 });
 
 menusManager.onUiEvent('closeVehicleShop', () => {

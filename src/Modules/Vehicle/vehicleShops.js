@@ -67,7 +67,6 @@ export function changeVehicle(newVehicleModel, vehicleShopData) {
     try {
         if (currentVehicle || currentVehicle !== 0) {
             game.deleteEntity(currentVehicle);
-            alt.log(`Deleted old vehicle`);
         }
 
         alt.loadModel(newVehicleModel);
@@ -75,7 +74,6 @@ export function changeVehicle(newVehicleModel, vehicleShopData) {
             vehicleShopData.vehicleSpawn.z, 180, true, true);
         game.setVehicleOnGroundProperly(currentVehicle);
         game.setVehicleUndriveable(currentVehicle, true);
-        alt.log('Created new vehicle');
     } catch (error) {
         alt.log(`Error while changing vehicle in vehicleShops.js = ${e}`);
     }
@@ -87,9 +85,9 @@ function openVehicleShopMenu(entityHit) {
     alt.emitServer('OpenVehicleShop', sellerPed.id);
 }
 
-function generateVehicleData(shopData) {
+function generateVehicleData(vehiclesData) {
     currentVehicleShopData = [];
-    JSON.parse(shopData).forEach(vehicle => {
+    JSON.parse(vehiclesData).forEach(vehicle => {
         var vehicleData = {
             vehicleModel: vehicle.VehicleModel,
             price: vehicle.Price,
@@ -108,35 +106,47 @@ function generateVehicleData(shopData) {
 function renderShopCamera(vehicleShopData) {
     shopCamera = new Camera('DEFAULT_SCRIPTED_CAMERA', vehicleShopData.cameraPosition, vehicleShopData.cameraRotation, 45);
     shopCamera.setActive(true);
-    game.renderScriptCams(true, true, 300, true, false);
+    game.renderScriptCams(true, true, 450, true, false);
 }
 
 function setupCameraRotator(vehicleShopData) {
     var vehiclePos = game.getEntityCoords(currentVehicle, true);
-    cameraRotator.start(shopCamera, vehicleShopData.cameraPosition, vehiclePos, { x: 4.5, y: 2.5, z: 0 }, 180);
+    cameraRotator.start(shopCamera, vehicleShopData.cameraPosition, vehiclePos, { x: 4.3, y: 2.3, z: 0 }, 180);
     cameraRotator.setZBound(-0.8, 1.6);
     cameraRotator.setZUpMultipler(3);
 }
 
-export function setupVehicleShop(shopId, vehicleShopData) {
-    let vehiclesData = generateVehicleData(vehicleShopData);
-    let currentVehicleShopData = getVehicleShopData(shopId);
+export function setupVehicleShop(shopId, vehiclesData) {
+    let vehiclesData = generateVehicleData(vehiclesData);
+    let vehicleShopData = getVehicleShopData(shopId);
 
-    renderShopCamera(currentVehicleShopData);
-    changeVehicle(vehiclesData[0].vehicleModel, currentVehicleShopData);
-    // createVehicle(vehiclesData[0].vehicleModel, currentVehicleShopData);
-    setupCameraRotator(currentVehicleShopData);
-
+    renderShopCamera(vehicleShopData);
+    changeVehicle(vehiclesData[0].vehicleModel, vehicleShopData);
+    setupCameraRotator(vehicleShopData);
+    game.doScreenFadeIn(500);
     return vehiclesData;
 }
 
+export function buyVehicle(shopId, vehicleModel) {
+    let currentVehicleShopData = getVehicleShopData(shopId);
+    if (currentVehicleShopData == null) {
+        return mainUi.showCefNotification(2, "Błąd", "Nie udało się zakupić pojazdu w sklepie.", 5000);
+    }
+
+    alt.emitServer('BuyVehicle', shopId, vehicleModel);
+}
+
 export function exitVehicleShop() {
+    if (currentVehicle || currentVehicle !== 0) {
+        game.deleteEntity(currentVehicle);
+    }
+
     cameraRotator.pause(true);
     cameraRotator.stop();
     if (shopCamera) {
         shopCamera.destroy(true);
         shopCamera = null;
     }
-
+    currentVehicleShopData = null;
     game.renderScriptCams(false, true, 300, true, false);
 }

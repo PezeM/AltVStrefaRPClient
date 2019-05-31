@@ -40,6 +40,8 @@
 
 <script>
 import { Carousel3d, Slide } from 'vue-carousel-3d';
+import EventBus from '@/event-bus.js';
+
 const vehicleClasses = {
     0: 'Kompakty',
     1: 'Sedany',
@@ -202,6 +204,9 @@ export default {
         this.$nextTick(() => {
             this.generateVehicleClasses();
         });
+        EventBus.$on('buyVehicle', () => {
+            this.buyVehicle();
+        });
     },
     methods: {
         onBeforeSlideChange(index) {
@@ -239,6 +244,14 @@ export default {
             if (this.currentVehicle && this.shopId) {
                 alt.emit('spawnNextVehicle', this.shopId, this.currentVehicle.vehicleModel);
             }
+        },
+        buyVehicle() {
+            if (this.currentVehicle == null || typeof this.currentVehicle == 'undefined') {
+                console.log('Couldnt buy vehicle');
+                return;
+            }
+
+            alt.emit('buyVehicle', this.shopId, this.currentVehicle.vehicleModel);
         },
     },
     computed: {

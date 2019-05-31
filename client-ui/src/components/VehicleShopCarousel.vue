@@ -1,13 +1,20 @@
 <template>
   <div class="vehicle-shop-carousel">
-    <ul class="vehicle-classes-list">
-      <li
-        v-for="vehicleClass in vehicleClasses"
-        :key="vehicleClass.classNumber"
-        @click="changeVehicleClasses(vehicleClass.classNumber)"
-      >{{ vehicleClass.className }}</li>
-    </ul>
-    <br>
+    <div class="row">
+      <div class="col-2">
+        <div class="vehicle-classes-list list-group">
+          <button
+            v-for="vehicleClass in vehicleClasses"
+            :key="vehicleClass.classNumber"
+            @click="changeVehicleClasses(vehicleClass.classNumber)"
+            type="button"
+            class="list-group-item list-group-item-action"
+            v-bind:class="{ active:vehicleClass.classNumber == currentVehicleClassNumber }"
+          >{{ vehicleClass.className }}</button>
+        </div>
+      </div>
+    </div>
+
     <carousel-3d
       @before-slide-change="onBeforeSlideChange"
       :controls-visible="true"
@@ -22,6 +29,8 @@
       <slide v-for="(vehicle, index) in currentVehicles" :index="index" v-bind:key="index">
         <div class="test-item">
           <h1>{{ vehicle.name }}</h1>
+          <h2>{{ vehicle.price }}$</h2>
+          <h2>{{ vehicle.maxSpeed }}KM/H</h2>
         </div>
       </slide>
     </carousel-3d>
@@ -69,7 +78,7 @@ export default {
                 return [
                     {
                         vehicleModel: 767087018,
-                        vehiclePrice: 100,
+                        price: 100,
                         vehicleClass: 6,
                         name: 'ALPHA',
                         maxSpeed: '178',
@@ -78,7 +87,7 @@ export default {
                     },
                     {
                         vehicleModel: 3253274834,
-                        vehiclePrice: 150,
+                        price: 150,
                         vehicleClass: 6,
                         name: 'BANSHEE',
                         maxSpeed: '171',
@@ -87,7 +96,7 @@ export default {
                     },
                     {
                         vehicleModel: 2891838741,
-                        vehiclePrice: 150,
+                        price: 150,
                         vehicleClass: 7,
                         name: 'ZENTORNO',
                         maxSpeed: '179',
@@ -96,7 +105,7 @@ export default {
                     },
                     {
                         vehicleModel: 1922255844,
-                        vehiclePrice: 150,
+                        price: 150,
                         vehicleClass: 1,
                         name: 'SCHAFTER6',
                         maxSpeed: '135',
@@ -105,7 +114,7 @@ export default {
                     },
                     {
                         vehicleModel: 2537130571,
-                        vehiclePrice: 150,
+                        price: 150,
                         vehicleClass: 6,
                         name: 'SEVEN70',
                         maxSpeed: '183',
@@ -114,7 +123,7 @@ export default {
                     },
                     {
                         vehicleModel: 1663218586,
-                        vehiclePrice: 150,
+                        price: 150,
                         vehicleClass: 7,
                         name: 'T20',
                         maxSpeed: '179',
@@ -123,7 +132,7 @@ export default {
                     },
                     {
                         vehicleModel: 1504306544,
-                        vehiclePrice: 150,
+                        price: 150,
                         vehicleClass: 5,
                         name: 'TORERO',
                         maxSpeed: '171',
@@ -132,7 +141,7 @@ export default {
                     },
                     {
                         vehicleModel: 142944341,
-                        vehiclePrice: 150,
+                        price: 150,
                         vehicleClass: 2,
                         name: 'BALLER2',
                         maxSpeed: '162',
@@ -141,7 +150,7 @@ export default {
                     },
                     {
                         vehicleModel: 470404958,
-                        vehiclePrice: 150,
+                        price: 150,
                         vehicleClass: 2,
                         name: 'BALLER5',
                         maxSpeed: '162',
@@ -150,7 +159,7 @@ export default {
                     },
                     {
                         vehicleModel: 330661258,
-                        vehiclePrice: 150,
+                        price: 150,
                         vehicleClass: 3,
                         name: 'COGCABRI',
                         maxSpeed: '163',
@@ -159,7 +168,7 @@ export default {
                     },
                     {
                         vehicleModel: 704435172,
-                        vehiclePrice: 150,
+                        price: 150,
                         vehicleClass: 1,
                         name: 'COG552',
                         maxSpeed: '165',
@@ -172,11 +181,13 @@ export default {
     },
     data() {
         return {
+            currentVehicle: null,
+            currentVehicleClassNumber: 0,
             vehicleClasses: [],
             currentVehicles: [
                 {
                     vehicleModel: 767087018,
-                    vehiclePrice: 100,
+                    price: 100,
                     vehicleClass: 6,
                     name: 'Eldo',
                     maxSpeed: '178',
@@ -193,9 +204,9 @@ export default {
     },
     methods: {
         onBeforeSlideChange(index) {
-            console.log('@onBeforeSlideChange Callback Triggered', 'Slide Index ' + index);
             // Get the next vehicle if available. Call to client to respawn that vehicle and destroy current
-            alt.emit('getNextVehicleInShop', index);
+            this.updateCurrentVehicle(index);
+            this.spawnNextVehicle(index);
         },
         generateVehicleClasses() {
             this.vehiclesData.forEach(vehicleData => {
@@ -206,6 +217,7 @@ export default {
             });
             this.currentVehicles = [];
             this.currentVehicles.push(...this.vehiclesData);
+            this.updateCurrentVehicle(0);
         },
         changeVehicleClasses(index) {
             console.log(`Index = ${index}`);
@@ -217,6 +229,15 @@ export default {
                 }
             });
             console.log(JSON.stringify(this.currentVehicles));
+            this.currentVehicleClassNumber = index;
+            this.updateCurrentVehicle(0);
+            this.spawnNextVehicle(index);
+        },
+        updateCurrentVehicle(index) {
+            this.currentVehicle = this.currentVehicles[index];
+        },
+        spawnNextVehicle(index) {
+            alt.emit('spawnNextVehicle', this.currentVehicle.vehicleModel);
         },
     },
     computed: {

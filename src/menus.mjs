@@ -128,6 +128,10 @@ menusManager.onServerEvent('openVehicleShop', (vehicleShopId, vehicleShopData) =
     menusManager.openMenu("openVehicleShop", true, true, JSON.stringify(shopData), vehicleShopId);
 });
 
+menusManager.onUiEvent('getNextVehicleInShop', () => {
+
+});
+
 menusManager.onUiEvent('closeVehicleShop', () => {
     exitVehicleShop();
     menusManager.closeMenu();

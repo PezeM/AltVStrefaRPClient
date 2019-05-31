@@ -93,7 +93,7 @@ function generateVehicleData(shopData) {
     JSON.parse(shopData).forEach(vehicle => {
         var vehicleData = {
             vehicleModel: vehicle.VehicleModel,
-            vehiclePrice: vehicle.Price,
+            price: vehicle.Price,
             vehicleClass: game.getVehicleClassFromName(vehicle.VehicleModel),
             name: game.getDisplayNameFromVehicleModel(vehicle.VehicleModel),
             maxSpeed: (game.getVehicleModelMaxSpeed(vehicle.VehicleModel) * 3.6).toFixed(0),

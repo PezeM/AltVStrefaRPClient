@@ -24,7 +24,7 @@ export const destroyCam = () => {
 
 export const pointAt = (entity) => {
     game.pointCamAtEntity(camera, entity, 0, 0, 0, 0);
-}
+};
 
 function checkCamInAir(showGui) {
     if (game.isPlayerSwitchInProgress()) {
@@ -44,7 +44,7 @@ export function camWithPlayer(playerId, newPosition, showUi, cb) {
     game.freezeEntityPosition(playerId, true);
     showUi(showUi);
     alt.setTimeout(() => {
-        game.setEntityCoords(playerId, newPosition.x, newPosition.y, newPosition.z, 1, 0, 0, 1)
+        game.setEntityCoords(playerId, newPosition.x, newPosition.y, newPosition.z, 1, 0, 0, 1);
         moveFromToAir(playerId, 'down', undefined, showUi);
     }, 2500)
     if (typeof cb === "function") return cb(true);

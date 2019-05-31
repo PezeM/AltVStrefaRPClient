@@ -34,11 +34,11 @@ let percentage = 0;
 let localPlayer = alt.getLocalPlayer();
 
 export function getBin(binModel) {
-    return binObjects.find(b => b.model == binModel);
+    return binObjects.find(b => b.model === binModel);
 }
 
 export function includesBin(model) {
-    return binObjects.some(b => b.model == model);
+    return binObjects.some(b => b.model === model);
 }
 
 export function searchBinMenuCallback(option, thrashBinId) {

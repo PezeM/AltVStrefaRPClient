@@ -46,11 +46,11 @@ function initializePeds() {
 initializePeds();
 
 function getVehicleShopData(vehicleShopId) {
-    return vehicleShopData.find(s => s.id == vehicleShopId);
+    return vehicleShopData.find(s => s.id === vehicleShopId);
 }
 
 export function isVehicleSeller(entityHit) {
-    return vehicleSellers.some(s => s.pedId == entityHit);
+    return vehicleSellers.some(s => s.pedId === entityHit);
 }
 
 export function openVehicleShopMenuCallback(option, entityHit) {
@@ -66,7 +66,7 @@ export function openVehicleShopMenuCallback(option, entityHit) {
 
 export function changeVehicle(newVehicleData, shopId) {
     try {
-        if (currentVehicle || currentVehicle != 0) {
+        if (currentVehicle || currentVehicle !== 0) {
             game.deleteEntity(currentVehicle);
         }
 
@@ -83,7 +83,7 @@ export function changeVehicle(newVehicleData, shopId) {
 }
 
 function openVehicleShopMenu(entityHit) {
-    var sellerPed = vehicleSellers.find(s => s.pedId == entityHit);
+    var sellerPed = vehicleSellers.find(s => s.pedId === entityHit);
     if (sellerPed == null || typeof sellerPed == 'undefined') return;
     alt.emitServer('OpenVehicleShop', sellerPed.id);
 }

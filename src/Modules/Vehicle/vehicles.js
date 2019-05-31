@@ -73,7 +73,7 @@ export function toggleLockState() {
     let coords = game.getEntityCoords(localPlayer.scriptID, true);
     var vehicle = game.getClosestVehicle(coords.x, coords.y, coords.z, 10, 0, 71);
     alt.log(`Closest vehicle = ${JSON.stringify(vehicle)}`);
-    if (vehicle == 0) return false;
+    if (vehicle === 0) return false;
 
     let vehiclePosition = game.getEntityCoords(vehicle, true);
     if (game.getDistanceBetweenCoords(coords.x, coords.y, coords.z, vehiclePosition.x, vehiclePosition.y, vehiclePosition.z, true) > 10) return false;
@@ -117,16 +117,16 @@ alt.onServer('toggleTrunkState', (state) => {
         }
 
         alt.log(`Current opendTrunks array: ${JSON.stringify(openedTrunks)}`);
-    })
+    });
 });
 
 alt.onServer('toggleHoodState', (state) => {
     alt.log(`Toggle hood state with state ${state}`);
     let coords = game.getEntityCoords(localPlayer.scriptID, true);
     var vehicle = game.getClosestVehicle(coords.x, coords.y, coords.z, 6, 0, 71);
-    if (vehicle == 0) return;
+    if (vehicle === 0) return;
     let trunkIndex = game.getEntityBoneIndexByName(vehicle, "bonnet");
-    if (trunkIndex == -1) return;
+    if (trunkIndex === -1) return;
 
     let hoodPosition = game.getWorldPositionOfEntityBone(vehicle, trunkIndex);
     let vehiclePosition = game.getEntityCoords(vehicle, true);
@@ -162,10 +162,10 @@ export function toggleTrunkOrHoodState() {
     let coords = game.getEntityCoords(localPlayer.scriptID, true);
     var vehicle = game.getClosestVehicle(coords.x, coords.y, coords.z, 6, 0, 71);
     alt.log(`Closest vehicle = ${JSON.stringify(vehicle)}`);
-    if (vehicle == 0) return;
+    if (vehicle === 0) return;
 
     var doorLockStatus = game.getVehicleDoorLockStatus(vehicle);
-    if (doorLockStatus == 2) return false; // Vehicle was closed
+    if (doorLockStatus === 2) return false; // Vehicle was closed
 
     let trunkIndex = game.getEntityBoneIndexByName(vehicle, "boot");
     let hoodIndex = game.getEntityBoneIndexByName(vehicle, "bonnet");
@@ -173,7 +173,7 @@ export function toggleTrunkOrHoodState() {
     alt.log(`Found trunk index: ${trunkIndex}`);
     alt.log(`Found hood index: ${hoodIndex}`);
 
-    if (trunkIndex == -1 && hoodIndex == -1) return false;
+    if (trunkIndex === -1 && hoodIndex === -1) return false;
 
     let trunkPosition = game.getWorldPositionOfEntityBone(vehicle, trunkIndex);
     let hoodPosition = game.getWorldPositionOfEntityBone(vehicle, hoodIndex);
@@ -219,12 +219,12 @@ alt.on('update', () => {
         }
 
         var vehicle = game.getClosestVehicle(localPlayer.pos.x, localPlayer.pos.y, localPlayer.pos.z, 8, 0, 71);
-        if (vehicle != 0) {
+        if (vehicle !== 0) {
             let hoodIndex = game.getEntityBoneIndexByName(vehicle, "bonnet");
             let trunkIndex = game.getEntityBoneIndexByName(vehicle, "boot");
             let vehiclePosition = game.getEntityCoords(vehicle, true);
 
-            if (trunkIndex != 0) {
+            if (trunkIndex !== 0) {
                 let trunkPosition = game.getWorldPositionOfEntityBone(vehicle, trunkIndex);
                 let hoodPosition = game.getWorldPositionOfEntityBone(vehicle, hoodIndex);
 

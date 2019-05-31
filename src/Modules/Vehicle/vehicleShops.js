@@ -11,7 +11,7 @@ let currentVehicleShopData = null;
 let currentVehicle = null;
 let shopCamera = null;
 let vehicleSellers = [];
-const vehicleShopData = [
+const vehicleShopsData = [
     {
         id: 1, pedPosition: { x: -44.58461, y: -1105.648, z: 25.5, rot: 0 },
         cameraPosition: { x: -45.5, y: -1095.7, z: 26.5 }, cameraRotation: { x: 0, y: 0, z: 308 },
@@ -34,7 +34,7 @@ const pedHash = 1206185632;
 function initializePeds() {
     alt.loadModel(pedHash);
 
-    vehicleShopData.forEach(shopPed => {
+    vehicleShopsData.forEach(shopPed => {
         var ped = game.createPed(26, pedHash, shopPed.pedPosition.x, shopPed.pedPosition.y, shopPed.pedPosition.z, shopPed.pedPosition.rot, false, true);
         game.setEntityCanBeDamaged(ped, false);
         game.setPedCanRagdoll(ped, false);
@@ -45,7 +45,7 @@ function initializePeds() {
 initializePeds();
 
 export function getVehicleShopData(vehicleShopId) {
-    return vehicleShopData.find(s => s.id === vehicleShopId);
+    return vehicleShopsData.find(s => s.id === vehicleShopId);
 }
 
 export function isVehicleSeller(entityHit) {
@@ -67,6 +67,7 @@ export function changeVehicle(newVehicleModel, vehicleShopData) {
     try {
         if (currentVehicle || currentVehicle !== 0) {
             game.deleteEntity(currentVehicle);
+            currentVehicle = null;
         }
 
         alt.loadModel(newVehicleModel);
@@ -105,9 +106,10 @@ function generateVehicleData(vehiclesData) {
 }
 
 function renderShopCamera(vehicleShopData) {
+    console.log(`Setting camera to positon ${vehicleShopData.cameraPosition}`);
     shopCamera = new Camera('DEFAULT_SCRIPTED_CAMERA', vehicleShopData.cameraPosition, vehicleShopData.cameraRotation, 45);
     shopCamera.setActive(true);
-    game.renderScriptCams(true, true, 450, true, false);
+    game.renderScriptCams(true, false, 0, true, false);
 }
 
 function setupCameraRotator(vehicleShopData) {
@@ -118,20 +120,20 @@ function setupCameraRotator(vehicleShopData) {
 }
 
 export function setupVehicleShop(shopId, vehiclesData) {
-    let vehiclesData = generateVehicleData(vehiclesData);
-    let vehicleShopData = getVehicleShopData(shopId);
+    let newVehicleData = generateVehicleData(vehiclesData);
+    var vehicleShop = getVehicleShopData(shopId);
 
-    renderShopCamera(vehicleShopData);
-    changeVehicle(vehiclesData[0].vehicleModel, vehicleShopData);
-    setupCameraRotator(vehicleShopData);
-    game.doScreenFadeIn(500);
-    return vehiclesData;
+    changeVehicle(newVehicleData[0].vehicleModel, vehicleShop);
+    renderShopCamera(vehicleShop);
+    setupCameraRotator(vehicleShop);
+    return newVehicleData;
 }
 
 export function buyVehicle(shopId, vehicleModel) {
-    let currentVehicleShopData = getVehicleShopData(shopId);
-    if (currentVehicleShopData == null) {
-        return mainUi.showCefNotification(2, "Błąd", "Nie udało się zakupić pojazdu w sklepie.", 5000);
+    var vehicleShop = getVehicleShopData(shopId);
+    if (vehicleShop == null) {
+        mainUi.showCefNotification(2, "Błąd", "Nie udało się zakupić pojazdu w sklepie.", 5000);
+        return;
     }
 
     alt.emitServer('BuyVehicle', shopId, vehicleModel);
@@ -140,6 +142,7 @@ export function buyVehicle(shopId, vehicleModel) {
 export function exitVehicleShop() {
     if (currentVehicle || currentVehicle !== 0) {
         game.deleteEntity(currentVehicle);
+        currentVehicle = null;
     }
 
     cameraRotator.pause(true);
@@ -149,5 +152,5 @@ export function exitVehicleShop() {
         shopCamera = null;
     }
     currentVehicleShopData = null;
-    game.renderScriptCams(false, true, 300, true, false);
+    game.renderScriptCams(false, false, 0, true, false);
 }

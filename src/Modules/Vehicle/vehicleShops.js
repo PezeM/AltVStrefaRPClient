@@ -98,7 +98,7 @@ function generateVehicleData(vehiclesData) {
         };
         vehicleData.maxAcceleration = (game.getVehicleModelAcceleration(vehicle.VehicleModel) / game.getVehicleClassMaxAcceleration(vehicleData.vehicleClass) * 100).toFixed(2);
         vehicleData.maxBraking = (game.getVehicleModelMaxBraking(vehicle.VehicleModel) / game.getVehicleClassMaxBraking(vehicleData.vehicleClass) * 100).toFixed(2);
-        vehicleData.maxTraction = (game.getVehicleModelMaxTraction(vehicle.VehicleModel) / game.getVehicleClassMaxTraction(vehicleData.vehicleClass)).toFixed(2);
+        vehicleData.maxTraction = (game.getVehicleModelMaxTraction(vehicle.VehicleModel) / game.getVehicleClassMaxTraction(vehicleData.vehicleClass) * 100).toFixed(2);
         currentVehicleShopData.push(vehicleData);
     });
 
@@ -136,7 +136,7 @@ export function buyVehicle(shopId, vehicleModel) {
         return;
     }
 
-    alt.emitServer('BuyVehicle', shopId, vehicleModel);
+    alt.emitServer('BuyVehicle', shopId, Number(vehicleModel));
 }
 
 export function exitVehicleShop() {

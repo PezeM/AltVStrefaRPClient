@@ -4,7 +4,7 @@
 import alt from 'alt';
 import game from 'natives';
 import { drawText, showNotification } from 'src/Helpers/uiHelper.js';
-import { rotToDirection } from 'src/Helpers/mathHelper.js';
+import Maths from 'src/Helpers/maths.js';
 import chat from 'chat';
 import menusManager from 'src/Modules/Ui/menusManager.js';
 
@@ -55,7 +55,7 @@ function landSafeOnTheGround() {
 
 alt.on('update', () => {
     if (fly.flying) {
-        direction = rotToDirection(game.getGameplayCamRot(2));
+        direction = Maths.rotToDirection(game.getGameplayCamRot(2));
         let positionUpdated = false;
         const currentSpeed = fly.speeds[fly.currentSpeedIndex];
         const position = game.getEntityCoords(localPlayer.scriptID, true);

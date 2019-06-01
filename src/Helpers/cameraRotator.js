@@ -118,9 +118,9 @@ const cameraRotator = new CameraRotator();
 export default cameraRotator;
 
 alt.on('update', () => {
-    if (!cameraRotator.isActive || cameraRotator.isPause) {
+    if (!cameraRotator.isActive || cameraRotator.isPause)
         return;
-    }
+
     const x = game.getDisabledControlNormal(2, 239);
     const y = game.getDisabledControlNormal(2, 240);
 

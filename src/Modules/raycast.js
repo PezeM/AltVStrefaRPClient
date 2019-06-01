@@ -2,14 +2,14 @@
 /// <reference path="../../alt.d.ts" />
 import alt from 'alt';
 import game from 'natives';
-import { rotToDirection } from 'src/Helpers/mathHelper.js';
+import Maths from 'src/Helpers/maths.js';
 
 class _Raycast {
     constructor() {
         alt.log('Initialized raycast Class');
         this.didRaycastHit = false;
         this.entityHit = null;
-        this.usless = null;
+        this.useless = null;
         this.endCoords = null;
         this.surfaceNormal = null;
         this.localPlayer = alt.getLocalPlayer();
@@ -17,7 +17,7 @@ class _Raycast {
 
     poitingAt(maxDistance = 4) {
         var pos = game.getGameplayCamCoord();
-        var dir = rotToDirection(game.getGameplayCamRot(2));
+        var dir = Maths.rotToDirection(game.getGameplayCamRot(2));
         var distance = this.calculateRaycastDistance(maxDistance);
 
         var farAway = {
@@ -28,7 +28,7 @@ class _Raycast {
 
         var rayTest = game.startShapeTestRay(pos.x, pos.y, pos.z, farAway.x, farAway.y, farAway.z, (2 | 4 | 8 | 16), this.localPlayer.scriptID, 0);
         game.drawLine(pos.x, pos.y, pos.z, farAway.x, farAway.y, farAway.z, 255, 255, 255, 255);
-        [this.usless, this.didRaycastHit, this.endCoords, this.surfaceNormal, this.entityHit] = game.getShapeTestResult(rayTest, 0, 0, 0, 0);
+        [this.useless, this.didRaycastHit, this.endCoords, this.surfaceNormal, this.entityHit] = game.getShapeTestResult(rayTest, 0, 0, 0, 0);
     }
 
     calculateRaycastDistance(maxDistance = 4) {

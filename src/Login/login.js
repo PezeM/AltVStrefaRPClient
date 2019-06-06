@@ -1,6 +1,7 @@
 import alt from 'alt';
 import game from 'natives';
 import menusManager from 'src/Modules/Ui/menusManager.js';
+import { changeGameState } from 'src/gameState.js';
 
 let localPlayer = alt.getLocalPlayer();
 
@@ -80,5 +81,6 @@ function showLoginWindow() {
 }
 
 function hideLoginView() {
+    changeGameState('playing');
     menusManager.closeMenu();
 }

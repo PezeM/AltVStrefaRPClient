@@ -4,6 +4,7 @@
 import alt from 'alt';
 import game from 'natives';
 import chat from 'chat';
+import * as gameState from 'src/gameState.js';
 import * as ui from 'src/ui.js';
 import * as menus from 'src/menus.mjs';
 import * as loginModule from 'src/Login/login.js';
@@ -13,6 +14,7 @@ import * as animationBrowser from 'src/Admin/animationBrowser.js';
 import * as sitting from 'src/Environment/sitting.js';
 import * as vehicles from 'src/Modules/Vehicle/vehicles.js';
 import * as objectSync from 'src/Modules/objectSync.js';
+import * as nicknames from 'src/Modules/Ui/nicknames.js';
 import { drawText, draw3DText } from 'src/Helpers/uiHelper.js';
 import menusManager from 'src/Modules/Ui/menusManager.js';
 

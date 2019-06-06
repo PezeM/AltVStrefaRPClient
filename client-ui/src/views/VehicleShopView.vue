@@ -2,11 +2,8 @@
   <transition name="fade" mode="out-in">
     <div id="vehicle-shop-view">
       <div class="container-fluid">
-        <div class="row aling-items-start justify-content-between">
-          <div class="col-auto mr-auto">
-            <div class="color-picker">Vehicle color picker</div>
-          </div>
-          <div class="buy-buttons col-auto">
+        <div class="row justify-content-end">
+          <div class="ml-auto buy-buttons">
             <button type="button" class="btn btn-danger" @click="closeShop">ZAMKNIJ</button>
             <button type="button" class="btn btn-success" @click="buyVehicle">ZAKUP</button>
           </div>

@@ -67,10 +67,10 @@ class NicknameController {
     }
 
     calculatePlayers() {
-        for (let i = 0; i < alt.players.length; i++) {
-            if (alt.players[i].scriptID == 0) continue;
+        for (let i = 0; i < alt.Player.all.length; i++) {
+            if (alt.Player.all[i].scriptID == 0) continue;
 
-            let player = alt.players[i];
+            let player = alt.Player.all[i];
             let dist = maths.distance(player.pos, alt.getLocalPlayer().pos);
             if (dist < NICKNAME_VISIBLE_DISTANCE_SQRT) {
                 if (player.scriptID in nearestPlayers) {

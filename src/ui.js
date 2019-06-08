@@ -101,7 +101,7 @@ alt.on('keydown', (key) => {
         case controlsIds.U:
             if (localPlayer.vehicle == null || game.isEntityDead(localPlayer.scriptID) || new Date().getTime() - lastKeyPressedTime < 250) return;
             lastKeyPressedTime = new Date().getTime();
-            var vehicle = alt.vehicles.find(v => v.scriptID === localPlayer.vehicle.scriptID);
+            var vehicle = alt.Vehicle.all.find(v => v.scriptID === localPlayer.vehicle.scriptID);
             if (vehicle == null) return;
             alt.emitServer('ToggleVehicleEngine', vehicle);
             break;
@@ -126,8 +126,8 @@ function onAltKeydown() {
 
 function onPedFound() {
     alt.log('Ped found');
-    let isPlayer = alt.players.some(p => p.scriptID === raycast.entityHit);
-    alt.log(JSON.stringify(alt.players));
+    let isPlayer = alt.Player.all.some(p => p.scriptID === raycast.entityHit);
+    alt.log(JSON.stringify(alt.Player.all));
     if (isPlayer) {
         alt.log('Found player');
         openCircleMenu("player");
@@ -141,8 +141,8 @@ function onPedFound() {
 }
 
 function onVehicleFound() {
-    alt.log(JSON.stringify(alt.vehicles));
-    let vehicleFound = alt.vehicles.some(v => v.scriptID === raycast.entityHit);
+    alt.log(JSON.stringify(alt.Vehicle.all));
+    let vehicleFound = alt.Vehicle.all.some(v => v.scriptID === raycast.entityHit);
     alt.log(`Found vehicle = ${vehicleFound}`);
     if (vehicleFound) {
         alt.log('Vehicle found');
@@ -196,7 +196,7 @@ mainUi.onUiEvent('circleMenuCallback', (option) => {
 function vehicleCircleMenuCallback(option) {
     switch (option) {
         case "openVehicle":
-            var vehicle = alt.vehicles.find(v => v.scriptID === raycast.entityHit);
+            var vehicle = alt.Vehicle.all.find(v => v.scriptID === raycast.entityHit);
             alt.log(`Found vehicle ${JSON.stringify(vehicle)}`);
             alt.emitServer("TryToOpenVehicle", vehicle);
             break;
@@ -204,12 +204,12 @@ function vehicleCircleMenuCallback(option) {
             alt.log(`Sell vehicle`);
             break;
         case "despawnVehicle":
-            var vehicleToDespawn = alt.vehicles.find(v => v.scriptID === raycast.entityHit);
+            var vehicleToDespawn = alt.Vehicle.all.find(v => v.scriptID === raycast.entityHit);
             if (vehicleToDespawn == null) return;
             alt.emitServer("DespawnVehicle", vehicleToDespawn);
             break;
         // case "information":
-        //     let vehicle = alt.vehicles.find(v => v.scriptID === raycast.entityHit);
+        //     let vehicle = alt.Vehicle.all.find(v => v.scriptID === raycast.entityHit);
         //     if (vehicle == null) break;
         //     let vehicleDisplayName = game.getDisplayNameFromVehicleModel(vehicle.scriptID);
         //     let vehiclePlate = game.getVehicleNumberPlateText(vehicle.scriptID);
@@ -253,7 +253,7 @@ alt.on('update', () => {
         game.hideHudComponentThisFrame(hudElement);
     });
 
-    alt.players.forEach((player) => {
+    alt.Player.all.forEach((player) => {
         if (game.getDistanceBetweenCoords(localPlayer.pos.x, localPlayer.pos.y, localPlayer.pos.z, player.pos.x, player.pos.y, player.pos.z, true) > 35) return;
         if (typeof player.isTalking === 'undefined') player.isTalking = false;
         if (typeof player.remoteId === 'undefined' || player.remoteId == null) {

@@ -2,7 +2,7 @@
 /// <reference path="../../../altv-client.d.ts" />
 
 import * as alt from 'alt';
-import game from 'natives';
+import * as game from 'natives';
 import Animations from 'src/Modules/animations.js';
 let animations = new Animations();
 import { showUiAndFreezePlayer, showUi } from 'src/Helpers/uiHelper.js';

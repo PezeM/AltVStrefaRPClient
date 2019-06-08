@@ -1,5 +1,5 @@
-import alt from 'alt';
-import game from 'natives';
+import * as alt from 'alt';
+import * as game from 'natives';
 import menusManager from 'src/Modules/Ui/menusManager.js';
 import { changeGameState } from 'src/gameState.js';
 

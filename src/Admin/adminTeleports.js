@@ -1,8 +1,8 @@
 /// <reference path="../../altv.d.ts" />
 /// <reference path="../../alt.d.ts" />
 
-import alt from 'alt';
-import game from 'natives';
+import * as alt from 'alt';
+import * as game from 'natives';
 import mainUi from 'src/Modules/Ui/mainUi.js';
 let localPlayerId = alt.getLocalPlayer();
 

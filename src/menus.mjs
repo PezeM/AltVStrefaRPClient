@@ -1,7 +1,7 @@
 /// <reference path="../altv.d.ts" />
 /// <reference path="../altv-client.d.ts" />
 
-import alt from 'alt';
+import * as alt from 'alt';
 import mainUi from 'src/Modules/Ui/mainUi.js';
 import bank from 'src/Modules/banking.js';
 import Business from 'src/Modules/business.js';

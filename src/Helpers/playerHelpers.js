@@ -1,8 +1,8 @@
 /// <reference path="../../altv.d.ts" />
 /// <reference path="../../alt.d.ts" />
 
-import alt from 'alt';
-import game from 'natives';
+import * as alt from 'alt';
+import * as game from 'natives';
 
 export function isPlayerDriver(localPlayer) {
     if (localPlayer.vehicle) {

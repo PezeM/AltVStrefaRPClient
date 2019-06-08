@@ -1,5 +1,5 @@
-import game from 'natives';
-import alt from 'alt';
+import * as game from 'natives';
+import * as alt from 'alt';
 import mainUi from 'src/Modules/Ui/mainUi.js';
 
 const pedPositions = [

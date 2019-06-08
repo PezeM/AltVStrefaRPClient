@@ -1,8 +1,8 @@
 /// <reference path="../altv.d.ts" />
 /// <reference path="../altv-client.d.ts" />
 
-import alt from 'alt';
-import game from 'natives';
+import * as alt from 'alt';
+import * as game from 'natives';
 import chat from 'chat';
 import { drawText, showUi, draw3DText } from 'src/Helpers/uiHelper.js';
 import mainUi from 'src/Modules/Ui/mainUi.js';

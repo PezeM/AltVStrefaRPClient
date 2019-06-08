@@ -1,8 +1,8 @@
 /// <reference path="../../altv.d.ts" />
 /// <reference path="../../alt.d.ts" />
 
-import alt from 'alt';
-import game from 'natives';
+import * as alt from 'alt';
+import * as game from 'natives';
 import { drawText, showNotification } from 'src/Helpers/uiHelper.js';
 import Maths from 'src/Helpers/maths.js';
 import chat from 'chat';

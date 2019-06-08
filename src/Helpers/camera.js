@@ -1,4 +1,4 @@
-import game from 'natives'
+import * as game from 'natives';
 
 export default class Camera {
     constructor(name, position, rotation, fov) {

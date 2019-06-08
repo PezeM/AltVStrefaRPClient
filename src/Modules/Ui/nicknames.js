@@ -81,7 +81,8 @@ class NicknameController {
                     nearestPlayers[player.scriptID] = {
                         distance: dist,
                         scaleform: null,
-                        name: player.name
+                        name: player.name,
+                        player
                     }
                 }
             } else if (player.scriptID in nearestPlayers) {

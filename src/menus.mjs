@@ -1,5 +1,5 @@
 /// <reference path="../natives.d.ts" />
-/// <reference path="../altv-client.d.ts" />
+/// <reference path="../alt.d.ts" />
 
 import * as alt from 'alt';
 import mainUi from 'src/Modules/Ui/mainUi.js';
@@ -143,18 +143,7 @@ menusManager.onUiEvent('closeVehicleShop', () => {
     menusManager.closeMenu();
 });
 
-alt.on('consoleCommand', (command, ...args) => {
-    if (command == 'testMenu') {
-        if (menusManager.viewOpened) {
-            alt.log('Closing test menu');
-            menusManager.closeMenu();
-        } else {
-            alt.log('Showing test menu');
-            let simpleObject = { name: 'Wtf', age: 15, nextData: 221313 };
-            let json = JSON.stringify(simpleObject);
-            menusManager.openMenu('testMenu', true, true, json);
-        }
-    } else if (command == 'focus') {
-        menusManager.focusView();
-    }
-})
+// Fraction menu
+menusManager.onServerEvent('openFractionMenu', (fractionType, fractionData) => {
+    menusManager.openMenu('openFractionMenu', true, true, fractionType, fractionData);
+});

@@ -57,6 +57,24 @@ alt.on('openVehicleShop', (vehicleData, vehicleShopId) => {
     router.push({ name: 'vehicleShop', params: { shopId: vehicleShopId, vehicleShopData: JSON.parse(vehicleData) } });
 });
 
+alt.on('openFractionMenu', (fractionType, fractionData) => {
+    switch (fractionType) {
+        case 1:
+            router.push({ name: 'policeMenu', params: { data: JSON.parse(fractionData) } });
+            break;
+        case 2:
+            router.push({ name: 'samsMenu', params: { data: JSON.parse(fractionData) } });
+            break;
+        case 3:
+            router.push({ name: 'townHallMenu', params: { data: JSON.parse(fractionData) } });
+            break;
+
+        default:
+            console.log(`Error in opening fraction menu with type: ${fractionType}`);
+            break;
+    }
+});
+
 alt.on('closeMenu', () => {
     console.log('Changing the router to emtpy');
     router.push('/empty');

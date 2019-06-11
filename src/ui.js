@@ -4,6 +4,7 @@
 import * as alt from 'alt';
 import * as game from 'natives';
 import chat from 'chat';
+import { getGameState } from 'src/gameState.js';
 import { drawText, showUi, draw3DText } from 'src/Helpers/uiHelper.js';
 import mainUi from 'src/Modules/Ui/mainUi.js';
 import Animations from 'src/Modules/animations.js';
@@ -67,24 +68,21 @@ alt.on('keydown', (key) => {
         alt.showCursor(cursorShown);
         return;
     }
-    if (chat.isOpen() || menusManager.viewOpened) return;
+    if (chat.isOpen() || menusManager.viewOpened || getGameState() == 'loading') return;
 
     switch (key) {
         case controlsIds.Alt:
             if (game.isPedInAnyVehicle(localPlayer.scriptID, false) || game.isEntityDead(localPlayer.scriptID) || new Date().getTime() - lastKeyPressedTime < 500) return;
-            if (circleMenuOpened) closeCircleMenu(true);
+            if (circleMenuOpened) {
+                closeCircleMenu(true);
+                return;
+            }
             if (!raycast.didRaycastHit) return;
             onAltKeydown();
             alt.log('Clicked Alt key entity: ' + raycast.entityHit);
             lastKeyPressedTime = new Date().getTime();
             break;
-        case controlsIds.F6:
-            cursorShown = !cursorShown;
-            alt.log('Cursor shown = ' + cursorShown);
-            alt.showCursor(cursorShown);
-            break;
         case controlsIds.G:
-            alt.log('Clicked g');
             if (game.isEntityDead(localPlayer.scriptID) || new Date().getTime() - lastKeyPressedTime < 500) return;
             if (circleMenuOpened) {
                 closeCircleMenu(true);

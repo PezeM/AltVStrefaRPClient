@@ -147,3 +147,4 @@ menusManager.onUiEvent('closeVehicleShop', () => {
 menusManager.onServerEvent('openFractionMenu', (fractionType, fractionData) => {
     menusManager.openMenu('openFractionMenu', true, true, fractionType, fractionData);
 });
+

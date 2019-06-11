@@ -86,7 +86,7 @@ alt.on('update', () => {
 });
 
 alt.on('keydown', (key) => {
-	if (chat.isOpen() || menusManager.viewOpened) return;
+	if (chat.isOpen() || menusManager.viewOpened || gameState.getGameState() == 'loading') return;
 
 	switch (key) {
 		case controlsIds.E:

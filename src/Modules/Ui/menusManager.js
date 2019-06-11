@@ -98,10 +98,10 @@ class _MenusManager {
     }
 }
 
-const MenusManager = new _MenusManager();
+const menusManager = new _MenusManager();
 
-MenusManager.onUiEvent('viewLoaded', () => {
-    MenusManager.viewLoaded = true;
+menusManager.onUiEvent('viewLoaded', () => {
+    menusManager.viewLoaded = true;
 });
 
-export default MenusManager;
+export default menusManager;

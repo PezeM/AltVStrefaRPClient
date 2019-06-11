@@ -8,7 +8,7 @@ import Camera from 'src/Helpers/camera.js';
 import cameraRotator from 'src/Helpers/cameraRotator.js';
 
 let currentVehicleShopData = null;
-let currentVehicle = null;
+let spawnedVehicle = null;
 let shopCamera = null;
 let vehicleSellers = [];
 const vehicleShopsData = [
@@ -36,9 +36,9 @@ function initializePeds() {
 
     vehicleShopsData.forEach(shopPed => {
         var ped = game.createPed(26, pedHash, shopPed.pedPosition.x, shopPed.pedPosition.y, shopPed.pedPosition.z, shopPed.pedPosition.rot, false, true);
-        game.setEntityCanBeDamaged(ped, false);
-        game.setPedCanRagdoll(ped, false);
         game.freezeEntityPosition(ped, true);
+        game.setEntityInvincible(ped, true);
+        game.setBlockingOfNonTemporaryEvents(ped, true);
         vehicleSellers.push({ pedId: ped, id: shopPed.id });
     });
 }
@@ -65,16 +65,16 @@ export function openVehicleShopMenuCallback(option, entityHit) {
 
 export function changeVehicle(newVehicleModel, vehicleShopData) {
     try {
-        if (currentVehicle || currentVehicle !== 0) {
-            game.deleteEntity(currentVehicle);
-            currentVehicle = null;
+        if (spawnedVehicle || spawnedVehicle !== 0) {
+            game.deleteEntity(spawnedVehicle);
+            spawnedVehicle = null;
         }
 
         alt.loadModel(newVehicleModel);
-        currentVehicle = game.createVehicle(newVehicleModel, vehicleShopData.vehicleSpawn.x, vehicleShopData.vehicleSpawn.y,
+        spawnedVehicle = game.createVehicle(newVehicleModel, vehicleShopData.vehicleSpawn.x, vehicleShopData.vehicleSpawn.y,
             vehicleShopData.vehicleSpawn.z, 180, true, true);
-        game.setVehicleOnGroundProperly(currentVehicle);
-        game.setVehicleUndriveable(currentVehicle, true);
+        game.setVehicleOnGroundProperly(spawnedVehicle);
+        game.setVehicleUndriveable(spawnedVehicle, true);
     } catch (error) {
         alt.log(`Error while changing vehicle in vehicleShops.js = ${e}`);
     }
@@ -113,7 +113,7 @@ function renderShopCamera(vehicleShopData) {
 }
 
 function setupCameraRotator(vehicleShopData) {
-    var vehiclePos = game.getEntityCoords(currentVehicle, true);
+    var vehiclePos = game.getEntityCoords(spawnedVehicle, true);
     cameraRotator.start(shopCamera, vehicleShopData.cameraPosition, vehiclePos, { x: 4.3, y: 2.3, z: 0 }, 180);
     cameraRotator.setZBound(-0.8, 1.6);
     cameraRotator.setZUpMultipler(3);
@@ -140,9 +140,9 @@ export function buyVehicle(shopId, vehicleModel) {
 }
 
 export function exitVehicleShop() {
-    if (currentVehicle || currentVehicle !== 0) {
-        game.deleteEntity(currentVehicle);
-        currentVehicle = null;
+    if (spawnedVehicle || spawnedVehicle !== 0) {
+        game.deleteEntity(spawnedVehicle);
+        spawnedVehicle = null;
     }
 
     cameraRotator.pause(true);

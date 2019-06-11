@@ -29,8 +29,8 @@ class Bank {
         pedPositions.forEach(bankPed => {
             var ped = game.createPed(26, this.pedHash, bankPed.x, bankPed.y, bankPed.z, bankPed.rot, false, true);
             game.freezeEntityPosition(ped, true);
-            game.setEntityCanBeDamaged(ped, false);
-            game.setPedCanRagdoll(ped, false);
+            game.setEntityInvincible(ped, true);
+            game.setBlockingOfNonTemporaryEvents(ped, true);
             this.pedList.push(ped);
         });
         alt.log(`Created ${this.pedList.length} bank peds.`);
@@ -59,5 +59,5 @@ class Bank {
 }
 
 
-let Banking = new Bank();
-export default Banking;
+let banking = new Bank();
+export default banking;

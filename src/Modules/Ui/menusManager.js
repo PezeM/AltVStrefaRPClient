@@ -1,5 +1,5 @@
-/// <reference path="../../../altv.d.ts" />
-/// <reference path="../../../altv-client.d.ts" />
+/// <reference path="../../../natives.d.ts" />
+/// <reference path="../../../alt.d.ts" />
 
 import * as alt from 'alt';
 import * as game from 'natives';

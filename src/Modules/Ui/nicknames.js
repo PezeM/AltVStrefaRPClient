@@ -1,4 +1,4 @@
-/// <reference path="../../../altv.d.ts" />
+/// <reference path="../../../natives.d.ts" />
 /// <reference path="../../../alt.d.ts" />
 
 import * as alt from 'alt';

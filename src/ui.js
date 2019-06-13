@@ -14,7 +14,6 @@ import menusManager from 'src/Modules/Ui/menusManager.js';
 import raycast from 'src/Modules/raycast.js';
 import trashBin from 'src/Environment/trashBin.js';
 import vehicleShop from 'src/Modules/Vehicle/vehicleShop.js';
-import { isVehicleSeller, openVehicleShopMenuCallback } from 'src/Modules/Vehicle/vehicleShops.js';
 import { showUiAndFreezePlayer } from 'src/Helpers/uiHelper.js';
 
 const controlsIds = {
@@ -80,7 +79,6 @@ alt.on('keydown', (key) => {
             }
             if (!raycast.didRaycastHit) return;
             onAltKeydown();
-            alt.log('Clicked Alt key entity: ' + raycast.entityHit);
             lastKeyPressedTime = new Date().getTime();
             break;
         case controlsIds.G:

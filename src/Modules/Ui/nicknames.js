@@ -78,14 +78,11 @@ class NicknameController {
                     nearestPlayers[player.scriptID].player = player;
                 } else {
                     alt.log(`Player with ID ${player.scriptID} nickname just streamed in`);
-                    if (typeof player.remoteId === 'undefined' || player.remoteId == null) {
-                        player.remoteId = player.getSyncedMeta("remoteId");
-                    }
-
                     nearestPlayers[player.scriptID] = {
                         distance: dist,
                         scaleform: null,
-                        name: `${player.name} (${player.remoteId.toString()})`,
+                        name: player.name,
+                        remoteId: player.remoteId,
                         player
                     }
                 }

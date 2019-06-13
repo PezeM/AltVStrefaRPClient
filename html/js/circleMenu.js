@@ -207,7 +207,7 @@ var circleMenu = new Vue({
             this.startTimer();
             this.circleMenuActive = true;
             this.currentMenuSet = menusList[name];
-            if (currentMenuSet == null) {
+            if (this.currentMenuSet == null) {
                 console.log(`CurrentMenuSet was null`);
                 return;
             }

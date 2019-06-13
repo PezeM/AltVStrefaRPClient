@@ -13,6 +13,7 @@ import ZoneNames from 'src/Modules/ui/zoneNames.js';
 import menusManager from 'src/Modules/Ui/menusManager.js';
 import raycast from 'src/Modules/raycast.js';
 import trashBin from 'src/Environment/trashBin.js';
+import vehicleShop from 'src/Modules/Vehicle/vehicleShop.js';
 import { isVehicleSeller, openVehicleShopMenuCallback } from 'src/Modules/Vehicle/vehicleShops.js';
 import { showUiAndFreezePlayer } from 'src/Helpers/uiHelper.js';
 
@@ -131,7 +132,7 @@ function onPedFound() {
     } else if (banking.pedList.includes(raycast.entityHit)) {
         alt.log('Ped is in bank pedlist');
         openCircleMenu("bank");
-    } else if (isVehicleSeller(raycast.entityHit)) {
+    } else if (vehicleShop.isVehicleSeller(raycast.entityHit)) {
         alt.log('Vehicle seller found');
         openCircleMenu("vehicleShop");
     }
@@ -185,7 +186,7 @@ mainUi.onUiEvent('circleMenuCallback', (option) => {
             trashBin.searchBinMenuCallback(option, raycast.entityHit);
             break;
         case "vehicleShop":
-            openVehicleShopMenuCallback(option, raycast.entityHit);
+            vehicleShop.openVehicleShopMenuCallback(option, raycast.entityHit);
             break;
     }
 });
@@ -285,8 +286,6 @@ alt.on('update', () => {
         draw3DText(`[ALT] E: ${raycast.entityHit} T: ${game.getEntityType(raycast.entityHit)} M: ${game.getEntityModel(raycast.entityHit)}`,
             [raycast.endCoords.x, raycast.endCoords.y, raycast.endCoords.z], 4, [255, 255, 255, 200], 0.5);
     }
-
-    trashBin.onUpdate();
 
     // Disable moving camera/attacking while UI is open
     if (circleMenuOpened || chat.isOpen() || menusManager.viewOpened) {

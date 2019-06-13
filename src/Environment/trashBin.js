@@ -6,96 +6,108 @@ import * as game from 'natives';
 import mainUi from 'src/Modules/Ui/mainUi.js';
 import { draw3DText } from 'src/Helpers/uiHelper.js';
 
-alt.log('trashBin.js loaded');
-let searchedBins = [];
-const binObjects = [
+const BIN_OBJECTS = [
     {
-        model: 218085040, bigThrashbin: true,
+        model: 218085040, bigTrashbin: true,
     },
     {
-        model: 666561306, bigThrashbin: true,
+        model: 666561306, bigTrashbin: true,
     },
     {
-        model: 4236481708, bigThrashbin: true,
+        model: 4236481708, bigTrashbin: true,
     },
     {
-        model: 1437508529, bigThrashbin: false,
+        model: 1437508529, bigTrashbin: false,
     },
     {
-        model: 4164154385, bigThrashbin: false,
+        model: 4164154385, bigTrashbin: false,
     },
     {
-        model: 1329570871, bigThrashbin: false,
+        model: 1329570871, bigTrashbin: false,
     }
 ];
-let searchingInBin = false;
-let currentBinId = -1;
-let percentage = 0;
-let localPlayer = alt.getLocalPlayer();
 
-export function getBin(binModel) {
-    return binObjects.find(b => b.model === binModel);
-}
+class TrashBin {
+    constructor() {
+        this.searchedBins = [];
+        this.searchingInBin = false;
+        this.currentBinId = -1;
+        this.percentage = 0;
 
-export function includesBin(model) {
-    return binObjects.some(b => b.model === model);
-}
+        this.tickInterval = alt.setInterval(this.tick.bind(this), 0);
+        alt.log(`Initialized TrashBin class`);
+    }
 
-export function searchBinMenuCallback(option, thrashBinId) {
-    switch (option) {
-        case "searchBin":
-            searchThrashbin(thrashBinId);
-            break;
-        case "information":
-            mainUi.showCefNotification(0, "Śmietnik", "Widzisz smietnik, możesz go przeszukać w celu odnalezienia ciekawych przedmiotów.", 6000);
-            break;
+    includesBin(model) {
+        return BIN_OBJECTS.some(bin => bin.model === model);
+    }
+
+    getBin(model) {
+        for (const bin of BIN_OBJECTS) {
+            if (bin.model === model) {
+                return bin;
+            }
+        }
+    }
+
+    searchBinMenuCallback(option, trashBinId) {
+        switch (option) {
+            case "searchBin":
+                this.searchTrashbin(trashBinId);
+                break;
+            case "information":
+                mainUi.showCefNotification(0, "Śmietnik", "Widzisz smietnik, możesz go przeszukać w celu odnalezienia ciekawych przedmiotów.", 6000);
+                break;
+        }
+    }
+
+    tick() {
+        if (this.searchingInBin) {
+            let binCoords = game.getEntityCoords(this.currentBinId, true);
+            draw3DText(`Przeszukiwanie śmietnika ~g~ ${Math.floor((this.percentage / 10000) * 100)} ~r~%`,
+                [binCoords.x, binCoords.y, binCoords.z], 4, [255, 255, 255, 255], 0.65, true);
+        }
+    }
+
+    searchTrashbin(trashBinId) {
+        if (!this.checkIfValid(trashBinId)) return;
+        else if (this.searchedBins.includes(trashBinId)) {
+            mainUi.showCefNotification(3, "Śmietnik przeszukany", "Ten śmietnik był już przez ciebie przeszukiwany.", 5000);
+            return;
+        }
+
+        let localPlayer = alt.getLocalPlayer();
+        this.searchingInBin = true;
+        this.currentBinId = trashBinId;
+        this.searchedBins.push(trashBinId);
+
+        alt.setTimeout(() => {
+            this.searchedBins.splice(searchedBins.indexOf(trashBinId), 1);
+            alt.log('Searched bins array: ' + JSON.stringify(searchedBins));
+        }, 60000 * 15);
+        game.taskStartScenarioInPlace(localPlayer.scriptID, "PROP_HUMAN_BUM_BIN", 0, true);
+
+        this.percentage = 100;
+        let binInterval = alt.setInterval(() => {
+            this.percentage += 100;
+            alt.log(`Updating percentage to ${this.percentage}`);
+        }, 100);
+
+        alt.setTimeout(() => {
+            game.clearPedTasks(localPlayer.scriptID);
+            alt.emitServer("SearchedInBin", this.getBin(game.getEntityModel(trashBinId)).bigTrashbin);
+            this.searchingInBin = false;
+            this.currentBinId = -1;
+            this.percentage = 0;
+            alt.clearInterval(binInterval);
+        }, 11000);
+    }
+
+    checkIfValid(trashBinId) {
+        if (!this.includesBin(game.getEntityModel(trashBinId)) || !game.doesEntityExist(trashBinId) || this.searchingInBin) return false;
+        else return true;
     }
 }
 
-function searchThrashbin(thrashBinId) {
-    if (!checkIfValid(thrashBinId)) return;
-
-    if (searchedBins.includes(thrashBinId)) {
-        mainUi.showCefNotification(3, "Śmietnik przeszukany", "Ten śmietnik był już ciebie przeszukiwany.", 5000);
-        return;
-    }
-
-    searchingInBin = true;
-    currentBinId = thrashBinId;
-    searchedBins.push(thrashBinId);
-    alt.setTimeout(() => {
-        searchedBins.splice(searchedBins.indexOf(thrashBinId), 1);
-        alt.log('Searched bins array: ' + JSON.stringify(searchedBins));
-    }, 60000 * 15);
-    game.taskStartScenarioInPlace(localPlayer.scriptID, "PROP_HUMAN_BUM_BIN", 0, true);
-
-    percentage = 100;
-    let binInterval = alt.setInterval(() => {
-        percentage += 100;
-        alt.log(`Updating percentage to ${percentage}`);
-    }, 100);
-
-    alt.setTimeout(() => {
-        game.clearPedTasks(localPlayer.scriptID);
-        alt.emitServer("SearchedInBin", getBin(game.getEntityModel(thrashBinId)).bigThrashbin);
-        searchingInBin = false;
-        currentBinId = -1;
-        percentage = 0;
-        alt.clearInterval(binInterval);
-    }, 10100);
-}
-
-function checkIfValid(thrashBinId) {
-    if (!includesBin(game.getEntityModel(thrashBinId)) || !game.doesEntityExist(thrashBinId) || searchingInBin) return false;
-    else return true;
-}
-
-export function onUpdate() {
-    if (searchingInBin) {
-        var binCoords = game.getEntityCoords(currentBinId, true);
-        draw3DText(`Przeszukiwanie śmietnika ~g~ ${Math.floor((percentage / 10000) * 100)} ~r~%`,
-            [binCoords.x, binCoords.y, binCoords.z], 4, [255, 255, 255, 255], 0.5, true);
-    }
-}
-
-export default { includesBin, searchBinMenuCallback, onUpdate };
+let trashBin = new TrashBin();
+export default trashBin;

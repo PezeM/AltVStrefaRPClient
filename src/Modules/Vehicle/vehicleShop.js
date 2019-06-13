@@ -43,9 +43,10 @@ class VehicleShop {
         VEHICLE_SHOP_DATA.forEach(shopPed => {
             var ped = game.createPed(26, this.pedHash, shopPed.pedPosition.x, shopPed.pedPosition.y, shopPed.pedPosition.z, shopPed.pedPosition.rot, false, true);
             game.freezeEntityPosition(ped, true);
+            game.disablePedPainAudio(ped, true);
             game.setEntityInvincible(ped, true);
             game.setBlockingOfNonTemporaryEvents(ped, true);
-            this.vehicleSellers.push({ pedId: ped, id: shopPed.id });
+            this.vehicleSellers.push({ pedId: ped, id: shopPed.gid });
         });
     }
 
@@ -54,7 +55,13 @@ class VehicleShop {
     }
 
     isVehicleSeller(entityHit) {
-        return this.vehicleSellers.some(s => s.pedId === entityHit);
+        let isVehicleSeller = false;
+        for (let i = 0; i < this.vehicleSellers.length; i++) {
+            if (this.vehicleSellers[i].pedId === entityHit) {
+                isVehicleSeller = true;
+            }
+        }
+        return isVehicleSeller;
     }
 
     openVehicleShopMenu(entityHit) {

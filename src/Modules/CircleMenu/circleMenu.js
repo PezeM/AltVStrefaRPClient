@@ -24,7 +24,7 @@ class CircleMenuController {
         return this.menuOpened;
     }
 
-    openCircleMenu(menuName, freezePlayer = true) {
+    openMenu(menuName, freezePlayer = true) {
         if (this.menuOpened) return;
 
         this.menuName = menuName;
@@ -42,7 +42,7 @@ class CircleMenuController {
         mainUi.focusView();
     }
 
-    closeCircleMenu(hideMenu = false) {
+    closeMenu(hideMenu = false) {
         if (hideMenu)
             mainUi.emitUiEvent('closeCircleMenu');
 
@@ -73,13 +73,13 @@ class CircleMenuController {
         let isPlayer = alt.Player.all.some(p => p.scriptID === this.entityHit);
         if (isPlayer) {
             alt.log('Found player');
-            this.openCircleMenu('player');
+            this.openMenu('player');
         } else if (banking.pedList.includes(this.entityHit)) {
             alt.log(`Found bank ped`);
-            this.openCircleMenu('bank');
+            this.openMenu('bank');
         } else if (vehicleShop.isVehicleSeller(this.entityHit)) {
             alt.log(`Vehicle seller ped`);
-            this.openCircleMenu('vehicleShop');
+            this.openMenu('vehicleShop');
         }
     }
 
@@ -95,10 +95,10 @@ class CircleMenuController {
         let entityModel = game.getEntityModel(this.entityHit);
         if (banking.atmModels.includes(entityModel)) {
             alt.log(`Found atm`);
-            this.openCircleMenu('atm');
+            this.openMenu('atm');
         } else if (trashBin.includesBin(entityModel)) {
             alt.log(`Found trash bin`);
-            this.openCircleMenu('trashBin');
+            this.openMenu('trashBin');
         }
     }
 
@@ -180,10 +180,13 @@ class CircleMenuController {
     }
 }
 
-
+let circleMenuController = null;
 alt.on('gameStateChanged', state => {
     if (state === 'playing') {
         alt.log('Initializing circleMenu controller');
-        const circleMenuController = new CircleMenuController();
+        circleMenuController = new CircleMenuController();
     } else { }
 });
+
+
+export default circleMenuController;

@@ -1,5 +1,5 @@
-/// <reference path="../../natives.d.ts" />
-/// <reference path="../../alt.d.ts" />
+/// <reference path="../../../natives.d.ts" />
+/// <reference path="../../../alt.d.ts" />
 import * as alt from 'alt';
 import * as game from 'natives';
 import Maths from 'src/Helpers/maths.js';
@@ -12,7 +12,7 @@ class _Raycast {
         this.useless = null;
         this.endCoords = null;
         this.surfaceNormal = null;
-        this.localPlayer = alt.getLocalPlayer();
+        // this.localPlayer = alt.getLocalPlayer();
     }
 
     poitingAt(maxDistance = 4) {
@@ -26,7 +26,7 @@ class _Raycast {
             z: (dir.z * distance) + pos.z,
         };
 
-        var rayTest = game.startShapeTestRay(pos.x, pos.y, pos.z, farAway.x, farAway.y, farAway.z, (2 | 4 | 8 | 16), this.localPlayer.scriptID, 0);
+        var rayTest = game.startShapeTestRay(pos.x, pos.y, pos.z, farAway.x, farAway.y, farAway.z, (2 | 4 | 8 | 16), game.getPlayerPed(), 0);
         game.drawLine(pos.x, pos.y, pos.z, farAway.x, farAway.y, farAway.z, 255, 255, 255, 255);
         [this.useless, this.didRaycastHit, this.endCoords, this.surfaceNormal, this.entityHit] = game.getShapeTestResult(rayTest, 0, 0, 0, 0);
     }

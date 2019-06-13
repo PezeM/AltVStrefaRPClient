@@ -4,17 +4,14 @@
 import * as alt from 'alt';
 import * as game from 'natives';
 import chat from 'chat';
+import circleMenu from 'src/Modules/CircleMenu/circleMenu.js';
 import { getGameState } from 'src/gameState.js';
-import { drawText, showUi, draw3DText } from 'src/Helpers/uiHelper.js';
+import { drawText, draw3DText } from 'src/Helpers/uiHelper.js';
 import mainUi from 'src/Modules/Ui/mainUi.js';
 import Animations from 'src/Modules/animations.js';
-import banking from 'src/Modules/banking.js';
 import ZoneNames from 'src/Modules/ui/zoneNames.js';
 import menusManager from 'src/Modules/Ui/menusManager.js';
-import raycast from 'src/Modules/raycast.js';
-import trashBin from 'src/Environment/trashBin.js';
-import vehicleShop from 'src/Modules/Vehicle/vehicleShop.js';
-import { showUiAndFreezePlayer } from 'src/Helpers/uiHelper.js';
+import raycast from 'src/Modules/CircleMenu/raycast.js';
 
 const controlsIds = {
     Alt: 0x12,
@@ -33,33 +30,6 @@ let animations = new Animations();
 let zoneNames = new ZoneNames(localPlayer.scriptID);
 
 let lastKeyPressedTime = 0;
-let circleMenuOpened = false;
-let circleMenuName = '';
-
-function openCircleMenu(menuName, freezePosition = true) {
-    if (circleMenuOpened) return;
-
-    mainUi.emitUiEvent('openCircleMenu', menuName);
-    circleMenuOpened = true;
-    circleMenuName = menuName;
-    showUi(false);
-    alt.showCursor(true);
-    if (freezePosition) {
-        showUiAndFreezePlayer(!freezePosition);
-    }
-    alt.toggleGameControls(false);
-    mainUi.focusView();
-}
-
-function closeCircleMenu(hideMenu = false) {
-    if (hideMenu)
-        mainUi.emitUiEvent("closeCircleMenu");
-
-    circleMenuOpened = false;
-    showUi(true);
-    alt.showCursor(false);
-    showUiAndFreezePlayer(true);
-}
 
 alt.on('keydown', (key) => {
     if (key == controlsIds.F6) {
@@ -73,20 +43,20 @@ alt.on('keydown', (key) => {
     switch (key) {
         case controlsIds.Alt:
             if (game.isPedInAnyVehicle(localPlayer.scriptID, false) || game.isEntityDead(localPlayer.scriptID) || new Date().getTime() - lastKeyPressedTime < 500) return;
-            if (circleMenuOpened) {
-                closeCircleMenu(true);
+            if (circleMenu.isMenuOpened) {
+                circleMenu.closeMenu(true);
                 return;
             }
-            if (!raycast.didRaycastHit) return;
-            onAltKeydown();
+            else if (!raycast.didRaycastHit) return;
+            circleMenu.onKeyPress(raycast.entityHit);
             lastKeyPressedTime = new Date().getTime();
             break;
         case controlsIds.G:
             if (game.isEntityDead(localPlayer.scriptID) || new Date().getTime() - lastKeyPressedTime < 500) return;
-            if (circleMenuOpened) {
-                closeCircleMenu(true);
+            if (circleMenu.isMenuOpened) {
+                circleMenu.closeMenu(true);
             } else {
-                openCircleMenu("animations");
+                circleMenu.openMenu("animations");
             }
             lastKeyPressedTime = new Date().getTime();
             break;
@@ -104,140 +74,6 @@ alt.on('keydown', (key) => {
             break;
     }
 });
-
-function onAltKeydown() {
-    var entityType = game.getEntityType(raycast.entityHit);
-    console.log(`Entity type = ${entityType}`);
-    switch (entityType) {
-        case 1:
-            onPedFound();
-            break;
-        case 2:
-            onVehicleFound();
-            break;
-        case 3:
-            onObjectFound();
-            break;
-    }
-}
-
-function onPedFound() {
-    alt.log('Ped found');
-    let isPlayer = alt.Player.all.some(p => p.scriptID === raycast.entityHit);
-    if (isPlayer) {
-        alt.log('Found player');
-        openCircleMenu("player");
-    } else if (banking.pedList.includes(raycast.entityHit)) {
-        alt.log('Ped is in bank pedlist');
-        openCircleMenu("bank");
-    } else if (vehicleShop.isVehicleSeller(raycast.entityHit)) {
-        alt.log('Vehicle seller found');
-        openCircleMenu("vehicleShop");
-    }
-}
-
-function onVehicleFound() {
-    alt.log(JSON.stringify(alt.Vehicle.all));
-    let vehicleFound = alt.Vehicle.all.some(v => v.scriptID === raycast.entityHit);
-    alt.log(`Found vehicle = ${vehicleFound}`);
-    if (vehicleFound) {
-        alt.log('Vehicle found');
-        openCircleMenu("vehicle");
-    }
-}
-
-function onObjectFound() {
-    let entityModel = game.getEntityModel(raycast.entityHit);
-    alt.log(`Entity model found: ${entityModel}`);
-
-    if (banking.atmModels.includes(entityModel)) {
-        alt.log('Found atm hash');
-        openCircleMenu("atm");
-    } else if (trashBin.includesBin(entityModel)) {
-        alt.log('Found trash bin');
-        openCircleMenu("trashBin");
-    }
-}
-
-mainUi.onUiEvent('circleMenuCallback', (option) => {
-    alt.log(`Circle menu callback: ${option}`);
-    if (option === 'close') {
-        closeCircleMenu();
-        return;
-    }
-
-    closeCircleMenu();
-    switch (circleMenuName) {
-        case "vehicle":
-            vehicleCircleMenuCallback(option);
-            break;
-        case "animations":
-            animations.findAnimation(option);
-            break;
-        case "bank":
-            bankCircleMenuCallback(option);
-            break;
-        case "atm":
-            atmCircleMenuCallback(option);
-            break;
-        case "trashBin":
-            trashBin.searchBinMenuCallback(option, raycast.entityHit);
-            break;
-        case "vehicleShop":
-            vehicleShop.openVehicleShopMenuCallback(option, raycast.entityHit);
-            break;
-    }
-});
-
-function vehicleCircleMenuCallback(option) {
-    switch (option) {
-        case "openVehicle":
-            var vehicle = alt.Vehicle.all.find(v => v.scriptID === raycast.entityHit);
-            alt.log(`Found vehicle ${JSON.stringify(vehicle)}`);
-            alt.emitServer("TryToOpenVehicle", vehicle);
-            break;
-        case "sellVehicle":
-            alt.log(`Sell vehicle`);
-            break;
-        case "despawnVehicle":
-            var vehicleToDespawn = alt.Vehicle.all.find(v => v.scriptID === raycast.entityHit);
-            if (vehicleToDespawn == null) return;
-            alt.emitServer("DespawnVehicle", vehicleToDespawn);
-            break;
-        // case "information":
-        //     let vehicle = alt.Vehicle.all.find(v => v.scriptID === raycast.entityHit);
-        //     if (vehicle == null) break;
-        //     let vehicleDisplayName = game.getDisplayNameFromVehicleModel(vehicle.scriptID);
-        //     let vehiclePlate = game.getVehicleNumberPlateText(vehicle.scriptID);
-        //     mainUi.showCefNotification(0, "Pojazd", `VehicleDisplayName = ${vehicleDisplayName} VehiclePlateText = ${vehiclePlate}`, 6000);
-        //     break;
-    }
-}
-
-function bankCircleMenuCallback(option) {
-    switch (option) {
-        case "openBank":
-            alt.emitServer("TryToOpenBankMenu");
-            break;
-        case "createAccount":
-            alt.emitServer("CreateBankAccount");
-            break;
-        case "information":
-            mainUi.showCefNotification(0, "Bank", "Widzisz bankiera, możesz u niego zarządzać aktualnym kontem bankowym lub założyć nowe", 6000);
-            break;
-    }
-}
-
-function atmCircleMenuCallback(option) {
-    switch (option) {
-        case "openAtm":
-            alt.emitServer("TryToOpenBankMenu");
-            break;
-        case "information":
-            mainUi.showCefNotification(0, "Bankomat", "Widzisz bankomat w którym możesz zarządząć swoim kontem bankowym.", 5500);
-            break;
-    }
-}
 
 alt.on('update', () => {
     if (zoneNames.realZoneName && zoneNames.streetName) {

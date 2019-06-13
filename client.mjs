@@ -262,6 +262,10 @@ function testStrefa() {
 	}
 }
 
+alt.onServer('testVehicleList', vehicles => {
+	alt.log(vehicles);
+});
+
 alt.on('playerConnect', () => {
 	game.requestAnimDict("mp_facial");
 	game.requestAnimDict("facials@gen_male@variations@normal");

@@ -164,7 +164,7 @@ const menusList = {
         "information": usefullOptions.information,
         "quit": usefullOptions.quit,
     },
-    "thrashBin": {
+    "trashBin": {
         "searchBin": {
             desc: "Przeszukaj śmieci",
             icon: "trashBin",
@@ -207,6 +207,10 @@ var circleMenu = new Vue({
             this.startTimer();
             this.circleMenuActive = true;
             this.currentMenuSet = menusList[name];
+            if (currentMenuSet == null) {
+                console.log(`CurrentMenuSet was null`);
+                return;
+            }
             var i = 0;
             Object.entries(this.currentMenuSet).forEach(([key, value]) => {
                 this.optionIcons[i] = value.icon;

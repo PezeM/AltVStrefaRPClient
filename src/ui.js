@@ -125,7 +125,6 @@ function onAltKeydown() {
 function onPedFound() {
     alt.log('Ped found');
     let isPlayer = alt.Player.all.some(p => p.scriptID === raycast.entityHit);
-    alt.log(JSON.stringify(alt.Player.all));
     if (isPlayer) {
         alt.log('Found player');
         openCircleMenu("player");

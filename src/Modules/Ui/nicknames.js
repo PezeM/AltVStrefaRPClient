@@ -32,7 +32,7 @@ class NicknameController {
     reserveScaleform() {
         for (let i = 0; i < this.scaleformsArray.length; i++) {
             if (!this.scaleformsArray[i].used) {
-                alt.log(`Scaleform ${i} reserver`);
+                alt.log(`Scaleform ${i} reserved`);
                 this.scaleformsArray[i].used = true;
                 return this.scaleformsArray[i].scaleform;
             }
@@ -78,10 +78,14 @@ class NicknameController {
                     nearestPlayers[player.scriptID].player = player;
                 } else {
                     alt.log(`Player with ID ${player.scriptID} nickname just streamed in`);
+                    if (typeof player.remoteId === 'undefined' || player.remoteId == null) {
+                        player.remoteId = player.getSyncedMeta("remoteId");
+                    }
+
                     nearestPlayers[player.scriptID] = {
                         distance: dist,
                         scaleform: null,
-                        name: player.name,
+                        name: `${player.name} (${player.remoteId.toString()})`,
                         player
                     }
                 }
@@ -150,7 +154,7 @@ class NicknameController {
 
 alt.on('gameStateChanged', state => {
     if (state === 'playing') {
-        alt.log('Initializing nickanmes controller');
+        alt.log('Initializing nicknames controller');
         const nicknameController = new NicknameController();
     } else { }
 })

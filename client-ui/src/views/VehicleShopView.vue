@@ -63,12 +63,10 @@ export default {
     width: 6rem;
 }
 
-.fade-enter-active,
-.fade-leave-active {
+.fade-enter-active {
     transition: opacity 0.5s;
 }
-.fade-enter,
-.fade-leave-active {
+.fade-enter {
     opacity: 0;
 }
 </style>

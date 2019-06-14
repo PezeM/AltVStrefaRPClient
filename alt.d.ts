@@ -133,7 +133,7 @@ declare module "alt" {
     static readonly all: Array<any>;
     readonly name: string;
     readonly scriptID: number;
-    readonly vehicle: Vehicle|undefined|null;
+    readonly vehicle: Vehicle | undefined | null;
 
     addWeaponComponent(weaponHash: number, componentHash: number): void;
     getCurrentWeapon(): number;
@@ -160,7 +160,7 @@ declare module "alt" {
     isVisible: boolean;
     url: string;
 
-    constructor(url: string, isOverlayVal: number|boolean, targetTexture: string);
+    constructor(url: string, isOverlayVal: number | boolean, targetTexture: string);
     emit(evName: string, ...args: any[]): void;
     execJS(p0: string): void;
     focus(): void;
@@ -266,19 +266,19 @@ declare module "alt" {
     	}
     ]
     */
-    /**
-    type: 'function',
-    name: 'clearTimeout',
-    description: 'Cancels a timeout previously established by calling setTimeout (MDN)',
-    parameters: [
-    	{
-    		name: 'timeoutID',
-    		dataType: 'int',
-    		description: 'The identifier of the timeout you want to cancel'
-    	}
-    ]
-    */
-  export function clearInterval(p0: number|number): void;
+  /**
+  type: 'function',
+  name: 'clearTimeout',
+  description: 'Cancels a timeout previously established by calling setTimeout (MDN)',
+  parameters: [
+    {
+      name: 'timeoutID',
+      dataType: 'int',
+      description: 'The identifier of the timeout you want to cancel'
+    }
+  ]
+  */
+  export function clearInterval(p0: number | number): void;
 
   /**
     type: 'function',
@@ -292,19 +292,19 @@ declare module "alt" {
     	}
     ]
     */
-    /**
-    type: 'function',
-    name: 'clearTimeout',
-    description: 'Cancels a timeout previously established by calling setTimeout (MDN)',
-    parameters: [
-    	{
-    		name: 'timeoutID',
-    		dataType: 'int',
-    		description: 'The identifier of the timeout you want to cancel'
-    	}
-    ]
-    */
-  export function clearTimeout(p0: number|number): void;
+  /**
+  type: 'function',
+  name: 'clearTimeout',
+  description: 'Cancels a timeout previously established by calling setTimeout (MDN)',
+  parameters: [
+    {
+      name: 'timeoutID',
+      dataType: 'int',
+      description: 'The identifier of the timeout you want to cancel'
+    }
+  ]
+  */
+  export function clearTimeout(p0: number | number): void;
 
   /**
     type: 'function',
@@ -354,7 +354,7 @@ declare module "alt" {
     	}
     }
     */
-  export function discordInfo(): Object|undefined|null;
+  export function discordInfo(): Object | undefined | null;
 
   /**
      * Emit a client script event
@@ -479,11 +479,11 @@ declare module "alt" {
   export function getMsPerGameMinute(): number;
 
   //Voice functions
-    /**
-    type: 'function',
-    name: 'initVoice',
-    description: 'Initializes voice system',
-    */
+  /**
+  type: 'function',
+  name: 'initVoice',
+  description: 'Initializes voice system',
+  */
   export function initVoice(): boolean;
 
   /**
@@ -719,7 +719,7 @@ declare module "alt" {
     	description: 'Non-zero value which identifies the timer created by the call to setInterval this value can be passed to clearInterval to cancel the timeout'
     }
     */
-  export function setInterval(idFn: Function, id: number|number): number;
+  export function setInterval(idFn: Function, id: number | number): number;
 
   /**
     type: 'function',
@@ -784,7 +784,7 @@ declare module "alt" {
     	description: 'Positive integer value which identifies the timer created by the call to setTimeout this value can be passed to clearTimeout to cancel the timeout'
     }
     */
-  export function setTimeout(idFn: Function, id: number|number): number;
+  export function setTimeout(idFn: Function, id: number | number): number;
 
   /**
     type: 'function',

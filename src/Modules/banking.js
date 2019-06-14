@@ -25,6 +25,7 @@ class Bank {
         alt.loadModel(this.pedHash);
         this.initializePeds();
     }
+
     initializePeds() {
         pedPositions.forEach(bankPed => {
             var ped = game.createPed(26, this.pedHash, bankPed.x, bankPed.y, bankPed.z, bankPed.rot, false, true);
@@ -35,6 +36,7 @@ class Bank {
         });
         alt.log(`Created ${this.pedList.length} bank peds.`);
     }
+
     withdrawMoney(amount) {
         if (typeof amount !== 'number') {
             mainUi.showCefNotification(3, "Błąd", 'Podano błędną ilość pieniędzy do wypłacenia.', 5000);
@@ -42,6 +44,7 @@ class Bank {
         }
         alt.emitServer('WithdrawMoneyFromBank', amount);
     }
+
     depositMoney(amount) {
         if (typeof amount !== 'number') {
             mainUi.showCefNotification(3, "Błąd", 'Podano błędną ilość pieniędzy do wpłaty.', 5000);
@@ -49,6 +52,7 @@ class Bank {
         }
         alt.emitServer('DepositMoneyToBank', amount);
     }
+
     transferMoney(amount, receiver) {
         if (amount <= 0 || typeof receiver === 'undefined' || receiver == null) {
             mainUi.showCefNotification(3, "Błąd", 'Podano błędne dane do transferu pieniędzy.', 4000);

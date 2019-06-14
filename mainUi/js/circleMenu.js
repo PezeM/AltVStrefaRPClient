@@ -50,6 +50,9 @@ const menusList = {
             icon: "misc",
         }
     },
+    "otherAnims": {
+        "animations": usefullOptions.back,
+    },
     "mechanicAnims": {
         "usefulAnims": usefullOptions.back,
         "box": {
@@ -187,7 +190,7 @@ var circleMenu = new Vue({
     data: {
         circleMenuActive: false,
         mainCircleDescription: "Zamknij",
-        currentMenuSet: null,
+        currentMenuItems: null,
         optionIcons: [null, null, null, null, null, null, null, null],
         timer: null,
     },
@@ -206,22 +209,19 @@ var circleMenu = new Vue({
         display: function (name) {
             this.startTimer();
             this.circleMenuActive = true;
-            this.currentMenuSet = menusList[name];
-            if (this.currentMenuSet == null) {
-                console.log(`CurrentMenuSet was null`);
-                return;
-            }
+            this.currentMenuItems = menusList[name];
+
             var i = 0;
-            Object.entries(this.currentMenuSet).forEach(([key, value]) => {
-                this.optionIcons[i] = value.icon;
+            for (const key in this.currentMenuItems) {
+                this.optionIcons[i] = this.currentMenuItems[key].icon;
                 i++;
-            });
+            }
+
             $('#circleMenu').css('width', '480px');
             $('#circleMenu').css('height', '480px');
             console.log(`Displayed in ${this.getTime()}ms.`);
         },
         mouseOver: function (event, hoveredItem) {
-            // console.log(JSON.stringify(hoveredItem));
             if (!hoveredItem) {
                 this.mainCircleDescription = "Zamknij";
             } else {
@@ -231,7 +231,6 @@ var circleMenu = new Vue({
         itemClick: function (e, clickedItemKey) {
             // If clicked on the middle/quit button - close the menu and send event to client
             if (!clickedItemKey || clickedItemKey === "quit") {
-                console.log('Clicked on middle - close');
                 alt.emit('circleMenuCallback', 'close');
                 this.hide();
                 return;
@@ -239,11 +238,11 @@ var circleMenu = new Vue({
 
             // Open sub menu or send event to client script
             if (menusList.hasOwnProperty(clickedItemKey)) {
-                this.currentMenuSet = menusList[clickedItemKey];
+                this.currentMenuItems = menusList[clickedItemKey];
 
                 // Display correct description
                 let id = e.target.id
-                let newMenuValue = Object.values(this.currentMenuSet)[id];
+                let newMenuValue = Object.values(this.currentMenuItems)[id];
                 if (newMenuValue) {
                     this.mainCircleDescription = newMenuValue.desc;
                 } else {

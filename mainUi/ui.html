@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
     <link rel="stylesheet" href="css/circleMenu.css">
     <link rel="stylesheet" href="packages/css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/menus.css">
 
     <script src="packages/js/jquery-3.3.1.min.js"></script>
     <script src="packages/js/notifications/PNotify.js"></script>
@@ -28,12 +27,12 @@
     <div id="circleMenu" @mouseOut="mouseOut" v-show="circleMenuActive">
         <div id="circleBackground"></div>
         <ul>
-            <li v-for="(value, key, index) in currentMenuSet" v-bind:id="index" @mouseOver="mouseOver($event, value)">
+            <li v-for="(value, key, index) in currentMenuItems" v-bind:id="index" @mouseOver="mouseOver($event, value)">
                 <div v-bind:id="index" class="contents" :class="value.icon" @click="itemClick($event,key)"></div>
             </li>
         </ul>
         <div id="8" class="centeredCircle" @mouseOver="mouseOver" @click="itemClick">
-            <div id="8" class="descriptionText">{{mainCircleDescription}}</div>
+            <div id="8" class="descriptionText">{{ mainCircleDescription }}</div>
         </div>
     </div>
 

@@ -7,7 +7,7 @@ import uiHelper from 'src/Helpers/uiHelpers.js';
 import mainUi from 'src/Modules/Ui/mainUi.js';
 import Animations from 'src/Modules/animations.js';
 import trashBin from 'src/Environment/trashBin.js';
-import vehicleShop from 'src/Modules/Vehicle/vehicleShop.js';
+import { vehicleShop } from 'src/Modules/Vehicle/vehicleShop.js';
 import banking from 'src/Modules/banking.js';
 
 class CircleMenuController {
@@ -34,11 +34,10 @@ class CircleMenuController {
             uiHelper.showUiAndFreezePlayer(!freezePlayer);
         }
         alt.setCursorPos({
-            x: this.screenResolution[0] / 2,
-            y: this.screenResolution[1] / 2
+            x: this.screenResolution[1] / 2,
+            y: this.screenResolution[2] / 2
         });
         alt.showCursor(true);
-        alt.toggleGameControls(false);
         mainUi.focusView();
     }
 
@@ -49,7 +48,6 @@ class CircleMenuController {
         this.menuOpened = false;
         uiHelper.showUiAndFreezePlayer(true);
         alt.showCursor(false);
-        alt.toggleGameControls(true);
     }
 
     onKeyPress(entityHit) {
@@ -69,7 +67,6 @@ class CircleMenuController {
     }
 
     onPedFound() {
-        alt.log(`Found ped`);
         let isPlayer = alt.Player.all.some(p => p.scriptID === this.entityHit);
         if (isPlayer) {
             alt.log('Found player');
@@ -87,7 +84,7 @@ class CircleMenuController {
         let vehicleFound = alt.Vehicle.all.some(v => v.scriptID === this.entityHit);
         if (vehicleFound) {
             alt.log(`Found vehicle`)
-            openCircleMenu('vehicle');
+            this.openMenu('vehicle');
         }
     }
 
@@ -103,11 +100,11 @@ class CircleMenuController {
     }
 
     circleMenuCallback(option) {
-        alt.log(`Circle menu callback: ${option}`);
-        closeCircleMenu();
+        alt.log(`Inside circle menu callback: ${option}`);
+        this.closeMenu();
         if (option === 'close') return;
 
-        switch (this.menuOpened) {
+        switch (this.menuName) {
             case "vehicle":
                 this.vehicleCircleMenuCallback(option);
                 break;
@@ -180,13 +177,5 @@ class CircleMenuController {
     }
 }
 
-let circleMenuController = null;
-alt.on('gameStateChanged', state => {
-    if (state === 'playing') {
-        alt.log('Initializing circleMenu controller');
-        circleMenuController = new CircleMenuController();
-    } else { }
-});
-
-
+const circleMenuController = new CircleMenuController();
 export default circleMenuController;

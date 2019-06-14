@@ -28,7 +28,6 @@ let cursorShown = false;
 let localPlayer = alt.getLocalPlayer();
 let animations = new Animations();
 let zoneNames = new ZoneNames(localPlayer.scriptID);
-
 let lastKeyPressedTime = 0;
 
 alt.on('keydown', (key) => {
@@ -42,8 +41,8 @@ alt.on('keydown', (key) => {
 
     switch (key) {
         case controlsIds.Alt:
-            if (game.isPedInAnyVehicle(localPlayer.scriptID, false) || game.isEntityDead(localPlayer.scriptID) || new Date().getTime() - lastKeyPressedTime < 500) return;
-            if (circleMenu.isMenuOpened) {
+            if (localPlayer.vehicle != null || game.isEntityDead(localPlayer.scriptID) || new Date().getTime() - lastKeyPressedTime < 300) return;
+            else if (circleMenu.isMenuOpened) {
                 circleMenu.closeMenu(true);
                 return;
             }
@@ -66,7 +65,7 @@ alt.on('keydown', (key) => {
             animations.forceAnimationStop();
             break;
         case controlsIds.U:
-            if (localPlayer.vehicle == null || game.isEntityDead(localPlayer.scriptID) || new Date().getTime() - lastKeyPressedTime < 250) return;
+            if (localPlayer.vehicle == null || game.isEntityDead(localPlayer.scriptID) || new Date().getTime() - lastKeyPressedTime < 400) return;
             lastKeyPressedTime = new Date().getTime();
             var vehicle = alt.Vehicle.all.find(v => v.scriptID === localPlayer.vehicle.scriptID);
             if (vehicle == null) return;
@@ -122,7 +121,7 @@ alt.on('update', () => {
     }
 
     // Disable moving camera/attacking while UI is open
-    if (chat.isOpen() || menusManager.viewOpened) {
+    if (chat.isOpen() || menusManager.viewOpened || circleMenu.isMenuOpened) {
         game.disableControlAction(0, 1, true); // Mouse Look, Left/Right
         game.disableControlAction(0, 2, true); // Mouse Look, Up/Down
         game.disableControlAction(0, 142, true); // Right Click

@@ -20,6 +20,7 @@ alt.onServer('putIntoVehicle', () => {
 });
 
 alt.onServer('toggleLockState', vehicle => {
+    alt.log(`ToggleLockState vehicle = ${JSON.stringify(vehicle, null, 4)}`);
     var startTime = Date.now();
     if (game.getDistanceBetweenCoords(localPlayer.pos.x, localPlayer.pos.y, localPlayer.pos.z, vehicle.pos.x, vehicle.pos.y, vehicle.pos.z, true) > 10) return false;
     let lockStatus = game.getVehicleDoorLockStatus(vehicle.scriptID); // 1 or 0

@@ -9,6 +9,7 @@ let localPlayer = alt.getLocalPlayer();
 const Ui = {};
 
 Ui.showUi = function (toggle) {
+    alt.log(`Showing UI = ${toggle}`);
     alt.toggleGameControls(toggle);
     game.displayHud(toggle);
     game.displayRadar(toggle);
@@ -19,15 +20,15 @@ Ui.showUiAndFreezePlayer = function (toggle) {
     game.freezeEntityPosition(localPlayer.scriptID, !toggle);
 }
 
-Ui.showNotification = function (title, subtitle, message, char = "CHAR_DEFAULT", flashing = false, icon = 7) {
-    game.requestStreamedTextureDict(char, true);
-    await utils.promise(() => game.hasStreamedTextureDictLoaded(char));
+// Ui.showNotification = function (title, subtitle, message, char = "CHAR_DEFAULT", flashing = false, icon = 7) {
+//     game.requestStreamedTextureDict(char, true);
+//     await utils.promise(() => game.hasStreamedTextureDictLoaded(char));
 
-    game.setNotificationTextEntry("STRING");
-    game.addTextComponentSubstringPlayerName(message);
-    game.setNotificationMessage2(char, char, flashing, icon, title, subtitle);
-    game.drawNotification(false, true);
-}
+//     game.setNotificationTextEntry("STRING");
+//     game.addTextComponentSubstringPlayerName(message);
+//     game.setNotificationMessage2(char, char, flashing, icon, title, subtitle);
+//     game.drawNotification(false, true);
+// }
 
 Ui.drawRectangleBackground = function (text, scale, font, backgroundColor) {
     game.beginTextCommandWidth("STRING");
@@ -111,3 +112,5 @@ Ui.getMinimapAnchor = function () {
     minimap.topY = minimap.bottomY - minimap.height;
     return minimap;
 }
+
+export default Ui;

@@ -4,7 +4,7 @@ import * as alt from 'alt';
 import * as game from 'natives';
 import Maths from 'src/Helpers/maths.js';
 
-class _Raycast {
+class Raycast {
     constructor() {
         alt.log('Initialized raycast Class');
         this.didRaycastHit = false;
@@ -39,5 +39,5 @@ class _Raycast {
 }
 
 
-let Raycast = new _Raycast();
-export default Raycast;
+const raycast = new Raycast();
+export default raycast;

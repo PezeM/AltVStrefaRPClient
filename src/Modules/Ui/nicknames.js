@@ -82,7 +82,6 @@ class NicknameController {
                         distance: dist,
                         scaleform: null,
                         name: player.name,
-                        remoteId: player.remoteId,
                         player
                     }
                 }

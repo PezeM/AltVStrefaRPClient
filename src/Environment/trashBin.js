@@ -51,6 +51,7 @@ class TrashBin {
     }
 
     searchBinMenuCallback(option, trashBinId) {
+        alt.log(`Inside searchBinMenuCallback`);
         switch (option) {
             case "searchBin":
                 this.searchTrashbin(trashBinId);
@@ -70,6 +71,7 @@ class TrashBin {
     }
 
     searchTrashbin(trashBinId) {
+        alt.log(`Inside searchTrashbin`);
         if (!this.checkIfValid(trashBinId)) return;
         else if (this.searchedBins.includes(trashBinId)) {
             mainUi.showCefNotification(3, "Śmietnik przeszukany", "Ten śmietnik był już przez ciebie przeszukiwany.", 5000);
@@ -90,7 +92,6 @@ class TrashBin {
         this.percentage = 100;
         let binInterval = alt.setInterval(() => {
             this.percentage += 100;
-            alt.log(`Updating percentage to ${this.percentage}`);
         }, 100);
 
         alt.setTimeout(() => {

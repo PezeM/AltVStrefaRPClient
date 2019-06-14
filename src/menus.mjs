@@ -6,7 +6,7 @@ import mainUi from 'src/Modules/Ui/mainUi.js';
 import bank from 'src/Modules/banking.js';
 import Business from 'src/Modules/business.js';
 import menusManager from 'src/Modules/Ui/menusManager.js';
-import vehicleShop from 'src/Modules/Vehicle/vehicleShop.js';
+import { vehicleShop } from 'src/Modules/Vehicle/vehicleShop.js';
 
 // let bank = new Bank();
 let business = new Business();

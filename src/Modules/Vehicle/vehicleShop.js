@@ -46,7 +46,7 @@ class VehicleShop {
             game.disablePedPainAudio(ped, true);
             game.setEntityInvincible(ped, true);
             game.setBlockingOfNonTemporaryEvents(ped, true);
-            this.vehicleSellers.push({ pedId: ped, id: shopPed.gid });
+            this.vehicleSellers.push({ pedId: ped, id: shopPed.id });
         });
     }
 
@@ -176,4 +176,4 @@ alt.on('gameStateChanged', state => {
     }
 })
 
-export default vehicleShop;
+export { vehicleShop };

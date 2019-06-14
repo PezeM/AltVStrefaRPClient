@@ -3,14 +3,13 @@
 
 import * as alt from 'alt';
 import * as game from 'natives';
-import { draw3DText } from 'src/Helpers/uiHelper.js';
 
 const controlsIds = {
     E: 38,
     Shift: 21
 };
 
-const sittable = {
+const SITTABLE = {
     "prop_bench_01a": { scenario: 'PROP_HUMAN_SEAT_BENCH', verticalOffset: -0.5, forwardOffset: 0.0, leftOffset: 0.0 },
     "prop_bench_01b": { scenario: 'PROP_HUMAN_SEAT_BENCH', verticalOffset: -0.5, forwardOffset: 0.0, leftOffset: 0.0 },
     "prop_bench_01c": { scenario: 'PROP_HUMAN_SEAT_BENCH', verticalOffset: -0.5, forwardOffset: 0.0, leftOffset: 0.0 },
@@ -134,7 +133,7 @@ alt.log('Sitting.js loaded');
 
 alt.on('update', () => {
     // Has to press SHIFT + E and not be in vehicle
-    if (game.isControlPressed(0, controlsIds.Shift) && game.isControlPressed(0, controlsIds.E) && (new Date().getTime() - lastChecked > 1000)) {
+    if (game.isControlPressed(0, controlsIds.Shift) && game.isControlPressed(0, controlsIds.E) && (new Date().getTime() - lastChecked > 500)) {
         lastChecked = new Date().getTime();
         if (sitting && game.isPedUsingScenario(localPlayer.scriptID, currentSittingObject.scenario)) {
             alt.log('Is sitting');
@@ -143,8 +142,8 @@ alt.on('update', () => {
         }
 
         var startTime = new Date().getTime();
-        for (const key in sittable) {
-            if (!sittable.hasOwnProperty(key)) continue;
+        for (const key in SITTABLE) {
+            if (!SITTABLE.hasOwnProperty(key)) continue;
             var closestBench = game.getClosestObjectOfType(localPlayer.pos.x, localPlayer.pos.y, localPlayer.pos.z,
                 5, game.getHashKey(key), false, false, false)
             if (closestBench === 0) continue;
@@ -157,7 +156,7 @@ alt.on('update', () => {
 
             if (!sitting) {
                 alt.log('Found bench with id: ' + closestBench + ' in ' + (new Date().getTime() - startTime) + ' ms.');
-                tryToSit(closestBench, sittable[key], closestBenchCoords);
+                tryToSit(closestBench, SITTABLE[key], closestBenchCoords);
                 return;
             }
         }

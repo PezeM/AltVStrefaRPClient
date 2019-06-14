@@ -62,7 +62,7 @@ class _MenusManager {
 
         // let inter = alt.setInterval(() => {
         //     if (alt.isTextureExistInArchetype(game.getHashKey('xm_prop_x17_sec_panel_01'), 'script_rt_prop_x17_p_01')) {
-        //         this.tabletView = new alt.WebView("http://resources/AltVStrefaRPClient/html/menus.html", game.getHashKey('xm_prop_x17_sec_panel_01'), 'script_rt_prop_x17_p_01');
+        //         this.tabletView = new alt.WebView("http://resources/AltVStrefaRPClient/mainUi/menus.html", game.getHashKey('xm_prop_x17_sec_panel_01'), 'script_rt_prop_x17_p_01');
         //         this.tabletView.emit(name, ...args);
         //         alt.clearInterval(inter);
         //         return;

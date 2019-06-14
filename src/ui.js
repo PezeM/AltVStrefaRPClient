@@ -109,7 +109,7 @@ alt.on('update', () => {
     }
 
     if (localPlayer.vehicle == null && !game.isPlayerDead(localPlayer.scriptID) && !menusManager.viewOpened) {
-        if (!circleMenuOpened)
+        if (!circleMenu.isMenuOpened)
             raycast.poitingAt(4);
     }
     else {
@@ -122,7 +122,7 @@ alt.on('update', () => {
     }
 
     // Disable moving camera/attacking while UI is open
-    if (circleMenuOpened || chat.isOpen() || menusManager.viewOpened) {
+    if (chat.isOpen() || menusManager.viewOpened) {
         game.disableControlAction(0, 1, true); // Mouse Look, Left/Right
         game.disableControlAction(0, 2, true); // Mouse Look, Up/Down
         game.disableControlAction(0, 142, true); // Right Click

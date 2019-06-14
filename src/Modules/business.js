@@ -4,6 +4,15 @@ import mainUi from 'src/Modules/Ui/mainUi.js';
 export default class Business {
     constructor() {
         alt.log('Initialized business class');
+        mainUi.onUiEvent('getBusinessEmployees', this.getBusinessEmployees.bind(this));
+        mainUi.onUiEvent('updateEmployeeRank', this.updateEmployeeRank.bind(this));
+        mainUi.onUiEvent('addNewEmployee', this.addNewEmployee.bind(this));
+        mainUi.onUiEvent('getBusinessRolesInfo', this.getBusinessRolesInfo.bind(this));
+        mainUi.onUiEvent('updateBusinessRank', this.updateBusinessRank.bind(this));
+        mainUi.onUiEvent('addNewRole', this.addNewRole.bind(this));
+        mainUi.onUiEvent('deleteBusiness', this.deleteBusiness.bind(this));
+        mainUi.onUiEvent('deleteRole', this.deleteRole.bind(this));
+        mainUi.onUiEvent('deleteEmployee', this.deleteEmployee.bind(this));
     }
 
     getBusinessEmployees(businessId) {

@@ -8,7 +8,6 @@ import Business from 'src/Modules/business.js';
 import menusManager from 'src/Modules/Ui/menusManager.js';
 import { vehicleShop } from 'src/Modules/Vehicle/vehicleShop.js';
 
-// let bank = new Bank();
 let business = new Business();
 
 // Bank menu
@@ -33,10 +32,6 @@ menusManager.onServerEvent('openTransactionHistory', transactionHistory => {
 
 menusManager.onUiEvent('closeBankMenu', () => {
     menusManager.closeMenu();
-});
-
-menusManager.onUiEvent('getTransferHistoryInfo', () => {
-    alt.emitServer('GetTransferHistoryInfo');
 });
 
 menusManager.onUiEvent('tryTransferMoney', (money, receiver) => {
@@ -78,42 +73,6 @@ menusManager.onServerEvent('successfullyUpdatedEmployeeRank', (employeeId, newRa
         menusManager.menusView.emit('successfullyUpdatedEmployeeRank', employeeId, newRankId);
 
     mainUi.showCefNotification(1, "Zaktualizowano pracownika", "Pomyślnie zaktualizowano stanowiska pracownika.", 5000);
-});
-
-menusManager.onUiEvent('getBusinessEmployees', (businessId) => {
-    business.getBusinessEmployees(businessId);
-});
-
-menusManager.onUiEvent('updateEmployeeRank', (employeeId, newRankId, businessId) => {
-    business.updateEmployeeRank(employeeId, newRankId, businessId);
-});
-
-menusManager.onUiEvent('addNewEmployee', (name, lastName, businessId) => {
-    business.addNewEmployee(name, lastName, businessId);
-});
-
-menusManager.onUiEvent('getBusinessRolesInfo', (businessId) => {
-    business.getBusinessRolesInfo(businessId);
-});
-
-menusManager.onUiEvent('updateBusinessRank', (rank, businessId) => {
-    business.updateBusinessRank(rank, businessId);
-});
-
-menusManager.onUiEvent('addNewRole', (newRole, businessId) => {
-    business.addNewRole(newRole, businessId);
-});
-
-menusManager.onUiEvent('deleteBusiness', (businessId) => {
-    business.deleteBusiness(businessId);
-});
-
-menusManager.onUiEvent('deleteRole', (rankId, businessId) => {
-    business.deleteRole(rankId, businessId)
-});
-
-menusManager.onUiEvent('deleteEmployee', (employeeId, businessId) => {
-    business.deleteEmployee(employeeId, businessId);
 });
 
 menusManager.onUiEvent('closeBusinessMenu', () => {

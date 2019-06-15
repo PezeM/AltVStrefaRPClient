@@ -24,6 +24,16 @@ class Bank {
         this.pedHash = 3272005365;
         alt.loadModel(this.pedHash);
         this.initializePeds();
+
+        alt.onServer('openBankMenu', this.openBankMenu);
+        alt.onServer('updateBankMoneyWithNotification', this.updateBankMoneyWithNotification);
+        alt.onServer('openTransactionHistory', this.openTransactionHistory);
+
+        menusManager.onUiEvent('getTransferHistoryInfo', this.getTransferHistoryInfo.bind(this));
+        menusManager.onUiEvent('tryTransferMoney', this.transferMoney.bind(this));
+        menusManager.onUiEvent('withdrawMoney', this.withdrawMoney.bind(this));
+        menusManager.onUiEvent('depositMoney', this.depositMoney.bind(this));
+        menusManager.onUiEvent('closeBankMenu', this.closeBankMenu.bind(this));
     }
 
     initializePeds() {
@@ -35,6 +45,29 @@ class Bank {
             this.pedList.push(ped);
         });
         alt.log(`Created ${this.pedList.length} bank peds.`);
+    }
+
+    openBankMenu(bankAccountInformations) {
+        alt.log(`BankAccountInformation type: ${typeof bankAccountInformations} : ${JSON.stringify(bankAccountInformations)}`);
+        if (bankAccountInformations == null) {
+            alt.log('openBankMenu -> BankAccountInformation was null');
+            return;
+        }
+
+        menusManager.openMenu('openBankMenuView', true, true, bankAccountInformations);
+    }
+
+    updateBankMoneyWithNotification(notificationMessage, money) {
+        menusManager.emitUiEvent('updateBankMoney', money);
+        mainUi.showCefNotification(1, "Aktualizacja", notificationMessage, 6000);
+    }
+
+    openTransactionHistory(transactionHistory) {
+        menusManager.emitUiEvent('openTransactionHistory', transactionHistory);
+    }
+
+    getTransferHistoryInfo() {
+        alt.emitServer('GetTransferHistoryInfo');
     }
 
     withdrawMoney(amount) {
@@ -59,6 +92,10 @@ class Bank {
             return;
         }
         alt.emitServer('TransferMoneyFromBankToBank', amount, receiver);
+    }
+
+    closeBankMenu() {
+        menusManager.closeMenu();
     }
 }
 

@@ -36,6 +36,12 @@ class VehicleShop {
         this.spawnedVehicle = null;
         this.shopCamera = null;
         this.createPeds();
+
+        alt.onServer('openVehicleShop', this.setupVehicleShop.bind(this));
+
+        menusManager.onUiEvent('spawnNextVehicle', this.spawnNextVehicle.bind(this));
+        menusManager.onUiEvent('buyVehicle', this.buyVehicle.bind(this));
+        menusManager.onUiEvent('closeVehicleShop', this.exitVehicleShop.bind(this));
     }
 
     createPeds() {
@@ -131,14 +137,21 @@ class VehicleShop {
         cameraRotator.setZUpMultipler(3);
     }
 
-    setupVehicleShop(shopId, vehiclesData) {
-        let newVehicleData = this.generateVehicleData(vehiclesData);
+    setupVehicleShop(shopId, vehicleShopData) {
+        let newVehicleData = this.generateVehicleData(vehicleShopData);
         var vehicleShop = this.getVehicleShopData(shopId);
 
         this.changeVehicle(newVehicleData[0].vehicleModel, vehicleShop);
         this.renderShopCamera(vehicleShop);
         this.setupCameraRotator(vehicleShop);
-        return newVehicleData;
+        menusManager.openMenu("openVehicleShop", true, true, JSON.stringify(newVehicleData), shopId);
+    }
+
+    spawnNextVehicle(shopId, vehicleModel) {
+        alt.log(`Inside spawnNextVehicle event with shopId = ${shopId} and vehicleModel = ${vehicleModel}`);
+        let vehicleShopData = vehicleShop.getVehicleShopData(shopId);
+        if (vehicleShopData == null) return;
+        this.changeVehicle(vehicleModel, vehicleShopData);
     }
 
     buyVehicle(shopId, vehicleModel) {
@@ -148,7 +161,6 @@ class VehicleShop {
             return;
         }
 
-        alt.log(`Buying vehicle in shop ${vehicleShop.id} and model ${vehicleModel} as number ${Number(vehicleModel)}`);
         alt.emitServer('BuyVehicle', vehicleShop.id, vehicleModel);
     }
 
@@ -164,8 +176,9 @@ class VehicleShop {
             this.shopCamera.destroy(true);
             this.shopCamera = null;
         }
+        menusManager.closeMenu();
         this.currentVehicleShopData = null;
-        game.renderScriptCams(false, false, 0, true, false);
+        game.renderScriptCams(false, true, 150, true, false);
     }
 }
 

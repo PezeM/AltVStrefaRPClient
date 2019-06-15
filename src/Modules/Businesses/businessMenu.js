@@ -9,7 +9,6 @@ export default class Business {
         alt.onServer('populateEmployeeRanks', this.populateEmployeeRanks);
         alt.onServer('populateBusinessRanksInfo', this.populateBusinessRanksInfo);
         alt.onServer('successfullyUpdatedEmployeeRank', this.successfullyUpdatedEmployeeRank);
-        alt.onServer('closeBusinessMenu', this.closeBusinessMenu);
 
         menusManager.onUiEvent('getBusinessEmployees', this.getBusinessEmployees.bind(this));
         menusManager.onUiEvent('updateEmployeeRank', this.updateEmployeeRank.bind(this));
@@ -20,6 +19,7 @@ export default class Business {
         menusManager.onUiEvent('deleteBusiness', this.deleteBusiness.bind(this));
         menusManager.onUiEvent('deleteRole', this.deleteRole.bind(this));
         menusManager.onUiEvent('deleteEmployee', this.deleteEmployee.bind(this));
+        menusManager.onUiEvent('closeBusinessMenu', this.closeBusinessMenu);
     }
 
     openBusinessMenu(businessInfo) {

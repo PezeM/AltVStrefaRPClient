@@ -7,7 +7,7 @@ import Animations from 'src/Modules/animations.js';
 let animations = new Animations();
 import { showUiAndFreezePlayer, showUi } from 'src/Helpers/uiHelper.js';
 
-class _MenusManager {
+class MenusManager {
     constructor() {
         alt.log('Initialized MenusView Class');
         this.tablet = null;
@@ -16,10 +16,6 @@ class _MenusManager {
         this.viewLoaded = false;
 
         this.menusView = new alt.WebView('http://resources/AltVStrefaRPClient/client-ui/dist/index.html#');
-    }
-
-    onServerEvent(eventName, callback) {
-        alt.onServer(eventName, callback);
     }
 
     onClientEvent(eventName, callback) {
@@ -31,7 +27,8 @@ class _MenusManager {
     }
 
     emitUiEvent(eventName, ...args) {
-        this.menusView.emit(eventName, ...args);
+        if (this.viewLoaded)
+            this.menusView.emit(eventName, ...args);
     }
 
     focusView() {
@@ -98,7 +95,7 @@ class _MenusManager {
     }
 }
 
-const menusManager = new _MenusManager();
+const menusManager = new MenusManager();
 
 menusManager.onUiEvent('viewLoaded', () => {
     menusManager.viewLoaded = true;

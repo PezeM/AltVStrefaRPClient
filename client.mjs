@@ -4,6 +4,8 @@
 import * as alt from 'alt';
 import * as game from 'natives';
 import chat from 'chat';
+import menusManager from 'src/Modules/Ui/menusManager.js';
+import mainUi from 'src/Modules/Ui/mainUi.js';
 import * as gameState from 'src/gameState.js';
 import * as ui from 'src/ui.js';
 import * as menus from 'src/menus.mjs';
@@ -16,7 +18,6 @@ import * as vehicles from 'src/Modules/Vehicle/vehicles.js';
 import * as objectSync from 'src/Modules/objectSync.js';
 import * as nicknames from 'src/Modules/Ui/nicknames.js';
 import { drawText, draw3DText } from 'src/Helpers/uiHelper.js';
-import menusManager from 'src/Modules/Ui/menusManager.js';
 
 let localPlayer = alt.getLocalPlayer();
 let frame = 0, fps = 0, showFps = true, timeStart = Date.now();
@@ -120,6 +121,8 @@ alt.on('consoleCommand', (command, ...args) => {
 		test3DView();
 	} else if (command == 'strefa') {
 		testStrefa();
+	} else if (command == 'testNumber') {
+		alt.emitServer('testNumber', 3253274834);
 	}
 })
 

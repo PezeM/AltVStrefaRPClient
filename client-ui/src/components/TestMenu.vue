@@ -1,15 +1,14 @@
 <template>
-  <div class="testMenu" @click="onClick">
-    <div class="myContainer">
-      <h1>{{ name }}</h1>
-      <div class="buttonGroup">
-        <button class="buttonHover" @click="buttonClick">Eluwa</button>
-        <span class="textHover">Hover me</span>
-      </div>
+    <div class="testMenu" @click="onClick">
+        <div class="myContainer">
+            <h1>{{ name }}</h1>
+            <div class="buttonGroup">
+                <button class="buttonHover" @click="buttonClick">Eluwa</button>
+                <span class="textHover">Hover me</span>
+            </div>
+        </div>
     </div>
-  </div>
 </template>
-
 
 <script>
 export default {

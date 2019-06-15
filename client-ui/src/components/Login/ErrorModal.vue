@@ -1,15 +1,15 @@
 <template>
-  <div class="error-frame" v-if="isErrorMessage">
-    <div class="center">
-      <div class="notification" v-bind:class="{ open: isErrorMessage }">
-        <div class="notification-content">
-          <h3 class="notification-title">{{ errorMessage }}</h3>
-          <p class="notification-text"></p>
+    <div class="error-frame" v-if="isErrorMessage">
+        <div class="center">
+            <div class="notification" v-bind:class="{ open: isErrorMessage }">
+                <div class="notification-content">
+                    <h3 class="notification-title">{{ errorMessage }}</h3>
+                    <p class="notification-text"></p>
+                </div>
+                <button class="notification-button" @click="hideErrorWindow()">Okej</button>
+            </div>
         </div>
-        <button class="notification-button" @click="hideErrorWindow()">Okej</button>
-      </div>
     </div>
-  </div>
 </template>
 
 <script>

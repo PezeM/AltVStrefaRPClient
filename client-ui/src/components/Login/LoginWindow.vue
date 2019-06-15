@@ -1,5 +1,5 @@
 <template>
-  <div id="login" @click="onClick">
+  <div id="login">
     <error-modal v-bind:errorMessage="errorMessage" v-on:hide-error-window="hideErrorWindow"></error-modal>
 
     <div class="login-box" v-if="activeMenu == 'login'">
@@ -70,10 +70,14 @@ export default {
             loginDisabled: false,
         };
     },
+    mounted() {
+        EventBus.$on('showError', this.showError);
+        EventBus.$on('registeredSuccesfully', message => {
+            this.showError(JSON.parse(message));
+            this.switchToLogin();
+        });
+    },
     methods: {
-        onClick() {
-            console.log(`Click inside LoginWindow.vue`);
-        },
         switchToRegister() {
             this.activeMenu = 'register';
         },
@@ -143,12 +147,10 @@ export default {
             if (this.loginDisabled) this.loginDisabled = false;
         },
     },
-    mounted() {
-        EventBus.$on('showError', message => {
+    beforeDestroy() {
+        EventBus.$off('showError', this.showError);
+        EventBus.$off('registeredSuccesfully', message => {
             this.showError(message);
-        });
-        EventBus.$on('registeredSuccesfully', message => {
-            this.showError(JSON.parse(message));
             this.switchToLogin();
         });
     },
@@ -156,7 +158,7 @@ export default {
 
 alt.on('registeredSuccessfully', () => {
     console.log('Registered successfully');
-    EventBus.$emit('registeredSuccesfully', JSON.stringify(`Pomyślnie założono konto. Możesz się teraz zalogować`));
+    EventBus.$emit('registeredSuccesfully', 'Pomyślnie założono konto. Możesz się teraz zalogować');
 });
 
 alt.on('showError', message => {

@@ -1,7 +1,7 @@
 <template>
   <div id="app" @click="clickApp">
     <transition name="fade" mode="out-in">
-      <router-view/>
+      <router-view :key="$route.fullPath"/>
     </transition>
   </div>
 </template>

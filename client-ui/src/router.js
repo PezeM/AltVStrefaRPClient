@@ -2,7 +2,6 @@
 /* eslint-disable no-undef */
 import Vue from 'vue';
 import Router from 'vue-router';
-import Empty from './views/Empty.vue';
 Vue.use(Router);
 
 export default new Router({
@@ -12,7 +11,7 @@ export default new Router({
         {
             path: '/',
             name: 'home',
-            component: Empty,
+            component: () => import('./views/Empty.vue'),
         },
         {
             path: '/login',

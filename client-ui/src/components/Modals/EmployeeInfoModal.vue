@@ -1,80 +1,51 @@
 <template>
-  <modal name="employee-info-modal" transition="pop-out" height="auto" @before-open="beforeOpen">
-    <div class="container">
-      <div class="modal-header">
-        <h5
-          class="modal-title"
-          id="modalCenterTitle"
-        >{{ selectedEmployee.Name }} {{ selectedEmployee.LastName }}</h5>
-      </div>
-      <div class="modal-body">
-        <div class="form-group row">
-          <label class="col-sm-4 col-form-label">ID</label>
-          <div class="col-sm-8">
-            <input
-              type="text"
-              readonly
-              class="form-control-plaintext"
-              v-model="selectedEmployee.Id"
-            >
-          </div>
-        </div>
+    <modal name="employee-info-modal" transition="pop-out" height="auto" @before-open="beforeOpen">
+        <div class="container">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalCenterTitle">{{ selectedEmployee.Name }} {{ selectedEmployee.LastName }}</h5>
+            </div>
+            <div class="modal-body">
+                <div class="form-group row">
+                    <label class="col-sm-4 col-form-label">ID</label>
+                    <div class="col-sm-8">
+                        <input type="text" readonly class="form-control-plaintext" v-model="selectedEmployee.Id" />
+                    </div>
+                </div>
 
-        <div class="form-group row">
-          <label class="col-sm-4 col-form-label">Imię</label>
-          <div class="col-sm-8">
-            <input
-              type="text"
-              readonly
-              class="form-control-plaintext"
-              v-model="selectedEmployee.Name"
-            >
-          </div>
-        </div>
+                <div class="form-group row">
+                    <label class="col-sm-4 col-form-label">Imię</label>
+                    <div class="col-sm-8">
+                        <input type="text" readonly class="form-control-plaintext" v-model="selectedEmployee.Name" />
+                    </div>
+                </div>
 
-        <div class="form-group row">
-          <label class="col-sm-4 col-form-label">Nazwisko</label>
-          <div class="col-sm-8">
-            <input
-              type="text"
-              readonly
-              class="form-control-plaintext"
-              v-model="selectedEmployee.LastName"
-            >
-          </div>
-        </div>
+                <div class="form-group row">
+                    <label class="col-sm-4 col-form-label">Nazwisko</label>
+                    <div class="col-sm-8">
+                        <input type="text" readonly class="form-control-plaintext" v-model="selectedEmployee.LastName" />
+                    </div>
+                </div>
 
-        <div class="form-group row">
-          <label class="col-sm-4 col-form-label">Płeć</label>
-          <div class="col-sm-8">
-            <input
-              type="text"
-              readonly
-              class="form-control-plaintext"
-              v-model="selectedEmployee.Gender"
-            >
-          </div>
-        </div>
+                <div class="form-group row">
+                    <label class="col-sm-4 col-form-label">Płeć</label>
+                    <div class="col-sm-8">
+                        <input type="text" readonly class="form-control-plaintext" v-model="selectedEmployee.Gender" />
+                    </div>
+                </div>
 
-        <div class="form-group row">
-          <label class="col-sm-4 col-form-label">Stanowisko</label>
-          <div class="col-sm-8">
-            <vSelect
-              v-model="newRank"
-              label="RankName"
-              :options="allBusinessRanks"
-              :clearable="false"
-              :filterable="true"
-            />
-          </div>
+                <div class="form-group row">
+                    <label class="col-sm-4 col-form-label">Stanowisko</label>
+                    <div class="col-sm-8">
+                        <vSelect v-model="newRank" label="RankName" :options="allBusinessRanks" :clearable="false" :filterable="true" />
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" @click="closeEmployeeInfo">Zamknij</button>
+                <button type="button" class="btn btn-primary" @click="saveEmployeeChanges">Zapisz zmiany</button>
+            </div>
         </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" @click="closeEmployeeInfo">Zamknij</button>
-        <button type="button" class="btn btn-primary" @click="saveEmployeeChanges">Zapisz zmiany</button>
-      </div>
-    </div>
-  </modal>
+    </modal>
 </template>
 
 <script>
@@ -117,6 +88,4 @@ export default {
 };
 </script>
 
-
-<style>
-</style>
+<style></style>

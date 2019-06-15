@@ -1,7 +1,7 @@
 <template>
-  <div id="login-window" @click="clickOnLogin">
-    <router-view></router-view>
-  </div>
+    <div id="login-window" @click="clickOnLogin">
+        <router-view></router-view>
+    </div>
 </template>
 
 <script>

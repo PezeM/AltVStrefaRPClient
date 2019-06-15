@@ -1,7 +1,7 @@
 <template>
-  <div id="businessMenu">
-    <BusinessMenu :businessInfo="businessMenuInfo"></BusinessMenu>
-  </div>
+    <div id="businessMenu">
+        <BusinessMenu :businessInfo="businessMenuInfo"></BusinessMenu>
+    </div>
 </template>
 
 <script>

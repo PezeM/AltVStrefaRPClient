@@ -1,63 +1,63 @@
 <template>
-  <div class="charSelect">
-    <error-modal v-bind:errorMessage="errorMessage" v-on:hide-error-window="hideErrorWindow"></error-modal>
+    <div class="charSelect">
+        <error-modal v-bind:errorMessage="errorMessage" v-on:hide-error-window="hideErrorWindow"></error-modal>
 
-    <div class="char-select-title">
-      <h1>Witaj na serwerze! Wybierz swoją postać</h1>
-    </div>
-    <div class="char-select-body">
-      <div class="char-select-body-container">
-        <div class="character-card card new-char" @click="createCharacter()">
-          <div class="card-top"></div>
-          <div class="card-profile">
-            <div class="profile-image"></div>
-          </div>
-          <div class="card-info">
-            <div class="info-title">
-              <h2>Stwórz nową postać</h2>
-              <h3>StrefaRP.pl</h3>
-            </div>
-          </div>
+        <div class="char-select-title">
+            <h1>Witaj na serwerze! Wybierz swoją postać</h1>
         </div>
+        <div class="char-select-body">
+            <div class="char-select-body-container">
+                <div class="character-card card new-char" @click="createCharacter()">
+                    <div class="card-top"></div>
+                    <div class="card-profile">
+                        <div class="profile-image"></div>
+                    </div>
+                    <div class="card-info">
+                        <div class="info-title">
+                            <h2>Stwórz nową postać</h2>
+                            <h3>StrefaRP.pl</h3>
+                        </div>
+                    </div>
+                </div>
 
-        <div
-          class="character-card card"
-          v-for="character in filteredCharacterList"
-          :key="character.Id"
-          @click="chooseCharacter(character.Id)"
-        >
-          <div
-            class="card-top"
-            :style="{ backgroundImage: `url(${require(`@/assets/images/${character.BackgroundImage}`)})` }"
-          ></div>
-          <div class="card-profile">
-            <div
-              class="profile-image"
-              :style="{ backgroundImage: `url(${require(`@/assets/images/${character.ProfileImage}`)})` }"
-            ></div>
-          </div>
-          <div class="card-info">
-            <div class="info-title">
-              <h2>{{ getCharacterFullName(character) }}</h2>
-              <h3>Pieniądze: {{ character.Money }}$</h3>
+                <div
+                    class="character-card card"
+                    v-for="character in filteredCharacterList"
+                    :key="character.Id"
+                    @click="chooseCharacter(character.Id)"
+                >
+                    <div
+                        class="card-top"
+                        :style="{ backgroundImage: `url(${require(`@/assets/images/${character.BackgroundImage}`)})` }"
+                    ></div>
+                    <div class="card-profile">
+                        <div
+                            class="profile-image"
+                            :style="{ backgroundImage: `url(${require(`@/assets/images/${character.ProfileImage}`)})` }"
+                        ></div>
+                    </div>
+                    <div class="card-info">
+                        <div class="info-title">
+                            <h2>{{ getCharacterFullName(character) }}</h2>
+                            <h3>Pieniądze: {{ character.Money }}$</h3>
+                        </div>
+                        <div class="info-follow">
+                            <div>
+                                <span>{{ character.TimePlayed }}</span>
+                                <br />
+                                <span>Czas online</span>
+                            </div>
+                            <div>
+                                <span>{{ character.Id }}</span>
+                                <br />
+                                <span>Id</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="info-follow">
-              <div>
-                <span>{{ character.TimePlayed }}</span>
-                <br>
-                <span>Czas online</span>
-              </div>
-              <div>
-                <span>{{ character.Id }}</span>
-                <br>
-                <span>Id</span>
-              </div>
-            </div>
-          </div>
         </div>
-      </div>
     </div>
-  </div>
 </template>
 
 <script>

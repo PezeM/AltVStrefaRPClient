@@ -1,5 +1,5 @@
 <template>
-  <div id="emptyRoute" @click="onClick"></div>
+    <div id="emptyRoute" @click="onClick"></div>
 </template>
 
 <script>

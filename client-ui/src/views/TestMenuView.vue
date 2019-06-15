@@ -1,7 +1,7 @@
 <template>
-  <div class="testMenuView" @click="onClick">
-    <TestMenu></TestMenu>
-  </div>
+    <div class="testMenuView" @click="onClick">
+        <TestMenu></TestMenu>
+    </div>
 </template>
 
 <script>

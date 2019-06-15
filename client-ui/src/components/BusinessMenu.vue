@@ -125,7 +125,7 @@
                   @click="showEmployeeInfo(employee.Id)"
                   v-bind:key="employee.Id"
                 >
-                  <td>{{ index + 1}}</td>
+                  <td>{{ index + 1 }}</td>
                   <td>{{ employee.Id }}</td>
                   <td>{{ employee.Name }}</td>
                   <td>{{ employee.LastName }}</td>
@@ -309,7 +309,6 @@
   </div>
 </template>
 
-
 <script>
 import EventBus from '@/event-bus.js';
 import $ from 'jquery';
@@ -379,15 +378,9 @@ export default {
         DeleteBusinessModal,
     },
     mounted() {
-        EventBus.$on('populateEmployeeRanks', employeesRanks => {
-            this.populateEmployeeRanks(employeesRanks);
-        });
-        EventBus.$on('populateBusinessRanksInfo', permissionsInfo => {
-            this.populateBusinessRanksInfo(permissionsInfo);
-        });
-        EventBus.$on('successfullyUpdatedEmployeeRank', (employeeId, newRankId) => {
-            this.updateEmployeeRank(employeeId, newRankId);
-        });
+        EventBus.$on('populateEmployeeRanks', this.populateEmployeeRanks);
+        EventBus.$on('populateBusinessRanksInfo', this.populateBusinessRanksInfo);
+        EventBus.$on('successfullyUpdatedEmployeeRank', this.updateEmployeeRank);
     },
     methods: {
         closeBusinessMenu() {
@@ -644,6 +637,11 @@ export default {
             return this.employeesInfo.BusinessRanks;
         },
     },
+    beforeDestroy() {
+        EventBus.$off('populateEmployeeRanks', this.populateEmployeeRanks);
+        EventBus.$off('populateBusinessRanksInfo', this.populateBusinessRanksInfo);
+        EventBus.$off('successfullyUpdatedEmployeeRank', this.updateEmployeeRank);
+    },
 };
 
 alt.on('populateEmployeeRanks', employeesRanks => {
@@ -658,7 +656,6 @@ alt.on('successfullyUpdatedEmployeeRank', (employeeId, newRankId) => {
     EventBus.$emit('successfullyUpdatedEmployeeRank', employeeId, newRankId);
 });
 </script>
-
 
 <style scoped>
 .businessApp {

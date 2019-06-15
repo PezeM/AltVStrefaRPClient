@@ -1,29 +1,29 @@
 <template>
-  <modal name="delete-employee-modal" transition="pop-out" height="auto" @before-open="beforeOpen">
-    <div class="container">
-      <div class="modal-header">
-        <h5 class="modal-title" id="modalCenterTitle">Usuwanie pracowników</h5>
-      </div>
-      <div class="modal-body">
-        <div class="form-group row">
-          <label class="col-sm-4 col-form-label">Wybierz pracownika</label>
-          <div class="col-sm-8">
-            <vSelect
-              v-model="employeeToDelete"
-              label="FullName"
-              :options="allEmployees"
-              :clearable="false"
-              :filterable="true"
-            ></vSelect>
-          </div>
+    <modal name="delete-employee-modal" transition="pop-out" height="auto" @before-open="beforeOpen">
+        <div class="container">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalCenterTitle">Usuwanie pracowników</h5>
+            </div>
+            <div class="modal-body">
+                <div class="form-group row">
+                    <label class="col-sm-4 col-form-label">Wybierz pracownika</label>
+                    <div class="col-sm-8">
+                        <vSelect
+                            v-model="employeeToDelete"
+                            label="FullName"
+                            :options="allEmployees"
+                            :clearable="false"
+                            :filterable="true"
+                        ></vSelect>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" @click="closeDeleteEmployeeModal">Zamknij</button>
+                <button type="button" class="btn btn-danger" @click="deleteEmployee">Usuń pracownika</button>
+            </div>
         </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" @click="closeDeleteEmployeeModal">Zamknij</button>
-        <button type="button" class="btn btn-danger" @click="deleteEmployee">Usuń pracownika</button>
-      </div>
-    </div>
-  </modal>
+    </modal>
 </template>
 
 <script>
@@ -57,6 +57,4 @@ export default {
 };
 </script>
 
-
-<style>
-</style>
+<style></style>

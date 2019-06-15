@@ -1,5 +1,5 @@
 <template>
-  <div id="bankWindow" @mousedown="onMouseDown">
+  <div id="bankWindow">
     <Bank :characterData="bankData"></Bank>
   </div>
 </template>
@@ -15,12 +15,9 @@ export default {
     components: {
         Bank,
     },
-    methods: {
-        onMouseDown() {
-            console.log(`On mouse down inside BankView.vue`);
-        },
-    },
 };
+
+alt;
 </script>
 
 <style scoped>

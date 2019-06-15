@@ -21,7 +21,12 @@ menusManager.onServerEvent('openBankMenu', (bankAccountInformations) => {
     menusManager.openMenu('openBankMenuView', true, true, bankAccountInformations);
 });
 
+menusManager.onUiEvent('getTransferHistoryInfo', () => {
+    alt.emitServer('GetTransferHistoryInfo');
+});
+
 menusManager.onServerEvent('updateBankMoneyWithNotification', (notificationMessage, money) => {
+    alt.log('updateBankMoneyWithNotification');
     menusManager.emitUiEvent('updateBankMoney', money);
     mainUi.showCefNotification(1, "Aktualizacja", notificationMessage, 6000);
 });
@@ -51,33 +56,33 @@ menusManager.onUiEvent('showNotification', (type, title, message, time) => {
 });
 
 // Business menu
-menusManager.onServerEvent('openBusinessMenu', (businessInfo) => {
-    alt.log(`BusinessInfo type: ${typeof businessInfo} data: ${JSON.stringify(businessInfo)}`);
-    menusManager.openMenu('openBusinessMenu', true, true, businessInfo);
-});
+// menusManager.onServerEvent('openBusinessMenu', (businessInfo) => {
+//     alt.log(`BusinessInfo type: ${typeof businessInfo} data: ${JSON.stringify(businessInfo)}`);
+//     menusManager.openMenu('openBusinessMenu', true, true, businessInfo);
+// });
 
-menusManager.onServerEvent('populateEmployeeRanks', (employeesRanks) => {
-    alt.log(`Business employess info type: ${typeof employeesRanks} data: ${JSON.stringify(employeesRanks)}`);
-    if (menusManager.viewOpened)
-        menusManager.menusView.emit('populateEmployeeRanks', employeesRanks);
-});
+// menusManager.onServerEvent('populateEmployeeRanks', (employeesRanks) => {
+//     alt.log(`Business employess info type: ${typeof employeesRanks} data: ${JSON.stringify(employeesRanks)}`);
+//     if (menusManager.viewOpened)
+//         menusManager.menusView.emit('populateEmployeeRanks', employeesRanks);
+// });
 
-menusManager.onServerEvent('populateBusinessRanksInfo', (permissionsInfo) => {
-    alt.log(`Business permissions: ${typeof permissionsInfo} data: ${JSON.stringify(permissionsInfo)}`);
-    if (menusManager.viewOpened)
-        menusManager.menusView.emit('populateBusinessRanksInfo', permissionsInfo);
-});
+// menusManager.onServerEvent('populateBusinessRanksInfo', (permissionsInfo) => {
+//     alt.log(`Business permissions: ${typeof permissionsInfo} data: ${JSON.stringify(permissionsInfo)}`);
+//     if (menusManager.viewOpened)
+//         menusManager.menusView.emit('populateBusinessRanksInfo', permissionsInfo);
+// });
 
-menusManager.onServerEvent('successfullyUpdatedEmployeeRank', (employeeId, newRankId) => {
-    if (menusManager.viewOpened)
-        menusManager.menusView.emit('successfullyUpdatedEmployeeRank', employeeId, newRankId);
+// menusManager.onServerEvent('successfullyUpdatedEmployeeRank', (employeeId, newRankId) => {
+//     if (menusManager.viewOpened)
+//         menusManager.menusView.emit('successfullyUpdatedEmployeeRank', employeeId, newRankId);
 
-    mainUi.showCefNotification(1, "Zaktualizowano pracownika", "Pomyślnie zaktualizowano stanowiska pracownika.", 5000);
-});
+//     mainUi.showCefNotification(1, "Zaktualizowano pracownika", "Pomyślnie zaktualizowano stanowiska pracownika.", 5000);
+// });
 
-menusManager.onUiEvent('closeBusinessMenu', () => {
-    menusManager.closeMenu();
-});
+// menusManager.onUiEvent('closeBusinessMenu', () => {
+//     menusManager.closeMenu();
+// });
 
 // Vehicle shops
 menusManager.onServerEvent('openVehicleShop', (vehicleShopId, vehicleShopData) => {

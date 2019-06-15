@@ -1,18 +1,50 @@
 import * as alt from 'alt';
 import mainUi from 'src/Modules/Ui/mainUi.js';
+import menusManager from 'src/Modules/Ui/menusManager.js';
 
 export default class Business {
     constructor() {
         alt.log('Initialized business class');
-        mainUi.onUiEvent('getBusinessEmployees', this.getBusinessEmployees.bind(this));
-        mainUi.onUiEvent('updateEmployeeRank', this.updateEmployeeRank.bind(this));
-        mainUi.onUiEvent('addNewEmployee', this.addNewEmployee.bind(this));
-        mainUi.onUiEvent('getBusinessRolesInfo', this.getBusinessRolesInfo.bind(this));
-        mainUi.onUiEvent('updateBusinessRank', this.updateBusinessRank.bind(this));
-        mainUi.onUiEvent('addNewRole', this.addNewRole.bind(this));
-        mainUi.onUiEvent('deleteBusiness', this.deleteBusiness.bind(this));
-        mainUi.onUiEvent('deleteRole', this.deleteRole.bind(this));
-        mainUi.onUiEvent('deleteEmployee', this.deleteEmployee.bind(this));
+        alt.onServer('openBusinessMenu', this.openBusinessMenu);
+        alt.onServer('populateEmployeeRanks', this.populateEmployeeRanks);
+        alt.onServer('populateBusinessRanksInfo', this.populateBusinessRanksInfo);
+        alt.onServer('successfullyUpdatedEmployeeRank', this.successfullyUpdatedEmployeeRank);
+        alt.onServer('closeBusinessMenu', this.closeBusinessMenu);
+
+        menusManager.onUiEvent('getBusinessEmployees', this.getBusinessEmployees.bind(this));
+        menusManager.onUiEvent('updateEmployeeRank', this.updateEmployeeRank.bind(this));
+        menusManager.onUiEvent('addNewEmployee', this.addNewEmployee.bind(this));
+        menusManager.onUiEvent('getBusinessRolesInfo', this.getBusinessRolesInfo.bind(this));
+        menusManager.onUiEvent('updateBusinessRank', this.updateBusinessRank.bind(this));
+        menusManager.onUiEvent('addNewRole', this.addNewRole.bind(this));
+        menusManager.onUiEvent('deleteBusiness', this.deleteBusiness.bind(this));
+        menusManager.onUiEvent('deleteRole', this.deleteRole.bind(this));
+        menusManager.onUiEvent('deleteEmployee', this.deleteEmployee.bind(this));
+    }
+
+    openBusinessMenu(businessInfo) {
+        menusManager.openMenu('openBusinessMenu', true, true, businessInfo);
+    }
+
+    populateEmployeeRanks(employeesRanks) {
+        if (menusManager.viewOpened)
+            menusManager.menusView.emit('populateEmployeeRanks', employeesRanks);
+    }
+
+    populateBusinessRanksInfo(permissionsInfo) {
+        if (menusManager.viewOpened)
+            menusManager.menusView.emit('populateBusinessRanksInfo', permissionsInfo);
+    }
+
+    successfullyUpdatedEmployeeRank(employeeId, newRankId) {
+        if (menusManager.viewOpened)
+            menusManager.menusView.emit('successfullyUpdatedEmployeeRank', employeeId, newRankId);
+
+        mainUi.showCefNotification(1, "Zaktualizowano pracownika", "Pomyślnie zaktualizowano stanowiska pracownika.", 5000);
+    }
+
+    closeBusinessMenu() {
+        menusManager.closeMenu();
     }
 
     getBusinessEmployees(businessId) {

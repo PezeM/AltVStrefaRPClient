@@ -1,5 +1,5 @@
 <template>
-  <div class="bankApp" @click="onClick">
+  <div class="bankApp">
     <div class="bankWindow" @mousedown="mouseDown" @mouseup="mouseUp">
       <header class="bankWindow-header">
         <div class="main-title">
@@ -281,12 +281,14 @@ export default {
         },
     },
     mounted() {
-        EventBus.$on('updateBankMoney', money => {
-            this.changeBankMoney(money);
-        });
-        EventBus.$on('openTransactionHistory', transactionHistory => {
-            this.populateTransactionHistory(transactionHistory);
-        });
+        EventBus.$on('updateBankMoney', this.changeBankMoney);
+        EventBus.$on('openTransactionHistory', this.populateTransactionHistory);
+        // EventBus.$on('updateBankMoney', money => {
+        //     this.changeBankMoney(money);
+        // });
+        // EventBus.$on('openTransactionHistory', transactionHistory => {
+        //     this.populateTransactionHistory(transactionHistory);
+        // });
     },
     data() {
         return {
@@ -337,9 +339,6 @@ export default {
         };
     },
     methods: {
-        onClick() {
-            console.log('On mouse click inside Bank.vue');
-        },
         applyChartData() {
             this.generateChartData();
             console.log('Transactions: ' + JSON.stringify(this.transactionChartData));
@@ -386,7 +385,6 @@ export default {
             try {
                 this.characterData = JSON.parse(characterJson);
                 console.log('Current character data = ' + JSON.stringify(this.characterData));
-                // this.currentMenuShown = 'mainScreen';
             } catch (error) {
                 console.log(error);
                 this.closeBankMenu();
@@ -408,8 +406,8 @@ export default {
             }, {});
         },
         changeBankMoney(amount) {
-            console.log('Updated bank money to: ' + amount);
             this.characterData.Money = amount;
+            console.log('New money = ' + this.characterData.Money);
         },
         getCurrentDate() {
             var today = new Date();
@@ -571,30 +569,22 @@ export default {
     },
     computed: {
         computedTransactionList() {
-            let transactionHistory = [];
+            let computedTransactionHistory = [];
             this.transactionHistory.forEach(transaction => {
                 var newObject = {};
                 newObject.Date = transaction.TransactionDate;
                 newObject.Amount = transaction.Amount;
                 newObject.Text = this.getTransactionText(transaction, newObject);
-                transactionHistory.push(newObject);
+                computedTransactionHistory.push(newObject);
             });
-            return transactionHistory.reverse();
+            return computedTransactionHistory.reverse();
         },
     },
+    beforeDestroy() {
+        EventBus.$off('updateBankMoney', this.changeBankMoney);
+        EventBus.$off('openTransactionHistory', this.populateTransactionHistory);
+    },
 };
-
-if (!global.alt) {
-    global.alt = {
-        uiDebug: true,
-        on(ev, cb) {
-            console.log('Alt on', ev, cb);
-        },
-        emit(ev, ...args) {
-            console.log('Event triggered', ev, args);
-        },
-    };
-}
 
 alt.on('updateBankMoney', money => {
     EventBus.$emit('updateBankMoney', money);
@@ -812,6 +802,7 @@ input[type='checkbox']:checked + .section ~ .intro-logo {
     width: 27rem;
     margin: 1rem auto;
     color: rgba(255, 255, 255, 0.5);
+    font-family: 'Roboto', sans-serif;
 }
 
 .section-title {

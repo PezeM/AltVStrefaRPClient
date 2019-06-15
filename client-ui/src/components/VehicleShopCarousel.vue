@@ -9,7 +9,7 @@
             @click="changeVehicleClasses(vehicleClass.classNumber)"
             type="button"
             class="list-group-item list-group-item-action"
-            v-bind:class="{ active:vehicleClass.classNumber == currentVehicleClassNumber }"
+            v-bind:class="{ active: vehicleClass.classNumber == currentVehicleClassNumber }"
           >{{ vehicleClass.className }}</button>
         </div>
       </div>
@@ -60,7 +60,7 @@
                     <div
                       class="progress-bar"
                       role="progressbar"
-                      :style="{width: vehicle.maxAcceleration + '%'}"
+                      :style="{ width: vehicle.maxAcceleration + '%' }"
                       :aria-valuenow="vehicle.maxAcceleration"
                       aria-valuemin="0"
                       aria-valuemax="100"
@@ -78,7 +78,7 @@
                     <div
                       class="progress-bar"
                       role="progressbar"
-                      :style="{width: vehicle.maxBraking + '%'}"
+                      :style="{ width: vehicle.maxBraking + '%' }"
                       :aria-valuenow="vehicle.maxBraking"
                       aria-valuemin="0"
                       aria-valuemax="100"
@@ -96,7 +96,7 @@
                     <div
                       class="progress-bar"
                       role="progressbar"
-                      :style="{width: vehicle.maxTraction + '%'}"
+                      :style="{ width: vehicle.maxTraction + '%' }"
                       :aria-valuenow="vehicle.maxTraction"
                       aria-valuemin="0"
                       aria-valuemax="100"
@@ -111,7 +111,6 @@
     </carousel-3d>
   </div>
 </template>
-
 
 <script>
 import { Carousel3d, Slide } from 'vue-carousel-3d';
@@ -291,9 +290,7 @@ export default {
         this.$nextTick(() => {
             this.generateVehicleClasses();
         });
-        EventBus.$on('buyVehicle', () => {
-            this.buyVehicle();
-        });
+        EventBus.$on('buyVehicle', this.buyVehicle);
     },
     methods: {
         onBeforeSlideChange(index) {
@@ -346,6 +343,9 @@ export default {
             return this.currentVehicles.length;
         },
     },
+    beforeDestroy() {
+        EventBus.$off('buyVehicle', this.buyVehicle);
+    },
 };
 </script>
 
@@ -380,4 +380,3 @@ p {
     border-radius: 8px !important;
 }
 </style>
-

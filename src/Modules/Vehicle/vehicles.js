@@ -12,8 +12,7 @@ let openedHoods = [];
 
 alt.onServer('putIntoVehicle', () => {
     alt.setTimeout(() => {
-        var coords = game.getEntityCoords(localPlayer.scriptID, true);
-        var vehicle = game.getClosestVehicle(coords.x, coords.y, coords.z, 80, 0, 71);
+        var vehicle = game.getClosestVehicle(localPlayer.pos.x, localPlayer.pos.y, localPlayer.pos.z, 80, 0, 71);
         alt.log('Closest vehicle is ' + vehicle);
         game.setPedIntoVehicle(localPlayer.scriptID, vehicle, -1);
     }, 250);

@@ -148,7 +148,8 @@ class VehicleShop {
             return;
         }
 
-        alt.emitServer('BuyVehicle', vehicleShop.id, Number(vehicleModel));
+        alt.log(`Buying vehicle in shop ${vehicleShop.id} and model ${vehicleModel} as number ${Number(vehicleModel)}`);
+        alt.emitServer('BuyVehicle', vehicleShop.id, vehicleModel);
     }
 
     exitVehicleShop() {

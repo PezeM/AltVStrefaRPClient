@@ -16,7 +16,11 @@
         </div>
         <div class="col-9">
           <div class="row">
-            <town-hall-navbar></town-hall-navbar>
+            <town-hall-navbar
+              v-bind:searchQueries="searchQueries"
+              v-on:close-menu="closeMenu"
+              v-on:search-result="onNavbarSearch"
+            ></town-hall-navbar>
           </div>
           <div class="row">Tutaj bedzie stronka</div>
         </div>
@@ -30,8 +34,36 @@ import TownHallNavbar from '@/components/Fractions/TownHallNavbar.vue';
 
 export default {
     name: 'townHallView',
+    data() {
+        return {
+            searchQueries: [
+                { id: 1, displayName: 'Pracownicy', action: 'employeesPage', description: 'Przejdź do strony z pracownikami' },
+                { id: 2, displayName: 'Role', action: 'rolesPage', description: 'Przejdź do strony z rolami' },
+                { id: 3, displayName: 'Wyjdź', action: 'closeMenu', description: 'Wyjdź z menu' },
+            ],
+        };
+    },
     components: {
         TownHallNavbar,
+    },
+    methods: {
+        onNavbarSearch(action) {
+            console.log(`Action = ` + action);
+            switch (action) {
+                case 'employeesPage':
+                    alt.emit('tryToOpenFractionEmployeesPage');
+                    break;
+                case 'rolesPage':
+                    alt.emit('tryToOpenFractionRolesPage');
+                    break;
+                case 'closeMenu':
+                    this.closeMenu();
+                    break;
+            }
+        },
+        closeMenu() {
+            alt.emit('closeFractionMenu');
+        },
     },
 };
 </script>

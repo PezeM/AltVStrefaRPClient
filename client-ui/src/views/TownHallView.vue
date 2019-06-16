@@ -4,13 +4,25 @@
       <div class="row h-100">
         <div class="col-3 side-menu">
           <div class="row">
-            <div class="col">
+            <div class="col p-0">
               <div class="name-header">
                 <h2 class="name-text">Urząd Miasta</h2>
               </div>
               <div class="logo-container">
                 <img src="@/assets/images/townHallLogo.png" class="town-hall-logo">
               </div>
+              <ul class="side-menu-list">
+                <li
+                  v-for="item in sideMenuItems"
+                  :key="item.page"
+                  :class="{ active: item.page == currentMenuName}"
+                >
+                  <div class="menu-item" @click="sideMenuPage(item)">
+                    <v-icon :name="item.icon"/>
+                    <span>{{ item.page }}</span>
+                  </div>
+                </li>
+              </ul>
             </div>
           </div>
         </div>
@@ -30,31 +42,81 @@
 </template>
 
 <script>
+import 'vue-awesome/icons/home';
+import 'vue-awesome/icons/times';
+import 'vue-awesome/icons/dollar-sign';
+import 'vue-awesome/icons/users';
+import 'vue-awesome/icons/university';
+import 'vue-awesome/icons/user-tag';
+import 'vue-awesome/icons/money-bill-wave';
+import Icon from 'vue-awesome/components/Icon';
 import TownHallNavbar from '@/components/Fractions/TownHallNavbar.vue';
 
 export default {
     name: 'townHallView',
+    components: {
+        TownHallNavbar,
+        'v-icon': Icon,
+    },
+    props: {
+        fractionData: {
+            type: Object,
+            default: function() {
+                return {
+                    id: 2,
+                };
+            },
+        },
+    },
     data() {
         return {
             searchQueries: [
                 { id: 1, displayName: 'Pracownicy', action: 'employeesPage', description: 'Przejdź do strony z pracownikami' },
                 { id: 2, displayName: 'Role', action: 'rolesPage', description: 'Przejdź do strony z rolami' },
                 { id: 3, displayName: 'Wyjdź', action: 'closeMenu', description: 'Wyjdź z menu' },
+                { id: 4, displayName: 'Podatki', action: 'taxesPage', description: 'Przejdź do strony z podatkami' },
+                { id: 5, displayName: 'Finanse', action: 'financesPage', description: 'Przejdź do strony z finansami' },
+                { id: 6, displayName: 'Glówna', action: 'mainPage', description: 'Przejdź do strony głównej' },
+                { id: 7, displayName: 'Rejestracja', action: 'registrationPage', description: 'Przejdź do strony rejestracji' },
             ],
+            sideMenuItems: [
+                { icon: 'home', page: 'Strona główna', action: 'mainPage' },
+                { icon: 'university', page: 'Rejestracja', action: 'registrationPage' },
+                { icon: 'users', page: 'Pracownicy', action: 'employeesPage' },
+                { icon: 'user-tag', page: 'Role', action: 'rolesPage' },
+                { icon: 'money-bill-wave', page: 'Podatki', action: 'taxesPage' },
+                { icon: 'dollar-sign', page: 'Finanse', action: 'financesPage' },
+                { icon: 'times', page: 'Wyjdź', action: 'closeMenu' },
+            ],
+            currentMenuName: 'Strona główna',
         };
-    },
-    components: {
-        TownHallNavbar,
     },
     methods: {
         onNavbarSearch(action) {
             console.log(`Action = ` + action);
+            this.changePage(action);
+        },
+        sideMenuPage(newPage) {
+            this.changePage(newPage.action);
+        },
+        changePage(action) {
             switch (action) {
+                case 'mainPage':
+                    break;
+                case 'registrationPage':
+                    alt.emit('tryToOpenFractionRegistrationPage', this.fractionData.id);
+                    break;
                 case 'employeesPage':
-                    alt.emit('tryToOpenFractionEmployeesPage');
+                    alt.emit('tryToOpenFractionEmployeesPage', this.fractionData.id);
                     break;
                 case 'rolesPage':
-                    alt.emit('tryToOpenFractionRolesPage');
+                    alt.emit('tryToOpenFractionRolesPage', this.fractionData.id);
+                    break;
+                case 'taxesPage':
+                    alt.emit('tryToOpenFractionTaxesPage', this.fractionData.id);
+                    break;
+                case 'financesPage':
+                    alt.emit('tryToOpenFractionFinancesPage', this.fractionData.id);
                     break;
                 case 'closeMenu':
                     this.closeMenu();
@@ -112,5 +174,63 @@ export default {
 .logo-container .town-hall-logo {
     width: 9em;
     height: 8em;
+}
+
+.side-menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.side-menu ul li {
+    display: block;
+}
+
+.side-menu .menu-item {
+    text-decoration: none;
+    letter-spacing: 0.03em;
+    color: #8e8e8e;
+    display: block;
+    padding: 15px 25px;
+    font-size: 0.8em;
+}
+
+.side-menu .menu-item span {
+    margin-left: 12px;
+}
+
+.side-menu .menu-item:hover {
+    cursor: pointer;
+    color: #fff;
+    background: linear-gradient(
+        to right,
+        rgba(239, 160, 50, 0.51) 0%,
+        rgba(212, 166, 94, 0) 24%,
+        rgba(191, 171, 127, 0) 42%,
+        rgba(125, 185, 232, 0) 100%
+    );
+}
+
+.side-menu-list .active {
+    background: linear-gradient(
+        to right,
+        rgba(239, 160, 50, 0.51) 0%,
+        rgba(212, 166, 94, 0) 24%,
+        rgba(191, 171, 127, 0) 42%,
+        rgba(125, 185, 232, 0) 100%
+    );
+}
+
+.side-menu-list .active span {
+    color: #fff;
+    font-weight: 500;
+}
+
+.side-menu-list .active .fa-icon {
+    background: linear-gradient(to right, rgba(254, 163, 82, 1) 0%, rgba(255, 99, 124, 1) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 100;
+    color: white;
 }
 </style>

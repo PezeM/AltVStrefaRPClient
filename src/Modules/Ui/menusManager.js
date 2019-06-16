@@ -42,7 +42,7 @@ class MenusManager {
         } else if (hideUi) {
             showUi(false);
         } else if (freezePlayer) {
-            game.freezeEntityPosition(alt.getLocalPlayer().scriptID, true);
+            game.freezeEntityPosition(game.playerPedId(), true);
         }
 
         // var localPlayer = alt.getLocalPlayer().scriptID;
@@ -77,7 +77,7 @@ class MenusManager {
         } else if (showUi) {
             showUi(showUi)
         } else if (unFreezePlayer) {
-            game.freezeEntityPosition(alt.getLocalPlayer().scriptID, true);
+            game.freezeEntityPosition(game.playerPedId(), true);
         }
 
         // alt.setTimeout(() => {

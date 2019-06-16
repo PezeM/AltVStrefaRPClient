@@ -30,7 +30,9 @@
         </div>
       </div>
       <div class="col-1">
-        <button type="button" class="btn btn-danger close-button" @click="closeMenu">X</button>
+        <button type="button" class="btn btn-danger close-button" @click="closeMenu">
+          <v-icon name="times"/>
+        </button>
       </div>
     </div>
   </div>
@@ -39,6 +41,7 @@
 
 <script>
 import 'vue-awesome/icons/search';
+import 'vue-awesome/icons/times';
 import VueBootstrapTypeahead from 'vue-bootstrap-typeahead';
 import Icon from 'vue-awesome/components/Icon';
 

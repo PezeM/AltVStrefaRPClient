@@ -34,7 +34,9 @@
               v-on:search-result="onNavbarSearch"
             ></town-hall-navbar>
           </div>
-          <div class="row">Tutaj bedzie stronka</div>
+          <div class="row no-gutters fraction-town-hall-content">
+            <router-view :data="fractionData"></router-view>
+          </div>
         </div>
       </div>
     </div>
@@ -64,6 +66,14 @@ export default {
             default: function() {
                 return {
                     id: 2,
+                    money: 10000.32,
+                    employeesCount: 4,
+                    taxes: {
+                        vehicleTax: 0.3,
+                        propertyTax: 0.25,
+                        gunTax: 0.18,
+                        globalTax: 0.1,
+                    },
                 };
             },
         },
@@ -151,6 +161,12 @@ export default {
     box-shadow: 0 0 15px 8px rgba(0, 0, 0, 0.1);
 }
 
+.fraction-town-hall-content {
+    /* padding: 16px; */
+    margin: 16px;
+    height: 100%;
+}
+
 .town-hall-view .side-menu {
     height: 100%;
     background-color: #191f28;
@@ -191,7 +207,7 @@ export default {
     letter-spacing: 0.03em;
     color: #8e8e8e;
     display: block;
-    padding: 15px 25px;
+    padding: 18px 25px;
     font-size: 0.8em;
 }
 

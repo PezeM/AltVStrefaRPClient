@@ -38,7 +38,7 @@ class Bank {
 
     initializePeds() {
         pedPositions.forEach(bankPed => {
-            var ped = game.createPed(26, this.pedHash, bankPed.x, bankPed.y, bankPed.z, bankPed.rot, false, true);
+            let ped = game.createPed(26, this.pedHash, bankPed.x, bankPed.y, bankPed.z, bankPed.rot, false, true);
             game.freezeEntityPosition(ped, true);
             game.setEntityInvincible(ped, true);
             game.setBlockingOfNonTemporaryEvents(ped, true);

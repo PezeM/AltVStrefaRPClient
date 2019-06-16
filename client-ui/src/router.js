@@ -68,9 +68,22 @@ export default new Router({
         },
         {
             path: '/townHallMenu',
-            name: 'townHallMenu',
-            component: () => import('./views/TownHallView.vue'),
+            component: () => import('./views/Fractions/TownHall/TownHallView.vue'),
             props: true,
+            children: [
+                {
+                    path: '',
+                    name: 'townHallMainPage',
+                    component: () => import('./views/Fractions/TownHall/MainPage.vue'),
+                    props: true,
+                },
+                {
+                    path: 'employeesPage',
+                    name: 'townHallEmployeesPage',
+                    component: () => import('./views/Fractions/TownHall/EmployeesPage.vue'),
+                    props: true,
+                },
+            ],
         },
         {
             path: '/empty',

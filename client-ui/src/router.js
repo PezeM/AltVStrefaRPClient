@@ -69,7 +69,7 @@ export default new Router({
         {
             path: '/townHallMenu',
             name: 'townHallMenu',
-            component: () => import('./views/Empty.vue'),
+            component: () => import('./views/TownHallView.vue'),
             props: true,
         },
         {

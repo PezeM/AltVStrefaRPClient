@@ -1,10 +1,13 @@
-﻿/// <reference path="altv.d.ts" />
+﻿/// <reference path="natives.d.ts" />
 /// <reference path="alt.d.ts" />
 
-import alt from 'alt';
-import game from 'natives';
+import * as alt from 'alt';
+import * as game from 'natives';
 import chat from 'chat';
-import * as ui from 'src/ui.mjs';
+import menusManager from 'src/Modules/Ui/menusManager.js';
+import mainUi from 'src/Modules/Ui/mainUi.js';
+import * as gameState from 'src/gameState.js';
+import * as ui from 'src/ui.js';
 import * as menus from 'src/menus.mjs';
 import * as loginModule from 'src/Login/login.js';
 import * as noclipModule from 'src/Admin/noclip.js';
@@ -12,10 +15,9 @@ import * as adminTeleports from 'src/Admin/adminTeleports.js';
 import * as animationBrowser from 'src/Admin/animationBrowser.js';
 import * as sitting from 'src/Environment/sitting.js';
 import * as vehicles from 'src/Modules/Vehicle/vehicles.js';
-// import * as vehicleShops from 'src/Modules/Vehicle/vehicleShops.js';
 import * as objectSync from 'src/Modules/objectSync.js';
+import * as nicknames from 'src/Modules/Ui/nicknames.js';
 import { drawText, draw3DText } from 'src/Helpers/uiHelper.js';
-import menusManager from 'src/Modules/Ui/menusManager.js';
 
 let localPlayer = alt.getLocalPlayer();
 let frame = 0, fps = 0, showFps = true, timeStart = Date.now();
@@ -85,7 +87,7 @@ alt.on('update', () => {
 });
 
 alt.on('keydown', (key) => {
-	if (chat.isOpen() || menusManager.viewOpened) return;
+	if (chat.isOpen() || menusManager.viewOpened || gameState.getGameState() == 'loading') return;
 
 	switch (key) {
 		case controlsIds.E:
@@ -119,6 +121,8 @@ alt.on('consoleCommand', (command, ...args) => {
 		test3DView();
 	} else if (command == 'strefa') {
 		testStrefa();
+	} else if (command == 'testNumber') {
+		alt.emitServer('testNumber', 3253274834);
 	}
 })
 
@@ -260,6 +264,10 @@ function testStrefa() {
 		});
 	}
 }
+
+alt.onServer('testVehicleList', vehicles => {
+	alt.log(vehicles);
+});
 
 alt.on('playerConnect', () => {
 	game.requestAnimDict("mp_facial");
@@ -409,3 +417,5 @@ game.requestIpl("bkr_biker_interior_placement_interior_6_biker_dlc_int_ware05_mi
 game.requestIpl("ex_exec_warehouse_placement_interior_1_int_warehouse_s_dlc_milo");
 game.requestIpl("ex_exec_warehouse_placement_interior_0_int_warehouse_m_dlc_milo");
 game.requestIpl("ex_exec_warehouse_placement_interior_2_int_warehouse_l_dlc_milo");
+
+

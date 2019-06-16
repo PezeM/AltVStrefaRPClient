@@ -1,5 +1,5 @@
-import alt from 'alt';
-import game from 'natives'
+import * as alt from 'alt';
+import * as game from 'natives';
 import { drawText } from 'src/Helpers/uiHelper.js';
 
 class CameraRotator {
@@ -114,10 +114,13 @@ class CameraRotator {
     }
 }
 
+const cameraRotator = new CameraRotator();
+export default cameraRotator;
+
 alt.on('update', () => {
-    if (!cameraRotator.isActive || cameraRotator.isPause) {
+    if (!cameraRotator.isActive || cameraRotator.isPause)
         return;
-    }
+
     const x = game.getDisabledControlNormal(2, 239);
     const y = game.getDisabledControlNormal(2, 240);
 
@@ -149,5 +152,4 @@ function drawDebugText() {
     drawText(message, [0.5, 0.005], 4, [255, 255, 255, 185], 0.8, true, true);
 }
 
-const cameraRotator = new CameraRotator();
-export default cameraRotator;
+

@@ -1,10 +1,10 @@
-/// <reference path="../../altv.d.ts" />
+/// <reference path="../../natives.d.ts" />
 /// <reference path="../../alt.d.ts" />
 
-import alt from 'alt';
-import game from 'natives';
+import * as alt from 'alt';
+import * as game from 'natives';
 import { drawText, showNotification } from 'src/Helpers/uiHelper.js';
-import { rotToDirection } from 'src/Helpers/mathHelper.js';
+import Maths from 'src/Helpers/maths.js';
 import chat from 'chat';
 import menusManager from 'src/Modules/Ui/menusManager.js';
 
@@ -55,13 +55,14 @@ function landSafeOnTheGround() {
 
 alt.on('update', () => {
     if (fly.flying) {
-        direction = rotToDirection(game.getGameplayCamRot(2));
+        direction = Maths.rotToDirection(game.getGameplayCamRot(2));
         let positionUpdated = false;
         const currentSpeed = fly.speeds[fly.currentSpeedIndex];
         const position = game.getEntityCoords(localPlayer.scriptID, true);
-        const rotation = game.getEntityRotation(localPlayer.scriptID, 2);
+        // const rotation = game.getEntityRotation(localPlayer.scriptID, 2); // X Y Z 
 
-        drawText(`Player position: X: ${position.x} Y: ${position.y} Z: ${position.z} R: ${rotation}`, [0.5, 0.01], 0, [200, 200, 200, 225], 0.35);
+        drawText(`Player position: X: ${position.x.toFixed(5)} Y: ${position.y.toFixed(5)} Z: ${position.z.toFixed(5)}`,
+            [0.5, 0.01], 0, [200, 200, 200, 225], 0.35);
         drawText(`Speed: ${currentSpeed}`, [0.5, 0.04], 0, [200, 200, 200, 225], 0.35);
 
         if (game.isControlJustReleased(0, controlsIds.Shift) && (new Date().getTime() - lastChecked > 100)) {

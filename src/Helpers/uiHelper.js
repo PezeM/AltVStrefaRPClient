@@ -1,14 +1,14 @@
-/// <reference path="../../altv.d.ts" />
+/// <reference path="../../natives.d.ts" />
 /// <reference path="../../alt.d.ts" />
 
-import alt from 'alt';
-import game from 'natives';
+import * as alt from 'alt';
+import * as game from 'natives';
 let localPlayer = alt.getLocalPlayer();
 
-export function showUi(toogle) {
-    alt.toggleGameControls(toogle);
-    game.displayHud(toogle);
-    game.displayRadar(toogle);
+export function showUi(toggle) {
+    alt.toggleGameControls(toggle);
+    game.displayHud(toggle);
+    game.displayRadar(toggle);
 }
 
 export function showUiAndFreezePlayer(toggle) {

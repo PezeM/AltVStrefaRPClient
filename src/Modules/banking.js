@@ -1,5 +1,5 @@
-import game from 'natives';
-import alt from 'alt';
+import * as game from 'natives';
+import * as alt from 'alt';
 import mainUi from 'src/Modules/Ui/mainUi.js';
 
 const pedPositions = [
@@ -24,17 +24,52 @@ class Bank {
         this.pedHash = 3272005365;
         alt.loadModel(this.pedHash);
         this.initializePeds();
+
+        alt.onServer('openBankMenu', this.openBankMenu);
+        alt.onServer('updateBankMoneyWithNotification', this.updateBankMoneyWithNotification);
+        alt.onServer('openTransactionHistory', this.openTransactionHistory);
+
+        menusManager.onUiEvent('getTransferHistoryInfo', this.getTransferHistoryInfo.bind(this));
+        menusManager.onUiEvent('tryTransferMoney', this.transferMoney.bind(this));
+        menusManager.onUiEvent('withdrawMoney', this.withdrawMoney.bind(this));
+        menusManager.onUiEvent('depositMoney', this.depositMoney.bind(this));
+        menusManager.onUiEvent('closeBankMenu', this.closeBankMenu.bind(this));
     }
+
     initializePeds() {
         pedPositions.forEach(bankPed => {
             var ped = game.createPed(26, this.pedHash, bankPed.x, bankPed.y, bankPed.z, bankPed.rot, false, true);
             game.freezeEntityPosition(ped, true);
-            game.setEntityCanBeDamaged(ped, false);
-            game.setPedCanRagdoll(ped, false);
+            game.setEntityInvincible(ped, true);
+            game.setBlockingOfNonTemporaryEvents(ped, true);
             this.pedList.push(ped);
         });
         alt.log(`Created ${this.pedList.length} bank peds.`);
     }
+
+    openBankMenu(bankAccountInformations) {
+        alt.log(`BankAccountInformation type: ${typeof bankAccountInformations} : ${JSON.stringify(bankAccountInformations)}`);
+        if (bankAccountInformations == null) {
+            alt.log('openBankMenu -> BankAccountInformation was null');
+            return;
+        }
+
+        menusManager.openMenu('openBankMenuView', true, true, bankAccountInformations);
+    }
+
+    updateBankMoneyWithNotification(notificationMessage, money) {
+        menusManager.emitUiEvent('updateBankMoney', money);
+        mainUi.showCefNotification(1, "Aktualizacja", notificationMessage, 6000);
+    }
+
+    openTransactionHistory(transactionHistory) {
+        menusManager.emitUiEvent('openTransactionHistory', transactionHistory);
+    }
+
+    getTransferHistoryInfo() {
+        alt.emitServer('GetTransferHistoryInfo');
+    }
+
     withdrawMoney(amount) {
         if (typeof amount !== 'number') {
             mainUi.showCefNotification(3, "Błąd", 'Podano błędną ilość pieniędzy do wypłacenia.', 5000);
@@ -42,6 +77,7 @@ class Bank {
         }
         alt.emitServer('WithdrawMoneyFromBank', amount);
     }
+
     depositMoney(amount) {
         if (typeof amount !== 'number') {
             mainUi.showCefNotification(3, "Błąd", 'Podano błędną ilość pieniędzy do wpłaty.', 5000);
@@ -49,6 +85,7 @@ class Bank {
         }
         alt.emitServer('DepositMoneyToBank', amount);
     }
+
     transferMoney(amount, receiver) {
         if (amount <= 0 || typeof receiver === 'undefined' || receiver == null) {
             mainUi.showCefNotification(3, "Błąd", 'Podano błędne dane do transferu pieniędzy.', 4000);
@@ -56,8 +93,12 @@ class Bank {
         }
         alt.emitServer('TransferMoneyFromBankToBank', amount, receiver);
     }
+
+    closeBankMenu() {
+        menusManager.closeMenu();
+    }
 }
 
 
-let Banking = new Bank();
-export default Banking;
+let banking = new Bank();
+export default banking;

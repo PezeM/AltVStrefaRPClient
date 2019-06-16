@@ -1,12 +1,11 @@
-/// <reference path="../../../altv.d.ts" />
 /// <reference path="../../../alt.d.ts" />
-import alt from 'alt';
+import * as alt from 'alt';
 
-class _MainUi {
+class MainUi {
     constructor() {
         alt.log('Initialized MainUi Class');
         this.uiFocused = false;
-        this.uiView = new alt.WebView('http://resources/AltVStrefaRPClient/html/ui.html');
+        this.uiView = new alt.WebView('http://resources/AltVStrefaRPClient/mainUi/ui.html');
     }
 
     onServerEvent(eventName, callback) {
@@ -31,7 +30,7 @@ class _MainUi {
                 this.uiView.emit('showNotification', type, title, message, duration, icon);
             }
         } catch (error) {
-            alt.log('_MainUi -> showCefNotification -> ' + error);
+            alt.log('MainUi -> showCefNotification -> ' + error);
         }
     }
 
@@ -43,7 +42,7 @@ class _MainUi {
                 this.uiView.emit('showConfirmModal', title, message, confirmCallback, cancelCallback, args);
             }
         } catch (error) {
-            alt.log('_MainUi -> showConfirmModal -> ' + error);
+            alt.log('MainUi -> showConfirmModal -> ' + error);
         }
     }
 
@@ -53,5 +52,5 @@ class _MainUi {
 }
 
 
-let MainUi = new _MainUi();
-export default MainUi;
+const mainUi = new MainUi();
+export default mainUi;

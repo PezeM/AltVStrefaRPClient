@@ -1,22 +1,21 @@
-/// <reference path="../../../altv.d.ts" />
+/// <reference path="../../../natives.d.ts" />
 /// <reference path="../../../alt.d.ts" />
-import alt from 'alt';
-import game from 'natives';
+
+import * as alt from 'alt';
+import * as game from 'natives';
 import Animations from 'src/Modules/animations.js';
 let animations = new Animations();
 import { showUiAndFreezePlayer, showUi } from 'src/Helpers/uiHelper.js';
 
-class _MenusManager {
+class MenusManager {
     constructor() {
         alt.log('Initialized MenusView Class');
         this.tablet = null;
         this.tabletView = null;
         this.viewOpened = false;
-        this.menusView = new alt.WebView('http://resources/AltVStrefaRPClient/html/menus.html');
-    }
+        this.viewLoaded = false;
 
-    onServerEvent(eventName, callback) {
-        alt.onServer(eventName, callback);
+        this.menusView = new alt.WebView('http://resources/AltVStrefaRPClient/client-ui/dist/index.html#');
     }
 
     onClientEvent(eventName, callback) {
@@ -28,11 +27,13 @@ class _MenusManager {
     }
 
     emitUiEvent(eventName, ...args) {
-        this.menusView.emit(eventName, ...args);
+        if (this.viewLoaded)
+            this.menusView.emit(eventName, ...args);
     }
 
     focusView() {
-        this.menusView.focus();
+        if (this.viewOpened)
+            this.menusView.focus();
     }
 
     openMenu(name, hideUi, freezePlayer, ...args) {
@@ -52,13 +53,13 @@ class _MenusManager {
         //     0.035, 0.015, 0.012, 0.0, 0, 0, true, true, false, true, 1, true);
 
         this.menusView.emit(name, ...args);
-        this.menusView.focus();
         this.viewOpened = true;
         alt.showCursor(true);
+        this.menusView.focus();
 
         // let inter = alt.setInterval(() => {
         //     if (alt.isTextureExistInArchetype(game.getHashKey('xm_prop_x17_sec_panel_01'), 'script_rt_prop_x17_p_01')) {
-        //         this.tabletView = new alt.WebView("http://resources/AltVStrefaRPClient/html/menus.html", game.getHashKey('xm_prop_x17_sec_panel_01'), 'script_rt_prop_x17_p_01');
+        //         this.tabletView = new alt.WebView("http://resources/AltVStrefaRPClient/mainUi/menus.html", game.getHashKey('xm_prop_x17_sec_panel_01'), 'script_rt_prop_x17_p_01');
         //         this.tabletView.emit(name, ...args);
         //         alt.clearInterval(inter);
         //         return;
@@ -70,7 +71,7 @@ class _MenusManager {
         // });
     }
 
-    closeMenu(showUi = true, unFreezePlayer = true, hideCursor = true) {
+    closeMenu(showUi = true, unFreezePlayer = true, showCursor = false) {
         if (showUi && unFreezePlayer) {
             showUiAndFreezePlayer(showUi);
         } else if (showUi) {
@@ -85,11 +86,19 @@ class _MenusManager {
         //     game.deleteObject(this.tablet);
         //     this.tabletView.destroy();
         // }, 0);
-
-        alt.showCursor(!hideCursor);
+        alt.log('Inside closeMenu function');
+        this.menusView.emit('closeMenu');
+        this.menusView.unfocus();
         this.viewOpened = false;
+        alt.showCursor(showCursor);
+        alt.log(`Setting the cursor to ${showCursor}`);
     }
 }
 
-let MenusManager = new _MenusManager();
-export default MenusManager;
+const menusManager = new MenusManager();
+
+menusManager.onUiEvent('viewLoaded', () => {
+    menusManager.viewLoaded = true;
+});
+
+export default menusManager;

@@ -51,8 +51,10 @@ import 'vue-awesome/icons/users';
 import 'vue-awesome/icons/university';
 import 'vue-awesome/icons/user-tag';
 import 'vue-awesome/icons/money-bill-wave';
+import 'vue-awesome/icons/city';
 import Icon from 'vue-awesome/components/Icon';
 import TownHallNavbar from '@/components/Fractions/TownHallNavbar.vue';
+import router from '@/router';
 
 export default {
     name: 'townHallView',
@@ -68,12 +70,12 @@ export default {
                     id: 2,
                     money: 10000.32,
                     employeesCount: 4,
-                    taxes: {
-                        vehicleTax: 0.3,
-                        propertyTax: 0.25,
-                        gunTax: 0.18,
-                        globalTax: 0.1,
-                    },
+                    rolesCount: 5,
+                    creationDate: '2019-06-08',
+                    vehicleTax: 0.3,
+                    propertyTax: 0.25,
+                    gunTax: 0.18,
+                    globalTax: 0.1,
                 };
             },
         },
@@ -82,10 +84,10 @@ export default {
         return {
             searchQueries: [
                 { id: 1, displayName: 'Pracownicy', action: 'employeesPage', description: 'Przejdź do strony z pracownikami' },
-                { id: 2, displayName: 'Role', action: 'rolesPage', description: 'Przejdź do strony z rolami' },
+                { id: 2, displayName: 'Stanowiska', action: 'rolesPage', description: 'Przejdź do strony z rolami' },
                 { id: 3, displayName: 'Wyjdź', action: 'closeMenu', description: 'Wyjdź z menu' },
-                { id: 4, displayName: 'Podatki', action: 'taxesPage', description: 'Przejdź do strony z podatkami' },
-                { id: 5, displayName: 'Finanse', action: 'financesPage', description: 'Przejdź do strony z finansami' },
+                { id: 4, displayName: 'Podatki i finanse', action: 'taxesPage', description: 'Przejdź do strony z podatkami i finansami' },
+                { id: 5, displayName: 'Mieszkańcy', action: 'residentsPage', description: 'Przejdź do strony z listą mieszkańców' },
                 { id: 6, displayName: 'Glówna', action: 'mainPage', description: 'Przejdź do strony głównej' },
                 { id: 7, displayName: 'Rejestracja', action: 'registrationPage', description: 'Przejdź do strony rejestracji' },
             ],
@@ -93,9 +95,9 @@ export default {
                 { icon: 'home', page: 'Strona główna', action: 'mainPage' },
                 { icon: 'university', page: 'Rejestracja', action: 'registrationPage' },
                 { icon: 'users', page: 'Pracownicy', action: 'employeesPage' },
-                { icon: 'user-tag', page: 'Role', action: 'rolesPage' },
-                { icon: 'money-bill-wave', page: 'Podatki', action: 'taxesPage' },
-                { icon: 'dollar-sign', page: 'Finanse', action: 'financesPage' },
+                { icon: 'user-tag', page: 'Stanowiska', action: 'rolesPage' },
+                { icon: 'dollar-sign', page: 'Podatki i finanse', action: 'taxesPage' },
+                { icon: 'city', page: 'Spis mieszkańców', action: 'residentsPage' },
                 { icon: 'times', page: 'Wyjdź', action: 'closeMenu' },
             ],
             currentMenuName: 'Strona główna',
@@ -125,8 +127,8 @@ export default {
                 case 'taxesPage':
                     alt.emit('tryToOpenFractionTaxesPage', this.fractionData.id);
                     break;
-                case 'financesPage':
-                    alt.emit('tryToOpenFractionFinancesPage', this.fractionData.id);
+                case 'residentsPage':
+                    alt.emit('tryToOpenFractionResidentsPage', this.fractionData.id);
                     break;
                 case 'closeMenu':
                     this.closeMenu();
@@ -138,6 +140,10 @@ export default {
         },
     },
 };
+
+alt.on('openResidentsPage', onlineResidents => {
+    router.push({ name: 'testMenu', params: { residentsData: JSON.parse(onlineResidents) } });
+});
 </script>
 
 <style>

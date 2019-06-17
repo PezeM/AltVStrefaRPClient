@@ -4,7 +4,48 @@
       <h1 class="mx-auto">Witaj na stronie urzędu miasta</h1>
     </div>
     <div class="row mb-5">
-      <div class="col-md-4 col-sm-4">
+      <div class="col-md-7 col-sm-6">
+        <div class="card shadow rounded border">
+          <div class="card-body">
+            <h5>Aktualne podatki</h5>
+            <p class="card-text">
+              Podatek od pojazdów:
+              <strong>{{ data.vehicleTax * 100 }} %</strong>
+            </p>
+            <p class="card-text">
+              Podatek od nieruchomości:
+              <strong>{{ data.propertyTax * 100 }} %</strong>
+            </p>
+            <p class="card-text">
+              Podatek od broni:
+              <strong>{{ data.gunTax * 100 }} %</strong>
+            </p>
+            <p class="card-text">
+              Podatek globalny:
+              <strong>{{ data.globalTax * 100 }} %</strong>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-5 col-sm-6">
+        <div class="card shadow rounded border">
+          <div class="card-body text-center">
+            <h6>Data powstania urzędu miasta Los Santos</h6>
+            <h4 class="font-weight-bold indigo-text py-2">{{ data.creationDate }}</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4 col-sm-6">
+        <div class="card shadow rounded border">
+          <div class="card-body text-center">
+            <h6>Ilość pieniędzy w urzędzie</h6>
+            <h4 class="font-weight-bold indigo-text py-2">{{ data.money }} $</h4>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6">
         <div class="card shadow rounded border">
           <div class="card-body text-center">
             <h6>Ilość pracowników w urzędzie</h6>
@@ -14,30 +55,9 @@
       </div>
       <div class="col-md-4 col-sm-6">
         <div class="card shadow rounded border">
-          <div class="card-body">
-            <h5>Aktualne podatki</h5>
-            <p class="card-text">Podatek od pojazdów: {{ data.taxes.vehicleTax * 100 }} %</p>
-            <p class="card-text">Podatek od pojazdów: {{ data.taxes.propertyTax * 100 }} %</p>
-            <p class="card-text">Podatek od pojazdów: {{ data.taxes.gunTax * 100 }} %</p>
-            <p class="card-text">Podatek od pojazdów: {{ data.taxes.globalTax * 100 }} %</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4 col-sm-6">
-        <div class="card shadow rounded border">
           <div class="card-body text-center">
-            <h6>Ilość pieniędzy w urzędzie</h6>
-            <h4 class="font-weight-bold indigo-text py-2">{{ data.money }} $</h4>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-12">
-        <div class="card shadow rounded border">
-          <div class="card-body text-center">
-            <h6>Tutaj będzie wyszukiwanie informacji na temat mieszkańców</h6>
-            <input type="text" class="form-control">
+            <h6>Ilość stanowisk w urzędzie</h6>
+            <h4 class="font-weight-bold indigo-text py-2">{{ data.rolesCount }}</h4>
           </div>
         </div>
       </div>
@@ -62,6 +82,7 @@ export default {
     width: 100%;
     height: 100%;
     color: #3d3d3d;
+    text-align: center;
 }
 
 .card {

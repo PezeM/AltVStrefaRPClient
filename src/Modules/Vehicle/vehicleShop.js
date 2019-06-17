@@ -6,6 +6,7 @@ import * as game from 'natives';
 import mainUi from 'src/Modules/Ui/mainUi.js';
 import Camera from 'src/Helpers/camera.js';
 import cameraRotator from 'src/Helpers/cameraRotator.js';
+import menusManager from 'src/Modules/Ui/menusManager.js';
 
 const VEHICLE_SHOP_DATA = [
     {

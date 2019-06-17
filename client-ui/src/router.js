@@ -83,6 +83,12 @@ export default new Router({
                     component: () => import('./views/Fractions/TownHall/EmployeesPage.vue'),
                     props: true,
                 },
+                {
+                    path: 'residentsPage',
+                    name: 'townHallResidentsPage',
+                    component: () => import('./views/Fractions/TownHall/ResidentsPage.vue'),
+                    props: true,
+                },
             ],
         },
         {

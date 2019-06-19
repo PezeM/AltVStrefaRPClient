@@ -1,6 +1,6 @@
 <template>
   <div id="town-hall-view">
-    <div class="town-hall-view container-fluid">
+    <div class="town-hall-view container">
       <div class="row h-100">
         <div class="col-3 side-menu">
           <div class="row">
@@ -35,7 +35,7 @@
             ></town-hall-navbar>
           </div>
           <div class="row no-gutters fraction-town-hall-content">
-            <router-view :data="fractionData"></router-view>
+            <router-view :data="fractionData" @update-menu-name="updateMenuName"></router-view>
           </div>
         </div>
       </div>
@@ -88,7 +88,7 @@ export default {
                 { id: 3, displayName: 'Wyjdź', action: 'closeMenu', description: 'Wyjdź z menu' },
                 { id: 4, displayName: 'Podatki i finanse', action: 'taxesPage', description: 'Przejdź do strony z podatkami i finansami' },
                 { id: 5, displayName: 'Mieszkańcy', action: 'residentsPage', description: 'Przejdź do strony z listą mieszkańców' },
-                { id: 6, displayName: 'Glówna', action: 'mainPage', description: 'Przejdź do strony głównej' },
+                { id: 6, displayName: 'Główna', action: 'mainPage', description: 'Przejdź do strony głównej' },
                 { id: 7, displayName: 'Rejestracja', action: 'registrationPage', description: 'Przejdź do strony rejestracji' },
             ],
             sideMenuItems: [
@@ -105,7 +105,6 @@ export default {
     },
     methods: {
         onNavbarSearch(action) {
-            console.log(`Action = ` + action);
             this.changePage(action);
         },
         sideMenuPage(newPage) {
@@ -114,6 +113,7 @@ export default {
         changePage(action) {
             switch (action) {
                 case 'mainPage':
+                    router.push({ name: 'townHallMainPage', params: { data: this.fractionData } });
                     break;
                 case 'registrationPage':
                     alt.emit('tryToOpenFractionRegistrationPage', this.fractionData.id);
@@ -135,14 +135,17 @@ export default {
                     break;
             }
         },
+        updateMenuName(menuName) {
+            this.currentMenuName = menuName;
+        },
         closeMenu() {
             alt.emit('closeFractionMenu');
         },
     },
 };
 
-alt.on('openResidentsPage', onlineResidents => {
-    router.push({ name: 'testMenu', params: { residentsData: JSON.parse(onlineResidents) } });
+alt.on('openFractionsResidentsPage', onlineResidents => {
+    router.push({ name: 'townHallResidentsPage', params: { residentsData: JSON.parse(onlineResidents) } });
 });
 </script>
 
@@ -157,8 +160,8 @@ alt.on('openResidentsPage', onlineResidents => {
 }
 
 .town-hall-view {
-    width: 75rem;
-    height: 45rem;
+    /* width: 75rem;
+    height: 45rem; */
     position: relative;
     background-color: #f8f9fa;
     color: rgb(0, 0, 0);

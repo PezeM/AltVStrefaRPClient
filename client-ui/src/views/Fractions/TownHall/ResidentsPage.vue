@@ -4,7 +4,7 @@
     <div class="row mb-5">
       <div class="col-12">
         <div class="card shadow rounded border">
-          <div class="card-body text-center">
+          <div class="card-body text-center" v-on:keyup.enter="excuteQuery">
             <h6>Tutaj będzie wyszukiwanie informacji na temat mieszkańców</h6>
             <vue-bootstrap-typeahead
               ref="residentsAutoComplete"
@@ -81,7 +81,7 @@ export default {
         return {
             query: '',
             maxMatches: 5,
-            minMatchingChars: 3,
+            minMatchingChars: 1,
             selectedResident: null,
             queriedResident: {
                 id: 1,
@@ -96,10 +96,12 @@ export default {
         };
     },
     mounted() {
+        this.$emit('update-menu-name', 'Spis mieszkańców');
         EventBus.$on('populateResidentData', this.populateResidentData);
     },
     methods: {
         excuteQuery() {
+            console.log(`Query = ${this.query} and selectedResidents = ${this.selectedResident}`);
             if (this.selectedResident) {
                 this.sendQueryToServer(this.selectedResident);
             } else if (this.query.length > 3) {
@@ -108,7 +110,8 @@ export default {
                 let upperCaseArray = fullNameArray.map(n => {
                     return n[0].toUpperCase() + n.slice(1);
                 });
-                this.sendQueryToServer(upperCaseArray);
+                let result = upperCaseArray[0] + ' ' + upperCaseArray[1];
+                this.sendQueryToServer(result);
             } else {
                 alt.emit('showNotification', 3, 'Błąd', 'Podano błędne imię lub nazwisko.', 5000);
             }

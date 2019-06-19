@@ -6,10 +6,8 @@ class MainUi {
         alt.log('Initialized MainUi Class');
         this.uiFocused = false;
         this.uiView = new alt.WebView('http://resources/AltVStrefaRPClient/mainUi/ui.html');
-    }
 
-    onServerEvent(eventName, callback) {
-        alt.onServer(eventName, callback);
+        // alt.onServer('showNotification', this.showCefNotification.bind(this));
     }
 
     onClientEvent(eventName, callback) {

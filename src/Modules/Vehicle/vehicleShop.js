@@ -179,7 +179,7 @@ class VehicleShop {
         }
         menusManager.closeMenu();
         this.currentVehicleShopData = null;
-        game.renderScriptCams(false, true, 150, true, false);
+        game.renderScriptCams(false, true, 400, true, false);
     }
 }
 

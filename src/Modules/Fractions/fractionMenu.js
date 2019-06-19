@@ -6,6 +6,7 @@ export default class FractionMenu {
     constructor() {
         alt.log('Initialized FractionMenu class');
         alt.onServer('openFractionMenu', this.openFractionMenu);
+        alt.onServer('openFractionsResidentsPage', this.openFractionsResidentsPage);
         alt.onServer('populateResidentData', this.populateResidentData);
 
         menusManager.onUiEvent('tryToOpenFractionRegistrationPage', this.tryToOpenFractionRegistrationPage);
@@ -21,8 +22,11 @@ export default class FractionMenu {
         menusManager.openMenu('openFractionMenu', true, true, fractionType, fractionData);
     }
 
+    openFractionsResidentsPage(onlineResidents) {
+        menusManager.emitUiEvent('openFractionsResidentsPage', onlineResidents);
+    }
+
     populateResidentData(residentData) {
-        alt.log(`Resident data = ${residentData} JSON = ${JSON.stringify(residentData, null, 4)}`);
         menusManager.emitUiEvent('populateResidentData', residentData);
     }
 
@@ -47,9 +51,13 @@ export default class FractionMenu {
     }
 
     tryToGetResidentData(residentFullName) {
-        if (residentFullName == null || !Array.isArray(residentFullName) || residentFullName.length < 2) {
+        if (residentFullName == null || residentFullName.length < 2) {
             mainUi.showCefNotification(3, "Błąd", "Podano błędne imię lub nazwisko.", 5500);
             return;
+        }
+
+        if (!Array.isArray(residentFullName)) {
+            residentFullName = residentFullName.split(' ', 2);
         }
 
         alt.emitServer('TryToGetResidentData', residentFullName[0], residentFullName[1]);

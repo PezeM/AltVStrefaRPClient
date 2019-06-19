@@ -73,6 +73,12 @@ export default {
             type: Object,
         },
     },
+    mounted() {
+        this.$emit('update-menu-name', 'Strona główna');
+    },
+    created() {
+        console.log(`Created MainPage.vue component`);
+    },
 };
 </script>
 

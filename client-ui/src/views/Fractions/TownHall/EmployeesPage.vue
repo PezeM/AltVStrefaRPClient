@@ -12,6 +12,9 @@ export default {
             type: Object,
         },
     },
+    mounted() {
+        this.$emit('update-menu-name', 'Pracownicy');
+    },
 };
 </script>
 

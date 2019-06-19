@@ -1,5 +1,5 @@
 <template>
-  <div id="app" @click="clickApp">
+  <div id="app">
     <transition name="fade" mode="out-in">
       <router-view :key="$route.fullPath"/>
     </transition>
@@ -23,11 +23,6 @@ import router from './router';
 
 export default {
     name: 'App',
-    methods: {
-        clickApp() {
-            console.log(`Clicked inside App.vue`);
-        },
-    },
 };
 
 window.onload = function() {
@@ -58,6 +53,7 @@ alt.on('openVehicleShop', (vehicleData, vehicleShopId) => {
 });
 
 alt.on('openFractionMenu', (fractionType, fractionData) => {
+    console.log(`Inside openFractionMenu with fractionType = ${fractionType} and data ${JSON.stringify(fractionData, null, 4)}`);
     switch (fractionType) {
         case 1:
             router.push({ name: 'policeMenu', params: { data: JSON.parse(fractionData) } });
@@ -66,7 +62,8 @@ alt.on('openFractionMenu', (fractionType, fractionData) => {
             router.push({ name: 'samsMenu', params: { data: JSON.parse(fractionData) } });
             break;
         case 3:
-            router.push({ name: 'townHallMenu', params: { data: JSON.parse(fractionData) } });
+            console.log(`Opening townHallMenu xD`);
+            router.push({ name: 'townHallMainPage', params: { data: JSON.parse(fractionData) } });
             break;
 
         default:

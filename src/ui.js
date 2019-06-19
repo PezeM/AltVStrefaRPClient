@@ -75,6 +75,16 @@ alt.on('keydown', (key) => {
 });
 
 alt.on('update', () => {
+    if (chat.isOpen() || menusManager.viewOpened) {
+        game.disableAllControlActions(0);
+        game.disableAllControlActions(2);
+        alt.toggleGameControls(false);
+    } else {
+        game.enableAllControlActions(0);
+        game.enableAllControlActions(2);
+        alt.toggleGameControls(true);
+    }
+
     if (zoneNames.realZoneName && zoneNames.streetName) {
         drawText(zoneNames.streetName, [zoneNames.minimap.rightX, zoneNames.minimap.bottomY - 0.065], 4, [255, 255, 255, 255], 0.5, true, false);
         drawText(zoneNames.realZoneName, [zoneNames.minimap.rightX, zoneNames.minimap.bottomY - 0.035], 4, [255, 255, 255, 255], 0.55, true, false);
@@ -132,7 +142,7 @@ alt.on('update', () => {
     }
 });
 
-mainUi.onServerEvent('showNotification', (type, title, message, duration, icon) => {
+alt.onServer('showNotification', (type, title, message, duration, icon) => {
     mainUi.showCefNotification(type, title, message, duration, icon == null ? true : icon);
 });
 
@@ -141,7 +151,7 @@ mainUi.onClientEvent('showNotification', (type, title, message, duration) => {
     mainUi.showCefNotification(type, title, message, duration);
 });
 
-mainUi.onServerEvent('showConfirmModal', (title, message, type, args) => {
+alt.onServer('showConfirmModal', (title, message, type, args) => {
     alt.log(`Args: ${JSON.stringify(args)}`);
     switch (type) {
         case 1: // Business invite

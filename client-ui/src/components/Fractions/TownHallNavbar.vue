@@ -2,7 +2,7 @@
   <div class="town-hall-navbar">
     <div class="row justify-content-between">
       <div class="col-6">
-        <div class="input-group">
+        <div class="input-group town-hall-input-group" v-on:keyup.enter="search">
           <div class="input-group-prepend">
             <span class="input-group-text">
               <v-icon name="search"/>
@@ -64,6 +64,7 @@ export default {
     },
     methods: {
         search() {
+            console.log(`Trigger`);
             let action = null;
             if (this.query.length > 0) {
                 let searchResult = this.searchQueries.find(q => q.displayName.toLowerCase() == this.query.toLowerCase());
@@ -97,5 +98,9 @@ export default {
 .close-button {
     border-radius: 0;
     border-top-right-radius: 6px;
+}
+
+.town-hall-input-group {
+    display: -webkit-box;
 }
 </style>

@@ -5,6 +5,7 @@ import * as alt from 'alt';
 import * as game from 'natives';
 import { drawText, draw3DText } from 'src/Helpers/uiHelper.js';
 import { isDriver } from 'src/Helpers/playerHelpers.js';
+import { getClosestVehicle } from 'src/Helpers/collectionHelper.js';
 
 let localPlayer = alt.getLocalPlayer();
 let openedTrunks = [];
@@ -70,14 +71,9 @@ alt.onServer('toggleLockState', vehicle => {
 
 export function toggleLockState() {
     alt.log(`Toggle lock state`);
-    let coords = game.getEntityCoords(localPlayer.scriptID, true);
-    var vehicle = game.getClosestVehicle(coords.x, coords.y, coords.z, 10, 0, 71);
-    alt.log(`Closest vehicle = ${JSON.stringify(vehicle)}`);
-    if (vehicle === 0) return false;
-
-    let vehiclePosition = game.getEntityCoords(vehicle, true);
-    if (game.getDistanceBetweenCoords(coords.x, coords.y, coords.z, vehiclePosition.x, vehiclePosition.y, vehiclePosition.z, true) > 10) return false;
-
+    let closestVehicle = getClosestVehicle(localPlayer.pos, 15);
+    if (closestVehicle == null) return;
+    alt.log(`Closest vehicle = ${JSON.stringify(closestVehicle)}`);
     alt.emitServer("ToggleLockState");
     return true;
 }

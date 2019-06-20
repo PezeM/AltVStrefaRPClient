@@ -1,6 +1,6 @@
 <template>
   <div class="bankApp">
-    <div class="bankWindow" @mousedown="mouseDown" @mouseup="mouseUp">
+    <div class="bankWindow container" @mousedown="mouseDown" @mouseup="mouseUp">
       <header class="bankWindow-header">
         <div class="main-title">
           <img src="@/assets/images/icons/bank.png" class="icon">
@@ -597,15 +597,13 @@ alt.on('openTransactionHistory', transactionHistory => {
 
 <style scoped>
 .bankApp {
-    /* display: flex;
-    align-items: center;
-    justify-content: center; */
-    top: 25%;
-    position: absolute;
-    /* height: 100vh; */
     z-index: 1;
     letter-spacing: 1px;
     color: #fff;
+    position: relative;
+    overflow: hidden;
+    border-radius: 6px;
+    box-shadow: 0 0 15px 8px rgba(0, 0, 0, 0.1);
 }
 
 .hide {
@@ -624,7 +622,6 @@ alt.on('openTransactionHistory', transactionHistory => {
     /* position: relative; */
     overflow: hidden;
     border-radius: 10px;
-    box-shadow: 0 0.8rem 3rem rgba(0, 0, 0, 0.5);
 }
 
 .bankWindow-header {

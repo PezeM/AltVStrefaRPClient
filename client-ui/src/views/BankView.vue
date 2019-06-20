@@ -22,6 +22,8 @@ alt;
 
 <style scoped>
 #bankWindow {
+    padding: 0;
+    margin: 0;
     display: flex;
     align-items: center;
     justify-content: center;

@@ -31,7 +31,7 @@
     </div>
 
     <div class="row" v-if="queriedResident">
-      <div class="col-6">
+      <div class="col-5">
         <div class="card shadow rounded border">
           <div class="card-body">
             <p class="card-text">Imie: {{ queriedResident.name }}</p>
@@ -42,11 +42,29 @@
           </div>
         </div>
       </div>
-      <div class="col-6">
+      <div class="col-7">
         <div class="card shadow rounded border">
           <div class="card-body">
             <p class="card-text">Zatrudniony w frakcji: {{ queriedResident.fractionName }}</p>
             <p class="card-text">Zatrudniony w biznesie: {{ queriedResident.businessName }}</p>
+            <div class="overflow-auto vehicle-list-display">
+              <table class="table table-sm">
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Model</th>
+                    <th scope="col">Rejestracja</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr v-for="(vehicle, index) in queriedResident.vehicles" v-bind:key="index">
+                    <th scope="col">{{ index }}</th>
+                    <td>{{ vehicle.model }}</td>
+                    <td>{{ vehicle.plateText }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </div>
@@ -92,6 +110,19 @@ export default {
                 bankMoney: 132.43,
                 fractionName: 'Urząd miasta',
                 businessName: 'Brak',
+                vehicles: [
+                    { model: 'T20', plateText: 'SOMETEXT' },
+                    { model: 'Zentorno', plateText: 'SOMETEXT' },
+                    { model: 'T20', plateText: 'REJESTRACJA' },
+                    { model: 'SEVEN', plateText: 'REJESTRACJA' },
+                    { model: 'COG', plateText: 'REJESTRACJA' },
+                    { model: 'DŁUZSZANAZWA', plateText: 'REJESTRACJA' },
+                    { model: 'KOLEJNE', plateText: 'REJESTRACJA' },
+                    { model: 'KOLEJNE', plateText: 'REJESTRACJA' },
+                    { model: 'KOLEJNE', plateText: 'REJESTRACJA' },
+                    { model: 'KOLEJNE', plateText: 'REJESTRACJA' },
+                    { model: 'KOLEJNE', plateText: 'REJESTRACJA' },
+                ],
             },
         };
     },
@@ -143,5 +174,9 @@ alt.on('populateResidentData', residentData => {
     width: 100%;
     height: 100%;
     color: #3d3d3d;
+}
+
+.vehicle-list-display {
+    max-height: 10em;
 }
 </style>

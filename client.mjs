@@ -34,6 +34,8 @@ const controlsIds = {
 
 let carStatsScaleform = null;
 
+alt.log(JSON.stringify(game.networkGetServerTime(null, null, null), null, 4));
+
 alt.on('update', () => {
 	// DEV Constant running
 	if (game.isPedSprinting(localPlayer.scriptID))
@@ -125,7 +127,6 @@ alt.on('consoleCommand', (command, ...args) => {
 		alt.emitServer('testNumber', 3253274834);
 	}
 })
-
 
 let cinemaObject = null;
 let cinemaView = null;

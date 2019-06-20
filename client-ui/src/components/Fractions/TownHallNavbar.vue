@@ -96,6 +96,8 @@ export default {
 }
 
 .close-button {
+    height: 100%;
+    text-align: center;
     border-radius: 0;
     border-top-right-radius: 6px;
 }

@@ -162,6 +162,7 @@ alt.on('openFractionsResidentsPage', onlineResidents => {
 .town-hall-view {
     /* width: 75rem;
     height: 45rem; */
+    max-height: 45rem;
     position: relative;
     background-color: #f8f9fa;
     color: rgb(0, 0, 0);
@@ -177,7 +178,6 @@ alt.on('openFractionsResidentsPage', onlineResidents => {
 }
 
 .town-hall-view .side-menu {
-    height: 100%;
     background-color: #191f28;
 }
 

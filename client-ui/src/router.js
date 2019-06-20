@@ -89,6 +89,12 @@ export default new Router({
                     component: () => import('./views/Fractions/TownHall/ResidentsPage.vue'),
                     props: true,
                 },
+                {
+                    path: 'taxesPage',
+                    name: 'townHallTaxesPage',
+                    component: () => import('./views/Fractions/TownHall/TaxesPage.vue'),
+                    props: true,
+                },
             ],
         },
         {

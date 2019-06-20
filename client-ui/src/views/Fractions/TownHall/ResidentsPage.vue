@@ -38,7 +38,7 @@
             <p class="card-text">Nazwisko: {{ queriedResident.lastName }}</p>
             <p class="card-text">Wiek: {{ queriedResident.age }}</p>
             <p class="card-text">Numer konta bankowego: {{ queriedResident.bankAccount }}</p>
-            <p class="card-text">Ilość pieniędzy na koncie: {{ queriedResident.bankMoney }} $</p>
+            <p class="card-text">Ilość pieniędzy na koncie: {{ queriedResident.bankMoney }}$</p>
           </div>
         </div>
       </div>
@@ -178,5 +178,9 @@ alt.on('populateResidentData', residentData => {
 
 .vehicle-list-display {
     max-height: 10em;
+}
+
+.town-hall-residents-page p {
+    font-family: 'Roboto', sans-serif;
 }
 </style>

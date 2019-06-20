@@ -8,6 +8,7 @@ export default class FractionMenu {
         alt.onServer('openFractionMenu', this.openFractionMenu);
         alt.onServer('openFractionsResidentsPage', this.openFractionsResidentsPage);
         alt.onServer('populateResidentData', this.populateResidentData);
+        alt.onServer('openFractionTaxesPage', this.openFractionTaxesPage);
 
         menusManager.onUiEvent('tryToOpenFractionRegistrationPage', this.tryToOpenFractionRegistrationPage);
         menusManager.onUiEvent('tryToOpenFractionEmployeesPage', this.tryToOpenFractionEmployeesPage);
@@ -26,6 +27,10 @@ export default class FractionMenu {
         menusManager.emitUiEvent('openFractionsResidentsPage', onlineResidents);
     }
 
+    openFractionTaxesPage(data) {
+        menusManager.emitUiEvent('openFractionTaxesPage', data);
+    }
+
     populateResidentData(residentData) {
         menusManager.emitUiEvent('populateResidentData', residentData);
     }
@@ -42,12 +47,12 @@ export default class FractionMenu {
         alt.emitServer('TryToOpenFractionRolesPage', fractionId);
     }
 
-    tryToOpenFractionTaxesPage(fractionId) {
-        alt.emitServer('TryToOpenFractionTaxesPage', fractionId);
+    tryToOpenFractionTaxesPage() {
+        alt.emitServer('TryToOpenFractionTaxesPage');
     }
 
-    tryToOpenFractionResidentsPage(fractionId) {
-        alt.emitServer('TryToOpenFractionResidentsPage', fractionId);
+    tryToOpenFractionResidentsPage() {
+        alt.emitServer('TryToOpenFractionResidentsPage');
     }
 
     tryToGetResidentData(residentFullName) {

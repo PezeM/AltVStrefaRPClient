@@ -12,22 +12,6 @@
               {{ tax.name }}
               <strong>{{ tax.value * 100}}%</strong>
             </p>
-            <!-- <p class="card-text">
-              Podatek od pojazdów:
-              <strong>{{ data.vehicleTax * 100 }} %</strong>
-            </p>
-            <p class="card-text">
-              Podatek od nieruchomości:
-              <strong>{{ data.propertyTax * 100 }} %</strong>
-            </p>
-            <p class="card-text">
-              Podatek od broni:
-              <strong>{{ data.gunTax * 100 }} %</strong>
-            </p>
-            <p class="card-text">
-              Podatek globalny:
-              <strong>{{ data.globalTax * 100 }} %</strong>
-            </p>-->
           </div>
         </div>
       </div>

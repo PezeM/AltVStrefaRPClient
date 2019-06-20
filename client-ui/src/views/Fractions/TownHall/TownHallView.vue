@@ -62,6 +62,9 @@ export default {
         TownHallNavbar,
         'v-icon': Icon,
     },
+    mounted() {
+        console.log(`Current fractionData = ${JSON.stringify(this.fractionData, null, 2)}`);
+    },
     props: {
         fractionData: {
             type: Object,
@@ -115,7 +118,7 @@ export default {
         changePage(action) {
             switch (action) {
                 case 'mainPage':
-                    router.push({ name: 'townHallMainPage', params: { data: this.fractionData } });
+                    router.push({ name: 'townHallMainPage' });
                     break;
                 case 'registrationPage':
                     alt.emit('tryToOpenFractionRegistrationPage', this.fractionData.id);
@@ -127,10 +130,10 @@ export default {
                     alt.emit('tryToOpenFractionRolesPage', this.fractionData.id);
                     break;
                 case 'taxesPage':
-                    alt.emit('tryToOpenFractionTaxesPage', this.fractionData.id);
+                    alt.emit('tryToOpenFractionTaxesPage');
                     break;
                 case 'residentsPage':
-                    alt.emit('tryToOpenFractionResidentsPage', this.fractionData.id);
+                    alt.emit('tryToOpenFractionResidentsPage');
                     break;
                 case 'closeMenu':
                     this.closeMenu();
@@ -148,6 +151,10 @@ export default {
 
 alt.on('openFractionsResidentsPage', onlineResidents => {
     router.push({ name: 'townHallResidentsPage', params: { residentsData: JSON.parse(onlineResidents) } });
+});
+
+alt.on('openFractionTaxesPage', dataJson => {
+    router.push({ name: 'townHallTaxesPage', params: { finances: JSON.parse(dataJson) } });
 });
 </script>
 
@@ -174,9 +181,10 @@ alt.on('openFractionsResidentsPage', onlineResidents => {
 }
 
 .fraction-town-hall-content {
-    /* padding: 16px; */
-    margin: 16px;
-    height: 100%;
+    padding: 6px;
+    display: flex;
+    flex-flow: column;
+    max-height: 90%;
 }
 
 .town-hall-view .side-menu {

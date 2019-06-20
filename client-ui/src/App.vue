@@ -62,7 +62,6 @@ alt.on('openFractionMenu', (fractionType, fractionData) => {
             router.push({ name: 'samsMenu', params: { data: JSON.parse(fractionData) } });
             break;
         case 3:
-            console.log(`Opening townHallMenu xD`);
             router.push({ name: 'townHallMainPage', params: { data: fractionData } });
             break;
 

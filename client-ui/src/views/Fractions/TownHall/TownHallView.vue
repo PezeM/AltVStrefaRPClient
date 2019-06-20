@@ -72,10 +72,12 @@ export default {
                     employeesCount: 4,
                     rolesCount: 5,
                     creationDate: '2019-06-08',
-                    vehicleTax: 0.3,
-                    propertyTax: 0.25,
-                    gunTax: 0.18,
-                    globalTax: 0.1,
+                    taxes: [
+                        { id: 1, name: 'Vehicle tax', value: '0.3' },
+                        { id: 2, name: 'Gun tax', value: '0.25' },
+                        { id: 3, name: 'Property tax', value: '0.15' },
+                        { id: 4, name: 'Global tax', value: '0.08' },
+                    ],
                 };
             },
         },

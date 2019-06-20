@@ -8,7 +8,11 @@
         <div class="card shadow rounded border">
           <div class="card-body">
             <h5>Aktualne podatki</h5>
-            <p class="card-text">
+            <p v-for="tax in data.taxes" v-bind:key="tax.id" class="card-text">
+              {{ tax.name }}
+              <strong>{{ tax.value * 100}}%</strong>
+            </p>
+            <!-- <p class="card-text">
               Podatek od pojazdów:
               <strong>{{ data.vehicleTax * 100 }} %</strong>
             </p>
@@ -23,7 +27,7 @@
             <p class="card-text">
               Podatek globalny:
               <strong>{{ data.globalTax * 100 }} %</strong>
-            </p>
+            </p>-->
           </div>
         </div>
       </div>

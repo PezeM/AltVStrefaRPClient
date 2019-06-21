@@ -30,7 +30,7 @@
           </div>
         </div>
       </div>
-      <div class="col-5">
+      <div class="col-5" v-if="finances">
         <div class="card shadow rounded border">
           <div class="card-body">
             <h4>Ostatnie podatki</h4>
@@ -72,9 +72,6 @@ export default {
         },
         finances: {
             type: Array,
-            default() {
-                return [100, 200, 300, 432.32, 142.3, 15454, 14.43, 415, 10, 0.5, 12, 15, 1546, 1545];
-            },
         },
     },
     data() {

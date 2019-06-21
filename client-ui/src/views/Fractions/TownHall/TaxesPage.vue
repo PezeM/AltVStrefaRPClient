@@ -1,6 +1,6 @@
 <template>
   <div class="town-hall-taxes-page">
-    <ChangeTaxModal v-on:update-tax-value="updateTaxValue"/>
+    <ChangeTaxModal v-on:update-tax-value="tryToUpdateTaxValue"/>
     <h1 class="text-center">Aktualne podatki</h1>
     <div class="row mb-5">
       <div class="col-7">
@@ -62,6 +62,7 @@
 import 'vue-awesome/icons/edit';
 import Icon from 'vue-awesome/components/Icon';
 import ChangeTaxModal from '@/components/Modals/Fractions/ChangeTaxModal.vue';
+import EventBus from '@/event-bus.js';
 
 export default {
     name: 'townHallTaxesPage',
@@ -82,6 +83,9 @@ export default {
             currentTax: null,
         };
     },
+    mounted() {
+        EventBus.$on('updateTaxValue', this.updateTaxValue);
+    },
     methods: {
         editTax(tax) {
             this.currentTax = {
@@ -91,7 +95,7 @@ export default {
             };
             this.$modal.show('change-tax-modal', this.currentTax);
         },
-        updateTaxValue(newTax) {
+        tryToUpdateTaxValue(newTax) {
             var taxValue = newTax.value / 100;
             if (newTax.value > 0) {
                 alt.emit('tryToUpdateTaxValue', newTax.id, taxValue);
@@ -100,11 +104,27 @@ export default {
                 alt.emit('showNotification', 3, 'Błąd', 'Podano błędną wartość podatku.', 5000);
             }
         },
+        updateTaxValue(taxId, newValue) {
+            if (this.data.taxes) {
+                for (let i = 0; i < this.data.taxes.length; i++) {
+                    if (this.data.taxes[i].id == taxId) {
+                        this.data.taxes[i].value = taxValue;
+                    }
+                }
+            }
+        },
     },
     mounted() {
         this.$emit('update-menu-name', 'Podatki i finanse');
     },
+    beforeDestroy() {
+        EventBus.$off('updateTaxValue', this.populateEmployeeRanks);
+    },
 };
+
+alt.on('updateTaxValue', (taxId, newValue) => {
+    EventBus.$emit('updateTaxValue', taxId, newValue);
+});
 </script>
 
 <style scoped>

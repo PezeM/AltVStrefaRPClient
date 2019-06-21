@@ -1,5 +1,6 @@
 <template>
   <div class="town-hall-taxes-page">
+    <ChangeTaxModal v-on:update-tax-value="updateTaxValue"/>
     <h1 class="text-center">Aktualne podatki</h1>
     <div class="row mb-5">
       <div class="col-7">
@@ -60,11 +61,13 @@
 <script>
 import 'vue-awesome/icons/edit';
 import Icon from 'vue-awesome/components/Icon';
+import ChangeTaxModal from '@/components/Modals/Fractions/ChangeTaxModal.vue';
 
 export default {
     name: 'townHallTaxesPage',
     components: {
         'v-icon': Icon,
+        ChangeTaxModal,
     },
     props: {
         data: {
@@ -81,8 +84,21 @@ export default {
     },
     methods: {
         editTax(tax) {
-            this.currentTax = tax;
-            // Show modal
+            this.currentTax = {
+                id: tax.id,
+                name: tax.name,
+                value: Math.floor(tax.value * 100),
+            };
+            this.$modal.show('change-tax-modal', this.currentTax);
+        },
+        updateTaxValue(newTax) {
+            var taxValue = newTax.value / 100;
+            if (newTax.value > 0) {
+                alt.emit('tryToUpdateTaxValue', newTax.id, taxValue);
+                this.$modal.hide('change-tax-modal');
+            } else {
+                alt.emit('showNotification', 3, 'Błąd', 'Podano błędną wartość podatku.', 5000);
+            }
         },
     },
     mounted() {

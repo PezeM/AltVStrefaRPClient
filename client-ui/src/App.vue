@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <transition name="fade" mode="out-in">
-      <router-view :key="$route.fullPath"/>
+      <router-view/>
     </transition>
   </div>
 </template>
@@ -52,17 +52,17 @@ alt.on('openVehicleShop', (vehicleData, vehicleShopId) => {
     router.push({ name: 'vehicleShop', params: { shopId: vehicleShopId, vehicleShopData: JSON.parse(vehicleData) } });
 });
 
-alt.on('openFractionMenu', (fractionType, fractionData) => {
-    console.log(`Inside openFractionMenu with fractionType = ${fractionType} and data ${JSON.stringify(fractionData, null, 4)}`);
+alt.on('openFractionMenu', (fractionType, fractionDatas) => {
+    console.log(`Inside openFractionMenu with fractionType = ${fractionType} and data ${JSON.stringify(fractionDatas, null, 4)}`);
     switch (fractionType) {
         case 1:
-            router.push({ name: 'policeMenu', params: { data: JSON.parse(fractionData) } });
+            router.push({ name: 'policeMenu', params: { data: JSON.parse(fractionDatas) } });
             break;
         case 2:
-            router.push({ name: 'samsMenu', params: { data: JSON.parse(fractionData) } });
+            router.push({ name: 'samsMenu', params: { data: JSON.parse(fractionDatas) } });
             break;
         case 3:
-            router.push({ name: 'townHallMainPage', params: { data: fractionData } });
+            router.push({ name: 'townHallMainPage', params: { fractionProp: fractionDatas } });
             break;
 
         default:

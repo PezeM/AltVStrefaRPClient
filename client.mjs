@@ -125,9 +125,18 @@ alt.on('consoleCommand', (command, ...args) => {
 		testStrefa();
 	} else if (command == 'testNumber') {
 		alt.emitServer('testNumber', 3253274834);
+	} else if (command == 'bigNumber') {
+		if (args[0] != null) {
+			let number = Number(args[0]);
+			if (number > 0) {
+				alt.emitServer('bigNumber', number);
+			}
+		}
 	}
 })
 
+game.isControlEnabled(0, 1);
+game.isControlEnabled(0, 2);
 let cinemaObject = null;
 let cinemaView = null;
 let cinemaPosition = {

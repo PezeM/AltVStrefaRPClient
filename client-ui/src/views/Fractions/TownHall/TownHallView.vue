@@ -64,9 +64,10 @@ export default {
     },
     mounted() {
         console.log(`Current fractionData = ${JSON.stringify(this.fractionData, null, 2)}`);
+        this.fractionData = this.fractionProp;
     },
     props: {
-        fractionData: {
+        fractionProp: {
             type: Object,
             default: function() {
                 return {
@@ -106,6 +107,7 @@ export default {
                 { icon: 'times', page: 'Wyjdź', action: 'closeMenu' },
             ],
             currentMenuName: 'Strona główna',
+            fractionData: {},
         };
     },
     methods: {
@@ -118,7 +120,7 @@ export default {
         changePage(action) {
             switch (action) {
                 case 'mainPage':
-                    router.push({ name: 'townHallMainPage' });
+                    router.push({ name: 'townHallMainPage', params: { data: this.fractionData } });
                     break;
                 case 'registrationPage':
                     alt.emit('tryToOpenFractionRegistrationPage', this.fractionData.id);
@@ -145,6 +147,14 @@ export default {
         },
         closeMenu() {
             alt.emit('closeFractionMenu');
+        },
+    },
+    watch: {
+        fractionProp(value) {
+            if (this.fractionData == null) {
+                console.log('On fractionProp data change.');
+                this.fractionData = value;
+            }
         },
     },
 };

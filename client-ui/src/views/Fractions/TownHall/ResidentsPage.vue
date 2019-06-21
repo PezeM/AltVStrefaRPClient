@@ -155,7 +155,6 @@ export default {
         },
         populateResidentData(residentData) {
             this.queriedResident = residentData;
-            console.log(`New resident data = ${JSON.stringify(this.queriedResident, null, 4)}`);
         },
     },
     beforeDestroy() {

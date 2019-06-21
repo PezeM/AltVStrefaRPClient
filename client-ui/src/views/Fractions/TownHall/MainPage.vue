@@ -10,7 +10,7 @@
             <h5>Aktualne podatki</h5>
             <p v-for="tax in data.taxes" v-bind:key="tax.id" class="card-text">
               {{ tax.name }}
-              <strong>{{ tax.value * 100}}%</strong>
+              <strong>{{ getTaxText(tax.value) }}%</strong>
             </p>
           </div>
         </div>
@@ -66,6 +66,11 @@ export default {
     },
     created() {
         console.log(`Created MainPage.vue component`);
+    },
+    methods: {
+        getTaxText(taxValue) {
+            return Math.floor(taxValue * 100);
+        },
     },
 };
 </script>

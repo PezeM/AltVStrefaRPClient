@@ -77,10 +77,6 @@ export default {
 
 <style scoped>
 .town-hall-main-page {
-    padding-top: 12px;
-    width: 100%;
-    height: 100%;
-    color: #3d3d3d;
     text-align: center;
 }
 

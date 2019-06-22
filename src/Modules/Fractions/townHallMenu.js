@@ -69,6 +69,6 @@ export default class TownHallMenu {
     }
 
     updateTaxValue(taxId, newValue) {
-        menusManager.emitUiEvent('updateTaxValue', taxId, newValue);
+        menusManager.emitUiEvent('updateTaxValue', taxId, newValue.toFixed(2));
     }
 }

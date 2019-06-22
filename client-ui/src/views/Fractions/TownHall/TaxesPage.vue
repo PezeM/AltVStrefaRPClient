@@ -19,7 +19,7 @@
                 <tr v-for="(tax, index) in data.taxes" v-bind:key="index">
                   <th scope="col">{{ index }}</th>
                   <td>{{ tax.name }}</td>
-                  <td>{{ tax.value * 100 }}%</td>
+                  <td>{{ getTaxText(tax.value) }}%</td>
                   <td>
                     <button class="btn btn-primary" @click="editTax(tax)">
                       <v-icon name="edit"/>
@@ -84,9 +84,13 @@ export default {
         };
     },
     mounted() {
+        this.$emit('update-menu-name', 'Podatki i finanse');
         EventBus.$on('updateTaxValue', this.updateTaxValue);
     },
     methods: {
+        getTaxText(taxValue) {
+            return Math.floor(taxValue * 100);
+        },
         editTax(tax) {
             this.currentTax = {
                 id: tax.id,
@@ -108,17 +112,14 @@ export default {
             if (this.data.taxes) {
                 for (let i = 0; i < this.data.taxes.length; i++) {
                     if (this.data.taxes[i].id == taxId) {
-                        this.data.taxes[i].value = taxValue;
+                        this.data.taxes[i].value = newValue;
                     }
                 }
             }
         },
     },
-    mounted() {
-        this.$emit('update-menu-name', 'Podatki i finanse');
-    },
     beforeDestroy() {
-        EventBus.$off('updateTaxValue', this.populateEmployeeRanks);
+        EventBus.$off('updateTaxValue', this.updateTaxValue);
     },
 };
 
@@ -128,13 +129,6 @@ alt.on('updateTaxValue', (taxId, newValue) => {
 </script>
 
 <style scoped>
-.town-hall-taxes-page {
-    padding-top: 12px;
-    width: 100%;
-    height: 100%;
-    color: #3d3d3d;
-}
-
 .town-hall-taxes-page table {
     margin: 0px;
 }

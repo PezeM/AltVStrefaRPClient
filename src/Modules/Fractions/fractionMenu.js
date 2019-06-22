@@ -7,10 +7,15 @@ export default class FractionMenu {
         alt.onServer('openFractionMenu', this.openFractionMenu);
 
         menusManager.onUiEvent('closeFractionMenu', this.closeFractionMenu);
+        menusManager.onUiEvent('tryToOpenFractionEmployeesPage', this.tryToOpenFractionEmployeesPage);
     }
 
     openFractionMenu(fractionType, fractionData) {
         menusManager.openMenu('openFractionMenu', true, true, fractionType, fractionData);
+    }
+
+    tryToOpenFractionEmployeesPage(fractionId) {
+        alt.emitServer('TryToOpenFractionEmployeesPage', fractionId)
     }
 
     closeFractionMenu() {

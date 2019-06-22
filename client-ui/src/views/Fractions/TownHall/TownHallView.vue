@@ -191,7 +191,10 @@ alt.on('openFractionTaxesPage', dataJson => {
 }
 
 .fraction-town-hall-content {
-    padding: 6px;
+    padding: 12px 6px 6px 6px;
+    width: 100%;
+    height: 100%;
+    color: #3d3d3d;
     display: flex;
     flex-flow: column;
     max-height: 90%;

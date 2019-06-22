@@ -335,7 +335,6 @@ const testBusinessRankInfo =
 export default {
     data() {
         return {
-            isDev: true,
             employeesInfo: null,
             businessRanksInfo: null,
             currentMenuVisible: 'mainPage',
@@ -394,14 +393,10 @@ export default {
             switch (pageName) {
                 case 'employeesPage':
                     alt.emit('getBusinessEmployees', this.businessInfo.BusinessId);
-                    // For dev
-                    if (this.isDev) this.populateEmployeeRanks(testEmployeeRanks);
                     break;
 
                 case 'rolesPage':
                     alt.emit('getBusinessRolesInfo', this.businessInfo.BusinessId);
-                    // For dev
-                    if (this.isDev) this.populateBusinessRanksInfo(JSON.parse(testBusinessRankInfo));
                     break;
 
                 default:

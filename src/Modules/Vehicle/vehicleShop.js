@@ -162,7 +162,7 @@ class VehicleShop {
             return;
         }
 
-        alt.emitServer('BuyVehicle', vehicleShop.id, vehicleModel);
+        alt.emitServer('BuyVehicle', vehicleShop.id, vehicleModel.toString());
     }
 
     exitVehicleShop() {

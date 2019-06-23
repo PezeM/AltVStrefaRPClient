@@ -168,7 +168,7 @@ alt.on('openFractionTaxesPage', dataJson => {
 });
 
 alt.on('openFractionEmployeesPage', data => {
-    router.push({ name: townHallEmployeesPage, params: { employeesData: data } });
+    router.push({ name: 'townHallEmployeesPage' , params: { employeesData: data } });
 });
 </script>
 

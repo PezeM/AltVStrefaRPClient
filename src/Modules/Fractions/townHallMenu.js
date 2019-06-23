@@ -11,7 +11,6 @@ export default class TownHallMenu {
         alt.onServer('updateTaxValue', this.updateTaxValue);
 
         menusManager.onUiEvent('tryToOpenFractionRegistrationPage', this.tryToOpenFractionRegistrationPage);
-        menusManager.onUiEvent('tryToOpenFractionEmployeesPage', this.tryToOpenFractionEmployeesPage);
         menusManager.onUiEvent('tryToOpenFractionRolesPage', this.tryToOpenFractionRolesPage);
         menusManager.onUiEvent('tryToOpenFractionResidentsPage', this.tryToOpenFractionResidentsPage);
         menusManager.onUiEvent('tryToOpenFractionTaxesPage', this.tryToOpenFractionTaxesPage);
@@ -33,10 +32,6 @@ export default class TownHallMenu {
 
     tryToOpenFractionRegistrationPage(fractionId) {
         alt.emitServer('TryToOpenFractionRegistrationPage', fractionId);
-    }
-
-    tryToOpenFractionEmployeesPage(fractionId) {
-        alt.emitServer('TryToOpenFractionEmployeesPage', fractionId)
     }
 
     tryToOpenFractionRolesPage(fractionId) {

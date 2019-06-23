@@ -35,7 +35,7 @@
         <div class="card shadow rounded border">
           <div class="card-body">
             <h4>Ostatnie podatki</h4>
-            <div class="overflow-auto last-taxes-list">
+            <div class="overflow-auto last-taxes-list table-responsive">
               <table class="table">
                 <thead class="thead-dark">
                   <tr>

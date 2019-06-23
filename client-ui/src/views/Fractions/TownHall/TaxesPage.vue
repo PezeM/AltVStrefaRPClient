@@ -31,7 +31,7 @@
           </div>
         </div>
       </div>
-      <div class="col-5" v-if="finances">
+      <div class="col-5" v-if="finances.length > 0">
         <div class="card shadow rounded border">
           <div class="card-body">
             <h4>Ostatnie podatki</h4>

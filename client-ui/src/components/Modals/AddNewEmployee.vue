@@ -11,7 +11,7 @@
             <input
               type="text"
               class="form-control"
-              v-model="newEmployee.Name"
+              v-model="newEmployee.name"
               placeholder="Podaj imię"
             >
           </div>
@@ -23,7 +23,7 @@
             <input
               type="text"
               class="form-control"
-              v-model="newEmployee.LastName"
+              v-model="newEmployee.lastName"
               placeholder="Podaj nazwisko"
             >
           </div>
@@ -44,8 +44,8 @@ export default {
     data() {
         return {
             newEmployee: {
-                Name: '',
-                LastName: '',
+                name: '',
+                lastName: '',
             },
         };
     },
@@ -61,7 +61,7 @@ export default {
         validateNewEmployee() {
             if (this.newEmployee == null || typeof this.newEmployee == 'undefined') {
                 return false;
-            } else if (this.newEmployee.Name === '' || this.newEmployee.LastName === '') {
+            } else if (this.newEmployee.name === '' || this.newEmployee.lastName === '') {
                 alt.emit('showNotification', 3, 'Błąd', 'Podaj imię i nazwisko pracownika.', 5000);
                 return false;
             } else {

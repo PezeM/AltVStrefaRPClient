@@ -107,7 +107,7 @@
 
           <h2 class="text-center p-2">Lista pracowników</h2>
           <div class="table-responsive rounded">
-            <table class="table table-striped table-sm shadow hover-table">
+            <table class="table table-striped table-sm shadow table-hover">
               <thead class="thead-dark">
                 <tr>
                   <th>#</th>
@@ -167,7 +167,7 @@
 
           <h2 class="text-center p-2">Lista stanowisk</h2>
           <div class="table-responsive rounded">
-            <table class="table table-striped table-sm shadow hover-table">
+            <table class="table table-striped table-sm shadow table-hover">
               <thead class="thead-dark">
                 <tr>
                   <th>Id</th>
@@ -744,7 +744,7 @@ alt.on('successfullyUpdatedEmployeeRank', (employeeId, newRankId) => {
     margin: 0 0 10px;
 }
 
-.businessApp .hover-table tr:hover {
+.businessApp .table-hover tr:hover {
     cursor: pointer;
     background-color: rgba(29, 29, 29, 0.267);
     transition: background-color 0.25s ease;

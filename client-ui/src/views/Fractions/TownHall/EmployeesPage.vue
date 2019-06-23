@@ -122,6 +122,7 @@ export default {
     },
     mounted() {
         EventBus.$on('succesfullyUpdatedEmployeeRank', this.updateEmployeeRank);
+        EventBus.$on('succesfullyRemovedEmployeeFromFraction', this.succesfullyRemovedEmployee);
         this.$emit('update-menu-name', 'Pracownicy');
     },
     methods: {
@@ -165,6 +166,14 @@ export default {
                 alt.emit('tryToRemoveEmployeeFromFraction', this.data.id, employee.id);
             }
         },
+        succesfullyRemovedEmployee(employeeId) {
+            console.log(`Removed employee with id ${employeeId}`);
+            if (!!this.employeesData.employees) return;
+            var index = this.employeesData.employees.findIndex(e => e.id === employeeId);
+            if (index == null) return;
+            console.log(`Index is ${index}`);
+            this.$delete(this.employeesData.employees, index);
+        },
         showEmployeeModal(employee) {
             this.$modal.show('employee-edit-modal', {
                 employee,
@@ -180,20 +189,22 @@ export default {
             if (employee == null) return;
             let newRank = this.employeesData.ranks.find(r => r.id === newRankId);
             if (newRank == null) return;
-            console.log(`Found new rank and employee`);
-            console.log(`Employee before update = ${JSON.stringify(employee, null, 4)}`);
             this.$set(employee, 'rankName', newRank.rankName);
             this.$set(employee, 'rankId', newRankId);
-            console.log(`Employee after update = ${JSON.stringify(employee, null, 4)}`);
         },
     },
     beforeDestroy() {
         EventBus.$off('succesfullyUpdatedEmployeeRank', this.updateEmployeeRank);
+        EventBus.$off('succesfullyRemovedEmployeeFromFraction', this.succesfullyRemovedEmployee);
     },
 };
 
 alt.on('succesfullyUpdatedEmployeeRank', (employeeId, newRankId) => {
     EventBus.$emit('succesfullyUpdatedEmployeeRank', employeeId, newRankId);
+});
+
+alt.on('succesfullyRemovedEmployeeFromFraction', employeeId => {
+    EventBus.$emit('succesfullyRemovedEmployeeFromFraction', employeeId);
 });
 </script>
 

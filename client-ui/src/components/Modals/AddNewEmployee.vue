@@ -51,7 +51,6 @@ export default {
     },
     methods: {
         beforeOpen(event) {
-            console.log(JSON.stringify(event.params));
             this.newEmployee = event.params;
         },
         addNewEmployee() {

@@ -9,6 +9,7 @@ export default class FractionMenu {
         alt.onServer('openFractionEmployeesPage', this.openFractionEmployeesPage);
         alt.onServer('succesfullyUpdatedEmployeeRank', this.succesfullyUpdatedEmployeeRank);
         alt.onServer('succesfullyRemovedEmployeeFromFraction', this.succesfullyRemovedEmployeeFromFraction);
+        alt.onServer('showFractionInvite', this.showFractionInvite);
 
         menusManager.onUiEvent('closeFractionMenu', this.closeFractionMenu);
         menusManager.onUiEvent('tryToOpenFractionEmployeesPage', this.tryToOpenFractionEmployeesPage);
@@ -62,7 +63,10 @@ export default class FractionMenu {
         } else {
             mainUi.showCefNotification(3, "Błąd", "Podano błędne dane.", 5500);
         }
+    }
 
+    showFractionInvite(fractionName, fractionId) {
+        alt.log(`Showing fraction invite for ${fractionName} ID(${fractionId})`);
     }
 
     closeFractionMenu() {

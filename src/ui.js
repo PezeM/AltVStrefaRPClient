@@ -158,7 +158,10 @@ alt.onServer('showConfirmModal', (title, message, type, args) => {
             alt.showCursor(true);
             mainUi.showConfirmModal(title, message, "acceptBusinessInvite", null, args);
             break;
-
+        case 2: // Fraction invite
+            alt.showCursor(true);
+            mainUi.showConfirmModal(title, message, "acceptFractionInvite", "cancelFractionInvite", args);
+            break;
         default:
             mainUi.showConfirmModal(title, message, null, null);
             break;
@@ -172,9 +175,8 @@ mainUi.onUiEvent('acceptBusinessInvite', (businessId) => {
 
     if (menusManager.viewOpened) {
         menusManager.focusView();
-    } else if (uiView.uiFocused) {
-        uiView.focusView();
     } else {
+        mainUi.unfocusView();
         alt.showCursor(false);
     }
 });
@@ -182,9 +184,8 @@ mainUi.onUiEvent('acceptBusinessInvite', (businessId) => {
 mainUi.onUiEvent('defaultCancelModalCallback', () => {
     if (menusManager.viewOpened) {
         menusManager.focusView();
-    } else if (uiView.uiFocused) {
-        uiView.focusView();
     } else {
+        mainUi.unfocusView();
         alt.showCursor(false);
     }
 });

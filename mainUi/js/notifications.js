@@ -16,7 +16,9 @@ alt.on('showNotification', (type, title, message, duration, icon) => {
 
 
 alt.on('showConfirmModal', (title, message, confirmCallback, cancelCallback, args) => {
-    console.log('Alt on show confirm ui ' + typeof confirmCallback + ' ' + JSON.stringify(confirmCallback) + ' args: ' + JSON.stringify(args));
+    console.log(`[CONFIRM MODAL UI] ConfirmCallback = ${JSON.stringify(confirmCallback)} type = ${typeof confirmCallback} 
+                CancelCallback = ${JSON.stringify(cancelCallback)} type = ${typeof cancelCallback} 
+                args = ${JSON.stringify(args)}`);
     showConfirmModal(title, message, confirmCallback, cancelCallback, args);
 });
 
@@ -81,7 +83,7 @@ function showConfirmModal(title, message, confirmCallback, cancelCallback, args)
                 alt.emit(confirmCallback);
             } else {
                 console.log('Triggered confirm callback with args ' + args);
-                alt.emit(confirmCallback, JSON.stringify(args));
+                alt.emit(confirmCallback, args);
             }
         });
     }
@@ -96,7 +98,7 @@ function showConfirmModal(title, message, confirmCallback, cancelCallback, args)
                 alt.emit(cancelCallback);
             } else {
                 console.log('Triggered cancel callback with args ' + args);
-                alt.emit(cancelCallback, JSON.stringify(args));
+                alt.emit(cancelCallback, args);
             }
         });
     } else {

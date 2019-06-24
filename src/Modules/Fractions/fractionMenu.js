@@ -9,13 +9,14 @@ export default class FractionMenu {
         alt.onServer('openFractionEmployeesPage', this.openFractionEmployeesPage);
         alt.onServer('succesfullyUpdatedEmployeeRank', this.succesfullyUpdatedEmployeeRank);
         alt.onServer('succesfullyRemovedEmployeeFromFraction', this.succesfullyRemovedEmployeeFromFraction);
-        alt.onServer('showFractionInvite', this.showFractionInvite);
 
         menusManager.onUiEvent('closeFractionMenu', this.closeFractionMenu);
         menusManager.onUiEvent('tryToOpenFractionEmployeesPage', this.tryToOpenFractionEmployeesPage);
         menusManager.onUiEvent('updateFractionEmployeeRank', this.updateFractionEmployeeRank);
         menusManager.onUiEvent('tryToRemoveEmployeeFromFraction', this.tryToRemoveEmployeeFromFraction);
         menusManager.onUiEvent('tryToInviteEmployeeToFraction', this.tryToInviteEmployeeToFraction);
+        mainUi.onUiEvent('acceptFractionInvite', this.acceptFractionInvite);
+        mainUi.onUiEvent('cancelFractionInvite', this.cancelFractionInvite);
     }
 
     openFractionMenu(fractionType, fractionData) {
@@ -65,8 +66,30 @@ export default class FractionMenu {
         }
     }
 
-    showFractionInvite(fractionName, fractionId) {
-        alt.log(`Showing fraction invite for ${fractionName} ID(${fractionId})`);
+    acceptFractionInvite(fractionId) {
+        if (fractionId) {
+            alt.emitServer('AcceptFractionInvite', fractionId);
+        }
+
+        if (menusManager.viewOpened) {
+            menusManager.focusView();
+        } else {
+            mainUi.unfocusView();
+            alt.showCursor(false);
+        }
+    }
+
+    cancelFractionInvite(fractionId) {
+        if (fractionId) {
+            alt.emitServer('CancelFractionInvite', fractionId);
+        }
+
+        if (menusManager.viewOpened) {
+            menusManager.focusView();
+        } else {
+            mainUi.unfocusView();
+            alt.showCursor(false);
+        }
     }
 
     closeFractionMenu() {

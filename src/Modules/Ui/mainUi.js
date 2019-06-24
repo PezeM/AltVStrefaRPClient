@@ -35,7 +35,7 @@ class MainUi {
     showConfirmModal(title, message, confirmCallback = null, cancelCallback = null, args = null) {
         try {
             if (typeof message == 'string') {
-                alt.log('Confirm callback type = ' + typeof confirmCallback);
+                alt.log(`[CONFIRM MODAL] ConfirmCallback = ${JSON.stringify(confirmCallback)} type = ${typeof confirmCallback} CancelCallback = ${JSON.stringify(cancelCallback)} type = ${typeof cancelCallback}`);
                 this.uiView.focus();
                 this.uiView.emit('showConfirmModal', title, message, confirmCallback, cancelCallback, args);
             }
@@ -46,6 +46,10 @@ class MainUi {
 
     focusView() {
         this.uiView.focus();
+    }
+
+    unfocusView() {
+        this.uiView.unfocus();
     }
 }
 

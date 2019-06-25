@@ -1,63 +1,62 @@
 <template>
-    <div class="charSelect">
-        <error-modal v-bind:errorMessage="errorMessage" v-on:hide-error-window="hideErrorWindow"></error-modal>
+  <div class="character-select container-fluid">
+    <div class="row mb-5 mx-auto pt-5">
+      <error-modal v-bind:errorMessage="errorMessage" v-on:hide-error-window="hideErrorWindow"></error-modal>
 
-        <div class="char-select-title">
-            <h1>Witaj na serwerze! Wybierz swoją postać</h1>
-        </div>
-        <div class="char-select-body">
-            <div class="char-select-body-container">
-                <div class="character-card card new-char" @click="createCharacter()">
-                    <div class="card-top"></div>
-                    <div class="card-profile">
-                        <div class="profile-image"></div>
-                    </div>
-                    <div class="card-info">
-                        <div class="info-title">
-                            <h2>Stwórz nową postać</h2>
-                            <h3>StrefaRP.pl</h3>
-                        </div>
-                    </div>
-                </div>
-
-                <div
-                    class="character-card card"
-                    v-for="character in filteredCharacterList"
-                    :key="character.Id"
-                    @click="chooseCharacter(character.Id)"
-                >
-                    <div
-                        class="card-top"
-                        :style="{ backgroundImage: `url(${require(`@/assets/images/${character.BackgroundImage}`)})` }"
-                    ></div>
-                    <div class="card-profile">
-                        <div
-                            class="profile-image"
-                            :style="{ backgroundImage: `url(${require(`@/assets/images/${character.ProfileImage}`)})` }"
-                        ></div>
-                    </div>
-                    <div class="card-info">
-                        <div class="info-title">
-                            <h2>{{ getCharacterFullName(character) }}</h2>
-                            <h3>Pieniądze: {{ character.Money }}$</h3>
-                        </div>
-                        <div class="info-follow">
-                            <div>
-                                <span>{{ character.TimePlayed }}</span>
-                                <br />
-                                <span>Czas online</span>
-                            </div>
-                            <div>
-                                <span>{{ character.Id }}</span>
-                                <br />
-                                <span>Id</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+      <div class="col-12 text-center title">
+        <h1>Witaj na serwerze! Wybierz swoją postać</h1>
+      </div>
     </div>
+    <div class="row">
+      <div class="col-4 mb-4">
+        <div class="profile-card" @click="createCharacter()">
+          <div class="new-char img">
+            <img src="../../assets/images/strefa-logo.png">
+          </div>
+          <div class="mid-section">
+            <div class="name">Nowa postać</div>
+            <div class="line"></div>
+            <div class="stats">
+              <div class="stat">
+                {{ charactersList.length }}
+                <div class="subtext">Ilość postaci</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="col-4 mb-4"
+        v-for="character in filteredCharacterList"
+        :key="character.Id"
+        @click="chooseCharacter(character.Id)"
+      >
+        <div class="profile-card">
+          <div class="img">
+            <img :src="getImage(character)">
+          </div>
+          <div class="mid-section">
+            <div class="name">{{ getCharacterFullName(character) }}</div>
+            <div class="line"></div>
+            <div class="stats">
+              <div class="stat">
+                {{ character.TimePlayed }}
+                <div class="subtext">Czas online</div>
+              </div>
+              <div class="stat">
+                {{ character.Money }}$
+                <div class="subtext">Pieniądze</div>
+              </div>
+              <div class="stat">
+                {{ character.Id }}
+                <div class="subtext">Id</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -70,7 +69,37 @@ export default {
         ErrorModal,
     },
     props: {
-        charactersList: Array,
+        charactersList: {
+            type: Array,
+            default() {
+                return [
+                    {
+                        Id: '1',
+                        TimePlayed: 7,
+                        FirstName: 'Anna',
+                        LastName: 'Anna2',
+                        Money: 2321312,
+                        ProfileImage: 'default-profile-image.jpg',
+                    },
+                    {
+                        Id: '2',
+                        TimePlayed: 2,
+                        FirstName: 'Kurwa',
+                        LastName: 'Maciek',
+                        Money: 2332,
+                        ProfileImage: 'default-profile-image.jpg',
+                    },
+                    {
+                        Id: '3',
+                        TimePlayed: 16,
+                        FirstName: 'Edward',
+                        LastName: 'Testowy',
+                        Money: 10000000,
+                        ProfileImage: 'default-profile-image.jpg',
+                    },
+                ];
+            },
+        },
     },
     data() {
         return {
@@ -81,26 +110,23 @@ export default {
             //         TimePlayed: 7,
             //         Name: 'Anna',
             //         LastName: 'Anna2',
-            //         BackgroundImage: 'profile-card-background.jpg',
-            //         ProfileImage: 'default-profile-image.jpg'
+            //         ProfileImage: 'default-profile-image.jpg',
             //     },
             //     {
             //         Id: 'characters/1-A',
             //         TimePlayed: 2,
             //         Name: 'Kurwa',
             //         LastName: 'Maciek',
-            //         BackgroundImage: 'profile-card-background.jpg',
-            //         ProfileImage: 'default-profile-image.jpg'
+            //         ProfileImage: 'default-profile-image.jpg',
             //     },
             //     {
             //         Id: 'characters/97-A',
             //         TimePlayed: 16,
             //         Name: 'Edward',
             //         LastName: 'Testowy',
-            //         BackgroundImage: 'profile-card-background.jpg',
-            //         ProfileImage: 'default-profile-image.jpg'
+            //         ProfileImage: 'default-profile-image.jpg',
             //     },
-            // ]
+            // ],
         };
     },
     methods: {
@@ -121,157 +147,150 @@ export default {
         getCharacterFullName(character) {
             return character.FirstName + ' ' + character.LastName;
         },
+        getImage(character) {
+            return require(`@/assets/images/${character.ProfileImage}`);
+        },
     },
     computed: {
         filteredCharacterList() {
-            // Sort characters by ID
-            return this.charactersList.sort(function(a, b) {
-                return a.Id - b.Id;
-            });
+            return this.charactersList.sort((a, b) => a.Id - b.Id);
         },
     },
 };
 </script>
 
 <style scoped>
-.charSelect {
-    display: grid;
-    width: 100%;
-    height: 100vh;
+.character-select {
     background: rgba(0, 0, 0, 0.65);
-    grid-template-rows: 25% auto;
-    grid-template-columns: auto;
+    height: 100vh;
+    overflow: auto;
 }
 
-.char-select-title {
-    grid-column: 1;
-    grid-row: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-}
-
-.char-select-title h1 {
+.character-select .title {
     color: #fff;
     font-size: 3em;
 }
 
-.char-select-body {
-    grid-column: 1;
-    grid-row: 2;
-    /* height: 100%; */
-    overflow-y: auto;
-}
-
-.char-select-body-container {
-    margin: 1vh;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: auto;
-    justify-items: center;
-    align-items: center;
-    grid-row-gap: 2vh;
-}
-
-.charSelect .character-card {
-    width: 30vh;
-    height: 32vh;
-    border-radius: 8px;
-    cursor: pointer;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.384), 0 6px 12px rgba(0, 0, 0, 0.486);
-    transition: all 0.3s;
-}
-
-.charSelect .character-card:hover {
-    width: 30vh;
-    height: 32vh;
-    border-radius: 8px;
-    cursor: pointer;
-    box-shadow: 0 12px 18px rgba(0, 0, 0, 0.479), 0 12px 18px rgba(0, 0, 0, 0.644);
-    transform: perspective(350px) rotateY(10deg);
-}
-
-.card {
-    overflow: hidden;
-    border-radius: 4px;
-    background-color: #fff;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-}
-
-.card .card-top {
-    flex-basis: 155px;
-    flex-shrink: 1;
-    background-color: rgba(0, 0, 0, 0.863);
-    background-position: center;
-    background-size: cover;
-}
-
-.card .card-profile {
-    flex-basis: 35px;
-    flex-shrink: 1;
-}
-
-.card .card-profile .profile-image {
-    overflow: hidden;
-    border-radius: 100%;
-    position: absolute;
-    left: calc(50% - 75px);
-    top: calc(25% - 75px);
-    border: 4px solid white;
-    width: 150px;
-    height: 150px;
-    background-size: cover;
-    background-position: center;
-}
-
-.card .card-info {
-    flex-basis: 56, 66665%;
-    flex-grow: 1;
-    padding: 0 15px;
+.profile-card {
+    width: 18rem;
+    height: 20rem;
+    background: white;
+    margin: 0 auto;
+    border-radius: 10px;
     text-align: center;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1), 0 6px 12px rgba(0, 0, 0, 0.3);
+    position: relative;
+    box-sizing: border-box;
+    overflow: hidden;
+    transition: 0.5s all;
+    transform: perspective(300px) rotateY(0deg);
+}
+
+.profile-card:hover {
+    box-shadow: 0 12px 18px rgba(0, 0, 0, 0.479), 0 12px 18px rgba(0, 0, 0, 0.644);
+    transform: perspective(300px) rotateY(12deg);
+}
+
+.profile-card .mid-section {
+    position: absolute;
+    height: 10rem;
+    width: 100%;
+    top: 12rem;
+    left: 0;
+    padding: 0 10px 0;
+    box-sizing: border-box;
+    background: white;
+}
+
+.profile-card .mid-section .name {
+    color: #333333;
+    font-size: 1.4em;
+    padding-top: 5px;
+    background: rgba(255, 255, 255, 0.1);
+    font-weight: bold;
+}
+
+.profile-card .mid-section .line {
+    background: #0c0e74;
+    width: 85%;
+    height: 2px;
+    margin: 5px auto -3px;
+}
+
+.profile-card .mid-section .stats {
     display: flex;
-    flex-direction: column;
+    position: absolute;
+    left: 10%;
+    padding-top: 10px;
+    width: 80%;
+    justify-content: space-around;
 }
 
-.card-info h2 {
-    font-size: 1.5em;
-    font-weight: 700;
+.profile-card .mid-section .stats .stat {
+    font-size: 1.3em;
+    color: #333333;
+    padding: 5px;
+    font-weight: bold;
 }
 
-.card-info h3 {
-    font-size: 1.2em;
-    font-weight: 400;
+.profile-card .mid-section .stats .subtext {
+    color: gray;
+    font-size: 0.6em;
+    font-weight: normal;
 }
 
-.card .card-info .info-title {
-    padding-bottom: 15px;
+.profile-card .img {
+    height: 130px;
+    width: 100%;
+    background-image: url('../../assets/images/profile-card-background.jpg');
+    padding: 20px;
+    box-sizing: border-box;
+    position: relative;
 }
 
-.card .card-info .info-title h3 {
-    font-weight: 400;
+.profile-card .new-char {
+    background-image: none;
+    background-color: rgba(0, 0, 0, 0.8);
+    height: 130px;
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    position: relative;
 }
 
-.card .card-info .info-follow {
-    display: flex;
-    padding: 8px 0;
-    font-size: 1em;
+.profile-card .img img {
+    width: 160px;
+    height: 160px;
+    padding: 3px;
+    border-radius: 50%;
+    border: 3px solid rgba(255, 255, 255, 0.6);
+    position: absolute;
+    left: calc(50% - 84px);
+    top: 26px;
 }
 
-.card .card-info .info-follow > div {
-    flex-grow: 1;
-    flex-basis: 1px;
-    min-height: 20px;
-    max-height: 80px;
+.profile-card .new-char img {
+    background-color: #1d2631;
 }
 
-.card.new-char .card-top {
-    background: rgba(0, 0, 0, 0.877);
+.profile-card .img:after {
+    content: '';
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    left: calc(50% - 91.5px);
+    top: 20px;
+    border: 3px solid rgba(255, 255, 255, 0.4);
 }
-
-.card.new-char .profile-image {
-    background-image: url('../../assets/images/strefa-logo.png');
+.profile-card .img:before {
+    content: '';
+    position: absolute;
+    width: 190px;
+    height: 190px;
+    border-radius: 50%;
+    left: calc(50% - 95px);
+    top: 15.5px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
 }
 </style>

@@ -283,12 +283,6 @@ export default {
     mounted() {
         EventBus.$on('updateBankMoney', this.changeBankMoney);
         EventBus.$on('openTransactionHistory', this.populateTransactionHistory);
-        // EventBus.$on('updateBankMoney', money => {
-        //     this.changeBankMoney(money);
-        // });
-        // EventBus.$on('openTransactionHistory', transactionHistory => {
-        //     this.populateTransactionHistory(transactionHistory);
-        // });
     },
     data() {
         return {
@@ -406,8 +400,7 @@ export default {
             }, {});
         },
         changeBankMoney(amount) {
-            this.characterData.Money = amount;
-            console.log('New money = ' + this.characterData.Money);
+            this.$set(this.characterData, 'Money', amount);
         },
         getCurrentDate() {
             var today = new Date();

@@ -744,6 +744,10 @@ alt.on('successfullyUpdatedEmployeeRank', (employeeId, newRankId) => {
     margin: 0 0 10px;
 }
 
+.content-box .info span {
+    padding-left: 2px;
+}
+
 .businessApp .table-hover tr:hover {
     cursor: pointer;
     background-color: rgba(29, 29, 29, 0.267);

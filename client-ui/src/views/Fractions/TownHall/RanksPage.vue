@@ -28,7 +28,7 @@
 
     <div class="row" v-if="ranks">
       <div class="col-12">
-        <div class="overflow-auto rank-table shadow">
+        <div class="overflow-auto ranks-table shadow">
           <table class="table table-sm table-hover">
             <thead class="thead-dark">
               <tr>
@@ -37,7 +37,7 @@
                   v-for="permission in ranks[0].Permissions"
                   v-bind:key="permission.Id"
                 >{{ permission.Name }}</th>
-                <th style="width: 15%">Akcje</th>
+                <th style="width: 10%">Akcje</th>
               </tr>
             </thead>
             <tbody>
@@ -176,6 +176,7 @@ export default {
     },
     mounted() {
         EventBus.$on('succesfullyAddedNewFractionRank', this.updateFractionRanks);
+        EventBus.$on('succesfullyDeletedFractionRank', this.succesfullyDeletedFractionRank);
         this.$emit('update-menu-name', 'Stanowiska');
     },
     methods: {
@@ -243,6 +244,14 @@ export default {
                 alt.emit('tryToDeleteFractionRank', this.data.id, rank.Id);
             }
         },
+        succesfullyDeletedFractionRank(rankId) {
+            console.log(`Removed rank with id ${rankId}`);
+            if (!!this.ranks) return;
+            var index = this.ranks.findIndex(r => r.Id === rankId);
+            if (index == null) return;
+            console.log(`Index is ${index}`);
+            this.$delete(this.ranks, index);
+        },
         betterPermissionDisplay(hasPermission) {
             return hasPermission ? 'Tak' : 'Nie';
         },
@@ -258,7 +267,11 @@ export default {
 };
 
 alt.on('succesfullyAddedNewFractionRank', updatedRanks => {
-    EventBus.$emit('succesfullyAddedNewFractionRank', updatedRanks);
+    EventBus.$emit('succesfullyAddedNewFractionRank', JSON.parse(updatedRanks));
+});
+
+alt.on('succesfullyDeletedFractionRank', rankId => {
+    EventBus.$emit('succesfullyDeletedFractionRank', rankId);
 });
 </script>
 

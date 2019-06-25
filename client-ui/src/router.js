@@ -78,6 +78,12 @@ export default new Router({
                     props: true,
                 },
                 {
+                    path: 'registrationPage',
+                    name: 'townHallRegistrationPage',
+                    component: () => import('./views/Fractions/TownHall/RegistrationPage.vue'),
+                    props: true,
+                },
+                {
                     path: 'employeesPage',
                     name: 'townHallEmployeesPage',
                     component: () => import('./views/Fractions/TownHall/EmployeesPage.vue'),

@@ -158,7 +158,8 @@ export default {
 
 alt.on('registeredSuccessfully', () => {
     console.log('Registered successfully');
-    EventBus.$emit('registeredSuccesfully', 'Pomyślnie założono konto. Możesz się teraz zalogować');
+    var message = 'Pomyślnie założono konto. Możesz się teraz zalogować';
+    EventBus.$emit('registeredSuccesfully', message);
 });
 
 alt.on('showError', message => {

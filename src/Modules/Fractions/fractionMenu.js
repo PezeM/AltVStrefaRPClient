@@ -11,6 +11,7 @@ export default class FractionMenu {
         alt.onServer('succesfullyRemovedEmployeeFromFraction', this.succesfullyRemovedEmployeeFromFraction);
         alt.onServer('openFractionRanksPage', this.openFractionRanksPage);
         alt.onServer('succesfullyAddedNewFractionRank', this.succesfullyAddedNewFractionRank);
+        alt.onServer('succesfullyDeletedFractionRank', this.succesfullyDeletedFractionRank);
 
         menusManager.onUiEvent('closeFractionMenu', this.closeFractionMenu);
         menusManager.onUiEvent('tryToOpenFractionEmployeesPage', this.tryToOpenFractionEmployeesPage);
@@ -131,6 +132,11 @@ export default class FractionMenu {
     succesfullyAddedNewFractionRank(rankName, updatedRanks) {
         menusManager.emitUiEvent('succesfullyAddedNewFractionRank', updatedRanks);
         mainUi.showCefNotification(1, "Sukces", `Pomyślnie dodano nowe stanowisku o nazwie ${rankName}`, 5500);
+    }
+
+    succesfullyDeletedFractionRank(rankId) {
+        menusManager.emitUiEvent('succesfullyDeletedFractionRank', rankId);
+        mainUi.showCefNotification(1, 'Usunięto range', 'Pomyślnie usunięto stanowisko.', 5000);
     }
 
     closeFractionMenu() {

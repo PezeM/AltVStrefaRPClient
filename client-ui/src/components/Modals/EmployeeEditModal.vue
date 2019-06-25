@@ -139,4 +139,8 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.v-select .vs__dropdown-menu {
+    max-height: 6rem;
+}
+</style>

@@ -129,7 +129,7 @@ export default {
                     alt.emit('tryToOpenFractionEmployeesPage', this.fractionData.id);
                     break;
                 case 'rolesPage':
-                    alt.emit('tryToOpenFractionRolesPage', this.fractionData.id);
+                    alt.emit('tryToOpenFractionRanksPage', this.fractionData.id);
                     break;
                 case 'taxesPage':
                     alt.emit('tryToOpenFractionTaxesPage');
@@ -168,7 +168,12 @@ alt.on('openFractionTaxesPage', dataJson => {
 });
 
 alt.on('openFractionEmployeesPage', data => {
-    router.push({ name: 'townHallEmployeesPage' , params: { employeesData: data } });
+    router.push({ name: 'townHallEmployeesPage', params: { employeesData: data } });
+});
+
+alt.on('openFractionRanksPage', data => {
+    console.log(`Fraction ranks data = ${JSON.stringify(JSON.parse(data), null, 4)}`);
+    router.push({ name: 'townHallRanksPage', params: { ranks: JSON.parse(data) } });
 });
 </script>
 

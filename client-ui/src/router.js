@@ -84,6 +84,12 @@ export default new Router({
                     props: true,
                 },
                 {
+                    path: 'ranksPage',
+                    name: 'townHallRanksPage',
+                    component: () => import('./views/Fractions/TownHall/RanksPage.vue'),
+                    props: true,
+                },
+                {
                     path: 'residentsPage',
                     name: 'townHallResidentsPage',
                     component: () => import('./views/Fractions/TownHall/ResidentsPage.vue'),

@@ -9,6 +9,8 @@ export default class FractionMenu {
         alt.onServer('openFractionEmployeesPage', this.openFractionEmployeesPage);
         alt.onServer('succesfullyUpdatedEmployeeRank', this.succesfullyUpdatedEmployeeRank);
         alt.onServer('succesfullyRemovedEmployeeFromFraction', this.succesfullyRemovedEmployeeFromFraction);
+        alt.onServer('openFractionRanksPage', this.openFractionRanksPage);
+        alt.onServer('succesfullyAddedNewFractionRank', this.succesfullyAddedNewFractionRank);
 
         menusManager.onUiEvent('closeFractionMenu', this.closeFractionMenu);
         menusManager.onUiEvent('tryToOpenFractionEmployeesPage', this.tryToOpenFractionEmployeesPage);
@@ -17,6 +19,10 @@ export default class FractionMenu {
         menusManager.onUiEvent('tryToInviteEmployeeToFraction', this.tryToInviteEmployeeToFraction);
         mainUi.onUiEvent('acceptFractionInvite', this.acceptFractionInvite);
         mainUi.onUiEvent('cancelFractionInvite', this.cancelFractionInvite);
+        menusManager.onUiEvent('tryToOpenFractionRanksPage', this.tryToOpenFractionRanksPage);
+        menusManager.onUiEvent('tryToDeleteFractionRank', this.tryToDeleteFractionRank);
+        menusManager.onUiEvent('tryToUpdateFractionRank', this.tryToUpdateFractionRank);
+        menusManager.onUiEvent('tryToAddNewFractionRank', this.tryToAddNewFractionRank);
     }
 
     openFractionMenu(fractionType, fractionData) {
@@ -90,6 +96,41 @@ export default class FractionMenu {
             mainUi.unfocusView();
             alt.showCursor(false);
         }
+    }
+
+    tryToOpenFractionRanksPage(fractionId) {
+        if (fractionId) {
+            alt.emitServer('TryToOpenFractionRanksPage', fractionId);
+        }
+    }
+
+    openFractionRanksPage(ranksData) {
+        menusManager.emitUiEvent('openFractionRanksPage', ranksData);
+    }
+
+    tryToDeleteFractionRank(fractionId, rankId) {
+        if (fractionId && rankId && typeof fractionId == 'number' && typeof rankId == 'number') {
+            alt.emitServer('TryToDeleteFractionRank', fractionId, rankId);
+        } else {
+            mainUi.showCefNotification(3, "Błąd", "Podano błędne dane.", 5000);
+        }
+    }
+
+    tryToUpdateFractionRank(fractionId, rankId, rank) {
+        if (rank && rankId > 0 && fractionId > 0) {
+            alt.emitServer('TryToUpdateFractionRank', fractionId, rankId, rank);
+        }
+    }
+
+    tryToAddNewFractionRank(fractionId, rankData) {
+        if (fractionId > 0 && rankData) {
+            alt.emitServer('TryToAddNewFractionRank', fractionId, rankData);
+        }
+    }
+
+    succesfullyAddedNewFractionRank(rankName, updatedRanks) {
+        menusManager.emitUiEvent('succesfullyAddedNewFractionRank', updatedRanks);
+        mainUi.showCefNotification(1, "Sukces", `Pomyślnie dodano nowe stanowisku o nazwie ${rankName}`, 5500);
     }
 
     closeFractionMenu() {

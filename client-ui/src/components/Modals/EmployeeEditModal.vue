@@ -110,7 +110,6 @@ export default {
         beforeOpen(event) {
             this.resetData();
             this.selectedEmployee = event.params.employee;
-            this.allBusinessRanks = event.params.ranks;
             this.allBusinessRanks = event.params.ranks.sort((a, b) => b.priority - a.priority);
             var employeeRank = this.allBusinessRanks.find(q => q.id == this.selectedEmployee.rankId);
             if (employeeRank != null) {

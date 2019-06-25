@@ -219,7 +219,7 @@ alt.on('succesfullyRemovedEmployeeFromFraction', employeeId => {
 }
 
 .employees-table {
-    height: 30rem;
+    max-height: 30rem;
 }
 
 .employees-table td,

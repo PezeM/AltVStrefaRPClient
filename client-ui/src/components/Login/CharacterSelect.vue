@@ -97,6 +97,14 @@ export default {
                         Money: 10000000,
                         ProfileImage: 'default-profile-image.jpg',
                     },
+                    {
+                        Id: '4',
+                        TimePlayed: 16,
+                        FirstName: 'Edward',
+                        LastName: 'Testowy',
+                        Money: 10000000,
+                        ProfileImage: 'default-profile-image.jpg',
+                    },
                 ];
             },
         },
@@ -169,6 +177,23 @@ export default {
 .character-select .title {
     color: #fff;
     font-size: 3em;
+}
+
+.character-select::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    background-color: #555;
+}
+
+.character-select::-webkit-scrollbar {
+    width: 1rem;
+    background-color: #555;
+}
+
+.character-select::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    background-color: #f5f5f5;
 }
 
 .profile-card {

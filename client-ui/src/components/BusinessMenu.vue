@@ -384,10 +384,10 @@ export default {
     methods: {
         closeBusinessMenu() {
             alt.emit('closeBusinessMenu');
-            this.businessInfo = null;
-            this.selectedEmployee = null;
-            this.selectedRank = null;
-            this.businessRanksInfo = null;
+            // this.businessInfo = null;
+            // this.selectedEmployee = null;
+            // this.selectedRank = null;
+            // this.businessRanksInfo = null;
         },
         showPage(pageName) {
             switch (pageName) {

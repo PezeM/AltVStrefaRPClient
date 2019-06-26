@@ -401,6 +401,8 @@ export default {
         },
         changeBankMoney(amount) {
             this.$set(this.characterData, 'Money', amount);
+            console.log('Changed characterData money to ' + amount);
+            this.$forceUpdate();
         },
         getCurrentDate() {
             var today = new Date();

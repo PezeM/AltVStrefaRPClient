@@ -29,21 +29,23 @@
             >
           </div>
         </div>
-        <div
-          v-for="permission in selectedRank.Permissions"
-          v-bind:key="permission.Id"
-          class="form-check row"
-        >
-          <label class="col-sm-10 form-check-label">
-            {{ permission.Name }}
-            <small class="form-text text-muted">{{ permission.Description }}</small>
-          </label>
-
-          <input
-            class="col-sm-1 form-check-input"
-            type="checkbox"
-            v-model="permission.HasPermission"
+        <div class="permissions">
+          <div
+            v-for="permission in selectedRank.Permissions"
+            v-bind:key="permission.Id"
+            class="form-check row"
           >
+            <label class="col-sm-10 form-check-label">
+              {{ permission.Name }}
+              <small class="form-text text-muted">{{ permission.Description }}</small>
+            </label>
+
+            <input
+              class="col-sm-1 form-check-input"
+              type="checkbox"
+              v-model="permission.HasPermission"
+            >
+          </div>
         </div>
       </div>
       <div class="modal-footer">
@@ -107,4 +109,10 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped>
+.permissions {
+    overflow-y: auto;
+    overflow-x: hidden;
+    max-height: 18rem;
+}
+</style>

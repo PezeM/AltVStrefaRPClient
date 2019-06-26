@@ -123,7 +123,7 @@ export default {
                     router.push({ name: 'townHallMainPage', params: { data: this.fractionData } });
                     break;
                 case 'registrationPage':
-                    alt.emit('tryToOpenFractionRegistrationPage', this.fractionData.id);
+                    alt.emit('tryToOpenFractionRegistrationPage');
                     break;
                 case 'employeesPage':
                     alt.emit('tryToOpenFractionEmployeesPage', this.fractionData.id);
@@ -174,6 +174,10 @@ alt.on('openFractionEmployeesPage', data => {
 alt.on('openFractionRanksPage', data => {
     console.log(`Fraction ranks data = ${JSON.stringify(JSON.parse(data), null, 4)}`);
     router.push({ name: 'townHallRanksPage', params: { ranks: JSON.parse(data) } });
+});
+
+alt.on('openFractionRegistrationPage', () => {
+    router.push({ name: 'townHallRegistrationPage' });
 });
 </script>
 

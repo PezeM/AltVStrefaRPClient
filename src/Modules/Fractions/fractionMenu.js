@@ -12,6 +12,8 @@ export default class FractionMenu {
         alt.onServer('openFractionRanksPage', this.openFractionRanksPage);
         alt.onServer('succesfullyAddedNewFractionRank', this.succesfullyAddedNewFractionRank);
         alt.onServer('succesfullyDeletedFractionRank', this.succesfullyDeletedFractionRank);
+        alt.onServer('succesfullyUpdatedFractionRank', this.succesfullyUpdatedFractionRank);
+        alt.onServer('openFractionRegistrationPage', this.openFractionRegistrationPage);
 
         menusManager.onUiEvent('closeFractionMenu', this.closeFractionMenu);
         menusManager.onUiEvent('tryToOpenFractionEmployeesPage', this.tryToOpenFractionEmployeesPage);
@@ -117,9 +119,9 @@ export default class FractionMenu {
         }
     }
 
-    tryToUpdateFractionRank(fractionId, rankId, rank) {
-        if (rank && rankId > 0 && fractionId > 0) {
-            alt.emitServer('TryToUpdateFractionRank', fractionId, rankId, rank);
+    tryToUpdateFractionRank(fractionId, rank) {
+        if (rank && fractionId > 0) {
+            alt.emitServer('TryToUpdateFractionRank', fractionId, rank);
         }
     }
 
@@ -135,8 +137,18 @@ export default class FractionMenu {
     }
 
     succesfullyDeletedFractionRank(rankId) {
+        alt.log(`succesfullyDeletedFractionRank event called in client-side`);
         menusManager.emitUiEvent('succesfullyDeletedFractionRank', rankId);
         mainUi.showCefNotification(1, 'Usunięto range', 'Pomyślnie usunięto stanowisko.', 5000);
+    }
+
+    succesfullyUpdatedFractionRank(updatedRank) {
+        menusManager.emitUiEvent('succesfullyUpdatedFractionRank', updatedRank);
+        mainUi.showCefNotification(1, 'Sukces', `Pomyślnie zaaktualizowano stanowisko ${updatedRank.RankName}`, 5000);
+    }
+
+    openFractionRegistrationPage() {
+        menusManager.emitUiEvent('openFractionRegistrationPage');
     }
 
     closeFractionMenu() {

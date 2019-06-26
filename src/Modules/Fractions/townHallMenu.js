@@ -10,12 +10,12 @@ export default class TownHallMenu {
         alt.onServer('openFractionTaxesPage', this.openFractionTaxesPage);
         alt.onServer('updateTaxValue', this.updateTaxValue);
 
-        menusManager.onUiEvent('tryToOpenFractionRegistrationPage', this.tryToOpenFractionRegistrationPage);
         menusManager.onUiEvent('tryToOpenFractionRolesPage', this.tryToOpenFractionRolesPage);
         menusManager.onUiEvent('tryToOpenFractionResidentsPage', this.tryToOpenFractionResidentsPage);
         menusManager.onUiEvent('tryToOpenFractionTaxesPage', this.tryToOpenFractionTaxesPage);
         menusManager.onUiEvent('tryToGetResidentData', this.tryToGetResidentData);
         menusManager.onUiEvent('tryToUpdateTaxValue', this.tryToUpdateTaxValue);
+        menusManager.onUiEvent('tryToOpenFractionRegistrationPage', this.tryToOpenFractionRegistrationPage);
     }
 
     openFractionsResidentsPage(onlineResidents) {
@@ -28,10 +28,6 @@ export default class TownHallMenu {
 
     populateResidentData(residentData) {
         menusManager.emitUiEvent('populateResidentData', residentData);
-    }
-
-    tryToOpenFractionRegistrationPage(fractionId) {
-        alt.emitServer('TryToOpenFractionRegistrationPage', fractionId);
     }
 
     tryToOpenFractionRolesPage(fractionId) {
@@ -65,5 +61,9 @@ export default class TownHallMenu {
 
     updateTaxValue(taxId, newValue) {
         menusManager.emitUiEvent('updateTaxValue', taxId, newValue.toFixed(2));
+    }
+
+    tryToOpenFractionRegistrationPage() {
+        alt.emitServer('TryToOpenFractionRegistrationPage');
     }
 }

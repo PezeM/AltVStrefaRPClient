@@ -168,11 +168,12 @@ export default {
         },
         succesfullyRemovedEmployee(employeeId) {
             console.log(`Removed employee with id ${employeeId}`);
-            if (!!this.employeesData.employees) return;
+            if (!this.employeesData.employees) return;
             var index = this.employeesData.employees.findIndex(e => e.id === employeeId);
             if (index == null) return;
             console.log(`Index is ${index}`);
             this.$delete(this.employeesData.employees, index);
+            this.$forceUpdate();
         },
         showEmployeeModal(employee) {
             this.$modal.show('employee-edit-modal', {
@@ -191,6 +192,7 @@ export default {
             if (newRank == null) return;
             this.$set(employee, 'rankName', newRank.rankName);
             this.$set(employee, 'rankId', newRankId);
+            this.$forceUpdate();
         },
     },
     beforeDestroy() {

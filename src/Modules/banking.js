@@ -59,6 +59,7 @@ class Bank {
     }
 
     updateBankMoneyWithNotification(notificationMessage, money) {
+        alt.log(`Updating money with notification with value = ${money}`);
         menusManager.emitUiEvent('updateBankMoney', money);
         mainUi.showCefNotification(1, "Aktualizacja", notificationMessage, 6000);
     }

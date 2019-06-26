@@ -40,7 +40,6 @@ export default {
             newRank: {
                 RankName: '',
                 Priority: '',
-                RankType: 0,
             },
             regex: /^[a-zA-Z0-9ęółśążźćńĘÓŁŚĄŻŹĆŃ\s]{3,20}$/,
         };

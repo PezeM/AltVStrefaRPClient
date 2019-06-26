@@ -177,13 +177,12 @@ export default {
     mounted() {
         EventBus.$on('succesfullyAddedNewFractionRank', this.updateFractionRanks);
         EventBus.$on('succesfullyDeletedFractionRank', this.succesfullyDeletedFractionRank);
+        EventBus.$on('succesfullyUpdatedFractionRank', this.succesfullyUpdatedFractionRank);
         this.$emit('update-menu-name', 'Stanowiska');
     },
     methods: {
         updateFractionRanks(updatedRanks) {
-            console.log(`Updating ranks`);
             this.ranks = updatedRanks;
-            console.log(`Updated ranks = ${JSON.stringify(this.ranks, null, 2)}`);
         },
         showRemoveRankDialog(rank) {
             this.$modal.show('dialog', {
@@ -211,7 +210,6 @@ export default {
             let newRank = {
                 RankName: 'Nowe stanowisko',
                 Priority: 10,
-                RankType: 1,
             };
 
             this.$modal.show('new-rank-modal', {
@@ -231,8 +229,7 @@ export default {
         },
         saveRankChanges(rank) {
             if (rank) {
-                console.log(`Test 1`);
-                alt.emit('tryToUpdateFractionRank', this.data.id, rank.Id, JSON.stringify(rank));
+                alt.emit('tryToUpdateFractionRank', this.data.id, JSON.stringify(rank));
                 this.$modal.hide('edit-rank-modal');
             }
         },
@@ -245,12 +242,23 @@ export default {
             }
         },
         succesfullyDeletedFractionRank(rankId) {
-            console.log(`Removed rank with id ${rankId}`);
-            if (!!this.ranks) return;
+            console.log(`Removing rank with id ${rankId}`);
+            if (!this.ranks) return;
             var index = this.ranks.findIndex(r => r.Id === rankId);
-            if (index == null) return;
+            if (index == null && index < 0) return;
             console.log(`Index is ${index}`);
             this.$delete(this.ranks, index);
+            this.$forceUpdate();
+        },
+        succesfullyUpdatedFractionRank(newRank) {
+            console.log(`Updating rank with id ${newRank.Id}`);
+            if (!this.ranks) return;
+            var rank = this.ranks.find(r => r.Id == newRank.Id);
+            if (rank == null) return;
+            rank = newRank;
+            console.log(`Updated rank to ${JSON.stringify(rank, null, 2)}`);
+            rank = Object.assign({}, rank, newRank);
+            this.$forceUpdate();
         },
         betterPermissionDisplay(hasPermission) {
             return hasPermission ? 'Tak' : 'Nie';
@@ -263,6 +271,7 @@ export default {
     },
     beforeDestroy() {
         EventBus.$off('succesfullyAddedNewFractionRank', this.updateFractionRanks);
+        EventBus.$off('succesfullyDeletedFractionRank', this.succesfullyDeletedFractionRank);
     },
 };
 
@@ -271,7 +280,12 @@ alt.on('succesfullyAddedNewFractionRank', updatedRanks => {
 });
 
 alt.on('succesfullyDeletedFractionRank', rankId => {
+    console.log(`succesfullyDeletedFractionRank on ui`);
     EventBus.$emit('succesfullyDeletedFractionRank', rankId);
+});
+
+alt.on('succesfullyUpdatedFractionRank', updatedRank => {
+    EventBus.$emit('succesfullyUpdatedFractionRank', JSON.parse(updatedRank));
 });
 </script>
 

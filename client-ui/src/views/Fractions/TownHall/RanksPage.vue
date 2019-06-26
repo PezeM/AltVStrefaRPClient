@@ -88,7 +88,7 @@ export default {
         data: {
             type: Object,
         },
-        ranks: {
+        ranksData: {
             type: Array,
             default() {
                 return [
@@ -174,6 +174,11 @@ export default {
             },
         },
     },
+    data() {
+        return {
+            ranks: this.ranksData,
+        };
+    },
     mounted() {
         EventBus.$on('succesfullyAddedNewFractionRank', this.updateFractionRanks);
         EventBus.$on('succesfullyDeletedFractionRank', this.succesfullyDeletedFractionRank);
@@ -242,23 +247,13 @@ export default {
             }
         },
         succesfullyDeletedFractionRank(rankId) {
-            console.log(`Removing rank with id ${rankId}`);
             if (!this.ranks) return;
-            var index = this.ranks.findIndex(r => r.Id === rankId);
-            if (index == null && index < 0) return;
-            console.log(`Index is ${index}`);
-            this.$delete(this.ranks, index);
-            this.$forceUpdate();
+            this.ranks = this.ranks.filter(rank => rank.Id != rankId);
         },
         succesfullyUpdatedFractionRank(newRank) {
-            console.log(`Updating rank with id ${newRank.Id}`);
             if (!this.ranks) return;
-            var rank = this.ranks.find(r => r.Id == newRank.Id);
-            if (rank == null) return;
-            rank = newRank;
-            console.log(`Updated rank to ${JSON.stringify(rank, null, 2)}`);
-            rank = Object.assign({}, rank, newRank);
-            this.$forceUpdate();
+            this.ranks = this.ranks.filter(rank => rank.Id != newRank.Id);
+            this.ranks.push(newRank);
         },
         betterPermissionDisplay(hasPermission) {
             return hasPermission ? 'Tak' : 'Nie';
@@ -272,6 +267,7 @@ export default {
     beforeDestroy() {
         EventBus.$off('succesfullyAddedNewFractionRank', this.updateFractionRanks);
         EventBus.$off('succesfullyDeletedFractionRank', this.succesfullyDeletedFractionRank);
+        EventBus.$off('succesfullyUpdatedFractionRank', this.succesfullyUpdatedFractionRank);
     },
 };
 
@@ -280,7 +276,6 @@ alt.on('succesfullyAddedNewFractionRank', updatedRanks => {
 });
 
 alt.on('succesfullyDeletedFractionRank', rankId => {
-    console.log(`succesfullyDeletedFractionRank on ui`);
     EventBus.$emit('succesfullyDeletedFractionRank', rankId);
 });
 

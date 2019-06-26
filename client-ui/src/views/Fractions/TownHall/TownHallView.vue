@@ -172,8 +172,7 @@ alt.on('openFractionEmployeesPage', data => {
 });
 
 alt.on('openFractionRanksPage', data => {
-    console.log(`Fraction ranks data = ${JSON.stringify(JSON.parse(data), null, 4)}`);
-    router.push({ name: 'townHallRanksPage', params: { ranks: JSON.parse(data) } });
+    router.push({ name: 'townHallRanksPage', params: { ranksData: JSON.parse(data) } });
 });
 
 alt.on('openFractionRegistrationPage', () => {

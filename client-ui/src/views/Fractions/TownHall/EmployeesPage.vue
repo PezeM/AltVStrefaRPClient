@@ -135,7 +135,6 @@ export default {
             this.$modal.show('add-new-employee-modal', newEmployee);
         },
         addNewEmployee(newEmployee) {
-            console.log(`New employee = ${JSON.stringify(newEmployee, null, 2)}`);
             alt.emit('tryToInviteEmployeeToFraction', this.data.id, newEmployee.name, newEmployee.lastName);
             this.$modal.hide('add-new-employee-modal');
         },
@@ -167,11 +166,9 @@ export default {
             }
         },
         succesfullyRemovedEmployee(employeeId) {
-            console.log(`Removed employee with id ${employeeId}`);
             if (!this.employeesData.employees) return;
             var index = this.employeesData.employees.findIndex(e => e.id === employeeId);
             if (index == null) return;
-            console.log(`Index is ${index}`);
             this.$delete(this.employeesData.employees, index);
             this.$forceUpdate();
         },

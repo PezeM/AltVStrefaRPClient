@@ -137,7 +137,6 @@ export default class FractionMenu {
     }
 
     succesfullyDeletedFractionRank(rankId) {
-        alt.log(`succesfullyDeletedFractionRank event called in client-side`);
         menusManager.emitUiEvent('succesfullyDeletedFractionRank', rankId);
         mainUi.showCefNotification(1, 'Usunięto range', 'Pomyślnie usunięto stanowisko.', 5000);
     }

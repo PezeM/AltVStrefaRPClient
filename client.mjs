@@ -5,7 +5,7 @@ import * as alt from 'alt';
 import * as game from 'natives';
 import chat from 'chat';
 import menusManager from 'src/Modules/Ui/menusManager.js';
-import keyCodes from 'keycodes.js';
+import keyCodes from 'src/keycodes.js';
 import mainUi from 'src/Modules/Ui/mainUi.js';
 import * as gameState from 'src/gameState.js';
 import * as ui from 'src/ui.js';

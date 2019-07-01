@@ -3,12 +3,11 @@
 
 import * as alt from 'alt';
 import * as game from 'natives';
-import { drawText } from 'src/Helpers/uiHelper.js';
-import { isDriver } from 'src/Helpers/playerHelpers.js';
 import mainUi from 'src/Modules/Ui/mainUi.js';
 import VehicleComponent from 'src/Modules/Vehicle/Components/vehicleComponent.js';
 
 const SEATBELT_EJECT_SPEED = 60;
+const SEATBELT_EJECT_ACCELERATION = 100;
 class VehicleSeatbeltComponent extends VehicleComponent {
     constructor() {
         super();
@@ -53,7 +52,7 @@ class VehicleSeatbeltComponent extends VehicleComponent {
     }
 
     checkConditions(isVehicleMovingForward, previousSpeed, vehicleAcceleration) {
-        return isVehicleMovingForward && (previousSpeed > (SEATBELT_EJECT_SPEED / 3.6)) && (vehicleAcceleration > (SEATBELT_EJECT_SPEED * 9.81));
+        return isVehicleMovingForward && (previousSpeed > (SEATBELT_EJECT_SPEED / 3.6)) && (vehicleAcceleration > (SEATBELT_EJECT_ACCELERATION * 9.81));
     }
 
     onUpdateOutsideVehicle(localPlayer) { }

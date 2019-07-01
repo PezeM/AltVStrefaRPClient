@@ -24,45 +24,63 @@ alt.onServer('toggleLockState', vehicle => {
     var startTime = Date.now();
     if (game.getDistanceBetweenCoords(localPlayer.pos.x, localPlayer.pos.y, localPlayer.pos.z, vehicle.pos.x, vehicle.pos.y, vehicle.pos.z, true) > 10) return false;
     let lockStatus = game.getVehicleDoorLockStatus(vehicle.scriptID); // 1 or 0
-
+    alt.log(`Lock state = ${lockStatus}`);
     switch (lockStatus) {
+        case 0:
         case 1:
             // Lock
+            if (typeof vehicle.lightFading !== 'undefined') {
+                alt.clearInterval(vehicle.lightFading);
+                vehicle.lightFading = null;
+            }
+
             game.setVehicleInteriorlight(vehicle.scriptID, false);
             game.setVehicleLightMultiplier(vehicle.scriptID, 1.0);
             game.setVehicleLights(vehicle.scriptID, 2);
-            var lightFadingCount = 300;
-            alt.setInterval(() => {
-                if (lightFadingCount > 0) {
+            vehicle.lightFadingCount = 300;
+            vehicle.lightFading = alt.setInterval(() => {
+                if (vehicle.lightFadingCount > 0) {
                     lightFadingCount--;
 
                     if (lightFadingCount > 100) {
-                        game.setVehicleLightMultiplier(vehicle.scriptID, (lightFadingCount - 100) / 300);
+                        game.setVehicleLightMultiplier(vehicle.scriptID, (vehicle.lightFadingCount - 100) / 300);
                     } else game.setVehicleLights(vehicle.scriptID, 0);
                 }
             }, 10);
             break;
-        case 0:
+        case 1:
             // Unlock
+            if (typeof vehicle.lightFading !== 'undefined') {
+                alt.clearInterval(vehicle.lightFading);
+                vehicle.lightFading = null;
+            }
+
             game.setVehicleInteriorlight(vehicle.scriptID, true);
-            game.setVehicleLightMultiplier(vehicle.scriptID, 0.0);
+            game.setVehicleLightMultiplier(vehicle.scriptID, 0);
             game.setVehicleLights(vehicle.scriptID, 2);
-            var lightFadingCount = 300;
+            vehicle.lightFadingCount = 300;
 
-            alt.setInterval(() => {
-                if (lightFadingCount < 300) {
-                    lightFadingCount++;
+            vehicle.lightFading = alt.setInterval(() => {
+                if (vehicle.lightFadingCount < 300) {
+                    vehicle.lightFadingCount++;
 
-                    if (lightFadingCount > 100) game.setVehicleLightMultiplier(vehicle.scriptID, (lightFadingCount - 99) / 300);
+                    if (vehicle.lightFadingCount > 100)
+                        game.setVehicleLightMultiplier(vehicle.scriptID, (vehicle.lightFadingCount - 99) / 300);
                 }
             }, 10);
             break;
     }
 
-    alt.setTimeout(() => {
+    if (typeof vehicle.lockTimer !== 'undefined') {
+        alt.clearTimeout(vehicle.lockTimer);
+    }
+
+    vehicle.lockTimer = alt.setTimeout(() => {
         game.setVehicleInteriorlight(vehicle.scriptID, false);
         game.setVehicleLights(vehicle.scriptID, 0);
         alt.log(`Some timeout inside toggleLockState`);
+        alt.clearInterval(vehicle.lightFading);
+        vehicle.lightFading = null;
     }, 7000);
 
     alt.log(`Executed toggleLockState in ${Date.now() - startTime} ms.`);
@@ -73,82 +91,82 @@ export function toggleLockState() {
     alt.log(`Toggle lock state`);
     let closestVehicle = getClosestVehicle(localPlayer.pos, 15);
     if (closestVehicle == null) return;
-    alt.emitServer("ToggleLockState");
+    alt.emitServer("ToggleLockState", closestVehicle);
     return true;
 }
 
-alt.onServer('toggleTrunkState', (state) => {
-    alt.log(`Toggle trunk state with state ${state}`);
-    let vehicle = getClosestVehicle(localPlayer.pos, 6);
-    if (vehicle == null) return;
-    let trunkIndex = game.getEntityBoneIndexByName(vehicle, "boot");
-    if (trunkIndex == -1) return;
+// alt.onServer('toggleTrunkState', (state) => {
+//     alt.log(`Toggle trunk state with state ${state}`);
+//     let vehicle = getClosestVehicle(localPlayer.pos, 6);
+//     if (vehicle == null) return;
+//     let trunkIndex = game.getEntityBoneIndexByName(vehicle, "boot");
+//     if (trunkIndex == -1) return;
 
-    let trunkPosition = game.getWorldPositionOfEntityBone(vehicle, trunkIndex);
-    let vehiclePosition = game.getEntityCoords(vehicle, true);
-    let distance = game.getDistanceBetweenCoords(trunkPosition.x, trunkPosition.y, trunkPosition.z,
-        vehiclePosition.x, vehiclePosition.y, vehiclePosition.z, false);
+//     let trunkPosition = game.getWorldPositionOfEntityBone(vehicle, trunkIndex);
+//     let vehiclePosition = game.getEntityCoords(vehicle, true);
+//     let distance = game.getDistanceBetweenCoords(trunkPosition.x, trunkPosition.y, trunkPosition.z,
+//         vehiclePosition.x, vehiclePosition.y, vehiclePosition.z, false);
 
-    let bootPosition = game.getOffsetFromEntityInWorldCoords(vehicle, 0, -distance - 1, 0);
+//     let bootPosition = game.getOffsetFromEntityInWorldCoords(vehicle, 0, -distance - 1, 0);
 
-    if (game.getDistanceBetweenCoords(localPlayer.pos.x, localPlayer.pos.y, localPlayer.pos.z, bootPosition.x, bootPosition.y, bootPosition.z, true) > 2.5) return;
+//     if (game.getDistanceBetweenCoords(localPlayer.pos.x, localPlayer.pos.y, localPlayer.pos.z, bootPosition.x, bootPosition.y, bootPosition.z, true) > 2.5) return;
 
-    alt.nextTick(() => {
-        switch (state) {
-            case 1:
-                game.setVehicleDoorOpen(vehicle, 5, false, false);
-                // game.taskOpenVehicleDoor(localPlayer.scriptID, vehicle, 0, 5, 1000);
-                game.playVehicleDoorOpenSound(vehicle, 0);
-                alt.log('Opened dooor index 5');
-                openedTrunks.push(vehicle);
-                break;
-            case 0:
-                game.setVehicleDoorShut(vehicle, 5, false);
-                game.playVehicleDoorCloseSound(vehicle, 1);
-                alt.log('Closed door index 5');
-                openedTrunks.splice(openedTrunks.indexOf(vehicle), 1);
-                break;
-        }
+//     alt.nextTick(() => {
+//         switch (state) {
+//             case 1:
+//                 game.setVehicleDoorOpen(vehicle, 5, false, false);
+//                 // game.taskOpenVehicleDoor(localPlayer.scriptID, vehicle, 0, 5, 1000);
+//                 game.playVehicleDoorOpenSound(vehicle, 0);
+//                 alt.log('Opened dooor index 5');
+//                 openedTrunks.push(vehicle);
+//                 break;
+//             case 0:
+//                 game.setVehicleDoorShut(vehicle, 5, false);
+//                 game.playVehicleDoorCloseSound(vehicle, 1);
+//                 alt.log('Closed door index 5');
+//                 openedTrunks.splice(openedTrunks.indexOf(vehicle), 1);
+//                 break;
+//         }
 
-        alt.log(`Current opendTrunks array: ${JSON.stringify(openedTrunks)}`);
-    });
-});
+//         alt.log(`Current opendTrunks array: ${JSON.stringify(openedTrunks)}`);
+//     });
+// });
 
-alt.onServer('toggleHoodState', (state) => {
-    alt.log(`Toggle hood state with state ${state}`);
-    let coords = game.getEntityCoords(localPlayer.scriptID, true);
-    var vehicle = game.getClosestVehicle(coords.x, coords.y, coords.z, 6, 0, 71);
-    if (vehicle === 0) return;
-    let trunkIndex = game.getEntityBoneIndexByName(vehicle, "bonnet");
-    if (trunkIndex === -1) return;
+// alt.onServer('toggleHoodState', (state) => {
+//     alt.log(`Toggle hood state with state ${state}`);
+//     let coords = game.getEntityCoords(localPlayer.scriptID, true);
+//     var vehicle = game.getClosestVehicle(coords.x, coords.y, coords.z, 6, 0, 71);
+//     if (vehicle === 0) return;
+//     let trunkIndex = game.getEntityBoneIndexByName(vehicle, "bonnet");
+//     if (trunkIndex === -1) return;
 
-    let hoodPosition = game.getWorldPositionOfEntityBone(vehicle, trunkIndex);
-    let vehiclePosition = game.getEntityCoords(vehicle, true);
-    let hoodDistance = game.getDistanceBetweenCoords(hoodPosition.x, hoodPosition.y, hoodPosition.z,
-        vehiclePosition.x, vehiclePosition.y, vehiclePosition.z, false);
+//     let hoodPosition = game.getWorldPositionOfEntityBone(vehicle, trunkIndex);
+//     let vehiclePosition = game.getEntityCoords(vehicle, true);
+//     let hoodDistance = game.getDistanceBetweenCoords(hoodPosition.x, hoodPosition.y, hoodPosition.z,
+//         vehiclePosition.x, vehiclePosition.y, vehiclePosition.z, false);
 
-    let frontPosition = game.getOffsetFromEntityInWorldCoords(vehicle, 0, hoodDistance + 0.2, 0);
+//     let frontPosition = game.getOffsetFromEntityInWorldCoords(vehicle, 0, hoodDistance + 0.2, 0);
 
-    if (game.getDistanceBetweenCoords(coords.x, coords.y, coords.z, frontPosition.x, frontPosition.y, frontPosition.z, true) > 2.5) return;
+//     if (game.getDistanceBetweenCoords(coords.x, coords.y, coords.z, frontPosition.x, frontPosition.y, frontPosition.z, true) > 2.5) return;
 
-    alt.nextTick(() => {
-        switch (state) {
-            case 1:
-                game.setVehicleDoorOpen(vehicle, 4, false, false);
-                game.playVehicleDoorOpenSound(vehicle, 0);
-                alt.log('Opened dooor index 4');
-                openedHoods.push(vehicle);
-                break;
-            case 0:
-                game.setVehicleDoorShut(vehicle, 4, false);
-                game.playVehicleDoorCloseSound(vehicle, 1);
-                alt.log('Closed door index 4');
-                openedHoods.splice(openedHoods.indexOf(vehicle), 1);
-                break;
-        }
-        alt.log(`Current openedHoods array: ${JSON.stringify(openedHoods)}`);
-    });
-});
+//     alt.nextTick(() => {
+//         switch (state) {
+//             case 1:
+//                 game.setVehicleDoorOpen(vehicle, 4, false, false);
+//                 game.playVehicleDoorOpenSound(vehicle, 0);
+//                 alt.log('Opened dooor index 4');
+//                 openedHoods.push(vehicle);
+//                 break;
+//             case 0:
+//                 game.setVehicleDoorShut(vehicle, 4, false);
+//                 game.playVehicleDoorCloseSound(vehicle, 1);
+//                 alt.log('Closed door index 4');
+//                 openedHoods.splice(openedHoods.indexOf(vehicle), 1);
+//                 break;
+//         }
+//         alt.log(`Current openedHoods array: ${JSON.stringify(openedHoods)}`);
+//     });
+// });
 
 export function toggleTrunkOrHoodState() {
     var startTime = Date.now();

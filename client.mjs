@@ -22,6 +22,7 @@ import { drawText, draw3DText } from 'src/Helpers/uiHelper.js';
 import * as vehicleComponentController from 'src/Modules/Vehicle/vehicleComponentsController.js';
 import vehicleDoors from 'src/Modules/Vehicle/Components/vehicleDoorsComponent.js';
 import vehicleSeatbeltComponent from 'src/Modules/Vehicle/Components/vehicleSeatbeltComponent.js';
+import vehicleEngineToggleComponent from 'src/Modules/Vehicle/Components/vehicleEngineToggleComponent.js';
 
 let localPlayer = alt.getLocalPlayer();
 let frame = 0, fps = 0, showFps = true, timeStart = Date.now();
@@ -89,6 +90,11 @@ alt.on('keydown', (key) => {
 			if (game.isEntityDead(localPlayer.scriptID) || localPlayer.vehicle === null || new Date().getTime() - lastKeyPressedTime < 500) return;
 			lastKeyPressedTime = new Date().getTime();
 			vehicleSeatbeltComponent.toggleSeatbelt(localPlayer);
+			break;
+		case keycodes.U_KEY:
+			if (game.isEntityDead(localPlayer.scriptID) || new Date().getTime() - lastKeyPressedTime < 400) return;
+			vehicleComponentController.toggleEngine(localPlayer);
+			lastKeyPressedTime = new Date().getTime();
 			break;
 	}
 });

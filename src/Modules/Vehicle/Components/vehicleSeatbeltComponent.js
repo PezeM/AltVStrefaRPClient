@@ -62,7 +62,9 @@ class VehicleSeatbeltComponent extends VehicleComponent {
         return isVehicleMovingForward && (previousSpeed > (SEATBELT_EJECT_SPEED / 3.6)) && (vehicleAcceleration > (SEATBELT_EJECT_ACCELERATION));
     }
 
-    onUpdateOutsideVehicle(localPlayer) { }
+    onUpdateOutsideVehicle(localPlayer) {
+        if (this.isSeatbeltOn) this.isSeatbeltOn = false;
+    }
 
     toggleSeatbelt(localPlayer) {
         // Some notification/sound for seatbealt toggle status

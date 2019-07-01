@@ -4,12 +4,10 @@
 import * as alt from 'alt';
 import * as game from 'natives';
 import { drawText, draw3DText } from 'src/Helpers/uiHelper.js';
-import { isDriver } from 'src/Helpers/playerHelpers.js';
 import { getClosestVehicle } from 'src/Helpers/collectionHelper.js';
+import math from 'src/Helpers/maths.js';
 
 let localPlayer = alt.getLocalPlayer();
-let openedTrunks = [];
-let openedHoods = [];
 
 alt.onServer('putIntoVehicle', () => {
     alt.setTimeout(() => {
@@ -20,10 +18,10 @@ alt.onServer('putIntoVehicle', () => {
 });
 
 alt.onServer('toggleLockState', vehicle => {
+    let startTime = Date.now();
     alt.log(`ToggleLockState vehicle = ${JSON.stringify(vehicle, null, 4)}`);
-    var startTime = Date.now();
-    if (game.getDistanceBetweenCoords(localPlayer.pos.x, localPlayer.pos.y, localPlayer.pos.z, vehicle.pos.x, vehicle.pos.y, vehicle.pos.z, true) > 10) return;
-    let lockStatus = game.getVehicleDoorLockStatus(vehicle.scriptID); // 1 or 0
+    if (math.distance(localPlayer.pos, vehicle.pos) > 20) return;
+    let lockStatus = game.getVehicleDoorLockStatus(vehicle.scriptID); // 0 and 1 means unlocked, 2,4 means locked
     alt.log(`Lock state = ${lockStatus}`);
     switch (lockStatus) {
         case 0:
@@ -33,7 +31,6 @@ alt.onServer('toggleLockState', vehicle => {
                 alt.clearInterval(vehicle.lightFading);
                 vehicle.lightFading = null;
             }
-
             game.setVehicleInteriorlight(vehicle.scriptID, false);
             game.setVehicleLightMultiplier(vehicle.scriptID, 1.0);
             game.setVehicleLights(vehicle.scriptID, 2);
@@ -47,6 +44,17 @@ alt.onServer('toggleLockState', vehicle => {
                     } else game.setVehicleLights(vehicle.scriptID, 0);
                 }
             }, 10);
+            let someCount = 1000;
+            vehicle.breakingLightsFading = alt.setInterval(() => {
+                if (someCount > 0) {
+                    someCount--;
+
+                    if (someCount > 600)
+                        game.setVehicleBrakeLights(vehicle.scriptID, true);
+                    else if (someCount > 300)
+                        game.setVehicleBrakeLights(vehicle.scriptID, true);
+                }
+            }, 0);
             break;
         case 2:
         case 4:
@@ -56,10 +64,11 @@ alt.onServer('toggleLockState', vehicle => {
                 vehicle.lightFading = null;
             }
 
+            game.setVehicleBrakeLights(vehicle.scriptID, true);
             game.setVehicleInteriorlight(vehicle.scriptID, true);
             game.setVehicleLightMultiplier(vehicle.scriptID, 0);
             game.setVehicleLights(vehicle.scriptID, 2);
-            vehicle.lightFadingCount = 300;
+            vehicle.lightFadingCount = 0;
 
             vehicle.lightFading = alt.setInterval(() => {
                 if (vehicle.lightFadingCount < 300) {
@@ -69,6 +78,13 @@ alt.onServer('toggleLockState', vehicle => {
                         game.setVehicleLightMultiplier(vehicle.scriptID, (vehicle.lightFadingCount - 99) / 300);
                 }
             }, 10);
+            let someCount = 1000;
+            vehicle.breakingLightsFading = alt.setInterval(() => {
+                if (someCount > 0) {
+                    someCount--;
+                    game.setVehicleBrakeLights(vehicle.scriptID, true);
+                }
+            }, 0);
             break;
     }
 
@@ -81,6 +97,7 @@ alt.onServer('toggleLockState', vehicle => {
         game.setVehicleLights(vehicle.scriptID, 0);
         alt.log(`Some timeout inside toggleLockState`);
         alt.clearInterval(vehicle.lightFading);
+        alt.clearInterval(vehicle.breakingLightsFading);
         vehicle.lightFading = null;
     }, 7000);
 

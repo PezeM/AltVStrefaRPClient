@@ -1,4 +1,4 @@
-const KEYCODES = {
+export default {
     A_KEY: 0x41,
     B_KEY: 0x42,
     C_KEY: 0x43,
@@ -158,5 +158,3 @@ const KEYCODES = {
     VK_ZOOM: 0xFB,
     VK_OEM_CLEAR: 0xFE
 }
-
-export default KEYCODES;

@@ -64,13 +64,6 @@ alt.on('keydown', (key) => {
             lastKeyPressedTime = new Date().getTime();
             animations.forceAnimationStop();
             break;
-        case controlsIds.U:
-            if (localPlayer.vehicle == null || game.isEntityDead(localPlayer.scriptID) || new Date().getTime() - lastKeyPressedTime < 400) return;
-            lastKeyPressedTime = new Date().getTime();
-            var vehicle = alt.Vehicle.all.find(v => v.scriptID === localPlayer.vehicle.scriptID);
-            if (vehicle == null) return;
-            alt.emitServer('ToggleVehicleEngine', vehicle);
-            break;
     }
 });
 

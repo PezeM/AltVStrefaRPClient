@@ -22,7 +22,7 @@ alt.onServer('putIntoVehicle', () => {
 alt.onServer('toggleLockState', vehicle => {
     alt.log(`ToggleLockState vehicle = ${JSON.stringify(vehicle, null, 4)}`);
     var startTime = Date.now();
-    if (game.getDistanceBetweenCoords(localPlayer.pos.x, localPlayer.pos.y, localPlayer.pos.z, vehicle.pos.x, vehicle.pos.y, vehicle.pos.z, true) > 10) return false;
+    if (game.getDistanceBetweenCoords(localPlayer.pos.x, localPlayer.pos.y, localPlayer.pos.z, vehicle.pos.x, vehicle.pos.y, vehicle.pos.z, true) > 10) return;
     let lockStatus = game.getVehicleDoorLockStatus(vehicle.scriptID); // 1 or 0
     alt.log(`Lock state = ${lockStatus}`);
     switch (lockStatus) {
@@ -40,15 +40,16 @@ alt.onServer('toggleLockState', vehicle => {
             vehicle.lightFadingCount = 300;
             vehicle.lightFading = alt.setInterval(() => {
                 if (vehicle.lightFadingCount > 0) {
-                    lightFadingCount--;
+                    vehicle.lightFadingCount--;
 
-                    if (lightFadingCount > 100) {
+                    if (vehicle.lightFadingCount > 100) {
                         game.setVehicleLightMultiplier(vehicle.scriptID, (vehicle.lightFadingCount - 100) / 300);
                     } else game.setVehicleLights(vehicle.scriptID, 0);
                 }
             }, 10);
             break;
-        case 1:
+        case 2:
+        case 4:
             // Unlock
             if (typeof vehicle.lightFading !== 'undefined') {
                 alt.clearInterval(vehicle.lightFading);

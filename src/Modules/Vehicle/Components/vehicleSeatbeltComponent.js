@@ -7,7 +7,7 @@ import mainUi from 'src/Modules/Ui/mainUi.js';
 import VehicleComponent from 'src/Modules/Vehicle/Components/vehicleComponent.js';
 
 const SEATBELT_EJECT_SPEED = 60;
-const SEATBELT_EJECT_ACCELERATION = 100;
+const SEATBELT_EJECT_ACCELERATION = 10;
 class VehicleSeatbeltComponent extends VehicleComponent {
     constructor() {
         super();
@@ -25,13 +25,17 @@ class VehicleSeatbeltComponent extends VehicleComponent {
 
     onUpdateInVehicle(localPlayer) {
         if (!this.correctVehicleClass(localPlayer.vehicle)) return;
-        if (!this.isSeatbeltOn && game.getIsVehicleEngineRunning(localPlayer.scriptID)) {
+        if (!this.isSeatbeltOn) {
+            game.enableControlAction(0, 75, true);
+            if (!game.getIsVehicleEngineRunning(localPlayer.vehicle.scriptID)) return;
+
             let previousSpeed = this.currentSpeed;
             this.currentSpeed = game.getEntitySpeed(localPlayer.vehicle.scriptID);
             game.setPedConfigFlag(localPlayer.scriptID, 32, true);
-            let isVehicleMovingForward = game.getEntityForwardVector(localPlayer.vehicle.scriptID) > 1.0;
+            let isVehicleMovingForward = game.getEntitySpeedVector(localPlayer.vehicle.scriptID, true).y > 1.0;
             let vehicleAcceleration = this.calculateVehicleAcceleration(previousSpeed);
             if (this.checkConditions(isVehicleMovingForward, previousSpeed, vehicleAcceleration)) {
+                alt.log(`Should ragdoll`);
                 this.setRagdollEffect(localPlayer);
             } else {
                 this.previousVelocity = game.getEntityVelocity(localPlayer.vehicle.scriptID);
@@ -43,23 +47,24 @@ class VehicleSeatbeltComponent extends VehicleComponent {
     }
 
     setRagdollEffect(localPlayer) {
+        game.setEntityCoords(localPlayer.scriptID, localPlayer.pos.x, localPlayer.pos.y, localPlayer.pos.z - 0.47, true, true, true);
         game.setEntityVelocity(localPlayer.scriptID, this.previousVelocity.x, this.previousVelocity.y, this.previousVelocity.z);
-        game.setPedToRagdoll(localPlayer.scriptID, 1000, 1000, 0, 0, 0, 0);
+        alt.setTimeout(() => {
+            game.setPedToRagdoll(localPlayer.scriptID, 1000, 1000, 0, 0, 0, 0);
+        }, 5);
     }
 
     calculateVehicleAcceleration(previousSpeed) {
-        return (previousSpeed - currentSpeed) / game.getFrameTime();
+        return (previousSpeed - this.currentSpeed) / game.getFrameTime();
     }
 
     checkConditions(isVehicleMovingForward, previousSpeed, vehicleAcceleration) {
-        return isVehicleMovingForward && (previousSpeed > (SEATBELT_EJECT_SPEED / 3.6)) && (vehicleAcceleration > (SEATBELT_EJECT_ACCELERATION * 9.81));
+        return isVehicleMovingForward && (previousSpeed > (SEATBELT_EJECT_SPEED / 3.6)) && (vehicleAcceleration > (SEATBELT_EJECT_ACCELERATION));
     }
 
     onUpdateOutsideVehicle(localPlayer) { }
 
     toggleSeatbelt(localPlayer) {
-        // Can't get out of vehicle if seatbelt is on
-        // Can me thrown out of window if no seatbelt 
         // Some notification/sound for seatbealt toggle status
         let correctVehicleClass = this.correctVehicleClass(localPlayer.vehicle);
         if (!correctVehicleClass) return;

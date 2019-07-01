@@ -5,7 +5,7 @@ import * as alt from 'alt';
 import * as game from 'natives';
 import chat from 'chat';
 import menusManager from 'src/Modules/Ui/menusManager.js';
-import keyCodes from 'src/keycodes.js';
+import keycodes from 'src/keycodes.js';
 import mainUi from 'src/Modules/Ui/mainUi.js';
 import * as gameState from 'src/gameState.js';
 import * as ui from 'src/ui.js';
@@ -85,10 +85,10 @@ alt.on('keydown', (key) => {
 			lastKeyPressedTime = new Date().getTime();
 			if (vehicles.toggleLockState()) return;
 			break;
-		case keycodes.K:
+		case keycodes.K_KEY:
 			if (game.isEntityDead(localPlayer.scriptID) || localPlayer.vehicle === null || new Date().getTime() - lastKeyPressedTime < 500) return;
 			lastKeyPressedTime = new Date().getTime();
-			vehicleComponentController.toggleSeatbelt(localPlayer);
+			vehicleSeatbeltComponent.toggleSeatbelt(localPlayer);
 			break;
 	}
 });
@@ -218,7 +218,6 @@ function loadModel(modelHash) {
 }
 
 import Animations from 'src/Modules/animations.js';
-import keycodes from './src/keycodes';
 let animations = new Animations();
 let strefaObject = null;
 

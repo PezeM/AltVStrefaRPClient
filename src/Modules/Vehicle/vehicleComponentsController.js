@@ -6,6 +6,7 @@ import * as game from 'natives';
 import vehicleDoorsComponent from 'src/Modules/Vehicle/Components/vehicleDoorsComponent.js';
 import vehicleSpeedometer from 'src/Modules/Vehicle/Components/vehicleSpeedometer.js';
 import VehicleComponent from 'src/Modules/Vehicle/Components/vehicleComponent.js';
+import vehicleSeatbeltComponent from 'src/Modules/Vehicle/Components/vehicleSeatbeltComponent.js';
 
 let localPlayer = alt.getLocalPlayer();
 class VehicleComponentsController {
@@ -70,5 +71,6 @@ class VehicleComponentsController {
 const vehicleComponentsController = new VehicleComponentsController();
 vehicleComponentsController.addComponent(vehicleSpeedometer);
 vehicleComponentsController.addComponent(vehicleDoorsComponent);
+vehicleComponentsController.addComponent(vehicleSeatbeltComponent);
 
 export default vehicleComponentsController;

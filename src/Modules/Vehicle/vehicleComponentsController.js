@@ -33,23 +33,23 @@ class VehicleComponentsController {
         }
     }
 
-    onUpdate() {
-        for (let i = 0; i < this.components.length; i++) {
-            const component = this.components[i];
-            if (component.disabled) continue;
-            if (localPlayer.veh === null) {
-                component.onUpdateOutsideVehicle(localPlayer);
-            } else {
-                component.onUpdateInVehicle(localPlayer);
-            }
-        }
-    }
-
     getComponent(componentType) {
         if (typeof componentType === 'string') {
             return this.components.find(c => c.componentName === componentType);
         } else {
             return this.components.find(c => c instanceof componentType);
+        }
+    }
+
+    onUpdate() {
+        for (let i = 0; i < this.components.length; i++) {
+            const component = this.components[i];
+            if (component.disabled) continue;
+            if (localPlayer.vehicle === null) {
+                component.onUpdateOutsideVehicle(localPlayer);
+            } else {
+                component.onUpdateInVehicle(localPlayer);
+            }
         }
     }
 

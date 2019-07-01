@@ -32,5 +32,5 @@ class VehicleEngineToggleComponent extends VehicleComponent {
     }
 }
 
-const VehicleEngineToggleComponent = new VehicleEngineToggleComponent();
-export default VehicleEngineToggleComponent;
+const vehicleEngineToggleComponent = new VehicleEngineToggleComponent();
+export default vehicleEngineToggleComponent;

@@ -93,7 +93,7 @@ alt.on('keydown', (key) => {
 			break;
 		case keycodes.U_KEY:
 			if (game.isEntityDead(localPlayer.scriptID) || new Date().getTime() - lastKeyPressedTime < 400) return;
-			vehicleComponentController.toggleEngine(localPlayer);
+			vehicleEngineToggleComponent.toggleEngine(localPlayer);
 			lastKeyPressedTime = new Date().getTime();
 			break;
 	}

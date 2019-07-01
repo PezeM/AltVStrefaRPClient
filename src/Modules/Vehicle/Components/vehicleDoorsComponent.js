@@ -122,10 +122,10 @@ class VehicleDoorComponent extends VehicleComponent {
 
         switch (state) {
             case 1: // Open
-                this.openDoor(vehicle, vehicleDoors.HOOD);
+                this.openDoor(vehicle, 4);
                 break;
             case 0: // Close
-                this.closeDoor(vehicle, vehicleDoors.HOOD);
+                this.closeDoor(vehicle, 4);
                 break;
         }
     }
@@ -137,10 +137,10 @@ class VehicleDoorComponent extends VehicleComponent {
 
         switch (state) {
             case 1: // Open
-                this.openDoor(vehicle, vehicleDoors.TRUNK);
+                this.openDoor(vehicle, 5);
                 break;
             case 0: // Close
-                this.closeDoor(vehicle, vehicleDoors.TRUNK);
+                this.closeDoor(vehicle, 5);
                 break;
         }
     }

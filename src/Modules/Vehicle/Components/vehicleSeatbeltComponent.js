@@ -7,7 +7,7 @@ import mainUi from 'src/Modules/Ui/mainUi.js';
 import VehicleComponent from 'src/Modules/Vehicle/Components/vehicleComponent.js';
 
 const SEATBELT_EJECT_SPEED = 60;
-const SEATBELT_EJECT_ACCELERATION = 10;
+const SEATBELT_EJECT_ACCELERATION = 25;
 class VehicleSeatbeltComponent extends VehicleComponent {
     constructor() {
         super();

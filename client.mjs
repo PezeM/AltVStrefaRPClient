@@ -5,6 +5,7 @@ import * as alt from 'alt';
 import * as game from 'natives';
 import chat from 'chat';
 import menusManager from 'src/Modules/Ui/menusManager.js';
+import keyCodes from 'keycodes.js';
 import mainUi from 'src/Modules/Ui/mainUi.js';
 import * as gameState from 'src/gameState.js';
 import * as ui from 'src/ui.js';
@@ -20,6 +21,7 @@ import * as nicknames from 'src/Modules/Ui/nicknames.js';
 import { drawText, draw3DText } from 'src/Helpers/uiHelper.js';
 import * as vehicleComponentController from 'src/Modules/Vehicle/vehicleComponentsController.js';
 import vehicleDoors from 'src/Modules/Vehicle/Components/vehicleDoorsComponent.js';
+import vehicleSeatbeltComponent from 'src/Modules/Vehicle/Components/vehicleSeatbeltComponent.js';
 
 let localPlayer = alt.getLocalPlayer();
 let frame = 0, fps = 0, showFps = true, timeStart = Date.now();
@@ -82,6 +84,11 @@ alt.on('keydown', (key) => {
 			if (game.isEntityDead(localPlayer.scriptID) || new Date().getTime() - lastKeyPressedTime < 750) return;
 			lastKeyPressedTime = new Date().getTime();
 			if (vehicles.toggleLockState()) return;
+			break;
+		case keycodes.K:
+			if (game.isEntityDead(localPlayer.scriptID) || localPlayer.vehicle === null || new Date().getTime() - lastKeyPressedTime < 500) return;
+			lastKeyPressedTime = new Date().getTime();
+			vehicleComponentController.toggleSeatbelt(localPlayer);
 			break;
 	}
 });
@@ -211,6 +218,7 @@ function loadModel(modelHash) {
 }
 
 import Animations from 'src/Modules/animations.js';
+import keycodes from './src/keycodes';
 let animations = new Animations();
 let strefaObject = null;
 

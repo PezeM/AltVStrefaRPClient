@@ -111,14 +111,14 @@ alt.on('update', () => {
     }
 
 
-    if (game.isControlJustPressed(0, 249)) {
-        localPlayer.isTalking = true;
-        game.playFacialAnim(localPlayer.scriptID, "mic_chatter", "mp_facial");
-    }
-    else if (game.isControlJustReleased(0, 249)) {
-        localPlayer.isTalking = false;
-        game.playFacialAnim(localPlayer.scriptID, "mood_normal_1", "facials@gen_male@variations@normal");
-    }
+    // if (game.isControlJustPressed(0, 249)) {
+    //     localPlayer.isTalking = true;
+    //     game.playFacialAnim(localPlayer.scriptID, "mic_chatter", "mp_facial");
+    // }
+    // else if (game.isControlJustReleased(0, 249)) {
+    //     localPlayer.isTalking = false;
+    //     game.playFacialAnim(localPlayer.scriptID, "mood_normal_1", "facials@gen_male@variations@normal");
+    // }
 
     if (localPlayer.vehicle == null && !game.isPlayerDead(localPlayer.scriptID) && !menusManager.viewOpened) {
         if (!circleMenu.isMenuOpened)

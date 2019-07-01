@@ -9,7 +9,11 @@ export default class VehicleComponent {
         this.disabled = false;
     }
 
-    onUpdate(localPlayer) {
-        alt.log('In vehicle component');
+    onUpdateInVehicle(localPlayer) {
+        alt.log('On update in vehicle');
+    }
+
+    onUpdateOutsideVehicle(localPlayer) {
+        alt.log('On update outside vehilce');
     }
 }

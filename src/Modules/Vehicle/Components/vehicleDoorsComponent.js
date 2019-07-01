@@ -18,8 +18,11 @@ class VehicleDoorComponent extends VehicleComponent {
         this.disabled = false;
     }
 
-    onUpdate(localPlayer) {
-        if (localPlayer.vehicle != null) return;
+    onUpdateInVehicle(localPlayer) {
+        alt.log('On update in vehicle');
+    }
+
+    onUpdateOutsideVehicle(localPlayer) {
         let vehicle = getClosestVehicle(localPlayer.pos, OPEN_DOOR_DISTANCE_SQRT);
         if (vehicle == null) return;
 

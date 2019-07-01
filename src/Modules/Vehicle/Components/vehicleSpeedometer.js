@@ -15,19 +15,19 @@ class VehicleSpeedometer extends VehicleComponent {
         this.disabled = false;
     }
 
-    onUpdate(localPlayer) {
-        if (localPlayer.vehicle == null) {
-            if (!game.isRadarHidden()) {
-                game.displayRadar(false);
-                game.displayHud(false);
-            }
-        } else {
-            if (game.isRadarHidden()) {
-                game.displayRadar(true);
-                game.displayHud(true);
-            }
+    onUpdateInVehicle(localPlayer) {
+        this.displaySpeed(localPlayer);
 
-            this.displaySpeed(localPlayer);
+        if (game.isRadarHidden()) {
+            game.displayRadar(true);
+            game.displayHud(true);
+        }
+    }
+
+    onUpdateOutsideVehicle(localPlayer) {
+        if (!game.isRadarHidden()) {
+            game.displayRadar(false);
+            game.displayHud(false);
         }
     }
 

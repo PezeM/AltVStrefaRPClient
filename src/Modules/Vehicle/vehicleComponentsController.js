@@ -22,12 +22,25 @@ class VehicleComponentsController {
         }
     }
 
+    removeComponent(component) {
+        if (component instanceof VehicleComponent) {
+            let componentToRemove = this.components.indexOf(componentToRemove);
+            if (component !== null) {
+                this.components.slice(componentToRemove, 1);
+            }
+        } else {
+            alt.logError(`Couldn't remove ${JSON.stringify(component)} from vehicleComponents as it's not an instance of VehicleComponent`);
+        }
+    }
+
     onUpdate() {
-        // Called every tick
         for (let i = 0; i < this.components.length; i++) {
             const component = this.components[i];
-            if (!component.disabled) {
-                component.onUpdate(localPlayer);
+            if (component.disabled) continue;
+            if (localPlayer.veh === null) {
+                component.onUpdateOutsideVehicle(localPlayer);
+            } else {
+                component.onUpdateInVehicle(localPlayer);
             }
         }
     }

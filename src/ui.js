@@ -22,7 +22,7 @@ const controlsIds = {
     U: 0x55,
 };
 
-const HUDElementsToHide = [1, 2, 3, 4, 6, 7, 8, 9];
+const HUDElementsToHide = [1, 2, 3, 4, 6, 7, 8, 9, 14];
 
 let cursorShown = false;
 let localPlayer = alt.getLocalPlayer();
@@ -37,7 +37,7 @@ alt.on('keydown', (key) => {
         alt.showCursor(cursorShown);
         return;
     }
-    if (chat.isOpen() || menusManager.viewOpened || getGameState() == 'loading') return;
+    if (chat.isOpen() || menusManager.viewOpened || getGameState() !== 'playing') return;
 
     switch (key) {
         case controlsIds.Alt:
@@ -94,19 +94,22 @@ alt.on('update', () => {
         game.hideHudComponentThisFrame(hudElement);
     });
 
-    alt.Player.all.forEach((player) => {
-        if (game.getDistanceBetweenCoords(localPlayer.pos.x, localPlayer.pos.y, localPlayer.pos.z, player.pos.x, player.pos.y, player.pos.z, true) > 35) return;
-        if (typeof player.isTalking === 'undefined') player.isTalking = false;
-        if (typeof player.remoteId === 'undefined' || player.remoteId == null) {
-            player.remoteId = player.getSyncedMeta("remoteId");
-        }
+    if (getGameState() === 'playing') {
+        alt.Player.all.forEach((player) => {
+            if (game.getDistanceBetweenCoords(localPlayer.pos.x, localPlayer.pos.y, localPlayer.pos.z, player.pos.x, player.pos.y, player.pos.z, true) > 35) return;
+            if (typeof player.isTalking === 'undefined') player.isTalking = false;
+            if (typeof player.remoteId === 'undefined' || player.remoteId == null) {
+                player.remoteId = player.getSyncedMeta("remoteId");
+            }
 
-        if (player.isTalking) {
-            draw3DText(`~g~Rozmawia \n ~w~ID: ${player.remoteId}`, [player.pos.x, player.pos.y, player.pos.z + 1], 4, [255, 255, 255, 255], 0.6, false, false);
-        } else {
-            draw3DText('~r~Nie rozmawia', [player.pos.x, player.pos.y, player.pos.z + 1], 4, [255, 255, 255, 255], 0.6, false, false);
-        }
-    });
+            if (player.isTalking) {
+                draw3DText(`~g~Rozmawia \n ~w~ID: ${player.remoteId}`, [player.pos.x, player.pos.y, player.pos.z + 1], 4, [255, 255, 255, 255], 0.6, false, false);
+            } else {
+                draw3DText('~r~Nie rozmawia', [player.pos.x, player.pos.y, player.pos.z + 1], 4, [255, 255, 255, 255], 0.6, false, false);
+            }
+        });
+    }
+
 
     if (game.isControlJustPressed(0, 249)) {
         localPlayer.isTalking = true;
@@ -191,3 +194,7 @@ mainUi.onUiEvent('defaultCancelModalCallback', () => {
 });
 
 
+// Test cinematic camera off
+alt.setInterval(() => {
+    game._0x9E4CFFF989258472(); // Disables vehicle idle cam ? 
+}, 5000);

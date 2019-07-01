@@ -25,7 +25,7 @@ export function getAllStreamedPlayers() {
 
 export function getPlayersInRange(position, range = 10) {
     const playersInRange = [];
-    position = position * position;
+    // position = position * position;
     for (let i = 0; i < alt.Player.all.length; i++) {
         if (math.distance(position, alt.Player.all[i].pos, true) <= range) {
             playersInRange.push(alt.Player.all[i]);
@@ -36,7 +36,6 @@ export function getPlayersInRange(position, range = 10) {
 
 export function getVehiclesInRange(position, range = 10) {
     const vehiclesInRange = [];
-    position = position * position;
     for (let i = 0; i < alt.Vehicle.all.length; i++) {
         if (math.distance(position, alt.Vehicle.all[i].pos, true) <= range) {
             vehiclesInRange.push(alt.Vehicle.all[i]);
@@ -45,9 +44,8 @@ export function getVehiclesInRange(position, range = 10) {
     return vehiclesInRange;
 }
 
-export function getClosestVehicle(position, radius = 10) {
+export function getClosestVehicle(position, radius = 15) {
     let closestVehicle = null;
-    position = position * position;
     for (let i = 0; i < alt.Vehicle.all.length; i++) {
         if (alt.Vehicle.all[i].scriptID === 0) continue;
         let distance = math.distance(position, alt.Vehicle.all[i].pos);
@@ -61,7 +59,7 @@ export function getClosestVehicle(position, radius = 10) {
 
 export function getClosestPlayer(position, radius = 10) {
     let closestPlayer = null;
-    position = position * position;
+    // position = position * position;
     for (let i = 0; i < alt.Player.all.length; i++) {
         if (alt.Player.all[i].scriptID === 0) continue;
         let distance = math.distance(position, alt.Player.all[i].pos);

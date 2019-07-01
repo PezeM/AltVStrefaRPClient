@@ -178,6 +178,10 @@ alt.on('openFractionRanksPage', data => {
 alt.on('openFractionRegistrationPage', () => {
     router.push({ name: 'townHallRegistrationPage' });
 });
+
+alt.on('testEmit', data => {
+    console.log(`Received data from client typeof ${typeof data}`);
+});
 </script>
 
 <style>

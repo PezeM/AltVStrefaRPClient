@@ -15,7 +15,7 @@ class MenusManager {
         this.viewOpened = false;
         this.viewLoaded = false;
 
-        this.menusView = new alt.WebView('http://resources/AltVStrefaRPClient/client-ui/dist/index.html#');
+        this.menusView = new alt.WebView('http://resources/AltVStrefaRPClient/client-ui/dist/index.html#', false);
     }
 
     onClientEvent(eventName, callback) {

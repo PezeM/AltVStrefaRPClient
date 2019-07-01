@@ -5,7 +5,7 @@ class MainUi {
     constructor() {
         alt.log('Initialized MainUi Class');
         this.uiFocused = false;
-        this.uiView = new alt.WebView('http://resources/AltVStrefaRPClient/mainUi/ui.html');
+        this.uiView = new alt.WebView('http://resources/AltVStrefaRPClient/mainUi/ui.html', false);
 
         // alt.onServer('showNotification', this.showCefNotification.bind(this));
     }

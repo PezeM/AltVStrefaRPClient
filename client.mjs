@@ -18,6 +18,8 @@ import * as vehicles from 'src/Modules/Vehicle/vehicles.js';
 import * as objectSync from 'src/Modules/objectSync.js';
 import * as nicknames from 'src/Modules/Ui/nicknames.js';
 import { drawText, draw3DText } from 'src/Helpers/uiHelper.js';
+import * as vehicleComponentController from 'src/Modules/Vehicle/vehicleComponentsController.js';
+import vehicleDoors from 'src/Modules/Vehicle/Components/vehicleDoorsComponent.js';
 
 let localPlayer = alt.getLocalPlayer();
 let frame = 0, fps = 0, showFps = true, timeStart = Date.now();
@@ -31,10 +33,6 @@ const controlsIds = {
 	Tilde: 0xC0,
 	E: 0x45,
 };
-
-let carStatsScaleform = null;
-
-alt.log(JSON.stringify(game.networkGetServerTime(null, null, null), null, 4));
 
 alt.on('update', () => {
 	// DEV Constant running
@@ -69,23 +67,6 @@ alt.on('update', () => {
 			cinemaObject = null;
 		}
 	}
-
-
-	// if (carStatsScaleform == null) {
-	// 	carStatsScaleform = game.requestScaleformMovie("mp_car_stats_02");
-	// }
-
-	// if (carStatsScaleform != null) {
-	// 	let coords = game.getEntityCoords(localPlayer.scriptID, true);
-	// 	var vehicle = game.getClosestVehicle(coords.x, coords.y, coords.z, 10, 0, 71);
-	// 	if (vehicle == 0) return false;
-	// 	coords = game.getEntityCoords(vehicle, true);
-	// 	drawText('Scaleform requested', [0.8, 0.2], 4, [255, 255, 255, 225], 0.5);
-	// 	game.callScaleformMovieFunctionMixedParams(carStatsScaleform, "SET_VEHICLE_INFOR_AND_STATS", "Text1", "Text2",
-	// 		"MPCarHUD", "Dinka", "stat1", "stat2", "stat2", "stat2", 24, 55, 85, 45);
-
-	// 	game.drawScaleformMovie3dNonAdditive(carStatsScaleform, coords.x, coords.y, coords.z, 0, 0, 90, 10, 1.0, 1, 1, 1, 1, 2);
-	// }
 });
 
 alt.on('keydown', (key) => {
@@ -95,7 +76,7 @@ alt.on('keydown', (key) => {
 		case controlsIds.E:
 			if (localPlayer.vehicle != null || game.isEntityDead(localPlayer.scriptID) || new Date().getTime() - lastKeyPressedTime < 750) return;
 			lastKeyPressedTime = new Date().getTime();
-			if (vehicles.toggleTrunkOrHoodState()) return;
+			if (vehicleDoors.toggleTrunkOrHoodState(localPlayer)) return;
 			break;
 		case controlsIds.L:
 			if (game.isEntityDead(localPlayer.scriptID) || new Date().getTime() - lastKeyPressedTime < 750) return;
@@ -135,8 +116,6 @@ alt.on('consoleCommand', (command, ...args) => {
 	}
 })
 
-game.isControlEnabled(0, 1);
-game.isControlEnabled(0, 2);
 let cinemaObject = null;
 let cinemaView = null;
 let cinemaPosition = {
@@ -274,10 +253,6 @@ function testStrefa() {
 		});
 	}
 }
-
-alt.onServer('testVehicleList', vehicles => {
-	alt.log(vehicles);
-});
 
 alt.on('playerConnect', () => {
 	game.requestAnimDict("mp_facial");

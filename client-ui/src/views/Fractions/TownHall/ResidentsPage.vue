@@ -102,6 +102,7 @@ export default {
             minMatchingChars: 1,
             selectedResident: null,
             queriedResident: null,
+            regex: /^[a-zA-Z0-9ęółśążźćńĘÓŁŚĄŻŹĆŃ\s]{3,30}$/,
         };
     },
     mounted() {
@@ -113,7 +114,7 @@ export default {
             console.log(`Query = ${this.query} and selectedResidents = ${this.selectedResident}`);
             if (this.selectedResident) {
                 this.sendQueryToServer(this.selectedResident);
-            } else if (this.query.length > 3) {
+            } else if (this.query.length > 3 && this.validateName(this.query)) {
                 let fullNameArray = this.query.split(' ', 2);
                 if (fullNameArray.length < 2) return;
                 let upperCaseArray = fullNameArray.map(n => {
@@ -133,6 +134,9 @@ export default {
         },
         populateResidentData(residentData) {
             this.queriedResident = residentData;
+        },
+        validateName(fullName) {
+            return this.regex.test(fullName);
         },
     },
     beforeDestroy() {

@@ -31,11 +31,6 @@ class MenusManager {
             this.menusView.emit(eventName, ...args);
     }
 
-    focusView() {
-        if (this.viewOpened)
-            this.menusView.focus();
-    }
-
     openMenu(name, hideUi, freezePlayer, ...args) {
         if (hideUi && freezePlayer) {
             showUiAndFreezePlayer(false);
@@ -92,6 +87,38 @@ class MenusManager {
         this.viewOpened = false;
         alt.showCursor(showCursor);
         alt.log(`Setting the cursor to ${showCursor}`);
+    }
+
+    showCefNotification(type, title, message, duration = 5000, icon = true) {
+        try {
+            if (typeof type === 'number' && typeof message === 'string') {
+                this.menusView.emit('showNotification', type, title, message, duration, icon);
+            }
+        } catch (error) {
+            alt.log('MenusManager -> showCefNotification -> ' + error);
+        }
+    }
+
+    showConfirmModal(title, message, confirmCallback = null, cancelCallback = null, args = null) {
+        try {
+            if (typeof message == 'string') {
+                alt.log(`[CONFIRM MODAL] ConfirmCallback = ${JSON.stringify(confirmCallback)} type = ${typeof confirmCallback} CancelCallback = ${JSON.stringify(cancelCallback)} type = ${typeof cancelCallback}`);
+                this.menusView.emit('showConfirmModal', title, message, confirmCallback, cancelCallback, args);
+                this.viewOpened = true;
+                this.menusView.focus();
+            }
+        } catch (error) {
+            alt.log('MenusManager -> showConfirmModal -> ' + error);
+        }
+    }
+
+    focusView() {
+        if (this.viewOpened)
+            this.menusView.focus();
+    }
+
+    unfocusView() {
+        this.menusView.unfocus();
     }
 }
 

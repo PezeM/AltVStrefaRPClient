@@ -3,7 +3,6 @@
 
 import * as alt from 'alt';
 import * as game from 'natives';
-import mainUi from 'src/Modules/Ui/mainUi.js';
 import Camera from 'src/Helpers/camera.js';
 import cameraRotator from 'src/Helpers/cameraRotator.js';
 import menusManager from 'src/Modules/Ui/menusManager.js';
@@ -83,7 +82,7 @@ class VehicleShop {
                 this.openVehicleShopMenu(entityHit);
                 break;
             case "information":
-                mainUi.showCefNotification(0, "Sprzedawca", "Widzisz sprzedawcę pojazdów. Możesz u niego zakupić swój upragiony samochód.", 6000);
+                menusManager.showCefNotification(0, "Sprzedawca", "Widzisz sprzedawcę pojazdów. Możesz u niego zakupić swój upragiony samochód.", 6000);
                 break;
         }
     }
@@ -158,7 +157,7 @@ class VehicleShop {
     buyVehicle(shopId, vehicleModel) {
         let vehicleShop = this.getVehicleShopData(shopId);
         if (vehicleShop == null) {
-            mainUi.showCefNotification(2, "Błąd", "Nie udało się zakupić pojazdu w sklepie.", 5000);
+            menusManager.showCefNotification(2, "Błąd", "Nie udało się zakupić pojazdu w sklepie.", 5000);
             return;
         }
 

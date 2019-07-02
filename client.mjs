@@ -6,7 +6,6 @@ import * as game from 'natives';
 import chat from 'chat';
 import menusManager from 'src/Modules/Ui/menusManager.js';
 import keycodes from 'src/keycodes.js';
-import mainUi from 'src/Modules/Ui/mainUi.js';
 import * as gameState from 'src/gameState.js';
 import * as ui from 'src/ui.js';
 import * as menus from 'src/menus.mjs';

@@ -7,7 +7,6 @@ import chat from 'chat';
 import circleMenu from 'src/Modules/CircleMenu/circleMenu.js';
 import { getGameState } from 'src/gameState.js';
 import { drawText, draw3DText } from 'src/Helpers/uiHelper.js';
-import mainUi from 'src/Modules/Ui/mainUi.js';
 import Animations from 'src/Modules/animations.js';
 import ZoneNames from 'src/Modules/ui/zoneNames.js';
 import menusManager from 'src/Modules/Ui/menusManager.js';
@@ -71,11 +70,9 @@ alt.on('update', () => {
     if (chat.isOpen() || menusManager.viewOpened) {
         game.disableAllControlActions(0);
         game.disableAllControlActions(2);
-        alt.toggleGameControls(false);
     } else {
         game.enableAllControlActions(0);
         game.enableAllControlActions(2);
-        alt.toggleGameControls(true);
     }
 
     if (zoneNames.realZoneName && zoneNames.streetName) {
@@ -139,12 +136,7 @@ alt.on('update', () => {
 });
 
 alt.onServer('showNotification', (type, title, message, duration, icon) => {
-    mainUi.showCefNotification(type, title, message, duration, icon == null ? true : icon);
-});
-
-mainUi.onClientEvent('showNotification', (type, title, message, duration) => {
-    alt.log('Triggering client-side showNotification')
-    mainUi.showCefNotification(type, title, message, duration);
+    menusManager.showCefNotification(type, title, message, duration, icon == null ? true : icon);
 });
 
 alt.onServer('showConfirmModal', (title, message, type, args) => {
@@ -152,38 +144,30 @@ alt.onServer('showConfirmModal', (title, message, type, args) => {
     switch (type) {
         case 1: // Business invite
             alt.showCursor(true);
-            mainUi.showConfirmModal(title, message, "acceptBusinessInvite", null, args);
+            menusManager.showConfirmModal(title, message, "acceptBusinessInvite", null, args);
             break;
         case 2: // Fraction invite
             alt.showCursor(true);
-            mainUi.showConfirmModal(title, message, "acceptFractionInvite", "cancelFractionInvite", args);
+            menusManager.showConfirmModal(title, message, "acceptFractionInvite", "cancelFractionInvite", args);
             break;
         default:
-            mainUi.showConfirmModal(title, message, null, null);
+            menusManager.showConfirmModal(title, message, null, null);
             break;
     }
 });
 
-mainUi.onUiEvent('acceptBusinessInvite', (businessId) => {
+menusManager.onUiEvent('acceptBusinessInvite', (businessId) => {
     if (businessId) {
         alt.emitServer('AcceptInviteToBusiness', businessId);
     }
 
-    if (menusManager.viewOpened) {
-        menusManager.focusView();
-    } else {
-        mainUi.unfocusView();
-        alt.showCursor(false);
-    }
+    menusManager.unfocusView();
+    alt.showCursor(false);
 });
 
-mainUi.onUiEvent('defaultCancelModalCallback', () => {
-    if (menusManager.viewOpened) {
-        menusManager.focusView();
-    } else {
-        mainUi.unfocusView();
-        alt.showCursor(false);
-    }
+menusManager.onUiEvent('defaultCancelModalCallback', () => {
+    menusManager.unfocusView();
+    alt.showCursor(false);
 });
 
 

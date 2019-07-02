@@ -3,7 +3,7 @@
 
 import * as alt from 'alt';
 import * as game from 'natives';
-import mainUi from 'src/Modules/Ui/mainUi.js';
+import menusManager from 'src/Modules/Ui/menusManager.js';
 import VehicleComponent from 'src/Modules/Vehicle/Components/vehicleComponent.js';
 
 const SEATBELT_EJECT_SPEED = 60;
@@ -72,7 +72,7 @@ class VehicleSeatbeltComponent extends VehicleComponent {
         if (!correctVehicleClass) return;
         this.isSeatbeltOn = !this.isSeatbeltOn;
         let text = this.isSeatbeltOn ? 'Zapięto pasy bezpieczeństwa.' : 'Odpięto pasy bezpieczeństwa';
-        mainUi.showCefNotification(0, 'Pasy', text, 2500);
+        menusManager.showCefNotification(0, 'Pasy', text, 2500);
     }
 
     correctVehicleClass(vehicle) {

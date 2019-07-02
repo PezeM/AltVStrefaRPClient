@@ -1,5 +1,4 @@
 import * as alt from 'alt';
-import mainUi from 'src/Modules/Ui/mainUi.js';
 import menusManager from 'src/Modules/Ui/menusManager.js';
 
 export default class Business {
@@ -40,7 +39,7 @@ export default class Business {
         if (menusManager.viewOpened)
             menusManager.menusView.emit('successfullyUpdatedEmployeeRank', employeeId, newRankId);
 
-        mainUi.showCefNotification(1, "Zaktualizowano pracownika", "Pomyślnie zaktualizowano stanowiska pracownika.", 5000);
+        menusManager.showCefNotification(1, "Zaktualizowano pracownika", "Pomyślnie zaktualizowano stanowiska pracownika.", 5000);
     }
 
     closeBusinessMenu() {
@@ -49,7 +48,7 @@ export default class Business {
 
     getBusinessEmployees(businessId) {
         if (typeof businessId !== 'number') {
-            mainUi.showCefNotification(3, "Błąd", 'Błędne ID biznesu.', 5000);
+            menusManager.showCefNotification(3, "Błąd", 'Błędne ID biznesu.', 5000);
             return;
         }
         alt.emitServer('GetBusinessEmployees', businessId);
@@ -57,7 +56,7 @@ export default class Business {
 
     updateEmployeeRank(employeeId, newRankId, businessId) {
         if (typeof employeeId !== 'number' || typeof newRankId !== 'number' || typeof businessId !== 'number') {
-            mainUi.showCefNotification(3, "Błąd", 'Błędne ID postaci lub zły numer stanowiska.', 7000);
+            menusManager.showCefNotification(3, "Błąd", 'Błędne ID postaci lub zły numer stanowiska.', 7000);
             return;
         }
 
@@ -66,7 +65,7 @@ export default class Business {
 
     addNewEmployee(name, lastName, businessId) {
         if (typeof name !== 'string' || typeof lastName !== 'string' || typeof businessId !== 'number') {
-            mainUi.showCefNotification(3, "Błąd", 'Błędne imię lub nazwisko pracownika.', 6000);
+            menusManager.showCefNotification(3, "Błąd", 'Błędne imię lub nazwisko pracownika.', 6000);
             return;
         }
 
@@ -75,7 +74,7 @@ export default class Business {
 
     getBusinessRolesInfo(businessId) {
         if (typeof businessId !== 'number') {
-            mainUi.showCefNotification(3, "Błąd", "Błędne ID biznesu.", 4000);
+            menusManager.showCefNotification(3, "Błąd", "Błędne ID biznesu.", 4000);
             return;
         }
 
@@ -84,12 +83,12 @@ export default class Business {
 
     updateBusinessRank(rank, businessId) {
         if (typeof businessId !== 'number') {
-            mainUi.showCefNotification(3, "Błąd", "Błędne ID biznesu.", 4000);
+            menusManager.showCefNotification(3, "Błąd", "Błędne ID biznesu.", 4000);
             return;
         }
 
         if (rank == null || typeof rank !== 'object') {
-            mainUi.showCefNotification(3, "Błąd", "Wystąpił błąd ze stanowiskiem. Otwórz menu biznesu ponownie.", 4000);
+            menusManager.showCefNotification(3, "Błąd", "Wystąpił błąd ze stanowiskiem. Otwórz menu biznesu ponownie.", 4000);
             return;
         }
 
@@ -98,7 +97,7 @@ export default class Business {
 
     addNewRole(newRole, businessId) {
         if (typeof newRole !== 'object' || typeof businessId !== 'number') {
-            mainUi.showCefNotification(3, "Błąd", 'Błędne nowe stanowisko.', 6000);
+            menusManager.showCefNotification(3, "Błąd", 'Błędne nowe stanowisko.', 6000);
             return;
         }
 

@@ -3,6 +3,7 @@ import PNotify from 'pnotify/dist/es/PNotify.js';
 import PNotifyButtons from 'pnotify/dist/es/PNotifyButtons.js';
 import PNotifyCallbacks from 'pnotify/dist/es/PNotifyCallbacks.js';
 import PNotifyConfirm from 'pnotify/dist/es/PNotifyConfirm.js';
+import PNotifyHistory from 'pnotify/dist/es/PNotifyHistory.js';
 import PNotifyStyleMaterial from 'pnotify/dist/es/PNotifyStyleMaterial.js';
 
 export default {

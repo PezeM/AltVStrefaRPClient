@@ -1,5 +1,4 @@
 import * as alt from 'alt';
-import mainUi from 'src/Modules/Ui/mainUi.js';
 import menusManager from 'src/Modules/Ui/menusManager.js';
 
 export default class FractionMenu {
@@ -20,8 +19,8 @@ export default class FractionMenu {
         menusManager.onUiEvent('updateFractionEmployeeRank', this.updateFractionEmployeeRank);
         menusManager.onUiEvent('tryToRemoveEmployeeFromFraction', this.tryToRemoveEmployeeFromFraction);
         menusManager.onUiEvent('tryToInviteEmployeeToFraction', this.tryToInviteEmployeeToFraction);
-        mainUi.onUiEvent('acceptFractionInvite', this.acceptFractionInvite);
-        mainUi.onUiEvent('cancelFractionInvite', this.cancelFractionInvite);
+        menusManager.onUiEvent('acceptFractionInvite', this.acceptFractionInvite);
+        menusManager.onUiEvent('cancelFractionInvite', this.cancelFractionInvite);
         menusManager.onUiEvent('tryToOpenFractionRanksPage', this.tryToOpenFractionRanksPage);
         menusManager.onUiEvent('tryToDeleteFractionRank', this.tryToDeleteFractionRank);
         menusManager.onUiEvent('tryToUpdateFractionRank', this.tryToUpdateFractionRank);
@@ -45,13 +44,13 @@ export default class FractionMenu {
         if (fractionId > 0 && employeeId > 0 && newRankId > 0) {
             alt.emitServer('UpdateFractionEmployeeRank', fractionId, employeeId, newRankId);
         } else {
-            mainUi.showCefNotification(3, "Błąd", "Wystąpił błąd przy zapisywanie zmian.", 5500);
+            menusManager.showCefNotification(3, "Błąd", "Wystąpił błąd przy zapisywanie zmian.", 5500);
         }
     }
 
     succesfullyUpdatedEmployeeRank(employeeId, newRankId) {
         menusManager.emitUiEvent('succesfullyUpdatedEmployeeRank', employeeId, newRankId);
-        mainUi.showCefNotification(1, "Sukces", "Pomyślnie zaaktualizowano pracownika.", 5500);
+        menusManager.showCefNotification(1, "Sukces", "Pomyślnie zaaktualizowano pracownika.", 5500);
     }
 
     tryToRemoveEmployeeFromFraction(fractionId, employeeId) {
@@ -62,7 +61,7 @@ export default class FractionMenu {
 
     succesfullyRemovedEmployeeFromFraction(employeeId) {
         menusManager.emitUiEvent('succesfullyRemovedEmployeeFromFraction', employeeId);
-        mainUi.showCefNotification(1, "Sukces", "Pomyślnie usunięto pracownika.", 5500);
+        menusManager.showCefNotification(1, "Sukces", "Pomyślnie usunięto pracownika.", 5500);
     }
 
     tryToInviteEmployeeToFraction(fractionId, firstName, lastName) {
@@ -71,7 +70,7 @@ export default class FractionMenu {
                 alt.emitServer('InviteEmployeeToFraction', fractionId, firstName, lastName);
             }
         } else {
-            mainUi.showCefNotification(3, "Błąd", "Podano błędne dane.", 5500);
+            menusManager.showCefNotification(3, "Błąd", "Podano błędne dane.", 5500);
         }
     }
 
@@ -83,7 +82,7 @@ export default class FractionMenu {
         if (menusManager.viewOpened) {
             menusManager.focusView();
         } else {
-            mainUi.unfocusView();
+            menusManager.unfocusView();
             alt.showCursor(false);
         }
     }
@@ -96,7 +95,7 @@ export default class FractionMenu {
         if (menusManager.viewOpened) {
             menusManager.focusView();
         } else {
-            mainUi.unfocusView();
+            menusManager.unfocusView();
             alt.showCursor(false);
         }
     }
@@ -115,7 +114,7 @@ export default class FractionMenu {
         if (fractionId && rankId && typeof fractionId == 'number' && typeof rankId == 'number') {
             alt.emitServer('TryToDeleteFractionRank', fractionId, rankId);
         } else {
-            mainUi.showCefNotification(3, "Błąd", "Podano błędne dane.", 5000);
+            menusManager.showCefNotification(3, "Błąd", "Podano błędne dane.", 5000);
         }
     }
 
@@ -133,17 +132,17 @@ export default class FractionMenu {
 
     succesfullyAddedNewFractionRank(rankName, updatedRanks) {
         menusManager.emitUiEvent('succesfullyAddedNewFractionRank', updatedRanks);
-        mainUi.showCefNotification(1, "Sukces", `Pomyślnie dodano nowe stanowisku o nazwie ${rankName}`, 5500);
+        menusManager.showCefNotification(1, "Sukces", `Pomyślnie dodano nowe stanowisku o nazwie ${rankName}`, 5500);
     }
 
     succesfullyDeletedFractionRank(rankId) {
         menusManager.emitUiEvent('succesfullyDeletedFractionRank', rankId);
-        mainUi.showCefNotification(1, 'Usunięto range', 'Pomyślnie usunięto stanowisko.', 5000);
+        menusManager.showCefNotification(1, 'Usunięto range', 'Pomyślnie usunięto stanowisko.', 5000);
     }
 
     succesfullyUpdatedFractionRank(updatedRank) {
         menusManager.emitUiEvent('succesfullyUpdatedFractionRank', updatedRank);
-        mainUi.showCefNotification(1, 'Sukces', `Pomyślnie zaaktualizowano stanowisko ${updatedRank.RankName}`, 5000);
+        menusManager.showCefNotification(1, 'Sukces', `Pomyślnie zaaktualizowano stanowisko ${updatedRank.RankName}`, 5000);
     }
 
     openFractionRegistrationPage() {

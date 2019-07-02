@@ -1,5 +1,4 @@
 import * as alt from 'alt';
-import mainUi from 'src/Modules/Ui/mainUi.js';
 import menusManager from 'src/Modules/Ui/menusManager.js';
 
 export default class TownHallMenu {
@@ -44,7 +43,7 @@ export default class TownHallMenu {
 
     tryToGetResidentData(residentFullName) {
         if (residentFullName == null || residentFullName.length < 2) {
-            mainUi.showCefNotification(3, "Błąd", "Podano błędne imię lub nazwisko.", 5500);
+            menusManager.showCefNotification(3, "Błąd", "Podano błędne imię lub nazwisko.", 5500);
             return;
         }
 

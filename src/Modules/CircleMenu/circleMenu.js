@@ -29,12 +29,6 @@ class CircleMenuController {
 
         this.menuName = menuName;
         menusManager.openMenu('openCircleMenu', true, freezePlayer, this.menuName);
-        // menusManager.emitUiEvent('openCircleMenu', this.menuName);
-        // if (freezePlayer) {
-        //     uiHelper.showUiAndFreezePlayer(!freezePlayer);
-        // }
-        // alt.showCursor(true);
-        // menusManager.focusView();
         this.menuOpened = true;
         alt.setCursorPos({
             x: this.screenResolution[1] / 2,

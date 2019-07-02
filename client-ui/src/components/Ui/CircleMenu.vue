@@ -1,12 +1,12 @@
 <template>
   <transition name="fade" mode="out-in">
-    <div id="circleMenu" @mouseOut="mouseOut" v-show="circleMenuActive" v-bind:style="styleObject">
+    <div id="circleMenu" @mouseout="mouseOut" v-show="circleMenuActive" v-bind:style="styleObject">
       <div id="circleBackground"></div>
       <ul>
         <li
           v-for="(value, key, index) in currentMenuItems"
           v-bind:id="index"
-          @mouseOver="mouseOver($event, value)"
+          @mouseover="mouseOver($event, value)"
           v-bind:key="index"
         >
           <div
@@ -17,7 +17,7 @@
           ></div>
         </li>
       </ul>
-      <div id="8" class="centeredCircle" @mouseOver="mouseOver" @click="itemClick">
+      <div id="8" class="centeredCircle" @mouseover="mouseOver" @click="itemClick">
         <div id="8" class="descriptionText">{{ mainCircleDescription }}</div>
       </div>
     </div>
@@ -46,6 +46,7 @@ export default {
     mounted() {
         EventBus.$on('openCircleMenu', this.display);
         EventBus.$on('closeCircleMenu', this.hide);
+        this.display('animations');
     },
     methods: {
         startTimer() {
@@ -75,7 +76,7 @@ export default {
             console.log(`Displayed in ${this.getTime()}ms.`);
         },
         mouseOver(event, hoveredItem) {
-            if (!hoveredItem) {
+            if (hoveredItem == null) {
                 this.mainCircleDescription = 'Zamknij';
             } else {
                 this.mainCircleDescription = hoveredItem.desc;

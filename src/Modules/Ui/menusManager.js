@@ -81,12 +81,10 @@ class MenusManager {
         //     game.deleteObject(this.tablet);
         //     this.tabletView.destroy();
         // }, 0);
-        alt.log('Inside closeMenu function');
         this.menusView.emit('closeMenu');
         this.menusView.unfocus();
         this.viewOpened = false;
         alt.showCursor(showCursor);
-        alt.log(`Setting the cursor to ${showCursor}`);
     }
 
     showCefNotification(type, title, message, duration = 5000, icon = true) {

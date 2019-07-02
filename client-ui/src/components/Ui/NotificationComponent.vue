@@ -5,6 +5,7 @@ import PNotifyCallbacks from 'pnotify/dist/es/PNotifyCallbacks.js';
 import PNotifyConfirm from 'pnotify/dist/es/PNotifyConfirm.js';
 import PNotifyHistory from 'pnotify/dist/es/PNotifyHistory.js';
 import PNotifyStyleMaterial from 'pnotify/dist/es/PNotifyStyleMaterial.js';
+import EventBus from '@/event-bus.js';
 
 export default {
     name: 'notificationComponent',
@@ -20,6 +21,10 @@ const stackInfo = {
     push: 'top',
     context: document.body,
 };
+
+EventBus.$on('showNotification', (type, title, message, duration, icon) => {
+    showNotification(type, title, message, duration, icon);
+});
 
 alt.on('showNotification', (type, title, message, duration, icon) => {
     showNotification(type, title, message, duration, icon);

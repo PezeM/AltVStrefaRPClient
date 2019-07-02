@@ -194,6 +194,9 @@ var circleMenu = new Vue({
         optionIcons: [null, null, null, null, null, null, null, null],
         timer: null,
     },
+    mounted() {
+        this.display('animations');
+    },
     methods: {
         startTimer: function () {
             this.timer = new Date().getTime();
@@ -258,8 +261,8 @@ var circleMenu = new Vue({
             this.mainCircleDescription = "Zamknij";
         },
         hide: function () {
-            $('#circleMenu').css('width', '0px');
-            $('#circleMenu').css('height', '0px');
+            // $('#circleMenu').css('width', '0px');
+            // $('#circleMenu').css('height', '0px');
             this.circleMenuActive = false;
         }
     }

@@ -1,7 +1,8 @@
 <template>
   <div id="app">
+    <MainUiView id="overlay" />
     <transition name="fade" mode="out-in">
-      <router-view/>
+      <router-view class="menus" />
     </transition>
   </div>
 </template>
@@ -20,9 +21,13 @@ if (!global.alt) {
 }
 
 import router from './router';
+import MainUiView from './views/MainUiView.vue';
 
 export default {
     name: 'App',
+    components: {
+        MainUiView,
+    },
 };
 
 window.onload = function() {
@@ -100,5 +105,18 @@ body {
 #app {
     height: 100%;
     width: 100%;
+}
+
+#overlay,
+.menus {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.menus {
+    z-index: 10;
 }
 </style>

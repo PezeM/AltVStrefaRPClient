@@ -1,20 +1,16 @@
 <template>
-    <div id="emptyRoute" @click="onClick"></div>
+  <div id="emptyRoute"></div>
 </template>
 
 <script>
 export default {
     name: 'empty',
-    methods: {
-        onClick() {
-            console.log(`On click inside Empty.vue`);
-        },
-    },
 };
 </script>
 
 <style scoped>
 #emptyRoute {
     height: 100vh;
+    z-index: 0;
 }
 </style>

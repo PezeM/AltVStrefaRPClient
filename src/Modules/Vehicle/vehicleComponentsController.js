@@ -8,6 +8,7 @@ import vehicleSpeedometer from 'src/Modules/Vehicle/Components/vehicleSpeedomete
 import VehicleComponent from 'src/Modules/Vehicle/Components/vehicleComponent.js';
 import vehicleSeatbeltComponent from 'src/Modules/Vehicle/Components/vehicleSeatbeltComponent.js';
 import vehicleEngineToggleComponent from 'src/Modules/Vehicle/Components/vehicleEngineToggleComponent.js';
+import vehicleInAirControlsComponent from 'src/Modules/Vehicle/Components/vehicleInAirControlsComponent.js';
 
 let localPlayer = alt.getLocalPlayer();
 class VehicleComponentsController {
@@ -74,5 +75,6 @@ vehicleComponentsController.addComponent(vehicleSpeedometer);
 vehicleComponentsController.addComponent(vehicleDoorsComponent);
 vehicleComponentsController.addComponent(vehicleSeatbeltComponent);
 vehicleComponentsController.addComponent(vehicleEngineToggleComponent);
+vehicleComponentsController.addComponent(vehicleInAirControlsComponent);
 
 export default vehicleComponentsController;

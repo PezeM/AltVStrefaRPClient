@@ -561,14 +561,14 @@ alt.on('keydown', (key) => {
 
     if (key == controlsIds.Right) {
         var dist = animPlayer.dist;
-        if (game.isControlPressed(0, controlsIds.Shift) && animPlayer.currentList.length > 100) dist += 10;
+        if (game.isControlPressed(0, controlsIds.Shift) && animPlayer.currentList.length > 10) dist += 10;
         else if (game.isControlPressed(0, controlsIds.Ctrl) && animPlayer.currentList.length > 100) dist += 100;
         else dist += 1;
         animPlayer.change(dist);
     }
     else if (key == controlsIds.Left) {
         var dist = animPlayer.dist;
-        if (game.isControlPressed(0, controlsIds.Shift) && animPlayer.currentList.length > 100) dist -= 10;
+        if (game.isControlPressed(0, controlsIds.Shift) && animPlayer.currentList.length > 10) dist -= 10;
         else if (game.isControlPressed(0, controlsIds.Ctrl) && animPlayer.currentList.length > 100) dist -= 100;
         else dist -= 1;
         animPlayer.change(dist);

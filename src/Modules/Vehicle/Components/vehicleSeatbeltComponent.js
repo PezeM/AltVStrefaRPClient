@@ -7,7 +7,7 @@ import mainUi from 'src/Modules/Ui/mainUi.js';
 import VehicleComponent from 'src/Modules/Vehicle/Components/vehicleComponent.js';
 
 const SEATBELT_EJECT_SPEED = 60;
-const SEATBELT_EJECT_ACCELERATION = 25;
+const SEATBELT_EJECT_ACCELERATION = 900;
 class VehicleSeatbeltComponent extends VehicleComponent {
     constructor() {
         super();
@@ -35,7 +35,7 @@ class VehicleSeatbeltComponent extends VehicleComponent {
             let isVehicleMovingForward = game.getEntitySpeedVector(localPlayer.vehicle.scriptID, true).y > 1.0;
             let vehicleAcceleration = this.calculateVehicleAcceleration(previousSpeed);
             if (this.checkConditions(isVehicleMovingForward, previousSpeed, vehicleAcceleration)) {
-                alt.log(`Should ragdoll`);
+                alt.log(`Should ragdoll vehicle accelaration was ${vehicleAcceleration}`);
                 this.setRagdollEffect(localPlayer);
             } else {
                 this.previousVelocity = game.getEntityVelocity(localPlayer.vehicle.scriptID);
@@ -51,7 +51,7 @@ class VehicleSeatbeltComponent extends VehicleComponent {
         game.setEntityVelocity(localPlayer.scriptID, this.previousVelocity.x, this.previousVelocity.y, this.previousVelocity.z);
         alt.setTimeout(() => {
             game.setPedToRagdoll(localPlayer.scriptID, 1000, 1000, 0, 0, 0, 0);
-        }, 5);
+        }, 1);
     }
 
     calculateVehicleAcceleration(previousSpeed) {

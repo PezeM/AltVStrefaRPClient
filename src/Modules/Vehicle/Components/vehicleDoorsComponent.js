@@ -117,7 +117,7 @@ class VehicleDoorComponent extends VehicleComponent {
 
     toggleHoodState(state, vehicle) {
         alt.log(`Toggle hood state with state ${state}`);
-        let hoodIndex = game.getEntityBoneIndexByName(vehicle.scriptID, "boot");
+        let hoodIndex = game.getEntityBoneIndexByName(vehicle.scriptID, "bonnet");
         if (hoodIndex == -1) return;
 
         switch (state) {

@@ -23,11 +23,13 @@ import * as vehicleComponentController from 'src/Modules/Vehicle/vehicleComponen
 import vehicleDoors from 'src/Modules/Vehicle/Components/vehicleDoorsComponent.js';
 import vehicleSeatbeltComponent from 'src/Modules/Vehicle/Components/vehicleSeatbeltComponent.js';
 import vehicleEngineToggleComponent from 'src/Modules/Vehicle/Components/vehicleEngineToggleComponent.js';
+import SoundBrowser from 'src/Admin/soundBrowser.js';
 
 let localPlayer = alt.getLocalPlayer();
 let frame = 0, fps = 0, showFps = true, timeStart = Date.now();
 let lastKeyPressedTime = new Date().getTime();
 let strefaView = null;
+let soundBrowser = new SoundBrowser();
 
 const controlsIds = {
 	H: 0x48,
@@ -96,6 +98,10 @@ alt.on('keydown', (key) => {
 			vehicleEngineToggleComponent.toggleEngine(localPlayer);
 			lastKeyPressedTime = new Date().getTime();
 			break;
+		case keycodes.VK_NUMPAD6:
+			if (game.isEntityDead(localPlayer.scriptID) || new Date().getTime() - lastKeyPressedTime < 500) return;
+			lastKeyPressedTime = new Date().getTime();
+			soundBrowser.toggle();
 	}
 });
 
@@ -415,5 +421,3 @@ game.requestIpl("bkr_biker_interior_placement_interior_6_biker_dlc_int_ware05_mi
 game.requestIpl("ex_exec_warehouse_placement_interior_1_int_warehouse_s_dlc_milo");
 game.requestIpl("ex_exec_warehouse_placement_interior_0_int_warehouse_m_dlc_milo");
 game.requestIpl("ex_exec_warehouse_placement_interior_2_int_warehouse_l_dlc_milo");
-
-

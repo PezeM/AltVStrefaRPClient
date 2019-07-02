@@ -81,7 +81,6 @@ alt.onServer('toggleLockState', vehicle => {
         vehicle.lightFading = null;
     }, 7000);
 
-    letsTest(vehicle, lockStatus);
     alt.log(`Executed toggleLockState in ${Date.now() - startTime} ms.`);
     return true;
 });

@@ -26,6 +26,7 @@
 
 <script>
 import EventBus from '@/event-bus.js';
+import menusList from '@/components/Ui/circleMenuItems.js';
 
 export default {
     name: 'circleMenu',
@@ -45,7 +46,6 @@ export default {
     mounted() {
         EventBus.$on('openCircleMenu', this.display);
         EventBus.$on('closeCircleMenu', this.hide);
-        this.display('animations');
     },
     methods: {
         startTimer() {
@@ -137,193 +137,6 @@ alt.on('openCircleMenu', circleMenuName => {
 alt.on('closeCircleMenu', () => {
     EventBus.$emit('closeCircleMenu');
 });
-
-const usefullOptions = {
-    quit: {
-        desc: 'Zamknij menu',
-        icon: 'quit',
-    },
-    back: {
-        desc: 'Wróć',
-        icon: 'back',
-    },
-    information: {
-        desc: 'Wyświetl informacje',
-        icon: 'information',
-    },
-};
-
-const menusList = {
-    animations: {
-        favorite: {
-            desc: 'Ulubione animacje',
-            icon: 'favourite',
-        },
-        dancingAnims: {
-            desc: 'Animacje taneczne',
-            icon: 'dancingAnims',
-        },
-        usefulAnims: {
-            desc: 'Użyteczne animacje',
-            icon: 'usefulAnims',
-        },
-        popularAnims: {
-            desc: 'Najpopularniejsze animacje',
-            icon: 'popular',
-        },
-        otherAnims: {
-            desc: 'Inne animacje',
-            icon: 'misc',
-        },
-    },
-    favorite: {
-        animations: usefullOptions.back,
-    },
-    usefulAnims: {
-        animations: usefullOptions.back,
-        mechanicAnims: {
-            desc: 'Animacje dla mechaników',
-            icon: 'carMechanic',
-        },
-        extraProps: {
-            desc: 'Dodatkowe rzeczy',
-            icon: 'misc',
-        },
-    },
-    otherAnims: {
-        animations: usefullOptions.back,
-    },
-    mechanicAnims: {
-        usefulAnims: usefullOptions.back,
-        box: {
-            desc: 'Pudełko',
-            icon: 'box',
-        },
-        toolbox: {
-            desc: 'Narzędzia 1',
-            icon: 'toolbox',
-        },
-        toolbox2: {
-            desc: 'Narzędzia 2',
-            icon: 'toolbox',
-        },
-        toolbox3: {
-            desc: 'Narzędzia 3',
-            icon: 'toolbox',
-        },
-    },
-    extraProps: {
-        usefulAnims: usefullOptions.back,
-        suitcase: {
-            desc: 'Walizka',
-            icon: 'suitcase',
-        },
-        walizka: {
-            desc: 'Walizka 2',
-            icon: 'suitcase',
-        },
-        walizka2: {
-            desc: 'Walizka 3',
-            icon: 'suitcase',
-        },
-    },
-    dancingAnims: {
-        animations: usefullOptions.back,
-        fastDances: {
-            desc: 'Szybkie tańce',
-            icon: 'fastDance',
-        },
-        slowDances: {
-            desc: 'Wolne tańce',
-            icon: 'slowDance',
-        },
-    },
-    fastDances: {
-        dancingAnims: usefullOptions.back,
-        dance1: {
-            desc: 'Jakiś szybki taniec',
-            icon: 'someFastDance',
-        },
-        dance3: {
-            desc: 'Jakiś szybki taniec',
-            icon: 'someFastDance',
-        },
-    },
-    slowDances: {
-        dancingAnims: usefullOptions.back,
-        dance2: {
-            desc: 'Jakiś wolny taniec',
-            icon: 'someFastDance',
-        },
-    },
-    popularAnims: {
-        animations: usefullOptions.back,
-        box: {
-            desc: 'Skrzynka',
-            icon: 'someFastDance',
-        },
-        metal: {
-            desc: 'Skrzynka',
-            icon: 'someFastDance',
-        },
-    },
-    player: {
-        information: usefullOptions.information,
-        quit: usefullOptions.quit,
-    },
-    vehicle: {
-        openVehicle: {
-            desc: 'Otwórz pojazd',
-            icon: 'information',
-        },
-        sellVehicle: {
-            desc: 'Sprzedaj pojazd',
-            icon: 'information',
-        },
-        despawnVehicle: {
-            desc: 'Zdespawnuj pojazd',
-            icon: 'information',
-        },
-        information: usefullOptions.information,
-        quit: usefullOptions.quit,
-    },
-    bank: {
-        openBank: {
-            desc: 'Otwórz bank',
-            icon: 'openBank',
-        },
-        createAccount: {
-            desc: 'Załóż konto bankowe',
-            icon: 'createAccount',
-        },
-        information: usefullOptions.information,
-        quit: usefullOptions.quit,
-    },
-    atm: {
-        openAtm: {
-            desc: 'Otwórz bankomat',
-            icon: 'openAtm',
-        },
-        information: usefullOptions.information,
-        quit: usefullOptions.quit,
-    },
-    trashBin: {
-        searchBin: {
-            desc: 'Przeszukaj śmieci',
-            icon: 'trashBin',
-        },
-        information: usefullOptions.information,
-        quit: usefullOptions.quit,
-    },
-    vehicleShop: {
-        openMenu: {
-            desc: 'Przeglądnij katalog',
-            icon: 'trashBin',
-        },
-        information: usefullOptions.information,
-        quit: usefullOptions.quit,
-    },
-};
 </script>
 
 <style>

@@ -5,7 +5,7 @@ import * as alt from 'alt';
 import * as game from 'natives';
 import Camera from 'src/Helpers/camera.js';
 import cameraRotator from 'src/Helpers/cameraRotator.js';
-import menusManager from 'src/Modules/Ui/menusManager.js';
+import mainUi from 'src/Modules/Ui/mainUi.js';
 
 const VEHICLE_SHOP_DATA = [
     {
@@ -39,9 +39,9 @@ class VehicleShop {
 
         alt.onServer('openVehicleShop', this.setupVehicleShop.bind(this));
 
-        menusManager.onUiEvent('spawnNextVehicle', this.spawnNextVehicle.bind(this));
-        menusManager.onUiEvent('buyVehicle', this.buyVehicle.bind(this));
-        menusManager.onUiEvent('closeVehicleShop', this.exitVehicleShop.bind(this));
+        mainUi.onUiEvent('spawnNextVehicle', this.spawnNextVehicle.bind(this));
+        mainUi.onUiEvent('buyVehicle', this.buyVehicle.bind(this));
+        mainUi.onUiEvent('closeVehicleShop', this.exitVehicleShop.bind(this));
     }
 
     createPeds() {
@@ -82,7 +82,7 @@ class VehicleShop {
                 this.openVehicleShopMenu(entityHit);
                 break;
             case "information":
-                menusManager.showCefNotification(0, "Sprzedawca", "Widzisz sprzedawcę pojazdów. Możesz u niego zakupić swój upragiony samochód.", 6000);
+                mainUi.showCefNotification(0, "Sprzedawca", "Widzisz sprzedawcę pojazdów. Możesz u niego zakupić swój upragiony samochód.", 6000);
                 break;
         }
     }
@@ -144,7 +144,7 @@ class VehicleShop {
         this.changeVehicle(newVehicleData[0].vehicleModel, vehicleShop);
         this.renderShopCamera(vehicleShop);
         this.setupCameraRotator(vehicleShop);
-        menusManager.openMenu("openVehicleShop", true, true, JSON.stringify(newVehicleData), shopId);
+        mainUi.openMenu("openVehicleShop", true, true, JSON.stringify(newVehicleData), shopId);
     }
 
     spawnNextVehicle(shopId, vehicleModel) {
@@ -157,7 +157,7 @@ class VehicleShop {
     buyVehicle(shopId, vehicleModel) {
         let vehicleShop = this.getVehicleShopData(shopId);
         if (vehicleShop == null) {
-            menusManager.showCefNotification(2, "Błąd", "Nie udało się zakupić pojazdu w sklepie.", 5000);
+            mainUi.showCefNotification(2, "Błąd", "Nie udało się zakupić pojazdu w sklepie.", 5000);
             return;
         }
 
@@ -176,7 +176,7 @@ class VehicleShop {
             this.shopCamera.destroy(true);
             this.shopCamera = null;
         }
-        menusManager.closeMenu();
+        mainUi.closeMenu();
         this.currentVehicleShopData = null;
         game.renderScriptCams(false, true, 400, true, false);
     }

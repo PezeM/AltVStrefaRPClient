@@ -1,5 +1,5 @@
 import * as alt from 'alt';
-import menusManager from 'src/Modules/Ui/menusManager.js';
+import mainUi from 'src/Modules/Ui/mainUi.js';
 
 export default class Business {
     constructor() {
@@ -9,46 +9,46 @@ export default class Business {
         alt.onServer('populateBusinessRanksInfo', this.populateBusinessRanksInfo);
         alt.onServer('successfullyUpdatedEmployeeRank', this.successfullyUpdatedEmployeeRank);
 
-        menusManager.onUiEvent('getBusinessEmployees', this.getBusinessEmployees.bind(this));
-        menusManager.onUiEvent('updateEmployeeRank', this.updateEmployeeRank.bind(this));
-        menusManager.onUiEvent('addNewEmployee', this.addNewEmployee.bind(this));
-        menusManager.onUiEvent('getBusinessRolesInfo', this.getBusinessRolesInfo.bind(this));
-        menusManager.onUiEvent('updateBusinessRank', this.updateBusinessRank.bind(this));
-        menusManager.onUiEvent('addNewRole', this.addNewRole.bind(this));
-        menusManager.onUiEvent('deleteBusiness', this.deleteBusiness.bind(this));
-        menusManager.onUiEvent('deleteRole', this.deleteRole.bind(this));
-        menusManager.onUiEvent('deleteEmployee', this.deleteEmployee.bind(this));
-        menusManager.onUiEvent('closeBusinessMenu', this.closeBusinessMenu);
+        mainUi.onUiEvent('getBusinessEmployees', this.getBusinessEmployees.bind(this));
+        mainUi.onUiEvent('updateEmployeeRank', this.updateEmployeeRank.bind(this));
+        mainUi.onUiEvent('addNewEmployee', this.addNewEmployee.bind(this));
+        mainUi.onUiEvent('getBusinessRolesInfo', this.getBusinessRolesInfo.bind(this));
+        mainUi.onUiEvent('updateBusinessRank', this.updateBusinessRank.bind(this));
+        mainUi.onUiEvent('addNewRole', this.addNewRole.bind(this));
+        mainUi.onUiEvent('deleteBusiness', this.deleteBusiness.bind(this));
+        mainUi.onUiEvent('deleteRole', this.deleteRole.bind(this));
+        mainUi.onUiEvent('deleteEmployee', this.deleteEmployee.bind(this));
+        mainUi.onUiEvent('closeBusinessMenu', this.closeBusinessMenu);
     }
 
     openBusinessMenu(businessInfo) {
-        menusManager.openMenu('openBusinessMenu', true, true, businessInfo);
+        mainUi.openMenu('openBusinessMenu', true, true, businessInfo);
     }
 
     populateEmployeeRanks(employeesRanks) {
-        if (menusManager.viewOpened)
-            menusManager.menusView.emit('populateEmployeeRanks', employeesRanks);
+        if (mainUi.viewOpened)
+            mainUi.menusView.emit('populateEmployeeRanks', employeesRanks);
     }
 
     populateBusinessRanksInfo(permissionsInfo) {
-        if (menusManager.viewOpened)
-            menusManager.menusView.emit('populateBusinessRanksInfo', permissionsInfo);
+        if (mainUi.viewOpened)
+            mainUi.menusView.emit('populateBusinessRanksInfo', permissionsInfo);
     }
 
     successfullyUpdatedEmployeeRank(employeeId, newRankId) {
-        if (menusManager.viewOpened)
-            menusManager.menusView.emit('successfullyUpdatedEmployeeRank', employeeId, newRankId);
+        if (mainUi.viewOpened)
+            mainUi.menusView.emit('successfullyUpdatedEmployeeRank', employeeId, newRankId);
 
-        menusManager.showCefNotification(1, "Zaktualizowano pracownika", "Pomyślnie zaktualizowano stanowiska pracownika.", 5000);
+        mainUi.showCefNotification(1, "Zaktualizowano pracownika", "Pomyślnie zaktualizowano stanowiska pracownika.", 5000);
     }
 
     closeBusinessMenu() {
-        menusManager.closeMenu();
+        mainUi.closeMenu();
     }
 
     getBusinessEmployees(businessId) {
         if (typeof businessId !== 'number') {
-            menusManager.showCefNotification(3, "Błąd", 'Błędne ID biznesu.', 5000);
+            mainUi.showCefNotification(3, "Błąd", 'Błędne ID biznesu.', 5000);
             return;
         }
         alt.emitServer('GetBusinessEmployees', businessId);
@@ -56,7 +56,7 @@ export default class Business {
 
     updateEmployeeRank(employeeId, newRankId, businessId) {
         if (typeof employeeId !== 'number' || typeof newRankId !== 'number' || typeof businessId !== 'number') {
-            menusManager.showCefNotification(3, "Błąd", 'Błędne ID postaci lub zły numer stanowiska.', 7000);
+            mainUi.showCefNotification(3, "Błąd", 'Błędne ID postaci lub zły numer stanowiska.', 7000);
             return;
         }
 
@@ -65,7 +65,7 @@ export default class Business {
 
     addNewEmployee(name, lastName, businessId) {
         if (typeof name !== 'string' || typeof lastName !== 'string' || typeof businessId !== 'number') {
-            menusManager.showCefNotification(3, "Błąd", 'Błędne imię lub nazwisko pracownika.', 6000);
+            mainUi.showCefNotification(3, "Błąd", 'Błędne imię lub nazwisko pracownika.', 6000);
             return;
         }
 
@@ -74,7 +74,7 @@ export default class Business {
 
     getBusinessRolesInfo(businessId) {
         if (typeof businessId !== 'number') {
-            menusManager.showCefNotification(3, "Błąd", "Błędne ID biznesu.", 4000);
+            mainUi.showCefNotification(3, "Błąd", "Błędne ID biznesu.", 4000);
             return;
         }
 
@@ -83,12 +83,12 @@ export default class Business {
 
     updateBusinessRank(rank, businessId) {
         if (typeof businessId !== 'number') {
-            menusManager.showCefNotification(3, "Błąd", "Błędne ID biznesu.", 4000);
+            mainUi.showCefNotification(3, "Błąd", "Błędne ID biznesu.", 4000);
             return;
         }
 
         if (rank == null || typeof rank !== 'object') {
-            menusManager.showCefNotification(3, "Błąd", "Wystąpił błąd ze stanowiskiem. Otwórz menu biznesu ponownie.", 4000);
+            mainUi.showCefNotification(3, "Błąd", "Wystąpił błąd ze stanowiskiem. Otwórz menu biznesu ponownie.", 4000);
             return;
         }
 
@@ -97,7 +97,7 @@ export default class Business {
 
     addNewRole(newRole, businessId) {
         if (typeof newRole !== 'object' || typeof businessId !== 'number') {
-            menusManager.showCefNotification(3, "Błąd", 'Błędne nowe stanowisko.', 6000);
+            mainUi.showCefNotification(3, "Błąd", 'Błędne nowe stanowisko.', 6000);
             return;
         }
 

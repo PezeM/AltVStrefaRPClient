@@ -9,7 +9,7 @@ import { getGameState } from 'src/gameState.js';
 import { drawText, draw3DText } from 'src/Helpers/uiHelper.js';
 import Animations from 'src/Modules/animations.js';
 import ZoneNames from 'src/Modules/ui/zoneNames.js';
-import menusManager from 'src/Modules/Ui/menusManager.js';
+import mainUi from 'src/Modules/Ui/mainUi.js';
 import raycast from 'src/Modules/CircleMenu/raycast.js';
 
 const controlsIds = {
@@ -36,7 +36,7 @@ alt.on('keydown', (key) => {
         alt.showCursor(cursorShown);
         return;
     }
-    if (chat.isOpen() || menusManager.viewOpened || getGameState() !== 'playing') return;
+    if (chat.isOpen() || mainUi.viewOpened || getGameState() !== 'playing') return;
 
     switch (key) {
         case controlsIds.Alt:
@@ -67,7 +67,7 @@ alt.on('keydown', (key) => {
 });
 
 alt.on('update', () => {
-    if (chat.isOpen() || menusManager.viewOpened) {
+    if (chat.isOpen() || mainUi.viewOpened) {
         game.disableAllControlActions(0);
         game.disableAllControlActions(2);
     } else {
@@ -110,7 +110,7 @@ alt.on('update', () => {
     //     game.playFacialAnim(localPlayer.scriptID, "mood_normal_1", "facials@gen_male@variations@normal");
     // }
 
-    if (localPlayer.vehicle == null && !game.isPlayerDead(localPlayer.scriptID) && !menusManager.viewOpened) {
+    if (localPlayer.vehicle == null && !game.isPlayerDead(localPlayer.scriptID) && !mainUi.viewOpened) {
         if (!circleMenu.isMenuOpened)
             raycast.poitingAt(4);
     }
@@ -124,7 +124,7 @@ alt.on('update', () => {
     }
 
     // Disable moving camera/attacking while UI is open
-    if (chat.isOpen() || menusManager.viewOpened || circleMenu.isMenuOpened) {
+    if (chat.isOpen() || mainUi.viewOpened || circleMenu.isMenuOpened) {
         game.disableControlAction(0, 1, true); // Mouse Look, Left/Right
         game.disableControlAction(0, 2, true); // Mouse Look, Up/Down
         game.disableControlAction(0, 142, true); // Right Click
@@ -136,7 +136,7 @@ alt.on('update', () => {
 });
 
 alt.onServer('showNotification', (type, title, message, duration, icon) => {
-    menusManager.showCefNotification(type, title, message, duration, icon == null ? true : icon);
+    mainUi.showCefNotification(type, title, message, duration, icon == null ? true : icon);
 });
 
 alt.onServer('showConfirmModal', (title, message, type, args) => {
@@ -144,29 +144,29 @@ alt.onServer('showConfirmModal', (title, message, type, args) => {
     switch (type) {
         case 1: // Business invite
             alt.showCursor(true);
-            menusManager.showConfirmModal(title, message, "acceptBusinessInvite", null, args);
+            mainUi.showConfirmModal(title, message, "acceptBusinessInvite", null, args);
             break;
         case 2: // Fraction invite
             alt.showCursor(true);
-            menusManager.showConfirmModal(title, message, "acceptFractionInvite", "cancelFractionInvite", args);
+            mainUi.showConfirmModal(title, message, "acceptFractionInvite", "cancelFractionInvite", args);
             break;
         default:
-            menusManager.showConfirmModal(title, message, null, null);
+            mainUi.showConfirmModal(title, message, null, null);
             break;
     }
 });
 
-menusManager.onUiEvent('acceptBusinessInvite', (businessId) => {
+mainUi.onUiEvent('acceptBusinessInvite', (businessId) => {
     if (businessId) {
         alt.emitServer('AcceptInviteToBusiness', businessId);
     }
 
-    menusManager.unfocusView();
+    mainUi.unfocusView();
     alt.showCursor(false);
 });
 
-menusManager.onUiEvent('defaultCancelModalCallback', () => {
-    menusManager.unfocusView();
+mainUi.onUiEvent('defaultCancelModalCallback', () => {
+    mainUi.unfocusView();
     alt.showCursor(false);
 });
 

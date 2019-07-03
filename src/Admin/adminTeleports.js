@@ -3,14 +3,14 @@
 
 import * as alt from 'alt';
 import * as game from 'natives';
-import menusManager from 'src/Modules/Ui/menusManager.js';
+import mainUi from 'src/Modules/Ui/mainUi.js';
 let localPlayerId = alt.getLocalPlayer();
 
 alt.onServer('teleportToWaypoint', () => {
     var waypointBlip = game.getFirstBlipInfoId(8);
     alt.log('Waypoint blip info: ' + JSON.stringify(waypointBlip));
     if (waypointBlip <= 0) {
-        menusManager.showCefNotification(3, "Brak blipa", "Nie znaleziono żadnego blipa.", 4000);
+        mainUi.showCefNotification(3, "Brak blipa", "Nie znaleziono żadnego blipa.", 4000);
         return;
     }
 
@@ -34,7 +34,7 @@ alt.onServer('teleportToWaypoint', () => {
                 game.startPlayerTeleport(localPlayerId, waypointCoords.x, waypointCoords.y, positionZ, 0, true, true, false);
             }
             game.setEntityCoords(localPlayerId, waypointCoords.x, waypointCoords.y, positionZ, true, false, false, true);
-            menusManager.showCefNotification(1, "Sukces", `Znaleziono pozycje poczas ${i} iteracji. PozycjaZ ${positionZ}`, 4000);
+            mainUi.showCefNotification(1, "Sukces", `Znaleziono pozycje poczas ${i} iteracji. PozycjaZ ${positionZ}`, 4000);
             break;
         }
 

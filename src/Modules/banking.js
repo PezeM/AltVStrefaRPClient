@@ -1,6 +1,6 @@
 import * as game from 'natives';
 import * as alt from 'alt';
-import menusManager from 'src/Modules/Ui/menusManager.js';
+import mainUi from 'src/Modules/Ui/mainUi.js';
 
 const PED_POSITIONS = [
     { x: -111.9647, y: 6471.319, z: 31.6267, rot: 138.7 },
@@ -29,11 +29,11 @@ class Bank {
         alt.onServer('updateBankMoneyWithNotification', this.updateBankMoneyWithNotification);
         alt.onServer('openTransactionHistory', this.openTransactionHistory);
 
-        menusManager.onUiEvent('getTransferHistoryInfo', this.getTransferHistoryInfo.bind(this));
-        menusManager.onUiEvent('tryTransferMoney', this.transferMoney.bind(this));
-        menusManager.onUiEvent('withdrawMoney', this.withdrawMoney.bind(this));
-        menusManager.onUiEvent('depositMoney', this.depositMoney.bind(this));
-        menusManager.onUiEvent('closeBankMenu', this.closeBankMenu.bind(this));
+        mainUi.onUiEvent('getTransferHistoryInfo', this.getTransferHistoryInfo.bind(this));
+        mainUi.onUiEvent('tryTransferMoney', this.transferMoney.bind(this));
+        mainUi.onUiEvent('withdrawMoney', this.withdrawMoney.bind(this));
+        mainUi.onUiEvent('depositMoney', this.depositMoney.bind(this));
+        mainUi.onUiEvent('closeBankMenu', this.closeBankMenu.bind(this));
     }
 
     initializePeds() {
@@ -54,17 +54,17 @@ class Bank {
             return;
         }
 
-        menusManager.openMenu('openBankMenuView', true, true, bankAccountInformations);
+        mainUi.openMenu('openBankMenuView', true, true, bankAccountInformations);
     }
 
     updateBankMoneyWithNotification(notificationMessage, money) {
         alt.log(`Updating money with notification with value = ${money}`);
-        menusManager.emitUiEvent('updateBankMoney', money);
-        menusManager.showCefNotification(1, "Aktualizacja", notificationMessage, 6000);
+        mainUi.emitUiEvent('updateBankMoney', money);
+        mainUi.showCefNotification(1, "Aktualizacja", notificationMessage, 6000);
     }
 
     openTransactionHistory(transactionHistory) {
-        menusManager.emitUiEvent('openTransactionHistory', transactionHistory);
+        mainUi.emitUiEvent('openTransactionHistory', transactionHistory);
     }
 
     getTransferHistoryInfo() {
@@ -73,7 +73,7 @@ class Bank {
 
     withdrawMoney(amount) {
         if (typeof amount !== 'number') {
-            menusManager.showCefNotification(3, "Błąd", 'Podano błędną ilość pieniędzy do wypłacenia.', 5000);
+            mainUi.showCefNotification(3, "Błąd", 'Podano błędną ilość pieniędzy do wypłacenia.', 5000);
             return;
         }
         alt.emitServer('WithdrawMoneyFromBank', amount);
@@ -81,7 +81,7 @@ class Bank {
 
     depositMoney(amount) {
         if (typeof amount !== 'number') {
-            menusManager.showCefNotification(3, "Błąd", 'Podano błędną ilość pieniędzy do wpłaty.', 5000);
+            mainUi.showCefNotification(3, "Błąd", 'Podano błędną ilość pieniędzy do wpłaty.', 5000);
             return;
         }
         alt.emitServer('DepositMoneyToBank', amount);
@@ -89,14 +89,14 @@ class Bank {
 
     transferMoney(amount, receiver) {
         if (amount <= 0 || typeof receiver === 'undefined' || receiver == null) {
-            menusManager.showCefNotification(3, "Błąd", 'Podano błędne dane do transferu pieniędzy.', 4000);
+            mainUi.showCefNotification(3, "Błąd", 'Podano błędne dane do transferu pieniędzy.', 4000);
             return;
         }
         alt.emitServer('TransferMoneyFromBankToBank', amount, receiver);
     }
 
     closeBankMenu() {
-        menusManager.closeMenu();
+        mainUi.closeMenu();
     }
 }
 

@@ -1,5 +1,5 @@
 import * as alt from 'alt';
-import menusManager from 'src/Modules/Ui/menusManager.js';
+import mainUi from 'src/Modules/Ui/mainUi.js';
 
 export default class FractionMenu {
     constructor() {
@@ -14,21 +14,21 @@ export default class FractionMenu {
         alt.onServer('succesfullyUpdatedFractionRank', this.succesfullyUpdatedFractionRank);
         alt.onServer('openFractionRegistrationPage', this.openFractionRegistrationPage);
 
-        menusManager.onUiEvent('closeFractionMenu', this.closeFractionMenu);
-        menusManager.onUiEvent('tryToOpenFractionEmployeesPage', this.tryToOpenFractionEmployeesPage);
-        menusManager.onUiEvent('updateFractionEmployeeRank', this.updateFractionEmployeeRank);
-        menusManager.onUiEvent('tryToRemoveEmployeeFromFraction', this.tryToRemoveEmployeeFromFraction);
-        menusManager.onUiEvent('tryToInviteEmployeeToFraction', this.tryToInviteEmployeeToFraction);
-        menusManager.onUiEvent('acceptFractionInvite', this.acceptFractionInvite);
-        menusManager.onUiEvent('cancelFractionInvite', this.cancelFractionInvite);
-        menusManager.onUiEvent('tryToOpenFractionRanksPage', this.tryToOpenFractionRanksPage);
-        menusManager.onUiEvent('tryToDeleteFractionRank', this.tryToDeleteFractionRank);
-        menusManager.onUiEvent('tryToUpdateFractionRank', this.tryToUpdateFractionRank);
-        menusManager.onUiEvent('tryToAddNewFractionRank', this.tryToAddNewFractionRank);
+        mainUi.onUiEvent('closeFractionMenu', this.closeFractionMenu);
+        mainUi.onUiEvent('tryToOpenFractionEmployeesPage', this.tryToOpenFractionEmployeesPage);
+        mainUi.onUiEvent('updateFractionEmployeeRank', this.updateFractionEmployeeRank);
+        mainUi.onUiEvent('tryToRemoveEmployeeFromFraction', this.tryToRemoveEmployeeFromFraction);
+        mainUi.onUiEvent('tryToInviteEmployeeToFraction', this.tryToInviteEmployeeToFraction);
+        mainUi.onUiEvent('acceptFractionInvite', this.acceptFractionInvite);
+        mainUi.onUiEvent('cancelFractionInvite', this.cancelFractionInvite);
+        mainUi.onUiEvent('tryToOpenFractionRanksPage', this.tryToOpenFractionRanksPage);
+        mainUi.onUiEvent('tryToDeleteFractionRank', this.tryToDeleteFractionRank);
+        mainUi.onUiEvent('tryToUpdateFractionRank', this.tryToUpdateFractionRank);
+        mainUi.onUiEvent('tryToAddNewFractionRank', this.tryToAddNewFractionRank);
     }
 
     openFractionMenu(fractionType, fractionData) {
-        menusManager.openMenu('openFractionMenu', true, true, fractionType, fractionData);
+        mainUi.openMenu('openFractionMenu', true, true, fractionType, fractionData);
     }
 
     tryToOpenFractionEmployeesPage(fractionId) {
@@ -37,20 +37,20 @@ export default class FractionMenu {
 
     openFractionEmployeesPage(data) {
         alt.log(`Fraction employees data = ${JSON.stringify(data, null, 2)}`);
-        menusManager.emitUiEvent('openFractionEmployeesPage', data);
+        mainUi.emitUiEvent('openFractionEmployeesPage', data);
     }
 
     updateFractionEmployeeRank(fractionId, employeeId, newRankId) {
         if (fractionId > 0 && employeeId > 0 && newRankId > 0) {
             alt.emitServer('UpdateFractionEmployeeRank', fractionId, employeeId, newRankId);
         } else {
-            menusManager.showCefNotification(3, "Błąd", "Wystąpił błąd przy zapisywanie zmian.", 5500);
+            mainUi.showCefNotification(3, "Błąd", "Wystąpił błąd przy zapisywanie zmian.", 5500);
         }
     }
 
     succesfullyUpdatedEmployeeRank(employeeId, newRankId) {
-        menusManager.emitUiEvent('succesfullyUpdatedEmployeeRank', employeeId, newRankId);
-        menusManager.showCefNotification(1, "Sukces", "Pomyślnie zaaktualizowano pracownika.", 5500);
+        mainUi.emitUiEvent('succesfullyUpdatedEmployeeRank', employeeId, newRankId);
+        mainUi.showCefNotification(1, "Sukces", "Pomyślnie zaaktualizowano pracownika.", 5500);
     }
 
     tryToRemoveEmployeeFromFraction(fractionId, employeeId) {
@@ -60,8 +60,8 @@ export default class FractionMenu {
     }
 
     succesfullyRemovedEmployeeFromFraction(employeeId) {
-        menusManager.emitUiEvent('succesfullyRemovedEmployeeFromFraction', employeeId);
-        menusManager.showCefNotification(1, "Sukces", "Pomyślnie usunięto pracownika.", 5500);
+        mainUi.emitUiEvent('succesfullyRemovedEmployeeFromFraction', employeeId);
+        mainUi.showCefNotification(1, "Sukces", "Pomyślnie usunięto pracownika.", 5500);
     }
 
     tryToInviteEmployeeToFraction(fractionId, firstName, lastName) {
@@ -70,7 +70,7 @@ export default class FractionMenu {
                 alt.emitServer('InviteEmployeeToFraction', fractionId, firstName, lastName);
             }
         } else {
-            menusManager.showCefNotification(3, "Błąd", "Podano błędne dane.", 5500);
+            mainUi.showCefNotification(3, "Błąd", "Podano błędne dane.", 5500);
         }
     }
 
@@ -79,10 +79,10 @@ export default class FractionMenu {
             alt.emitServer('AcceptFractionInvite', fractionId);
         }
 
-        if (menusManager.viewOpened) {
-            menusManager.focusView();
+        if (mainUi.viewOpened) {
+            mainUi.focusView();
         } else {
-            menusManager.unfocusView();
+            mainUi.unfocusView();
             alt.showCursor(false);
         }
     }
@@ -92,10 +92,10 @@ export default class FractionMenu {
             alt.emitServer('CancelFractionInvite', fractionId);
         }
 
-        if (menusManager.viewOpened) {
-            menusManager.focusView();
+        if (mainUi.viewOpened) {
+            mainUi.focusView();
         } else {
-            menusManager.unfocusView();
+            mainUi.unfocusView();
             alt.showCursor(false);
         }
     }
@@ -107,14 +107,14 @@ export default class FractionMenu {
     }
 
     openFractionRanksPage(ranksData) {
-        menusManager.emitUiEvent('openFractionRanksPage', ranksData);
+        mainUi.emitUiEvent('openFractionRanksPage', ranksData);
     }
 
     tryToDeleteFractionRank(fractionId, rankId) {
         if (fractionId && rankId && typeof fractionId == 'number' && typeof rankId == 'number') {
             alt.emitServer('TryToDeleteFractionRank', fractionId, rankId);
         } else {
-            menusManager.showCefNotification(3, "Błąd", "Podano błędne dane.", 5000);
+            mainUi.showCefNotification(3, "Błąd", "Podano błędne dane.", 5000);
         }
     }
 
@@ -131,25 +131,25 @@ export default class FractionMenu {
     }
 
     succesfullyAddedNewFractionRank(rankName, updatedRanks) {
-        menusManager.emitUiEvent('succesfullyAddedNewFractionRank', updatedRanks);
-        menusManager.showCefNotification(1, "Sukces", `Pomyślnie dodano nowe stanowisku o nazwie ${rankName}`, 5500);
+        mainUi.emitUiEvent('succesfullyAddedNewFractionRank', updatedRanks);
+        mainUi.showCefNotification(1, "Sukces", `Pomyślnie dodano nowe stanowisku o nazwie ${rankName}`, 5500);
     }
 
     succesfullyDeletedFractionRank(rankId) {
-        menusManager.emitUiEvent('succesfullyDeletedFractionRank', rankId);
-        menusManager.showCefNotification(1, 'Usunięto range', 'Pomyślnie usunięto stanowisko.', 5000);
+        mainUi.emitUiEvent('succesfullyDeletedFractionRank', rankId);
+        mainUi.showCefNotification(1, 'Usunięto range', 'Pomyślnie usunięto stanowisko.', 5000);
     }
 
     succesfullyUpdatedFractionRank(updatedRank) {
-        menusManager.emitUiEvent('succesfullyUpdatedFractionRank', updatedRank);
-        menusManager.showCefNotification(1, 'Sukces', `Pomyślnie zaaktualizowano stanowisko ${updatedRank.RankName}`, 5000);
+        mainUi.emitUiEvent('succesfullyUpdatedFractionRank', updatedRank);
+        mainUi.showCefNotification(1, 'Sukces', `Pomyślnie zaaktualizowano stanowisko ${updatedRank.RankName}`, 5000);
     }
 
     openFractionRegistrationPage() {
-        menusManager.emitUiEvent('openFractionRegistrationPage');
+        mainUi.emitUiEvent('openFractionRegistrationPage');
     }
 
     closeFractionMenu() {
-        menusManager.closeMenu();
+        mainUi.closeMenu();
     }
 }

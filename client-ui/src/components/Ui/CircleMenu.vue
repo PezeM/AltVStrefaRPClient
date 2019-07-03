@@ -46,7 +46,6 @@ export default {
     mounted() {
         EventBus.$on('openCircleMenu', this.display);
         EventBus.$on('closeCircleMenu', this.hide);
-        this.display('animations');
     },
     methods: {
         startTimer() {

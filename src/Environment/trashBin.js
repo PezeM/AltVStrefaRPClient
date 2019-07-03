@@ -3,7 +3,7 @@
 
 import * as alt from 'alt';
 import * as game from 'natives';
-import menusManager from 'src/Modules/Ui/menusManager.js';
+import mainUi from 'src/Modules/Ui/mainUi.js';
 import { draw3DText } from 'src/Helpers/uiHelper.js';
 
 const BIN_OBJECTS = [
@@ -57,7 +57,7 @@ class TrashBin {
                 this.searchTrashbin(trashBinId);
                 break;
             case "information":
-                menusManager.showCefNotification(0, "Śmietnik", "Widzisz smietnik, możesz go przeszukać w celu odnalezienia ciekawych przedmiotów.", 6000);
+                mainUi.showCefNotification(0, "Śmietnik", "Widzisz smietnik, możesz go przeszukać w celu odnalezienia ciekawych przedmiotów.", 6000);
                 break;
         }
     }
@@ -74,7 +74,7 @@ class TrashBin {
         alt.log(`Inside searchTrashbin`);
         if (!this.checkIfValid(trashBinId)) return;
         else if (this.searchedBins.includes(trashBinId)) {
-            menusManager.showCefNotification(3, "Śmietnik przeszukany", "Ten śmietnik był już przez ciebie przeszukiwany.", 5000);
+            mainUi.showCefNotification(3, "Śmietnik przeszukany", "Ten śmietnik był już przez ciebie przeszukiwany.", 5000);
             return;
         }
 

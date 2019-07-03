@@ -6,7 +6,7 @@ import * as game from 'natives';
 import { drawText, showNotification } from 'src/Helpers/uiHelper.js';
 import Maths from 'src/Helpers/maths.js';
 import chat from 'chat';
-import menusManager from 'src/Modules/Ui/menusManager.js';
+import mainUi from 'src/Modules/Ui/mainUi.js';
 
 const controlsIds = {
     W: 32,
@@ -126,7 +126,7 @@ alt.on('update', () => {
 });
 
 alt.on('keydown', (key) => {
-    if (chat.isOpen() || menusManager.viewOpened) return;
+    if (chat.isOpen() || mainUi.viewOpened) return;
 
     if (key == 0x69) { // NUM PAD 9 KEY
         toggleFlying();

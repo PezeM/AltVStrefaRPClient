@@ -4,7 +4,7 @@
 import * as alt from 'alt';
 import * as game from 'natives';
 import uiHelper from 'src/Helpers/uiHelpers.js';
-import menusManager from 'src/Modules/Ui/menusManager.js';
+import mainUi from 'src/Modules/Ui/mainUi.js';
 import Animations from 'src/Modules/animations.js';
 import trashBin from 'src/Environment/trashBin.js';
 import { vehicleShop } from 'src/Modules/Vehicle/vehicleShop.js';
@@ -17,7 +17,7 @@ class CircleMenuController {
         this.entityHit = -1;
         this.screenResolution = game.getActiveScreenResolution(null, null);
         this.animations = new Animations();
-        menusManager.onUiEvent('circleMenuCallback', this.circleMenuCallback.bind(this));
+        mainUi.onUiEvent('circleMenuCallback', this.circleMenuCallback.bind(this));
     }
 
     get isMenuOpened() {
@@ -28,7 +28,7 @@ class CircleMenuController {
         if (this.menuOpened) return;
 
         this.menuName = menuName;
-        menusManager.openMenu('openCircleMenu', true, freezePlayer, this.menuName);
+        mainUi.openMenu('openCircleMenu', true, freezePlayer, this.menuName);
         this.menuOpened = true;
         alt.setCursorPos({
             x: this.screenResolution[1] / 2,
@@ -38,11 +38,11 @@ class CircleMenuController {
 
     closeMenu(hideMenu = false) {
         if (hideMenu)
-            menusManager.emitUiEvent('closeCircleMenu');
+            mainUi.emitUiEvent('closeCircleMenu');
 
         this.menuOpened = false;
-        menusManager.viewOpened = false;
-        menusManager.unfocusView();
+        mainUi.viewOpened = false;
+        mainUi.unfocusView();
         uiHelper.showUiAndFreezePlayer(true);
         alt.showCursor(false);
     }
@@ -157,7 +157,7 @@ class CircleMenuController {
                 alt.emitServer("CreateBankAccount");
                 break;
             case "information":
-                menusManager.showCefNotification(0, "Bank", "Widzisz bankiera, możesz u niego zarządzać aktualnym kontem bankowym lub założyć nowe", 6000);
+                mainUi.showCefNotification(0, "Bank", "Widzisz bankiera, możesz u niego zarządzać aktualnym kontem bankowym lub założyć nowe", 6000);
                 break;
         }
     }
@@ -168,7 +168,7 @@ class CircleMenuController {
                 alt.emitServer("TryToOpenBankMenu");
                 break;
             case "information":
-                menusManager.showCefNotification(0, "Bankomat", "Widzisz bankomat w którym możesz zarządząć swoim kontem bankowym.", 5500);
+                mainUi.showCefNotification(0, "Bankomat", "Widzisz bankomat w którym możesz zarządząć swoim kontem bankowym.", 5500);
                 break;
         }
     }

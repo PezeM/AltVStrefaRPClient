@@ -9,6 +9,12 @@ import EventBus from '@/event-bus.js';
 
 export default {
     name: 'notificationComponent',
+    mounted() {
+        EventBus.$on('showNotification', showNotification);
+    },
+    beforeDestroy() {
+        EventBus.$off('showNotification', showNotification);
+    },
 };
 
 const notificationTypes = ['info', 'success', 'notice', 'error'];
@@ -21,10 +27,6 @@ const stackInfo = {
     push: 'top',
     context: document.body,
 };
-
-EventBus.$on('showNotification', (type, title, message, duration, icon) => {
-    showNotification(type, title, message, duration, icon);
-});
 
 alt.on('showNotification', (type, title, message, duration, icon) => {
     showNotification(type, title, message, duration, icon);

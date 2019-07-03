@@ -94,8 +94,8 @@ class VehicleDoorComponent extends VehicleComponent {
         let trunkDistance = math.distance(trunkPosition, vehicle.pos);
         let hoodPosition = game.getWorldPositionOfEntityBone(vehicle.scriptID, hoodIndex);
         let hoodDistance = math.distance(hoodPosition, vehicle.pos);
-        let bootPosition = game.getOffsetFromEntityInWorldCoords(vehicle.scriptID, 0, -trunkDistance - 1, 0);
-        let frontPosition = game.getOffsetFromEntityInWorldCoords(vehicle.scriptID, 0, hoodDistance + 0.2, 0);
+        let bootPosition = game.getOffsetFromEntityInWorldCoords(vehicle.scriptID, 0, -trunkDistance, 0);
+        let frontPosition = game.getOffsetFromEntityInWorldCoords(vehicle.scriptID, 0, hoodDistance + 1, 0);
         alt.log(`Boot position ${JSON.stringify(bootPosition)} Front position ${JSON.stringify(frontPosition)}`);
 
         if (math.distance(localPlayer.pos, frontPosition) <= math.distance(localPlayer.pos, bootPosition)) { // Hood is closer
@@ -116,7 +116,7 @@ class VehicleDoorComponent extends VehicleComponent {
     }
 
     toggleHoodState(state, vehicle) {
-        alt.log(`Toggle hood state with state ${state}`);
+        alt.log(`Toggle hood state with state ${state} and vehicle scriptID ${vehicle.scriptID}`);
         let hoodIndex = game.getEntityBoneIndexByName(vehicle.scriptID, "bonnet");
         if (hoodIndex == -1) return;
 
@@ -131,7 +131,7 @@ class VehicleDoorComponent extends VehicleComponent {
     }
 
     toggleTrunkState(state, vehicle) {
-        alt.log(`Toggle trunk state with state ${state}`);
+        alt.log(`Toggle trunk state with state ${state} and vehicle scriptID ${vehicle.scriptID}`);
         let trunkIndex = game.getEntityBoneIndexByName(vehicle.scriptID, "boot");
         if (trunkIndex == -1) return;
 
@@ -147,24 +147,19 @@ class VehicleDoorComponent extends VehicleComponent {
 
     closeDoor(vehicle, doorIndex) {
         game.setVehicleDoorShut(vehicle.scriptID, doorIndex, false);
-        let doorShutInterval = alt.setInterval(() => {
-            if (game.getVehicleDoorAngleRatio(vehicle.scriptID, doorIndex) < 0.1) {
-                game.playVehicleDoorCloseSound(vehicle.scriptID, 0);
-                alt.log('Closed door index ' + doorIndex);
-                alt.clearInterval(doorShutInterval);
-            }
+        alt.log(`Closing door`);
+        alt.setTimeout(() => {
+            game.playVehicleDoorCloseSound(vehicle.scriptID, 0);
+            alt.log(`Closed door`);
         }, 50);
     }
 
     openDoor(vehicle, doorIndex) {
         game.setVehicleDoorOpen(vehicle.scriptID, doorIndex, false, false);
-        let doorOpenInterval = alt.setInterval(() => {
-            if (game.getVehicleDoorAngleRatio(vehicle.scriptID, doorIndex) > 0.1) {
-                game.playVehicleDoorOpenSound(vehicle.scriptID, 0);
-                alt.log('Opened dooor index ' + doorIndex);
-                alt.clearInterval(doorOpenInterval);
-            }
-        }, 50);
+        alt.setTimeout(() => {
+            game.playVehicleDoorOpenSound(vehicle.scriptID, 0);
+            alt.log('Opened dooor index ' + doorIndex);
+        }, 10);
     }
 
     checkIfVehicleIsLocked(vehicle) {

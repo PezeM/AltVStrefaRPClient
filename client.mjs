@@ -4,9 +4,8 @@
 import * as alt from 'alt';
 import * as game from 'natives';
 import chat from 'chat';
-import menusManager from 'src/Modules/Ui/menusManager.js';
-import keycodes from 'src/keycodes.js';
 import mainUi from 'src/Modules/Ui/mainUi.js';
+import keycodes from 'src/keycodes.js';
 import * as gameState from 'src/gameState.js';
 import * as ui from 'src/ui.js';
 import * as menus from 'src/menus.mjs';
@@ -75,7 +74,7 @@ alt.on('update', () => {
 });
 
 alt.on('keydown', (key) => {
-	if (chat.isOpen() || menusManager.viewOpened || gameState.getGameState() == 'loading') return;
+	if (chat.isOpen() || mainUi.viewOpened || gameState.getGameState() == 'loading') return;
 
 	switch (key) {
 		case controlsIds.E:

@@ -6,7 +6,7 @@ import * as game from 'natives';
 import { drawText } from 'src/Helpers/uiHelper.js';
 // import { AnimList } from 'src/Admin/animationBrowser.js';
 import chat from 'chat';
-import menusManager from 'src/Modules/Ui/menusManager.js';
+import mainUi from 'src/Modules/Ui/mainUi.js';
 
 const controlsIds = {
     F: 75,
@@ -545,7 +545,7 @@ alt.on('update', () => {
 });
 
 alt.on('keydown', (key) => {
-    if (chat.isOpen() || menusManager.viewOpened) return;
+    if (chat.isOpen() || mainUi.viewOpened) return;
 
     if (key == 0x67) { // NUM PAD 7 KEY
         if (animPlayer == null) {

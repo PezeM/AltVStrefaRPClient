@@ -1,33 +1,33 @@
 import * as alt from 'alt';
 import * as game from 'natives';
-import menusManager from 'src/Modules/Ui/menusManager.js';
+import mainUi from 'src/Modules/Ui/mainUi.js';
 import { changeGameState } from 'src/gameState.js';
 
 let localPlayer = alt.getLocalPlayer();
 
-menusManager.onUiEvent('tryToLogin', (username, password) => {
+mainUi.onUiEvent('tryToLogin', (username, password) => {
     if (!username || !password) {
-        return menusManager.emitUiEvent('showError', 'Wysłano puste dane');
+        return mainUi.emitUiEvent('showError', 'Wysłano puste dane');
     }
 
     alt.emitServer('loginAccount', username, password);
 });
 
-menusManager.onUiEvent('tryToRegister', (username, password) => {
+mainUi.onUiEvent('tryToRegister', (username, password) => {
     if (!username || !password) {
-        return menusManager.emitUiEvent('showError', 'Wysłano puste dane');
+        return mainUi.emitUiEvent('showError', 'Wysłano puste dane');
     }
 
     alt.emitServer('registerAccount', username, password);
 });
 
-menusManager.onUiEvent('loadCharacter', (characterId) => {
+mainUi.onUiEvent('loadCharacter', (characterId) => {
     characterId = Number(characterId);
     alt.log('Loading character with id: ' + characterId);
     alt.emitServer('tryToLoadCharacter', characterId);
 });
 
-menusManager.onUiEvent('tryToCreateNewCharacter', () => {
+mainUi.onUiEvent('tryToCreateNewCharacter', () => {
     alt.emitServer('tryToCreateNewCharacter');
 });
 
@@ -37,17 +37,17 @@ alt.onServer('showAuthenticateWindow', () => {
 });
 
 alt.onServer('showLoginError', (message) => {
-    menusManager.emitUiEvent('showError', message);
+    mainUi.emitUiEvent('showError', message);
 });
 
 alt.onServer('successfullyRegistered', () => {
-    menusManager.emitUiEvent('registeredSuccessfully');
+    mainUi.emitUiEvent('registeredSuccessfully');
 });
 
 alt.onServer('loginSuccesfully', (characterList) => {
     if (characterList) {
         alt.log('Character list: ' + characterList);
-        menusManager.emitUiEvent('succesfullyLoggedIn', characterList);
+        mainUi.emitUiEvent('succesfullyLoggedIn', characterList);
     }
 });
 
@@ -56,24 +56,24 @@ alt.onServer('CharacterCreatedSuccessfully', () => {
     alt.log('Character created succesfully');
     game.freezeEntityPosition(localPlayer.scriptID, false);
     game.setPedDefaultComponentVariation(localPlayer.scriptID);
-    // menusManager.emitUiEvent('hideCharacterSelectWindow');
+    // mainUi.emitUiEvent('hideCharacterSelectWindow');
     hideLoginView();
 });
 
 alt.onServer('loadedCharacter', () => {
     game.freezeEntityPosition(localPlayer.scriptID, false);
     game.setPedDefaultComponentVariation(localPlayer.scriptID);
-    // menusManager.emitUiEvent('hideCharacterSelectWindow');
+    // mainUi.emitUiEvent('hideCharacterSelectWindow');
     hideLoginView();
 });
 
 function showLoginWindow() {
-    if (menusManager.viewLoaded) {
-        menusManager.openMenu('openLoginView', true, true);
+    if (mainUi.viewLoaded) {
+        mainUi.openMenu('openLoginView', true, true);
     } else {
         let interval = alt.setInterval(() => {
-            if (menusManager.viewLoaded) {
-                menusManager.openMenu('openLoginView', true, true);
+            if (mainUi.viewLoaded) {
+                mainUi.openMenu('openLoginView', true, true);
                 alt.clearInterval(interval);
             }
         }, 100);
@@ -82,5 +82,5 @@ function showLoginWindow() {
 
 function hideLoginView() {
     changeGameState('playing');
-    menusManager.closeMenu();
+    mainUi.closeMenu();
 }

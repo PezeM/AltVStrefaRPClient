@@ -1,6 +1,5 @@
 import * as alt from 'alt';
 import mainUi from 'src/Modules/Ui/mainUi.js';
-import menusManager from 'src/Modules/Ui/menusManager.js';
 
 export default class TownHallMenu {
     constructor() {
@@ -10,24 +9,24 @@ export default class TownHallMenu {
         alt.onServer('openFractionTaxesPage', this.openFractionTaxesPage);
         alt.onServer('updateTaxValue', this.updateTaxValue);
 
-        menusManager.onUiEvent('tryToOpenFractionRolesPage', this.tryToOpenFractionRolesPage);
-        menusManager.onUiEvent('tryToOpenFractionResidentsPage', this.tryToOpenFractionResidentsPage);
-        menusManager.onUiEvent('tryToOpenFractionTaxesPage', this.tryToOpenFractionTaxesPage);
-        menusManager.onUiEvent('tryToGetResidentData', this.tryToGetResidentData);
-        menusManager.onUiEvent('tryToUpdateTaxValue', this.tryToUpdateTaxValue);
-        menusManager.onUiEvent('tryToOpenFractionRegistrationPage', this.tryToOpenFractionRegistrationPage);
+        mainUi.onUiEvent('tryToOpenFractionRolesPage', this.tryToOpenFractionRolesPage);
+        mainUi.onUiEvent('tryToOpenFractionResidentsPage', this.tryToOpenFractionResidentsPage);
+        mainUi.onUiEvent('tryToOpenFractionTaxesPage', this.tryToOpenFractionTaxesPage);
+        mainUi.onUiEvent('tryToGetResidentData', this.tryToGetResidentData);
+        mainUi.onUiEvent('tryToUpdateTaxValue', this.tryToUpdateTaxValue);
+        mainUi.onUiEvent('tryToOpenFractionRegistrationPage', this.tryToOpenFractionRegistrationPage);
     }
 
     openFractionsResidentsPage(onlineResidents) {
-        menusManager.emitUiEvent('openFractionsResidentsPage', onlineResidents);
+        mainUi.emitUiEvent('openFractionsResidentsPage', onlineResidents);
     }
 
     openFractionTaxesPage(data) {
-        menusManager.emitUiEvent('openFractionTaxesPage', data);
+        mainUi.emitUiEvent('openFractionTaxesPage', data);
     }
 
     populateResidentData(residentData) {
-        menusManager.emitUiEvent('populateResidentData', residentData);
+        mainUi.emitUiEvent('populateResidentData', residentData);
     }
 
     tryToOpenFractionRolesPage(fractionId) {
@@ -60,7 +59,7 @@ export default class TownHallMenu {
     }
 
     updateTaxValue(taxId, newValue) {
-        menusManager.emitUiEvent('updateTaxValue', taxId, newValue.toFixed(2));
+        mainUi.emitUiEvent('updateTaxValue', taxId, newValue.toFixed(2));
     }
 
     tryToOpenFractionRegistrationPage() {

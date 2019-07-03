@@ -7,10 +7,9 @@ import chat from 'chat';
 import circleMenu from 'src/Modules/CircleMenu/circleMenu.js';
 import { getGameState } from 'src/gameState.js';
 import { drawText, draw3DText } from 'src/Helpers/uiHelper.js';
-import mainUi from 'src/Modules/Ui/mainUi.js';
 import Animations from 'src/Modules/animations.js';
 import ZoneNames from 'src/Modules/ui/zoneNames.js';
-import menusManager from 'src/Modules/Ui/menusManager.js';
+import mainUi from 'src/Modules/Ui/mainUi.js';
 import raycast from 'src/Modules/CircleMenu/raycast.js';
 
 const controlsIds = {
@@ -37,7 +36,7 @@ alt.on('keydown', (key) => {
         alt.showCursor(cursorShown);
         return;
     }
-    if (chat.isOpen() || menusManager.viewOpened || getGameState() !== 'playing') return;
+    if (chat.isOpen() || mainUi.viewOpened || getGameState() !== 'playing') return;
 
     switch (key) {
         case controlsIds.Alt:
@@ -68,14 +67,12 @@ alt.on('keydown', (key) => {
 });
 
 alt.on('update', () => {
-    if (chat.isOpen() || menusManager.viewOpened) {
+    if (chat.isOpen() || mainUi.viewOpened) {
         game.disableAllControlActions(0);
         game.disableAllControlActions(2);
-        alt.toggleGameControls(false);
     } else {
         game.enableAllControlActions(0);
         game.enableAllControlActions(2);
-        alt.toggleGameControls(true);
     }
 
     if (zoneNames.realZoneName && zoneNames.streetName) {
@@ -113,7 +110,7 @@ alt.on('update', () => {
     //     game.playFacialAnim(localPlayer.scriptID, "mood_normal_1", "facials@gen_male@variations@normal");
     // }
 
-    if (localPlayer.vehicle == null && !game.isPlayerDead(localPlayer.scriptID) && !menusManager.viewOpened) {
+    if (localPlayer.vehicle == null && !game.isPlayerDead(localPlayer.scriptID) && !mainUi.viewOpened) {
         if (!circleMenu.isMenuOpened)
             raycast.poitingAt(4);
     }
@@ -127,7 +124,7 @@ alt.on('update', () => {
     }
 
     // Disable moving camera/attacking while UI is open
-    if (chat.isOpen() || menusManager.viewOpened || circleMenu.isMenuOpened) {
+    if (chat.isOpen() || mainUi.viewOpened || circleMenu.isMenuOpened) {
         game.disableControlAction(0, 1, true); // Mouse Look, Left/Right
         game.disableControlAction(0, 2, true); // Mouse Look, Up/Down
         game.disableControlAction(0, 142, true); // Right Click
@@ -140,11 +137,6 @@ alt.on('update', () => {
 
 alt.onServer('showNotification', (type, title, message, duration, icon) => {
     mainUi.showCefNotification(type, title, message, duration, icon == null ? true : icon);
-});
-
-mainUi.onClientEvent('showNotification', (type, title, message, duration) => {
-    alt.log('Triggering client-side showNotification')
-    mainUi.showCefNotification(type, title, message, duration);
 });
 
 alt.onServer('showConfirmModal', (title, message, type, args) => {
@@ -169,21 +161,13 @@ mainUi.onUiEvent('acceptBusinessInvite', (businessId) => {
         alt.emitServer('AcceptInviteToBusiness', businessId);
     }
 
-    if (menusManager.viewOpened) {
-        menusManager.focusView();
-    } else {
-        mainUi.unfocusView();
-        alt.showCursor(false);
-    }
+    mainUi.unfocusView();
+    alt.showCursor(false);
 });
 
 mainUi.onUiEvent('defaultCancelModalCallback', () => {
-    if (menusManager.viewOpened) {
-        menusManager.focusView();
-    } else {
-        mainUi.unfocusView();
-        alt.showCursor(false);
-    }
+    mainUi.unfocusView();
+    alt.showCursor(false);
 });
 
 

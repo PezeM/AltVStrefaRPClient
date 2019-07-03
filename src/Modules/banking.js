@@ -1,9 +1,8 @@
 import * as game from 'natives';
 import * as alt from 'alt';
 import mainUi from 'src/Modules/Ui/mainUi.js';
-import menusManager from 'src/Modules/Ui/menusManager.js';
 
-const pedPositions = [
+const PED_POSITIONS = [
     { x: -111.9647, y: 6471.319, z: 31.6267, rot: 138.7 },
     { x: 149.09, y: -1042.76, z: 29.37409, rot: 340.29 },
     { x: 249.022, y: 224.9183, z: 106.2871, rot: 165.78 },
@@ -30,15 +29,15 @@ class Bank {
         alt.onServer('updateBankMoneyWithNotification', this.updateBankMoneyWithNotification);
         alt.onServer('openTransactionHistory', this.openTransactionHistory);
 
-        menusManager.onUiEvent('getTransferHistoryInfo', this.getTransferHistoryInfo.bind(this));
-        menusManager.onUiEvent('tryTransferMoney', this.transferMoney.bind(this));
-        menusManager.onUiEvent('withdrawMoney', this.withdrawMoney.bind(this));
-        menusManager.onUiEvent('depositMoney', this.depositMoney.bind(this));
-        menusManager.onUiEvent('closeBankMenu', this.closeBankMenu.bind(this));
+        mainUi.onUiEvent('getTransferHistoryInfo', this.getTransferHistoryInfo.bind(this));
+        mainUi.onUiEvent('tryTransferMoney', this.transferMoney.bind(this));
+        mainUi.onUiEvent('withdrawMoney', this.withdrawMoney.bind(this));
+        mainUi.onUiEvent('depositMoney', this.depositMoney.bind(this));
+        mainUi.onUiEvent('closeBankMenu', this.closeBankMenu.bind(this));
     }
 
     initializePeds() {
-        pedPositions.forEach(bankPed => {
+        PED_POSITIONS.forEach(bankPed => {
             let ped = game.createPed(26, this.pedHash, bankPed.x, bankPed.y, bankPed.z, bankPed.rot, false, true);
             game.freezeEntityPosition(ped, true);
             game.setEntityInvincible(ped, true);
@@ -55,17 +54,17 @@ class Bank {
             return;
         }
 
-        menusManager.openMenu('openBankMenuView', true, true, bankAccountInformations);
+        mainUi.openMenu('openBankMenuView', true, true, bankAccountInformations);
     }
 
     updateBankMoneyWithNotification(notificationMessage, money) {
         alt.log(`Updating money with notification with value = ${money}`);
-        menusManager.emitUiEvent('updateBankMoney', money);
+        mainUi.emitUiEvent('updateBankMoney', money);
         mainUi.showCefNotification(1, "Aktualizacja", notificationMessage, 6000);
     }
 
     openTransactionHistory(transactionHistory) {
-        menusManager.emitUiEvent('openTransactionHistory', transactionHistory);
+        mainUi.emitUiEvent('openTransactionHistory', transactionHistory);
     }
 
     getTransferHistoryInfo() {
@@ -97,7 +96,7 @@ class Bank {
     }
 
     closeBankMenu() {
-        menusManager.closeMenu();
+        mainUi.closeMenu();
     }
 }
 

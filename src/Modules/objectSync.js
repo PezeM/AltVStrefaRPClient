@@ -66,5 +66,5 @@ function createObject(player, objectData) {
 function deleteObject(player) {
     game.detachEntity(player.syncedObject, true, true);
     game.deleteObject(player.syncedObject);
-    game.syncedObject = null;
+    player.syncedObject = null;
 }

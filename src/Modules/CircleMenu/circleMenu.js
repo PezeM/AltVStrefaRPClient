@@ -28,17 +28,12 @@ class CircleMenuController {
         if (this.menuOpened) return;
 
         this.menuName = menuName;
-        mainUi.emitUiEvent('openCircleMenu', this.menuName);
+        mainUi.openMenu('openCircleMenu', true, freezePlayer, this.menuName);
         this.menuOpened = true;
-        if (freezePlayer) {
-            uiHelper.showUiAndFreezePlayer(!freezePlayer);
-        }
         alt.setCursorPos({
             x: this.screenResolution[1] / 2,
             y: this.screenResolution[2] / 2
         });
-        alt.showCursor(true);
-        mainUi.focusView();
     }
 
     closeMenu(hideMenu = false) {
@@ -46,6 +41,8 @@ class CircleMenuController {
             mainUi.emitUiEvent('closeCircleMenu');
 
         this.menuOpened = false;
+        mainUi.viewOpened = false;
+        mainUi.unfocusView();
         uiHelper.showUiAndFreezePlayer(true);
         alt.showCursor(false);
     }

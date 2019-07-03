@@ -1,3 +1,22 @@
+<script>
+import PNotify from 'pnotify/dist/es/PNotify.js';
+import PNotifyButtons from 'pnotify/dist/es/PNotifyButtons.js';
+import PNotifyCallbacks from 'pnotify/dist/es/PNotifyCallbacks.js';
+import PNotifyConfirm from 'pnotify/dist/es/PNotifyConfirm.js';
+import PNotifyHistory from 'pnotify/dist/es/PNotifyHistory.js';
+import PNotifyStyleMaterial from 'pnotify/dist/es/PNotifyStyleMaterial.js';
+import EventBus from '@/event-bus.js';
+
+export default {
+    name: 'notificationComponent',
+    mounted() {
+        EventBus.$on('showNotification', showNotification);
+    },
+    beforeDestroy() {
+        EventBus.$off('showNotification', showNotification);
+    },
+};
+
 const notificationTypes = ['info', 'success', 'notice', 'error'];
 const stackInfo = {
     dir1: 'down',
@@ -6,14 +25,12 @@ const stackInfo = {
     firstpos2: 20,
     spacing1: 16,
     push: 'top',
-    context: document.body
-}
-
+    context: document.body,
+};
 
 alt.on('showNotification', (type, title, message, duration, icon) => {
     showNotification(type, title, message, duration, icon);
 });
-
 
 alt.on('showConfirmModal', (title, message, confirmCallback, cancelCallback, args) => {
     console.log(`[CONFIRM MODAL UI] ConfirmCallback = ${JSON.stringify(confirmCallback)} type = ${typeof confirmCallback} 
@@ -27,52 +44,53 @@ function showNotification(type, title, message, duration = 5000, icon = true) {
         title: title,
         text: message,
         type: notificationTypes[type],
-        styling: "bootstrap4",
-        addClass: 'own-style',
-        icons: 'fontawesome5',
+        styling: 'bootstrap4',
+        addClass: 'notification-style',
+        icons: 'material',
         icon: icon,
         animation: 'fade',
         hide: true,
         delay: duration,
         mouseReset: true,
+        shadow: true,
         stack: stackInfo,
         modules: {
             Buttons: {
-                sticker: false
+                sticker: false,
             },
             History: {
-                maxInStack: 3
+                maxInStack: 3,
             },
-        }
+        },
     });
 }
 
 function showConfirmModal(title, message, confirmCallback, cancelCallback, args) {
-    var notice = PNotify.alert({
+    let notice = PNotify.alert({
         title: title,
         text: message,
         type: 'info',
-        styling: "bootstrap4",
-        addClass: 'own-style',
+        styling: 'bootstrap4',
+        addClass: 'confirm-notification-style',
         animation: 'fade',
-        icons: 'fontawesome5',
-        icon: 'fas fa-question-circle',
+        icons: 'material',
         hide: false,
+        shadow: true,
         stack: {
-            'modal': true,
+            modal: true,
         },
         modules: {
             Confirm: {
-                confirm: true
+                confirm: true,
             },
             Buttons: {
                 closer: false,
-                sticker: false
+                sticker: false,
             },
             History: {
-                history: false
+                history: false,
             },
-        }
+        },
     });
 
     if (confirmCallback !== null) {
@@ -86,8 +104,7 @@ function showConfirmModal(title, message, confirmCallback, cancelCallback, args)
                 alt.emit(confirmCallback, args);
             }
         });
-    }
-    else {
+    } else {
         console.log('Confirm callback is null');
     }
 
@@ -108,6 +125,23 @@ function showConfirmModal(title, message, confirmCallback, cancelCallback, args)
     }
 }
 
-function showTestNotification() {
-    showNotification(1, 'Testowa dłuższa wiadomość.', 'Tytuł', 5000);
+// function showTestNotification() {
+//     showNotification(1, 'Testowa dłuższa wiadomość.', 'Tytuł', 5000);
+// }
+
+// function showTestConfirmationModal() {
+//     showConfirmModal('Jakiś tam tyyuł', 'Dłuższa wiadomość', null, null, 1);
+// }
+</script>
+
+<style>
+.notification-style .ui-pnotify-container {
+    border-radius: 4px;
+    padding: 10px;
 }
+
+.confirm-notification-style {
+    border-radius: 8px;
+    padding: 10px;
+}
+</style>

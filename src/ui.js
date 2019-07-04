@@ -26,7 +26,7 @@ const HUDElementsToHide = [1, 2, 3, 4, 6, 7, 8, 9, 14];
 let cursorShown = false;
 let localPlayer = alt.getLocalPlayer();
 let animations = new Animations();
-let zoneNames = new ZoneNames(localPlayer.scriptID);
+let zoneNames = new ZoneNames();
 let lastKeyPressedTime = 0;
 
 alt.on('keydown', (key) => {

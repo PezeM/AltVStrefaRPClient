@@ -5,7 +5,6 @@ import * as alt from 'alt';
 import * as game from 'natives';
 import chat from 'chat';
 import mainUi from 'src/Modules/Ui/mainUi.js';
-import streamingView from 'src/Modules/Streaming/streamingView.js';
 import keycodes from 'src/keycodes.js';
 import * as gameState from 'src/gameState.js';
 import * as ui from 'src/ui.js';

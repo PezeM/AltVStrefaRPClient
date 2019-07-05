@@ -5,13 +5,13 @@
     <div class="login-box" v-if="activeMenu == 'login'">
       <h1 class="login-header-text">Zaloguj się</h1>
       <div class="group">
-        <input class="inputMaterial" type="text" v-model="userName" required>
+        <input class="inputMaterial" type="text" v-model="userName" required />
         <span class="highlight"></span>
         <span class="bar"></span>
         <label>Nazwa użytkownika</label>
       </div>
       <div class="group">
-        <input class="inputMaterial" type="password" v-model="userPassword" required>
+        <input class="inputMaterial" type="password" v-model="userPassword" required />
         <span class="highlight"></span>
         <span class="bar"></span>
         <label>Hasło</label>
@@ -23,19 +23,19 @@
     <div class="login-box" v-if="activeMenu == 'register'">
       <h1 class="login-header-text">Rejestracja</h1>
       <div class="group">
-        <input class="inputMaterial" type="text" v-model="userNameRegister" required>
+        <input class="inputMaterial" type="text" v-model="userNameRegister" required />
         <span class="highlight"></span>
         <span class="bar"></span>
         <label>Nazwa użytkownika</label>
       </div>
       <div class="group">
-        <input class="inputMaterial" type="password" v-model="userPasswordRegister" required>
+        <input class="inputMaterial" type="password" v-model="userPasswordRegister" required />
         <span class="highlight"></span>
         <span class="bar"></span>
         <label>Hasło</label>
       </div>
       <div class="group">
-        <input class="inputMaterial" type="password" v-model="userPasswordRegisterRetry" required>
+        <input class="inputMaterial" type="password" v-model="userPasswordRegisterRetry" required />
         <span class="highlight"></span>
         <span class="bar"></span>
         <label>Powtórz hasło</label>
@@ -73,7 +73,7 @@ export default {
     mounted() {
         EventBus.$on('showError', this.showError);
         EventBus.$on('registeredSuccesfully', message => {
-            this.showError(JSON.parse(message));
+            this.showError(message);
             this.switchToLogin();
         });
     },
@@ -158,7 +158,7 @@ export default {
 
 alt.on('registeredSuccessfully', () => {
     console.log('Registered successfully');
-    var message = 'Pomyślnie założono konto. Możesz się teraz zalogować';
+    let message = 'Pomyślnie założono konto. Możesz się teraz zalogować';
     EventBus.$emit('registeredSuccesfully', message);
 });
 

@@ -1,19 +1,19 @@
 import alt from 'alt';
-import { create, onStreamIn, onStreamOut, onDataChange } from "src/Modules/Streaming/client.js";
 import game from "natives";
-import streamingView from 'src/Modules/Streaming/streamingView.js';
+import networkingEntity from "networking-entity";
 
 class EntityStreamer {
     constructor() {
+        networkingEntity.create();
         alt.log(`Created enity streamer`);
-        create(streamingView.view);
         this.peds = new Map();
-        this.onStreamIn = this.onStreamIn.bind(this);
         this.onStreamOut = this.onStreamOut.bind(this);
         this.onDataChange = this.onDataChange.bind(this);
-        onStreamIn(this.onStreamIn);
-        onStreamOut(this.onStreamOut);
-        onDataChange(this.onDataChange);
+        networkingEntity.onStreamOut(this.onStreamOut);
+        networkingEntity.onDataChange(this.onDataChange);
+
+        this.onStreamIn = this.onStreamIn.bind(this);
+        networkingEntity.onStreamIn(this.onStreamIn);
     }
 
     onStreamIn(entity) {
@@ -35,5 +35,5 @@ class EntityStreamer {
     }
 
 }
-
-export default new EntityStreamer();
+const entityStreamer = new EntityStreamer();
+export default entityStreamer;

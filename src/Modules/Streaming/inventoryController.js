@@ -25,18 +25,18 @@ class DroppedItemsController {
         this.streamedItems = new Map();
 
         this.tickInterval = alt.setInterval(this.render.bind(this), 0);
-        this.streamInterval = alt.setInterval(this.streamer.bind(this), 50);
+        this.streamInterval = alt.setInterval(this.streamer.bind(this), 2000);
     }
 
     streamer() {
         for (let item of droppedItems.values()) {
             const distance = math.distance(player.pos, item);
             if (distance < STREAM_DISTANCE_SQRT) {
-                if (this.streamedItems.has(item.object)) {
-                    this.streamedItems(item.object, item);
+                if (!this.streamedItems.has(item.object)) {
+                    this.streamedItems.set(item.object, item);
                     alt.log(`Dropped item ${item.name} is now visible for you`);
                 }
-            } else if (this.streamedItems.has(item.object) && distanceSqrt >= STREAM_DISTANCE_SQRT) {
+            } else if (this.streamedItems.has(item.object) && distance >= STREAM_DISTANCE_SQRT) {
                 this.streamedItems.delete(item.object);
             }
         }
@@ -45,7 +45,7 @@ class DroppedItemsController {
     render() {
         for (let item of this.streamedItems.values()) {
             // Draw text for each streamed items with name/quantity
-            uiHelpers.drawText3D(`~y~${item.name} \n ~w~(${item.count})`, [item.x, item.y, item.z], 4, [255, 255, 255, 255], 0.5);
+            uiHelpers.drawText3D(`~y~(${item.count}) \n ~w~${item.name}`, [item.x, item.y, item.z + 0.5], 4, [255, 255, 255, 255], 0.5);
         }
     }
 
@@ -66,7 +66,8 @@ alt.onServer('streamInDroppedItem', async (droppedItem) => {
     game.setEntityCollision(gameObject, false, false);
     droppedItem.object = gameObject;
     droppedItems.set(droppedItem.id, droppedItem);
-    alt.log(`New dropped items array = ${JSON.stringify(droppedItems, null, 2)}`);
+    alt.log(droppedItems.has(droppedItem.id));
+    alt.log(`New dropped items map = ${JSON.stringify(droppedItems, null, 2)}`);
 });
 
 alt.onServer('streamOutDroppedItem', itemId => {
@@ -93,4 +94,10 @@ alt.onServer('streamInMultipleItems', async (items) => {
         alt.log(`New dropped items array = ${JSON.stringify(droppedItems, null, 2)}`);
     }
 });
+
+alt.onServer('testInventory', inventory => {
+    let inventoryParsed = JSON.parse(inventory);
+    alt.log(`Inventory = ${JSON.stringify(inventoryParsed, null, 4)}`);
+});
+
 export default droppedItemsController;

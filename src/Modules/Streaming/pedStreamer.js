@@ -22,10 +22,9 @@ class PedStreamer {
 
     onStreamOut(entity) {
         if (this.peds.has(entity.id)) {
-            alt.log(`Deleting entity`);
-            let data = this.peds.get(entity.id);
-            alt.log(`Data = ${JSON.stringify(data, null, 2)}`);
-            game.deleteEntity(this.peds.get(entity.id).pedId);
+            alt.log(`Deleting ped`);
+            game.deleteEntity(this.peds.get(entity.id).ped.pedId);
+            this.peds.delete(entity.id);
         }
     }
 
@@ -36,7 +35,7 @@ class PedStreamer {
 
     onDisconnect() {
         for (let ped of this.peds.values()) {
-            game.deleteEntity(ped.pedId);
+            game.deleteEntity(ped.ped.pedId);
         }
     }
 }

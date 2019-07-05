@@ -20,21 +20,22 @@ class EntityStreamer {
     }
 
     async onStreamIn(entity) {
-        alt.log(`Entity streamed ${JSON.stringify(entity, null, 2)}`);
-        alt.log(`Some data: ${entity.data.someData.intValue}`)
+        alt.log(`Entity streamed in ${JSON.stringify(entity, null, 2)}`);
+        if (typeof entity.data.entityType == 'undefined') return;
         if (entity.data.entityType.intValue === 1) { // Peds
             pedStreamer.onStreamIn(entity);
         } else if (entity.data.entityType.intValue === 2) { // Item
-            // Item
+            itemStreamer.onStreamIn(entity);
         }
     }
 
     onStreamOut(entity) {
         alt.log(`Entity streamed out ${JSON.stringify(entity, null, 2)}`);
+        if (typeof entity.data.entityType == 'undefined') return;
         if (entity.data.entityType.intValue === 1) { // Peds
             pedStreamer.onStreamOut(entity);
         } else if (entity.data.entityType.intValue === 2) { // Items
-            // Item
+            itemStreamer.onStreamOut(entity);
         }
     }
 

@@ -10,12 +10,12 @@ class ItemStreamer {
     constructor() {
         alt.log(`Created item streamer`);
         this.items = new Map();
-        this.rederInterval = alt.setInverval(this.render.bind(this), 0);
+        this.tickInterval = alt.setInterval(this.render.bind(this), 0);
         alt.on('disconnect', this.onDisconnect.bind(this));
     }
 
     render() {
-        for (let item in this.items.values()) {
+        for (let item of this.items.values()) {
             uiHelpers.drawText3D(`~y~(${item.item.count}) \n ~w~${item.item.name}`, [item.position.x, item.position.y, item.position.z + 0.5], 4, [255, 255, 255, 255], 0.5);
         }
     }
@@ -23,7 +23,8 @@ class ItemStreamer {
     async onStreamIn(entity) {
         await utils.loadModelAsync(entity.data.model.stringValue);
         const gameObject = game.createObject(game.getHashKey(entity.data.model.stringValue), entity.position.x, entity.position.y, entity.position.z, true, false, false);
-        game.setEntityCollision(gameObject, false, false);
+        game.placeObjectOnGroundProperly(gameObject);
+        game.setEntityCollision(gameObject, false, true);
         entity.item = {
             id: entity.data.id.intValue,
             object: gameObject,
@@ -35,9 +36,7 @@ class ItemStreamer {
 
     onStreamOut(entity) {
         if (this.items.has(entity.id)) {
-            alt.log(`Deleting entity`);
-            let data = this.peds.get(entity.id);
-            alt.log(`Data = ${JSON.stringify(data, null, 2)}`);
+            alt.log(`Deleting item`);
             game.deleteEntity(this.items.get(entity.id).item.object);
             this.items.delete(entity.id);
         }

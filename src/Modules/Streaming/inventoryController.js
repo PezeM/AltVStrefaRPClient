@@ -17,7 +17,7 @@ const STREAM_DISTANCE_SQRT = STREAM_DISTANCE * STREAM_DISTANCE;
 //     object,
 //     count,
 // };
-const droppedItems = [];
+const droppedItems = new Map();
 
 class DroppedItemsController {
     constructor() {
@@ -29,17 +29,14 @@ class DroppedItemsController {
     }
 
     streamer() {
-        for (let i = 0; i < droppedItems.length; i++) {
-            const item = droppedItems[i];
-            const distanceSqrt = math.distance(player.pos, item);
-            if (distanceSqrt < STREAM_DISTANCE_SQRT) {
-                // Add item to streamedItems
-                if (!this.streamedItems.has(item.object)) {
-                    this.streamedItems.set(item.object, item);
+        for (let item of droppedItems.values()) {
+            const distance = math.distance(player.pos, item);
+            if (distance < STREAM_DISTANCE_SQRT) {
+                if (this.streamedItems.has(item.object)) {
+                    this.streamedItems(item.object, item);
                     alt.log(`Dropped item ${item.name} is now visible for you`);
                 }
             } else if (this.streamedItems.has(item.object) && distanceSqrt >= STREAM_DISTANCE_SQRT) {
-                // Remove item from streamedItems
                 this.streamedItems.delete(item.object);
             }
         }
@@ -68,17 +65,16 @@ alt.onServer('streamInDroppedItem', async (droppedItem) => {
     const gameObject = game.createObject(game.getHashKey(droppedItem.model), droppedItem.x, droppedItem.y, droppedItem.z, true, false, false);
     game.setEntityCollision(gameObject, false, false);
     droppedItem.object = gameObject;
-    droppedItems.push(droppedItem);
+    droppedItems.set(droppedItem.id, droppedItem);
     alt.log(`New dropped items array = ${JSON.stringify(droppedItems, null, 2)}`);
 });
 
 alt.onServer('streamOutDroppedItem', itemId => {
     alt.log(`Streaming out item id ${itemId}`);
 
-    let droppedItem = droppedItems.find(i => i.id == itemId);
-    if (droppedItem != null) {
-        game.deleteObject(droppedItem.object);
-        droppedItems = droppedItems.filter(i => i.id != itemId);
+    if (droppedItems.has(itemId)) {
+        game.deleteObject(droppedItems.get(itemId).object);
+        droppedItems.delete(itemId);
     }
 
     if (droppedItemsController.streamedItems.has(itemId)) {

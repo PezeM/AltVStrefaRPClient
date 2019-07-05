@@ -1,36 +1,45 @@
-import alt from 'alt';
-import game from "natives";
+/// <reference path="../../../natives.d.ts" />
+/// <reference path="../../../alt.d.ts" />
+
+import * as alt from 'alt';
+import * as game from "natives";
 import networkingEntity from "networking-entity";
+import pedStreamer from 'src/Modules/Streaming/pedStreamer.js';
+import itemStreamer from 'src/Modules/Streaming/itemStreamer.js';
 
 class EntityStreamer {
     constructor() {
         networkingEntity.create();
         alt.log(`Created enity streamer`);
-        this.peds = new Map();
+        this.onStreamIn = this.onStreamIn.bind(this);
         this.onStreamOut = this.onStreamOut.bind(this);
         this.onDataChange = this.onDataChange.bind(this);
+        networkingEntity.onStreamIn(this.onStreamIn);
         networkingEntity.onStreamOut(this.onStreamOut);
         networkingEntity.onDataChange(this.onDataChange);
-
-        this.onStreamIn = this.onStreamIn.bind(this);
-        networkingEntity.onStreamIn(this.onStreamIn);
     }
 
-    onStreamIn(entity) {
+    async onStreamIn(entity) {
         alt.log(`Entity streamed ${JSON.stringify(entity, null, 2)}`);
-        const ped = game.createPed(2, 1885233650, entity.position.x, entity.position.y, entity.position.z, 61, false, true);
-        this.peds.set(entity.id, ped);
+        alt.log(`Some data: ${entity.data.someData.intValue}`)
+        if (entity.data.entityType.intValue === 1) { // Peds
+            pedStreamer.onStreamIn(entity);
+        } else if (entity.data.entityType.intValue === 2) { // Item
+            // Item
+        }
     }
 
     onStreamOut(entity) {
         alt.log(`Entity streamed out ${JSON.stringify(entity, null, 2)}`);
-        if (this.peds.has(entity.id)) {
-            game.deleteEntity(this.peds.get(entity.id));
+        if (entity.data.entityType.intValue === 1) { // Peds
+            pedStreamer.onStreamOut(entity);
+        } else if (entity.data.entityType.intValue === 2) { // Items
+            // Item
         }
     }
 
-    onDataChange(entity, data) {
-        alt.log(`Data changed on entity ${JSON.stringify(entity, null, 2)} to ${JSON.stringify(data, null, 2)}`);
+    onDataChange(entity, newAddedData) {
+        alt.log(`Data changed on entity ${JSON.stringify(entity, null, 2)} to ${JSON.stringify(newAddedData, null, 2)}`);
         //TODO: when model changes ect.
     }
 

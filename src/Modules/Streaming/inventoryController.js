@@ -6,17 +6,6 @@ import utils from 'src/Helpers/utility.js';
 const player = alt.getLocalPlayer();
 const STREAM_DISTANCE = 40;
 const STREAM_DISTANCE_SQRT = STREAM_DISTANCE * STREAM_DISTANCE;
-
-// const testItem = {
-//     id,
-//     x,
-//     y,
-//     z,
-//     name,
-//     model,
-//     object,
-//     count,
-// };
 const droppedItems = new Map();
 
 class DroppedItemsController {

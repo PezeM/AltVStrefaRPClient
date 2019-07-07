@@ -29,7 +29,7 @@ export async function showNotification(title: string, subtitle: string, message:
     game.drawNotification(false, true);
 }
 
-export function drawText(text: string, position: any, font: number, color: number[], scale: number, outline = true, center = true) {
+export function drawText(text: string, position: number[], font: number, color: number[], scale: number, outline = true, center = true) {
     game.setTextFont(font);
     game.setTextProportional(true);
     game.setTextScale(scale, scale);

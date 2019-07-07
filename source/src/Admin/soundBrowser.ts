@@ -2,7 +2,13 @@ import * as alt from 'alt';
 import * as game from 'natives';
 import { drawText } from 'source/src/Helpers/uiHelper';
 
-const SOUNDS = [
+interface SoundTypes {
+    id: number,
+    soundName: string,
+    soundSetName: string
+}
+
+const SOUNDS: SoundTypes[] = [
     { id: 0, soundName: "10s", soundSetName: "MP_MISSION_COUNTDOWN_SOUNDSET" },
     { id: 1, soundName: "1st_Person_Transition", soundSetName: "PLAYER_SWITCH_CUSTOM_SOUNDSET" },
     { id: 2, soundName: "3_2_1", soundSetName: "HUD_MINI_GAME_SOUNDSET" },
@@ -389,10 +395,12 @@ const controlIds = {
 };
 
 export default class SoundBrowser {
+    playingSound: boolean;
+    currentlyPlayingSoundId: number;
+    tickInterval: number;
     constructor() {
         this.playingSound = false;
-        this.currentlyPlayingSoundId = null;
-
+        this.currentlyPlayingSoundId = 0;
         this.tickInterval = alt.setInterval(this.render.bind(this), 0);
     }
 
@@ -405,7 +413,10 @@ export default class SoundBrowser {
             drawText(`~y~${previousSound.soundName} ~w~| ~b~${previousSound.soundSetName}`, [0.5, 0.08], 4, [255, 255, 255, 100], 0.45, true);
         }
         const currentSound = SOUNDS.find(s => s.id === this.currentlyPlayingSoundId);
-        drawText(`~g~[${currentSound.id}] ~y~${currentSound.soundName} ~w~| ~b~${currentSound.soundSetName}`, [0.5, 0.12], 4, [255, 255, 255, 200], 0.5, true);
+        if (currentSound) {
+            drawText(`~g~[${currentSound.id}] ~y~${currentSound.soundName} ~w~| ~b~${currentSound.soundSetName}`, [0.5, 0.12], 4,
+                [255, 255, 255, 200], 0.5, true);
+        }
 
         const nextSound = (SOUNDS.length >= this.currentlyPlayingSoundId + 1) ? SOUNDS[this.currentlyPlayingSoundId + 1] : false;
         if (nextSound) {
@@ -430,7 +441,7 @@ export default class SoundBrowser {
         }
     }
 
-    play(soundId) {
+    play(soundId: number) {
         game.stopSound(-1);
         game.stopSound(this.currentlyPlayingSoundId);
         const sound = SOUNDS.find(s => s.id === soundId);
@@ -452,7 +463,7 @@ export default class SoundBrowser {
 
     nextSound(offset = 1) {
         try {
-            let nextSound = SOUNDS.find(s => s.id == this.currentlyPlayingSoundId + offset);
+            const nextSound = SOUNDS.find(s => s.id === this.currentlyPlayingSoundId + offset);
             if (nextSound) {
                 this.play(nextSound.id);
             } else {
@@ -465,7 +476,7 @@ export default class SoundBrowser {
 
     previousSound(offset = 1) {
         try {
-            let previousSound = SOUNDS.find(s => s.id == this.currentlyPlayingSoundId - offset);
+            const previousSound = SOUNDS.find(s => s.id === this.currentlyPlayingSoundId - offset);
             if (previousSound) {
                 this.play(previousSound.id);
             } else {

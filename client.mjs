@@ -19,6 +19,7 @@ import * as objectSync from 'src/Modules/objectSync.js';
 import * as nicknames from 'src/Modules/Ui/nicknames.js';
 import * as networkStreamer from 'src/Modules/Streaming/networkStreamer.js';
 import { drawText, draw3DText } from 'src/Helpers/uiHelper.js';
+import equipmentSlots from 'src/Constans/equipmentSlots.js';
 import * as vehicleComponentController from 'src/Modules/Vehicle/vehicleComponentsController.js';
 import vehicleDoors from 'src/Modules/Vehicle/Components/vehicleDoorsComponent.js';
 import vehicleSeatbeltComponent from 'src/Modules/Vehicle/Components/vehicleSeatbeltComponent.js';
@@ -274,13 +275,22 @@ function testStrefa() {
 	}
 }
 
+
+alt.onServer('equipClothableItem', (slot, drawableId, textureId, paletteId, isProp) => {
+	if (isProp) {
+		game.setPedPropIndex(localPlayer.scriptID, equipmentSlots[slot], drawableId, textureId, true);
+	} else {
+		game.setPedComponentVariation(localPlayer.scriptID, equipmentSlots[slot], drawableId, textureId, paletteId);
+	}
+});
+
 alt.on('playerConnect', () => {
 	game.requestAnimDict("mp_facial");
 	game.requestAnimDict("facials@gen_male@variations@normal");
 });
 
-game.loadMpDlcMaps();
 
+game.loadMpDlcMaps();
 game.requestIpl('chop_props');
 game.requestIpl('FIBlobby');
 game.removeIpl('FIBlobbyfake');

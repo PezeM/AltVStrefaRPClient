@@ -84,9 +84,9 @@ alt.onServer('streamInMultipleItems', async (items) => {
     }
 });
 
-alt.onServer('testInventory', inventory => {
-    let inventoryParsed = JSON.parse(inventory);
-    alt.log(`Inventory = ${JSON.stringify(inventoryParsed, null, 4)}`);
+alt.onServer('testInventory', (inventory, equippedItems) => {
+    alt.log(`Inventory = ${JSON.stringify(JSON.parse(inventory), null, 2)}`);
+    alt.log(`Equipped items = ${JSON.stringify(JSON.parse(equippedItems), null, 2)}`);
 });
 
 export default droppedItemsController;

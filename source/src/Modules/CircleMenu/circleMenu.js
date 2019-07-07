@@ -5,7 +5,7 @@ import mainUi from 'source/src/Modules/Ui/mainUi.js';
 import Animations from 'source/src/Modules/animations.js';
 import trashBin from 'source/src/Environment/trashBin.js';
 import { vehicleShop } from 'source/src/Modules/Vehicle/vehicleShop.js';
-import banking from 'source/src/Modules/banking.js';
+import banking from 'source/src/Modules/banking';
 
 class CircleMenuController {
     constructor() {

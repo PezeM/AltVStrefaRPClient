@@ -6,20 +6,15 @@ class Maths {
   }
 
   rotToDirection(rotation: Vector3) {
-    try {
-      const radiansZ = (Math.PI / 180) * rotation.z;
-      const radiansX = (Math.PI / 180) * rotation.x;
-      const num = Math.abs(Math.cos(radiansX));
+    const radiansZ = (Math.PI / 180) * rotation.z;
+    const radiansX = (Math.PI / 180) * rotation.x;
+    const num = Math.abs(Math.cos(radiansX));
 
-      return {
-        x: -Math.sin(radiansZ) * num,
-        y: Math.cos(radiansZ) * num,
-        z: Math.sin(radiansX),
-      };
-    } catch (error) {
-      alt.log('Error in rotToDirection' + error);
-      return null;
-    }
+    return {
+      x: -Math.sin(radiansZ) * num,
+      y: Math.cos(radiansZ) * num,
+      z: Math.sin(radiansX),
+    };
   }
 
   distanceSqrt(a: Vector3, b: Vector3, useZ = true) {

@@ -7,7 +7,7 @@ import { drawText, draw3DText } from 'source/src/Helpers/uiHelper.js';
 import Animations from 'source/src/Modules/animations.js';
 import ZoneNames from 'source/src/Modules/ui/zoneNames.js';
 import mainUi from 'source/src/Modules/Ui/mainUi.js';
-import raycast from 'source/src/Modules/CircleMenu/raycast.js';
+import raycast from 'source/src/Modules/CircleMenu/raycast';
 
 const controlsIds = {
     Alt: 0x12,

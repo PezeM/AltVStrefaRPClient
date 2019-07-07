@@ -9,8 +9,10 @@ const PED_POSITIONS = [
     { x: 243.9872, y: 227.0842, z: 106.2874, rot: 161.6292 }
 ];
 
-
 class Bank {
+    pedList: number[];
+    pedHash: number;
+    atmModels: number[];
     constructor() {
         this.atmModels = [
             2930269768,
@@ -19,7 +21,7 @@ class Bank {
             506770882,
             2594689830,
             3839570722
-        ];
+        ]
         this.pedList = [];
         this.pedHash = 3272005365;
         alt.loadModel(this.pedHash);
@@ -38,7 +40,7 @@ class Bank {
 
     initializePeds() {
         PED_POSITIONS.forEach(bankPed => {
-            let ped = game.createPed(26, this.pedHash, bankPed.x, bankPed.y, bankPed.z, bankPed.rot, false, true);
+            const ped = game.createPed(26, this.pedHash, bankPed.x, bankPed.y, bankPed.z, bankPed.rot, false, true);
             game.freezeEntityPosition(ped, true);
             game.setEntityInvincible(ped, true);
             game.setBlockingOfNonTemporaryEvents(ped, true);
@@ -47,7 +49,7 @@ class Bank {
         alt.log(`Created ${this.pedList.length} bank peds.`);
     }
 
-    openBankMenu(bankAccountInformations) {
+    openBankMenu(bankAccountInformations: string) {
         alt.log(`BankAccountInformation type: ${typeof bankAccountInformations} : ${JSON.stringify(bankAccountInformations)}`);
         if (bankAccountInformations == null) {
             alt.log('openBankMenu -> BankAccountInformation was null');
@@ -57,13 +59,13 @@ class Bank {
         mainUi.openMenu('openBankMenuView', true, true, bankAccountInformations);
     }
 
-    updateBankMoneyWithNotification(notificationMessage, money) {
+    updateBankMoneyWithNotification(notificationMessage: string, money: number) {
         alt.log(`Updating money with notification with value = ${money}`);
         mainUi.emitUiEvent('updateBankMoney', money);
         mainUi.showCefNotification(1, "Aktualizacja", notificationMessage, 6000);
     }
 
-    openTransactionHistory(transactionHistory) {
+    openTransactionHistory(transactionHistory: string) {
         mainUi.emitUiEvent('openTransactionHistory', transactionHistory);
     }
 
@@ -71,7 +73,7 @@ class Bank {
         alt.emitServer('GetTransferHistoryInfo');
     }
 
-    withdrawMoney(amount) {
+    withdrawMoney(amount: number) {
         if (typeof amount !== 'number') {
             mainUi.showCefNotification(3, "Błąd", 'Podano błędną ilość pieniędzy do wypłacenia.', 5000);
             return;
@@ -79,7 +81,7 @@ class Bank {
         alt.emitServer('WithdrawMoneyFromBank', amount);
     }
 
-    depositMoney(amount) {
+    depositMoney(amount: number) {
         if (typeof amount !== 'number') {
             mainUi.showCefNotification(3, "Błąd", 'Podano błędną ilość pieniędzy do wpłaty.', 5000);
             return;
@@ -87,7 +89,7 @@ class Bank {
         alt.emitServer('DepositMoneyToBank', amount);
     }
 
-    transferMoney(amount, receiver) {
+    transferMoney(amount: number, receiver: number) {
         if (amount <= 0 || typeof receiver === 'undefined' || receiver == null) {
             mainUi.showCefNotification(3, "Błąd", 'Podano błędne dane do transferu pieniędzy.', 4000);
             return;
@@ -101,5 +103,5 @@ class Bank {
 }
 
 
-let banking = new Bank();
+const banking = new Bank();
 export default banking;

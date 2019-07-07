@@ -13,7 +13,7 @@ export default {
 		format: 'esm',
 	},
 
-	external: ['alt', 'natives'],
+	external: ['chat', 'alt', 'natives'],
 
 	plugins: [
 		typescript({

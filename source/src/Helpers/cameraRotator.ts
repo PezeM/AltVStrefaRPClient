@@ -128,36 +128,36 @@ class CameraRotator {
     }
 
     render() {
-        if (!cameraRotator.isActive || cameraRotator.isPause)
+        if (!this.isActive || this.isPause)
             return;
 
         const x = game.getDisabledControlNormal(2, 239);
         const y = game.getDisabledControlNormal(2, 240);
 
-        if (cameraRotator.isPointEmpty()) {
-            cameraRotator.setPoint(x, y);
+        if (this.isPointEmpty()) {
+            this.setPoint(x, y);
         }
 
-        const currentPoint = cameraRotator.getPoint();
+        const currentPoint = this.getPoint();
         const dX = currentPoint.x - x;
         const dY = currentPoint.y - y;
 
-        cameraRotator.setPoint(x, y);
+        this.setPoint(x, y);
 
         this.drawDebugText();
 
         // On left mouse hold
         if (game.isDisabledControlPressed(2, 237)) {
-            cameraRotator.onMouseMove(dX, dY);
+            this.onMouseMove(dX, dY);
         }
     }
 
     drawDebugText() {
-        let message = `zUp: ${cameraRotator.zUp.toFixed(3)}`;
+        let message = `zUp: ${this.zUp.toFixed(3)}`;
 
-        message += `\nHeading: ${cameraRotator.heading.toFixed(2)}`;
-        message += `\nBase Heading: ${cameraRotator.baseHeading.toFixed(2)}`;
-        message += `\nRelative Heading: ${cameraRotator.getRelativeHeading().toFixed(2)}`;
+        message += `\nHeading: ${this.heading.toFixed(2)}`;
+        message += `\nBase Heading: ${this.baseHeading.toFixed(2)}`;
+        message += `\nRelative Heading: ${this.getRelativeHeading().toFixed(2)}`;
 
         drawText(message, [0.5, 0.005], 4, [255, 255, 255, 185], 0.8, true, true);
     }

@@ -1,22 +1,23 @@
 import * as game from 'natives';
 
 export default class Camera {
-  constructor(name, position, rotation, fov) {
-    this.camera = game.createCam(name, 1);
+  camera: number;
+  constructor(name: string, position: Vector3, rotation: Vector3, fov: number) {
+    this.camera = game.createCam(name, true);
     game.setCamCoord(this.camera, position.x, position.y, position.z);
     game.setCamRot(this.camera, rotation.x, rotation.y, rotation.z, 2);
     game.setCamFov(this.camera, fov);
   }
 
-  attachCamToEntity(entity, xOffset, yOffset, zOffset, isRelative) {
+  attachCamToEntity(entity: number, xOffset: number, yOffset: number, zOffset: number, isRelative: boolean) {
     game.attachCamToEntity(this.camera, entity, xOffset, yOffset, zOffset, isRelative);
   }
 
-  attachCamToPedBone(ped, boneIndex, x, y, z, heading) {
+  attachCamToPedBone(ped: number, boneIndex: number, x: number, y: number, z: number, heading: boolean) {
     game.attachCamToPedBone(this.camera, ped, boneIndex, x, y, z, heading);
   }
 
-  destroy(thisScriptCheck) {
+  destroy(thisScriptCheck: boolean) {
     game.destroyCam(this.camera, thisScriptCheck);
   }
 
@@ -52,7 +53,7 @@ export default class Camera {
     return game.getCamNearClip(this.camera);
   }
 
-  getRot(rotationOrder) {
+  getRot(rotationOrder: number) {
     return game.getCamRot(this.camera, rotationOrder);
   }
 
@@ -72,7 +73,7 @@ export default class Camera {
     return game.isCamInterpolating(this.camera);
   }
 
-  isPlayingAnim(animName, animDictionary) {
+  isPlayingAnim(animName: string, animDictionary: string) {
     return game.isCamPlayingAnim(this.camera, animName, animDictionary);
   }
 
@@ -84,115 +85,115 @@ export default class Camera {
     return game.isCamShaking(this.camera);
   }
 
-  playAnim(animName, animDictionary, x, y, z, xRot, yRot, zRot, p9, p10) {
+  playAnim(animName: string, animDictionary: string, x: number, y: number, z: number, xRot: number, yRot: number, zRot: number, p9: boolean, p10: number) {
     game.playCamAnim(this.camera, animName, animDictionary, x, y, z, xRot, yRot, zRot, p9, p10);
   }
 
-  pointAtCoord(x, y, z) {
+  pointAtCoord(x: number, y: number, z: number) {
     game.pointCamAtCoord(this.camera, x, y, z);
   }
 
-  pointAtEntity(entity, x, y, z, p5) {
+  pointAtEntity(entity: number, x: number, y: number, z: number, p5: boolean) {
     game.pointCamAtEntity(this.camera, entity, x, y, z, p5);
   }
 
-  pointAtPedBone(ped, boneIndex, x, y, z, p6) {
+  pointAtPedBone(ped: number, boneIndex: number, x: number, y: number, z: number, p6: boolean) {
     game.pointCamAtPedBone(this.camera, ped, boneIndex, x, y, z, p6);
   }
 
-  setActive(active) {
+  setActive(active: boolean) {
     game.setCamActive(this.camera, active);
   }
 
-  setActiveWithInterp(camFrom, duration, easeLocation, easeRotation) {
+  setActiveWithInterp(camFrom: number, duration: number, easeLocation: number, easeRotation: number) {
     game.setCamActiveWithInterp(this.camera, camFrom, duration, easeLocation, easeRotation);
   }
 
-  setAffectsAiming(toggle) {
+  setAffectsAiming(toggle: boolean) {
     game.setCamAffectsAiming(this.camera, toggle);
   }
 
-  setAnimCurrentPhase(phase) {
+  setAnimCurrentPhase(phase: number) {
     game.setCamAnimCurrentPhase(this.camera, phase);
   }
 
-  setCoord(x, y, z) {
+  setCoord(x: number, y: number, z: number) {
     game.setCamCoord(this.camera, x, y, z);
   }
 
-  setDebugName(name) {
+  setDebugName(name: string) {
     game.setCamDebugName(this.camera, name);
   }
 
-  setDofFnumberOfLens(p1) {
+  setDofFnumberOfLens(p1: number) {
     game.setCamDofFnumberOfLens(this.camera, p1);
   }
 
-  setDofFocusDistanceBias(p1) {
+  setDofFocusDistanceBias(p1: number) {
     game.setCamDofFocusDistanceBias(this.camera, p1);
   }
 
-  setDofMaxNearInFocusDistance(p1) {
+  setDofMaxNearInFocusDistance(p1: number) {
     game.setCamDofMaxNearInFocusDistance(this.camera, p1);
   }
 
-  setDofMaxNearInFocusDistanceBlendLevel(p1) {
+  setDofMaxNearInFocusDistanceBlendLevel(p1: number) {
     game.setCamDofMaxNearInFocusDistanceBlendLevel(this.camera, p1);
   }
 
-  setDofPlanes(p1, p2, p3, p4) {
+  setDofPlanes(p1: number, p2: number, p3: number, p4: number) {
     game.setCamDofPlanes(this.camera, p1, p2, p3, p4);
   }
 
-  setFarClip(farClip) {
+  setFarClip(farClip: number) {
     game.setCamFarClip(this.camera, farClip);
   }
 
-  setDofStrength(dofStrength) {
+  setDofStrength(dofStrength: number) {
     game.setCamDofStrength(this.camera, dofStrength);
   }
 
-  setFarDof(farDOF) {
+  setFarDof(farDOF: number) {
     game.setCamFarDof(this.camera, farDOF);
   }
 
-  setFov(fieldOfView) {
+  setFov(fieldOfView: number) {
     game.setCamFov(this.camera, fieldOfView);
   }
 
-  setInheritRollVehicle(p1) {
+  setInheritRollVehicle(p1: boolean) {
     game.setCamInheritRollVehicle(this.camera, p1);
   }
 
-  setMotionBlurStrength(strength) {
+  setMotionBlurStrength(strength: number) {
     game.setCamMotionBlurStrength(this.camera, strength);
   }
 
-  setNearClip(nearClip) {
+  setNearClip(nearClip: number) {
     game.setCamNearClip(this.camera, nearClip);
   }
 
-  setNearDof(nearDOF) {
+  setNearDof(nearDOF: number) {
     game.setCamNearDof(this.camera, nearDOF);
   }
 
-  setParams(x, y, z, rx, ry, rz, fov, duration, p9, p10, p11) {
+  setParams(x: number, y: number, z: number, rx: number, ry: number, rz: number, fov: number, duration: number, p9: number, p10: number, p11: number) {
     game.setCamParams(this.camera, x, y, z, rx, ry, rz, fov, duration, p9, p10, p11);
   }
 
-  setRot(rotX, rotY, rotZ, p4) {
+  setRot(rotX: number, rotY: number, rotZ: number, p4: number) {
     game.setCamRot(this.camera, rotX, rotY, rotZ, p4);
   }
 
-  setShakeAmplitude(amplitude) {
+  setShakeAmplitude(amplitude: number) {
     game.setCamShakeAmplitude(this.camera, amplitude);
   }
 
-  setUseShallowDofMode(toggle) {
+  setUseShallowDofMode(toggle: boolean) {
     game.setCamUseShallowDofMode(this.camera, toggle);
   }
 
-  shake(type, amplitude) {
+  shake(type: string, amplitude: number) {
     game.shakeCam(this.camera, type, amplitude);
   }
 
@@ -200,7 +201,7 @@ export default class Camera {
     game.stopCamPointing(this.camera);
   }
 
-  stopShaking(p1) {
+  stopShaking(p1: boolean) {
     game.stopCamShaking(this.camera, p1);
   }
 

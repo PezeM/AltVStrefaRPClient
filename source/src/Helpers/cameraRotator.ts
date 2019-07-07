@@ -1,9 +1,33 @@
 import * as alt from 'alt';
 import * as game from 'natives';
 import { drawText } from 'source/src/Helpers/uiHelper';
+import Camera from 'source/src/Helpers/camera';
+
+interface Point {
+    x: number;
+    y: number;
+}
 
 class CameraRotator {
-    start(camera, basePosition, lookAtPosition, offsetVector, heading, fov = undefined) {
+    camera: Camera;
+    basePosition: Vector3;
+    lookAtPosition: Vector3;
+    offsetVector: Vector3;
+    heading: number;
+    baseHeading: number;
+    currentPoint: Point;
+    isPause: boolean;
+    zUp: number;
+    zUpMultipler: number;
+    xBound: number[];
+    zBound: number[];
+    isActive: boolean;
+    renderTick: number;
+    constructor() {
+        this.renderTick = alt.setInterval(this.render.bind(this), 0);
+    }
+
+    start(camera: Camera, basePosition: Vector3, lookAtPosition: Vector3, offsetVector: Vector3, heading: number, fov: boolean | number = false) {
         this.camera = camera;
         this.basePosition = basePosition;
         this.lookAtPosition = lookAtPosition;
@@ -22,13 +46,13 @@ class CameraRotator {
         this.camera.pointAtCoord(lookAtPosition.x, lookAtPosition.y, lookAtPosition.z);
 
         if (fov) {
-            this.camera.setFov(fov);
+            this.camera.setFov(fov as number);
         }
 
         this.activate(true);
     }
 
-    pause(state) {
+    pause(state: boolean) {
         this.isPause = state;
     }
 
@@ -42,15 +66,15 @@ class CameraRotator {
         this.changePosition();
     }
 
-    setXBound(min, max) {
+    setXBound(min: number, max: number) {
         this.xBound = [min, max];
     }
 
-    setZBound(min, max) {
+    setZBound(min: number, max: number) {
         this.zBound = [min, max];
     }
 
-    setZUpMultipler(value) {
+    setZUpMultipler(value: number) {
         this.zUpMultipler = value;
     }
 
@@ -58,11 +82,11 @@ class CameraRotator {
         return this.normilizeHeading(this.baseHeading - this.heading);
     }
 
-    activate(state) {
+    activate(state: boolean) {
         this.isActive = state;
     }
 
-    onMouseMove(dX, dY) {
+    onMouseMove(dX: number, dY: number) {
         this.heading = this.normilizeHeading(this.heading + dX * 100);
 
         let relativeHeading = this.getRelativeHeading();
@@ -95,7 +119,7 @@ class CameraRotator {
         return this.currentPoint.x === 0 && this.currentPoint.y === 0;
     }
 
-    setPoint(x, y) {
+    setPoint(x: number, y: number) {
         this.currentPoint = { x, y };
     }
 
@@ -103,7 +127,43 @@ class CameraRotator {
         return this.currentPoint;
     }
 
-    normilizeHeading(heading) {
+    render() {
+        if (!cameraRotator.isActive || cameraRotator.isPause)
+            return;
+
+        const x = game.getDisabledControlNormal(2, 239);
+        const y = game.getDisabledControlNormal(2, 240);
+
+        if (cameraRotator.isPointEmpty()) {
+            cameraRotator.setPoint(x, y);
+        }
+
+        const currentPoint = cameraRotator.getPoint();
+        const dX = currentPoint.x - x;
+        const dY = currentPoint.y - y;
+
+        cameraRotator.setPoint(x, y);
+
+        this.drawDebugText();
+
+        // On left mouse hold
+        if (game.isDisabledControlPressed(2, 237)) {
+            cameraRotator.onMouseMove(dX, dY);
+        }
+    }
+
+    drawDebugText() {
+        let message = `zUp: ${cameraRotator.zUp.toFixed(3)}`;
+
+        message += `\nHeading: ${cameraRotator.heading.toFixed(2)}`;
+        message += `\nBase Heading: ${cameraRotator.baseHeading.toFixed(2)}`;
+        message += `\nRelative Heading: ${cameraRotator.getRelativeHeading().toFixed(2)}`;
+
+        drawText(message, [0.5, 0.005], 4, [255, 255, 255, 185], 0.8, true, true);
+    }
+
+
+    private normilizeHeading(heading: number) {
         if (heading > 360) {
             heading = heading - 360;
         } else if (heading < 0) {
@@ -116,40 +176,4 @@ class CameraRotator {
 
 const cameraRotator = new CameraRotator();
 export default cameraRotator;
-
-alt.on('update', () => {
-    if (!cameraRotator.isActive || cameraRotator.isPause)
-        return;
-
-    const x = game.getDisabledControlNormal(2, 239);
-    const y = game.getDisabledControlNormal(2, 240);
-
-    if (cameraRotator.isPointEmpty()) {
-        cameraRotator.setPoint(x, y);
-    }
-
-    const currentPoint = cameraRotator.getPoint();
-    const dX = currentPoint.x - x;
-    const dY = currentPoint.y - y;
-
-    cameraRotator.setPoint(x, y);
-
-    drawDebugText();
-
-    // On left mouse hold
-    if (game.isDisabledControlPressed(2, 237)) {
-        cameraRotator.onMouseMove(dX, dY);
-    }
-});
-
-function drawDebugText() {
-    let message = `zUp: ${cameraRotator.zUp.toFixed(3)}`;
-
-    message += `\nHeading: ${cameraRotator.heading.toFixed(2)}`;
-    message += `\nBase Heading: ${cameraRotator.baseHeading.toFixed(2)}`;
-    message += `\nRelative Heading: ${cameraRotator.getRelativeHeading().toFixed(2)}`;
-
-    drawText(message, [0.5, 0.005], 4, [255, 255, 255, 185], 0.8, true, true);
-}
-
 

@@ -1,11 +1,8 @@
-/// <reference path="../../../natives.d.ts" />
-/// <reference path="../../../alt.d.ts" />
-
 import * as alt from 'alt';
 import * as game from 'natives';
-import Camera from 'src/Helpers/camera.js';
-import cameraRotator from 'src/Helpers/cameraRotator.js';
-import mainUi from 'src/Modules/Ui/mainUi.js';
+import Camera from 'source/src/Helpers/camera';
+import cameraRotator from 'source/src/Helpers/cameraRotator';
+import mainUi from 'source/src/Modules/Ui/mainUi.js';
 
 const VEHICLE_SHOP_DATA = [
     {

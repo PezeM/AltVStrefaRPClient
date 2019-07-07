@@ -1,11 +1,12 @@
 import * as alt from 'alt';
 import * as game from 'natives';
+import chat from 'chat';
 import { drawText } from 'source/src/Helpers/uiHelper';
 // import { AnimList } from 'src/Admin/animationBrowser.js';
-import chat from 'chat';
 import mainUi from 'source/src/Modules/Ui/mainUi.js';
+import { ControlsIds, AnimList } from 'source/typings/strefa';
 
-const controlsIds = {
+const controlsIds: ControlsIds = {
     F: 75,
     Space: 0x20,
     Left: 0x25,
@@ -17,7 +18,7 @@ const controlsIds = {
     Backspace: 0x08,
 };
 
-const AnimList = [
+const AnimList: Array<Array<string | string[]>> = [
     ["anim@heists@box_carry@", ["idle", "run", "walk"]],
     ["abigail_mcs_1_concat-0", ["exportcamera-0", "player_zero_dual-0", "csb_abigail_dual-0"]],
     ["abigail_mcs_1_concat-10", ["player_zero_dual-10", "csb_abigail_dual-10", "exportcamera-10"]],
@@ -399,10 +400,17 @@ const AnimList = [
     ["amb@code_human_wander_eating_donut@female@base", ["static", "base"]],
     ["amb@code_human_wander_eating_donut@female@idle_a", ["idle_b", "idle_a", "idle_c"]],
 ];
-
-let localPlayer = alt.getLocalPlayer();
+const localPlayer = alt.getLocalPlayer();
 
 class AnimPlayer {
+    allList: AnimList;
+    currentList: any[];
+    dist: number;
+    name: number;
+    launched: boolean;
+    flag: number;
+    request: string;
+    autoPlay: boolean;
     constructor() {
         this.allList = AnimList;
         this.currentList = [];
@@ -428,9 +436,9 @@ class AnimPlayer {
         this.dist = 0;
         this.name = 0;
         this.request = subString;
-        for (let idx in this.allList) {
-            let list = [];
-            if (this.allList[idx][0].indexOf(subString) != -1) {
+        for (const idx in this.allList) {
+            let list: Array<string | string[]> = [];
+            if (this.allList[idx][0].indexOf(subString) !== -1) {
                 list = this.allList[idx];
                 list[2] = idx;
                 this.currentList.push(list);
@@ -438,12 +446,12 @@ class AnimPlayer {
                 list[0] = this.allList[idx][0];
                 list[1] = [];
                 for (let i = 0; i < this.allList[idx][1].length; i++) {
-                    if (this.allList[idx][1][i].indexOf(subString) != -1) {
-                        list[1].push(this.allList[idx][1][i]);
+                    if (this.allList[idx][1][i].indexOf(subString) !== -1) {
+                        (list[1] as string[]).push(this.allList[idx][1][i]);
                         list[2] = idx;
                     }
                 }
-                if (list.length == 3 && list[1].length) this.currentList.push(list);
+                if (list.length === 3 && list[1].length) this.currentList.push(list);
             }
         }
         if (this.currentList.length) {
@@ -452,23 +460,23 @@ class AnimPlayer {
             chat.pushLine(`Nie znaleziono nic pod nazwa '${subString}'`);
         }
     }
-    setFlag(value) {
+    setFlag(value: string | number) {
         if (this.launched) {
-            if (Number.isInteger(value)) this.flag = value;
+            if (Number.isInteger(value as number)) this.flag = value as number;
             else if (value === 'up') this.flag += 1;
             else if (value === 'down' && (this.flag - 1) !== 0) this.flag -= 1;
             else chat.pushLine('Flaga nie jest prawidlowa!');
             if (this.autoPlay) this.play();
         } else chat.pushLine('Musisz miec otworzone menu animacji.');
     }
-    change(dist = false, name = false) {
+    change(dist: boolean | number = false, name: number = -1) {
         if (dist !== false && this.currentList.length > 1) {
-            if (dist > (this.currentList.length - 1)) this.dist = dist - this.currentList.length;
-            else if (dist < 0) this.dist = dist + this.currentList.length;
-            else this.dist = dist;
+            if (dist > (this.currentList.length - 1)) this.dist = (dist as number) - this.currentList.length;
+            else if (dist < 0) this.dist = (dist as number) + this.currentList.length;
+            else this.dist = (dist as number);
             this.name = 0;
         }
-        if (name !== false && this.currentList[this.dist][1].length > 1) {
+        if (name !== -1 && this.currentList[this.dist][1].length > 1) {
             if (name > (this.currentList[this.dist][1].length - 1)) this.name = name - this.currentList[this.dist][1].length;
             else if (name < 0) this.name = name + this.currentList[this.dist][1].length;
             else this.name = name;
@@ -480,49 +488,43 @@ class AnimPlayer {
         if (this.launched) {
             if (toggle) {
                 game.requestAnimDict(this.currentList[this.dist][0]);
-
-                // while (!game.hasAnimDictLoaded(this.currentList[this.dist][0])) { // alt.wait() seems to be not working
-                //     game.requestAnimDict(this.currentList[this.dist][0]);
-                //     alt.wait(0);
-                // }
-
-                alt.log(`Playing anim dict: ${this.currentList[this.dist][0]} name: ${this.currentList[this.dist][1][this.name]} flag: ${this.flag}`);
-                game.taskPlayAnim(localPlayer.scriptID, this.currentList[this.dist][0], this.currentList[this.dist][1][this.name],
+                alt.log(`Playing anim dict: ${this.currentList[this.dist][0]} name: ${this.currentList[this.dist][1][this.name as number]} flag: ${this.flag}`);
+                game.taskPlayAnim(localPlayer.scriptID, this.currentList[this.dist][0], this.currentList[this.dist][1][this.name as number],
                     8.0, 1, -1, this.flag, 0.0, false, false, false);
             }
             else {
-                alt.log(`Stopping anim dict: ${this.currentList[this.dist][0]} name: ${this.currentList[this.dist][1][this.name]}`);
-                game.stopAnimTask(localPlayer.scriptID, this.currentList[this.dist][0], this.currentList[this.dist][1][this.name], 0);
+                alt.log(`Stopping anim dict: ${this.currentList[this.dist][0]} name: ${this.currentList[this.dist][1][this.name as number]}`);
+                game.stopAnimTask(localPlayer.scriptID, this.currentList[this.dist][0], this.currentList[this.dist][1][this.name as number], 0);
             }
         }
     }
 }
 
-let animPlayer = null;
+let animPlayer: null | AnimPlayer = null;
 
 alt.on('update', () => {
     if (animPlayer != null && animPlayer.launched && animPlayer.currentList.length > 0) {
         const dist = animPlayer.currentList[animPlayer.dist][0];
         const nameList = animPlayer.currentList[animPlayer.dist][1];
-        const name = nameList[animPlayer.name];
+        const name = nameList[animPlayer.name as number];
         const id = animPlayer.currentList[animPlayer.dist][2];
         const flag = animPlayer.flag;
 
         const infoListDist = `(${animPlayer.dist + 1} / ${animPlayer.currentList.length})`;
-        const infoListName = `(${animPlayer.name + 1} / ${animPlayer.currentList[animPlayer.dist][1].length})`;
+        const infoListName = `(${animPlayer.name as number + 1} / ${animPlayer.currentList[animPlayer.dist][1].length})`;
         const infoRequest = (animPlayer.request.length) ? `~b~Request : '${animPlayer.request}'` : '~b~Wszystkie';
 
         drawText(`Anim: ${infoListDist} ${infoListName} | ${infoRequest}`, [0.5, 0.04], 4, [255, 255, 255, 200], 0.5, true);
 
-        //Draw prew name dist
+        //  Draw prew name dist
         const namePrev = (animPlayer.name - 1 >= 0) ? nameList[animPlayer.name - 1] : false;
         if (namePrev)
             drawText(`~y~${dist} ~w~| ~b~${namePrev}`, [0.5, 0.08], 4, [255, 255, 255, 100], 0.45, true);
 
-        //Draw current name dist
+        // Draw current name dist
         drawText(`~g~[${id}] ~y~${dist} ~w~| ~b~${name} ~r~(${flag})`, [0.5, 0.12], 4, [255, 255, 255, 200], 0.5, true);
 
-        //Draw next name dist
+        // Draw next name dist
         const nameNext = (animPlayer.name + 1 < nameList.length) ? nameList[animPlayer.name + 1] : false;
         if (nameNext)
             drawText(`~y~${dist} ~w~| ~b~${nameNext} `, [0.5, 0.16], 4, [255, 255, 255, 100], 0.45, true);
@@ -541,10 +543,10 @@ alt.on('update', () => {
     }
 });
 
-alt.on('keydown', (key) => {
+alt.on('keydown', (key: number) => {
     if (chat.isOpen() || mainUi.viewOpened) return;
 
-    if (key == 0x67) { // NUM PAD 7 KEY
+    if (key === 0x67) { // NUM PAD 7 KEY
         if (animPlayer == null) {
             animPlayer = new AnimPlayer();
             animPlayer.toggle();
@@ -556,35 +558,35 @@ alt.on('keydown', (key) => {
 
     if (animPlayer == null || !animPlayer.launched && animPlayer.currentList.length <= 0) return;
 
-    if (key == controlsIds.Right) {
-        var dist = animPlayer.dist;
-        if (game.isControlPressed(0, controlsIds.Shift) && animPlayer.currentList.length > 10) dist += 10;
-        else if (game.isControlPressed(0, controlsIds.Ctrl) && animPlayer.currentList.length > 100) dist += 100;
-        else dist += 1;
-        animPlayer.change(dist);
+    if (key === controlsIds.Right) {
+        let currentDist = animPlayer.dist;
+        if (game.isControlPressed(0, controlsIds.Shift) && animPlayer.currentList.length > 10) currentDist += 10;
+        else if (game.isControlPressed(0, controlsIds.Ctrl) && animPlayer.currentList.length > 100) currentDist += 100;
+        else currentDist += 1;
+        animPlayer.change(currentDist);
     }
-    else if (key == controlsIds.Left) {
-        var dist = animPlayer.dist;
-        if (game.isControlPressed(0, controlsIds.Shift) && animPlayer.currentList.length > 10) dist -= 10;
-        else if (game.isControlPressed(0, controlsIds.Ctrl) && animPlayer.currentList.length > 100) dist -= 100;
-        else dist -= 1;
-        animPlayer.change(dist);
+    else if (key === controlsIds.Left) {
+        let currentDist = animPlayer.dist;
+        if (game.isControlPressed(0, controlsIds.Shift) && animPlayer.currentList.length > 10) currentDist -= 10;
+        else if (game.isControlPressed(0, controlsIds.Ctrl) && animPlayer.currentList.length > 100) currentDist -= 100;
+        else currentDist -= 1;
+        animPlayer.change(currentDist);
     }
-    else if (key == controlsIds.Backspace) {
+    else if (key === controlsIds.Backspace) {
         if (animPlayer.request.length > 0) {
             animPlayer.createCurrentList();
         }
     }
-    else if (key == controlsIds.Space) {
+    else if (key === controlsIds.Space) {
         if (!animPlayer.autoPlay) {
             animPlayer.play(true);
         }
     }
-    else if (key == controlsIds.Up) {
+    else if (key === controlsIds.Up) {
         if (game.isControlPressed(0, controlsIds.Ctrl)) animPlayer.setFlag('up');
         else animPlayer.change(false, animPlayer.name - 1);
     }
-    else if (key == controlsIds.Down) {
+    else if (key === controlsIds.Down) {
         if (game.isControlPressed(0, controlsIds.Ctrl)) animPlayer.setFlag('down');
         else animPlayer.change(false, animPlayer.name + 1)
     }

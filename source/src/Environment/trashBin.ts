@@ -2,8 +2,9 @@ import * as alt from 'alt';
 import * as game from 'natives';
 import mainUi from 'src/Modules/Ui/mainUi.js';
 import { draw3DText } from 'source/src/Helpers/uiHelper';
+import { TrashBinArray } from 'source/typings/strefa';
 
-const BIN_OBJECTS = [
+const BIN_OBJECTS: TrashBinArray = [
     {
         model: 218085040, bigTrashbin: true,
     },
@@ -25,6 +26,11 @@ const BIN_OBJECTS = [
 ];
 
 class TrashBin {
+    searchedBins: number[];
+    searchingInBin: boolean;
+    currentBinId: number;
+    percentage: number;
+    tickInterval: number;
     constructor() {
         this.searchedBins = [];
         this.searchingInBin = false;
@@ -35,11 +41,11 @@ class TrashBin {
         alt.log(`Initialized TrashBin class`);
     }
 
-    includesBin(model) {
+    includesBin(model: number) {
         return BIN_OBJECTS.some(bin => bin.model === model);
     }
 
-    getBin(model) {
+    getBin(model: number) {
         for (const bin of BIN_OBJECTS) {
             if (bin.model === model) {
                 return bin;
@@ -47,7 +53,7 @@ class TrashBin {
         }
     }
 
-    searchBinMenuCallback(option, trashBinId) {
+    searchBinMenuCallback(option: string, trashBinId: number) {
         alt.log(`Inside searchBinMenuCallback`);
         switch (option) {
             case "searchBin":
@@ -61,13 +67,13 @@ class TrashBin {
 
     tick() {
         if (this.searchingInBin) {
-            let binCoords = game.getEntityCoords(this.currentBinId, true);
+            const binCoords = game.getEntityCoords(this.currentBinId, true);
             draw3DText(`Przeszukiwanie śmietnika ~g~ ${Math.floor((this.percentage / 10000) * 100)} ~r~%`,
                 [binCoords.x, binCoords.y, binCoords.z], 4, [255, 255, 255, 255], 0.65, true);
         }
     }
 
-    searchTrashbin(trashBinId) {
+    searchTrashbin(trashBinId: number) {
         alt.log(`Inside searchTrashbin`);
         if (!this.checkIfValid(trashBinId)) return;
         else if (this.searchedBins.includes(trashBinId)) {
@@ -75,25 +81,27 @@ class TrashBin {
             return;
         }
 
-        let localPlayer = alt.getLocalPlayer();
+        const localPlayerId = game.playerPedId();
         this.searchingInBin = true;
         this.currentBinId = trashBinId;
         this.searchedBins.push(trashBinId);
 
         alt.setTimeout(() => {
-            this.searchedBins.splice(searchedBins.indexOf(trashBinId), 1);
-            alt.log('Searched bins array: ' + JSON.stringify(searchedBins));
+            this.searchedBins.splice(this.searchedBins.indexOf(trashBinId), 1);
+            alt.log('Searched bins array: ' + JSON.stringify(this.searchedBins));
         }, 60000 * 15);
-        game.taskStartScenarioInPlace(localPlayer.scriptID, "PROP_HUMAN_BUM_BIN", 0, true);
+        game.taskStartScenarioInPlace(localPlayerId, "PROP_HUMAN_BUM_BIN", 0, true);
 
         this.percentage = 100;
-        let binInterval = alt.setInterval(() => {
+        const binInterval = alt.setInterval(() => {
             this.percentage += 100;
         }, 100);
 
         alt.setTimeout(() => {
-            game.clearPedTasks(localPlayer.scriptID);
-            alt.emitServer("SearchedInBin", this.getBin(game.getEntityModel(trashBinId)).bigTrashbin);
+            game.clearPedTasks(localPlayerId);
+            const trashBinModel = this.getBin(game.getEntityModel(trashBinId));
+            if (trashBinModel == null) return;
+            alt.emitServer("SearchedInBin", trashBinModel.bigTrashbin);
             this.searchingInBin = false;
             this.currentBinId = -1;
             this.percentage = 0;
@@ -101,11 +109,11 @@ class TrashBin {
         }, 11000);
     }
 
-    checkIfValid(trashBinId) {
+    checkIfValid(trashBinId: number) {
         if (!this.includesBin(game.getEntityModel(trashBinId)) || !game.doesEntityExist(trashBinId) || this.searchingInBin) return false;
         else return true;
     }
 }
 
-let trashBin = new TrashBin();
+const trashBin = new TrashBin();
 export default trashBin;

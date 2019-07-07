@@ -8,8 +8,6 @@ export interface ControlsIds {
     [key: string]: number
 }
 
-export type AnimList = Array<Array<string | string[]>>;
-
 export interface SittableArray {
     [key: string]: SittableObject
 }
@@ -20,3 +18,11 @@ export interface SittableObject {
     forwardOffset: number,
     leftOffset: number
 }
+
+export interface TrashBinType {
+    model: number,
+    bigTrashbin: boolean,
+}
+
+export type TrashBinArray = Array<TrashBinType>;
+export type AnimList = Array<Array<string | string[]>>;

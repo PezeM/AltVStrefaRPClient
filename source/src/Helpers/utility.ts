@@ -8,7 +8,7 @@ class Utils {
     })
   }
 
-  waitFor(check: Function, timeout: number = -1, delay: number = 100) {
+  waitFor(check: () => boolean, timeout: number = -1, delay: number = 100) {
     return new Promise((resolve, reject) => {
       const start = +new Date;
 
@@ -24,7 +24,7 @@ class Utils {
     });
   }
 
-  promisify(start: any, ended: any, check: Function = () => true, run: any = null, delay: number = 50) {
+  promisify(start: any, ended: any, check: () => boolean, run: any = null, delay: number = 50) {
     return function (...args: any[]) {
       return new Promise((resolve, reject) => {
         start.apply(this, args);
@@ -44,10 +44,10 @@ class Utils {
   }
 
 
-  promise(data: Function, delay: number = 50) {
-    return new Promise(function (resolve, reject) {
+  promise(data: () => boolean, delay: number = 50) {
+    return new Promise((resolve, reject) => {
       const interval = alt.setInterval(() => {
-        if (data() == true) {
+        if (data() === true) {
           resolve(true);
           alt.clearInterval(interval);
         }
@@ -58,7 +58,8 @@ class Utils {
   joaat(key: string) {
     const keyLowered = key.toLowerCase();
     const length = keyLowered.length;
-    let hash, i;
+    let hash;
+    let i;
 
     for (hash = i = 0; i < length; i++) {
       hash += keyLowered.charCodeAt(i);
@@ -101,10 +102,10 @@ class Utils {
     const randomchar = () => {
       const n = Math.floor(Math.random() * 62);
       if (n < 10)
-        return n; //1-10
+        return n; // 1-10
       if (n < 36)
-        return String.fromCharCode(n + 55); //A-Z
-      return String.fromCharCode(n + 61); //a-z
+        return String.fromCharCode(n + 55); // A-Z
+      return String.fromCharCode(n + 61); // a-z
     }
 
     while (s.length < length)
@@ -127,7 +128,7 @@ class Utils {
 
       game.requestModel(model);
 
-      let interval = alt.setInterval(() => {
+      const interval = alt.setInterval(() => {
         if (game.hasModelLoaded(model as number)) {
           alt.clearInterval(interval);
           return resolve(true);

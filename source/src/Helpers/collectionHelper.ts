@@ -44,7 +44,7 @@ export function getClosestVehicle(position: Vector3, radius = 15) {
     let closestVehicle = null;
     for (let i = 0; i < alt.Vehicle.all.length; i++) {
         if (alt.Vehicle.all[i].scriptID === 0) continue;
-        let distance = math.distance(position, alt.Vehicle.all[i].pos);
+        const distance = math.distance(position, alt.Vehicle.all[i].pos);
         if (distance < radius) {
             closestVehicle = alt.Vehicle.all[i];
             radius = distance;
@@ -58,7 +58,7 @@ export function getClosestPlayer(position: Vector3, radius = 10) {
     // position = position * position;
     for (let i = 0; i < alt.Player.all.length; i++) {
         if (alt.Player.all[i].scriptID === 0) continue;
-        let distance = math.distance(position, alt.Player.all[i].pos);
+        const distance = math.distance(position, alt.Player.all[i].pos);
         if (distance < radius) {
             closestPlayer = alt.Player.all[i];
             radius = distance;

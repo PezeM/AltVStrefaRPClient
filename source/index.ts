@@ -24,11 +24,14 @@ import vehicleEngineToggleComponent from 'source/src/Modules/Vehicle/Components/
 import SoundBrowser from 'source/src/Admin/soundBrowser.js';
 import 'source/src/Modules/Streaming/inventoryController.js';
 
-let localPlayer = alt.getLocalPlayer();
-let frame = 0, fps = 0, showFps = true, timeStart = Date.now();
+const localPlayer = alt.getLocalPlayer();
+let frame = 0;
+let fps = 0;
+const showFps = true;
+let timeStart = Date.now();
 let lastKeyPressedTime = new Date().getTime();
 let strefaView: alt.WebView | null = null;
-let soundBrowser = new SoundBrowser();
+const soundBrowser = new SoundBrowser();
 
 const controlsIds = {
     H: 0x48,

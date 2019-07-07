@@ -2,7 +2,7 @@ import * as alt from 'alt';
 import * as game from 'natives';
 import utils from 'source/src/Helpers/utility.js';
 
-let localPlayer = alt.getLocalPlayer();
+const localPlayer = alt.getLocalPlayer();
 
 export function showUi(toggle: boolean) {
     alt.toggleGameControls(toggle);
@@ -45,8 +45,9 @@ export function drawText(text: string, position: any, font: number, color: numbe
     game.endTextCommandDisplayText(position[0], position[1]);
 }
 
-export function draw3DText(text: string, position: number[], font: number, color: number[], scale: number, outline = true, drawBackground = true, backgroundColor = [0, 0, 0, 90]) {
-    let camCoord = game.getGameplayCamCoords();
+export function draw3DText(text: string, position: number[], font: number, color: number[], scale: number, outline = true,
+    drawBackground = true, backgroundColor = [0, 0, 0, 90]) {
+    const camCoord = game.getGameplayCamCoords();
     let distance = game.getDistanceBetweenCoords(position[0], position[1], position[2], camCoord.x, camCoord.y, camCoord.z, true);
 
     if (distance > 20) distance = 20;
@@ -82,26 +83,26 @@ export function drawRectangleBackground(text: string, scale: number, font: numbe
     game.setTextFont(font);
     game.setTextScale(scale, scale);
 
-    var height = game.getTextScaleHeight(1.2 * scale, font);
-    var width = game.endTextCommandGetWidth(true);
+    const height = game.getTextScaleHeight(1.2 * scale, font);
+    const width = game.endTextCommandGetWidth(true);
 
     game.drawRect(0, 0 + scale / 25, width, height, backgroundColor[0], backgroundColor[1], backgroundColor[2], backgroundColor[3]);
 }
 
 export function getMinimapAnchor() {
-    let sfX = 1.0 / 20.0;
-    let sfY = 1.0 / 20.0;
-    let safeZone = game.getSafeZoneSize();
-    let aspectRatio = game.getAspectRatio(false);
-    let resolution = game.getActiveScreenResolution(0, 0); // Returns [null,x,y]
-    let scaleX = 1.0 / resolution[1];
-    let scaleY = 1.0 / resolution[2];
+    const sfX = 1.0 / 20.0;
+    const sfY = 1.0 / 20.0;
+    const safeZone = game.getSafeZoneSize();
+    const aspectRatio = game.getAspectRatio(false);
+    const resolution = game.getActiveScreenResolution(0, 0); // Returns [null,x,y]
+    const scaleX = 1.0 / resolution[1];
+    const scaleY = 1.0 / resolution[2];
 
-    let minimap = {
+    const minimap = {
         width: scaleX * (resolution[1] / (4 * aspectRatio)),
         height: scaleY * (resolution[2] / 5.674),
-        scaleX: scaleX,
-        scaleY: scaleY,
+        scaleX,
+        scaleY,
         leftX: scaleX * (resolution[1] * (sfX * (Math.abs(safeZone - 1.0) * 10))),
         bottomY: 1.0 - scaleY * (resolution[2] * (sfY * (Math.abs(safeZone - 1.0) * 10))),
         rightX: 0,

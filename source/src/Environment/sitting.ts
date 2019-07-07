@@ -1,15 +1,13 @@
-/// <reference path="../../natives.d.ts" />
-/// <reference path="../../alt.d.ts" />
-
 import * as alt from 'alt';
 import * as game from 'natives';
+import { ControlsIds, SittableArray, SittableObject } from 'source/typings/strefa';
 
-const controlsIds = {
+const CONTROL_IDS: ControlsIds = {
     E: 38,
     Shift: 21
 };
 
-const SITTABLE = {
+const SITTABLE: SittableArray = {
     "prop_bench_01a": { scenario: 'PROP_HUMAN_SEAT_BENCH', verticalOffset: -0.5, forwardOffset: 0.0, leftOffset: 0.0 },
     "prop_bench_01b": { scenario: 'PROP_HUMAN_SEAT_BENCH', verticalOffset: -0.5, forwardOffset: 0.0, leftOffset: 0.0 },
     "prop_bench_01c": { scenario: 'PROP_HUMAN_SEAT_BENCH', verticalOffset: -0.5, forwardOffset: 0.0, leftOffset: 0.0 },
@@ -35,7 +33,6 @@ const SITTABLE = {
     "prop_chair_04b": { scenario: 'PROP_HUMAN_SEAT_BENCH', verticalOffset: -0.5, forwardOffset: 0.0, leftOffset: 0.0 },
     "prop_chair_05": { scenario: 'PROP_HUMAN_SEAT_BENCH', verticalOffset: -0.5, forwardOffset: 0.0, leftOffset: 0.0 },
     "prop_chair_06": { scenario: 'PROP_HUMAN_SEAT_BENCH', verticalOffset: -0.5, forwardOffset: 0.0, leftOffset: 0.0 },
-    "prop_chair_05": { scenario: 'PROP_HUMAN_SEAT_BENCH', verticalOffset: -0.5, forwardOffset: 0.0, leftOffset: 0.0 },
     "prop_chair_08": { scenario: 'PROP_HUMAN_SEAT_BENCH', verticalOffset: -0.5, forwardOffset: 0.0, leftOffset: 0.0 },
     "prop_chair_09": { scenario: 'PROP_HUMAN_SEAT_BENCH', verticalOffset: -0.5, forwardOffset: 0.0, leftOffset: 0.0 },
     "prop_chair_10": { scenario: 'PROP_HUMAN_SEAT_BENCH', verticalOffset: -0.5, forwardOffset: 0.0, leftOffset: 0.0 },
@@ -88,10 +85,6 @@ const SITTABLE = {
     "v_ilev_fh_dineeamesa": { scenario: 'PROP_HUMAN_SEAT_BENCH', verticalOffset: -0.5, forwardOffset: 0.0, leftOffset: 0.0 },
     "v_ilev_fh_kitchenstool": { scenario: 'PROP_HUMAN_SEAT_BENCH', verticalOffset: -0.5, forwardOffset: 0.0, leftOffset: 0.0 },
     "v_ilev_tort_stool": { scenario: 'PROP_HUMAN_SEAT_BENCH', verticalOffset: -0.5, forwardOffset: 0.0, leftOffset: 0.0 },
-    "v_ilev_fh_kitchenstool": { scenario: 'PROP_HUMAN_SEAT_BENCH', verticalOffset: -0.5, forwardOffset: 0.0, leftOffset: 0.0 },
-    "v_ilev_fh_kitchenstool": { scenario: 'PROP_HUMAN_SEAT_BENCH', verticalOffset: -0.5, forwardOffset: 0.0, leftOffset: 0.0 },
-    "v_ilev_fh_kitchenstool": { scenario: 'PROP_HUMAN_SEAT_BENCH', verticalOffset: -0.5, forwardOffset: 0.0, leftOffset: 0.0 },
-    "v_ilev_fh_kitchenstool": { scenario: 'PROP_HUMAN_SEAT_BENCH', verticalOffset: -0.5, forwardOffset: 0.0, leftOffset: 0.0 },
     "hei_prop_yah_seat_01": { scenario: 'PROP_HUMAN_SEAT_BENCH', verticalOffset: -0.5, forwardOffset: 0.0, leftOffset: 0.0 },
     "hei_prop_yah_seat_02": { scenario: 'PROP_HUMAN_SEAT_BENCH', verticalOffset: -0.5, forwardOffset: 0.0, leftOffset: 0.0 },
     "hei_prop_yah_seat_03": { scenario: 'PROP_HUMAN_SEAT_BENCH', verticalOffset: -0.5, forwardOffset: 0.0, leftOffset: 0.0 },
@@ -120,77 +113,91 @@ const SITTABLE = {
     "prop_roller_car_02": { scenario: 'PROP_HUMAN_SEAT_BENCH', verticalOffset: -0.5, forwardOffset: 0.0, leftOffset: 0.0 }
 };
 
-let localPlayer = alt.getLocalPlayer();
-let distance = 1.5;
-let sitting = false;
-let currentSittingObjectId = null;
-let currentSittingObject = null;
-let lastPosition = null;
-let benchCoords = null;
-let lastChecked = 0;
+const localPlayer = alt.getLocalPlayer();
+const DISTANCE = 1.5;
 
-alt.log('Sitting.js loaded');
+class Sitting {
+    tickInterval: number;
+    isSitting: boolean;
+    currentSittingObjectId: number;
+    currentSittingObject: SittableObject | null;
+    lastPosition: Vector3;
+    benchCoords: Vector3;
+    lastChecked: number;
+    constructor() {
+        this.isSitting = false;
+        this.currentSittingObjectId = 0;
+        this.currentSittingObject = null;
+        this.lastPosition = localPlayer.pos;
+        this.benchCoords = { x: 0, y: 0, z: 0 };
+        this.lastChecked = 0;
 
-alt.on('update', () => {
-    // Has to press SHIFT + E and not be in vehicle
-    if (game.isControlPressed(0, controlsIds.Shift) && game.isControlPressed(0, controlsIds.E) && (new Date().getTime() - lastChecked > 500)) {
-        lastChecked = new Date().getTime();
-        if (sitting && game.isPedUsingScenario(localPlayer.scriptID, currentSittingObject.scenario)) {
-            alt.log('Is sitting');
-            standUp();
-            return;
-        }
+        alt.log(`Loaded sitting module`);
 
-        var startTime = new Date().getTime();
-        for (const key in SITTABLE) {
-            if (!SITTABLE.hasOwnProperty(key)) continue;
-            var closestBench = game.getClosestObjectOfType(localPlayer.pos.x, localPlayer.pos.y, localPlayer.pos.z,
-                5, game.getHashKey(key), false, false, false)
-            if (closestBench === 0) continue;
+        this.tickInterval = alt.setInterval(this.tick.bind(this), 0);
+        alt.onServer('canSeat', this.takeSeat.bind(this));
+    }
 
-            var closestBenchCoords = game.getEntityCoords(closestBench, true);
-            if (game.getDistanceBetweenCoords(closestBenchCoords.x, closestBenchCoords.y, closestBenchCoords.z,
-                localPlayer.pos.x, localPlayer.pos.y, localPlayer.pos.z, false) > distance) continue;
-
-            alt.log('Closest bench model: ' + key);
-
-            if (!sitting) {
-                alt.log('Found bench with id: ' + closestBench + ' in ' + (new Date().getTime() - startTime) + ' ms.');
-                tryToSit(closestBench, SITTABLE[key], closestBenchCoords);
+    tick() {
+        // Has to press SHIFT + E and not be in vehicle
+        if (game.isControlPressed(0, CONTROL_IDS.Shift) && game.isControlPressed(0, CONTROL_IDS.E) && (new Date().getTime() - this.lastChecked > 500)
+            && localPlayer.vehicle == null) {
+            this.lastChecked = new Date().getTime();
+            if (this.isSitting && this.currentSittingObject && game.isPedUsingScenario(localPlayer.scriptID, this.currentSittingObject.scenario)) {
+                alt.log('Is sitting');
+                this.standUp();
                 return;
+            }
+
+            const startTime = new Date().getTime();
+            for (const key in SITTABLE) {
+                if (!SITTABLE.hasOwnProperty(key)) continue;
+                const closestBenchId = game.getClosestObjectOfType(localPlayer.pos.x, localPlayer.pos.y, localPlayer.pos.z,
+                    5, game.getHashKey(key), false, false, false)
+                if (closestBenchId === 0) continue;
+
+                const closestBenchCoords = game.getEntityCoords(closestBenchId, true);
+                if (game.getDistanceBetweenCoords(closestBenchCoords.x, closestBenchCoords.y, closestBenchCoords.z,
+                    localPlayer.pos.x, localPlayer.pos.y, localPlayer.pos.z, false) > DISTANCE) continue;
+
+                alt.log('Closest bench model: ' + key);
+
+                if (!this.isSitting) {
+                    alt.log('Found bench with id: ' + closestBenchId + ' in ' + (new Date().getTime() - startTime) + ' ms.');
+                    this.tryToSit(closestBenchId, SITTABLE[key], closestBenchCoords);
+                    return;
+                }
             }
         }
     }
-});
 
+    takeSeat() {
+        game.freezeEntityPosition(this.currentSittingObjectId, true);
+        if (this.currentSittingObject == null) return;
+        game.taskStartScenarioAtPosition(localPlayer.scriptID, this.currentSittingObject.scenario, this.benchCoords.x, this.benchCoords.y,
+            this.benchCoords.z - this.currentSittingObject.verticalOffset, game.getEntityHeading(this.currentSittingObjectId) + 180, 0, true, true);
+        this.isSitting = true;
+    }
 
-function tryToSit(objectId, objectData, coords) {
-    currentSittingObjectId = objectId;
-    currentSittingObject = objectData;
-    lastPosition = game.getEntityCoords(localPlayer.scriptID, true);
-    benchCoords = coords;
-    alt.emitServer("takeSeat", currentSittingObjectId);
+    tryToSit(objectId: number, objectData: SittableObject, coords: Vector3) {
+        this.currentSittingObjectId = objectId;
+        this.currentSittingObject = objectData;
+        this.lastPosition = game.getEntityCoords(localPlayer.scriptID, true);
+        this.benchCoords = coords;
+        alt.emitServer("takeSeat", this.currentSittingObjectId);
+    }
+
+    standUp() {
+        game.clearPedTasks(localPlayer.scriptID);
+        game.setEntityCoords(localPlayer.scriptID, this.lastPosition.x, this.lastPosition.y, this.lastPosition.z, true, false, false, true);
+        this.isSitting = false;
+        game.freezeEntityPosition(this.currentSittingObjectId, false);
+        alt.emitServer("leaveSeat", this.currentSittingObjectId);
+        this.currentSittingObjectId = -1;
+        this.lastPosition = localPlayer.pos;
+        this.currentSittingObject = null;
+    }
 }
 
-function standUp() {
-    game.clearPedTasks(localPlayer.scriptID);
-    game.setEntityCoords(localPlayer.scriptID, lastPosition.x, lastPosition.y, lastPosition.z, 1, 0, 0, 1);
-    sitting = false;
-    game.freezeEntityPosition(currentSittingObjectId, false);
-    alt.emitServer("leaveSeat", currentSittingObjectId);
-    currentSittingObjectId = null;
-    lastPosition = null;
-    currentSittingObject = null;
-}
-
-alt.onServer('canSeat', () => {
-    takeSeat();
-});
-
-function takeSeat() {
-    // game.freezeEntityPosition(playerId, true);
-    game.freezeEntityPosition(currentSittingObjectId, true);
-    game.taskStartScenarioAtPosition(localPlayer.scriptID, currentSittingObject.scenario, benchCoords.x, benchCoords.y,
-        benchCoords.z - currentSittingObject.verticalOffset, game.getEntityHeading(currentSittingObjectId) + 180, 0, true, true);
-    sitting = true;
-}
+const sittingModule = new Sitting();
+export default sittingModule;

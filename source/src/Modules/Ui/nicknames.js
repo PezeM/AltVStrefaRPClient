@@ -146,7 +146,7 @@ class NicknameController {
 }
 
 alt.on('gameStateChanged', state => {
-    if (state === 'playing') {
+    if (state === 1) {
         alt.log('Initializing nicknames controller');
         const nicknameController = new NicknameController();
     } else { }

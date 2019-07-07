@@ -2,7 +2,7 @@ import * as alt from 'alt';
 import * as game from 'natives';
 import chat from 'chat';
 import mainUi from 'source/src/Modules/Ui/mainUi';
-import keycodes from 'source/src/keycodes.js';
+import keycodes from 'source/src/Constans/keycodes';
 import * as gameState from 'source/src/gameState.js';
 import 'source/src/ui.js';
 import 'source/src/menus.js';
@@ -50,7 +50,7 @@ alt.on('update', () => {
     if (typeof showFps !== 'undefined' && showFps) {
         frame++;
 
-        let timeNow = Date.now() - timeStart;
+        const timeNow = Date.now() - timeStart;
 
         fps = Math.round(frame / (timeNow / 1000.0));
         drawText(fps.toString(), [0.01, 0.01], 4, [255, 255, 255, 128], 0.4, false, false);
@@ -62,7 +62,7 @@ alt.on('update', () => {
     }
 
     if (cinemaView != null) {
-        var coords = game.getEntityCoords(localPlayer.scriptID, true);
+        const coords = game.getEntityCoords(localPlayer.scriptID, true);
         if (game.getDistanceBetweenCoords(coords.x, coords.y, coords.z, cinemaPosition.x, cinemaPosition.y, cinemaPosition.z, false) > 100) {
             // Destroy the view
             alt.log('Deleting cinema object');
@@ -77,7 +77,7 @@ alt.on('update', () => {
 });
 
 alt.on('keydown', (key: number) => {
-    if (chat.isOpen() || mainUi.viewOpened || gameState.getGameState() == 'loading') return;
+    if (chat.isOpen() || mainUi.viewOpened || gameState.getGameState() === 0) return;
 
     switch (key) {
         case controlsIds.E:
@@ -117,21 +117,21 @@ alt.on('connectionComplete', (mapChanged: boolean) => {
 });
 
 alt.on('consoleCommand', (command: string, ...args: string[]) => {
-    if (command == 'reloadMap') {
+    if (command === 'reloadMap') {
         alt.log('Reloading map store');
         game.loadSpDlcMaps();
         alt.log('Map store reloaded');
-    } else if (command == 'youtube') {
+    } else if (command === 'youtube') {
         test3DView();
-    } else if (command == 'strefa') {
+    } else if (command === 'strefa') {
         testStrefa();
-    } else if (command == 'testNumber') {
+    } else if (command === 'testNumber') {
         alt.emitServer('testNumber', 3253274834);
-    } else if (command == 'bigNumber') {
+    } else if (command === 'bigNumber') {
         if (args[0] != null) {
-            let number = Number(args[0]);
-            if (number > 0) {
-                alt.emitServer('bigNumber', number);
+            const bigNumber = Number(args[0]);
+            if (bigNumber > 0) {
+                alt.emitServer('bigNumber', bigNumber);
             }
         }
     }
@@ -139,7 +139,7 @@ alt.on('consoleCommand', (command: string, ...args: string[]) => {
 
 let cinemaObject: number | any = null;
 let cinemaView: alt.WebView | null = null;
-let cinemaPosition = {
+const cinemaPosition: Vector3 = {
     x: -1426.553,
     y: -259.5351,
     z: 20.40091
@@ -164,7 +164,7 @@ function test3DView() {
     }
 
     alt.log('Inside test3DView');
-    var modelHash = game.getHashKey("v_ilev_cin_screen");
+    let modelHash = game.getHashKey("v_ilev_cin_screen");
 
     // alt.log('Loading model async');
     // await loadModelAsync(function () {

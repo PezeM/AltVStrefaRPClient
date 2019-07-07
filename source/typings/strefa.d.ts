@@ -24,5 +24,10 @@ export interface TrashBinType {
     bigTrashbin: boolean,
 }
 
+export enum GameState {
+    Loading,
+    Playing
+}
+
 export type TrashBinArray = Array<TrashBinType>;
 export type AnimList = Array<Array<string | string[]>>;

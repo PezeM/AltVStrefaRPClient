@@ -1,7 +1,8 @@
 import * as alt from 'alt';
 import * as game from 'natives';
 import mainUi from 'source/src/Modules/Ui/mainUi.js';
-import { changeGameState } from 'source/src/gameState.js';
+import { changeGameState } from 'source/src/gameState';
+import { GameState } from 'source/typings/strefa';
 
 let localPlayer = alt.getLocalPlayer();
 
@@ -83,6 +84,6 @@ function showLoginWindow() {
 }
 
 function hideLoginView() {
-    changeGameState('playing');
+    changeGameState(GameState.Playing);
     mainUi.closeMenu();
 }

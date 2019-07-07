@@ -33,7 +33,7 @@ alt.on('keydown', (key) => {
         alt.showCursor(cursorShown);
         return;
     }
-    if (chat.isOpen() || mainUi.viewOpened || getGameState() !== 'playing') return;
+    if (chat.isOpen() || mainUi.viewOpened || getGameState() !== 1) return;
 
     switch (key) {
         case controlsIds.Alt:
@@ -81,7 +81,7 @@ alt.on('update', () => {
         game.hideHudComponentThisFrame(hudElement);
     });
 
-    if (getGameState() === 'playing') {
+    if (getGameState() === 1) {
         alt.Player.all.forEach((player) => {
             if (game.getDistanceBetweenCoords(localPlayer.pos.x, localPlayer.pos.y, localPlayer.pos.z, player.pos.x, player.pos.y, player.pos.z, true) > 35) return;
             if (typeof player.isTalking === 'undefined') player.isTalking = false;

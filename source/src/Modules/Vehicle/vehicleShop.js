@@ -181,7 +181,7 @@ class VehicleShop {
 
 let vehicleShop = null;
 alt.on('gameStateChanged', state => {
-    if (state === 'playing') {
+    if (state === 1) {
         alt.log('Initializing vehicle shops');
         vehicleShop = new VehicleShop();
     }

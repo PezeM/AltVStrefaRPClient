@@ -1,8 +1,8 @@
 import * as alt from 'alt';
 import * as game from 'natives';
+import chat from 'chat';
 import { drawText, showNotification } from 'source/src/Helpers/uiHelper';
 import Maths from 'source/src/Helpers/maths';
-import chat from 'chat';
 import mainUi from 'source/src/Modules/Ui/mainUi.js';
 
 const controlsIds = {
@@ -15,36 +15,41 @@ const controlsIds = {
     Shift: 21
 };
 
-let lastChecked = 0;
-let fly = {
+const fly = {
     flying: false,
     f: 2.0,
     w: 2.0,
     h: 1.0,
+    l: 1.0,
     currentSpeedIndex: 2,
     speeds: [0.01, 0.1, 0.25, 0.5, 1, 5]
 };
 
-let direction = null;
-let localPlayer = alt.getLocalPlayer();
+let direction: null | Vector3 = {
+    x: 0,
+    y: 0,
+    z: 0
+};
+let lastChecked = 0;
+const localPlayer = alt.getLocalPlayer();
 
-function toggleFlying() {
+async function toggleFlying() {
     fly.flying = !fly.flying;
 
     game.freezeEntityPosition(localPlayer.scriptID, fly.flying);
     game.setPlayerInvisibleLocally(localPlayer.scriptID, fly.flying);
-    game.setEntityVisible(localPlayer.scriptID, !fly.flying, 0);
+    game.setEntityVisible(localPlayer.scriptID, !fly.flying, false);
 
     if (!fly.flying) {
         landSafeOnTheGround();
     }
 
-    showNotification('Noclip', fly.flying ? "~g~ Został włączony" : "~r~Został wyłączony", "");
+    await showNotification('Noclip', fly.flying ? "~g~ Został włączony" : "~r~Został wyłączony", "");
 }
 
 function landSafeOnTheGround() {
     const position = game.getEntityCoords(localPlayer.scriptID, true);
-    var [isGroundFound, positionZ] = game.getGroundZFor3dCoord(position.x, position.y, position.z, 0.0, false);
+    const [isGroundFound, positionZ] = game.getGroundZFor3dCoord(position.x, position.y, position.z, 0.0, false);
     if (isGroundFound) {
         game.setEntityCoordsNoOffset(localPlayer.scriptID, position.x, position.y, positionZ, false, false, false);
     }
@@ -53,6 +58,7 @@ function landSafeOnTheGround() {
 alt.on('update', () => {
     if (fly.flying) {
         direction = Maths.rotToDirection(game.getGameplayCamRot(2));
+        if (direction == null) return;
         let positionUpdated = false;
         const currentSpeed = fly.speeds[fly.currentSpeedIndex];
         const position = game.getEntityCoords(localPlayer.scriptID, true);
@@ -64,10 +70,12 @@ alt.on('update', () => {
 
         if (game.isControlJustReleased(0, controlsIds.Shift) && (new Date().getTime() - lastChecked > 100)) {
             if (fly.currentSpeedIndex + 1 < fly.speeds.length) {
+                // tslint:disable-next-line: no-unused-expression
                 fly.speeds[++fly.currentSpeedIndex];
             }
             else {
                 fly.currentSpeedIndex = 0;
+                // tslint:disable-next-line: no-unused-expression
                 fly.speeds[fly.currentSpeedIndex];
             }
             lastChecked = new Date().getTime();
@@ -122,10 +130,10 @@ alt.on('update', () => {
     }
 });
 
-alt.on('keydown', (key) => {
+alt.on('keydown', (key: number) => {
     if (chat.isOpen() || mainUi.viewOpened) return;
 
-    if (key == 0x69) { // NUM PAD 9 KEY
+    if (key === 0x69) { // NUM PAD 9 KEY
         toggleFlying();
     }
 });

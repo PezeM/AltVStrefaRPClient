@@ -1,12 +1,7 @@
 import * as alt from 'alt';
 import * as game from 'natives';
 import { drawText } from 'source/src/Helpers/uiHelper';
-
-interface SoundTypes {
-    id: number,
-    soundName: string,
-    soundSetName: string
-}
+import { SoundTypes } from 'source/src/Admin/interfaces';
 
 const SOUNDS: SoundTypes[] = [
     { id: 0, soundName: "10s", soundSetName: "MP_MISSION_COUNTDOWN_SOUNDSET" },

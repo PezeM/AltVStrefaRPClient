@@ -1,10 +1,7 @@
-/// <reference path="../../../natives.d.ts" />
-/// <reference path="../../../alt.d.ts" />
-
 import * as alt from 'alt';
 import * as game from "natives";
-import utils from 'src/Helpers/utility.js';
-import uiHelpers from 'src/Helpers/uiHelpers.js';
+import utils from 'source/src/Helpers/utility.js';
+import { draw3DText } from 'source/src/Helpers/uiHelper';
 
 class ItemStreamer {
     constructor() {
@@ -16,7 +13,7 @@ class ItemStreamer {
 
     render() {
         for (let item of this.items.values()) {
-            uiHelpers.drawText3D(`~y~(${item.item.count}) \n ~w~${item.item.name}`, [item.position.x, item.position.y, item.position.z + 0.5], 4, [255, 255, 255, 255], 0.5);
+            draw3DText(`~y~(${item.item.count}) \n ~w~${item.item.name}`, [item.position.x, item.position.y, item.position.z + 0.5], 4, [255, 255, 255, 255], 0.5);
         }
     }
 

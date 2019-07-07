@@ -1,6 +1,6 @@
 import * as alt from 'alt';
 import * as game from 'natives';
-import { drawText, draw3DText } from 'source/src/Helpers/uiHelper.js';
+import { draw3DText } from 'source/src/Helpers/uiHelper';
 import { getClosestVehicle } from 'source/src/Helpers/collectionHelper.js';
 import math from 'source/src/Helpers/maths.js';
 

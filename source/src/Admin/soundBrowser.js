@@ -1,9 +1,6 @@
-/// <reference path="../../natives.d.ts" />
-/// <reference path="../../alt.d.ts" />
-
 import * as alt from 'alt';
 import * as game from 'natives';
-import { drawText } from 'src/Helpers/uiHelper.js';
+import { drawText } from 'source/src/Helpers/uiHelper';
 
 const SOUNDS = [
     { id: 0, soundName: "10s", soundSetName: "MP_MISSION_COUNTDOWN_SOUNDSET" },

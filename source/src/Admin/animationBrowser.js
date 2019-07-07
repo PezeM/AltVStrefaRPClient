@@ -1,12 +1,9 @@
-/// <reference path="../../natives.d.ts" />
-/// <reference path="../../alt.d.ts" />
-
 import * as alt from 'alt';
 import * as game from 'natives';
-import { drawText } from 'src/Helpers/uiHelper.js';
+import { drawText } from 'source/src/Helpers/uiHelper';
 // import { AnimList } from 'src/Admin/animationBrowser.js';
 import chat from 'chat';
-import mainUi from 'src/Modules/Ui/mainUi.js';
+import mainUi from 'source/src/Modules/Ui/mainUi.js';
 
 const controlsIds = {
     F: 75,
@@ -539,7 +536,7 @@ alt.on('update', () => {
             drawText(`~b~CTRL + GORA / DOL ~w~zmiana flagi anim~n~`, [0.5, 0.87], 4, [255, 255, 255, 200], 0.5, true);
             return;
         } else {
-            drawText(`~w~Naciśnij F aby wyświetlić pomoc~n~`, [0.5, 0.93], 4, [255, 255, 255, 100], 0.45, true);
+            drawText(`~w~Naciśnij F aby wyświetlić pomoc~n~`, [0.5, 0.93], 4, [255, 255, 255, 100], 0.45, true, true);
         }
     }
 });

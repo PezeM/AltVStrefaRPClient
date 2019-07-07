@@ -1,13 +1,11 @@
-/// <reference path="../../../../natives.d.ts" />
-/// <reference path="../../../../alt.d.ts" />
 
 import * as alt from 'alt';
 import * as game from 'natives';
-import math from 'src/Helpers/maths.js';
-import VehicleComponent from 'src/Modules/Vehicle/Components/vehicleComponent.js';
-import { getClosestVehicle } from 'src/Helpers/collectionHelper.js';
-import { draw3DText } from 'src/Helpers/uiHelper.js';
-import vehicleDoors from 'src/Constans/vehicleDoors.js';
+import math from 'source/src/Helpers/maths.js';
+import VehicleComponent from 'source/src/Modules/Vehicle/Components/vehicleComponent.js';
+import { getClosestVehicle } from 'source/src/Helpers/collectionHelper.js';
+import { draw3DText } from 'source/src/Helpers/uiHelper';
+import vehicleDoors from 'source/src/Constans/vehicleDoors.js';
 
 const OPEN_DOOR_DISTANCE = 4;
 const OPEN_DOOR_DISTANCE_SQRT = OPEN_DOOR_DISTANCE * OPEN_DOOR_DISTANCE;

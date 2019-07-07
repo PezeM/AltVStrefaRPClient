@@ -1,6 +1,6 @@
 import * as game from 'natives';
 import * as alt from 'alt';
-import { getMinimapAnchor } from 'src/Helpers/uiHelper.js';
+import { getMinimapAnchor } from 'source/src/Helpers/uiHelper';
 
 export default class ZoneNames {
     constructor() {

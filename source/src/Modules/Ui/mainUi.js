@@ -2,7 +2,7 @@ import * as alt from 'alt';
 import * as game from 'natives';
 import Animations from 'source/src/Modules/animations.js';
 let animations = new Animations();
-import { showUiAndFreezePlayer, showUi } from 'source/src/Helpers/uiHelper.js';
+import { showUiAndFreezePlayer, showUi } from 'source/src/Helpers/uiHelper';
 
 class MainUi {
     constructor() {

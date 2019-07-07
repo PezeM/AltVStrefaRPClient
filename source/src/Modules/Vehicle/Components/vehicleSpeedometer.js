@@ -1,11 +1,7 @@
-/// <reference path="../../../../natives.d.ts" />
-/// <reference path="../../../../alt.d.ts" />
-
-import * as alt from 'alt';
 import * as game from 'natives';
-import { drawText } from 'src/Helpers/uiHelper.js';
-import { isDriver } from 'src/Helpers/playerHelpers.js';
-import VehicleComponent from 'src/Modules/Vehicle/Components/vehicleComponent.js';
+import { drawText } from 'source/src/Helpers/uiHelper';
+import { isDriver } from 'source/src/Helpers/playerHelpers.js';
+import VehicleComponent from 'source/src/Modules/Vehicle/Components/vehicleComponent.js';
 
 const MULTIPLY_SPEED_BY = 3.6;
 class VehicleSpeedometer extends VehicleComponent {

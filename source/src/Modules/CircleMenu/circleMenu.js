@@ -1,14 +1,11 @@
-/// <reference path="../../../natives.d.ts" />
-/// <reference path="../../../alt.d.ts" />
-
 import * as alt from 'alt';
 import * as game from 'natives';
-import uiHelper from 'src/Helpers/uiHelpers.js';
-import mainUi from 'src/Modules/Ui/mainUi.js';
-import Animations from 'src/Modules/animations.js';
-import trashBin from 'src/Environment/trashBin.js';
-import { vehicleShop } from 'src/Modules/Vehicle/vehicleShop.js';
-import banking from 'src/Modules/banking.js';
+import { showUiAndFreezePlayer } from 'source/src/Helpers/uiHelper';
+import mainUi from 'source/src/Modules/Ui/mainUi.js';
+import Animations from 'source/src/Modules/animations.js';
+import trashBin from 'source/src/Environment/trashBin.js';
+import { vehicleShop } from 'source/src/Modules/Vehicle/vehicleShop.js';
+import banking from 'source/src/Modules/banking.js';
 
 class CircleMenuController {
     constructor() {
@@ -43,7 +40,7 @@ class CircleMenuController {
         this.menuOpened = false;
         mainUi.viewOpened = false;
         mainUi.unfocusView();
-        uiHelper.showUiAndFreezePlayer(true);
+        showUiAndFreezePlayer(true);
         alt.showCursor(false);
     }
 

@@ -1,10 +1,7 @@
-/// <reference path="../../natives.d.ts" />
-/// <reference path="../../alt.d.ts" />
-
 import * as alt from 'alt';
 import * as game from 'natives';
 import mainUi from 'src/Modules/Ui/mainUi.js';
-import { draw3DText } from 'src/Helpers/uiHelper.js';
+import { draw3DText } from 'source/src/Helpers/uiHelper';
 
 const BIN_OBJECTS = [
     {

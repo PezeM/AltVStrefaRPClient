@@ -1,8 +1,8 @@
 import alt from 'alt';
 import game from 'natives';
-import math from 'src/Helpers/maths.js';
-import uiHelpers from 'src/Helpers/uiHelpers.js';
-import utils from 'src/Helpers/utility.js';
+import math from 'source/src/Helpers/maths.js';
+import { draw3DText } from 'source/src/Helpers/uiHelper';
+import utils from 'source/src/Helpers/utility.js';
 const player = alt.getLocalPlayer();
 const STREAM_DISTANCE = 40;
 const STREAM_DISTANCE_SQRT = STREAM_DISTANCE * STREAM_DISTANCE;
@@ -34,7 +34,7 @@ class DroppedItemsController {
     render() {
         for (let item of this.streamedItems.values()) {
             // Draw text for each streamed items with name/quantity
-            uiHelpers.drawText3D(`~y~(${item.count}) \n ~w~${item.name}`, [item.x, item.y, item.z + 0.5], 4, [255, 255, 255, 255], 0.5);
+            draw3DText(`~y~(${item.count}) \n ~w~${item.name}`, [item.x, item.y, item.z + 0.5], 4, [255, 255, 255, 255], 0.5);
         }
     }
 

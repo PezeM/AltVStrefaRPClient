@@ -1,12 +1,9 @@
-/// <reference path="../../natives.d.ts" />
-/// <reference path="../../alt.d.ts" />
-
 import * as alt from 'alt';
 import * as game from 'natives';
-import { drawText, showNotification } from 'src/Helpers/uiHelper.js';
-import Maths from 'src/Helpers/maths.js';
+import { drawText, showNotification } from 'source/src/Helpers/uiHelper';
+import Maths from 'source/src/Helpers/maths.js';
 import chat from 'chat';
-import mainUi from 'src/Modules/Ui/mainUi.js';
+import mainUi from 'source/src/Modules/Ui/mainUi.js';
 
 const controlsIds = {
     W: 32,

@@ -1,6 +1,6 @@
 import * as alt from 'alt';
 import * as game from 'natives';
-import { drawText } from 'src/Helpers/uiHelper.js';
+import { drawText } from 'source/src/Helpers/uiHelper';
 
 class CameraRotator {
     start(camera, basePosition, lookAtPosition, offsetVector, heading, fov = undefined) {

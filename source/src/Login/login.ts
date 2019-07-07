@@ -4,11 +4,11 @@ import mainUi from 'source/src/Modules/Ui/mainUi.js';
 import { changeGameState } from 'source/src/gameState';
 import { GameState } from 'source/typings/strefa';
 
-let localPlayer = alt.getLocalPlayer();
+const localPlayer = alt.getLocalPlayer();
 
 alt.log(`Login.js initialized`);
 
-mainUi.onUiEvent('tryToLogin', (username, password) => {
+mainUi.onUiEvent('tryToLogin', (username: string, password: string) => {
     if (!username || !password) {
         return mainUi.emitUiEvent('showError', 'Wysłano puste dane');
     }
@@ -16,7 +16,7 @@ mainUi.onUiEvent('tryToLogin', (username, password) => {
     alt.emitServer('loginAccount', username, password);
 });
 
-mainUi.onUiEvent('tryToRegister', (username, password) => {
+mainUi.onUiEvent('tryToRegister', (username: string, password: string) => {
     if (!username || !password) {
         return mainUi.emitUiEvent('showError', 'Wysłano puste dane');
     }
@@ -24,7 +24,7 @@ mainUi.onUiEvent('tryToRegister', (username, password) => {
     alt.emitServer('registerAccount', username, password);
 });
 
-mainUi.onUiEvent('loadCharacter', (characterId) => {
+mainUi.onUiEvent('loadCharacter', (characterId: number) => {
     characterId = Number(characterId);
     alt.log('Loading character with id: ' + characterId);
     alt.emitServer('tryToLoadCharacter', characterId);
@@ -39,7 +39,7 @@ alt.onServer('showAuthenticateWindow', () => {
     showLoginWindow();
 });
 
-alt.onServer('showLoginError', (message) => {
+alt.onServer('showLoginError', (message: string) => {
     mainUi.emitUiEvent('showError', message);
 });
 
@@ -47,7 +47,7 @@ alt.onServer('successfullyRegistered', () => {
     mainUi.emitUiEvent('registeredSuccessfully');
 });
 
-alt.onServer('loginSuccesfully', (characterList) => {
+alt.onServer('loginSuccesfully', (characterList: string) => {
     if (characterList) {
         alt.log('Character list: ' + characterList);
         mainUi.emitUiEvent('succesfullyLoggedIn', characterList);
@@ -74,7 +74,7 @@ function showLoginWindow() {
     if (mainUi.viewLoaded) {
         mainUi.openMenu('openLoginView', true, true);
     } else {
-        let interval = alt.setInterval(() => {
+        const interval = alt.setInterval(() => {
             if (mainUi.viewLoaded) {
                 mainUi.openMenu('openLoginView', true, true);
                 alt.clearInterval(interval);

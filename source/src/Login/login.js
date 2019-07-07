@@ -1,9 +1,11 @@
 import * as alt from 'alt';
 import * as game from 'natives';
-import mainUi from 'src/Modules/Ui/mainUi.js';
-import { changeGameState } from 'src/gameState.js';
+import mainUi from 'source/src/Modules/Ui/mainUi.js';
+import { changeGameState } from 'source/src/gameState.js';
 
 let localPlayer = alt.getLocalPlayer();
+
+alt.log(`Login.js initialized`);
 
 mainUi.onUiEvent('tryToLogin', (username, password) => {
     if (!username || !password) {

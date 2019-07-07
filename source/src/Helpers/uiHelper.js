@@ -1,6 +1,3 @@
-/// <reference path="../../natives.d.ts" />
-/// <reference path="../../alt.d.ts" />
-
 import * as alt from 'alt';
 import * as game from 'natives';
 let localPlayer = alt.getLocalPlayer();
@@ -40,7 +37,6 @@ function streamTextureDict(dict) {
         while (game.hasStreamedTextureDictLoaded(dict) && tries < 50) {
             alt.log('UiHelper streamTextureDict trying to load dict for ' + tries + ' time.');
             tries++;
-            alt.wait(1);
         }
 
         if (tries >= 50) return false;

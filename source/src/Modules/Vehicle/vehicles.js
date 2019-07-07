@@ -1,11 +1,8 @@
-/// <reference path="../../../natives.d.ts" />
-/// <reference path="../../../alt.d.ts" />
-
 import * as alt from 'alt';
 import * as game from 'natives';
-import { drawText, draw3DText } from 'src/Helpers/uiHelper.js';
-import { getClosestVehicle } from 'src/Helpers/collectionHelper.js';
-import math from 'src/Helpers/maths.js';
+import { drawText, draw3DText } from 'source/src/Helpers/uiHelper.js';
+import { getClosestVehicle } from 'source/src/Helpers/collectionHelper.js';
+import math from 'source/src/Helpers/maths.js';
 
 let localPlayer = alt.getLocalPlayer();
 

@@ -1,11 +1,8 @@
-/// <reference path="../../../natives.d.ts" />
-/// <reference path="../../../alt.d.ts" />
-
 import * as alt from 'alt';
 import * as game from 'natives';
-import Animations from 'src/Modules/animations.js';
+import Animations from 'source/src/Modules/animations.js';
 let animations = new Animations();
-import { showUiAndFreezePlayer, showUi } from 'src/Helpers/uiHelper.js';
+import { showUiAndFreezePlayer, showUi } from 'source/src/Helpers/uiHelper.js';
 
 class MainUi {
     constructor() {

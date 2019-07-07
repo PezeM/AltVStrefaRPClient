@@ -41,7 +41,7 @@ export default class Camera {
     }
 
     getFarDof() {
-        return game.getFarDof(this.camera);
+        return game.getCamFarDof(this.camera);
     }
 
     getFov() {

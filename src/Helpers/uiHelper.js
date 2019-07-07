@@ -40,7 +40,6 @@ function streamTextureDict(dict) {
         while (game.hasStreamedTextureDictLoaded(dict) && tries < 50) {
             alt.log('UiHelper streamTextureDict trying to load dict for ' + tries + ' time.');
             tries++;
-            alt.wait(1);
         }
 
         if (tries >= 50) return false;

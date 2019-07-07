@@ -1,28 +1,28 @@
 import * as alt from 'alt';
 import * as game from 'natives';
 import chat from 'chat';
-import mainUi from 'src/Modules/Ui/mainUi.js';
-import keycodes from 'src/keycodes.js';
-import * as gameState from 'src/gameState.js';
-import * as ui from 'src/ui.js';
-import * as menus from 'src/menus.js';
-import * as loginModule from 'src/Login/login.js';
-import * as noclipModule from 'src/Admin/noclip.js';
-import * as adminTeleports from 'src/Admin/adminTeleports.js';
-import * as animationBrowser from 'src/Admin/animationBrowser.js';
-import * as sitting from 'src/Environment/sitting.js';
-import * as vehicles from 'src/Modules/Vehicle/vehicles.js';
-import * as objectSync from 'src/Modules/objectSync.js';
-import * as nicknames from 'src/Modules/Ui/nicknames.js';
-import * as networkStreamer from 'src/Modules/Streaming/networkStreamer.js';
-import { drawText, draw3DText } from 'src/Helpers/uiHelper.js';
-import equipmentSlots from 'src/Constans/equipmentSlots.js';
-import * as vehicleComponentController from 'src/Modules/Vehicle/vehicleComponentsController.js';
-import vehicleDoors from 'src/Modules/Vehicle/Components/vehicleDoorsComponent.js';
-import vehicleSeatbeltComponent from 'src/Modules/Vehicle/Components/vehicleSeatbeltComponent.js';
-import vehicleEngineToggleComponent from 'src/Modules/Vehicle/Components/vehicleEngineToggleComponent.js';
-import SoundBrowser from 'src/Admin/soundBrowser.js';
-import * as inventoryController from 'src/Modules/Streaming/inventoryController.js';
+import mainUi from 'source/src/Modules/Ui/mainUi';
+import keycodes from 'source/src/keycodes.js';
+import * as gameState from 'source/src/gameState.js';
+import 'source/src/ui.js';
+import 'source/src/menus.js';
+import 'source/src/Login/login.js';
+import 'source/src/Admin/noclip.js';
+import 'source/src/Admin/adminTeleports.js';
+import 'source/src/Admin/animationBrowser.js';
+import 'source/src/Environment/sitting.js';
+import * as vehicles from 'source/src/Modules/Vehicle/vehicles.js';
+import 'source/src/Modules/objectSync.js';
+import 'source/src/Modules/Ui/nicknames.js';
+import 'source/src/Modules/Streaming/networkStreamer.js';
+import { drawText, draw3DText } from 'source/src/Helpers/uiHelper.js';
+import equipmentSlots from 'source/src/Constans/equipmentSlots.js';
+import 'source/src/Modules/Vehicle/vehicleComponentsController.js';
+import vehicleDoors from 'source/src/Modules/Vehicle/Components/vehicleDoorsComponent.js';
+import vehicleSeatbeltComponent from 'source/src/Modules/Vehicle/Components/vehicleSeatbeltComponent.js';
+import vehicleEngineToggleComponent from 'source/src/Modules/Vehicle/Components/vehicleEngineToggleComponent.js';
+import SoundBrowser from 'source/src/Admin/soundBrowser.js';
+import 'source/src/Modules/Streaming/inventoryController.js';
 
 let localPlayer = alt.getLocalPlayer();
 let frame = 0, fps = 0, showFps = true, timeStart = Date.now();
@@ -105,7 +105,7 @@ alt.on('keydown', (key: number) => {
 });
 
 alt.on('connectionComplete', (mapChanged: boolean) => {
-    alt.log('All scripts compmletely loaded');
+    alt.log('All scripts completely loaded');
     if (mapChanged) {
         alt.log('Reloading map store');
         game.loadSpDlcMaps();

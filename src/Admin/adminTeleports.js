@@ -40,7 +40,6 @@ alt.onServer('teleportToWaypoint', () => {
 
         alt.log(`Iteration ${i} current position: ${positionZ}`);
         waypointCoords.z = positionZ;
-        alt.wait(25);
     }
 
     if (!groundFound) {

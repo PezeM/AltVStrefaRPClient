@@ -1,13 +1,13 @@
 import * as alt from 'alt';
 import * as game from 'natives';
 import chat from 'chat';
-import circleMenu from 'src/Modules/CircleMenu/circleMenu.js';
-import { getGameState } from 'src/gameState.js';
-import { drawText, draw3DText } from 'src/Helpers/uiHelper.js';
-import Animations from 'src/Modules/animations.js';
-import ZoneNames from 'src/Modules/ui/zoneNames.js';
-import mainUi from 'src/Modules/Ui/mainUi.js';
-import raycast from 'src/Modules/CircleMenu/raycast.js';
+import circleMenu from 'source/src/Modules/CircleMenu/circleMenu.js';
+import { getGameState } from 'source/src/gameState.js';
+import { drawText, draw3DText } from 'source/src/Helpers/uiHelper.js';
+import Animations from 'source/src/Modules/animations.js';
+import ZoneNames from 'source/src/Modules/ui/zoneNames.js';
+import mainUi from 'source/src/Modules/Ui/mainUi.js';
+import raycast from 'source/src/Modules/CircleMenu/raycast.js';
 
 const controlsIds = {
     Alt: 0x12,

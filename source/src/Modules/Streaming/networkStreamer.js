@@ -1,8 +1,4 @@
-/// <reference path="../../../natives.d.ts" />
-/// <reference path="../../../alt.d.ts" />
-
 import * as alt from 'alt';
-import * as game from "natives";
 import networkingEntity from "networking-entity";
 import pedStreamer from 'src/Modules/Streaming/pedStreamer.js';
 import itemStreamer from 'src/Modules/Streaming/itemStreamer.js';

@@ -15,7 +15,7 @@ import * as vehicles from 'source/src/Modules/Vehicle/vehicles.js';
 import 'source/src/Modules/objectSync.js';
 import 'source/src/Modules/Ui/nicknames.js';
 import 'source/src/Modules/Streaming/networkStreamer.js';
-import { drawText, draw3DText } from 'source/src/Helpers/uiHelper.js';
+import { drawText } from 'source/src/Helpers/uiHelper.js';
 import equipmentSlots from 'source/src/Constans/equipmentSlots.js';
 import 'source/src/Modules/Vehicle/vehicleComponentsController.js';
 import vehicleDoors from 'source/src/Modules/Vehicle/Components/vehicleDoorsComponent.js';

@@ -1,10 +1,7 @@
-/// <reference path="../../../natives.d.ts" />
-/// <reference path="../../../alt.d.ts" />
-
 import * as alt from 'alt';
 import * as game from 'natives';
-import { requestScaleform } from 'src/Helpers/scaleform.js';
-import maths from 'src/Helpers/maths.js';
+import { requestScaleform } from 'source/src/Helpers/scaleform.js';
+import maths from 'source/src/Helpers/maths';
 
 const NICKNAME_VISIBLE_DISTANCE = 60;
 const NICKNAME_VISIBLE_DISTANCE_SQRT = NICKNAME_VISIBLE_DISTANCE * NICKNAME_VISIBLE_DISTANCE;

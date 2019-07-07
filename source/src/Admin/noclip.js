@@ -1,7 +1,7 @@
 import * as alt from 'alt';
 import * as game from 'natives';
 import { drawText, showNotification } from 'source/src/Helpers/uiHelper';
-import Maths from 'source/src/Helpers/maths.js';
+import Maths from 'source/src/Helpers/maths';
 import chat from 'chat';
 import mainUi from 'source/src/Modules/Ui/mainUi.js';
 

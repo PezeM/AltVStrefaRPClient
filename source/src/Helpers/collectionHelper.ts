@@ -1,9 +1,5 @@
-/// <reference path="../../natives.d.ts" />
-/// <reference path="../../alt.d.ts" />
-
 import * as alt from 'alt';
-import * as game from 'natives';
-import math from 'src/Helpers/maths.js';
+import math from 'source/src/Helpers/maths';
 
 export function getAllStreamedVehicles() {
     const streamedVehicles = [];
@@ -23,7 +19,7 @@ export function getAllStreamedPlayers() {
     return streamedPlayers;
 }
 
-export function getPlayersInRange(position, range = 10) {
+export function getPlayersInRange(position: Vector3, range = 10) {
     const playersInRange = [];
     // position = position * position;
     for (let i = 0; i < alt.Player.all.length; i++) {
@@ -34,7 +30,7 @@ export function getPlayersInRange(position, range = 10) {
     return playersInRange;
 }
 
-export function getVehiclesInRange(position, range = 10) {
+export function getVehiclesInRange(position: Vector3, range = 10) {
     const vehiclesInRange = [];
     for (let i = 0; i < alt.Vehicle.all.length; i++) {
         if (math.distance(position, alt.Vehicle.all[i].pos, true) <= range) {
@@ -44,7 +40,7 @@ export function getVehiclesInRange(position, range = 10) {
     return vehiclesInRange;
 }
 
-export function getClosestVehicle(position, radius = 15) {
+export function getClosestVehicle(position: Vector3, radius = 15) {
     let closestVehicle = null;
     for (let i = 0; i < alt.Vehicle.all.length; i++) {
         if (alt.Vehicle.all[i].scriptID === 0) continue;
@@ -57,7 +53,7 @@ export function getClosestVehicle(position, radius = 15) {
     return closestVehicle;
 }
 
-export function getClosestPlayer(position, radius = 10) {
+export function getClosestPlayer(position: Vector3, radius = 10) {
     let closestPlayer = null;
     // position = position * position;
     for (let i = 0; i < alt.Player.all.length; i++) {

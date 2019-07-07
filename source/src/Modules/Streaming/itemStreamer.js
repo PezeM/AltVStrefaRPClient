@@ -19,9 +19,9 @@ class ItemStreamer {
 
     async onStreamIn(entity) {
         await utils.loadModelAsync(entity.data.model.stringValue);
-        const gameObject = game.createObject(game.getHashKey(entity.data.model.stringValue), entity.position.x, entity.position.y, entity.position.z, true, false, false);
+        const gameObject = game.createObject(game.getHashKey(entity.data.model.stringValue), entity.position.x, entity.position.y, entity.position.z, true, false, true);
         game.placeObjectOnGroundProperly(gameObject);
-        game.setEntityCollision(gameObject, false, true);
+        game.setEntityCollision(gameObject, true, true);
         entity.item = {
             id: entity.data.id.intValue,
             object: gameObject,

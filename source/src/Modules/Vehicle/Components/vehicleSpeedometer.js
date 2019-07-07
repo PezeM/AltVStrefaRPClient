@@ -1,6 +1,6 @@
 import * as game from 'natives';
 import { drawText } from 'source/src/Helpers/uiHelper';
-import { isDriver } from 'source/src/Helpers/playerHelpers.js';
+import { isDriver } from 'source/src/Helpers/playerHelpers';
 import VehicleComponent from 'source/src/Modules/Vehicle/Components/vehicleComponent.js';
 
 const MULTIPLY_SPEED_BY = 3.6;

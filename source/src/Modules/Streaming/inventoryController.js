@@ -1,6 +1,6 @@
 import alt from 'alt';
 import game from 'natives';
-import math from 'source/src/Helpers/maths.js';
+import math from 'source/src/Helpers/maths';
 import { draw3DText } from 'source/src/Helpers/uiHelper';
 import utils from 'source/src/Helpers/utility.js';
 const player = alt.getLocalPlayer();

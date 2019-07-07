@@ -133,6 +133,7 @@ declare module "alt" {
         readonly name: string;
         readonly scriptID: number;
         readonly vehicle: Vehicle | undefined | null;
+        static all: Array<Player>;
 
         addWeaponComponent(weaponHash: number, componentHash: number): void;
         getCurrentWeapon(): number;
@@ -151,7 +152,7 @@ declare module "alt" {
         readonly rpm: number;
         readonly scriptID: number;
         readonly speed: number;
-
+        static all: Array<Vehicle>;
     }
 
     export class WebView extends BaseObject {

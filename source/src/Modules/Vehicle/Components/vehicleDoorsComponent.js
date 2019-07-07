@@ -1,9 +1,9 @@
 
 import * as alt from 'alt';
 import * as game from 'natives';
-import math from 'source/src/Helpers/maths.js';
+import math from 'source/src/Helpers/maths';
 import VehicleComponent from 'source/src/Modules/Vehicle/Components/vehicleComponent.js';
-import { getClosestVehicle } from 'source/src/Helpers/collectionHelper.js';
+import { getClosestVehicle } from 'source/src/Helpers/collectionHelper';
 import { draw3DText } from 'source/src/Helpers/uiHelper';
 import vehicleDoors from 'source/src/Constans/vehicleDoors.js';
 

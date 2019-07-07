@@ -1,8 +1,8 @@
 import * as alt from 'alt';
 import * as game from 'natives';
 import { draw3DText } from 'source/src/Helpers/uiHelper';
-import { getClosestVehicle } from 'source/src/Helpers/collectionHelper.js';
-import math from 'source/src/Helpers/maths.js';
+import { getClosestVehicle } from 'source/src/Helpers/collectionHelper';
+import math from 'source/src/Helpers/maths';
 
 let localPlayer = alt.getLocalPlayer();
 

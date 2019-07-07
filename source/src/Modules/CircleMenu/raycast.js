@@ -1,8 +1,6 @@
-/// <reference path="../../../natives.d.ts" />
-/// <reference path="../../../alt.d.ts" />
 import * as alt from 'alt';
 import * as game from 'natives';
-import Maths from 'src/Helpers/maths.js';
+import Maths from 'source/src/Helpers/maths';
 
 class Raycast {
     constructor() {

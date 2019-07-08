@@ -6,7 +6,7 @@ import { GameState } from 'source/src/Constans/enums';
 
 const localPlayer = alt.getLocalPlayer();
 
-alt.log(`Login.js initialized`);
+alt.log(`Login initialized`);
 
 mainUi.onUiEvent('tryToLogin', (username: string, password: string) => {
     if (!username || !password) {

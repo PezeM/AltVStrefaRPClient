@@ -156,6 +156,9 @@ declare module "alt" {
         readonly scriptID: number;
         readonly speed: number;
         static all: Array<Vehicle>;
+        lightFading: any;
+        lightFadingCount: number;
+        lockTimer: any;
     }
 
     export class WebView extends BaseObject {

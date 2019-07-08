@@ -1,6 +1,6 @@
 import * as alt from 'alt';
 import * as game from 'natives';
-import VehicleComponent from 'src/Modules/Vehicle/Components/vehicleComponent.js';
+import VehicleComponent from 'src/Modules/Vehicle/Components/vehicleComponent';
 import { VehicleComponentTypes } from 'source/src/Constans/vehicleComponentTypes';
 
 class VehicleEngineToggleComponent extends VehicleComponent {

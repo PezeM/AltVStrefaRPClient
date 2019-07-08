@@ -19,7 +19,7 @@ alt.onServer('teleportToWaypoint', () => {
 
     game.setEntityCoords(localPlayer.scriptID, waypointCoords.x, waypointCoords.y, 800, true, false, false, true);
     game.startPlayerTeleport(localPlayer.scriptID, waypointCoords.x, waypointCoords.y, waypointCoords.z, 0, true, true, false);
-
+    game.doScreenFadeOut(200);
     let i = 0;
     const interval = alt.setInterval(() => {
         game.setEntityCoords(localPlayer.scriptID, waypointCoords.x, waypointCoords.y, waypointCoords.z, true, false, false, true);
@@ -30,21 +30,30 @@ alt.onServer('teleportToWaypoint', () => {
             if (!game.isPlayerTeleportActive()) {
                 game.startPlayerTeleport(localPlayer.scriptID, waypointCoords.x, waypointCoords.y, positionZ, 0, true, true, false);
             }
-            game.setEntityCoords(localPlayer.scriptID, waypointCoords.x, waypointCoords.y, positionZ, true, false, false, true);
+            waypointCoords.z = positionZ;
+            completedTeleporting(groundFound, waypointCoords);
+            // game.setEntityCoords(localPlayer.scriptID, waypointCoords.x, waypointCoords.y, positionZ, true, false, false, true);
             mainUi.showCefNotification(1, "Sukces", `Znaleziono pozycje poczas ${i} iteracji. PozycjaZ ${positionZ}`, 4000);
             alt.clearInterval(interval);
         }
 
-        alt.log(`Iteration ${i} current position: ${positionZ}`);
-        waypointCoords.z = positionZ;
+        alt.log(`Iteration ${i} current position: ${i}`);
+        waypointCoords.z = i;
         i++;
-        if (i > 1000) alt.clearInterval(interval);
-    }, 5);
+        if (i > 1000) {
+            alt.clearInterval(interval);
+            completedTeleporting(groundFound, waypointCoords);
+        }
+    }, 1);
+});
 
+function completedTeleporting(groundFound: boolean, waypointCoords: Vector3) {
+    game.doScreenFadeIn(200);
     if (!groundFound) {
         game.setEntityCoords(localPlayer.scriptID, waypointCoords.x, waypointCoords.y, 1000, true, false, false, true);
     }
     else {
         alt.log('Setting Z coord to ' + waypointCoords.z);
+        game.setEntityCoords(localPlayer.scriptID, waypointCoords.x, waypointCoords.y, waypointCoords.z, true, false, false, true);
     }
-});
+}

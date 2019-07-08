@@ -1,6 +1,6 @@
 import * as alt from 'alt';
 import * as game from 'natives';
-import utils from 'source/src/Helpers/utility.js';
+import utils from 'source/src/Helpers/utility';
 import { IMinimap } from 'source/src/Constans/interfaces';
 
 const localPlayer = alt.getLocalPlayer();

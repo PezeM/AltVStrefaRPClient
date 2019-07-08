@@ -71,3 +71,31 @@ export interface IAnimationWithProp extends IAnimationInfo {
 export interface IAnimationsObject {
     [key: string]: IAnimationInfo | IAnimationWithProp
 }
+
+// export interface MValue {
+//     boolValue?: boolean,
+//     doubleValue?: number,
+//     stringValue?: string,
+//     intValue?: number,
+//     uintValue?: number,
+//     dictionaryValue?: any,
+//     listValue?: any[],
+//     entityValue?: number,
+//     nullValue?: boolean
+// }
+
+// export interface INetworkingEntity {
+//     id: number,
+//     position: Vector3,
+//     dimension: number,
+//     data: {
+//         [key: string]: MValue
+//     },
+//     [key: string]: any
+// }
+
+// export interface INetworkingEntityDataChangeEvent {
+//     id: number,
+//     key: string,
+//     value: MValue
+// }

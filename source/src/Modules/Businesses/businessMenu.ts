@@ -1,5 +1,5 @@
 import * as alt from 'alt';
-import mainUi from 'src/Modules/Ui/mainUi.js';
+import mainUi from 'src/Modules/Ui/mainUi';
 
 export default class Business {
     constructor() {

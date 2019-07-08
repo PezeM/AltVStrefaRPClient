@@ -1,9 +1,9 @@
 import * as alt from 'alt';
-import networkingEntity from "networking-entity";
-import pedStreamer from 'src/Modules/Streaming/pedStreamer.js';
-import itemStreamer from 'src/Modules/Streaming/itemStreamer.js';
+import networkingEntity, { INetworkingEntity } from "networking-entity";
+import pedStreamer from 'src/Modules/Streaming/pedStreamer';
+import itemStreamer from 'src/Modules/Streaming/itemStreamer';
 
-class EntityStreamer {
+class NetworkStreamer {
     constructor() {
         networkingEntity.create();
         alt.log(`Created enity streamer`);
@@ -15,9 +15,9 @@ class EntityStreamer {
         networkingEntity.onDataChange(this.onDataChange);
     }
 
-    async onStreamIn(entity) {
+    async onStreamIn(entity: INetworkingEntity) {
         alt.log(`Entity streamed in ${JSON.stringify(entity, null, 2)}`);
-        if (typeof entity.data.entityType == 'undefined') return;
+        if (typeof entity.data.entityType === 'undefined') return;
         if (entity.data.entityType.intValue === 1) { // Peds
             pedStreamer.onStreamIn(entity);
         } else if (entity.data.entityType.intValue === 2) { // Item
@@ -25,9 +25,9 @@ class EntityStreamer {
         }
     }
 
-    onStreamOut(entity) {
+    onStreamOut(entity: INetworkingEntity) {
         alt.log(`Entity streamed out ${JSON.stringify(entity, null, 2)}`);
-        if (typeof entity.data.entityType == 'undefined') return;
+        if (typeof entity.data.entityType === 'undefined') return;
         if (entity.data.entityType.intValue === 1) { // Peds
             pedStreamer.onStreamOut(entity);
         } else if (entity.data.entityType.intValue === 2) { // Items
@@ -35,11 +35,11 @@ class EntityStreamer {
         }
     }
 
-    onDataChange(entity, newAddedData) {
+    onDataChange(entity: INetworkingEntity, newAddedData: any) {
         alt.log(`Data changed on entity ${JSON.stringify(entity, null, 2)} to ${JSON.stringify(newAddedData, null, 2)}`);
-        //TODO: when model changes ect.
+        // TODO: when model changes ect.
     }
 
 }
-const entityStreamer = new EntityStreamer();
+const entityStreamer = new NetworkStreamer();
 export default entityStreamer;

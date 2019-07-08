@@ -144,7 +144,7 @@ class VehicleShop {
             game.setVehicleOnGroundProperly(this.spawnedVehicle);
             game.setVehicleUndriveable(this.spawnedVehicle, true);
         } catch (error) {
-            alt.log(`Error while changing vehicle in vehicleShops.js = ${error}`);
+            alt.log(`Error while changing vehicle in vehicleShops = ${error}`);
         }
     }
 

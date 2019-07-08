@@ -1,7 +1,7 @@
 
 import * as game from 'natives';
 import * as alt from 'alt';
-import VehicleComponent from 'src/Modules/Vehicle/Components/vehicleComponent.js';
+import VehicleComponent from 'src/Modules/Vehicle/Components/vehicleComponent';
 import { VehicleComponentTypes } from 'source/src/Constans/vehicleComponentTypes';
 
 class VehicleInAirControlsComponent extends VehicleComponent {

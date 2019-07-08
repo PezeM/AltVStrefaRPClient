@@ -3,26 +3,26 @@ import * as game from 'natives';
 import chat from 'chat';
 import mainUi from 'source/src/Modules/Ui/mainUi';
 import keycodes from 'source/src/Constans/keycodes';
-import * as gameState from 'source/src/gameState.js';
+import * as gameState from 'source/src/gameState';
 import 'source/src/uiController';
-import 'source/src/menus.js';
+import 'source/src/menus';
 import 'source/src/Login/login';
 import 'source/src/Admin/noclip';
 import 'source/src/Admin/adminTeleports';
 import 'source/src/Admin/animationBrowser';
 import 'source/src/Environment/sitting';
-import * as vehicles from 'source/src/Modules/Vehicle/vehicles.js';
-import 'source/src/Modules/objectSync.js';
-import 'source/src/Modules/Ui/nicknames.js';
-import 'source/src/Modules/Streaming/networkStreamer.js';
-import { drawText } from 'source/src/Helpers/uiHelper.js';
-import equipmentSlots from 'source/src/Constans/equipmentSlots.js';
-import 'source/src/Modules/Vehicle/vehicleComponentsController.js';
-import vehicleDoors from 'source/src/Modules/Vehicle/Components/vehicleDoorsComponent.js';
-import vehicleSeatbeltComponent from 'source/src/Modules/Vehicle/Components/vehicleSeatbeltComponent.js';
-import vehicleEngineToggleComponent from 'source/src/Modules/Vehicle/Components/vehicleEngineToggleComponent.js';
+import * as vehicles from 'source/src/Modules/Vehicle/vehicles';
+import 'source/src/Modules/objectSync';
+import 'source/src/Modules/Ui/nicknames';
+import 'source/src/Modules/Streaming/networkStreamer';
+import { drawText } from 'source/src/Helpers/uiHelper';
+import equipmentSlots from 'source/src/Constans/equipmentSlots';
+import 'source/src/Modules/Vehicle/vehicleComponentsController';
+import vehicleDoors from 'source/src/Modules/Vehicle/Components/vehicleDoorsComponent';
+import vehicleSeatbeltComponent from 'source/src/Modules/Vehicle/Components/vehicleSeatbeltComponent';
+import vehicleEngineToggleComponent from 'source/src/Modules/Vehicle/Components/vehicleEngineToggleComponent';
 import SoundBrowser from 'source/src/Admin/soundBrowser';
-import 'source/src/Modules/Streaming/inventoryController.js';
+import 'source/src/Modules/Streaming/inventoryController';
 
 const localPlayer = alt.getLocalPlayer();
 let frame = 0;
@@ -231,7 +231,7 @@ function loadModel(modelHash: number) {
     });
 }
 
-import Animations from 'src/Modules/animations.js';
+import Animations from 'src/Modules/animations';
 let animations = new Animations();
 let strefaObject: number | any = null;
 

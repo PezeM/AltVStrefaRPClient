@@ -1,5 +1,5 @@
 import * as alt from 'alt';
-import mainUi from 'src/Modules/Ui/mainUi.js';
+import mainUi from 'src/Modules/Ui/mainUi';
 
 export default class TownHallMenu {
     constructor() {
@@ -17,19 +17,19 @@ export default class TownHallMenu {
         mainUi.onUiEvent('tryToOpenFractionRegistrationPage', this.tryToOpenFractionRegistrationPage);
     }
 
-    openFractionsResidentsPage(onlineResidents) {
+    openFractionsResidentsPage(onlineResidents: any) {
         mainUi.emitUiEvent('openFractionsResidentsPage', onlineResidents);
     }
 
-    openFractionTaxesPage(data) {
+    openFractionTaxesPage(data: any) {
         mainUi.emitUiEvent('openFractionTaxesPage', data);
     }
 
-    populateResidentData(residentData) {
+    populateResidentData(residentData: any) {
         mainUi.emitUiEvent('populateResidentData', residentData);
     }
 
-    tryToOpenFractionRolesPage(fractionId) {
+    tryToOpenFractionRolesPage(fractionId: number) {
         alt.emitServer('TryToOpenFractionRolesPage', fractionId);
     }
 
@@ -41,7 +41,7 @@ export default class TownHallMenu {
         alt.emitServer('TryToOpenFractionResidentsPage');
     }
 
-    tryToGetResidentData(residentFullName) {
+    tryToGetResidentData(residentFullName: any) {
         if (residentFullName == null || residentFullName.length < 2) {
             mainUi.showCefNotification(3, "Błąd", "Podano błędne imię lub nazwisko.", 5500);
             return;
@@ -54,11 +54,11 @@ export default class TownHallMenu {
         alt.emitServer('TryToGetResidentData', residentFullName[0], residentFullName[1]);
     }
 
-    tryToUpdateTaxValue(taxId, taxValue) {
+    tryToUpdateTaxValue(taxId: number, taxValue: number) {
         alt.emitServer('TryToUpdateTaxValue', taxId, taxValue);
     }
 
-    updateTaxValue(taxId, newValue) {
+    updateTaxValue(taxId: number, newValue: number) {
         mainUi.emitUiEvent('updateTaxValue', taxId, newValue.toFixed(2));
     }
 

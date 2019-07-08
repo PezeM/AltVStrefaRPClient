@@ -1,5 +1,5 @@
 import * as alt from 'alt';
-import mainUi from 'src/Modules/Ui/mainUi.js';
+import mainUi from 'src/Modules/Ui/mainUi';
 
 export default class FractionMenu {
     constructor() {
@@ -27,20 +27,20 @@ export default class FractionMenu {
         mainUi.onUiEvent('tryToAddNewFractionRank', this.tryToAddNewFractionRank);
     }
 
-    openFractionMenu(fractionType, fractionData) {
+    openFractionMenu(fractionType: number, fractionData: any) {
         mainUi.openMenu('openFractionMenu', true, true, fractionType, fractionData);
     }
 
-    tryToOpenFractionEmployeesPage(fractionId) {
+    tryToOpenFractionEmployeesPage(fractionId: number) {
         alt.emitServer('TryToOpenFractionEmployeesPage', fractionId)
     }
 
-    openFractionEmployeesPage(data) {
+    openFractionEmployeesPage(data: any) {
         alt.log(`Fraction employees data = ${JSON.stringify(data, null, 2)}`);
         mainUi.emitUiEvent('openFractionEmployeesPage', data);
     }
 
-    updateFractionEmployeeRank(fractionId, employeeId, newRankId) {
+    updateFractionEmployeeRank(fractionId: number, employeeId: number, newRankId: number) {
         if (fractionId > 0 && employeeId > 0 && newRankId > 0) {
             alt.emitServer('UpdateFractionEmployeeRank', fractionId, employeeId, newRankId);
         } else {
@@ -48,25 +48,25 @@ export default class FractionMenu {
         }
     }
 
-    succesfullyUpdatedEmployeeRank(employeeId, newRankId) {
+    succesfullyUpdatedEmployeeRank(employeeId: number, newRankId: number) {
         mainUi.emitUiEvent('succesfullyUpdatedEmployeeRank', employeeId, newRankId);
         mainUi.showCefNotification(1, "Sukces", "Pomyślnie zaaktualizowano pracownika.", 5500);
     }
 
-    tryToRemoveEmployeeFromFraction(fractionId, employeeId) {
+    tryToRemoveEmployeeFromFraction(fractionId: number, employeeId: number) {
         if (fractionId > 0 && employeeId > 0) {
             alt.emitServer('TryToRemoveEmployeeFromFraction', fractionId, employeeId);
         }
     }
 
-    succesfullyRemovedEmployeeFromFraction(employeeId) {
+    succesfullyRemovedEmployeeFromFraction(employeeId: number) {
         mainUi.emitUiEvent('succesfullyRemovedEmployeeFromFraction', employeeId);
         mainUi.showCefNotification(1, "Sukces", "Pomyślnie usunięto pracownika.", 5500);
     }
 
-    tryToInviteEmployeeToFraction(fractionId, firstName, lastName) {
+    tryToInviteEmployeeToFraction(fractionId: number, firstName: string, lastName: string) {
         if (fractionId > 0) {
-            if (typeof firstName == 'string' && typeof lastName == 'string') {
+            if (typeof firstName === 'string' && typeof lastName === 'string') {
                 alt.emitServer('InviteEmployeeToFraction', fractionId, firstName, lastName);
             }
         } else {
@@ -74,7 +74,7 @@ export default class FractionMenu {
         }
     }
 
-    acceptFractionInvite(fractionId) {
+    acceptFractionInvite(fractionId: number) {
         if (fractionId) {
             alt.emitServer('AcceptFractionInvite', fractionId);
         }
@@ -87,7 +87,7 @@ export default class FractionMenu {
         }
     }
 
-    cancelFractionInvite(fractionId) {
+    cancelFractionInvite(fractionId: number) {
         if (fractionId) {
             alt.emitServer('CancelFractionInvite', fractionId);
         }
@@ -100,47 +100,47 @@ export default class FractionMenu {
         }
     }
 
-    tryToOpenFractionRanksPage(fractionId) {
+    tryToOpenFractionRanksPage(fractionId: number) {
         if (fractionId) {
             alt.emitServer('TryToOpenFractionRanksPage', fractionId);
         }
     }
 
-    openFractionRanksPage(ranksData) {
+    openFractionRanksPage(ranksData: any) {
         mainUi.emitUiEvent('openFractionRanksPage', ranksData);
     }
 
-    tryToDeleteFractionRank(fractionId, rankId) {
-        if (fractionId && rankId && typeof fractionId == 'number' && typeof rankId == 'number') {
+    tryToDeleteFractionRank(fractionId: number, rankId: number) {
+        if (fractionId && rankId && typeof fractionId === 'number' && typeof rankId === 'number') {
             alt.emitServer('TryToDeleteFractionRank', fractionId, rankId);
         } else {
             mainUi.showCefNotification(3, "Błąd", "Podano błędne dane.", 5000);
         }
     }
 
-    tryToUpdateFractionRank(fractionId, rank) {
+    tryToUpdateFractionRank(fractionId: number, rank: any) {
         if (rank && fractionId > 0) {
             alt.emitServer('TryToUpdateFractionRank', fractionId, rank);
         }
     }
 
-    tryToAddNewFractionRank(fractionId, rankData) {
+    tryToAddNewFractionRank(fractionId: number, rankData: any) {
         if (fractionId > 0 && rankData) {
             alt.emitServer('TryToAddNewFractionRank', fractionId, rankData);
         }
     }
 
-    succesfullyAddedNewFractionRank(rankName, updatedRanks) {
+    succesfullyAddedNewFractionRank(rankName: string, updatedRanks: any) {
         mainUi.emitUiEvent('succesfullyAddedNewFractionRank', updatedRanks);
         mainUi.showCefNotification(1, "Sukces", `Pomyślnie dodano nowe stanowisku o nazwie ${rankName}`, 5500);
     }
 
-    succesfullyDeletedFractionRank(rankId) {
+    succesfullyDeletedFractionRank(rankId: number) {
         mainUi.emitUiEvent('succesfullyDeletedFractionRank', rankId);
         mainUi.showCefNotification(1, 'Usunięto range', 'Pomyślnie usunięto stanowisko.', 5000);
     }
 
-    succesfullyUpdatedFractionRank(updatedRank) {
+    succesfullyUpdatedFractionRank(updatedRank: any) {
         mainUi.emitUiEvent('succesfullyUpdatedFractionRank', updatedRank);
         mainUi.showCefNotification(1, 'Sukces', `Pomyślnie zaaktualizowano stanowisko ${updatedRank.RankName}`, 5000);
     }

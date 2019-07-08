@@ -136,6 +136,7 @@ declare module "alt" {
         static all: Array<Player>;
         isTalking: any;
         remoteId: any;
+        syncedObject: any;
 
         addWeaponComponent(weaponHash: number, componentHash: number): void;
         getCurrentWeapon(): number;

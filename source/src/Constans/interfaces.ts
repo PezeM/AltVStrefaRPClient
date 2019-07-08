@@ -100,3 +100,33 @@ export interface IAnimationsObject {
 //     key: string,
 //     value: MValue
 // }
+
+export interface IServerCallback {
+    callbackEventName: string,
+    startTime: number,
+    completed: boolean,
+    callback: (...result: any) => void;
+}
+
+export interface IInventoryItem {
+    Id: number;
+    Quantity: number;
+    Item: IItem;
+    SlotId: number;
+    BaseItemId: number;
+}
+
+export interface IItem {
+    Id: number;
+    Model: string;
+    Name: string;
+    StackSize: number;
+    DrawableId?: number;
+    TextureId?: number;
+    PaletteId?: number;
+    IsProp?: boolean;
+    Slot?: number;
+    Value?: number;
+    WeaponModel?: number;
+    Ammo?: number;
+}

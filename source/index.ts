@@ -22,7 +22,7 @@ import vehicleDoors from 'source/src/Modules/Vehicle/Components/vehicleDoorsComp
 import vehicleSeatbeltComponent from 'source/src/Modules/Vehicle/Components/vehicleSeatbeltComponent';
 import vehicleEngineToggleComponent from 'source/src/Modules/Vehicle/Components/vehicleEngineToggleComponent';
 import SoundBrowser from 'source/src/Admin/soundBrowser';
-import 'source/src/Modules/Streaming/inventoryController';
+import inventoryController from 'source/src/Modules/Inventory/inventoryController';
 
 const localPlayer = alt.getLocalPlayer();
 let frame = 0;
@@ -76,7 +76,7 @@ alt.on('update', () => {
     }
 });
 
-alt.on('keydown', (key: number) => {
+alt.on('keydown', async (key: number) => {
     if (chat.isOpen() || mainUi.viewOpened || gameState.getGameState() === 0) return;
 
     switch (key) {
@@ -104,6 +104,12 @@ alt.on('keydown', (key: number) => {
             if (game.isEntityDead(localPlayer.scriptID) || new Date().getTime() - lastKeyPressedTime < 500) return;
             lastKeyPressedTime = new Date().getTime();
             soundBrowser.toggle();
+            break;
+        case keycodes.I_KEY:
+            if (new Date().getTime() - lastKeyPressedTime < 500) return;
+            lastKeyPressedTime = new Date().getTime();
+            await inventoryController.openInventory();
+            break;
     }
 });
 

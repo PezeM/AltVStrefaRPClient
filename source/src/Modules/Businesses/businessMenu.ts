@@ -21,23 +21,23 @@ export default class Business {
         mainUi.onUiEvent('closeBusinessMenu', this.closeBusinessMenu);
     }
 
-    openBusinessMenu(businessInfo) {
+    openBusinessMenu(businessInfo: any) {
         mainUi.openMenu('openBusinessMenu', true, true, businessInfo);
     }
 
-    populateEmployeeRanks(employeesRanks) {
+    populateEmployeeRanks(employeesRanks: any) {
         if (mainUi.viewOpened)
-            mainUi.menusView.emit('populateEmployeeRanks', employeesRanks);
+            mainUi.emitUiEvent('populateEmployeeRanks', employeesRanks);
     }
 
-    populateBusinessRanksInfo(permissionsInfo) {
+    populateBusinessRanksInfo(permissionsInfo: any) {
         if (mainUi.viewOpened)
-            mainUi.menusView.emit('populateBusinessRanksInfo', permissionsInfo);
+            mainUi.emitUiEvent('populateBusinessRanksInfo', permissionsInfo);
     }
 
-    successfullyUpdatedEmployeeRank(employeeId, newRankId) {
+    successfullyUpdatedEmployeeRank(employeeId: number, newRankId: number) {
         if (mainUi.viewOpened)
-            mainUi.menusView.emit('successfullyUpdatedEmployeeRank', employeeId, newRankId);
+            mainUi.emitUiEvent('successfullyUpdatedEmployeeRank', employeeId, newRankId);
 
         mainUi.showCefNotification(1, "Zaktualizowano pracownika", "Pomyślnie zaktualizowano stanowiska pracownika.", 5000);
     }
@@ -46,7 +46,7 @@ export default class Business {
         mainUi.closeMenu();
     }
 
-    getBusinessEmployees(businessId) {
+    getBusinessEmployees(businessId: number) {
         if (typeof businessId !== 'number') {
             mainUi.showCefNotification(3, "Błąd", 'Błędne ID biznesu.', 5000);
             return;
@@ -54,7 +54,7 @@ export default class Business {
         alt.emitServer('GetBusinessEmployees', businessId);
     }
 
-    updateEmployeeRank(employeeId, newRankId, businessId) {
+    updateEmployeeRank(employeeId: number, newRankId: number, businessId: number) {
         if (typeof employeeId !== 'number' || typeof newRankId !== 'number' || typeof businessId !== 'number') {
             mainUi.showCefNotification(3, "Błąd", 'Błędne ID postaci lub zły numer stanowiska.', 7000);
             return;
@@ -63,7 +63,7 @@ export default class Business {
         alt.emitServer('UpdateEmployeeRank', employeeId, newRankId, businessId);
     }
 
-    addNewEmployee(name, lastName, businessId) {
+    addNewEmployee(name: string, lastName: string, businessId: number) {
         if (typeof name !== 'string' || typeof lastName !== 'string' || typeof businessId !== 'number') {
             mainUi.showCefNotification(3, "Błąd", 'Błędne imię lub nazwisko pracownika.', 6000);
             return;
@@ -72,7 +72,7 @@ export default class Business {
         alt.emitServer('AddNewEmployee', name, lastName, businessId);
     }
 
-    getBusinessRolesInfo(businessId) {
+    getBusinessRolesInfo(businessId: number) {
         if (typeof businessId !== 'number') {
             mainUi.showCefNotification(3, "Błąd", "Błędne ID biznesu.", 4000);
             return;
@@ -81,7 +81,7 @@ export default class Business {
         alt.emitServer('GetBusinessRoles', businessId);
     }
 
-    updateBusinessRank(rank, businessId) {
+    updateBusinessRank(rank: any, businessId: number) {
         if (typeof businessId !== 'number') {
             mainUi.showCefNotification(3, "Błąd", "Błędne ID biznesu.", 4000);
             return;
@@ -95,7 +95,7 @@ export default class Business {
         alt.emitServer('UpdateBusinessRank', JSON.stringify(rank), businessId);
     }
 
-    addNewRole(newRole, businessId) {
+    addNewRole(newRole: any, businessId: number) {
         if (typeof newRole !== 'object' || typeof businessId !== 'number') {
             mainUi.showCefNotification(3, "Błąd", 'Błędne nowe stanowisko.', 6000);
             return;
@@ -104,21 +104,21 @@ export default class Business {
         alt.emitServer('AddNewRole', JSON.stringify(newRole), businessId);
     }
 
-    deleteBusiness(businessId) {
+    deleteBusiness(businessId: number) {
         if (typeof businessId !== 'number')
             return;
 
         alt.emitServer('DeleteBusiness', businessId);
     }
 
-    deleteRole(roleId, businessId) {
+    deleteRole(roleId: number, businessId: number) {
         if (typeof businessId !== 'number' || typeof roleId !== 'number')
             return;
 
         alt.emitServer('DeleteRole', roleId, businessId);
     }
 
-    deleteEmployee(employeeId, businessId) {
+    deleteEmployee(employeeId: number, businessId: number) {
         if (typeof businessId !== 'number' || typeof employeeId !== 'number')
             return;
 

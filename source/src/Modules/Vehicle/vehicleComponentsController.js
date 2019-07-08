@@ -1,8 +1,4 @@
-/// <reference path="../../../natives.d.ts" />
-/// <reference path="../../../alt.d.ts" />
-
 import * as alt from 'alt';
-import * as game from 'natives';
 import vehicleDoorsComponent from 'src/Modules/Vehicle/Components/vehicleDoorsComponent.js';
 import vehicleSpeedometer from 'src/Modules/Vehicle/Components/vehicleSpeedometer.js';
 import VehicleComponent from 'src/Modules/Vehicle/Components/vehicleComponent.js';

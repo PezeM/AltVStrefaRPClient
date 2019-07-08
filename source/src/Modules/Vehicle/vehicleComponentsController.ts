@@ -1,19 +1,22 @@
 import * as alt from 'alt';
-import vehicleDoorsComponent from 'src/Modules/Vehicle/Components/vehicleDoorsComponent.js';
-import vehicleSpeedometer from 'src/Modules/Vehicle/Components/vehicleSpeedometer.js';
-import VehicleComponent from 'src/Modules/Vehicle/Components/vehicleComponent.js';
-import vehicleSeatbeltComponent from 'src/Modules/Vehicle/Components/vehicleSeatbeltComponent.js';
-import vehicleEngineToggleComponent from 'src/Modules/Vehicle/Components/vehicleEngineToggleComponent.js';
-import vehicleInAirControlsComponent from 'src/Modules/Vehicle/Components/vehicleInAirControlsComponent.js';
+import vehicleDoorsComponent from 'src/Modules/Vehicle/Components/vehicleDoorsComponent';
+import vehicleSpeedometer from 'src/Modules/Vehicle/Components/vehicleSpeedometer';
+import VehicleComponent from 'src/Modules/Vehicle/Components/vehicleComponent';
+import vehicleSeatbeltComponent from 'src/Modules/Vehicle/Components/vehicleSeatbeltComponent';
+import vehicleEngineToggleComponent from 'src/Modules/Vehicle/Components/vehicleEngineToggleComponent';
+import vehicleInAirControlsComponent from 'src/Modules/Vehicle/Components/vehicleInAirControlsComponent';
+import { VehicleComponentTypes } from 'source/src/Constans/vehicleComponentTypes';
 
-let localPlayer = alt.getLocalPlayer();
+const localPlayer = alt.getLocalPlayer();
 class VehicleComponentsController {
+    components: VehicleComponent[];
+    tickInterval: number;
     constructor() {
         this.components = [];
         this.tickInterval = alt.setInterval(this.onUpdate.bind(this), 0);
     }
 
-    addComponent(component) {
+    addComponent(component: VehicleComponent) {
         if (component instanceof VehicleComponent) {
             this.components.push(component);
         } else {
@@ -21,29 +24,22 @@ class VehicleComponentsController {
         }
     }
 
-    removeComponent(component) {
+    removeComponent(component: VehicleComponent) {
         if (component instanceof VehicleComponent) {
-            let componentToRemove = this.components.indexOf(componentToRemove);
-            if (component !== null) {
-                this.components.slice(componentToRemove, 1);
-            }
+            this.components.filter(c => c !== component);
         } else {
             alt.logError(`Couldn't remove ${JSON.stringify(component)} from vehicleComponents as it's not an instance of VehicleComponent`);
         }
     }
 
-    getComponent(componentType) {
-        if (typeof componentType === 'string') {
-            return this.components.find(c => c.componentName === componentType);
-        } else {
-            return this.components.find(c => c instanceof componentType);
-        }
+    getComponent(componentType: VehicleComponentTypes) {
+        return this.components.find(c => c.getComponentType() === componentType);
     }
 
     onUpdate() {
         for (let i = 0; i < this.components.length; i++) {
             const component = this.components[i];
-            if (component.disabled) continue;
+            if (component.isDisabled()) continue;
             if (localPlayer.vehicle === null) {
                 component.onUpdateOutsideVehicle(localPlayer);
             } else {
@@ -52,16 +48,16 @@ class VehicleComponentsController {
         }
     }
 
-    disableComponent(component) {
+    disableComponent(component: VehicleComponent) {
         if (component instanceof VehicleComponent) {
             alt.log(`Disabling component`);
-            component.disabled = true;
+            component.setStatus(true);
         }
     }
 
-    enableComponent(component) {
+    enableComponent(component: VehicleComponent) {
         if (component instanceof VehicleComponent) {
-            component.disabled = false;
+            component.setStatus(false);
         }
     }
 }

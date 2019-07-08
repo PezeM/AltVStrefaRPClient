@@ -1,9 +1,9 @@
 import * as alt from 'alt';
 import * as game from 'natives';
 import { drawText } from 'source/src/Helpers/uiHelper';
-import { SoundTypes } from 'source/typings/strefa';
+import { ISoundTypes } from 'source/src/Constans/interfaces';
 
-const SOUNDS: SoundTypes[] = [
+const SOUNDS: ISoundTypes[] = [
     { id: 0, soundName: "10s", soundSetName: "MP_MISSION_COUNTDOWN_SOUNDSET" },
     { id: 1, soundName: "1st_Person_Transition", soundSetName: "PLAYER_SWITCH_CUSTOM_SOUNDSET" },
     { id: 2, soundName: "3_2_1", soundSetName: "HUD_MINI_GAME_SOUNDSET" },

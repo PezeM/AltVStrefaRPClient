@@ -1,6 +1,7 @@
 import * as alt from 'alt';
 import * as game from 'natives';
 import utils from 'source/src/Helpers/utility.js';
+import { IMinimap } from 'source/src/Constans/interfaces';
 
 const localPlayer = alt.getLocalPlayer();
 
@@ -98,7 +99,7 @@ export function getMinimapAnchor() {
     const scaleX = 1.0 / resolution[1];
     const scaleY = 1.0 / resolution[2];
 
-    const minimap = {
+    const minimap: IMinimap = {
         width: scaleX * (resolution[1] / (4 * aspectRatio)),
         height: scaleY * (resolution[2] / 5.674),
         scaleX,

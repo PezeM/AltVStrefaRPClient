@@ -4,44 +4,47 @@ export interface Vector3Rotation extends Vector3 {
     rot: number
 }
 
-export interface SoundTypes {
+export interface ISoundTypes {
     id: number,
     soundName: string,
     soundSetName: string
 }
 
-export interface ControlsIds {
+export interface IControlsIds {
     [key: string]: number
 }
 
-export interface SittableArray {
-    [key: string]: SittableObject
+export interface ISittableArray {
+    [key: string]: ISittableObject
 }
 
-export interface SittableObject {
+export interface ISittableObject {
     scenario: string,
     verticalOffset: number,
     forwardOffset: number,
     leftOffset: number
 }
 
-export interface TrashBinType {
+export interface ITrashBin {
     model: number,
     bigTrashbin: boolean,
 }
 
-export interface VehicleShopObject {
+export interface IVehicleShop {
     id: number,
     pedPosition: Vector3Rotation
     cameraPosition: Vector3
     cameraRotation: Vector3
     vehicleSpawn: Vector3
 }
-export enum GameState {
-    Loading,
-    Playing
-}
 
-export type TrashBinArray = Array<TrashBinType>;
-export type AnimList = Array<Array<string | string[]>>;
-export type VehicleShopList = Array<VehicleShopObject>;
+export interface IMinimap {
+    width: number;
+    height: number;
+    scaleX: number;
+    scaleY: number;
+    leftX: number;
+    bottomY: number;
+    rightX: number;
+    topY: number;
+}

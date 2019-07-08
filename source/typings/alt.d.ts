@@ -134,6 +134,8 @@ declare module "alt" {
         readonly scriptID: number;
         readonly vehicle: Vehicle | undefined | null;
         static all: Array<Player>;
+        isTalking: any;
+        remoteId: any;
 
         addWeaponComponent(weaponHash: number, componentHash: number): void;
         getCurrentWeapon(): number;

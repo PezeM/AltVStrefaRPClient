@@ -3,7 +3,8 @@ import * as game from 'natives';
 import Camera from 'source/src/Helpers/camera';
 import cameraRotator from 'source/src/Helpers/cameraRotator';
 import mainUi from 'source/src/Modules/Ui/mainUi.js';
-import { VehicleShopList, VehicleShopObject } from 'source/typings/strefa';
+import { IVehicleShop } from 'source/src/Constans/interfaces';
+import { VehicleShopList } from 'source/src/Constans/types';
 
 interface VehicleDataFromServer {
     VehicleModel: number;
@@ -130,7 +131,7 @@ class VehicleShop {
         return currentVehicleShopData;
     }
 
-    changeVehicle(newVehicleModel: number, vehicleShopData: VehicleShopObject) {
+    changeVehicle(newVehicleModel: number, vehicleShopData: IVehicleShop) {
         try {
             if (this.spawnedVehicle || this.spawnedVehicle !== 0) {
                 game.deleteEntity(this.spawnedVehicle as number);
@@ -147,14 +148,14 @@ class VehicleShop {
         }
     }
 
-    renderShopCamera(vehicleShopData: VehicleShopObject) {
+    renderShopCamera(vehicleShopData: IVehicleShop) {
         console.log(`Setting camera to positon ${vehicleShopData.cameraPosition}`);
         this.shopCamera = new Camera('DEFAULT_SCRIPTED_CAMERA', vehicleShopData.cameraPosition, vehicleShopData.cameraRotation, 45);
         this.shopCamera.setActive(true);
         game.renderScriptCams(true, false, 0, true, false);
     }
 
-    setupCameraRotator(vehicleShopData: VehicleShopObject) {
+    setupCameraRotator(vehicleShopData: IVehicleShop) {
         const vehiclePos = game.getEntityCoords(this.spawnedVehicle as number, true);
         cameraRotator.start(this.shopCamera as Camera, vehicleShopData.cameraPosition, vehiclePos, { x: 4.3, y: 2.3, z: 0 }, 180);
         cameraRotator.setZBound(-0.8, 1.6);
@@ -165,9 +166,9 @@ class VehicleShop {
         const newVehicleData = this.generateVehicleData(vehicleShopData);
         const shopData = this.getVehicleShopData(shopId);
 
-        this.changeVehicle(newVehicleData[0].vehicleModel, shopData as VehicleShopObject);
-        this.renderShopCamera(shopData as VehicleShopObject);
-        this.setupCameraRotator(shopData as VehicleShopObject);
+        this.changeVehicle(newVehicleData[0].vehicleModel, shopData as IVehicleShop);
+        this.renderShopCamera(shopData as IVehicleShop);
+        this.setupCameraRotator(shopData as IVehicleShop);
         mainUi.openMenu("openVehicleShop", true, true, JSON.stringify(newVehicleData), shopId);
     }
 

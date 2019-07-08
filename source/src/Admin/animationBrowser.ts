@@ -4,9 +4,11 @@ import chat from 'chat';
 import { drawText } from 'source/src/Helpers/uiHelper';
 // import { AnimList } from 'src/Admin/animationBrowser.js';
 import mainUi from 'source/src/Modules/Ui/mainUi.js';
-import { ControlsIds, AnimList } from 'source/typings/strefa';
+import { IControlsIds } from 'source/src/Constans/interfaces';
+import { AnimList } from 'source/src/Constans/types';
 
-const controlsIds: ControlsIds = {
+
+const controlsIds: IControlsIds = {
     F: 75,
     Space: 0x20,
     Left: 0x25,

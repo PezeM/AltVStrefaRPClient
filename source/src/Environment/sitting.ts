@@ -1,13 +1,13 @@
 import * as alt from 'alt';
 import * as game from 'natives';
-import { ControlsIds, SittableArray, SittableObject } from 'source/typings/strefa';
+import { IControlsIds, ISittableArray, ISittableObject } from 'source/src/Constans/interfaces';
 
-const CONTROL_IDS: ControlsIds = {
+const CONTROL_IDS: IControlsIds = {
     E: 38,
     Shift: 21
 };
 
-const SITTABLE: SittableArray = {
+const SITTABLE: ISittableArray = {
     "prop_bench_01a": { scenario: 'PROP_HUMAN_SEAT_BENCH', verticalOffset: -0.5, forwardOffset: 0.0, leftOffset: 0.0 },
     "prop_bench_01b": { scenario: 'PROP_HUMAN_SEAT_BENCH', verticalOffset: -0.5, forwardOffset: 0.0, leftOffset: 0.0 },
     "prop_bench_01c": { scenario: 'PROP_HUMAN_SEAT_BENCH', verticalOffset: -0.5, forwardOffset: 0.0, leftOffset: 0.0 },
@@ -120,7 +120,7 @@ class Sitting {
     tickInterval: number;
     isSitting: boolean;
     currentSittingObjectId: number;
-    currentSittingObject: SittableObject | null;
+    currentSittingObject: ISittableObject | null;
     lastPosition: Vector3;
     benchCoords: Vector3;
     lastChecked: number;
@@ -179,7 +179,7 @@ class Sitting {
         this.isSitting = true;
     }
 
-    tryToSit(objectId: number, objectData: SittableObject, coords: Vector3) {
+    tryToSit(objectId: number, objectData: ISittableObject, coords: Vector3) {
         this.currentSittingObjectId = objectId;
         this.currentSittingObject = objectData;
         this.lastPosition = game.getEntityCoords(localPlayer.scriptID, true);

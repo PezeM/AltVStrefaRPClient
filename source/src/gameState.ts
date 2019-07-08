@@ -1,5 +1,5 @@
 import * as alt from 'alt';
-import { GameState } from 'source/typings/strefa';
+import { GameState } from 'source/src/Constans/enums';
 
 let gameState = GameState.Loading;
 
@@ -8,7 +8,7 @@ export const getGameState = () => {
 }
 
 export function changeGameState(state: GameState) {
-    if (state == null || typeof state !== 'string') {
+    if (state == null) {
         alt.log(`Invalid type of game state. State: ${JSON.stringify(state)}`);
         return;
     }

@@ -4,9 +4,9 @@ import Maths from 'source/src/Helpers/maths';
 
 class Raycast {
     didRaycastHit: boolean;
-    entityHit: null;
+    entityHit: number | null;
     useless: null;
-    endCoords: null;
+    endCoords: Vector3 | null;
     surfaceNormal: null;
     constructor() {
         alt.log('Initialized raycast Class');

@@ -161,7 +161,7 @@ declare module "alt" {
         isVisible: boolean;
         url: string;
 
-        constructor(url: string, isOverlayVal: number | boolean, targetTexture: string);
+        constructor(url: string, isOverlayVal: number | boolean, targetTexture?: string);
         emit(evName: string, ...args: any[]): void;
         execJS(p0: string): void;
         focus(): void;

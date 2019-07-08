@@ -6,7 +6,7 @@ import { getGameState } from 'source/src/gameState';
 import { drawText, draw3DText } from 'source/src/Helpers/uiHelper';
 import Animations from 'source/src/Modules/animations';
 import ZoneNames from 'source/src/Modules/Ui/zoneNames';
-import mainUi from 'source/src/Modules/Ui/mainUi.js';
+import mainUi from 'source/src/Modules/Ui/mainUi';
 import raycast from 'source/src/Modules/CircleMenu/raycast';
 import { IControlsIds } from './Constans/interfaces';
 

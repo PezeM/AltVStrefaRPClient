@@ -1,6 +1,6 @@
 import * as game from 'natives';
 import * as alt from 'alt';
-import mainUi from 'src/Modules/Ui/mainUi.js';
+import mainUi from 'src/Modules/Ui/mainUi';
 
 const PED_POSITIONS = [
     { x: -111.9647, y: 6471.319, z: 31.6267, rot: 138.7 },

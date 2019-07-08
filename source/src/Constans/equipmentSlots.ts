@@ -2,7 +2,7 @@ interface ISlotObject {
     [key: number]: number
 }
 
-export default {
+const equipmentSlots: ISlotObject = {
     10000: -1,
     10001: 1,
     10003: 3,
@@ -22,4 +22,6 @@ export default {
     12000: 100,
     12001: 101,
     12002: 102
-} as ISlotObject;
+};
+
+export default equipmentSlots;

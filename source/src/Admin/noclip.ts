@@ -3,7 +3,7 @@ import * as game from 'natives';
 import chat from 'chat';
 import { drawText, showNotification } from 'source/src/Helpers/uiHelper';
 import Maths from 'source/src/Helpers/maths';
-import mainUi from 'source/src/Modules/Ui/mainUi.js';
+import mainUi from 'source/src/Modules/Ui/mainUi';
 
 const controlsIds = {
     W: 32,

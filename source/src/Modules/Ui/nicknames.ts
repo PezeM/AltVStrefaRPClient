@@ -1,15 +1,19 @@
 import * as alt from 'alt';
 import * as game from 'natives';
-import { requestScaleform } from 'source/src/Helpers/scaleform.js';
+import { requestScaleform } from 'source/src/Helpers/scaleform';
 import maths from 'source/src/Helpers/maths';
+import { GameState } from 'source/src/Constans/enums';
 
 const NICKNAME_VISIBLE_DISTANCE = 60;
 const NICKNAME_VISIBLE_DISTANCE_SQRT = NICKNAME_VISIBLE_DISTANCE * NICKNAME_VISIBLE_DISTANCE;
 const NICKNAME_RESERVERD_SCALEFORMS = 14;
 
-const nearestPlayers = {};
+const nearestPlayers: any = {};
 
 class NicknameController {
+    tickInterval: number;
+    hundredMsInterval: number;
+    scaleformsArray: any[];
     constructor() {
         this.tickInterval = alt.setInterval(this.render.bind(this), 0);
         this.hundredMsInterval = alt.setInterval(this.calculatePlayers.bind(this), 100);
@@ -17,8 +21,8 @@ class NicknameController {
 
         this.scaleformsArray = [];
         for (let i = 1; i < NICKNAME_RESERVERD_SCALEFORMS; i++) {
-            let numberText = (i < 10) ? (`0${i}`) : i.toString();
-            let scaleform = requestScaleform(`player_name_${numberText}`);
+            const numberText = (i < 10) ? (`0${i}`) : i.toString();
+            const scaleform = requestScaleform(`player_name_${numberText}`);
             this.scaleformsArray.push({
                 scaleform,
                 used: false
@@ -37,9 +41,9 @@ class NicknameController {
         return null;
     }
 
-    freeScaleform(scaleform) {
+    freeScaleform(scaleform: any) {
         for (let i = 0; i < this.scaleformsArray.length; i++) {
-            if (this.scaleformsArray[i].scaleform == scaleform) {
+            if (this.scaleformsArray[i].scaleform === scaleform) {
                 if (this.scaleformsArray[i].used) {
                     alt.log(`Scaleform ${i} freed`);
                     this.scaleformsArray[i].used = false;
@@ -51,24 +55,24 @@ class NicknameController {
     }
 
     render() {
-        for (let i in nearestPlayers) {
-            let p = nearestPlayers[i];
+        for (const i in nearestPlayers) {
+            const p = nearestPlayers[i];
             if (!p.scaleform) continue;
             if (!p.scaleform.isLoaded()) continue;
 
-            let pos = game.getWorldPositionOfEntityBone(p.player.scriptID, game.getEntityBoneIndexByName(p.player.scriptID, 'IK_Head'));
-            let camRot = game.getGameplayCamRot(2);
-            let isInVehicle = !!p.player.vehicle;
+            const pos = game.getWorldPositionOfEntityBone(p.player.scriptID, game.getEntityBoneIndexByName(p.player.scriptID, 'IK_Head'));
+            const camRot = game.getGameplayCamRot(2);
+            const isInVehicle = !!p.player.vehicle;
             p.scaleform.draw3D(pos.x, pos.y, pos.z + (isInVehicle ? 0.8 : 0.3), camRot.x, camRot.y, camRot.z, 0, 1, 1, 2, 1, -1, 1);
         }
     }
 
     calculatePlayers() {
         for (let i = 0; i < alt.Player.all.length; i++) {
-            if (alt.Player.all[i].scriptID == 0) continue;
+            if (alt.Player.all[i].scriptID === 0) continue;
 
-            let player = alt.Player.all[i];
-            let dist = maths.distance(player.pos, alt.getLocalPlayer().pos);
+            const player = alt.Player.all[i];
+            const dist = maths.distance(player.pos, alt.getLocalPlayer().pos);
             if (dist < NICKNAME_VISIBLE_DISTANCE_SQRT) {
                 if (player.scriptID in nearestPlayers) {
                     nearestPlayers[player.scriptID].distance = dist;
@@ -91,8 +95,8 @@ class NicknameController {
         }
 
         if (Object.keys(nearestPlayers).length > NICKNAME_RESERVERD_SCALEFORMS) {
-            let distances = [];
-            for (let i in nearestPlayers) {
+            const distances = [];
+            for (const i in nearestPlayers) {
                 distances.push(nearestPlayers[i].distance);
             }
 
@@ -102,9 +106,9 @@ class NicknameController {
                 return 0;
             });
 
-            let maxDistance = distances[NICKNAME_RESERVERD_SCALEFORMS - 1];
-            for (let i in nearestPlayers) {
-                let nearestPlayer = nearestPlayers[i];
+            const maxDistance = distances[NICKNAME_RESERVERD_SCALEFORMS - 1];
+            for (const i in nearestPlayers) {
+                const nearestPlayer = nearestPlayers[i];
                 if (nearestPlayer.distance > maxDistance) {
                     if (nearestPlayer.scaleform) {
                         this.freeScaleform(nearestPlayer.scaleform);
@@ -112,7 +116,7 @@ class NicknameController {
                     }
                 } else {
                     if (!nearestPlayer.scaleform) {
-                        let nextScaleform = this.reserveScaleform();
+                        const nextScaleform = this.reserveScaleform();
                         if (nextScaleform) {
                             alt.log(JSON.stringify(nearestPlayer, null, 4));
                             nextScaleform.SET_PLAYER_NAME(nearestPlayer.name);
@@ -122,9 +126,9 @@ class NicknameController {
                 }
             }
         } else {
-            for (let i in nearestPlayers) {
+            for (const i in nearestPlayers) {
                 if (!nearestPlayers[i].scaleform) {
-                    let nextScaleform = this.reserveScaleform();
+                    const nextScaleform = this.reserveScaleform();
                     if (nextScaleform) {
                         alt.log(JSON.stringify(nearestPlayers[i], null, 4));
                         nextScaleform.SET_PLAYER_NAME(nearestPlayers[i].name);
@@ -135,9 +139,9 @@ class NicknameController {
         }
     }
 
-    entityDestroyed(entity) {
+    entityDestroyed(entity: any) {
         if (entity instanceof alt.Player) {
-            let player = entity;
+            const player = entity;
             if (player.scriptID in nearestPlayers) {
                 delete nearestPlayers[player.scriptID];
             }
@@ -145,9 +149,9 @@ class NicknameController {
     }
 }
 
-alt.on('gameStateChanged', state => {
-    if (state === 1) {
+alt.on('gameStateChanged', (state: GameState) => {
+    if (state === GameState.Playing) {
         alt.log('Initializing nicknames controller');
         const nicknameController = new NicknameController();
-    } else { }
+    }
 })

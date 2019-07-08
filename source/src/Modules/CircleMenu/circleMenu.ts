@@ -1,7 +1,7 @@
 import * as alt from 'alt';
 import * as game from 'natives';
 import { showUiAndFreezePlayer } from 'source/src/Helpers/uiHelper';
-import mainUi from 'source/src/Modules/Ui/mainUi.js';
+import mainUi from 'source/src/Modules/Ui/mainUi';
 import Animations from 'source/src/Modules/animations.js';
 import trashBin from 'source/src/Environment/trashBin';
 import vehicleShop from 'source/src/Modules/Vehicle/vehicleShop';

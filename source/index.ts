@@ -278,8 +278,10 @@ function testStrefa() {
 
 alt.onServer('equipClothableItem', (slot: number, drawableId: number, textureId: number, paletteId: number, isProp: boolean) => {
     if (isProp) {
+        alt.log('Equiping prop');
         game.setPedPropIndex(localPlayer.scriptID, equipmentSlots[slot], drawableId, textureId, true);
     } else {
+        alt.log('Equiping normal cloth');
         game.setPedComponentVariation(localPlayer.scriptID, equipmentSlots[slot], drawableId, textureId, paletteId);
     }
 });

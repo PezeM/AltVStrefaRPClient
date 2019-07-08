@@ -1,10 +1,15 @@
 import * as alt from 'alt';
 import * as game from 'natives';
-import Animations from 'source/src/Modules/animations.js';
-let animations = new Animations();
+// import Animations from 'source/src/Modules/animations.js';
+// const animations = new Animations();
 import { showUiAndFreezePlayer, showUi } from 'source/src/Helpers/uiHelper';
 
 class MainUi {
+    tablet: null;
+    tabletView: null;
+    viewOpened: boolean;
+    viewLoaded: boolean;
+    uiView: alt.WebView;
     constructor() {
         alt.log('Initialized MenusView Class');
         this.tablet = null;
@@ -15,20 +20,20 @@ class MainUi {
         this.uiView = new alt.WebView('http://resources/AltVStrefaRPClient/client-ui/dist/index.html#', false);
     }
 
-    onClientEvent(eventName, callback) {
+    onClientEvent(eventName: string, callback: Function) {
         alt.on(eventName, callback);
     }
 
-    onUiEvent(eventName, callback) {
+    onUiEvent(eventName: string, callback: Function) {
         this.uiView.on(eventName, callback);
     }
 
-    emitUiEvent(eventName, ...args) {
+    emitUiEvent(eventName: string, ...args: any[]) {
         if (this.viewLoaded)
             this.uiView.emit(eventName, ...args);
     }
 
-    openMenu(name, hideUi, freezePlayer, ...args) {
+    openMenu(name: string, hideUi: boolean, freezePlayer: boolean, ...args: any[]) {
         if (hideUi && freezePlayer) {
             showUiAndFreezePlayer(false);
         } else if (hideUi) {
@@ -51,7 +56,8 @@ class MainUi {
 
         // let inter = alt.setInterval(() => {
         //     if (alt.isTextureExistInArchetype(game.getHashKey('xm_prop_x17_sec_panel_01'), 'script_rt_prop_x17_p_01')) {
-        //         this.tabletView = new alt.WebView("http://resources/AltVStrefaRPClient/mainUi/menus.html", game.getHashKey('xm_prop_x17_sec_panel_01'), 'script_rt_prop_x17_p_01');
+        //         this.tabletView = new alt.WebView("http://resources/AltVStrefaRPClient/mainUi/menus.html", 
+        //                                              game.getHashKey('xm_prop_x17_sec_panel_01'), 'script_rt_prop_x17_p_01');
         //         this.tabletView.emit(name, ...args);
         //         alt.clearInterval(inter);
         //         return;
@@ -63,11 +69,11 @@ class MainUi {
         // });
     }
 
-    closeMenu(showUi = true, unFreezePlayer = true, showCursor = false) {
+    closeMenu(displayUi = true, unFreezePlayer = true, showCursor = false) {
         if (showUi && unFreezePlayer) {
-            showUiAndFreezePlayer(showUi);
+            showUiAndFreezePlayer(displayUi);
         } else if (showUi) {
-            showUi(showUi)
+            showUi(displayUi)
         } else if (unFreezePlayer) {
             game.freezeEntityPosition(game.playerPedId(), true);
         }
@@ -84,7 +90,7 @@ class MainUi {
         alt.showCursor(showCursor);
     }
 
-    showCefNotification(type, title, message, duration = 5000, icon = true) {
+    showCefNotification(type: number, title: string, message: string, duration = 5000, icon = true) {
         try {
             if (typeof type === 'number' && typeof message === 'string') {
                 this.uiView.emit('showNotification', type, title, message, duration, icon);
@@ -94,10 +100,11 @@ class MainUi {
         }
     }
 
-    showConfirmModal(title, message, confirmCallback = null, cancelCallback = null, args = null) {
+    showConfirmModal(title: string, message: string, confirmCallback: string | null = null, cancelCallback: string | null = null, args = null) {
         try {
-            if (typeof message == 'string') {
-                alt.log(`[CONFIRM MODAL] ConfirmCallback = ${JSON.stringify(confirmCallback)} type = ${typeof confirmCallback} CancelCallback = ${JSON.stringify(cancelCallback)} type = ${typeof cancelCallback}`);
+            if (typeof message === 'string') {
+                alt.log(`[CONFIRM MODAL] ConfirmCallback = ${JSON.stringify(confirmCallback)} type = ${typeof confirmCallback} 
+                        CancelCallback = ${JSON.stringify(cancelCallback)} type = ${typeof cancelCallback}`);
                 this.uiView.emit('showConfirmModal', title, message, confirmCallback, cancelCallback, args);
                 this.viewOpened = true;
                 this.uiView.focus();

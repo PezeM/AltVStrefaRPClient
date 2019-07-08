@@ -2,7 +2,7 @@ import * as alt from 'alt';
 import * as game from 'natives';
 import Camera from 'source/src/Helpers/camera';
 import cameraRotator from 'source/src/Helpers/cameraRotator';
-import mainUi from 'source/src/Modules/Ui/mainUi.js';
+import mainUi from 'source/src/Modules/Ui/mainUi';
 import { IVehicleShop } from 'source/src/Constans/interfaces';
 import { VehicleShopList } from 'source/src/Constans/types';
 

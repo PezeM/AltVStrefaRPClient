@@ -1,5 +1,3 @@
-import * as alt from 'alt';
-
 class Maths {
   degToRad(deg: number) {
     return (deg * Math.PI) / 180.0;

@@ -1,6 +1,6 @@
 import * as alt from 'alt';
 import * as game from 'natives';
-import mainUi from 'src/Modules/Ui/mainUi.js';
+import mainUi from 'src/Modules/Ui/mainUi';
 import { draw3DText } from 'source/src/Helpers/uiHelper';
 import { TrashBinArray } from 'source/src/Constans/types';
 

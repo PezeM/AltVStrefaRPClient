@@ -1,6 +1,6 @@
 import * as alt from 'alt';
 import * as game from 'natives';
-import mainUi from 'source/src/Modules/Ui/mainUi.js';
+import mainUi from 'source/src/Modules/Ui/mainUi';
 const localPlayer = alt.getLocalPlayer();
 
 alt.onServer('teleportToWaypoint', () => {

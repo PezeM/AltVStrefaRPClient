@@ -27,12 +27,13 @@ export default class ZoneNames {
     getZoneNames() {
         // only do stuff if radar is enabled and visible
         if (game.isRadarEnabled() && !game.isRadarHidden()) {
+            alt.log(`Getting zone names`);
             this.minimap = getMinimapAnchor(); // Gets coords of minimap
 
             const position = alt.getLocalPlayer().pos;
-            let getStreet = game.getStreetNameAtCoord(position.x, position.y, position.z, 0, 0); // Returns array of 3 items, second one is hash
+            const getStreet = game.getStreetNameAtCoord(position.x, position.y, position.z, 0, 0); // Returns array of 3 items, second one is hash
             this.streetName = game.getStreetNameFromHashKey(getStreet[1]);
-            let zoneName = game.getNameOfZone(position.x, position.y, position.z);
+            const zoneName = game.getNameOfZone(position.x, position.y, position.z);
             if (this.zoneNamesShort.includes(zoneName)) {
                 this.realZoneName = this.zoneNames[this.zoneNamesShort.indexOf(zoneName)];
             }

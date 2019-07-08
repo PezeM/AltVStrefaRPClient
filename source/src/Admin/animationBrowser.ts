@@ -3,7 +3,7 @@ import * as game from 'natives';
 import chat from 'chat';
 import { drawText } from 'source/src/Helpers/uiHelper';
 // import { AnimList } from 'src/Admin/animationBrowser.js';
-import mainUi from 'source/src/Modules/Ui/mainUi.js';
+import mainUi from 'source/src/Modules/Ui/mainUi';
 import { IControlsIds } from 'source/src/Constans/interfaces';
 import { AnimList } from 'source/src/Constans/types';
 

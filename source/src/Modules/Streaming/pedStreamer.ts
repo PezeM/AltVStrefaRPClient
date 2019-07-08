@@ -3,7 +3,7 @@ import * as game from "natives";
 import { INetworkingEntity } from 'networking-entity';
 
 class PedStreamer {
-    peds: Map<any, any>;
+    peds: Map<number, any>;
     constructor() {
         alt.log(`Created ped streamer`);
         this.peds = new Map();

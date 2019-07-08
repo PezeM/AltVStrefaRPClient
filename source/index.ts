@@ -164,7 +164,7 @@ function test3DView() {
     }
 
     alt.log('Inside test3DView');
-    let modelHash = game.getHashKey("v_ilev_cin_screen");
+    const modelHash = game.getHashKey("v_ilev_cin_screen");
 
     // alt.log('Loading model async');
     // await loadModelAsync(function () {
@@ -182,17 +182,19 @@ function test3DView() {
     // });
 
     // alt.log('Cinema view loaded');
-    // cinemaView = new alt.WebView("https://www.youtube.com/embed/kQcB8QpjfSo?start=56&autoplay=1", game.getHashKey('v_ilev_cin_screen'), 'script_rt_cinscreen');
+    // cinemaView = new alt.WebView("https://www.youtube.com/embed/kQcB8QpjfSo?start=56&autoplay=1", 
+    //              game.getHashKey('v_ilev_cin_screen'), 'script_rt_cinscreen');
 
     alt.log('Loading model');
     loadModel(modelHash).then(() => {
         cinemaObject = game.createObject(game.getHashKey('v_ilev_cin_screen'), cinemaPosition.x, cinemaPosition.y, cinemaPosition.z - 1, true, false, false);
         alt.log('Exists ' + alt.isTextureExistInArchetype(game.getHashKey('v_ilev_cin_screen'), 'script_rt_cinscreen'));
 
-        let inter = alt.setInterval(() => {
+        const inter = alt.setInterval(() => {
             if (alt.isTextureExistInArchetype(game.getHashKey('v_ilev_cin_screen'), 'script_rt_cinscreen')) {
                 alt.log('Cinema view loaded');
-                cinemaView = new alt.WebView("https://www.youtube.com/embed/kQcB8QpjfSo?start=56&autoplay=1", game.getHashKey('v_ilev_cin_screen'), 'script_rt_cinscreen');
+                cinemaView = new alt.WebView("https://www.youtube.com/embed/kQcB8QpjfSo?start=56&autoplay=1",
+                    game.getHashKey('v_ilev_cin_screen'), 'script_rt_cinscreen');
                 // cinemaView.focus();
                 alt.clearInterval(inter);
                 return;
@@ -203,10 +205,10 @@ function test3DView() {
 }
 
 function loadModelAsync(data: any) {
-    return new Promise(function (resolve, reject) {
+    return new Promise((resolve, reject) => {
         const loader = alt.setInterval(() => {
             alt.log('Inside interval')
-            if (data() == true) {
+            if (data() === true) {
                 resolve(true);
                 alt.clearInterval(loader);
             }
@@ -232,7 +234,7 @@ function loadModel(modelHash: number) {
 }
 
 import Animations from 'src/Modules/animations';
-let animations = new Animations();
+const animations = new Animations();
 let strefaObject: number | any = null;
 
 function testStrefa() {
@@ -249,13 +251,13 @@ function testStrefa() {
         }, 10);
 
     } else {
-        let position = game.getEntityCoords(localPlayer.scriptID, true);
+        const position = game.getEntityCoords(localPlayer.scriptID, true);
         strefaObject = game.createObject(game.getHashKey('xm_prop_x17_sec_panel_01'), position.x, position.y, position.z + 0.5, true, false, false);
         alt.log('Exists ' + alt.isTextureExistInArchetype(game.getHashKey('xm_prop_x17_sec_panel_01'), 'script_rt_prop_x17_p_01'));
         game.attachEntityToEntity(strefaObject, localPlayer.scriptID, game.getPedBoneIndex(localPlayer.scriptID, 60309),
             0.035, 0.015, 0.012, 0.0, 0, 0, true, true, false, true, 1, true);
 
-        let inter = alt.setInterval(() => {
+        const inter = alt.setInterval(() => {
             if (alt.isTextureExistInArchetype(game.getHashKey('xm_prop_x17_sec_panel_01'), 'script_rt_prop_x17_p_01')) {
                 strefaView = new alt.WebView("https://forum.strefarp.pl/", game.getHashKey('xm_prop_x17_sec_panel_01'), 'script_rt_prop_x17_p_01');
                 strefaView.focus();

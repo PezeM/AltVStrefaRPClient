@@ -1,4 +1,4 @@
-export default {
+export enum PlayerConfigFlags {
     PED_FLAG_CAN_FLY_THRU_WINDSCREEN = 32,
     PED_FLAG_DIES_BY_RAGDOLL = 33,
     PED_FLAG_NO_COLLISION = 52,

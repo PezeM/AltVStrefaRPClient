@@ -88,6 +88,7 @@ export interface IAnimationsObject {
 //     id: number,
 //     position: Vector3,
 //     dimension: number,
+//     range: number,
 //     data: {
 //         [key: string]: MValue
 //     },

@@ -15,7 +15,7 @@
 		"emitDecoratorMetadata": true,
 		"preserveConstEnums": true,
 		"strictNullChecks": true,
-		"allowJs": true,
+		"allowJs": false,
 		"noImplicitAny": true,
 		"sourceMap": false,
 		"rootDir": "./",

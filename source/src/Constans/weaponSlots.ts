@@ -1,4 +1,3 @@
-
 export default {
     SLOT_UNARMED: 10,
     SLOT_KNIFE: 20,

@@ -9,6 +9,9 @@ const STREAM_DISTANCE_SQRT = STREAM_DISTANCE * STREAM_DISTANCE;
 const droppedItems = new Map();
 
 class DroppedItemsController {
+    streamedItems: Map<any, any>;
+    tickInterval: number;
+    streamInterval: number;
     constructor() {
         alt.log(`Created inventory controller streamer`);
         this.streamedItems = new Map();
@@ -18,7 +21,7 @@ class DroppedItemsController {
     }
 
     streamer() {
-        for (let item of droppedItems.values()) {
+        for (const item of droppedItems.values()) {
             const distance = math.distance(player.pos, item);
             if (distance < STREAM_DISTANCE_SQRT) {
                 if (!this.streamedItems.has(item.object)) {
@@ -32,15 +35,15 @@ class DroppedItemsController {
     }
 
     render() {
-        for (let item of this.streamedItems.values()) {
+        for (const item of this.streamedItems.values()) {
             // Draw text for each streamed items with name/quantity
             draw3DText(`~y~(${item.count}) \n ~w~${item.name}`, [item.x, item.y, item.z + 0.5], 4, [255, 255, 255, 255], 0.5);
         }
     }
 
-    isItem(id) {
-        if (this.streamedItems.has(scriptID)) {
-            alt.onServer('pickupItem', this.streamedItems.get(scriptID).id);
+    isItem(id: number) {
+        if (this.streamedItems.has(id)) {
+            alt.onServer('pickupItem', this.streamedItems.get(id).id);
             return true;
         } else return false;
     }
@@ -48,7 +51,7 @@ class DroppedItemsController {
 
 const droppedItemsController = new DroppedItemsController();
 
-alt.onServer('streamInDroppedItem', async (droppedItem) => {
+alt.onServer('streamInDroppedItem', async (droppedItem: any) => {
     alt.log(`Item ${JSON.stringify(droppedItem, null, 2)} streamed in`);
     await utils.loadModelAsync(droppedItem.model);
     const gameObject = game.createObject(game.getHashKey(droppedItem.model), droppedItem.x, droppedItem.y, droppedItem.z, true, false, false);
@@ -59,7 +62,7 @@ alt.onServer('streamInDroppedItem', async (droppedItem) => {
     alt.log(`New dropped items map = ${JSON.stringify(droppedItems, null, 2)}`);
 });
 
-alt.onServer('streamOutDroppedItem', itemId => {
+alt.onServer('streamOutDroppedItem', (itemId: number) => {
     alt.log(`Streaming out item id ${itemId}`);
 
     if (droppedItems.has(itemId)) {
@@ -72,19 +75,19 @@ alt.onServer('streamOutDroppedItem', itemId => {
     }
 });
 
-alt.onServer('streamInMultipleItems', async (items) => {
+alt.onServer('streamInMultipleItems', async (items: any[]) => {
     for (let i = 0; i < items.length; i++) {
-        const item = items[i];
-        await utils.loadModelAsync(item.model);
+        const droppedItem = items[i];
+        await utils.loadModelAsync(droppedItem.model);
         const gameObject = game.createObject(game.getHashKey(droppedItem.model), droppedItem.x, droppedItem.y, droppedItem.z, true, false, false);
         game.setEntityCollision(gameObject, false, false);
         droppedItem.object = gameObject;
-        droppedItems.push(droppedItem);
+        droppedItems.set(droppedItem.id, droppedItem);
         alt.log(`New dropped items array = ${JSON.stringify(droppedItems, null, 2)}`);
     }
 });
 
-alt.onServer('testInventory', (inventory, equippedItems) => {
+alt.onServer('testInventory', (inventory: string, equippedItems: string) => {
     alt.log(`Inventory = ${JSON.stringify(JSON.parse(inventory), null, 2)}`);
     alt.log(`Equipped items = ${JSON.stringify(JSON.parse(equippedItems), null, 2)}`);
 });

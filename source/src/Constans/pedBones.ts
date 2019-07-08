@@ -1,4 +1,3 @@
-
 export default {
     SKEL_ROOT: 0,
     FB_R_Brow_Out_000: 1356,
@@ -50,7 +49,6 @@ export default {
     PH_R_Hand: 28422,
     FB_L_Lip_Corner_000: 29868,
     SKEL_Head: 31086,
-    IK_R_Foot: 35502,
     RB_Neck_1: 35731,
     IK_L_Hand: 36029,
     SKEL_R_Calf: 36864,

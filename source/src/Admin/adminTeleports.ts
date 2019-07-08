@@ -32,9 +32,9 @@ alt.onServer('teleportToWaypoint', () => {
             }
             waypointCoords.z = positionZ;
             completedTeleporting(groundFound, waypointCoords);
-            // game.setEntityCoords(localPlayer.scriptID, waypointCoords.x, waypointCoords.y, positionZ, true, false, false, true);
             mainUi.showCefNotification(1, "Sukces", `Znaleziono pozycje poczas ${i} iteracji. PozycjaZ ${positionZ}`, 4000);
             alt.clearInterval(interval);
+            return;
         }
 
         alt.log(`Iteration ${i} current position: ${i}`);

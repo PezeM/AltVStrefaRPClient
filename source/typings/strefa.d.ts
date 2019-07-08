@@ -1,3 +1,9 @@
+import { Vector3 } from "alt";
+
+export interface Vector3Rotation extends Vector3 {
+    rot: number
+}
+
 export interface SoundTypes {
     id: number,
     soundName: string,
@@ -24,6 +30,13 @@ export interface TrashBinType {
     bigTrashbin: boolean,
 }
 
+export interface VehicleShopObject {
+    id: number,
+    pedPosition: Vector3Rotation
+    cameraPosition: Vector3
+    cameraRotation: Vector3
+    vehicleSpawn: Vector3
+}
 export enum GameState {
     Loading,
     Playing
@@ -31,3 +44,4 @@ export enum GameState {
 
 export type TrashBinArray = Array<TrashBinType>;
 export type AnimList = Array<Array<string | string[]>>;
+export type VehicleShopList = Array<VehicleShopObject>;

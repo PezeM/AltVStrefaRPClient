@@ -3,16 +3,29 @@ import * as game from 'natives';
 import { showUiAndFreezePlayer } from 'source/src/Helpers/uiHelper';
 import mainUi from 'source/src/Modules/Ui/mainUi.js';
 import Animations from 'source/src/Modules/animations.js';
-import trashBin from 'source/src/Environment/trashBin.js';
-import { vehicleShop } from 'source/src/Modules/Vehicle/vehicleShop.js';
+import trashBin from 'source/src/Environment/trashBin';
+import vehicleShop from 'source/src/Modules/Vehicle/vehicleShop';
 import banking from 'source/src/Modules/banking';
+import { EntityTypes } from 'source/src/Constans/entityTypes';
+
+enum test {
+    None,
+    Ped,
+    Vehicle,
+    Object
+}
 
 class CircleMenuController {
+    menuOpened: boolean;
+    menuName: string;
+    entityHit: number;
+    screenResolution: any[];
+    animations: Animations;
     constructor() {
         this.menuOpened = false;
         this.menuName = '';
         this.entityHit = -1;
-        this.screenResolution = game.getActiveScreenResolution(null, null);
+        this.screenResolution = game.getActiveScreenResolution(0, 0);
         this.animations = new Animations();
         mainUi.onUiEvent('circleMenuCallback', this.circleMenuCallback.bind(this));
     }
@@ -21,7 +34,7 @@ class CircleMenuController {
         return this.menuOpened;
     }
 
-    openMenu(menuName, freezePlayer = true) {
+    openMenu(menuName: string, freezePlayer = true) {
         if (this.menuOpened) return;
 
         this.menuName = menuName;
@@ -44,9 +57,9 @@ class CircleMenuController {
         alt.showCursor(false);
     }
 
-    onKeyPress(entityHit) {
+    onKeyPress(entityHit: number) {
         this.entityHit = entityHit;
-        let entityType = game.getEntityType(this.entityHit);
+        const entityType: EntityTypes = game.getEntityType(this.entityHit);
         switch (entityType) {
             case 1:
                 this.onPedFound();
@@ -61,7 +74,7 @@ class CircleMenuController {
     }
 
     onPedFound() {
-        let isPlayer = alt.Player.all.some(p => p.scriptID === this.entityHit);
+        const isPlayer = alt.Player.all.some(p => p.scriptID === this.entityHit);
         if (isPlayer) {
             alt.log('Found player');
             this.openMenu('player');
@@ -75,7 +88,7 @@ class CircleMenuController {
     }
 
     onVehicleFound() {
-        let vehicleFound = alt.Vehicle.all.some(v => v.scriptID === this.entityHit);
+        const vehicleFound = alt.Vehicle.all.some(v => v.scriptID === this.entityHit);
         if (vehicleFound) {
             alt.log(`Found vehicle`)
             this.openMenu('vehicle');
@@ -83,7 +96,7 @@ class CircleMenuController {
     }
 
     onObjectFound() {
-        let entityModel = game.getEntityModel(this.entityHit);
+        const entityModel = game.getEntityModel(this.entityHit);
         if (banking.atmModels.includes(entityModel)) {
             alt.log(`Found atm`);
             this.openMenu('atm');
@@ -93,7 +106,7 @@ class CircleMenuController {
         }
     }
 
-    circleMenuCallback(option) {
+    circleMenuCallback(option: string) {
         alt.log(`Inside circle menu callback: ${option}`);
         this.closeMenu();
         if (option === 'close') return;
@@ -120,10 +133,10 @@ class CircleMenuController {
         }
     }
 
-    vehicleCircleMenuCallback(option) {
+    vehicleCircleMenuCallback(option: string) {
         switch (option) {
             case "openVehicle":
-                var vehicle = alt.Vehicle.all.find(v => v.scriptID === this.entityHit);
+                const vehicle = alt.Vehicle.all.find(v => v.scriptID === this.entityHit);
                 alt.log(`Found vehicle ${JSON.stringify(vehicle)}`);
                 alt.emitServer("TryToOpenVehicle", vehicle);
                 break;
@@ -131,7 +144,7 @@ class CircleMenuController {
                 alt.log(`Sell vehicle`);
                 break;
             case "despawnVehicle":
-                var vehicleToDespawn = alt.Vehicle.all.find(v => v.scriptID === this.entityHit);
+                const vehicleToDespawn = alt.Vehicle.all.find(v => v.scriptID === this.entityHit);
                 if (vehicleToDespawn == null) return;
                 alt.emitServer("DespawnVehicle", vehicleToDespawn);
                 break;
@@ -145,7 +158,7 @@ class CircleMenuController {
         }
     }
 
-    bankCircleMenuCallback(option) {
+    bankCircleMenuCallback(option: string) {
         switch (option) {
             case "openBank":
                 alt.emitServer("TryToOpenBankMenu");
@@ -159,7 +172,7 @@ class CircleMenuController {
         }
     }
 
-    atmCircleMenuCallback(option) {
+    atmCircleMenuCallback(option: string) {
         switch (option) {
             case "openAtm":
                 alt.emitServer("TryToOpenBankMenu");

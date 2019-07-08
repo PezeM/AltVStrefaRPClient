@@ -101,9 +101,9 @@ declare namespace hashes {
 
 declare module "alt" {
     export class Vector3 {
-        x: Number;
-        y: Number;
-        z: Number;
+        x: number;
+        y: number;
+        z: number;
 
         constructor(x: number, y: number, z: number);
     }

@@ -23,5 +23,3 @@ export default {
     12001: 101,
     12002: 102
 } as ISlotObject;
-
-

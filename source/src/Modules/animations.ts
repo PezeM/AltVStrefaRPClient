@@ -1,7 +1,8 @@
 import * as game from 'natives';
 import * as alt from 'alt';
+import { IAnimationsObject, IAnimationWithProp, IAnimationInfo } from 'source/src/Constans/interfaces';
 
-const animations = {
+const animations: IAnimationsObject = {
     // Tance
     "dance1": {
         dict: "mp_safehouse",
@@ -210,16 +211,22 @@ const animations = {
 };
 
 export default class Animations {
+    localPlayer: alt.Player;
+    currentAnimation: IAnimationWithProp | IAnimationInfo | null;
+    waitTime: number;
+    propID: number;
+    propModel: string;
+    holdingProp: boolean;
     constructor() {
         alt.log('Animations class initialized');
         this.localPlayer = alt.getLocalPlayer();
         this.currentAnimation = null;
         this.waitTime = 600;
-        this.propID = null;
-        this.propModel = null;
+        this.propID = -1;
+        this.propModel = '';
         this.holdingProp = false;
     }
-    findAnimation(animationName) {
+    findAnimation(animationName: string) {
         alt.log('Looking for animation named ' + animationName);
         if (animations[animationName]) {
             this.setupAnimation(animations[animationName]);
@@ -227,7 +234,7 @@ export default class Animations {
             alt.log(`Nie znaleziono animacji z nazwą ${animationName}.`);
         }
     }
-    setupAnimation(animation) {
+    setupAnimation(animation: IAnimationInfo | IAnimationWithProp) {
         // if (this.holdingProp) {
         //     alt.log(`Deleting prop with id ${this.propID}`);
         //     game.detachEntity(this.propID, true, true);
@@ -251,26 +258,26 @@ export default class Animations {
             this.loadAnimationAndPlay(animation);
         }
     }
-    loadAnimationAndPlay(animation) {
+    loadAnimationAndPlay(animation: IAnimationInfo | IAnimationWithProp) {
         this.loadAnimDict(animation.dict).then(() => {
             alt.log('Anim dict found');
             this.playAnimation(animation);
         });
     }
-    playAnimation(animation) {
+    playAnimation(animation: IAnimationInfo | IAnimationWithProp) {
         this.currentAnimation = animation;
         if (animation.hasOwnProperty("prop")) {
             alt.log(`Playing prop animation`);
-            this.playPropAnimation(animation);
+            this.playPropAnimation(animation as IAnimationWithProp);
         } else {
             alt.log(`Playing normal animation`);
             game.taskPlayAnim(this.localPlayer.scriptID, animation.dict, animation.name, 8.0, 1.0, -1, animation.flag, 0, false, false, false);
         }
     }
-    playPropAnimation(animation) {
+    playPropAnimation(animation: IAnimationWithProp) {
         this.holdingProp = true;
         this.propModel = animation.prop.name;
-        var position = game.getEntityCoords(this.localPlayer.scriptID, true);
+        const position = this.localPlayer.pos;
         this.propID = game.createObject(game.getHashKey(this.propModel),
             position.x, position.y, position.z + animation.prop.extraZPosition, true, false, false);
         alt.log(`Created prop with id: ${this.propID}`);
@@ -279,7 +286,7 @@ export default class Animations {
             animation.prop.rotation.x, animation.prop.rotation.y, animation.prop.rotation.z, true, true, false, true, 1, true);
         game.taskPlayAnim(this.localPlayer.scriptID, animation.dict, animation.name, 3.0, -8, -1, animation.flag, 0, false, false, false);
 
-        let syncObject = {
+        const syncObject = {
             // objectModel: game.getHashKey(this.propModel),
             objectModel: this.propModel,
             boneIndex: animation.prop.bone,
@@ -294,21 +301,27 @@ export default class Animations {
 
         alt.emitServer('SyncObject', JSON.stringify(syncObject));
     }
-    stopAnimation(animation, cb = null) {
-        if (animation.hasOwnProperty("prop")) {
+
+    isAnimationWithProp(animation: IAnimationInfo | IAnimationWithProp): animation is IAnimationWithProp {
+        return (animation as IAnimationWithProp).exitFlag !== undefined;
+    }
+
+    stopAnimation(animation: IAnimationInfo | IAnimationWithProp, cb: Function | null = null) {
+        if (this.isAnimationWithProp(animation)) {
             this.stopPropAnimation(animation, cb);
         } else {
             this.stopNormalAnimation(animation, cb);
         }
     }
-    stopNormalAnimation(animation, cb = null) {
+    stopNormalAnimation(animation: IAnimationInfo | IAnimationWithProp, cb: Function | null = null) {
         alt.log(`Stoping normal animation`);
-        if (animation.hasOwnProperty("waitTime")) {
+        if (this.isAnimationWithProp(animation)) {
             this.waitTime = animation.waitTime;
         }
+        const exitFlag = this.isAnimationWithProp(animation) ? animation.exitFlag : animation.flag;
 
         game.taskPlayAnim(this.localPlayer.scriptID, animation.dict, animation.exitAnim, 8.0, 1.0, -1,
-            animation.exitFlag ? animation.exitFlag : animation.flag, 0, false, false, false);
+            exitFlag, 0, false, false, false);
         alt.setTimeout(() => {
             game.clearPedSecondaryTask(this.localPlayer.scriptID);
             this.currentAnimation = null;
@@ -318,7 +331,7 @@ export default class Animations {
         }, this.waitTime);
 
     }
-    stopPropAnimation(animation, cb = null) {
+    stopPropAnimation(animation: IAnimationWithProp, cb: Function | null = null) {
         if (game.doesEntityExist(this.propID) || this.holdingProp) {
             this.holdingProp = false;
             game.detachEntity(this.propID, true, true);
@@ -339,7 +352,7 @@ export default class Animations {
             this.clearPropState();
         }
     }
-    loadAnimDict(animDict) {
+    loadAnimDict(animDict: string) {
         return new Promise((resolve, reject) => {
             alt.log('Loading anim dict');
             game.requestAnimDict(animDict);
@@ -357,8 +370,8 @@ export default class Animations {
         });
     }
     clearPropState() {
-        this.propID = null;
-        this.propModel = null;
+        this.propID = 0;
+        this.propModel = '';
         this.holdingProp = false;
     }
 }

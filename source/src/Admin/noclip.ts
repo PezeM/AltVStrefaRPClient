@@ -25,7 +25,7 @@ const fly = {
     speeds: [0.01, 0.1, 0.25, 0.5, 1, 5]
 };
 
-let direction: null | Vector3 = {
+let direction: Vector3 = {
     x: 0,
     y: 0,
     z: 0

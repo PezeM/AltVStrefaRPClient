@@ -48,3 +48,26 @@ export interface IMinimap {
     rightX: number;
     topY: number;
 }
+
+export interface IAnimationInfo {
+    dict: string;
+    name: string;
+    flag: number;
+    exitAnim: string;
+}
+
+export interface IAnimationWithProp extends IAnimationInfo {
+    exitFlag: number;
+    waitTime: number;
+    prop: {
+        name: string,
+        bone: number,
+        position: Vector3,
+        rotation: Vector3,
+        extraZPosition: number
+    }
+}
+
+export interface IAnimationsObject {
+    [key: string]: IAnimationInfo | IAnimationWithProp
+}

@@ -17,7 +17,7 @@ class InventoryController {
             // Make call to server to get current inventory
             await this.getInventoryFromServer((inventory: string, equippedItems: string) => {
                 alt.log(`Got inventory from server`);
-                // alt.log(`Inventory is ${JSON.stringify(JSON.parse(inventory), null, 4)}`);
+                alt.log(`Inventory is ${JSON.stringify(JSON.parse(inventory), null, 4)}`);
                 // alt.log(`Equipped items is ${JSON.stringify(JSON.parse(equippedItems), null, 4)}`);
                 // this.cachedInventory.setItems(JSON.parse(inventory));
                 // this.cachedInventory.setEquippedItems(JSON.parse(equippedItems));
@@ -27,7 +27,7 @@ class InventoryController {
     }
 
     async getInventoryFromServer(callback: (...result: any) => void) {
-        await serverCallbacks.callback("populatePlayerInventory", "populatePlayerInventory", undefined, (...result: any) => {
+        await serverCallbacks.callback("GetPlayerInventory", "populatePlayerInventory", undefined, (...result: any) => {
             alt.log(`Inside testcallback with result ${JSON.stringify(result)}`);
             callback(...result);
         });

@@ -110,6 +110,12 @@ export default new Router({
             ],
         },
         {
+            path: '/inventory',
+            name: 'inventory',
+            component: () => import('./views/Inventory.vue'),
+            props: true,
+        },
+        {
             path: '/empty',
             name: 'empty',
             component: () => import('./views/Empty.vue'),

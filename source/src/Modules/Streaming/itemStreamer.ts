@@ -14,18 +14,18 @@ interface INetworkingItem extends INetworkingEntity {
 }
 
 class ItemStreamer {
-    items: Map<number, INetworkingItem>;
+    streamedItems: Map<number, INetworkingItem>;
     tickInterval: number;
     constructor() {
         alt.log(`Created item streamer`);
-        this.items = new Map();
+        this.streamedItems = new Map();
         this.tickInterval = alt.setInterval(this.render.bind(this), 0);
         alt.on('disconnect', this.onDisconnect.bind(this));
     }
 
     render() {
-        for (const item of this.items.values()) {
-            draw3DText(`~y~(${item.item.count}) \n ~w~${item.item.name}`, [item.position.x, item.position.y, item.position.z + 0.5],
+        for (const item of this.streamedItems.values()) {
+            draw3DText(`~y~(${item.item.count}) \n ~w~${item.item.name}`, [item.position.x, item.position.y, item.position.z],
                 4, [255, 255, 255, 255], 0.5);
         }
     }
@@ -42,14 +42,14 @@ class ItemStreamer {
             name: entity.data.name.stringValue,
             count: entity.data.count.intValue
         }
-        this.items.set(entity.id, entity as INetworkingItem);
+        this.streamedItems.set(entity.id, entity as INetworkingItem);
     }
 
     onStreamOut(entity: INetworkingEntity) {
-        if (this.items.has(entity.id)) {
+        if (this.streamedItems.has(entity.id)) {
             alt.log(`Deleting item`);
-            game.deleteEntity((this.items.get(entity.id) as INetworkingItem).item.object);
-            this.items.delete(entity.id);
+            game.deleteEntity((this.streamedItems.get(entity.id) as INetworkingItem).item.object);
+            this.streamedItems.delete(entity.id);
         }
     }
 
@@ -59,7 +59,7 @@ class ItemStreamer {
     }
 
     onDisconnect() {
-        for (const item of this.items.values()) {
+        for (const item of this.streamedItems.values()) {
             game.deleteEntity(item.item.object);
         }
     }

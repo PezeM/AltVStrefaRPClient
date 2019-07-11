@@ -1,35 +1,6 @@
 <template>
-  <div id="inventory">
+  <div id="inventory" v-on:keyup.esc="closeInventory()" v-on:keyup.i="closeInventory()">
     <div class="container-fluid h-100 w-100">
-      <!-- <div id="GridLayout" class="GridLayout">
-        <div class="BlockLayout BlockLayout--typeGrid" tabindex="0">
-          <div class="BlockWrapper">
-            <a class="Block Block--isDraggable" title="Click to drag">
-              <div class="BlockContent">
-                <h3>No eldo</h3>
-              </div>
-            </a>
-          </div>
-        </div>
-        <div class="BlockLayout BlockLayout--typeGrid" tabindex="0">
-          <div class="BlockWrapper">
-            <a class="Block Block--isDraggable" title="Click to drag">
-              <div class="BlockContent">
-                <h3>No eldo 2</h3>
-              </div>
-            </a>
-          </div>
-        </div>
-        <div class="BlockLayout BlockLayout--typeGrid" tabindex="0">
-          <div class="BlockWrapper">
-            <a class="Block" title="Click to drag">
-              <div class="BlockContent">
-                <h3>No eldo 3</h3>
-              </div>
-            </a>
-          </div>
-        </div>
-      </div>-->
       <div class="row align-items-end h-100">
         <div class="col-3">Tutaj bedzie equipped inventory</div>
         <div class="col-9">
@@ -90,11 +61,9 @@ export default {
     mounted() {
         const containerSelector = '.inventory-container';
         const containers = this.$el.querySelectorAll(containerSelector);
-        console.log(containers);
 
         const swappable = new Swappable(containers, {
             draggable: '.isDraggable',
-            distance: 50000,
             delay: 100,
             mirror: {
                 appendTo: containerSelector,
@@ -119,7 +88,7 @@ export default {
             playerInventoryMaxSlots: 30,
             withItem: 'withItem',
             swappingObject: null,
-            swappingItem: null,
+            selectedItem: null,
             itemToSwap: null,
             newSlotId: -1,
             action: null,
@@ -238,9 +207,9 @@ export default {
     methods: {
         onSwappableStart(event) {
             this.swappingObject = event.dragEvent.data.originalSource;
-            this.swappingItem = this.getItemById(this.swappingObject.dataset.itemid);
-            console.log(`Swapping item = ${JSON.stringify(this.swappingItem, null, 4)}`);
-            if (!this.isSwappable(this.swappingObject._prevClass) || this.swappingItem == null) {
+            this.selectedItem = this.getItemById(this.swappingObject.dataset.itemid);
+            console.log(`Swapping item = ${JSON.stringify(this.selectedItem, null, 4)}`);
+            if (!this.isSwappable(this.swappingObject._prevClass) || this.selectedItem == null) {
                 event.cancel();
                 console.log(`Event canceled`);
             }
@@ -259,7 +228,7 @@ export default {
                 // Have to get stack size and stack it to max
                 // Rest is another item which we have to copy and save to database
                 // And return to next slot
-                if (this.swappingItem.Name == this.itemToSwap.Name && this.swappingItem.StackSize > 1) {
+                if (this.selectedItem.Name == this.itemToSwap.Name && this.selectedItem.StackSize > 1) {
                     console.log(`We should stack`);
                     this.action = 'stack';
                     event.cancel();
@@ -271,7 +240,7 @@ export default {
             // console.log(JSON.stringify(event, null, 4));
         },
         onSwappableSwapped(event) {
-            if (this.swappingItem == null) return;
+            if (this.selectedItem == null) return;
             // this.newSlotId = event.data.dragEvent.originalSource.parentElement.outerHTML;
             // console.log(`NewSlotId = ${this.newSlotId}`);
             console.log(event);
@@ -293,30 +262,34 @@ export default {
                     break;
             }
             this.swappingObject = null;
-            this.swappingItem = null;
+            this.selectedItem = null;
             this.action = null;
             // this.newSlotId = -1;
         },
         onItemStack() {
-            let amountOfItemsToStack = this.swappingItem.Quantity;
+            let amountOfItemsToStack = this.selectedItem.Quantity;
             const maxQuantity = this.itemToSwap.StackSize - this.itemToSwap.Quantity;
             const toAdd = Math.min(amountOfItemsToStack, maxQuantity);
             if (toAdd <= 0) return;
             this.itemToSwap.Quantity += toAdd;
-            this.swappingItem.Quantity -= toAdd;
-            if (this.swappingItem.Quantity <= 0) {
+            this.selectedItem.Quantity -= toAdd;
+            if (this.selectedItem.Quantity <= 0) {
                 console.log(`Should delete item`);
-                this.items = this.items.filter(i => i.Id != this.swappingItem.Id);
+                this.items = this.items.filter(i => i.Id != this.selectedItem.Id);
             }
             amountOfItemsToStack -= toAdd;
-            alt.emit('inventoryStackItems', this.itemToSwap.Id, this.swappingItem.Id);
-            this.addItemToLastAffectedItems(this.itemToSwap, this.swappingItem);
+            alt.emit('inventoryStackItems', this.itemToSwap.Id, this.selectedItem.Id);
+            this.addItemToLastAffectedItems(this.itemToSwap, this.selectedItem);
         },
         onItemSwap() {
             // const temporarySlot = this.itemToSwap.SlotId;
-            // this.itemToSwap.SlotId = this.swappingItem.SlotId;
-            // this.swappingItem.SlotId = temporarySlot;
-            // alt.emit('inventorySwapItems', this.itemToSwap.Id, this.itemToSwap.SlotId, this.swappingItem.Id, this.swappingItem.SlotId);
+            // this.itemToSwap.SlotId = this.selectedItem.SlotId;
+            // this.selectedItem.SlotId = temporarySlot;
+            // alt.emit('inventorySwapItems', this.itemToSwap.Id, this.itemToSwap.SlotId, this.selectedItem.Id, this.selectedItem.SlotId);
+        },
+        closeInventory() {
+            console.log(`Closing inventory`);
+            alt.emit('closeInventory');
         },
         isSwappable(item) {
             return item.includes(this.withItem);
@@ -345,7 +318,7 @@ export default {
 
 <style>
 #inventory {
-    /* background-color: rgba(0, 0, 0, 0.561); */
+    background-color: rgba(0, 0, 0, 0.561);
 }
 
 .inventory-container {
@@ -362,6 +335,7 @@ export default {
     width: 96px;
     height: 96px;
     background-color: rgba(0, 0, 0, 0.15);
+    color: #f3f3f3;
     border: 1px solid white;
 }
 

@@ -76,7 +76,7 @@ alt.on('update', () => {
     }
 });
 
-alt.on('keydown', async (key: number) => {
+alt.on('keydown', (key: number) => {
     if (chat.isOpen() || mainUi.viewOpened || gameState.getGameState() === 0) return;
 
     switch (key) {
@@ -108,7 +108,7 @@ alt.on('keydown', async (key: number) => {
         case keycodes.I_KEY:
             if (new Date().getTime() - lastKeyPressedTime < 500) return;
             lastKeyPressedTime = new Date().getTime();
-            await inventoryController.openInventory();
+            inventoryController.openInventory();
             break;
     }
 });

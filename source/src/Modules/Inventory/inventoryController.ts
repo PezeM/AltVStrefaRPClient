@@ -13,7 +13,6 @@ class InventoryController {
     }
 
     openInventory() {
-        const startTime = Date.now();
         if (inventoryCache.cachedItems !== null && inventoryCache.cachedEquippedItems !== null) {
             alt.log(`Opened inventory`);
             alt.log(`Items: ${JSON.stringify(inventoryCache.cachedItems, null, 4)}`);
@@ -26,7 +25,6 @@ class InventoryController {
                 inventoryCache.setItems(JSON.parse(inventory));
                 // this.cachedInventory.setEquippedItems(JSON.parse(equippedItems));
                 this.populateUi();
-                alt.log(`Finished opening inventory method in ${Date.now() - startTime}ms`);
             });
         }
     }

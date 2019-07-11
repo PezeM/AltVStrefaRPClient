@@ -8,12 +8,12 @@
             <div class="col">
               <div class="row">
                 <div class="inventory-container">
-                  <div class="row m-0">
+                  <div class="row m-0 p-1">
                     <div
                       v-for="(n, index) in playerInventoryMaxSlots"
                       v-bind:key="index"
                       v-bind:id="index"
-                      class="col-lg-2 col-md-4 inventory-slot p-1"
+                      class="col-lg-2 col-md-4 inventory-slot"
                     >
                       <div
                         class="slot-content isDraggable"
@@ -89,6 +89,7 @@ export default {
             withItem: 'withItem',
             swappingObject: null,
             selectedItem: null,
+            lastDragOverItem: null,
             itemToSwap: null,
             newSlotId: -1,
             action: null,
@@ -207,17 +208,21 @@ export default {
     methods: {
         onSwappableStart(event) {
             this.swappingObject = event.dragEvent.data.originalSource;
+            event.dragEvent.data.source.classList.add('on-drag-start');
             this.selectedItem = this.getItemById(this.swappingObject.dataset.itemid);
-            console.log(`Swapping item = ${JSON.stringify(this.selectedItem, null, 4)}`);
+            // console.log(`Swapping item = ${JSON.stringify(this.selectedItem, null, 4)}`);
             if (!this.isSwappable(this.swappingObject._prevClass) || this.selectedItem == null) {
                 event.cancel();
                 console.log(`Event canceled`);
             }
+            console.log(event);
             console.log(`Swappable started ${JSON.stringify(event, null, 4)}`);
             console.log(`Swapping object ${JSON.stringify(this.swappingObject, null, 4)}`);
         },
         onSwappableSwap(event) {
             if (this.swappingObject == null) return;
+            applyHoverEffect(event);
+
             this.itemToSwap = this.getItemById(event.dragEvent.data.over.dataset.itemid);
             if (this.itemToSwap == null) {
                 this.action = 'swap';
@@ -312,31 +317,50 @@ export default {
             }
             return null;
         },
+        applyHoverEffect(event) {
+            if (this.lastDragOverItem) {
+                this.lastDragOverItem.classList.remove('on-drag-enter');
+            }
+            this.lastDragOverItem = event.data.over;
+            this.lastDragOverItem.classList.add('on-drag-enter');
+        },
     },
 };
 </script>
 
 <style>
 #inventory {
-    /* background-color: rgba(0, 0, 0, 0.561); */
+    background-image: url('../assets/example-image.jpg');
+    background-color: rgba(0, 0, 0, 0.561);
+    padding-bottom: 2em;
 }
 
 .inventory-container {
-    min-height: 50vh;
+    min-height: 45vh;
     /* min-width: 20rem; */
     max-height: 50vh;
     /* max-width: 35rem; */
     overflow-y: auto;
-    background-color: rgba(0, 0, 0, 0.15);
-    border: 3px solid white;
+    background-color: rgba(0, 0, 0, 0.6);
 }
 
 .inventory-slot {
     width: 96px;
     height: 96px;
-    background-color: rgba(0, 0, 0, 0.15);
-    /* color: #f3f3f3; */
-    border: 1px solid white;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #f3f3f3;
+    padding: 0.25rem;
+    border: 1px solid transparent;
+    background-clip: padding-box;
+    /* border: 1px solid transparent; */
+}
+
+.on-drag-start {
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.on-drag-enter {
+    border: 1px solid rgba(255, 255, 255, 0.425);
 }
 
 .slot-content {

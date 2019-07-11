@@ -331,7 +331,7 @@ export default {
 
 <style>
 #inventory {
-    background-image: url('../assets/example-image.jpg');
+    /* background-image: url('../assets/example-image.jpg'); */
     background-color: rgba(0, 0, 0, 0.561);
     padding-bottom: 2em;
 }

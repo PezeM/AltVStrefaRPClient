@@ -58,7 +58,7 @@ class InventoryCache {
         if (itemToSwap == null || selectedItem == null) return;
         selectedItem.SlotId = selectedItemSlotId;
         itemToSwap.SlotId = itemToSwapSlotId;
-        alt.log(`Swapped slot of item ${selectedItemId} to ${selectedItemSlotId} and ${itemToSwap} to ${itemToSwapSlotId}`);
+        alt.log(`Swapped slot of item ${selectedItemId} to ${selectedItemSlotId} and ${itemToSwapId} to ${itemToSwapSlotId}`);
     }
 }
 

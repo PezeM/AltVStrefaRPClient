@@ -6,9 +6,10 @@ import mainUi from 'source/src/Modules/Ui/mainUi';
 
 class InventoryController {
     constructor() {
-
         mainUi.onUiEvent('closeInventory', this.closeInventory);
         mainUi.onUiEvent('inventoryStackItems', this.inventoryStackItems);
+        mainUi.onUiEvent('inventoryMoveItem', this.inventoryMoveItem);
+        mainUi.onUiEvent('inventorySwapItems', this.inventorySwapItems);
     }
 
     openInventory() {
@@ -52,6 +53,18 @@ class InventoryController {
         } catch (error) {
             alt.log(`Error stacking items: ${error}`);
         }
+    }
+
+    inventoryMoveItem(selectedItemId: number, selectedItemSlotId: number) {
+        // Move item to empty slot
+        alt.emitServer('inventoryMoveItem', selectedItemId, selectedItemSlotId);
+        inventoryCache.moveItem(selectedItemId, selectedItemSlotId);
+    }
+
+    inventorySwapItems(selectedItemId: number, selectedItemSlotId: number, itemToSwapId: number, itemToSwapSlotId: number) {
+        // Swap items slots
+        alt.emitServer('inventorySwapItems', selectedItemId, selectedItemSlotId, itemToSwapId, itemToSwapSlotId);
+        inventoryCache.swapItems(selectedItemId, selectedItemSlotId, itemToSwapId, itemToSwapSlotId);
     }
 
     closeInventory() {

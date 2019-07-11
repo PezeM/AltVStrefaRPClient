@@ -42,6 +42,24 @@ class InventoryCache {
             this.cachedItems = this.cachedItems.filter(i => i.Id !== itemToStackFrom.Id);
         }
     }
+
+    moveItem(selectedItemId: number, selectedItemSlotId: number) {
+        if (this.cachedItems == null) return;
+        const itemToMove = this.getItemWithId(selectedItemId);
+        if (itemToMove == null) return;
+        itemToMove.SlotId = selectedItemSlotId;
+        alt.log(`Moved item ${selectedItemId} to ${selectedItemSlotId}`);
+    }
+
+    swapItems(selectedItemId: number, selectedItemSlotId: number, itemToSwapId: number, itemToSwapSlotId: number) {
+        if (this.cachedItems == null) return;
+        const selectedItem = this.getItemWithId(selectedItemId);
+        const itemToSwap = this.getItemWithId(itemToSwapId);
+        if (itemToSwap == null || selectedItem == null) return;
+        selectedItem.SlotId = selectedItemSlotId;
+        itemToSwap.SlotId = itemToSwapSlotId;
+        alt.log(`Swapped slot of item ${selectedItemId} to ${selectedItemSlotId} and ${itemToSwap} to ${itemToSwapSlotId}`);
+    }
 }
 
 const inventoryCache = new InventoryCache();

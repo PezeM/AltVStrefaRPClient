@@ -74,13 +74,13 @@ export default {
 
         swappable.on('swappable:start', this.onSwappableStart.bind(this));
         swappable.on('swappable:swap', this.onSwappableSwap.bind(this));
-        swappable.on('swappable:swapped', this.onSwappableSwapped.bind(this));
         swappable.on('swappable:stop', this.onSwappableStop.bind(this));
-        swappable.on('drag:stop', event => {
-            console.log(event);
-            this.newSlotId = event.data.originalSource.parentElement;
-            console.log(this.newSlotId);
-        });
+        // swappable.on('drag:over', event => {
+        //     console.log('drag:over');
+        //     console.log(event);
+        //     this.newSlotId = Number(event.data.over.parentNode.id);
+        //     console.log(`New slot id = ${this.newSlotId}`);
+        // });
     },
     data() {
         return {
@@ -221,6 +221,7 @@ export default {
             this.itemToSwap = this.getItemById(event.dragEvent.data.over.dataset.itemid);
             if (this.itemToSwap == null) {
                 this.action = 'swap';
+                this.newSlotId = Number(event.data.over.parentNode.id);
                 // There was no item in that cell, it means we should drop it there
             } else {
                 // There is item in that cell.
@@ -231,23 +232,15 @@ export default {
                 if (this.selectedItem.Name == this.itemToSwap.Name && this.selectedItem.StackSize > 1) {
                     console.log(`We should stack`);
                     this.action = 'stack';
-                    event.cancel();
                 } else {
                     this.action = 'swap';
                 }
             }
             console.log('swappable:swap');
-            // console.log(JSON.stringify(event, null, 4));
-        },
-        onSwappableSwapped(event) {
-            if (this.selectedItem == null) return;
-            // this.newSlotId = event.data.dragEvent.originalSource.parentElement.outerHTML;
-            // console.log(`NewSlotId = ${this.newSlotId}`);
             console.log(event);
-            console.log('swappable:swapped');
+            event.cancel();
         },
         onSwappableStop(event) {
-            // Send data
             console.log('swappable:stop');
             switch (this.action) {
                 case 'stack':
@@ -264,7 +257,7 @@ export default {
             this.swappingObject = null;
             this.selectedItem = null;
             this.action = null;
-            // this.newSlotId = -1;
+            this.newSlotId = -1;
         },
         onItemStack() {
             let amountOfItemsToStack = this.selectedItem.Quantity;
@@ -282,10 +275,17 @@ export default {
             this.addItemToLastAffectedItems(this.itemToSwap, this.selectedItem);
         },
         onItemSwap() {
-            // const temporarySlot = this.itemToSwap.SlotId;
-            // this.itemToSwap.SlotId = this.selectedItem.SlotId;
-            // this.selectedItem.SlotId = temporarySlot;
-            // alt.emit('inventorySwapItems', this.itemToSwap.Id, this.itemToSwap.SlotId, this.selectedItem.Id, this.selectedItem.SlotId);
+            if (this.itemToSwap != null) {
+                // Swapping item with item
+                const temporarySlot = this.itemToSwap.SlotId;
+                this.itemToSwap.SlotId = this.selectedItem.SlotId;
+                this.selectedItem.SlotId = temporarySlot;
+                alt.emit('inventorySwapItems', this.selectedItem.Id, this.selectedItem.SlotId, this.itemToSwap.Id, this.itemToSwap.SlotId);
+            } else if (this.newSlotId > -1) {
+                // Moving item to empty slot
+                this.selectedItem.SlotId = this.newSlotId;
+                alt.emit('inventoryMoveItem', this.selectedItem.Id, this.selectedItem.SlotId);
+            }
         },
         closeInventory() {
             console.log(`Closing inventory`);
@@ -318,14 +318,14 @@ export default {
 
 <style>
 #inventory {
-    background-color: rgba(0, 0, 0, 0.561);
+    /* background-color: rgba(0, 0, 0, 0.561); */
 }
 
 .inventory-container {
-    min-height: 35vh;
-    min-width: 20rem;
-    max-height: 40vh;
-    max-width: 35rem;
+    min-height: 50vh;
+    /* min-width: 20rem; */
+    max-height: 50vh;
+    /* max-width: 35rem; */
     overflow-y: auto;
     background-color: rgba(0, 0, 0, 0.15);
     border: 3px solid white;
@@ -335,7 +335,7 @@ export default {
     width: 96px;
     height: 96px;
     background-color: rgba(0, 0, 0, 0.15);
-    color: #f3f3f3;
+    /* color: #f3f3f3; */
     border: 1px solid white;
 }
 

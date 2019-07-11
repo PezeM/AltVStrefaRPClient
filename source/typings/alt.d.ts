@@ -225,7 +225,14 @@ declare module "alt" {
         constructor(x: number, y: number, z: number);
     }
 
-
+	export class LocalStorage {
+        static get(): LocalStorage;
+        get(key: string): any;
+        set(key: string, value: any): void;
+        delete(key: string): void;
+        deleteAll(): void;
+        save(): void;
+	}
 
     /**
       type: 'function',

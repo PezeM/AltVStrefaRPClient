@@ -76,6 +76,11 @@ alt.on('openFractionMenu', (fractionType, fractionDatas) => {
     }
 });
 
+alt.on('openPlayerInventory', inventoryData => {
+    console.log(`Inventory data on UI ${inventoryData}`);
+    router.push('/inventory');
+});
+
 alt.on('closeMenu', () => {
     console.log('Changing the router to emtpy');
     router.push('/empty');

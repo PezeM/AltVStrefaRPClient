@@ -64,7 +64,7 @@ export default {
 
         const swappable = new Swappable(containers, {
             draggable: '.isDraggable',
-            delay: 100,
+            delay: 150,
             mirror: {
                 appendTo: containerSelector,
                 constrainDimensions: true,
@@ -221,7 +221,7 @@ export default {
         },
         onSwappableSwap(event) {
             if (this.swappingObject == null) return;
-            applyHoverEffect(event);
+            this.applyHoverEffect(event);
 
             this.itemToSwap = this.getItemById(event.dragEvent.data.over.dataset.itemid);
             if (this.itemToSwap == null) {
@@ -263,6 +263,7 @@ export default {
             this.selectedItem = null;
             this.action = null;
             this.newSlotId = -1;
+            if (this.lastDragOverItem) this.lastDragOverItem.classList.remove('on-drag-enter');
         },
         onItemStack() {
             let amountOfItemsToStack = this.selectedItem.Quantity;
@@ -349,10 +350,11 @@ export default {
     height: 96px;
     background-color: rgba(0, 0, 0, 0.5);
     color: #f3f3f3;
-    padding: 0.25rem;
+    padding: 0rem;
     border: 1px solid transparent;
     background-clip: padding-box;
     /* border: 1px solid transparent; */
+    transition: 0.5s;
 }
 
 .on-drag-start {
@@ -360,7 +362,9 @@ export default {
 }
 
 .on-drag-enter {
-    border: 1px solid rgba(255, 255, 255, 0.425);
+    /* border: 1px solid rgba(255, 255, 255, 0.425); */
+    opacity: 0.6;
+    transform: scale(0.9);
 }
 
 .slot-content {

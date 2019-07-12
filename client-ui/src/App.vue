@@ -76,9 +76,12 @@ alt.on('openFractionMenu', (fractionType, fractionDatas) => {
     }
 });
 
-alt.on('openPlayerInventory', inventoryData => {
-    console.log(`Inventory data on UI ${inventoryData}`);
-    router.push('/inventory');
+alt.on('openPlayerInventory', (inventoryData, equippedItems, otherInventory) => {
+    console.log(`Inventory data on UI ${inventoryData} equippedItems ${equippedItems} otherInventory ${otherInventory}`);
+    router.push({
+        name: 'inventory',
+        params: { initialItems: inventoryData, initialEquippedItems: equippedItems, initialExtraInventory: otherInventory },
+    });
 });
 
 alt.on('closeMenu', () => {

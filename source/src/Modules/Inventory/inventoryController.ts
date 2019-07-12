@@ -21,17 +21,15 @@ class InventoryController {
         } else {
             this.getInventoryFromServer((inventory: string, equippedItems: string) => {
                 alt.log(`Got inventory from server`);
-                // alt.log(`Inventory is ${JSON.stringify(JSON.parse(inventory), null, 4)}`);
-                // alt.log(`Equipped items is ${JSON.stringify(JSON.parse(equippedItems), null, 4)}`);
                 inventoryCache.setItems(JSON.parse(inventory));
-                // this.cachedInventory.setEquippedItems(JSON.parse(equippedItems));
-                this.populateUi();
+                inventoryCache.setEquippedItems(JSON.parse(equippedItems));
+                this.populateUi(null);
             });
         }
     }
 
-    populateUi() {
-        mainUi.openMenu('openPlayerInventory', true, true, inventoryCache.cachedItems);
+    populateUi(extraInventory: object | null = null) {
+        mainUi.openMenu('openPlayerInventory', true, true, inventoryCache.cachedItems, inventoryCache.cachedEquippedItems, extraInventory);
         game.transitionToBlurred(300);
     }
 
@@ -56,18 +54,18 @@ class InventoryController {
 
     inventoryMoveItem(selectedItemId: number, selectedItemSlotId: number) {
         // Move item to empty slot
-        alt.emitServer('inventoryMoveItem', selectedItemId, selectedItemSlotId);
+        alt.emitServer('InventoryMoveItem', selectedItemId, selectedItemSlotId);
         inventoryCache.moveItem(selectedItemId, selectedItemSlotId);
     }
 
     inventorySwapItems(selectedItemId: number, selectedItemSlotId: number, itemToSwapId: number, itemToSwapSlotId: number) {
         // Swap items slots
-        alt.emitServer('inventorySwapItems', selectedItemId, selectedItemSlotId, itemToSwapId, itemToSwapSlotId);
+        alt.emitServer('InventorySwapItems', selectedItemId, selectedItemSlotId, itemToSwapId, itemToSwapSlotId);
         inventoryCache.swapItems(selectedItemId, selectedItemSlotId, itemToSwapId, itemToSwapSlotId);
     }
 
     inventoryDropItem(itemToDropId: number, quantity: number) {
-        alt.emitServer('inventoryDropItem', itemToDropId, quantity);
+        alt.emitServer('InventoryDropItem', itemToDropId, quantity);
         inventoryCache.dropItem(itemToDropId, quantity);
     }
 

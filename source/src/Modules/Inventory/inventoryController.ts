@@ -10,6 +10,7 @@ class InventoryController {
         mainUi.onUiEvent('inventoryStackItems', this.inventoryStackItems);
         mainUi.onUiEvent('inventoryMoveItem', this.inventoryMoveItem);
         mainUi.onUiEvent('inventorySwapItems', this.inventorySwapItems);
+        mainUi.onUiEvent('inventoryDropItem', this.inventoryDropItem);
     }
 
     openInventory() {
@@ -63,6 +64,11 @@ class InventoryController {
         // Swap items slots
         alt.emitServer('inventorySwapItems', selectedItemId, selectedItemSlotId, itemToSwapId, itemToSwapSlotId);
         inventoryCache.swapItems(selectedItemId, selectedItemSlotId, itemToSwapId, itemToSwapSlotId);
+    }
+
+    inventoryDropItem(itemToDropId: number, quantity: number) {
+        alt.emitServer('inventoryDropItem', itemToDropId, quantity);
+        inventoryCache.dropItem(itemToDropId, quantity);
     }
 
     closeInventory() {

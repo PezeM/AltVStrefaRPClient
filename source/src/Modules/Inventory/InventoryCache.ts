@@ -60,6 +60,17 @@ class InventoryCache {
         itemToSwap.SlotId = itemToSwapSlotId;
         alt.log(`Swapped slot of item ${selectedItemId} to ${selectedItemSlotId} and ${itemToSwapId} to ${itemToSwapSlotId}`);
     }
+
+    dropItem(itemToDropId: number, quantity: number) {
+        if (this.cachedItems == null) return;
+        const itemToDrop = this.getItemWithId(itemToDropId);
+        if (itemToDrop == null) return;
+        if (itemToDrop.Quantity < quantity) return;
+        itemToDrop.Quantity -= quantity;
+        if (itemToDrop.Quantity <= 0) {
+            this.cachedItems = this.cachedItems.filter(i => i.Id !== itemToDrop.Id);
+        }
+    }
 }
 
 const inventoryCache = new InventoryCache();

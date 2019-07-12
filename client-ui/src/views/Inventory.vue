@@ -33,13 +33,13 @@
               </div>
             </div>
             <div class="col">
-              <div class="inventory-container">
-                <div class="row m-0">
+              <div class="inventory-container other-inventory">
+                <div class="row m-0 p-1">
                   <div
                     v-for="(index) in playerInventoryMaxSlots"
                     v-bind:key="index"
-                    v-bind:id="index"
-                    class="col-lg-2 col-md-4 inventory-slot p-1"
+                    v-bind:id="'other-' + index"
+                    class="col-lg-2 col-md-4 inventory-slot"
                   >
                     <div class="slot-content isDraggable">Item</div>
                   </div>
@@ -75,21 +75,19 @@ export default {
         swappable.on('swappable:start', this.onSwappableStart.bind(this));
         swappable.on('swappable:swap', this.onSwappableSwap.bind(this));
         swappable.on('swappable:stop', this.onSwappableStop.bind(this));
-        // swappable.on('drag:over', event => {
-        //     console.log('drag:over');
-        //     console.log(event);
-        //     this.newSlotId = Number(event.data.over.parentNode.id);
-        //     console.log(`New slot id = ${this.newSlotId}`);
-        // });
+        swappable.on('drag:out:container', this.onDragOutContainer.bind(this));
     },
     data() {
         return {
+            hoverClass: 'on-drag-enter',
             lastAffectedItems: [],
             playerInventoryMaxSlots: 30,
             withItem: 'withItem',
+            moveBetweenInventories: false,
             swappingObject: null,
             selectedItem: null,
             lastDragOverItem: null,
+            lastDragOverContaier: null,
             itemToSwap: null,
             newSlotId: -1,
             action: null,
@@ -203,37 +201,41 @@ export default {
                     SlotId: 11,
                 },
             ],
+            equippedItems: [],
+            extraInventoryId: -1,
+            extraInventoryItems: [],
         };
     },
     methods: {
         onSwappableStart(event) {
-            this.swappingObject = event.dragEvent.data.originalSource;
+            this.swappingObject = event.dragEvent.data;
             event.dragEvent.data.source.classList.add('on-drag-start');
-            this.selectedItem = this.getItemById(this.swappingObject.dataset.itemid);
+            this.selectedItem = this.getItemById(this.swappingObject.originalSource.dataset.itemid);
             // console.log(`Swapping item = ${JSON.stringify(this.selectedItem, null, 4)}`);
-            if (!this.isSwappable(this.swappingObject._prevClass) || this.selectedItem == null) {
+            if (!this.isSwappable(this.swappingObject.originalSource._prevClass) || this.selectedItem == null) {
                 event.cancel();
                 console.log(`Event canceled`);
             }
             console.log(event);
             console.log(`Swappable started ${JSON.stringify(event, null, 4)}`);
-            console.log(`Swapping object ${JSON.stringify(this.swappingObject, null, 4)}`);
+            console.log(`Swapping object ${JSON.stringify(this.swappingObject.originalSource, null, 4)}`);
         },
         onSwappableSwap(event) {
-            if (this.swappingObject == null) return;
+            if (this.selectedItem == null) return;
             this.applyHoverEffect(event);
+            this.lastDragOverContaier = event.data.overContainer;
+            if (this.lastDragOverContaier != this.swappingObject.sourceContainer) {
+                console.log(`Move between inventories`);
+                this.moveBetweenInventories = true;
+            }
 
             this.itemToSwap = this.getItemById(event.dragEvent.data.over.dataset.itemid);
             if (this.itemToSwap == null) {
+                // There was no item in that cell, it means we should drop it there
                 this.action = 'swap';
                 this.newSlotId = Number(event.data.over.parentNode.id);
-                // There was no item in that cell, it means we should drop it there
+                console.log(`New slot = ${this.newSlotId}`);
             } else {
-                // There is item in that cell.
-                // If it has the same name we should stack it instead of swapping
-                // Have to get stack size and stack it to max
-                // Rest is another item which we have to copy and save to database
-                // And return to next slot
                 if (this.selectedItem.Name == this.itemToSwap.Name && this.selectedItem.StackSize > 1) {
                     console.log(`We should stack`);
                     this.action = 'stack';
@@ -244,6 +246,17 @@ export default {
             console.log('swappable:swap');
             console.log(event);
             event.cancel();
+        },
+        onDragOutContainer(event) {
+            console.log(`drag:out:container`);
+            if (this.selectedItem) {
+                this.action = 'drop';
+
+                if (this.lastDragOverItem != null) {
+                    console.log(`Should remove hover effect on that element`);
+                    this.lastDragOverItem.classList.remove(this.hoverClass);
+                }
+            }
         },
         onSwappableStop(event) {
             console.log('swappable:stop');
@@ -256,14 +269,14 @@ export default {
                     console.log(`We should swap items`);
                     this.onItemSwap();
                     break;
+                case 'drop':
+                    console.log('We should drop item');
+                    this.onItemDrop();
+                    break;
                 default:
                     break;
             }
-            this.swappingObject = null;
-            this.selectedItem = null;
-            this.action = null;
-            this.newSlotId = -1;
-            if (this.lastDragOverItem) this.lastDragOverItem.classList.remove('on-drag-enter');
+            this.resetStates();
         },
         onItemStack() {
             let amountOfItemsToStack = this.selectedItem.Quantity;
@@ -287,11 +300,24 @@ export default {
                 this.itemToSwap.SlotId = this.selectedItem.SlotId;
                 this.selectedItem.SlotId = temporarySlot;
                 alt.emit('inventorySwapItems', this.selectedItem.Id, this.selectedItem.SlotId, this.itemToSwap.Id, this.itemToSwap.SlotId);
+                this.addItemToLastAffectedItems(this.selectedItem, this.itemToSwap);
             } else if (this.newSlotId > -1) {
                 // Moving item to empty slot
                 this.selectedItem.SlotId = this.newSlotId;
                 alt.emit('inventoryMoveItem', this.selectedItem.Id, this.selectedItem.SlotId);
+                this.addItemToLastAffectedItems(this.selectedItem);
             }
+        },
+        onItemDrop() {
+            if (this.selectedItem == null) return;
+            if (!this.selectedItem.IsDroppable) {
+                // Propably emit notification that you can't drop this item
+                return;
+            }
+            alt.emit('inventoryDropItem', this.selectedItem.Id, this.selectedItem.Quantity);
+            // Temporary till user can select quantity
+            this.items = this.items.filter(i => i.Id !== this.selectedItem.Id);
+            this.addItemToLastAffectedItems(this.selectedItem);
         },
         closeInventory() {
             console.log(`Closing inventory`);
@@ -320,10 +346,20 @@ export default {
         },
         applyHoverEffect(event) {
             if (this.lastDragOverItem) {
-                this.lastDragOverItem.classList.remove('on-drag-enter');
+                this.lastDragOverItem.classList.remove(this.hoverClass);
             }
             this.lastDragOverItem = event.data.over;
-            this.lastDragOverItem.classList.add('on-drag-enter');
+            this.lastDragOverItem.classList.add(this.hoverClass);
+        },
+        resetStates() {
+            this.swappingObject = null;
+            this.selectedItem = null;
+            this.action = null;
+            this.newSlotId = -1;
+            if (this.lastDragOverItem) {
+                this.lastDragOverItem.classList.remove('on-drag-enter');
+                this.lastDragOverItem = null;
+            }
         },
     },
 };

@@ -133,7 +133,8 @@ declare module "alt" {
         readonly name: string;
         readonly scriptID: number;
         readonly vehicle: Vehicle | undefined | null;
-        static all: Array<Player>;
+		static all: Array<Player>;
+		static readonly local: Player;
         isTalking: any;
         remoteId: any;
         syncedObject: any;
@@ -467,17 +468,6 @@ declare module "alt" {
       }
       */
     export function getLicenseHash(): string;
-
-    /**
-      type: 'function',
-      name: 'getLocalPlayer',
-      description: 'Returns a local player',
-      returns: {
-          dataType: 'Player',
-          description: 'Local Player object'
-      }
-      */
-    export function getLocalPlayer(): Player;
 
     /**
       type: 'function',

@@ -44,6 +44,10 @@ class CircleMenuController {
             x: this.screenResolution[1] / 2,
             y: this.screenResolution[2] / 2
         });
+        alt.setCursorPos({
+            x: 100,
+            y: 100
+        });
     }
 
     closeMenu(hideMenu = false) {

@@ -42,7 +42,7 @@ class MainUi {
             game.freezeEntityPosition(game.playerPedId(), true);
         }
 
-        // var localPlayer = alt.getLocalPlayer().scriptID;
+        // var localPlayer = alt.Player.local.scriptID;
         // let position = game.getEntityCoords(localPlayer, true);
         // this.tablet = game.createObject(game.getHashKey('xm_prop_x17_sec_panel_01'), position.x, position.y, position.z + 0.5, 0, 0, 0);
         // alt.log('Exists ' + alt.isTextureExistInArchetype(game.getHashKey('xm_prop_x17_sec_panel_01'), 'script_rt_prop_x17_p_01'));
@@ -79,7 +79,7 @@ class MainUi {
         }
 
         // alt.setTimeout(() => {
-        //     game.clearPedSecondaryTask(alt.getLocalPlayer().scriptID);
+        //     game.clearPedSecondaryTask(alt.Player.local.scriptID);
         //     game.detachEntity(this.tablet, true, true);
         //     game.deleteObject(this.tablet);
         //     this.tabletView.destroy();

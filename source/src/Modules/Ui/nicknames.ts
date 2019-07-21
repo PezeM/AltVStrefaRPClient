@@ -72,7 +72,7 @@ class NicknameController {
             if (alt.Player.all[i].scriptID === 0) continue;
 
             const player = alt.Player.all[i];
-            const dist = maths.distance(player.pos, alt.getLocalPlayer().pos);
+            const dist = maths.distance(player.pos, alt.Player.local.pos);
             if (dist < NICKNAME_VISIBLE_DISTANCE_SQRT) {
                 if (player.scriptID in nearestPlayers) {
                     nearestPlayers[player.scriptID].distance = dist;

@@ -113,7 +113,7 @@ const SITTABLE: ISittableArray = {
     "prop_roller_car_02": { scenario: 'PROP_HUMAN_SEAT_BENCH', verticalOffset: -0.5, forwardOffset: 0.0, leftOffset: 0.0 }
 };
 
-const localPlayer = alt.getLocalPlayer();
+const localPlayer = alt.Player.local;
 const DISTANCE = 1.5;
 
 class Sitting {

@@ -402,7 +402,7 @@ const AnimList: Array<Array<string | string[]>> = [
     ["amb@code_human_wander_eating_donut@female@base", ["static", "base"]],
     ["amb@code_human_wander_eating_donut@female@idle_a", ["idle_b", "idle_a", "idle_c"]],
 ];
-const localPlayer = alt.getLocalPlayer();
+const localPlayer = alt.Player.local;
 
 class AnimPlayer {
     allList: AnimList;

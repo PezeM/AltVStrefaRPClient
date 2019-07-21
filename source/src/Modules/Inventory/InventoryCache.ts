@@ -31,6 +31,7 @@ class InventoryCache {
             return;
         }
 
+        // Stacking logic. Remove item if the quantity of item to stack is 0
         const amountOfItemsToStack = itemToStackFrom.Quantity;
         const maxQuantity = itemToStack.StackSize - itemToStack.Quantity;
         const toAdd = Math.min(amountOfItemsToStack, maxQuantity);

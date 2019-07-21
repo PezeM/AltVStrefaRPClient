@@ -3,15 +3,7 @@ import * as game from "natives";
 import utils from 'source/src/Helpers/utility';
 import { draw3DText } from 'source/src/Helpers/uiHelper';
 import { INetworkingEntity } from 'networking-entity';
-
-interface INetworkingItem extends INetworkingEntity {
-    item: {
-        id: number,
-        object: number,
-        name: string,
-        count: number
-    }
-}
+import { INetworkingItem } from 'source/src/Constans/interfaces';
 
 class ItemStreamer {
     streamedItems: Map<number, INetworkingItem>;
@@ -26,7 +18,7 @@ class ItemStreamer {
     render() {
         for (const item of this.streamedItems.values()) {
             draw3DText(`~y~(${item.item.count}) \n ~w~${item.item.name}`, [item.position.x, item.position.y, item.position.z],
-                4, [255, 255, 255, 255], 0.5);
+                4, [255, 255, 255, 255], 0.5, true, false);
         }
     }
 
@@ -36,11 +28,12 @@ class ItemStreamer {
             true, false, true);
         game.placeObjectOnGroundProperly(gameObject);
         game.setEntityCollision(gameObject, true, true);
-        entity.item = {
-            id: entity.data.id.intValue,
+
+        (entity as INetworkingItem).item = {
+            id: entity.data.id.intValue as number,
             object: gameObject,
-            name: entity.data.name.stringValue,
-            count: entity.data.count.intValue
+            name: entity.data.name.stringValue as string,
+            count: entity.data.count.intValue as number
         }
         this.streamedItems.set(entity.id, entity as INetworkingItem);
     }

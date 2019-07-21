@@ -1,4 +1,5 @@
 import { Vector3 } from "alt";
+import { INetworkingEntity } from "networking-entity";
 
 export interface Vector3Rotation extends Vector3 {
     rot: number
@@ -102,4 +103,13 @@ export interface IItem {
     Value?: number;
     WeaponModel?: number;
     Ammo?: number;
+}
+
+export interface INetworkingItem extends INetworkingEntity {
+    item: {
+        id: number,
+        object: number,
+        name: string,
+        count: number
+    }
 }

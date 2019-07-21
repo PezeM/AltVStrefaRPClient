@@ -7,7 +7,7 @@ import vehicleEngineToggleComponent from 'src/Modules/Vehicle/Components/vehicle
 import vehicleInAirControlsComponent from 'src/Modules/Vehicle/Components/vehicleInAirControlsComponent';
 import { VehicleComponentTypes } from 'source/src/Constans/vehicleComponentTypes';
 
-const localPlayer = alt.getLocalPlayer();
+const localPlayer = alt.Player.local;
 class VehicleComponentsController {
     components: VehicleComponent[];
     tickInterval: number;

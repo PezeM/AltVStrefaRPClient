@@ -3,7 +3,7 @@ import * as game from 'natives';
 import utils from 'source/src/Helpers/utility';
 import { IMinimap } from 'source/src/Constans/interfaces';
 
-const localPlayer = alt.getLocalPlayer();
+const localPlayer = alt.Player.local;
 
 export function showUi(toggle: boolean) {
     alt.toggleGameControls(toggle);

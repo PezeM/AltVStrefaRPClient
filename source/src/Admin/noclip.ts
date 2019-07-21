@@ -31,7 +31,7 @@ let direction: Vector3 = {
     z: 0
 };
 let lastChecked = 0;
-const localPlayer = alt.getLocalPlayer();
+const localPlayer = alt.Player.local;
 
 async function toggleFlying() {
     fly.flying = !fly.flying;

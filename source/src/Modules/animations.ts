@@ -219,13 +219,16 @@ export default class Animations {
     holdingProp: boolean;
     constructor() {
         alt.log('Animations class initialized');
-        this.localPlayer = alt.getLocalPlayer();
+        this.localPlayer = alt.Player.local;
         this.currentAnimation = null;
         this.waitTime = 600;
         this.propID = -1;
         this.propModel = '';
         this.holdingProp = false;
+
+        alt.onServer('playAnimation', (animationName: string) => this.findAnimation(animationName));
     }
+
     findAnimation(animationName: string) {
         alt.log('Looking for animation named ' + animationName);
         if (animations[animationName]) {
@@ -234,6 +237,7 @@ export default class Animations {
             alt.log(`Nie znaleziono animacji z nazwą ${animationName}.`);
         }
     }
+
     setupAnimation(animation: IAnimationInfo | IAnimationWithProp) {
         // if (this.holdingProp) {
         //     alt.log(`Deleting prop with id ${this.propID}`);
@@ -258,12 +262,14 @@ export default class Animations {
             this.loadAnimationAndPlay(animation);
         }
     }
+
     loadAnimationAndPlay(animation: IAnimationInfo | IAnimationWithProp) {
         this.loadAnimDict(animation.dict).then(() => {
             alt.log('Anim dict found');
             this.playAnimation(animation);
         });
     }
+
     playAnimation(animation: IAnimationInfo | IAnimationWithProp) {
         this.currentAnimation = animation;
         if (animation.hasOwnProperty("prop")) {
@@ -274,6 +280,7 @@ export default class Animations {
             game.taskPlayAnim(this.localPlayer.scriptID, animation.dict, animation.name, 8.0, 1.0, -1, animation.flag, 0, false, false, false);
         }
     }
+
     playPropAnimation(animation: IAnimationWithProp) {
         this.holdingProp = true;
         this.propModel = animation.prop.name;
@@ -313,6 +320,7 @@ export default class Animations {
             this.stopNormalAnimation(animation, cb);
         }
     }
+
     stopNormalAnimation(animation: IAnimationInfo | IAnimationWithProp, cb: Function | null = null) {
         alt.log(`Stoping normal animation`);
         if (this.isAnimationWithProp(animation)) {
@@ -331,6 +339,7 @@ export default class Animations {
         }, this.waitTime);
 
     }
+
     stopPropAnimation(animation: IAnimationWithProp, cb: Function | null = null) {
         if (game.doesEntityExist(this.propID) || this.holdingProp) {
             this.holdingProp = false;
@@ -341,6 +350,7 @@ export default class Animations {
         }
         this.stopNormalAnimation(animation, cb);
     }
+
     forceAnimationStop() {
         if (this.currentAnimation) {
             alt.log('Found animation to force stop');
@@ -352,6 +362,7 @@ export default class Animations {
             this.clearPropState();
         }
     }
+
     loadAnimDict(animDict: string) {
         return new Promise((resolve, reject) => {
             alt.log('Loading anim dict');
@@ -369,6 +380,7 @@ export default class Animations {
             }
         });
     }
+
     clearPropState() {
         this.propID = 0;
         this.propModel = '';

@@ -3,7 +3,7 @@ import * as game from 'natives';
 import { getClosestVehicle } from 'source/src/Helpers/collectionHelper';
 import math from 'source/src/Helpers/maths';
 
-const localPlayer = alt.getLocalPlayer();
+const localPlayer = alt.Player.local;
 
 alt.onServer('putIntoVehicle', () => {
     alt.setTimeout(() => {
@@ -204,75 +204,3 @@ export function toggleTrunkOrHoodState() {
     }
     alt.log(`Toggled trunk or hood state in ${Date.now() - startTime}ms`);
 }
-
-// alt.on('update', () => {
-//     if (localPlayer.vehicle != null) {
-//         if (isDriver(localPlayer.vehicle, localPlayer)) { // Speed only for driver
-//             drawText(`KM/H`, [0.9, 0.83], 4, [255, 255, 255, 255], 0.6, true, false);
-//             // drawText(`~r~${(game.getEntitySpeed(vehicle) * 3.6).toFixed(0)}`, [0.9, 0.86], 4, [255, 255, 255, 255], 0.6, true, false);
-//             drawText(`~r~${(localPlayer.vehicle.speed * 3.6).toFixed(0)}`, [0.9, 0.86], 4, [255, 255, 255, 255], 0.6, true, false);
-//         }
-
-//         if (game.isRadarHidden()) {
-//             game.displayRadar(true);
-//         }
-
-//     } else {
-//         if (!game.isRadarHidden()) {
-//             game.displayRadar(false);
-//         }
-
-//         // displayVehicleTrunkAndBoot();
-//     }
-// });
-
-// function displayVehicleTrunkAndBoot() {
-//     const vehicle = getClosestVehicle(localPlayer.pos, 10);
-//     if (vehicle == null) return;
-
-//     const hoodIndex = game.getEntityBoneIndexByName(vehicle, "bonnet");
-//     const trunkIndex = game.getEntityBoneIndexByName(vehicle, "boot");
-//     const vehiclePosition = game.getEntityCoords(vehicle, true);
-
-//     if (trunkIndex !== 0) {
-//         const trunkPosition = game.getWorldPositionOfEntityBone(vehicle, trunkIndex);
-//         const hoodPosition = game.getWorldPositionOfEntityBone(vehicle, hoodIndex);
-
-//         const trunkDistance = game.getDistanceBetweenCoords(trunkPosition.x, trunkPosition.y, trunkPosition.z,
-//             vehiclePosition.x, vehiclePosition.y, vehiclePosition.z, false);
-//         const hoodDistance = game.getDistanceBetweenCoords(hoodPosition.x, hoodPosition.y, hoodPosition.z,
-//             vehiclePosition.x, vehiclePosition.y, vehiclePosition.z, false);
-
-//         const bootPosition = game.getOffsetFromEntityInWorldCoords(vehicle, 0, -trunkDistance - 1, 0);
-//         const frontPosition = game.getOffsetFromEntityInWorldCoords(vehicle, 0, hoodDistance + 1, 0);
-
-//         if (game.getDistanceBetweenCoords(localPlayer.pos.x, localPlayer.pos.y, localPlayer.pos.z, bootPosition.x, bootPosition.y, bootPosition.z, true) < 2.3) {
-//             if (openedTrunks.includes(vehicle))
-//                 draw3DText("Naciśnij [~b~E~w~] aby ~r~zamknąć~w~ bagażnik", [trunkPosition.x, trunkPosition.y, trunkPosition.z], 4, [255, 255, 255, 200], 0.45, true);
-//             else
-//                 draw3DText("Naciśnij [~b~E~w~] aby ~g~otworzyć~w~ bagażnik", [trunkPosition.x, trunkPosition.y, trunkPosition.z], 4, [255, 255, 255, 200], 0.45, true);
-//         }
-
-//         if (game.getDistanceBetweenCoords(localPlayer.pos.x, localPlayer.pos.y, localPlayer.pos.z, frontPosition.x, frontPosition.y, frontPosition.z, true) < 2.6) {
-//             if (openedHoods.includes(vehicle))
-//                 draw3DText("Naciśnij [~b~E~w~] aby ~r~zamknąć~w~ maskę", [hoodPosition.x, hoodPosition.y, hoodPosition.z], 4, [255, 255, 255, 200], 0.45, true);
-//             else
-//                 draw3DText("Naciśnij [~b~E~w~] aby ~g~otworzyć~w~ maskę", [hoodPosition.x, hoodPosition.y, hoodPosition.z], 4, [255, 255, 255, 200], 0.45, true);
-//         }
-//     } else {
-//         let hoodPosition = game.getWorldPositionOfEntityBone(vehicle, hoodIndex);
-//         let hoodDistance = game.getDistanceBetweenCoords(hoodPosition.x, hoodPosition.y, hoodPosition.z,
-//             vehiclePosition.x, vehiclePosition.y, vehiclePosition.z, false);
-
-//         let frontPosition = game.getOffsetFromEntityInWorldCoords(vehicle, 0, hoodDistance + 1, 0);
-//         if (game.getDistanceBetweenCoords(localPlayer.pos.x, localPlayer.pos.y, localPlayer.pos.z, frontPosition.x, frontPosition.y, frontPosition.z, true) < 2.6) {
-//             if (openedHoods.includes(vehicle))
-//                 draw3DText("Naciśnij [~b~E~w~] aby ~r~zamknąć~w~ maskę", [hoodPosition.x, hoodPosition.y, hoodPosition.z], 4, [255, 255, 255, 200], 0.45, true);
-//             else
-//                 draw3DText("Naciśnij [~b~E~w~] aby ~g~otworzyć~w~ maskę", [hoodPosition.x, hoodPosition.y, hoodPosition.z], 4, [255, 255, 255, 200], 0.45, true);
-//         }
-//     }
-
-//     draw3DText("ID: " + vehicle, [vehiclePosition.x, vehiclePosition.y, vehiclePosition.z + 1],
-//         4, [255, 255, 255, 200], 0.5, true);
-// }

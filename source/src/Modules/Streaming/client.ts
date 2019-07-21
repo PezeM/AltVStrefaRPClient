@@ -1,5 +1,5 @@
 import alt from 'alt';
-import { INetworkingEntity } from 'source/src/Constans/interfaces';
+import { INetworkingEntity } from 'networking-entity';
 
 // This is the client class to communicate with the webview
 // e.g. const client = new NetworkingEntityClient(webview);
@@ -32,7 +32,7 @@ class NetworkingEntityClient {
 
     init(url: string, token: string) {
         this.webview.emit("networkingEntitySetup", url, token);
-        const localPlayer = alt.getLocalPlayer();
+        const localPlayer = alt.Player.local;
         let pos;
         alt.setInterval(() => {
             pos = localPlayer.pos;

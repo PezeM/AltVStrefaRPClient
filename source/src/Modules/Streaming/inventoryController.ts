@@ -3,7 +3,7 @@ import game from 'natives';
 import math from 'source/src/Helpers/maths';
 import { draw3DText } from 'source/src/Helpers/uiHelper';
 import utils from 'source/src/Helpers/utility.js';
-const player = alt.getLocalPlayer();
+const player = alt.Player.local;
 const STREAM_DISTANCE = 40;
 const STREAM_DISTANCE_SQRT = STREAM_DISTANCE * STREAM_DISTANCE;
 const droppedItems = new Map();

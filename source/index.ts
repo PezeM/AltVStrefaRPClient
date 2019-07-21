@@ -24,7 +24,7 @@ import vehicleEngineToggleComponent from 'source/src/Modules/Vehicle/Components/
 import SoundBrowser from 'source/src/Admin/soundBrowser';
 import inventoryController from 'source/src/Modules/Inventory/inventoryController';
 
-const localPlayer = alt.getLocalPlayer();
+const localPlayer = alt.Player.local;
 let frame = 0;
 let fps = 0;
 const showFps = true;

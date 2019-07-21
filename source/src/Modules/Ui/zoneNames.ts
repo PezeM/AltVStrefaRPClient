@@ -30,7 +30,7 @@ export default class ZoneNames {
             alt.log(`Getting zone names`);
             this.minimap = getMinimapAnchor(); // Gets coords of minimap
 
-            const position = alt.getLocalPlayer().pos;
+            const position = alt.Player.local.pos;
             const getStreet = game.getStreetNameAtCoord(position.x, position.y, position.z, 0, 0); // Returns array of 3 items, second one is hash
             this.streetName = game.getStreetNameFromHashKey(getStreet[1]);
             const zoneName = game.getNameOfZone(position.x, position.y, position.z);

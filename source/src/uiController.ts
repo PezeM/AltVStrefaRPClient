@@ -22,7 +22,7 @@ const controlsIds: IControlsIds = {
 const HUDElementsToHide = [1, 2, 3, 4, 6, 7, 8, 9, 14];
 
 let cursorShown = false;
-const localPlayer = alt.getLocalPlayer();
+const localPlayer = alt.Player.local;
 const animations = new Animations();
 const zoneNames = new ZoneNames();
 let lastKeyPressedTime = 0;

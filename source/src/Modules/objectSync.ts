@@ -1,7 +1,7 @@
 import * as game from 'natives';
 import * as alt from 'alt';
 
-const localPlayer = alt.getLocalPlayer();
+const localPlayer = alt.Player.local;
 alt.on('gameEntityDelete', (entity: any) => {
     if (entity instanceof alt.Player) {
         alt.log(`gameEntityDelete ${JSON.stringify(entity)}`);

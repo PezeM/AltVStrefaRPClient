@@ -4,28 +4,40 @@ import inventoryCache from 'source/src/Modules/Inventory/InventoryCache';
 import serverCallbacks from 'source/src/Modules/serverCallbacks';
 import mainUi from 'source/src/Modules/Ui/mainUi';
 
+const NUMBER_OF_INVENTORY_OPENINGS_TO_REFRESH_CACHE = 15;
+
 class InventoryController {
+    openedInventoryCount: number
     constructor() {
         mainUi.onUiEvent('closeInventory', this.closeInventory);
         mainUi.onUiEvent('inventoryStackItems', this.inventoryStackItems);
         mainUi.onUiEvent('inventoryMoveItem', this.inventoryMoveItem);
         mainUi.onUiEvent('inventorySwapItems', this.inventorySwapItems);
         mainUi.onUiEvent('inventoryDropItem', this.inventoryDropItem);
+        this.openedInventoryCount = 0;
     }
 
     openInventory() {
         if (inventoryCache.cachedItems !== null && inventoryCache.cachedEquippedItems !== null) {
-            alt.log(`Opened inventory`);
+            if (this.needToRefreshCache()) {
+                this.openInventoryFromServer();
+                return;
+            }
             alt.log(`Items: ${JSON.stringify(inventoryCache.cachedItems, null, 4)}`);
             this.populateUi();
         } else {
-            this.getInventoryFromServer((inventory: string, equippedItems: string) => {
-                alt.log(`Got inventory from server`);
-                inventoryCache.setItems(JSON.parse(inventory));
-                inventoryCache.setEquippedItems(JSON.parse(equippedItems));
-                this.populateUi(null);
-            });
+            this.openInventoryFromServer();
         }
+        this.openedInventoryCount++;
+    }
+
+    openInventoryFromServer() {
+        this.getInventoryFromServer((inventory: string, equippedItems: string) => {
+            alt.log(`Got inventory from server`);
+            inventoryCache.setItems(JSON.parse(inventory));
+            inventoryCache.setEquippedItems(JSON.parse(equippedItems));
+            this.populateUi(null);
+        });
     }
 
     populateUi(extraInventory: object | null = null) {
@@ -72,6 +84,10 @@ class InventoryController {
     closeInventory() {
         mainUi.closeMenu();
         game.transitionFromBlurred(300);
+    }
+
+    private needToRefreshCache() {
+        return this.openedInventoryCount % NUMBER_OF_INVENTORY_OPENINGS_TO_REFRESH_CACHE === 0;
     }
 }
 

@@ -27,7 +27,6 @@ export default class ZoneNames {
     getZoneNames() {
         // only do stuff if radar is enabled and visible
         if (game.isRadarEnabled() && !game.isRadarHidden()) {
-            alt.log(`Getting zone names`);
             this.minimap = getMinimapAnchor(); // Gets coords of minimap
 
             const position = alt.Player.local.pos;

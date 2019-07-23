@@ -4,7 +4,7 @@ import chat from 'chat';
 import circleMenu from 'source/src/Modules/CircleMenu/circleMenu';
 import { getGameState } from 'source/src/gameState';
 import { drawText, draw3DText } from 'source/src/Helpers/uiHelper';
-import Animations from 'source/src/Modules/animations';
+import animations from 'source/src/Modules/animations';
 import ZoneNames from 'source/src/Modules/Ui/zoneNames';
 import mainUi from 'source/src/Modules/Ui/mainUi';
 import raycast from 'source/src/Modules/CircleMenu/raycast';
@@ -23,7 +23,6 @@ const HUDElementsToHide = [1, 2, 3, 4, 6, 7, 8, 9, 14];
 
 let cursorShown = false;
 const localPlayer = alt.Player.local;
-const animations = new Animations();
 const zoneNames = new ZoneNames();
 let lastKeyPressedTime = 0;
 
@@ -99,16 +98,6 @@ alt.on('update', () => {
             }
         });
     }
-
-
-    // if (game.isControlJustPressed(0, 249)) {
-    //     localPlayer.isTalking = true;
-    //     game.playFacialAnim(localPlayer.scriptID, "mic_chatter", "mp_facial");
-    // }
-    // else if (game.isControlJustReleased(0, 249)) {
-    //     localPlayer.isTalking = false;
-    //     game.playFacialAnim(localPlayer.scriptID, "mood_normal_1", "facials@gen_male@variations@normal");
-    // }
 
     if (localPlayer.vehicle == null && !game.isPlayerDead(localPlayer.scriptID) && !mainUi.viewOpened) {
         if (!circleMenu.isMenuOpened)

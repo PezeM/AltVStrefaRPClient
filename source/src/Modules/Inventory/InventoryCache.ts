@@ -4,10 +4,12 @@ import { IInventoryItem } from "source/src/Constans/interfaces";
 class InventoryCache {
     cachedItems: IInventoryItem[] | null;
     cachedEquippedItems: any[] | null;
+
     constructor() {
         this.cachedItems = null;
         this.cachedEquippedItems = null;
     }
+
     setItems(items: any) {
         this.cachedItems = items;
     }
@@ -71,6 +73,11 @@ class InventoryCache {
         if (itemToDrop.Quantity <= 0) {
             this.cachedItems = this.cachedItems.filter(i => i.Id !== itemToDrop.Id);
         }
+    }
+
+    addNewItem(newItem: IInventoryItem) {
+        if (this.cachedItems == null) return;
+        this.cachedItems.push(newItem);
     }
 }
 

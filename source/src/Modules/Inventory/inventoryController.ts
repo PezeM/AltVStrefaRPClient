@@ -3,18 +3,39 @@ import * as game from 'natives';
 import inventoryCache from 'source/src/Modules/Inventory/InventoryCache';
 import serverCallbacks from 'source/src/Modules/serverCallbacks';
 import mainUi from 'source/src/Modules/Ui/mainUi';
+import itemStreamer from 'source/src/Modules/Streaming/itemStreamer';
+import animationController from 'source/src/Modules/animations';
+import { IInventoryItem } from 'source/src/Constans/interfaces';
 
 const NUMBER_OF_INVENTORY_OPENINGS_TO_REFRESH_CACHE = 15;
 
 class InventoryController {
     openedInventoryCount: number
+    isInventoryOpened: boolean
+
     constructor() {
+        this.openedInventoryCount = 0;
+        this.isInventoryOpened = false;
         mainUi.onUiEvent('closeInventory', this.closeInventory);
         mainUi.onUiEvent('inventoryStackItems', this.inventoryStackItems);
         mainUi.onUiEvent('inventoryMoveItem', this.inventoryMoveItem);
         mainUi.onUiEvent('inventorySwapItems', this.inventorySwapItems);
         mainUi.onUiEvent('inventoryDropItem', this.inventoryDropItem);
-        this.openedInventoryCount = 0;
+        alt.onServer('inventoryAddNewItem', this.inventoryAddNewItem);
+    }
+
+    pickupItem() {
+        if (!itemStreamer.canPickupItem || itemStreamer.nearestItem == null) return false;
+        alt.log(`Pickuping item`);
+        animationController.findAndPlayAnimation("pickup2");
+        alt.setTimeout(() => {
+            // animationController.forceAnimationStop();
+            if (itemStreamer.nearestItem == null) return;
+            alt.log(`Picked up item with id ${itemStreamer.nearestItem.item.id} and network object id ${itemStreamer.nearestItem.item.id}`);
+            alt.emitServer('pickupDroppedItem', itemStreamer.nearestItem.id, itemStreamer.nearestItem.item.id);
+        }, 500);
+
+        return true;
     }
 
     openInventory() {
@@ -29,6 +50,7 @@ class InventoryController {
             this.openInventoryFromServer();
         }
         this.openedInventoryCount++;
+        this.isInventoryOpened = true;
     }
 
     openInventoryFromServer() {
@@ -81,9 +103,17 @@ class InventoryController {
         inventoryCache.dropItem(itemToDropId, quantity);
     }
 
+    inventoryAddNewItem(newItem: IInventoryItem) {
+        inventoryCache.addNewItem(newItem);
+        if (this.isInventoryOpened) {
+            mainUi.emitUiEvent('inventoryAddNewItem', newItem);
+        }
+    }
+
     closeInventory() {
         mainUi.closeMenu();
         game.transitionFromBlurred(300);
+        this.isInventoryOpened = false;
     }
 
     private needToRefreshCache() {

@@ -2,7 +2,7 @@ import * as alt from 'alt';
 import * as game from 'natives';
 import { showUiAndFreezePlayer } from 'source/src/Helpers/uiHelper';
 import mainUi from 'source/src/Modules/Ui/mainUi';
-import Animations from 'source/src/Modules/animations';
+import animations from 'source/src/Modules/animations';
 import trashBin from 'source/src/Environment/trashBin';
 import vehicleShop from 'source/src/Modules/Vehicle/vehicleShop';
 import banking from 'source/src/Modules/banking';
@@ -20,13 +20,11 @@ class CircleMenuController {
     menuName: string;
     entityHit: number;
     screenResolution: any[];
-    animations: Animations;
     constructor() {
         this.menuOpened = false;
         this.menuName = '';
         this.entityHit = -1;
         this.screenResolution = game.getActiveScreenResolution(0, 0);
-        this.animations = new Animations();
         mainUi.onUiEvent('circleMenuCallback', this.circleMenuCallback.bind(this));
     }
 
@@ -43,10 +41,6 @@ class CircleMenuController {
         alt.setCursorPos({
             x: this.screenResolution[1] / 2,
             y: this.screenResolution[2] / 2
-        });
-        alt.setCursorPos({
-            x: 100,
-            y: 100
         });
     }
 
@@ -120,7 +114,7 @@ class CircleMenuController {
                 this.vehicleCircleMenuCallback(option);
                 break;
             case "animations":
-                this.animations.findAnimation(option);
+                animations.findAndPlayAnimation(option);
                 break;
             case "bank":
                 this.bankCircleMenuCallback(option);

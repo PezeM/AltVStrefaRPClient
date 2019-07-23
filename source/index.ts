@@ -83,7 +83,8 @@ alt.on('keydown', (key: number) => {
         case controlsIds.E:
             if (localPlayer.vehicle != null || game.isEntityDead(localPlayer.scriptID) || new Date().getTime() - lastKeyPressedTime < 750) return;
             lastKeyPressedTime = new Date().getTime();
-            if (vehicleDoors.toggleTrunkOrHoodState(localPlayer)) return;
+            if (inventoryController.pickupItem()) return;
+            else if (vehicleDoors.toggleTrunkOrHoodState(localPlayer)) return;
             break;
         case controlsIds.L:
             if (game.isEntityDead(localPlayer.scriptID) || new Date().getTime() - lastKeyPressedTime < 750) return;
@@ -239,8 +240,7 @@ function loadModel(modelHash: number) {
     });
 }
 
-import Animations from 'src/Modules/animations';
-const animations = new Animations();
+import animations from 'src/Modules/animations';
 let strefaObject: number | any = null;
 
 function testStrefa() {

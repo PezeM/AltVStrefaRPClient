@@ -3,13 +3,25 @@ import * as alt from 'alt';
 import { IAnimationsObject, IAnimationWithProp, IAnimationInfo } from 'source/src/Constans/interfaces';
 
 const animations: IAnimationsObject = {
+    // Test pickup
+    "pickup": {
+        dict: "pickup_object",
+        name: "putdown_low",
+        flag: 15,
+        exitAnim: "exit",
+    },
+    "pickup2": {
+        dict: "pickup_object",
+        name: "pickup_low",
+        flag: 0,
+        exitAnim: "exit",
+    },
     // Tance
     "dance1": {
         dict: "mp_safehouse",
         name: "lap_dance_girl",
         flag: 15,
         exitAnim: "exit",
-
     },
     "dance2": {
         dict: "special_ped@mountain_dancer@monologue_1@monologue_1a",
@@ -210,7 +222,7 @@ const animations: IAnimationsObject = {
     }
 };
 
-export default class Animations {
+class AnimationsController {
     localPlayer: alt.Player;
     currentAnimation: IAnimationWithProp | IAnimationInfo | null;
     waitTime: number;
@@ -226,15 +238,15 @@ export default class Animations {
         this.propModel = '';
         this.holdingProp = false;
 
-        alt.onServer('playAnimation', (animationName: string) => this.findAnimation(animationName));
+        alt.onServer('playAnimation', (animationName: string) => this.findAndPlayAnimation(animationName));
     }
 
-    findAnimation(animationName: string) {
-        alt.log('Looking for animation named ' + animationName);
-        if (animations[animationName]) {
-            this.setupAnimation(animations[animationName]);
+    findAndPlayAnimation(animation: string): void {
+        alt.log('Looking for animation named ' + animation);
+        if (animations[animation]) {
+            this.setupAnimation(animations[animation]);
         } else {
-            alt.log(`Nie znaleziono animacji z nazwą ${animationName}.`);
+            alt.log(`Nie znaleziono animacji z nazwą ${animation}.`);
         }
     }
 
@@ -270,7 +282,7 @@ export default class Animations {
         });
     }
 
-    playAnimation(animation: IAnimationInfo | IAnimationWithProp) {
+    playAnimation(animation: IAnimationInfo | IAnimationWithProp): void {
         this.currentAnimation = animation;
         if (animation.hasOwnProperty("prop")) {
             alt.log(`Playing prop animation`);
@@ -387,3 +399,6 @@ export default class Animations {
         this.holdingProp = false;
     }
 }
+
+const animationController = new AnimationsController();
+export default animationController;

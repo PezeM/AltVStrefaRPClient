@@ -26,15 +26,12 @@ class InventoryController {
 
     pickupItem() {
         if (!itemStreamer.canPickupItem || itemStreamer.nearestItem == null) return false;
-        alt.log(`Pickuping item`);
         animationController.findAndPlayAnimation("pickup2");
         alt.setTimeout(() => {
-            // animationController.forceAnimationStop();
-            if (itemStreamer.nearestItem == null) return;
+            if (itemStreamer.nearestItem == null) return false;
             alt.log(`Picked up item with id ${itemStreamer.nearestItem.item.id} and network object id ${itemStreamer.nearestItem.item.id}`);
             alt.emitServer('pickupDroppedItem', itemStreamer.nearestItem.id, itemStreamer.nearestItem.item.id);
         }, 500);
-
         return true;
     }
 
@@ -64,7 +61,7 @@ class InventoryController {
 
     populateUi(extraInventory: object | null = null) {
         mainUi.openMenu('openPlayerInventory', true, true, inventoryCache.cachedItems, inventoryCache.cachedEquippedItems, extraInventory);
-        game.transitionToBlurred(300);
+        game.transitionToBlurred(250);
     }
 
     getInventoryFromServer(callback: (...result: any) => void) {
@@ -112,7 +109,7 @@ class InventoryController {
 
     closeInventory() {
         mainUi.closeMenu();
-        game.transitionFromBlurred(300);
+        game.transitionFromBlurred(250);
         this.isInventoryOpened = false;
     }
 

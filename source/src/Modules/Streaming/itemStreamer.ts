@@ -48,14 +48,11 @@ class ItemStreamer {
         draw3DText(`~y~(${this.nearestItem.item.count}) \n ~w~${this.nearestItem.item.name}`,
             [this.nearestItem.position.x, this.nearestItem.position.y, this.nearestItem.position.z],
             4, [255, 255, 255, 255], 0.5, true, false);
-        // const entityHit = this.testItemInFront(1);
-        const jest = this.itemInFront();
+        const isItemInFront = this.itemInFront();
         game.showHudComponentThisFrame(14);
-        if (!jest) return;
-        // if (entityHit === 0) return;
-        // if (entityHit !== this.nearestItem.item.object) return;
+        if (!isItemInFront) return;
         draw3DText(`~g~[E] ~w~Aby podnieść`, [this.nearestItem.position.x, this.nearestItem.position.y, this.nearestItem.position.z + 0.1],
-            4, [255, 255, 255, 255], 0.5);
+            4, [255, 255, 255, 255], 0.5, true, false);
         this.canPickupItem = true;
     }
 
@@ -113,84 +110,7 @@ class ItemStreamer {
 
         const dot = maths.dot(normalizedPosition, playerForwardVector);
         drawText(`Dot: ${dot.toFixed(2)}`, [0.5, 0.6], 4, [255, 255, 255, 255], 0.5);
-        if (dot > 0.5) {
-            return true
-        } else {
-            return false;
-        }
-    }
-
-    private testItemInFront(maxDistance: number = 5) {
-        const inFrontData = {
-            pos: new alt.Vector3(0, 0, 0),
-            dist: maxDistance,
-            hitEntity: -1,
-        };
-
-        let position = game.getGameplayCamCoord();
-        const heading = game.getEntityHeading(alt.Player.local.scriptID);
-        position = this.findRot(position, heading, 0.5, 90);
-
-        for (let i = 0; i < 180; i += 10) {
-            const exitPosition = this.findRot(position, heading, 5, i);
-            const capsuleTest = game.startShapeTestCapsule(position.x, position.y, position.z, exitPosition.x, exitPosition.y, exitPosition.z - i / 10,
-                10, -1, alt.Player.local.scriptID, 7);
-            const [_, didRaycastHit, endCoords, surfaceNormal, entityHit] = game.getShapeTestResult(capsuleTest, false,
-                { x: 0, y: 0, z: 0 }, { x: 0, y: 0, z: 0 }, 0);
-            if (didRaycastHit) {
-                drawText(`Raycast hit. Entity ${entityHit} EndCoords: x: ${endCoords.x.toFixed(4)} y: ${endCoords.y.toFixed(4)} z: ${endCoords.z.toFixed(4)}`,
-                    [0.8, 0.45], 4, [255, 255, 255, 255], 0.5);
-                const distance = maths.distance(position, exitPosition);
-                game.drawLine(position.x, position.y, position.z, exitPosition.x, exitPosition.y, exitPosition.z, 255, 0, 0, 255);
-                drawText(`Distance: ${distance}`, [0.8, 0.4], 4, [255, 255, 255, 255], 0.5);
-                if (distance < inFrontData.dist) {
-                    inFrontData.pos = exitPosition;
-                    inFrontData.dist = distance;
-                    inFrontData.hitEntity = entityHit;
-                    alt.log(`Setting the hit entity to ${entityHit}`);
-                }
-
-                if (entityHit === (this.nearestItem as INetworkingItem).item.object) {
-                    drawText(`Trafiono item`, [0.8, 0.35], 4, [255, 255, 255, 255], 0.5);
-                }
-            }
-        }
-
-        // if (inFrontData.hitEntity !== -1) {
-        drawText(`Entity ${inFrontData.hitEntity}`, [0.8, 0.35], 4, [255, 255, 255, 255], 0.5);
-        // }
-
-        return inFrontData.hitEntity;
-    }
-
-    private findRot(position: Vector3, heading: number, dist: number, rot: number) {
-        const newVector = new alt.Vector3(position.x, position.y, position.z);
-        const degrees = (heading + rot) * (Math.PI / 180);
-        newVector.x = position.x + dist * Math.cos(degrees);
-        newVector.y = position.y + dist * Math.sin(degrees);
-        return newVector;
-    }
-
-    private testRaycast(raycastDistance: number = 25) {
-        const pos = game.getGameplayCamCoord();
-        const dir = maths.rotToDirection(game.getGameplayCamRot(2));
-        const distance = raycastDistance;
-        const farAway = {
-            x: (pos.x + (dir.x * distance)),
-            y: (pos.y + (dir.y * distance)),
-            z: (pos.z + (dir.z * distance)),
-        };
-        drawText(`Faraway x: ${farAway.x} y: ${farAway.y} z: ${farAway.z}`, [0.5, 0.8], 4, [255, 255, 255, 255], 0.6);
-        const raycastTest = game.startShapeTestRay(pos.x, pos.y, pos.z, farAway.x, farAway.y, farAway.z, 16, game.playerPedId(), 0);
-        const [_, didRaycastHit, endCoords, surfaceNormal, entityHit] = game.getShapeTestResult(raycastTest, false,
-            new alt.Vector3(0, 0, 0), new alt.Vector3(0, 0, 0), 0);
-        game.drawLine(pos.x, pos.y, pos.z, farAway.x, farAway.y, farAway.z, 255, 0, 0, 255);
-
-        if (didRaycastHit) {
-            draw3DText(`Entity hit: ${entityHit} didRaycastHit: ${didRaycastHit}`, [endCoords.x, endCoords.y, endCoords.z], 4, [255, 255, 255, 255], 0.45);
-        }
-
-        return entityHit;
+        return dot > 0.9;
     }
 }
 

@@ -4,22 +4,46 @@ import utils from 'source/src/Helpers/utility';
 import { draw3DText } from 'source/src/Helpers/uiHelper';
 import { INetworkingEntity } from 'networking-entity';
 import { INetworkingItem } from 'source/src/Constans/interfaces';
+import maths from 'source/src/Helpers/maths';
+
+const ITEM_TEXT_DISTANCE = 5;
+const ITEM_TEXT_DISTANCE_SQRT = ITEM_TEXT_DISTANCE * ITEM_TEXT_DISTANCE;
 
 class ItemStreamer {
     streamedItems: Map<number, INetworkingItem>;
     tickInterval: number;
+    closestItemInterval: number;
+    nearestItem: INetworkingItem | null;
+
     constructor() {
         alt.log(`Created item streamer`);
         this.streamedItems = new Map();
+        this.nearestItem = null;
+        this.closestItemInterval = alt.setInterval(this.findClosestItem.bind(this), 250);
         this.tickInterval = alt.setInterval(this.render.bind(this), 0);
         alt.on('disconnect', this.onDisconnect.bind(this));
     }
 
-    render() {
+    findClosestItem() {
+        const playerPosition = alt.Player.local.pos;
+        let closestDistance = ITEM_TEXT_DISTANCE;
         for (const item of this.streamedItems.values()) {
-            draw3DText(`~y~(${item.item.count}) \n ~w~${item.item.name}`, [item.position.x, item.position.y, item.position.z],
-                4, [255, 255, 255, 255], 0.5, true, false);
+            const distance = maths.distance(playerPosition, item.position);
+
+            if (distance < closestDistance) {
+                closestDistance = distance;
+                this.nearestItem = item;
+            }
         }
+    }
+
+    render() {
+        if (this.nearestItem == null) return;
+        if (!game.isEntityOnScreen(this.nearestItem.item.object)) return;
+
+        draw3DText(`~y~(${this.nearestItem.item.count}) \n ~w~${this.nearestItem.item.name}`,
+            [this.nearestItem.position.x, this.nearestItem.position.y, this.nearestItem.position.z],
+            4, [255, 255, 255, 255], 0.5, true, false);
     }
 
     async onStreamIn(entity: INetworkingEntity) {

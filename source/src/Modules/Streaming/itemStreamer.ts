@@ -5,6 +5,7 @@ import { draw3DText, drawText } from 'source/src/Helpers/uiHelper';
 import { INetworkingEntity } from 'networking-entity';
 import { INetworkingItem } from 'source/src/Constans/interfaces';
 import maths from 'source/src/Helpers/maths';
+import utility from 'source/src/Helpers/utility';
 
 const ITEM_TEXT_DISTANCE = 4;
 const ITEM_TEXT_DISTANCE_SQRT = ITEM_TEXT_DISTANCE * ITEM_TEXT_DISTANCE;
@@ -48,7 +49,7 @@ class ItemStreamer {
         draw3DText(`~y~(${this.nearestItem.item.count}) \n ~w~${this.nearestItem.item.name}`,
             [this.nearestItem.position.x, this.nearestItem.position.y, this.nearestItem.position.z],
             4, [255, 255, 255, 255], 0.5, true, false);
-        const isItemInFront = this.itemInFront();
+        const isItemInFront = utility.isEntityInFront(this.nearestItem.position, alt.Player.local, 0.9, true);
         game.showHudComponentThisFrame(14);
         if (!isItemInFront) return;
         draw3DText(`~g~[E] ~w~Aby podnieść`, [this.nearestItem.position.x, this.nearestItem.position.y, this.nearestItem.position.z + 0.1],
@@ -90,27 +91,6 @@ class ItemStreamer {
         for (const item of this.streamedItems.values()) {
             game.deleteEntity(item.item.object);
         }
-    }
-
-    private itemInFront() {
-        const itemPosition = (this.nearestItem as INetworkingItem).position;
-        const playerPosition = alt.Player.local.pos;
-        const playerForwardVector = game.getEntityForwardVector(game.playerPedId());
-        drawText(`Player vector x: ${playerForwardVector.x.toFixed(4)} y: ${playerForwardVector.y.toFixed(4)} z: ${playerForwardVector.z.toFixed(4)}`,
-            [0.5, 0.8], 4, [255, 255, 255, 255], 0.5);
-        drawText(`Item vector x: ${itemPosition.x.toFixed(4)} y: ${itemPosition.y.toFixed(4)} z: ${itemPosition.z.toFixed(4)}`,
-            [0.5, 0.75], 4, [255, 255, 255, 255], 0.5);
-
-        const substractedPosition = maths.substract(itemPosition, playerPosition);
-        drawText(`Substracted vector x: ${substractedPosition.x.toFixed(4)} y: ${substractedPosition.y.toFixed(4)} z: ${substractedPosition.z.toFixed(4)}`,
-            [0.5, 0.7], 4, [255, 255, 255, 255], 0.5);
-        const normalizedPosition = maths.normalize(substractedPosition);
-        drawText(`Normalized vector x: ${normalizedPosition.x.toFixed(4)} y: ${normalizedPosition.y.toFixed(4)} z: ${normalizedPosition.z.toFixed(4)}`,
-            [0.5, 0.65], 4, [255, 255, 255, 255], 0.5);
-
-        const dot = maths.dot(normalizedPosition, playerForwardVector);
-        drawText(`Dot: ${dot.toFixed(2)}`, [0.5, 0.6], 4, [255, 255, 255, 255], 0.5);
-        return dot > 0.9;
     }
 }
 

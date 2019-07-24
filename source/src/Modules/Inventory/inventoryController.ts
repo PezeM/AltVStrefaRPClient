@@ -22,6 +22,7 @@ class InventoryController {
         mainUi.onUiEvent('inventorySwapItems', this.inventorySwapItems);
         mainUi.onUiEvent('inventoryDropItem', this.inventoryDropItem);
         alt.onServer('inventoryAddNewItem', this.inventoryAddNewItem);
+        alt.onServer('updateInventoryItemQuantity', this.updateInventoryItemQuantity);
     }
 
     pickupItem() {
@@ -30,7 +31,7 @@ class InventoryController {
         alt.setTimeout(() => {
             if (itemStreamer.nearestItem == null) return false;
             alt.log(`Picked up item with id ${itemStreamer.nearestItem.item.id} and network object id ${itemStreamer.nearestItem.item.id}`);
-            alt.emitServer('pickupDroppedItem', itemStreamer.nearestItem.id, itemStreamer.nearestItem.item.id);
+            alt.emitServer('PickupDroppedItem', itemStreamer.nearestItem.id, itemStreamer.nearestItem.item.id);
         }, 500);
         return true;
     }
@@ -100,8 +101,15 @@ class InventoryController {
         inventoryCache.dropItem(itemToDropId, quantity);
     }
 
-    inventoryAddNewItem(newItem: IInventoryItem) {
-        inventoryCache.addNewItem(newItem);
+    inventoryAddNewItem(newItemJson: string) {
+        const newItem = JSON.parse(newItemJson);
+        if (Array.isArray(newItem)) {
+            alt.log(`Added multiple items`);
+        } else {
+            alt.log(`Added one new item ${JSON.stringify(newItem, null, 4)}`);
+            inventoryCache.addNewItem(newItem);
+        }
+
         if (this.isInventoryOpened) {
             mainUi.emitUiEvent('inventoryAddNewItem', newItem);
         }
@@ -111,6 +119,14 @@ class InventoryController {
         mainUi.closeMenu();
         game.transitionFromBlurred(250);
         this.isInventoryOpened = false;
+    }
+
+    updateInventoryItemQuantity(itemId: number, itemQuantity: number) {
+        inventoryCache.updateInventoryItemQuantity(itemId, itemQuantity);
+
+        if (this.isInventoryOpened) {
+            mainUi.emitUiEvent('updateInventoryItemQuantity', itemId, itemQuantity);
+        }
     }
 
     private needToRefreshCache() {

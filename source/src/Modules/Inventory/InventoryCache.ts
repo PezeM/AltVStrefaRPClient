@@ -79,6 +79,12 @@ class InventoryCache {
         if (this.cachedItems == null) return;
         this.cachedItems.push(newItem);
     }
+
+    updateInventoryItemQuantity(itemId: number, itemQuantity: number) {
+        const item = this.getItemWithId(itemId);
+        if (item == null) return;
+        item.Quantity = itemQuantity;
+    }
 }
 
 const inventoryCache = new InventoryCache();

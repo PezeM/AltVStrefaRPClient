@@ -51,7 +51,7 @@ class ItemStreamer {
         draw3DText(`~y~(${this.nearestItem.item.count}) \n ~w~${this.nearestItem.item.name}`,
             [this.nearestItem.position.x, this.nearestItem.position.y, this.nearestItem.position.z],
             4, [255, 255, 255, 255], 0.5, true, false);
-        if (maths.distance(this.nearestItem.position, this.localPlayer.pos) < DISTANCE_TO_PICKUP_ITEM) return;
+        if (maths.distance(this.nearestItem.position, this.localPlayer.pos) > DISTANCE_TO_PICKUP_ITEM) return;
         const isItemInFront = utils.isEntityInFront(this.nearestItem.position, this.localPlayer, 0.8, true);
         game.showHudComponentThisFrame(14);
         if (!isItemInFront) return;

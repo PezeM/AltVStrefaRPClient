@@ -55,7 +55,7 @@
                   >
                     <v-icon name="user-slash"/>
                   </button>
-                  <button class="btn btn-primary" @click="showRankModal(rank)">
+                  <button class="btn btn-primary" @click="showEditRankModal(rank)">
                     <v-icon name="user-edit"/>
                   </button>
                 </td>
@@ -227,7 +227,7 @@ export default {
                 this.$modal.hide('new-rank-modal');
             }
         },
-        showRankModal(rank) {
+        showEditRankModal(rank) {
             this.$modal.show('edit-rank-modal', {
                 rank,
             });

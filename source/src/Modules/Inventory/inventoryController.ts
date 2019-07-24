@@ -30,7 +30,7 @@ class InventoryController {
         animationController.findAndPlayAnimation("pickup2");
         alt.setTimeout(() => {
             if (itemStreamer.nearestItem == null) return false;
-            alt.log(`Picked up item with id ${itemStreamer.nearestItem.item.id} and network object id ${itemStreamer.nearestItem.item.id}`);
+            alt.log(`Picked up item with id ${itemStreamer.nearestItem.item.id} and network object id ${itemStreamer.nearestItem.id}`);
             alt.emitServer('PickupDroppedItem', itemStreamer.nearestItem.id, itemStreamer.nearestItem.item.id);
         }, 500);
         return true;
@@ -103,21 +103,21 @@ class InventoryController {
         inventoryCache.dropItem(itemToDropId, quantity);
     }
 
-    inventoryAddNewItem(newItemJson: string) {
-        const newItem = JSON.parse(newItemJson);
-        alt.log(`New item = ${JSON.stringify(newItem)}`);
-        if (Object.prototype.toString.call(newItem) === '[object Array]') {
+    inventoryAddNewItem(newItems: IInventoryItem | IInventoryItem[]) {
+        alt.log(`New item = ${JSON.stringify(newItems, null, 4)}`);
+        if (Object.prototype.toString.call(newItems) === '[object Array]') {
             alt.log(`Added multiple items`);
-            newItem.forEach((item: IInventoryItem) => {
+            (newItems as IInventoryItem[]).forEach(item => {
                 inventoryCache.addNewItem(item);
+                mainUi.emitUiEvent('inventoryAddNewItem', item);
             });
         } else {
-            alt.log(`Added one new item ${JSON.stringify(newItem, null, 4)}`);
-            inventoryCache.addNewItem(newItem);
+            alt.log(`Added one new item ${JSON.stringify(newItems, null, 4)}`);
+            inventoryCache.addNewItem(newItems as IInventoryItem);
         }
 
         if (this.isInventoryOpened) {
-            mainUi.emitUiEvent('inventoryAddNewItem', newItem);
+            mainUi.emitUiEvent('inventoryAddNewItem', newItems);
         }
     }
 

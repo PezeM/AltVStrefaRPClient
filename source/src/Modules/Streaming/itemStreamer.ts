@@ -8,6 +8,7 @@ import maths from 'source/src/Helpers/maths';
 
 const ITEM_TEXT_DISTANCE = 4;
 const ITEM_TEXT_DISTANCE_SQRT = ITEM_TEXT_DISTANCE * ITEM_TEXT_DISTANCE;
+const DISTANCE_TO_PICKUP_ITEM = 1;
 
 class ItemStreamer {
     streamedItems: Map<number, INetworkingItem>;
@@ -15,9 +16,11 @@ class ItemStreamer {
     closestItemInterval: number;
     nearestItem: INetworkingItem | null;
     canPickupItem: boolean;
+    localPlayer: alt.Player;
 
     constructor() {
         alt.log(`Created item streamer`);
+        this.localPlayer = alt.Player.local;
         this.streamedItems = new Map();
         this.nearestItem = null;
         this.canPickupItem = false;
@@ -42,13 +45,14 @@ class ItemStreamer {
 
     render() {
         this.canPickupItem = false;
-        if (this.nearestItem == null) return;
+        if (this.nearestItem == null || this.localPlayer.vehicle != null || game.isEntityDead(this.localPlayer.scriptID)) return;
         if (!game.isEntityOnScreen(this.nearestItem.item.object)) return;
 
         draw3DText(`~y~(${this.nearestItem.item.count}) \n ~w~${this.nearestItem.item.name}`,
             [this.nearestItem.position.x, this.nearestItem.position.y, this.nearestItem.position.z],
             4, [255, 255, 255, 255], 0.5, true, false);
-        const isItemInFront = utils.isEntityInFront(this.nearestItem.position, alt.Player.local, 0.8, true);
+        if (maths.distance(this.nearestItem.position, this.localPlayer.pos) < DISTANCE_TO_PICKUP_ITEM) return;
+        const isItemInFront = utils.isEntityInFront(this.nearestItem.position, this.localPlayer, 0.8, true);
         game.showHudComponentThisFrame(14);
         if (!isItemInFront) return;
         draw3DText(`~g~[E] ~y~Aby podnieść`, [this.nearestItem.position.x, this.nearestItem.position.y, this.nearestItem.position.z + 0.12],

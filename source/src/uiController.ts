@@ -19,7 +19,7 @@ const controlsIds: IControlsIds = {
     U: 0x55,
 };
 
-const HUDElementsToHide = [1, 2, 3, 4, 6, 7, 8, 9, 14];
+const HUDElementsToHide = [1, 2, 3, 4, 6, 7, 8, 9];
 
 let cursorShown = false;
 const localPlayer = alt.Player.local;

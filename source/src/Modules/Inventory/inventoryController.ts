@@ -5,7 +5,7 @@ import serverCallbacks from 'source/src/Modules/serverCallbacks';
 import mainUi from 'source/src/Modules/Ui/mainUi';
 import itemStreamer from 'source/src/Modules/Streaming/itemStreamer';
 import animationController from 'source/src/Modules/animations';
-import { INetworkingItem, IInventoryItem } from 'source/src/Constans/interfaces';
+import { IInventoryItem } from 'source/src/Constans/interfaces';
 
 const NUMBER_OF_INVENTORY_OPENINGS_TO_REFRESH_CACHE = 15;
 
@@ -121,18 +121,18 @@ class InventoryController {
         }
     }
 
-    closeInventory() {
-        this.isInventoryOpened = false;
-        mainUi.closeMenu();
-        game.transitionFromBlurred(250);
-    }
-
     updateInventoryItemQuantity(itemId: number, itemQuantity: number) {
         inventoryCache.updateInventoryItemQuantity(itemId, itemQuantity);
 
         if (this.isInventoryOpened) {
             mainUi.emitUiEvent('updateInventoryItemQuantity', itemId, itemQuantity);
         }
+    }
+
+    closeInventory() {
+        this.isInventoryOpened = false;
+        mainUi.closeMenu();
+        game.transitionFromBlurred(250);
     }
 
     private needToRefreshCache() {

@@ -1,11 +1,10 @@
 import * as alt from 'alt';
 import * as game from "natives";
-import utils from 'source/src/Helpers/utility';
-import { draw3DText, drawText } from 'source/src/Helpers/uiHelper';
+import utils from 'source/src/Helpers/utils';
+import { draw3DText } from 'source/src/Helpers/uiHelper';
 import { INetworkingEntity } from 'networking-entity';
 import { INetworkingItem } from 'source/src/Constans/interfaces';
 import maths from 'source/src/Helpers/maths';
-import utility from 'source/src/Helpers/utility';
 
 const ITEM_TEXT_DISTANCE = 4;
 const ITEM_TEXT_DISTANCE_SQRT = ITEM_TEXT_DISTANCE * ITEM_TEXT_DISTANCE;
@@ -49,10 +48,10 @@ class ItemStreamer {
         draw3DText(`~y~(${this.nearestItem.item.count}) \n ~w~${this.nearestItem.item.name}`,
             [this.nearestItem.position.x, this.nearestItem.position.y, this.nearestItem.position.z],
             4, [255, 255, 255, 255], 0.5, true, false);
-        const isItemInFront = utility.isEntityInFront(this.nearestItem.position, alt.Player.local, 0.9, true);
+        const isItemInFront = utils.isEntityInFront(this.nearestItem.position, alt.Player.local, 0.8, true);
         game.showHudComponentThisFrame(14);
         if (!isItemInFront) return;
-        draw3DText(`~g~[E] ~w~Aby podnieść`, [this.nearestItem.position.x, this.nearestItem.position.y, this.nearestItem.position.z + 0.1],
+        draw3DText(`~g~[E] ~y~Aby podnieść`, [this.nearestItem.position.x, this.nearestItem.position.y, this.nearestItem.position.z + 0.12],
             4, [255, 255, 255, 255], 0.5, true, false);
         this.canPickupItem = true;
     }

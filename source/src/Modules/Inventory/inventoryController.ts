@@ -5,23 +5,23 @@ import serverCallbacks from 'source/src/Modules/serverCallbacks';
 import mainUi from 'source/src/Modules/Ui/mainUi';
 import itemStreamer from 'source/src/Modules/Streaming/itemStreamer';
 import animationController from 'source/src/Modules/animations';
-import { IInventoryItem } from 'source/src/Constans/interfaces';
+import { INetworkingItem, IInventoryItem } from 'source/src/Constans/interfaces';
 
 const NUMBER_OF_INVENTORY_OPENINGS_TO_REFRESH_CACHE = 15;
 
 class InventoryController {
-    openedInventoryCount: number
-    isInventoryOpened: boolean
+    openedInventoryCount: number;
+    isInventoryOpened: boolean;
 
     constructor() {
         this.openedInventoryCount = 0;
         this.isInventoryOpened = false;
-        mainUi.onUiEvent('closeInventory', this.closeInventory);
+        mainUi.onUiEvent('closeInventory', this.closeInventory.bind(this));
         mainUi.onUiEvent('inventoryStackItems', this.inventoryStackItems);
         mainUi.onUiEvent('inventoryMoveItem', this.inventoryMoveItem);
         mainUi.onUiEvent('inventorySwapItems', this.inventorySwapItems);
         mainUi.onUiEvent('inventoryDropItem', this.inventoryDropItem);
-        alt.onServer('inventoryAddNewItem', this.inventoryAddNewItem);
+        alt.onServer('inventoryAddNewItem', this.inventoryAddNewItem.bind(this));
         alt.onServer('updateInventoryItemQuantity', this.updateInventoryItemQuantity);
     }
 
@@ -39,6 +39,7 @@ class InventoryController {
     openInventory() {
         if (inventoryCache.cachedItems !== null && inventoryCache.cachedEquippedItems !== null) {
             if (this.needToRefreshCache()) {
+                alt.log(`Refreshing inventory`);
                 this.openInventoryFromServer();
                 return;
             }
@@ -97,14 +98,19 @@ class InventoryController {
     }
 
     inventoryDropItem(itemToDropId: number, quantity: number) {
+        alt.log(`Dropping item id ${itemToDropId} quantity ${quantity}`);
         alt.emitServer('InventoryDropItem', itemToDropId, quantity);
         inventoryCache.dropItem(itemToDropId, quantity);
     }
 
     inventoryAddNewItem(newItemJson: string) {
         const newItem = JSON.parse(newItemJson);
-        if (Array.isArray(newItem)) {
+        alt.log(`New item = ${JSON.stringify(newItem)}`);
+        if (Object.prototype.toString.call(newItem) === '[object Array]') {
             alt.log(`Added multiple items`);
+            newItem.forEach((item: IInventoryItem) => {
+                inventoryCache.addNewItem(item);
+            });
         } else {
             alt.log(`Added one new item ${JSON.stringify(newItem, null, 4)}`);
             inventoryCache.addNewItem(newItem);
@@ -116,9 +122,9 @@ class InventoryController {
     }
 
     closeInventory() {
+        this.isInventoryOpened = false;
         mainUi.closeMenu();
         game.transitionFromBlurred(250);
-        this.isInventoryOpened = false;
     }
 
     updateInventoryItemQuantity(itemId: number, itemQuantity: number) {

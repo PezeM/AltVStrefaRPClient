@@ -2,7 +2,8 @@ import alt from 'alt';
 import game from 'natives';
 import math from 'source/src/Helpers/maths';
 import { draw3DText } from 'source/src/Helpers/uiHelper';
-import utils from 'source/src/Helpers/utility.js';
+import utils from 'source/src/Helpers/utils.js';
+
 const player = alt.Player.local;
 const STREAM_DISTANCE = 40;
 const STREAM_DISTANCE_SQRT = STREAM_DISTANCE * STREAM_DISTANCE;

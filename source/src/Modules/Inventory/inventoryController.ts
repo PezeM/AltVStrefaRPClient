@@ -20,9 +20,9 @@ class InventoryController {
         mainUi.onUiEvent('inventoryStackItems', this.inventoryStackItems);
         mainUi.onUiEvent('inventoryMoveItem', this.inventoryMoveItem);
         mainUi.onUiEvent('inventorySwapItems', this.inventorySwapItems);
-        mainUi.onUiEvent('inventoryDropItem', this.inventoryDropItem);
+        mainUi.onUiEvent('inventoryDropItem', this.inventoryTryDropItem.bind(this));
         alt.onServer('inventoryAddNewItem', this.inventoryAddNewItem.bind(this));
-        alt.onServer('updateInventoryItemQuantity', this.updateInventoryItemQuantity);
+        alt.onServer('updateInventoryItemQuantity', this.updateInventoryItemQuantity.bind(this));
     }
 
     pickupItem() {
@@ -97,10 +97,22 @@ class InventoryController {
         inventoryCache.swapItems(selectedItemId, selectedItemSlotId, itemToSwapId, itemToSwapSlotId);
     }
 
-    inventoryDropItem(itemToDropId: number, quantity: number) {
+    inventoryTryDropItem(itemToDropId: number, quantity: number) {
         alt.log(`Dropping item id ${itemToDropId} quantity ${quantity}`);
-        alt.emitServer('InventoryDropItem', itemToDropId, quantity);
-        inventoryCache.dropItem(itemToDropId, quantity);
+        serverCallbacks.callback("InventoryDropItem", "inventoryItemDropResponse", [itemToDropId, quantity], (wasDropped: boolean, itemId: number) => {
+            this.inventoryDropItem(wasDropped, itemId, quantity);
+        });
+    }
+
+    inventoryDropItem(wasDropped: boolean, itemId: number, quantity: number) {
+        alt.log(`Inventory drop item callback`);
+        if (wasDropped) {
+            alt.log(`Item with id ${itemId} quantity ${quantity} was dropped`);
+            inventoryCache.dropItem(itemId, quantity);
+        } else {
+            alt.log(`Item with id ${itemId} quantity ${quantity} was not dropped`);
+            // If the item was not dropped then not remove it from inventory and also propably restore it in the UI
+        }
     }
 
     inventoryAddNewItem(newItems: IInventoryItem | IInventoryItem[]) {

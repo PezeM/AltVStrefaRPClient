@@ -1,7 +1,6 @@
 import * as alt from 'alt';
 import * as game from 'natives';
 import maths from 'source/src/Helpers/maths';
-import { drawText } from 'source/src/Helpers/uiHelper';
 
 class Utils {
   delay(timeout: number) {
@@ -139,13 +138,12 @@ class Utils {
     });
   }
 
-  isEntityInFront(entityPosition: Vector3, localPlayer: alt.Player, minDot: number = 0.9, debug: boolean = false) {
+  isEntityInFront(entityPosition: Vector3, localPlayer: alt.Player, minDot: number = 0.9) {
     const playerForwardVector = game.getEntityForwardVector(localPlayer.scriptID);
     const substractedPosition = maths.substract(entityPosition, localPlayer.pos);
     const normalizedPosition = maths.normalize(substractedPosition);
 
     const dot = maths.dot(normalizedPosition, playerForwardVector);
-    if (debug) drawText(`Dot: ${dot.toFixed(2)}`, [0.5, 0.6], 4, [255, 255, 255, 255], 0.5);
     return dot > minDot;
   }
 }

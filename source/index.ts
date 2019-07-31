@@ -15,7 +15,6 @@ import * as vehicles from 'source/src/Modules/Vehicle/vehicles';
 import 'source/src/Modules/objectSync';
 import 'source/src/Modules/Ui/nicknames';
 import 'source/src/Modules/Streaming/networkStreamer';
-import { drawText } from 'source/src/Helpers/uiHelper';
 import equipmentSlots from 'source/src/Constans/equipmentSlots';
 import 'source/src/Modules/Vehicle/vehicleComponentsController';
 import vehicleDoors from 'source/src/Modules/Vehicle/Components/vehicleDoorsComponent';
@@ -25,10 +24,6 @@ import SoundBrowser from 'source/src/Admin/soundBrowser';
 import inventoryController from 'source/src/Modules/Inventory/inventoryController';
 
 const localPlayer = alt.Player.local;
-let frame = 0;
-let fps = 0;
-const showFps = true;
-let timeStart = Date.now();
 let lastKeyPressedTime = new Date().getTime();
 let strefaView: alt.WebView | null = null;
 const soundBrowser = new SoundBrowser();
@@ -45,21 +40,6 @@ alt.on('update', () => {
     // DEV Constant running
     if (game.isPedSprinting(localPlayer.scriptID))
         game.restorePlayerStamina(localPlayer.scriptID, 100);
-
-    // Showing fps
-    if (typeof showFps !== 'undefined' && showFps) {
-        frame++;
-
-        const timeNow = Date.now() - timeStart;
-
-        fps = Math.round(frame / (timeNow / 1000.0));
-        drawText(fps.toString(), [0.01, 0.01], 4, [255, 255, 255, 128], 0.4, false, false);
-
-        if (frame > 130) {
-            frame = 0;
-            timeStart = Date.now();
-        }
-    }
 
     if (cinemaView != null) {
         const coords = game.getEntityCoords(localPlayer.scriptID, true);

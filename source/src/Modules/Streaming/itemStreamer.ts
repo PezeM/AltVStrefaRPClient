@@ -52,8 +52,7 @@ class ItemStreamer {
             [this.nearestItem.position.x, this.nearestItem.position.y, this.nearestItem.position.z],
             4, [255, 255, 255, 255], 0.5, true, false);
         if (maths.distance(this.nearestItem.position, this.localPlayer.pos) > DISTANCE_TO_PICKUP_ITEM) return;
-        const isItemInFront = utils.isEntityInFront(this.nearestItem.position, this.localPlayer, 0.8, true);
-        game.showHudComponentThisFrame(14);
+        const isItemInFront = utils.isEntityInFront(this.nearestItem.position, this.localPlayer, 0.8);
         if (!isItemInFront) return;
         draw3DText(`~g~[E] ~y~Aby podnieść`, [this.nearestItem.position.x, this.nearestItem.position.y, this.nearestItem.position.z + 0.12],
             4, [255, 255, 255, 255], 0.5, true, false);

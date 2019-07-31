@@ -19,7 +19,7 @@ const controlsIds: IControlsIds = {
     U: 0x55,
 };
 
-const HUDElementsToHide = [1, 2, 3, 4, 6, 7, 8, 9];
+const HUDElementsToHide = [1, 2, 3, 4, 6, 7, 8, 9, 14];
 
 let cursorShown = false;
 const localPlayer = alt.Player.local;
@@ -64,13 +64,13 @@ alt.on('keydown', (key: number) => {
 });
 
 alt.on('update', () => {
-    if (chat.isOpen() || mainUi.viewOpened) {
-        game.disableAllControlActions(0);
-        game.disableAllControlActions(2);
-    } else {
-        game.enableAllControlActions(0);
-        game.enableAllControlActions(2);
-    }
+    // if (chat.isOpen() || mainUi.viewOpened) {
+    //     game.disableAllControlActions(0);
+    //     game.disableAllControlActions(2);
+    // } else {
+    //     game.enableAllControlActions(0);
+    //     game.enableAllControlActions(2);
+    // }
 
     if (zoneNames.realZoneName && zoneNames.streetName && zoneNames.minimap) {
         drawText(zoneNames.streetName, [zoneNames.minimap.rightX, zoneNames.minimap.bottomY - 0.065], 4, [255, 255, 255, 255], 0.5, true, false);
@@ -80,24 +80,6 @@ alt.on('update', () => {
     HUDElementsToHide.forEach((hudElement) => {
         game.hideHudComponentThisFrame(hudElement);
     });
-
-    if (getGameState() === 1) {
-        alt.Player.all.forEach((player) => {
-            if (game.getDistanceBetweenCoords(localPlayer.pos.x, localPlayer.pos.y, localPlayer.pos.z,
-                player.pos.x, player.pos.y, player.pos.z, true) > 35) return;
-            if (typeof player.isTalking === 'undefined') player.isTalking = false;
-            if (typeof player.remoteId === 'undefined' || player.remoteId == null) {
-                player.remoteId = player.getSyncedMeta("remoteId");
-            }
-
-            if (player.isTalking) {
-                draw3DText(`~g~Rozmawia \n ~w~ID: ${player.remoteId}`, [player.pos.x, player.pos.y, player.pos.z + 1], 4,
-                    [255, 255, 255, 255], 0.6, false, false);
-            } else {
-                draw3DText('~r~Nie rozmawia', [player.pos.x, player.pos.y, player.pos.z + 1], 4, [255, 255, 255, 255], 0.6, false, false);
-            }
-        });
-    }
 
     if (localPlayer.vehicle == null && !game.isPlayerDead(localPlayer.scriptID) && !mainUi.viewOpened) {
         if (!circleMenu.isMenuOpened)

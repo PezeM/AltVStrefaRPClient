@@ -12,7 +12,7 @@ class ServerCallbacks {
         this.callbacksCleanupInterval = alt.setInterval(this.callbacksCleanup.bind(this), 10000);
     }
 
-    callback(eventName: string, callbackEventName: string, args: any, callback: (...result: any) => void) {
+    callback(eventName: string, callbackEventName: string, args: any | any[], callback: (...result: any) => void) {
         if (eventName === undefined) {
             alt.log(`ServerCallback -> eventname is undefined`);
             return;
@@ -21,7 +21,7 @@ class ServerCallbacks {
         if (args === undefined) {
             alt.emitServer(eventName);
         } else {
-            alt.emitServer(eventName, args);
+            alt.emitServer(eventName, ...args);
         }
 
         this.callbacks.push({ callbackEventName, startTime: Date.now(), completed: false, callback });
@@ -31,7 +31,6 @@ class ServerCallbacks {
         this.registedCallbacks.add(eventName);
 
         alt.onServer(callbackEventName, (...result: any) => {
-            // alt.log(`Got server event witn name ${callbackEventName} and result of type ${typeof result} and length ${result.length}`);
             let index = -1;
             for (let i = 0; i < this.callbacks.length; i++) {
                 if (this.callbacks[i].callbackEventName !== callbackEventName) continue;

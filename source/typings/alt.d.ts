@@ -117,8 +117,8 @@ declare module "alt" {
     }
 
     export class WorldObject extends BaseObject {
-        readonly pos: any;
-
+        readonly pos: Vector3;
+		dimension: number;
     }
 
     export class Entity extends WorldObject {
@@ -172,7 +172,8 @@ declare module "alt" {
         focus(): void;
         off(evName: string, p1Fn: Function): void;
         on(evName: string, p1Fn: Function): void;
-        unfocus(): void;
+		unfocus(): void;
+		destroy(): void;		
     }
 
     export class Blip extends BaseObject {

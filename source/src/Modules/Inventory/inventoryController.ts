@@ -25,17 +25,6 @@ class InventoryController {
         alt.onServer('updateInventoryItemQuantity', this.updateInventoryItemQuantity.bind(this));
     }
 
-    pickupItem() {
-        if (!itemStreamer.canPickupItem || itemStreamer.nearestItem == null) return false;
-        animationController.findAndPlayAnimation("pickup2");
-        alt.setTimeout(() => {
-            if (itemStreamer.nearestItem == null) return false;
-            alt.log(`Picked up item with id ${itemStreamer.nearestItem.item.id} and network object id ${itemStreamer.nearestItem.id}`);
-            alt.emitServer('PickupDroppedItem', itemStreamer.nearestItem.id, itemStreamer.nearestItem.item.id);
-        }, 500);
-        return true;
-    }
-
     openInventory() {
         if (inventoryCache.cachedItems !== null && inventoryCache.cachedEquippedItems !== null) {
             if (this.needToRefreshCache()) {
@@ -59,6 +48,17 @@ class InventoryController {
             inventoryCache.setEquippedItems(JSON.parse(equippedItems));
             this.populateUi(null);
         });
+    }
+
+    pickupItem() {
+        if (!itemStreamer.canPickupItem || itemStreamer.nearestItem == null) return false;
+        animationController.findAndPlayAnimation("pickup2");
+        alt.setTimeout(() => {
+            if (itemStreamer.nearestItem == null) return false;
+            alt.log(`Picked up item with id ${itemStreamer.nearestItem.item.id} and network object id ${itemStreamer.nearestItem.id}`);
+            alt.emitServer('PickupDroppedItem', itemStreamer.nearestItem.id, itemStreamer.nearestItem.item.id);
+        }, 500);
+        return true;
     }
 
     populateUi(extraInventory: object | null = null) {

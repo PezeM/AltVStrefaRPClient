@@ -93,7 +93,6 @@ class VehicleDoorComponent extends VehicleComponent {
         const hoodDistance = math.distance(hoodPosition, vehicle.pos);
         const bootPosition = game.getOffsetFromEntityInWorldCoords(vehicle.scriptID, 0, -trunkDistance, 0);
         const frontPosition = game.getOffsetFromEntityInWorldCoords(vehicle.scriptID, 0, hoodDistance + 1, 0);
-        alt.log(`Boot position ${JSON.stringify(bootPosition)} Front position ${JSON.stringify(frontPosition)}`);
 
         if (math.distance(localPlayer.pos, frontPosition) <= math.distance(localPlayer.pos, bootPosition)) { // Hood is closer
             alt.log(`Hood was closer dist ${math.distance(localPlayer.pos, frontPosition)}`);
@@ -102,7 +101,6 @@ class VehicleDoorComponent extends VehicleComponent {
                 return true;
             }
         } else {
-            alt.log(`Trunk was closer`);
             const distance = math.distance(localPlayer.pos, bootPosition);
             alt.log(`Distance between player and trunk was ${distance}`)
             if (distance <= OPEN_DOOR_DISTANCE_SQRT) {
@@ -110,6 +108,8 @@ class VehicleDoorComponent extends VehicleComponent {
                 return true;
             }
         }
+
+        return false;
     }
 
     toggleHoodState(state: number, vehicle: alt.Vehicle) {
@@ -147,7 +147,7 @@ class VehicleDoorComponent extends VehicleComponent {
         alt.log(`Closing door`);
         alt.setTimeout(() => {
             game.playVehicleDoorCloseSound(vehicle.scriptID, 0);
-            alt.log(`Closed door`);
+            alt.log(`Closed door index ${doorIndex}`);
         }, 50);
     }
 

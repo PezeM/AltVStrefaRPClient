@@ -19,7 +19,7 @@ const controlsIds: IControlsIds = {
     U: 0x55,
 };
 
-const HUDElementsToHide = [1, 2, 3, 4, 6, 7, 8, 9, 14];
+const HUDElementsToHide = [1, 2, 3, 4, 6, 7, 8, 9]; // 14
 
 let cursorShown = false;
 const localPlayer = alt.Player.local;
@@ -145,4 +145,5 @@ mainUi.onUiEvent('defaultCancelModalCallback', () => {
 // Test cinematic camera off
 alt.setInterval(() => {
     game._0x9E4CFFF989258472(); // Disables vehicle idle cam ? 
-}, 5000);
+    game.resetCameraAfkTimer(); // Resets camera afk timer
+}, 10000);

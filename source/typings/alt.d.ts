@@ -4102,7 +4102,7 @@ declare module "natives" {
 	export function setHudComponentPosition(id: number, x: number, y: number): void;
 	export function getHudComponentPosition(id: number): Vector3;
 	export function clearReminderMessage(): void;
-	export function getScreenCoordFromWorldCoord(worldX: number, worldY: number, worldZ: number, screenX: floatPtr, screenY: floatPtr): Array<any>;
+	export function getScreenCoordFromWorldCoord(worldX: number, worldY: number, worldZ: number): Array<any>;
 	export function displayJobReport(): void;
 	export function _0xEE4C0E6DBC6F2C6F(): void;
 	export function _0x9135584D09A3437E(): number;

@@ -48,6 +48,42 @@ export function drawText(text: string, position: number[], font: number, color: 
 
 export function draw3DText(text: string, position: number[], font: number, color: number[], scale: number, outline = true,
     drawBackground = true, backgroundColor = [0, 0, 0, 90]) {
+    const [bol, x, y] = game.getScreenCoordFromWorldCoord(position[0], position[1], position[2]);
+    const camCord = game.getGameplayCamCoords();
+    const dist = game.getDistanceBetweenCoords(camCord.x, camCord.y, camCord.z, position[0], position[1], position[2], true);
+
+
+    if (dist > 20) return;
+
+    scale *= (4.00001 / dist);
+    if (scale > 0.2)
+        scale = 0.2;
+
+
+    const fov = (1 / game.getGameplayCamFov()) * 100;
+    scale = scale * fov;
+
+    if (bol) {
+        game.setTextScale(scale, scale);
+        game.setTextFont(font);
+        game.setTextProportional(true);
+        game.setTextColour(color[0], color[1], color[2], color[3]);
+        game.setTextDropshadow(10, 0, 0, 0, 255);
+        game.setTextEdge(2, 0, 0, 0, 150);
+        game.setTextDropShadow();
+
+        if (outline)
+            game.setTextOutline();
+
+        game.setTextCentre(true);
+        game.beginTextCommandDisplayText("STRING");
+        game.addTextComponentSubstringPlayerName(text);
+        game.endTextCommandDisplayText(x, y + 0.025);
+    }
+}
+
+export function draw3DText2(text: string, position: number[], font: number, color: number[], scale: number, outline = true,
+    drawBackground = true, backgroundColor = [0, 0, 0, 90]) {
     const camCoord = game.getGameplayCamCoords();
     let distance = game.getDistanceBetweenCoords(position[0], position[1], position[2], camCoord.x, camCoord.y, camCoord.z, true);
 

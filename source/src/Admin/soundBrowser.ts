@@ -425,13 +425,13 @@ export default class SoundBrowser {
             drawText(`~w~Naciśnij F aby wyświetlić pomoc~n~`, [0.5, 0.93], 4, [255, 255, 255, 100], 0.45, true);
         }
 
-        if (game.isControlJustReleased(3, controlIds.ARROW_LEFT)) {
+        if (game.isControlJustPressed(3, controlIds.ARROW_LEFT)) {
             this.previousSound(1);
-        } else if (game.isControlJustReleased(3, controlIds.ARROW_RIGHT)) {
+        } else if (game.isControlJustPressed(3, controlIds.ARROW_RIGHT)) {
             this.nextSound(1);
-        } else if (game.isControlJustReleased(3, controlIds.ARROW_DOWN)) {
+        } else if (game.isControlJustPressed(3, controlIds.ARROW_DOWN)) {
             this.previousSound(10);
-        } else if (game.isControlJustReleased(3, controlIds.ARROW_UP)) {
+        } else if (game.isControlJustPressed(3, controlIds.ARROW_UP)) {
             this.nextSound(10);
         }
     }

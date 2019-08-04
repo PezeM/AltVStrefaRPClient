@@ -13,7 +13,6 @@ import 'source/src/Admin/animationBrowser';
 import 'source/src/Environment/sitting';
 import * as vehicles from 'source/src/Modules/Vehicle/vehicles';
 import 'source/src/Modules/objectSync';
-import 'source/src/Modules/Ui/nicknames';
 import 'source/src/Modules/Streaming/networkStreamer';
 import equipmentSlots from 'source/src/Constans/equipmentSlots';
 import 'source/src/Modules/Vehicle/vehicleComponentsController';

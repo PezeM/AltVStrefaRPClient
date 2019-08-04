@@ -7,13 +7,8 @@ import trashBin from 'source/src/Environment/trashBin';
 import vehicleShop from 'source/src/Modules/Vehicle/vehicleShop';
 import banking from 'source/src/Modules/banking';
 import { EntityTypes } from 'source/src/Constans/entityTypes';
-
-enum test {
-    None,
-    Ped,
-    Vehicle,
-    Object
-}
+import vehicleDoors from 'source/src/Constans/vehicleDoors';
+import { NotificationTypes } from 'source/src/Constans/notificationTypes';
 
 class CircleMenuController {
     menuOpened: boolean;
@@ -145,6 +140,19 @@ class CircleMenuController {
                 const vehicleToDespawn = alt.Vehicle.all.find(v => v.scriptID === this.entityHit);
                 if (vehicleToDespawn == null) return;
                 alt.emitServer("DespawnVehicle", vehicleToDespawn);
+                break;
+            case "openVehicleInventory":
+                const vehicleToOpenInventory = alt.Vehicle.all.find(v => v.scriptID === this.entityHit);
+                if (vehicleToOpenInventory == null) return;
+                if (game.getVehicleDoorLockStatus(this.entityHit) === 2) {
+                    mainUi.showCefNotification(NotificationTypes.Error, "Pojazd", "Pojazd jest zamknięty", 3000);
+                    return;
+                }
+                if (!game.isVehicleDoorFullyOpen(this.entityHit, vehicleDoors.TRUNK)) {
+                    mainUi.showCefNotification(NotificationTypes.Error, "Bagażnik", "Bagażnik nie jest otwarty", 3500);
+                    return;
+                }
+                alt.emitServer("OpenVehicleInventory", vehicleToOpenInventory, false);
                 break;
             // case "information":
             //     let vehicle = alt.Vehicle.all.find(v => v.scriptID === this.entityHit);

@@ -144,6 +144,10 @@ export default {
             desc: 'Zdespawnuj pojazd',
             icon: 'information',
         },
+        openVehicleInventory: {
+            desc: 'Otwórz inventory',
+            icon: 'misc,'
+        },
         information: USEFULL_OPTIONS.information,
         quit: USEFULL_OPTIONS.quit,
     },

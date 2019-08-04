@@ -33,7 +33,7 @@ class MainUi {
             this.uiView.emit(eventName, ...args);
     }
 
-    openMenu(name: string, hideUi: boolean, freezePlayer: boolean, ...args: any[]) {
+    openMenu(menuName: string, hideUi: boolean, freezePlayer: boolean, ...args: any[]) {
         if (hideUi && freezePlayer) {
             showUiAndFreezePlayer(false);
         } else if (hideUi) {
@@ -49,7 +49,7 @@ class MainUi {
         // game.attachEntityToEntity(this.tablet, localPlayer, game.getPedBoneIndex(localPlayer, 60309),
         //     0.035, 0.015, 0.012, 0.0, 0, 0, true, true, false, true, 1, true);
 
-        this.uiView.emit(name, ...args);
+        this.uiView.emit(menuName, ...args);
         this.viewOpened = true;
         alt.showCursor(true);
         this.uiView.focus();

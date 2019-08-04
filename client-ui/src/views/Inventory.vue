@@ -1,11 +1,13 @@
 <template>
   <div id="inventory" v-on:keyup.esc="closeInventory()" v-on:keyup.i="closeInventory()">
     <div class="container-fluid h-100 w-100">
-      <div class="row align-items-end h-100">
+      <div class="row align-items-end h-100 pb-4">
         <div class="col-3">Tutaj bedzie equipped inventory</div>
         <div class="col-9">
           <div class="row">
             <div class="col">
+              <p class="text-left font-weight-light">Nazwa inventory: Personalne eq</p>
+              <p class="text-left font-weight-light">Id inventory: 2</p>
               <div class="row">
                 <div class="inventory-container">
                   <div class="row m-0 p-1">
@@ -32,13 +34,19 @@
                 </div>
               </div>
             </div>
-            <div class="col">
-              <div class="inventory-container other-inventory">
+            <div class="col" v-if="showAddonationalInventory">
+              <p
+                class="text-left font-weight-light"
+              >Nazwa dodatkowego inventory {{ addonationalInventoryContainer.InventoryName }}</p>
+              <p
+                class="text-left font-weight-light"
+              >Id dodatkowego inventory {{ addonationalInventoryContainer.InventoryId }}</p>
+              <div class="inventory-container addonational-inventory">
                 <div class="row m-0 p-1">
                   <div
-                    v-for="(index) in playerInventoryMaxSlots"
+                    v-for="(index) in addonationalInventoryContainer.InventorySlots"
                     v-bind:key="index"
-                    v-bind:id="'other-' + index"
+                    v-bind:id="'addonational-' + index"
                     class="col-lg-2 col-md-4 inventory-slot"
                   >
                     <div class="slot-content isDraggable">Item</div>
@@ -76,6 +84,8 @@ export default {
         swappable.on('swappable:swap', this.onSwappableSwap.bind(this));
         swappable.on('swappable:stop', this.onSwappableStop.bind(this));
         swappable.on('drag:out:container', this.onDragOutContainer.bind(this));
+
+        console.log(`Addonation inventory is ${this.addonationalInventoryContainer}`);
     },
     props: {
         initialItems: {
@@ -199,8 +209,36 @@ export default {
                 return [];
             },
         },
-        initialExtraInventory: {
+        addonationalInventory: {
             type: Object,
+            default: function() {
+                return {
+                    InventoryId: 1,
+                    InventoryName: 'Dodatkowe inventory',
+                    InventorySlots: 7,
+                    Items: [
+                        {
+                            Id: 505,
+                            Name: 'Jakieś spodnie',
+                            StackSize: 1,
+                            Quantity: 1,
+                            IsDroppable: true,
+                            EquipmentSlot: 10004,
+                            SlotId: 15,
+                        },
+                        {
+                            Id: 605,
+                            Name: 'Jakaś bluza',
+                            StackSize: 1,
+                            Quantity: 1,
+                            IsDroppable: true,
+                            EquipmentSlot: 10004,
+                            SlotId: 1,
+                        },
+                    ],
+                };
+                null;
+            },
         },
     },
     data() {
@@ -219,7 +257,7 @@ export default {
             action: null,
             items: this.initialItems,
             equippedItems: this.initialEquippedItems,
-            extraInventory: { ...this.initialExtraInventory },
+            addonationalInventoryContainer: this.addonationalInventory,
         };
     },
     methods: {
@@ -378,6 +416,12 @@ export default {
             }
         },
     },
+    computed: {
+        showAddonationalInventory() {
+            return this.addonationalInventoryContainer != null;
+            // return typeof this.addonationalInventoryContainer !== 'undefined';
+        },
+    },
 };
 </script>
 
@@ -385,14 +429,16 @@ export default {
 #inventory {
     /* background-image: url('../assets/example-image.jpg'); */
     background-color: rgba(0, 0, 0, 0.561);
-    padding-bottom: 2em;
+    /* padding-bottom: 2em; */
+    width: 100%;
+    height: 100vh;
 }
 
 .inventory-container {
-    min-height: 45vh;
-    /* min-width: 20rem; */
+    /* min-height: 45vh; */
+    min-width: 20em;
     max-height: 50vh;
-    /* max-width: 35rem; */
+    max-width: 30em;
     overflow-y: auto;
     background-color: rgba(0, 0, 0, 0.6);
 }

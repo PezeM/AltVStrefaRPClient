@@ -80,13 +80,20 @@ export interface IServerCallback {
     callback: (...result: any) => void;
 }
 
+export interface IInventoryContainer {
+    InventoryId: number;
+    InventoryName: string;
+    InventorySlots: number;
+    Items: IInventoryItem[];
+}
+
 export interface IInventoryItem {
     Id: number;
-    Name: string,
-    StackSize: number,
+    Name: string;
+    StackSize: number;
     Quantity: number;
-    IsDroppable: boolean,
-    EquipmentSlot: number,
+    IsDroppable: boolean;
+    EquipmentSlot: number;
     SlotId: number;
 }
 
@@ -107,9 +114,9 @@ export interface IItem {
 
 export interface INetworkingItem extends INetworkingEntity {
     item: {
-        id: number,
-        object: number,
-        name: string,
+        id: number;
+        object: number;
+        name: string;
         count: number
     }
 }

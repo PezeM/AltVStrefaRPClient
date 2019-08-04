@@ -2,6 +2,8 @@ import * as alt from 'alt';
 import { IInventoryItem } from "source/src/Constans/interfaces";
 
 class InventoryCache {
+    cachedItemsInventoryId: number;
+    cachecEquippedItemsInventoryId: number;
     cachedItems: IInventoryItem[] | null;
     cachedEquippedItems: any[] | null;
 

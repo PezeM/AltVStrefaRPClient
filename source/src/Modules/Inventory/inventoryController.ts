@@ -23,6 +23,11 @@ class InventoryController {
         mainUi.onUiEvent('inventoryDropItem', this.inventoryTryDropItem.bind(this));
         alt.onServer('inventoryAddNewItem', this.inventoryAddNewItem.bind(this));
         alt.onServer('updateInventoryItemQuantity', this.updateInventoryItemQuantity.bind(this));
+        alt.onServer('populateAddonationalInventoryContainer', this.populateAddonationalInventoryContainer.bind(this));
+    }
+
+    populateAddonationalInventoryContainer(inventoryContainer: object) {
+        this.populateInventoryInUi(inventoryContainer);
     }
 
     openInventory() {
@@ -33,7 +38,7 @@ class InventoryController {
                 return;
             }
             alt.log(`Items: ${JSON.stringify(inventoryCache.cachedItems, null, 4)}`);
-            this.populateUi();
+            this.populateInventoryInUi();
         } else {
             this.openInventoryFromServer();
         }
@@ -46,7 +51,7 @@ class InventoryController {
             alt.log(`Got inventory from server`);
             inventoryCache.setItems(JSON.parse(inventory));
             inventoryCache.setEquippedItems(JSON.parse(equippedItems));
-            this.populateUi(null);
+            this.populateInventoryInUi(null);
         });
     }
 
@@ -61,9 +66,9 @@ class InventoryController {
         return true;
     }
 
-    populateUi(extraInventory: object | null = null) {
-        mainUi.openMenu('openPlayerInventory', true, true, inventoryCache.cachedItems, inventoryCache.cachedEquippedItems, extraInventory);
-        game.transitionToBlurred(250);
+    populateInventoryInUi(addonationalInventoryContainer: object | null = null) {
+        mainUi.openMenu('openPlayerInventory', true, false, inventoryCache.cachedItems, inventoryCache.cachedEquippedItems, addonationalInventoryContainer);
+        game.transitionToBlurred(150);
     }
 
     getInventoryFromServer(callback: (...result: any) => void) {

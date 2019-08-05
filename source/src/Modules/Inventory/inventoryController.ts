@@ -31,13 +31,13 @@ class InventoryController {
     }
 
     openInventory() {
-        if (inventoryCache.cachedItems !== null && inventoryCache.cachedEquippedItems !== null) {
+        if (inventoryCache.cachedInventory !== null && inventoryCache.cachedEquippedInventory !== null) {
             if (this.needToRefreshCache()) {
                 alt.log(`Refreshing inventory`);
                 this.openInventoryFromServer();
                 return;
             }
-            alt.log(`Items: ${JSON.stringify(inventoryCache.cachedItems, null, 4)}`);
+            alt.log(`Items: ${JSON.stringify(inventoryCache.cachedInventory, null, 4)}`);
             this.populateInventoryInUi();
         } else {
             this.openInventoryFromServer();
@@ -67,7 +67,8 @@ class InventoryController {
     }
 
     populateInventoryInUi(addonationalInventoryContainer: object | null = null) {
-        mainUi.openMenu('openPlayerInventory', true, false, inventoryCache.cachedItems, inventoryCache.cachedEquippedItems, addonationalInventoryContainer);
+        mainUi.openMenu('openPlayerInventory', true, false, inventoryCache.cachedInventory, inventoryCache.cachedEquippedInventory,
+            addonationalInventoryContainer);
         game.transitionToBlurred(150);
     }
 
@@ -82,7 +83,7 @@ class InventoryController {
         // Stack in chached memory. If there was error then we shouldn't stack items and send event 
         // to ui to unstack items 
         try {
-            alt.log(`Typeof cached inventory = ${typeof inventoryCache.cachedItems}`);
+            alt.log(`Typeof cached inventory = ${typeof inventoryCache.cachedInventory}`);
             inventoryCache.stackItems(itemToStackId, itemToStackFromId);
             alt.emitServer('InventoryTryToStackItems', itemToStackId, itemToStackFromId);
         } catch (error) {

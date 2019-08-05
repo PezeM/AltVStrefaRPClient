@@ -148,7 +148,7 @@ class CircleMenuController {
                     mainUi.showCefNotification(NotificationTypes.Error, "Pojazd", "Pojazd jest zamknięty", 3000);
                     return;
                 }
-                if (!game.isVehicleDoorFullyOpen(this.entityHit, vehicleDoors.TRUNK)) {
+                if (game.getVehicleDoorAngleRatio(this.entityHit, vehicleDoors.TRUNK) < 0.1) {
                     mainUi.showCefNotification(NotificationTypes.Error, "Bagażnik", "Bagażnik nie jest otwarty", 3500);
                     return;
                 }

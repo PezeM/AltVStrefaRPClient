@@ -6,13 +6,17 @@
         <div class="col-9">
           <div class="row">
             <div class="col">
-              <p class="text-left font-weight-light">Nazwa inventory: Personalne eq</p>
-              <p class="text-left font-weight-light">Id inventory: 2</p>
+              <p
+                class="text-left font-weight-light"
+              >Nazwa inventory: {{ personalInventory.inventoryName }}</p>
+              <p
+                class="text-left font-weight-light"
+              >Id inventory: {{ personalInventory.inventoryId }}</p>
               <div class="row">
                 <div class="inventory-container">
                   <div class="row m-0 p-1">
                     <div
-                      v-for="(n, index) in playerInventoryMaxSlots"
+                      v-for="(n, index) in personalInventory.inventorySlots"
                       v-bind:key="index"
                       v-bind:id="index"
                       class="col-lg-2 col-md-4 inventory-slot"
@@ -20,12 +24,12 @@
                       <div
                         class="slot-content isDraggable"
                         v-bind:class="{ withItem: itemAtSlot(index) }"
-                        v-bind:data-itemId="itemAtSlot(index) ? itemAtSlot(index).Id : 0"
+                        v-bind:data-itemId="itemAtSlot(index) ? itemAtSlot(index).id : 0"
                       >
                         <div v-if="itemAtSlot(index)">
-                          {{ itemAtSlot(index).Name }}
+                          {{ itemAtSlot(index).name }}
                           <br />
-                          {{ itemAtSlot(index).SlotId }} - {{ itemAtSlot(index).Quantity }}
+                          {{ itemAtSlot(index).slotId }} - {{ itemAtSlot(index).quantity }}
                         </div>
                         <div v-else>Item</div>
                       </div>
@@ -37,19 +41,30 @@
             <div class="col" v-if="showAddonationalInventory">
               <p
                 class="text-left font-weight-light"
-              >Nazwa dodatkowego inventory {{ addonationalInventoryContainer.InventoryName }}</p>
+              >Nazwa dodatkowego inventory {{ addonationalInventory.inventoryName }}</p>
               <p
                 class="text-left font-weight-light"
-              >Id dodatkowego inventory {{ addonationalInventoryContainer.InventoryId }}</p>
+              >Id dodatkowego inventory {{ addonationalInventory.inventoryId }}</p>
               <div class="inventory-container addonational-inventory">
                 <div class="row m-0 p-1">
                   <div
-                    v-for="(index) in addonationalInventoryContainer.InventorySlots"
+                    v-for="(n, index) in addonationalInventory.inventorySlots"
                     v-bind:key="index"
-                    v-bind:id="'addonational-' + index"
+                    v-bind:id="index"
                     class="col-lg-2 col-md-4 inventory-slot"
                   >
-                    <div class="slot-content isDraggable">Item</div>
+                    <div
+                      class="slot-content isDraggable"
+                      v-bind:class="{ withItem: itemAtSlotInAddonationalInv(index) }"
+                      v-bind:data-itemId="itemAtSlotInAddonationalInv(index) ? itemAtSlotInAddonationalInv(index).id : 0"
+                    >
+                      <div v-if="itemAtSlotInAddonationalInv(index)">
+                        {{ itemAtSlotInAddonationalInv(index).name }}
+                        <br />
+                        {{ itemAtSlotInAddonationalInv(index).slotId }} - {{ itemAtSlotInAddonationalInv(index).quantity }}
+                      </div>
+                      <div v-else>Item</div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -63,7 +78,7 @@
 
 <script>
 import { Swappable, Plugins } from '@shopify/draggable';
-import { setTimeout } from 'timers';
+
 export default {
     name: 'inventory',
     mounted() {
@@ -88,135 +103,145 @@ export default {
         console.log(`Addonation inventory is ${this.addonationalInventoryContainer}`);
     },
     props: {
-        initialItems: {
-            type: Array,
-            default: function() {
-                return [
-                    {
-                        Id: 47,
-                        Name: 'Jakieś spodnie',
-                        StackSize: 1,
-                        Quantity: 1,
-                        IsDroppable: true,
-                        EquipmentSlot: 10004,
-                        SlotId: 15,
-                    },
-                    {
-                        Id: 48,
-                        Name: 'Jakieś spodnie',
-                        StackSize: 1,
-                        Quantity: 1,
-                        IsDroppable: true,
-                        EquipmentSlot: 10004,
-                        SlotId: 1,
-                    },
-                    {
-                        Id: 65,
-                        Name: 'Jakieś spodnie',
-                        StackSize: 1,
-                        Quantity: 1,
-                        IsDroppable: true,
-                        EquipmentSlot: 10004,
-                        SlotId: 2,
-                    },
-                    {
-                        Id: 66,
-                        Name: 'Jakieś spodnie',
-                        StackSize: 1,
-                        Quantity: 1,
-                        IsDroppable: true,
-                        EquipmentSlot: 10004,
-                        SlotId: 3,
-                    },
-                    {
-                        Id: 67,
-                        Name: 'Jakieś spodnie',
-                        StackSize: 1,
-                        Quantity: 1,
-                        IsDroppable: true,
-                        EquipmentSlot: 10004,
-                        SlotId: 4,
-                    },
-                    {
-                        Id: 68,
-                        Name: 'Combat pistol',
-                        StackSize: 1,
-                        Quantity: 1,
-                        IsDroppable: true,
-                        EquipmentSlot: 12000,
-                        SlotId: 5,
-                    },
-                    {
-                        Id: 69,
-                        Name: 'Combat pistol',
-                        StackSize: 1,
-                        Quantity: 1,
-                        IsDroppable: true,
-                        EquipmentSlot: 12000,
-                        SlotId: 6,
-                    },
-                    {
-                        Id: 70,
-                        Name: 'Combat pistol',
-                        StackSize: 1,
-                        Quantity: 1,
-                        IsDroppable: true,
-                        EquipmentSlot: 12000,
-                        SlotId: 7,
-                    },
-                    {
-                        Id: 71,
-                        Name: 'Combat pistol',
-                        StackSize: 1,
-                        Quantity: 1,
-                        IsDroppable: true,
-                        EquipmentSlot: 12000,
-                        SlotId: 8,
-                    },
-                    {
-                        Id: 72,
-                        Name: 'Combat pistol',
-                        StackSize: 1,
-                        Quantity: 1,
-                        IsDroppable: true,
-                        EquipmentSlot: 12000,
-                        SlotId: 9,
-                    },
-                    {
-                        Id: 109,
-                        Name: 'Burger',
-                        StackSize: 20,
-                        Quantity: 19,
-                        IsDroppable: true,
-                        EquipmentSlot: -1,
-                        SlotId: 10,
-                    },
-                    {
-                        Id: 110,
-                        Name: 'Burger',
-                        StackSize: 20,
-                        Quantity: 8,
-                        IsDroppable: true,
-                        EquipmentSlot: -1,
-                        SlotId: 11,
-                    },
-                ];
-            },
-        },
-        initialEquippedItems: {
-            type: Array,
-            default: function() {
-                return [];
-            },
-        },
-        addonationalInventory: {
+        initialPersonalInventory: {
             type: Object,
-            default: function() {
+            default: () => {
                 return {
-                    InventoryId: 1,
-                    InventoryName: 'Dodatkowe inventory',
-                    InventorySlots: 7,
-                    Items: [
+                    inventoryId: 3,
+                    inventoryName: 'Ekwipunek',
+                    inventorySlots: 30,
+                    items: [
+                        {
+                            id: 47,
+                            name: 'Jakieś spodnie',
+                            stackSize: 1,
+                            quantity: 1,
+                            isDroppable: true,
+                            equipmentSlot: 10004,
+                            slotId: 15,
+                        },
+                        {
+                            id: 48,
+                            name: 'Jakieś spodnie',
+                            stackSize: 1,
+                            quantity: 1,
+                            isDroppable: true,
+                            equipmentSlot: 10004,
+                            slotId: 1,
+                        },
+                        {
+                            id: 65,
+                            name: 'Jakieś spodnie',
+                            stackSize: 1,
+                            quantity: 1,
+                            isDroppable: true,
+                            equipmentSlot: 10004,
+                            slotId: 2,
+                        },
+                        {
+                            id: 66,
+                            name: 'Jakieś spodnie',
+                            stackSize: 1,
+                            quantity: 1,
+                            isDroppable: true,
+                            equipmentSlot: 10004,
+                            slotId: 3,
+                        },
+                        {
+                            id: 67,
+                            name: 'Jakieś spodnie',
+                            stackSize: 1,
+                            quantity: 1,
+                            isDroppable: true,
+                            equipmentSlot: 10004,
+                            slotId: 4,
+                        },
+                        {
+                            id: 68,
+                            name: 'Combat pistol',
+                            stackSize: 1,
+                            quantity: 1,
+                            isDroppable: true,
+                            equipmentSlot: 12000,
+                            slotId: 5,
+                        },
+                        {
+                            id: 69,
+                            name: 'Combat pistol',
+                            stackSize: 1,
+                            quantity: 1,
+                            isDroppable: true,
+                            equipmentSlot: 12000,
+                            slotId: 6,
+                        },
+                        {
+                            id: 70,
+                            name: 'Combat pistol',
+                            stackSize: 1,
+                            quantity: 1,
+                            isDroppable: true,
+                            equipmentSlot: 12000,
+                            slotId: 7,
+                        },
+                        {
+                            id: 71,
+                            name: 'Combat pistol',
+                            stackSize: 1,
+                            quantity: 1,
+                            isDroppable: true,
+                            equipmentSlot: 12000,
+                            slotId: 8,
+                        },
+                        {
+                            id: 72,
+                            name: 'Combat pistol',
+                            stackSize: 1,
+                            quantity: 1,
+                            isDroppable: true,
+                            equipmentSlot: 12000,
+                            slotId: 9,
+                        },
+                        {
+                            id: 109,
+                            name: 'Burger',
+                            stackSize: 20,
+                            quantity: 19,
+                            isDroppable: true,
+                            equipmentSlot: -1,
+                            slotId: 10,
+                        },
+                        {
+                            id: 110,
+                            name: 'Burger',
+                            stackSize: 20,
+                            quantity: 8,
+                            isDroppable: true,
+                            equipmentSlot: -1,
+                            slotId: 11,
+                        },
+                    ],
+                };
+            },
+        },
+        initialEquippedInventory: {
+            type: Object,
+            default: () => {
+                return {
+                    inventoryId: 2,
+                    inventoryName: 'Equipped items',
+                    inventorySlots: 10,
+                    items: [],
+                };
+            },
+        },
+        initialAddonationalInventory: {
+            type: Object,
+            default: () => {
+                return {
+                    inventoryId: 1,
+                    inventoryName: 'Dodatkowe inventory',
+                    inventorySlots: 7,
+                    items: [
                         {
                             Id: 505,
                             Name: 'Jakieś spodnie',
@@ -237,7 +262,6 @@ export default {
                         },
                     ],
                 };
-                null;
             },
         },
     },
@@ -246,6 +270,7 @@ export default {
             hoverClass: 'on-drag-enter',
             lastAffectedItems: [],
             playerInventoryMaxSlots: 30,
+            // Class indicating slot is with item
             withItem: 'withItem',
             moveBetweenInventories: false,
             swappingObject: null,
@@ -255,42 +280,55 @@ export default {
             itemToSwap: null,
             newSlotId: -1,
             action: null,
-            items: this.initialItems,
-            equippedItems: this.initialEquippedItems,
-            addonationalInventoryContainer: this.addonationalInventory,
+            personalInventory: { ...this.initialPersonalInventory },
+            equippedInventory: this.initialEquippedInventory,
+            addonationalInventory: this.initialAddonationalInventory,
         };
     },
     methods: {
         onSwappableStart(event) {
             this.swappingObject = event.dragEvent.data;
             event.dragEvent.data.source.classList.add('on-drag-start');
-            this.selectedItem = this.getItemById(this.swappingObject.originalSource.dataset.itemid);
             // console.log(`Swapping item = ${JSON.stringify(this.selectedItem, null, 4)}`);
-            if (!this.isSwappable(this.swappingObject.originalSource._prevClass) || this.selectedItem == null) {
+            if (!this.isSwappable(this.swappingObject.originalSource._prevClass)) {
                 event.cancel();
                 console.log(`Event canceled`);
+                return;
             }
             console.log(event);
             console.log(`Swappable started ${JSON.stringify(event, null, 4)}`);
-            console.log(`Swapping object ${JSON.stringify(this.swappingObject.originalSource, null, 4)}`);
+            // console.log(`Swapping object ${JSON.stringify(this.swappingObject.originalSource, null, 4)}`);
         },
         onSwappableSwap(event) {
-            if (this.selectedItem == null) return;
             this.applyHoverEffect(event);
             this.lastDragOverContaier = event.data.overContainer;
             if (this.lastDragOverContaier != this.swappingObject.sourceContainer) {
                 console.log(`Move between inventories`);
                 this.moveBetweenInventories = true;
+                if (this.swappingObject.sourceContainer.className.includes('addonational-inventory')) {
+                    console.log(`Swapping from addonational inventory`);
+                    this.selectedItem = this.getItemByIdFromAddonationalInventory(this.swappingObject.originalSource.dataset.itemid);
+                    this.itemToSwap = this.getItemById(event.dragEvent.data.over.dataset.itemid);
+                } else {
+                    console.log('Swapping to addonational inventory');
+                    this.selectedItem = this.getItemById(this.swappingObject.originalSource.dataset.itemid);
+                    this.itemToSwap = this.getItemByIdFromAddonationalInventory(event.dragEvent.data.over.dataset.itemid);
+                }
+            } else if (this.swappingObject.sourceContainer.className.includes('addonational-inventory')) {
+                this.selectedItem = this.getItemByIdFromAddonationalInventory(this.swappingObject.originalSource.dataset.itemid);
+                this.itemToSwap = this.getItemByIdFromAddonationalInventory(event.dragEvent.data.over.dataset.itemid);
+            } else {
+                this.itemToSwap = this.getItemById(event.dragEvent.data.over.dataset.itemid);
+                this.selectedItem = this.getItemById(this.swappingObject.originalSource.dataset.itemid);
             }
 
-            this.itemToSwap = this.getItemById(event.dragEvent.data.over.dataset.itemid);
             if (this.itemToSwap == null) {
                 // There was no item in that cell, it means we should drop it there
                 this.action = 'swap';
                 this.newSlotId = Number(event.data.over.parentNode.id);
                 console.log(`New slot = ${this.newSlotId}`);
             } else {
-                if (this.selectedItem.Name == this.itemToSwap.Name && this.selectedItem.StackSize > 1) {
+                if (this.selectedItem.name == this.itemToSwap.name && this.selectedItem.stackSize > 1) {
                     console.log(`We should stack`);
                     this.action = 'stack';
                 } else {
@@ -333,44 +371,87 @@ export default {
             this.resetStates();
         },
         onItemStack() {
-            let amountOfItemsToStack = this.selectedItem.Quantity;
-            const maxQuantity = this.itemToSwap.StackSize - this.itemToSwap.Quantity;
+            let amountOfItemsToStack = this.selectedItem.quantity;
+            const maxQuantity = this.itemToSwap.stackSize - this.itemToSwap.quantity;
             const toAdd = Math.min(amountOfItemsToStack, maxQuantity);
             if (toAdd <= 0) return;
-            this.itemToSwap.Quantity += toAdd;
-            this.selectedItem.Quantity -= toAdd;
-            if (this.selectedItem.Quantity <= 0) {
+            this.itemToSwap.quantity += toAdd;
+            this.selectedItem.quantity -= toAdd;
+            if (this.selectedItem.quantity <= 0) {
                 console.log(`Should delete item`);
-                this.items = this.items.filter(i => i.Id != this.selectedItem.Id);
+                this.personalInventory.items = this.personalInventory.items.filter(i => i.id != this.selectedItem.id);
             }
             amountOfItemsToStack -= toAdd;
-            alt.emit('inventoryStackItems', this.itemToSwap.Id, this.selectedItem.Id);
+            alt.emit('inventoryStackItems', this.itemToSwap.id, this.selectedItem.id);
             this.addItemToLastAffectedItems(this.itemToSwap, this.selectedItem);
         },
         onItemSwap() {
             if (this.itemToSwap != null) {
                 // Swapping item with item
-                const temporarySlot = this.itemToSwap.SlotId;
-                this.itemToSwap.SlotId = this.selectedItem.SlotId;
-                this.selectedItem.SlotId = temporarySlot;
-                alt.emit('inventorySwapItems', this.selectedItem.Id, this.selectedItem.SlotId, this.itemToSwap.Id, this.itemToSwap.SlotId);
+                if (this.moveBetweenInventories) {
+                    const temporarySlot = this.itemToSwap.slotId;
+                    this.itemToSwap.slotId = this.selectedItem.slotId;
+                    this.selectedItem.slotId = temporarySlot;
+                    if (this.swappingObject.sourceContainer.className.includes('addonational-inventory')) {
+                        console.log(`Swapping from addonational inventory`);
+                        this.personalInventory.items = this.personalInventory.items.filter(i => i.id !== this.itemToSwap.id);
+                        this.personalInventory.items.push(this.selectedItem);
+                        this.addonationalInventory.items = this.addonationalInventory.items.filter(i => i.id !== this.selectedItem.id);
+                        this.addonationalInventory.items.push(this.itemToSwap);
+                    } else {
+                        console.log('Swapping to addonational inventory');
+                        this.addonationalInventory.items = this.addonationalInventory.items.filter(i => i.id !== this.itemToSwap.id);
+                        this.addonationalInventory.items.push(this.selectedItem);
+                        this.personalInventory.items = this.personalInventory.items.filter(i => i.id !== this.selectedItem.id);
+                        this.personalInventory.items.push(this.itemToSwap);
+                    }
+                } else {
+                    const temporarySlot = this.itemToSwap.slotId;
+                    this.itemToSwap.slotId = this.selectedItem.slotId;
+                    this.selectedItem.slotId = temporarySlot;
+                    alt.emit(
+                        'inventorySwapItems',
+                        this.selectedItem.id,
+                        this.selectedItem.slotId,
+                        this.itemToSwap.id,
+                        this.itemToSwap.slotId
+                    );
+                }
+
                 this.addItemToLastAffectedItems(this.selectedItem, this.itemToSwap);
             } else if (this.newSlotId > -1) {
                 // Moving item to empty slot
-                this.selectedItem.SlotId = this.newSlotId;
-                alt.emit('inventoryMoveItem', this.selectedItem.Id, this.selectedItem.SlotId);
+                if (this.moveBetweenInventories) {
+                    this.selectedItem.slotId = this.newSlotId;
+                    alt.emit('transferItemBetweenInventories');
+                    console.log(`Moving between inventories`);
+                    // this.swappingObject = this.lastDragOverContaier;
+                    if (this.swappingObject.sourceContainer.className.includes('addonational-inventory')) {
+                        console.log(`Moving from addonational inventory`);
+                        this.personalInventory.items.push(this.selectedItem);
+                        this.addonationalInventory.items = this.addonationalInventory.items.filter(i => i.id !== this.selectedItem.id);
+                    } else {
+                        console.log('Moving to addonational inventory');
+                        this.addonationalInventory.items.push(this.selectedItem);
+                        this.personalInventory.items = this.personalInventory.items.filter(i => i.id !== this.selectedItem.id);
+                    }
+                } else {
+                    console.log('aaaaaaaaaa');
+                    this.selectedItem.slotId = this.newSlotId;
+                    alt.emit('inventoryMoveItem', this.selectedItem.id, this.selectedItem.slotId);
+                }
                 this.addItemToLastAffectedItems(this.selectedItem);
             }
         },
         onItemDrop() {
             if (this.selectedItem == null) return;
-            if (!this.selectedItem.IsDroppable) {
+            if (!this.selectedItem.isDroppable) {
                 // Propably emit notification that you can't drop this item
                 return;
             }
-            alt.emit('inventoryDropItem', this.selectedItem.Id, this.selectedItem.Quantity);
+            alt.emit('inventoryDropItem', this.selectedItem.id, this.selectedItem.quantity);
             // Temporary till user can select quantity
-            this.items = this.items.filter(i => i.Id !== this.selectedItem.Id);
+            this.personalInventory.items = this.personalInventory.items.filter(i => i.id !== this.selectedItem.id);
             this.addItemToLastAffectedItems(this.selectedItem);
         },
         closeInventory() {
@@ -387,14 +468,26 @@ export default {
             }
         },
         itemAtSlot(slotId) {
-            for (let i = 0; i < this.items.length; i++) {
-                if (this.items[i].SlotId == slotId) return this.items[i];
+            for (let i = 0; i < this.personalInventory.items.length; i++) {
+                if (this.personalInventory.items[i].slotId == slotId) return this.personalInventory.items[i];
+            }
+            return null;
+        },
+        itemAtSlotInAddonationalInv(slotId) {
+            for (let i = 0; i < this.addonationalInventory.items.length; i++) {
+                if (this.addonationalInventory.items[i].slotId == slotId) return this.addonationalInventory.items[i];
             }
             return null;
         },
         getItemById(itemId) {
-            for (let i = 0; i < this.items.length; i++) {
-                if (this.items[i].Id == itemId) return this.items[i];
+            for (let i = 0; i < this.personalInventory.items.length; i++) {
+                if (this.personalInventory.items[i].id == itemId) return this.personalInventory.items[i];
+            }
+            return null;
+        },
+        getItemByIdFromAddonationalInventory(itemId) {
+            for (let i = 0; i < this.addonationalInventory.items.length; i++) {
+                if (this.addonationalInventory.items[i].id == itemId) return this.addonationalInventory.items[i];
             }
             return null;
         },
@@ -410,6 +503,7 @@ export default {
             this.selectedItem = null;
             this.action = null;
             this.newSlotId = -1;
+            this.moveBetweenInventories = false;
             if (this.lastDragOverItem) {
                 this.lastDragOverItem.classList.remove('on-drag-enter');
                 this.lastDragOverItem = null;
@@ -418,7 +512,7 @@ export default {
     },
     computed: {
         showAddonationalInventory() {
-            return this.addonationalInventoryContainer != null;
+            return this.addonationalInventory != null;
             // return typeof this.addonationalInventoryContainer !== 'undefined';
         },
     },

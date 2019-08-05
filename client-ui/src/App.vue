@@ -80,7 +80,11 @@ alt.on('openPlayerInventory', (inventoryData, equippedItems, addonationalInvento
     console.log(`Inventory data on UI ${inventoryData} equippedItems ${equippedItems} addonationalInventory ${addonationalInventory}`);
     router.push({
         name: 'inventory',
-        params: { initialItems: inventoryData, initialEquippedItems: equippedItems, addonationalInventory: addonationalInventory },
+        params: {
+            initialPersonalInventory: inventoryData,
+            initialEquippedInventory: equippedItems,
+            initialAddonationalInventory: addonationalInventory,
+        },
     });
 });
 

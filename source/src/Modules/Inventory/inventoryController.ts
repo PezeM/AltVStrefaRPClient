@@ -5,7 +5,7 @@ import serverCallbacks from 'source/src/Modules/serverCallbacks';
 import mainUi from 'source/src/Modules/Ui/mainUi';
 import itemStreamer from 'source/src/Modules/Streaming/itemStreamer';
 import animationController from 'source/src/Modules/animations';
-import { IInventoryItem } from 'source/src/Constans/interfaces';
+import { IInventoryItem, IInventoryContainer } from 'source/src/Constans/interfaces';
 
 const NUMBER_OF_INVENTORY_OPENINGS_TO_REFRESH_CACHE = 15;
 
@@ -47,10 +47,10 @@ class InventoryController {
     }
 
     openInventoryFromServer() {
-        this.getInventoryFromServer((inventory: string, equippedItems: string) => {
+        this.getInventoryFromServer((inventory: IInventoryContainer, equippedItems: IInventoryContainer) => {
             alt.log(`Got inventory from server`);
-            inventoryCache.setItems(JSON.parse(inventory));
-            inventoryCache.setEquippedItems(JSON.parse(equippedItems));
+            inventoryCache.setInventory(inventory);
+            inventoryCache.setEquippedInventory(equippedItems);
             this.populateInventoryInUi(null);
         });
     }

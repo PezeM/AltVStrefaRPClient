@@ -154,13 +154,6 @@ class CircleMenuController {
                 }
                 alt.emitServer("OpenVehicleInventory", vehicleToOpenInventory, false);
                 break;
-            // case "information":
-            //     let vehicle = alt.Vehicle.all.find(v => v.scriptID === this.entityHit);
-            //     if (vehicle == null) break;
-            //     let vehicleDisplayName = game.getDisplayNameFromVehicleModel(vehicle.scriptID);
-            //     let vehiclePlate = game.getVehicleNumberPlateText(vehicle.scriptID);
-            //     mainUi.showCefNotification(0, "Pojazd", `VehicleDisplayName = ${vehicleDisplayName} VehiclePlateText = ${vehiclePlate}`, 6000);
-            //     break;
         }
     }
 

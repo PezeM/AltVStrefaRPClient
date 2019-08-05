@@ -3,7 +3,7 @@ import { IInventoryItem, IInventoryContainer } from "source/src/Constans/interfa
 
 class InventoryCache {
     cachedInventoryId: number;
-    cachecEquippedInventoryId: number;
+    cachedEquippedInventoryId: number;
     cachedInventory: IInventoryContainer | null;
     cachedEquippedInventory: IInventoryContainer | null;
 
@@ -12,12 +12,12 @@ class InventoryCache {
         this.cachedEquippedInventory = null;
     }
 
-    setItems(items: any) {
-        this.cachedInventory = items;
+    setInventory(inventory: IInventoryContainer) {
+        this.cachedInventory = inventory;
     }
 
-    setEquippedItems(equippedItems: any) {
-        this.cachedEquippedInventory = equippedItems;
+    setEquippedInventory(equippedInventory: IInventoryContainer) {
+        this.cachedEquippedInventory = equippedInventory;
     }
 
     getItemWithId(itemId: number) {

@@ -81,20 +81,20 @@ export interface IServerCallback {
 }
 
 export interface IInventoryContainer {
-    InventoryId: number;
-    InventoryName: string;
-    InventorySlots: number;
-    Items: IInventoryItem[];
+    inventoryId: number;
+    inventoryName: string;
+    inventorySlots: number;
+    items: IInventoryItem[];
 }
 
 export interface IInventoryItem {
-    Id: number;
-    Name: string;
-    StackSize: number;
-    Quantity: number;
-    IsDroppable: boolean;
-    EquipmentSlot: number;
-    SlotId: number;
+    id: number;
+    name: string;
+    stackSize: number;
+    quantity: number;
+    isDroppable: boolean;
+    equipmentSlot: number;
+    slotId: number;
 }
 
 export interface IItem {

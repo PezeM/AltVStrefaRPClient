@@ -100,7 +100,7 @@ export default {
         swappable.on('swappable:stop', this.onSwappableStop.bind(this));
         swappable.on('drag:out:container', this.onDragOutContainer.bind(this));
 
-        console.log(`Addonation inventory is ${this.addonationalInventoryContainer}`);
+        console.log(`Addonation inventory is ${this.addonationalInventory}`);
     },
     props: {
         initialPersonalInventory: {
@@ -281,8 +281,8 @@ export default {
             newSlotId: -1,
             action: null,
             personalInventory: { ...this.initialPersonalInventory },
-            equippedInventory: this.initialEquippedInventory,
-            addonationalInventory: this.initialAddonationalInventory,
+            equippedInventory: { ...this.initialEquippedInventory },
+            addonationalInventory: { ...this.initialAddonationalInventory },
         };
     },
     methods: {

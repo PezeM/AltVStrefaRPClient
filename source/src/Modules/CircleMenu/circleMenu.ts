@@ -9,6 +9,7 @@ import banking from 'source/src/Modules/banking';
 import { EntityTypes } from 'source/src/Constans/entityTypes';
 import vehicleDoors from 'source/src/Constans/vehicleDoors';
 import { NotificationTypes } from 'source/src/Constans/notificationTypes';
+import inventoryController from 'source/src/Modules/Inventory/inventoryController';
 
 class CircleMenuController {
     menuOpened: boolean;
@@ -54,13 +55,13 @@ class CircleMenuController {
         this.entityHit = entityHit;
         const entityType: EntityTypes = game.getEntityType(this.entityHit);
         switch (entityType) {
-            case 1:
+            case EntityTypes.Ped:
                 this.onPedFound();
                 break;
-            case 2:
+            case EntityTypes.Vehicle:
                 this.onVehicleFound();
                 break;
-            case 3:
+            case EntityTypes.Object:
                 this.onObjectFound();
                 break;
         }
@@ -152,7 +153,7 @@ class CircleMenuController {
                     mainUi.showCefNotification(NotificationTypes.Error, "Bagażnik", "Bagażnik nie jest otwarty", 3500);
                     return;
                 }
-                alt.emitServer("OpenVehicleInventory", vehicleToOpenInventory, false);
+                inventoryController.openVehicleInventory(vehicleToOpenInventory);
                 break;
         }
     }

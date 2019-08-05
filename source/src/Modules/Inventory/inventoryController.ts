@@ -26,7 +26,15 @@ class InventoryController {
         alt.onServer('populateAddonationalInventoryContainer', this.populateAddonationalInventoryContainer.bind(this));
     }
 
-    populateAddonationalInventoryContainer(inventoryContainer: object) {
+    populateAddonationalInventoryContainer(inventoryContainer: IInventoryContainer, personalInventory: IInventoryContainer | null,
+        equippedInventory: IInventoryContainer | null) {
+        if (personalInventory) {
+            inventoryCache.setInventory(personalInventory);
+        }
+        if (equippedInventory) {
+            inventoryCache.setEquippedInventory(equippedInventory);
+        }
+
         this.populateInventoryInUi(inventoryContainer);
     }
 
@@ -53,6 +61,11 @@ class InventoryController {
             inventoryCache.setEquippedInventory(equippedItems);
             this.populateInventoryInUi(null);
         });
+    }
+
+    openVehicleInventory(vehicleToOpenInventory: alt.Vehicle) {
+        const getPersonalInventory = inventoryCache.cachedInventory == null || inventoryCache.cachedEquippedInventory == null;
+        alt.emitServer('OpenVehicleInventory', vehicleToOpenInventory, getPersonalInventory);
     }
 
     pickupItem() {
@@ -154,7 +167,7 @@ class InventoryController {
     }
 
     private needToRefreshCache() {
-        return this.openedInventoryCount % NUMBER_OF_INVENTORY_OPENINGS_TO_REFRESH_CACHE === 0;
+        return (this.openedInventoryCount % NUMBER_OF_INVENTORY_OPENINGS_TO_REFRESH_CACHE) === 0;
     }
 }
 

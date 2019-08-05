@@ -22,7 +22,7 @@ class InventoryCache {
 
     getItemWithId(itemId: number) {
         if (this.cachedInventory === null) return null;
-        return this.cachedInventory.Items.find(i => i.Id === itemId);
+        return this.cachedInventory.items.find(i => i.id === itemId);
     }
 
     stackItems(itemToStackId: number, itemToStackFromId: number) {
@@ -36,15 +36,15 @@ class InventoryCache {
         }
 
         // Stacking logic. Remove item if the quantity of item to stack is 0
-        const amountOfItemsToStack = itemToStackFrom.Quantity;
-        const maxQuantity = itemToStack.StackSize - itemToStack.Quantity;
+        const amountOfItemsToStack = itemToStackFrom.quantity;
+        const maxQuantity = itemToStack.stackSize - itemToStack.quantity;
         const toAdd = Math.min(amountOfItemsToStack, maxQuantity);
         if (toAdd <= 0) return;
-        itemToStack.Quantity += toAdd;
-        itemToStackFrom.Quantity -= toAdd;
-        if (itemToStackFrom.Quantity <= 0) {
+        itemToStack.quantity += toAdd;
+        itemToStackFrom.quantity -= toAdd;
+        if (itemToStackFrom.quantity <= 0) {
             alt.log(`Should delete item`);
-            this.cachedInventory.Items = this.cachedInventory.Items.filter(i => i.Id !== itemToStackFrom.Id);
+            this.cachedInventory.items = this.cachedInventory.items.filter(i => i.id !== itemToStackFrom.id);
         }
     }
 
@@ -52,7 +52,7 @@ class InventoryCache {
         if (this.cachedInventory == null) return;
         const itemToMove = this.getItemWithId(selectedItemId);
         if (itemToMove == null) return;
-        itemToMove.SlotId = selectedItemSlotId;
+        itemToMove.slotId = selectedItemSlotId;
         alt.log(`Moved item ${selectedItemId} to ${selectedItemSlotId}`);
     }
 
@@ -61,8 +61,8 @@ class InventoryCache {
         const selectedItem = this.getItemWithId(selectedItemId);
         const itemToSwap = this.getItemWithId(itemToSwapId);
         if (itemToSwap == null || selectedItem == null) return;
-        selectedItem.SlotId = selectedItemSlotId;
-        itemToSwap.SlotId = itemToSwapSlotId;
+        selectedItem.slotId = selectedItemSlotId;
+        itemToSwap.slotId = itemToSwapSlotId;
         alt.log(`Swapped slot of item ${selectedItemId} to ${selectedItemSlotId} and ${itemToSwapId} to ${itemToSwapSlotId}`);
     }
 
@@ -70,22 +70,22 @@ class InventoryCache {
         if (this.cachedInventory == null) return;
         const itemToDrop = this.getItemWithId(itemToDropId);
         if (itemToDrop == null) return;
-        if (itemToDrop.Quantity < quantity) return;
-        itemToDrop.Quantity -= quantity;
-        if (itemToDrop.Quantity <= 0) {
-            this.cachedInventory.Items = this.cachedInventory.Items.filter(i => i.Id !== itemToDrop.Id);
+        if (itemToDrop.quantity < quantity) return;
+        itemToDrop.quantity -= quantity;
+        if (itemToDrop.quantity <= 0) {
+            this.cachedInventory.items = this.cachedInventory.items.filter(i => i.id !== itemToDrop.id);
         }
     }
 
     addNewItem(newItem: IInventoryItem) {
         if (this.cachedInventory == null) return;
-        this.cachedInventory.Items.push(newItem);
+        this.cachedInventory.items.push(newItem);
     }
 
     updateInventoryItemQuantity(itemId: number, itemQuantity: number) {
         const item = this.getItemWithId(itemId);
         if (item == null) return;
-        item.Quantity = itemQuantity;
+        item.quantity = itemQuantity;
     }
 }
 

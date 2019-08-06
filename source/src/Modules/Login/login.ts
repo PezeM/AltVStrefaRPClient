@@ -79,7 +79,7 @@ function showLoginWindow() {
                 mainUi.openMenu('openLoginView', true, true);
                 alt.clearInterval(interval);
             }
-        }, 100);
+        }, 250);
     }
 }
 

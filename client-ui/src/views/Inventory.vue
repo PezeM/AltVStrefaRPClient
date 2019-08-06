@@ -259,7 +259,6 @@ export default {
             }
 
             console.log(event);
-            console.log(`Swappable started ${JSON.stringify(event, null, 4)}`);
         },
         onSwappableSwap(event) {
             this.applyHoverEffect(event);

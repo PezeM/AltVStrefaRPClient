@@ -6,20 +6,21 @@ import keycodes from 'source/src/Constans/keycodes';
 import * as gameState from 'source/src/gameState';
 import 'source/src/uiController';
 import 'source/src/menus';
-import 'source/src/Login/login';
-import 'source/src/Admin/noclip';
-import 'source/src/Admin/adminTeleports';
-import 'source/src/Admin/animationBrowser';
+import 'source/src/Modules/Login/login';
+import 'source/src/Modules/Admin/noclip';
+import 'source/src/Modules/Admin/adminTeleports';
+import 'source/src/Modules/Admin/animationBrowser';
 import 'source/src/Environment/sitting';
 import * as vehicles from 'source/src/Modules/Vehicle/vehicles';
 import 'source/src/Modules/objectSync';
 import 'source/src/Modules/Streaming/networkStreamer';
 import equipmentSlots from 'source/src/Constans/equipmentSlots';
 import 'source/src/Modules/Vehicle/vehicleComponentsController';
+import 'source/src/configFlagsController';
 import vehicleDoors from 'source/src/Modules/Vehicle/Components/vehicleDoorsComponent';
 import vehicleSeatbeltComponent from 'source/src/Modules/Vehicle/Components/vehicleSeatbeltComponent';
 import vehicleEngineToggleComponent from 'source/src/Modules/Vehicle/Components/vehicleEngineToggleComponent';
-import SoundBrowser from 'source/src/Admin/soundBrowser';
+import SoundBrowser from 'source/src/Modules/Admin/soundBrowser';
 import inventoryController from 'source/src/Modules/Inventory/inventoryController';
 
 const localPlayer = alt.Player.local;
@@ -273,10 +274,10 @@ alt.onServer('equipClothableItem', (slot: number, drawableId: number, textureId:
     }
 });
 
-alt.on('playerConnect', () => {
-    game.requestAnimDict("mp_facial");
-    game.requestAnimDict("facials@gen_male@variations@normal");
-});
+// alt.on('playerConnect', () => {
+//     game.requestAnimDict("mp_facial");
+//     game.requestAnimDict("facials@gen_male@variations@normal");
+// });
 
 
 game.loadMpDlcMaps();

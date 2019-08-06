@@ -50,7 +50,7 @@
   "prettier": {
     "tabWidth": 4,
     "singleQuote": true,
-    "printWidth": 140,
+    "printWidth": 160,
     "trailingComma": "es5"
   },
   "postcss": {

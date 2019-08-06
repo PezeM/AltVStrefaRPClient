@@ -8,60 +8,17 @@
             <div class="col">
               <p class="text-left">Nazwa inventory: {{ personalInventory.inventoryName }}</p>
               <p class="text-left">Id inventory: {{ personalInventory.inventoryId }}</p>
-              <div class="row">
-                <div class="inventory-container">
-                  <div class="row m-0 p-1">
-                    <div
-                      v-for="(item, index) in personalInventoryBySlotId"
-                      v-bind:key="index"
-                      v-bind:id="index"
-                      class="col-lg-2 col-md-4 inventory-slot"
-                    >
-                      <div
-                        class="slot-content isDraggable"
-                        v-bind:class="{ withItem: item != null }"
-                        v-bind:data-itemId="item != null ? item.id : 0"
-                      >
-                        <div v-if="item != null">
-                          {{ item.name }}
-                          <br />
-                          {{ item.slotId }} - {{ item.quantity }}
-                        </div>
-                        <div v-else>Item</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <inventory-container :inventory="personalInventory"></inventory-container>
             </div>
             <div class="col" v-if="showAddonationalInventory">
               <p
                 class="text-left"
               >Nazwa dodatkowego inventory {{ addonationalInventory.inventoryName }}</p>
               <p class="text-left">Id dodatkowego inventory {{ addonationalInventory.inventoryId }}</p>
-              <div class="inventory-container addonational-inventory">
-                <div class="row m-0 p-1">
-                  <div
-                    v-for="(n, index) in addonationalInventory.inventorySlots"
-                    v-bind:key="index"
-                    v-bind:id="index"
-                    class="col-lg-2 col-md-4 inventory-slot"
-                  >
-                    <div
-                      class="slot-content isDraggable"
-                      v-bind:class="{ withItem: itemAtSlotInAddonationalInv(index) }"
-                      v-bind:data-itemId="itemAtSlotInAddonationalInv(index) ? itemAtSlotInAddonationalInv(index).id : 0"
-                    >
-                      <div v-if="itemAtSlotInAddonationalInv(index)">
-                        {{ itemAtSlotInAddonationalInv(index).name }}
-                        <br />
-                        {{ itemAtSlotInAddonationalInv(index).slotId }} - {{ itemAtSlotInAddonationalInv(index).quantity }}
-                      </div>
-                      <div v-else>Item</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <inventory-container
+                :inventory="addonationalInventory"
+                inventoryClass="addonational-inventory"
+              ></inventory-container>
             </div>
           </div>
         </div>
@@ -72,9 +29,13 @@
 
 <script>
 import { Swappable, Plugins } from '@shopify/draggable';
+import InventoryContainer from '@/components/Inventory/InventoryContainer.vue';
 
 export default {
     name: 'inventory',
+    components: {
+        InventoryContainer,
+    },
     mounted() {
         const containerSelector = '.inventory-container';
         const containers = this.$el.querySelectorAll(containerSelector);
@@ -296,6 +257,8 @@ export default {
         onSwappableSwap(event) {
             this.applyHoverEffect(event);
             this.lastDragOverContaier = event.data.overContainer;
+            this.moveBetweenInventories = false;
+
             if (this.lastDragOverContaier != this.swappingObject.sourceContainer) {
                 console.log(`Move between inventories`);
                 this.moveBetweenInventories = true;
@@ -403,13 +366,7 @@ export default {
                     const temporarySlot = this.itemToSwap.slotId;
                     this.itemToSwap.slotId = this.selectedItem.slotId;
                     this.selectedItem.slotId = temporarySlot;
-                    alt.emit(
-                        'inventorySwapItems',
-                        this.selectedItem.id,
-                        this.selectedItem.slotId,
-                        this.itemToSwap.id,
-                        this.itemToSwap.slotId
-                    );
+                    alt.emit('inventorySwapItems', this.selectedItem.id, this.selectedItem.slotId, this.itemToSwap.id, this.itemToSwap.slotId);
                 }
 
                 this.addItemToLastAffectedItems(this.selectedItem, this.itemToSwap);
@@ -505,7 +462,7 @@ export default {
         },
     },
     computed: {
-        personalInventoryBySlotId() {
+        itemsSortedBySlotId() {
             const array = Array(this.personalInventory.inventorySlots).fill(null);
             for (let i = 0; i < this.personalInventory.inventorySlots; i++) {
                 const item = this.personalInventory.items[i];
@@ -517,7 +474,6 @@ export default {
         },
         showAddonationalInventory() {
             return !(Object.entries(this.addonationalInventory).length === 0 && this.addonationalInventory.constructor === Object);
-            // return typeof this.addonationalInventoryContainer !== 'undefined';
         },
     },
 };
@@ -536,43 +492,6 @@ export default {
     font-family: 'Roboto';
     color: #212121;
     font-weight: 700;
-}
-
-.inventory-container {
-    /* min-height: 45vh; */
-    min-width: 20em;
-    max-height: 50vh;
-    max-width: 30em;
-    overflow-y: auto;
-    background-color: rgba(0, 0, 0, 0.6);
-}
-
-.inventory-slot {
-    width: 96px;
-    height: 96px;
-    background-color: rgba(0, 0, 0, 0.5);
-    color: #f3f3f3;
-    padding: 0rem;
-    border: 1px solid transparent;
-    background-clip: padding-box;
-    /* border: 1px solid transparent; */
-    transition: 0.5s;
-}
-
-.on-drag-start {
-    background-color: rgba(0, 0, 0, 0.6);
-}
-
-.on-drag-enter {
-    /* border: 1px solid rgba(255, 255, 255, 0.425); */
-    opacity: 0.6;
-    transform: scale(0.9);
-}
-
-.slot-content {
-    width: 100%;
-    height: 100%;
-    overflow: auto;
 }
 
 .BlockLayout {

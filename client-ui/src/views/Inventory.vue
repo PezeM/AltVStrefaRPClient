@@ -17,7 +17,7 @@
               <p class="text-left">Id dodatkowego inventory {{ addonationalInventory.inventoryId }}</p>
               <inventory-container
                 :inventory="addonationalInventory"
-                inventoryClass="addonational-inventory"
+                :inventoryClass="addonationalInventoryClassName"
               ></inventory-container>
             </div>
           </div>
@@ -30,6 +30,7 @@
 <script>
 import { Swappable, Plugins } from '@shopify/draggable';
 import InventoryContainer from '@/components/Inventory/InventoryContainer.vue';
+import EventBus from '@/event-bus.js';
 
 export default {
     name: 'inventory',
@@ -71,7 +72,7 @@ export default {
                             name: 'Jakieś spodnie',
                             stackSize: 1,
                             quantity: 1,
-                            isDroppable: true,
+                            isDroppable: false,
                             equipmentSlot: 10004,
                             slotId: 15,
                         },
@@ -80,7 +81,7 @@ export default {
                             name: 'Jakieś spodnie',
                             stackSize: 1,
                             quantity: 1,
-                            isDroppable: true,
+                            isDroppable: false,
                             equipmentSlot: 10004,
                             slotId: 1,
                         },
@@ -227,6 +228,7 @@ export default {
             playerInventoryMaxSlots: 30,
             // Class indicating slot is with item
             withItem: 'withItem',
+            addonationalInventoryClassName: 'addonational-inventory',
             moveBetweenInventories: false,
             swappingObject: null,
             selectedItem: null,
@@ -243,16 +245,21 @@ export default {
     methods: {
         onSwappableStart(event) {
             this.swappingObject = event.dragEvent.data;
-            event.dragEvent.data.source.classList.add('on-drag-start');
-            // console.log(`Swapping item = ${JSON.stringify(this.selectedItem, null, 4)}`);
+            this.swappingObject.source.classList.add('on-drag-start');
             if (!this.isSwappable(this.swappingObject.originalSource._prevClass)) {
                 event.cancel();
                 console.log(`Event canceled`);
                 return;
             }
+
+            if (this.isAddonationalInventory(this.swappingObject.sourceContainer)) {
+                this.selectedItem = this.getItemByIdFromAddonationalInventory(this.swappingObject.source.dataset.itemid);
+            } else {
+                this.selectedItem = this.getItemById(this.swappingObject.source.dataset.itemid);
+            }
+
             console.log(event);
             console.log(`Swappable started ${JSON.stringify(event, null, 4)}`);
-            // console.log(`Swapping object ${JSON.stringify(this.swappingObject.originalSource, null, 4)}`);
         },
         onSwappableSwap(event) {
             this.applyHoverEffect(event);
@@ -262,21 +269,17 @@ export default {
             if (this.lastDragOverContaier != this.swappingObject.sourceContainer) {
                 console.log(`Move between inventories`);
                 this.moveBetweenInventories = true;
-                if (this.swappingObject.sourceContainer.className.includes('addonational-inventory')) {
+                if (this.isAddonationalInventory(this.swappingObject.sourceContainer)) {
                     console.log(`Swapping from addonational inventory`);
-                    this.selectedItem = this.getItemByIdFromAddonationalInventory(this.swappingObject.originalSource.dataset.itemid);
                     this.itemToSwap = this.getItemById(event.dragEvent.data.over.dataset.itemid);
                 } else {
                     console.log('Swapping to addonational inventory');
-                    this.selectedItem = this.getItemById(this.swappingObject.originalSource.dataset.itemid);
                     this.itemToSwap = this.getItemByIdFromAddonationalInventory(event.dragEvent.data.over.dataset.itemid);
                 }
-            } else if (this.swappingObject.sourceContainer.className.includes('addonational-inventory')) {
-                this.selectedItem = this.getItemByIdFromAddonationalInventory(this.swappingObject.originalSource.dataset.itemid);
+            } else if (this.isAddonationalInventory(this.swappingObject.sourceContainer)) {
                 this.itemToSwap = this.getItemByIdFromAddonationalInventory(event.dragEvent.data.over.dataset.itemid);
             } else {
                 this.itemToSwap = this.getItemById(event.dragEvent.data.over.dataset.itemid);
-                this.selectedItem = this.getItemById(this.swappingObject.originalSource.dataset.itemid);
             }
 
             if (this.itemToSwap == null) {
@@ -300,7 +303,7 @@ export default {
             console.log(`drag:out:container`);
             if (this.selectedItem) {
                 this.action = 'drop';
-
+                console.log(`Should drop`);
                 if (this.lastDragOverItem != null) {
                     console.log(`Should remove hover effect on that element`);
                     this.lastDragOverItem.classList.remove(this.hoverClass);
@@ -349,7 +352,7 @@ export default {
                     const temporarySlot = this.itemToSwap.slotId;
                     this.itemToSwap.slotId = this.selectedItem.slotId;
                     this.selectedItem.slotId = temporarySlot;
-                    if (this.swappingObject.sourceContainer.className.includes('addonational-inventory')) {
+                    if (this.isAddonationalInventory(this.swappingObject.sourceContainer)) {
                         console.log(`Swapping from addonational inventory`);
                         this.personalInventory.items = this.personalInventory.items.filter(i => i.id !== this.itemToSwap.id);
                         this.personalInventory.items.push(this.selectedItem);
@@ -377,7 +380,7 @@ export default {
                     alt.emit('transferItemBetweenInventories');
                     console.log(`Moving between inventories`);
                     // this.swappingObject = this.lastDragOverContaier;
-                    if (this.swappingObject.sourceContainer.className.includes('addonational-inventory')) {
+                    if (this.isAddonationalInventory(this.swappingObject.sourceContainer)) {
                         console.log(`Moving from addonational inventory`);
                         this.personalInventory.items.push(this.selectedItem);
                         this.addonationalInventory.items = this.addonationalInventory.items.filter(i => i.id !== this.selectedItem.id);
@@ -387,7 +390,6 @@ export default {
                         this.personalInventory.items = this.personalInventory.items.filter(i => i.id !== this.selectedItem.id);
                     }
                 } else {
-                    console.log('aaaaaaaaaa');
                     this.selectedItem.slotId = this.newSlotId;
                     alt.emit('inventoryMoveItem', this.selectedItem.id, this.selectedItem.slotId);
                 }
@@ -398,6 +400,7 @@ export default {
             if (this.selectedItem == null) return;
             if (!this.selectedItem.isDroppable) {
                 // Propably emit notification that you can't drop this item
+                EventBus.$emit('showNotification', 3, 'Błąd', 'Nie można wyrzucić tego przedmiotu.', 3500);
                 return;
             }
             alt.emit('inventoryDropItem', this.selectedItem.id, this.selectedItem.quantity);
@@ -448,6 +451,9 @@ export default {
             }
             this.lastDragOverItem = event.data.over;
             this.lastDragOverItem.classList.add(this.hoverClass);
+        },
+        isAddonationalInventory(container) {
+            return container.className.includes(this.addonationalInventoryClassName);
         },
         resetStates() {
             this.swappingObject = null;

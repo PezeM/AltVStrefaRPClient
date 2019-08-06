@@ -1,7 +1,8 @@
 <template>
   <div class="main-ui-view">
     <div class="container-fluid">
-      <CircleMenu />
+      <circle-menu />
+      <notification-component />
     </div>
   </div>
 </template>

@@ -26,7 +26,7 @@ declare module "networking-entity" {
     export function createWithWebView(webView: any): void;
     export function createNoneDefault(): void;
     export function init(url: string, token: string): void;
-    export function onStreamIn(callback: (entity: INetworkingEntity) => Promise<void>): void;
+    export function onStreamIn(callback: (entity: INetworkingEntity) => void): void;
     export function onStreamOut(callback: (entity: INetworkingEntity) => void): void;
     export function onDataChange(callback: (entity: INetworkingEntity, newAddedData: any) => void): void;
 }

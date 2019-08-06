@@ -138,6 +138,29 @@ class Utils {
     });
   }
 
+  loadModelAsyncTest(model: string | number) {
+    return new Promise((resolve, reject) => {
+      if (typeof model === 'string') {
+        model = this.joaat(model);
+      }
+
+      if (!game.isModelValid(model))
+        return resolve(false);
+
+      if (game.hasModelLoaded(model))
+        return resolve(true);
+
+      game.requestModel(model);
+
+      const interval = alt.setInterval(() => {
+        if (game.hasModelLoaded(model as number)) {
+          alt.clearInterval(interval);
+          return resolve(true);
+        }
+      }, 0);
+    });
+  }
+
   isEntityInFront(entityPosition: Vector3, localPlayer: alt.Player, minDot: number = 0.9) {
     const playerForwardVector = game.getEntityForwardVector(localPlayer.scriptID);
     const substractedPosition = maths.substract(entityPosition, localPlayer.pos);

@@ -8,18 +8,7 @@
           v-bind:id="index"
           class="col-lg-2 col-md-4 inventory-slot"
         >
-          <div
-            class="slot-content isDraggable"
-            v-bind:class="{ withItem: item != null }"
-            v-bind:data-itemId="item != null ? item.id : 0"
-          >
-            <div v-if="item != null">
-              {{ item.name }}
-              <br />
-              {{ item.slotId }} - Q: {{ item.quantity }}
-            </div>
-            <div v-else>Item</div>
-          </div>
+          <inventory-slot :item="item" />
         </div>
       </div>
     </div>
@@ -27,13 +16,21 @@
 </template>
 
 <script>
+import InventorySlot from '@/components/Inventory/InventorySlot.vue';
+
 export default {
     name: 'inventory-container',
+    components: {
+        InventorySlot,
+    },
     props: {
         inventory: {
             type: Object,
         },
         inventoryClass: {
+            type: String,
+        },
+        itemAtSlotClass: {
             type: String,
         },
     },
@@ -84,9 +81,9 @@ export default {
     transform: scale(0.9);
 }
 
-.slot-content {
+/* .slot-content {
     width: 100%;
     height: 100%;
     overflow: auto;
-}
+} */
 </style>

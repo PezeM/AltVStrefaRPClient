@@ -399,7 +399,6 @@ export default {
         onItemDrop() {
             if (this.selectedItem == null) return;
             if (!this.selectedItem.isDroppable) {
-                // Propably emit notification that you can't drop this item
                 EventBus.$emit('showNotification', 3, 'Błąd', 'Nie można wyrzucić tego przedmiotu.', 3500);
                 return;
             }
@@ -468,16 +467,6 @@ export default {
         },
     },
     computed: {
-        itemsSortedBySlotId() {
-            const array = Array(this.personalInventory.inventorySlots).fill(null);
-            for (let i = 0; i < this.personalInventory.inventorySlots; i++) {
-                const item = this.personalInventory.items[i];
-                if (item) {
-                    array[item.slotId] = item;
-                }
-            }
-            return array;
-        },
         showAddonationalInventory() {
             return !(Object.entries(this.addonationalInventory).length === 0 && this.addonationalInventory.constructor === Object);
         },
@@ -498,30 +487,5 @@ export default {
     font-family: 'Roboto';
     color: #212121;
     font-weight: 700;
-}
-
-.BlockLayout {
-    border: 3px solid blue;
-    width: 10em;
-}
-
-.color-rectangle-inventory-ovelray {
-    background-color: rgba(0, 0, 0, 143);
-}
-
-.color-1 {
-    color: rgba(255, 255, 255, 255);
-}
-
-.color-2 {
-    color: rgba(68, 68, 68, 255);
-}
-
-.color-3 {
-    color: rgba(112, 112, 112, 255);
-}
-
-.color-4 {
-    color: rgba(65, 65, 65, 255);
 }
 </style>

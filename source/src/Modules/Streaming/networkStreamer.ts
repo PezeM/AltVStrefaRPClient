@@ -15,7 +15,7 @@ class NetworkStreamer {
         networkingEntity.onDataChange(this.onDataChange);
     }
 
-    async onStreamIn(entity: INetworkingEntity) {
+    onStreamIn(entity: INetworkingEntity) {
         alt.log(`Entity streamed in ${JSON.stringify(entity, null, 2)}`);
         if (typeof entity.data.entityType === 'undefined') return;
         if (entity.data.entityType.intValue === 1) { // Peds

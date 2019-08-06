@@ -6,30 +6,26 @@
         <div class="col-9">
           <div class="row">
             <div class="col">
-              <p
-                class="text-left font-weight-light"
-              >Nazwa inventory: {{ personalInventory.inventoryName }}</p>
-              <p
-                class="text-left font-weight-light"
-              >Id inventory: {{ personalInventory.inventoryId }}</p>
+              <p class="text-left">Nazwa inventory: {{ personalInventory.inventoryName }}</p>
+              <p class="text-left">Id inventory: {{ personalInventory.inventoryId }}</p>
               <div class="row">
                 <div class="inventory-container">
                   <div class="row m-0 p-1">
                     <div
-                      v-for="(n, index) in personalInventory.inventorySlots"
+                      v-for="(item, index) in personalInventoryBySlotId"
                       v-bind:key="index"
                       v-bind:id="index"
                       class="col-lg-2 col-md-4 inventory-slot"
                     >
                       <div
                         class="slot-content isDraggable"
-                        v-bind:class="{ withItem: itemAtSlot(index) }"
-                        v-bind:data-itemId="itemAtSlot(index) ? itemAtSlot(index).id : 0"
+                        v-bind:class="{ withItem: item != null }"
+                        v-bind:data-itemId="item != null ? item.id : 0"
                       >
-                        <div v-if="itemAtSlot(index)">
-                          {{ itemAtSlot(index).name }}
+                        <div v-if="item != null">
+                          {{ item.name }}
                           <br />
-                          {{ itemAtSlot(index).slotId }} - {{ itemAtSlot(index).quantity }}
+                          {{ item.slotId }} - {{ item.quantity }}
                         </div>
                         <div v-else>Item</div>
                       </div>
@@ -40,11 +36,9 @@
             </div>
             <div class="col" v-if="showAddonationalInventory">
               <p
-                class="text-left font-weight-light"
+                class="text-left"
               >Nazwa dodatkowego inventory {{ addonationalInventory.inventoryName }}</p>
-              <p
-                class="text-left font-weight-light"
-              >Id dodatkowego inventory {{ addonationalInventory.inventoryId }}</p>
+              <p class="text-left">Id dodatkowego inventory {{ addonationalInventory.inventoryId }}</p>
               <div class="inventory-container addonational-inventory">
                 <div class="row m-0 p-1">
                   <div
@@ -243,22 +237,22 @@ export default {
                     inventorySlots: 7,
                     items: [
                         {
-                            Id: 505,
-                            Name: 'Jakieś spodnie',
-                            StackSize: 1,
-                            Quantity: 1,
-                            IsDroppable: true,
-                            EquipmentSlot: 10004,
-                            SlotId: 15,
+                            id: 505,
+                            name: 'Jakieś spodnie',
+                            stackSize: 1,
+                            quantity: 1,
+                            isDroppable: true,
+                            equipmentSlot: 10004,
+                            slotId: 3,
                         },
                         {
-                            Id: 605,
-                            Name: 'Jakaś bluza',
-                            StackSize: 1,
-                            Quantity: 1,
-                            IsDroppable: true,
-                            EquipmentSlot: 10004,
-                            SlotId: 1,
+                            id: 605,
+                            name: 'Jakaś bluza',
+                            stackSize: 1,
+                            quantity: 1,
+                            isDroppable: true,
+                            equipmentSlot: 10004,
+                            slotId: 1,
                         },
                     ],
                 };
@@ -511,8 +505,18 @@ export default {
         },
     },
     computed: {
+        personalInventoryBySlotId() {
+            const array = Array(this.personalInventory.inventorySlots).fill(null);
+            for (let i = 0; i < this.personalInventory.inventorySlots; i++) {
+                const item = this.personalInventory.items[i];
+                if (item) {
+                    array[item.slotId] = item;
+                }
+            }
+            return array;
+        },
         showAddonationalInventory() {
-            return this.addonationalInventory != null;
+            return !(Object.entries(this.addonationalInventory).length === 0 && this.addonationalInventory.constructor === Object);
             // return typeof this.addonationalInventoryContainer !== 'undefined';
         },
     },
@@ -521,11 +525,17 @@ export default {
 
 <style>
 #inventory {
-    /* background-image: url('../assets/example-image.jpg'); */
+    background-image: url('../assets/example-image.jpg');
     background-color: rgba(0, 0, 0, 0.561);
     /* padding-bottom: 2em; */
     width: 100%;
     height: 100vh;
+}
+
+#inventory p {
+    font-family: 'Roboto';
+    color: #212121;
+    font-weight: 700;
 }
 
 .inventory-container {

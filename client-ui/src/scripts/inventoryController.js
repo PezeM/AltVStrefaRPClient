@@ -55,15 +55,15 @@ export default class InventoryController {
     }
 
     setItemToSwap(itemId) {
-        this.itemToSwap = this.getItemById(itemId);
-        console.log(`Item to swap was ${this.itemToSwap}`);
+        this.itemToSwap = this.getItemByIdFromInventoryItems(this.movingOverInventory.items, itemId)
+        console.log(`Item to swap was ${JSON.stringify(this.itemToSwap)}`);
     }
 
     setMovingOverInventory(inventory) {
-        const movingOverInventory = this._getInventory(inventory);
-        if (movingOverInventory == null) {
+        this.movingOverInventory = this._getInventory(inventory);
+        if (this.movingOverInventory == null) {
             this.isMovingItemsBetweenInventories = false;
-            console.log(`ERROR in InventoryController. Couldn't set moving over inventory. Moving over inventory = ${JSON.stringify(movingOverInventory)}`);
+            console.log(`ERROR in InventoryController. Couldn't set moving over inventory. Moving over inventory = ${JSON.stringify(this.movingOverInventory)}`);
             return;
         }
     }
@@ -73,11 +73,28 @@ export default class InventoryController {
         this.action = Actions.None;
 
         if (this.itemToSwap == null) {
+            // Move to empty slot
+            console.log('Move to empty slot');
             this.newSlotId = Number(eventData.over.parentNode.id);
-            if (this.newSlotId > 0) this.action = Actions.Move;
+            console.log('Slot id = ' + this.newSlotId);
+            if (this.newSlotId >= 0) this.action = Actions.Move;
+        } else if (this._isItemStackable(this.itemToSwap) && this._isItemStackable(this.selectedItem)) {
+            // Stack items
+            if (this.canStackItems(this.selectedItem, this.itemToSwap)) {
+                this.action = Actions.Stack;
+            }
+        } else if (this.itemToSwap != this.selectedItem) {
+            // Swap items
+            this.action = Actions.Swap;
         }
 
         console.log(`Action = ${this.action}`);
+    }
+
+    canStackItems(itemToStack, item) {
+        return (itemToStack.stackSize > 1 && item.stackSize > 1)
+            && (item.quantity < item.stackSize)
+            && (itemToStack.id != item.id);
     }
 
     reset() {
@@ -104,6 +121,17 @@ export default class InventoryController {
             if (this.selectedInventory.items[i].id == itemId) return this.selectedInventory.items[i];
         }
         return null;
+    }
+
+    getItemByIdFromInventoryItems(inventoryItems, itemId) {
+        for (let i = 0; i < inventoryItems.length; i++) {
+            if (inventoryItems[i].id == itemId) return inventoryItems[i];
+        }
+        return null;
+    }
+
+    _isItemStackable(item) {
+        return item.stackSize > 1;
     }
 
     _getInventory(inventory) {

@@ -65,14 +65,13 @@ export default {
             console.log('Drag over container');
             console.log(event);
             this.lastDragOverContaier = event.data;
+            this.inventoryController.setMovingOverInventory(this.getInventoryFromClassName(this.lastDragOverContaier.overContainer.className));
             if (this.lastDragOverContaier.sourceContainer != this.lastDragOverContaier.overContainer) {
                 this.inventoryController.isMovingItemsBetweenInventories = true;
                 console.log('Moving items between inventories');
-                this.inventoryController.setMovingOverInventory(this.getInventoryFromClassName(this.lastDragOverContaier.overContainer.className));
             } else {
                 console.log('Not moving items between inventories');
                 this.inventoryController.isMovingItemsBetweenInventories = false;
-                this.inventoryController.movingOverInventory = null;
             }
         });
 

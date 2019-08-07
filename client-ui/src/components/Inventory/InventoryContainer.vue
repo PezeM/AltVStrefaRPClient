@@ -80,10 +80,4 @@ export default {
     opacity: 0.6;
     transform: scale(0.9);
 }
-
-/* .slot-content {
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-} */
 </style>

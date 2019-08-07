@@ -8,7 +8,7 @@
             <div class="col">
               <p class="text-left">Nazwa inventory: {{ personalInventory.inventoryName }}</p>
               <p class="text-left">Id inventory: {{ personalInventory.inventoryId }}</p>
-              <inventory-container :inventory="personalInventory" />
+              <inventory-container :inventory="personalInventory" @drag-started="dragStarted" />
             </div>
             <div class="col" v-if="showAddonationalInventory">
               <p
@@ -18,6 +18,7 @@
               <inventory-container
                 :inventory="addonationalInventory"
                 :inventoryClass="addonationalInventoryClassName"
+                @drag-started="dragStarted"
               />
             </div>
           </div>
@@ -28,16 +29,9 @@
 </template>
 
 <script>
-class InventoryController {
-    constructor() {
-        console.log(`Eldo`);
-        EventBus.$on('eluwa', () => console.log(`Got message from inventory controller`));
-        EventBus.$emit('eluwa');
-    }
-}
-
 import { Swappable, Plugins } from '@shopify/draggable';
 import InventoryContainer from '@/components/Inventory/InventoryContainer.vue';
+import InventoryController from '@/scripts/inventoryController.js';
 import EventBus from '@/event-bus.js';
 
 export default {
@@ -55,12 +49,14 @@ export default {
         //         appendTo: containerSelector,
         //         constrainDimensions: true,
         //     },
-        //     plugins: [Plugins.ResizeMirror],
+        // //     plugins: [Plugins.ResizeMirror],
         // });
         // swappable.on('swappable:start', this.onSwappableStart.bind(this));
         // swappable.on('swappable:swap', this.onSwappableSwap.bind(this));
         // swappable.on('swappable:stop', this.onSwappableStop.bind(this));
         // swappable.on('drag:out:container', this.onDragOutContainer.bind(this));
+
+        this.inventoryController = new InventoryController(this.personalInventory, this.equippedInventory, this.addonationalInventory);
     },
     props: {
         initialPersonalInventory: {
@@ -229,7 +225,6 @@ export default {
         return {
             hoverClass: 'on-drag-enter',
             lastAffectedItems: [],
-            playerInventoryMaxSlots: 30,
             // Class indicating slot is with item
             withItem: 'withItem',
             addonationalInventoryClassName: 'addonational-inventory',
@@ -244,10 +239,16 @@ export default {
             personalInventory: { ...this.initialPersonalInventory },
             equippedInventory: { ...this.initialEquippedInventory },
             addonationalInventory: { ...this.initialAddonationalInventory },
-            controller: new InventoryController(),
+            inventoryController: null,
         };
     },
     methods: {
+        dragStarted(inventoryName, swappingObject, item) {
+            // console.log(`Drag started in inventory ${inventoryName} with item ${JSON.stringify(item)} and swapping object ${swappingObject}`);
+            this.inventoryController.setSelectedInventory(inventoryName);
+            this.inventoryController.setSelectedItem(item, swappingObject);
+            // this.inventoryController.removeItem(item);
+        },
         onSwappableStart(event) {
             this.swappingObject = event.dragEvent.data;
             this.swappingObject.source.classList.add('on-drag-start');

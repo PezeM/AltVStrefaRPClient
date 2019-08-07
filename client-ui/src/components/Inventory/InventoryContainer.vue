@@ -42,24 +42,52 @@ export default {
             type: String,
         },
     },
+    data() {
+        return {
+            swappingObject: null,
+            draggableItemClassName: 'withItem',
+        };
+    },
     mounted() {
         const containerSelector = `.inventory-container`;
         const containers = this.$el.querySelectorAll(containerSelector);
         console.log(`Container = ${JSON.stringify(containers)}`);
-
-        const swappable = new Draggable(containers, {
+        const draggable = new Draggable(containers, {
             draggable: '.isDraggable',
             delay: 150,
             mirror: {
                 appendTo: containerSelector,
                 constrainDimensions: true,
             },
-            plugins: [Plugins.ResizeMirror],
+            // plugins: [Plugins.ResizeMirror],
         });
 
-        swappable.on('drag:start', event => {
+        draggable.on('drag:start', event => {
+            console.log(event);
+            this.swappingObject = event.data;
+            this.addDragEfect(this.swappingObject.source);
             console.log(`Drag event started in inventory ${this.inventory.inventoryName}`);
+            if (!this.isDraggable(this.swappingObject.originalSource._prevClass)) {
+                console.log('This item is not draggable');
+                event.cancel();
+            }
+
+            this.$emit('drag-started', this.inventory.inventoryName, this.swappingObject, this.getItemById(this.swappingObject.source.dataset.itemid));
         });
+    },
+    methods: {
+        addDragEfect(swappingObject) {
+            swappingObject.classList.add('on-drag-start');
+        },
+        isDraggable(item) {
+            return item.includes(this.draggableItemClassName);
+        },
+        getItemById(itemId) {
+            for (let i = 0; i < this.inventory.items.length; i++) {
+                if (this.inventory.items[i].id == itemId) return this.inventory.items[i];
+            }
+            return null;
+        },
     },
     computed: {
         inventorySortedBySlotId() {
@@ -99,12 +127,19 @@ export default {
 }
 
 .on-drag-start {
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1;
 }
 
 .on-drag-enter {
     /* border: 1px solid rgba(255, 255, 255, 0.425); */
     opacity: 0.6;
     transform: scale(0.9);
+}
+
+.slot-content {
+    width: 100%;
+    height: 100%;
+    overflow: auto;
 }
 </style>

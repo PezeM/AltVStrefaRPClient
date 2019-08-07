@@ -77,8 +77,6 @@ export default {
         });
 
         draggable.on('drag:stop', this.onDraggableStop.bind(this));
-        // swappable.on('swappable:swap', this.onSwappableSwap.bind(this));
-        // swappable.on('swappable:stop', this.onSwappableStop.bind(this));
 
         this.inventoryController = new InventoryController(this.personalInventory, this.equippedInventory, this.addonationalInventory);
     },
@@ -279,70 +277,15 @@ export default {
                 return;
             }
 
-            this.dragSuccessfullyStarted(
+            this.dragStartedSuccessfully(
                 this.getInventoryFromClassName(this.swappingObject.sourceContainer.className),
                 this.swappingObject,
                 this.swappingObject.source.dataset.itemid
             );
         },
-        dragSuccessfullyStarted(inventoryName, swappingObject, itemId) {
+        dragStartedSuccessfully(inventoryName, swappingObject, itemId) {
             this.inventoryController.setSelectedInventory(inventoryName);
             this.inventoryController.setSelectedItem(itemId, swappingObject);
-        },
-        onSwappableStart(event) {
-            this.swappingObject = event.dragEvent.data;
-            this.swappingObject.source.classList.add('on-drag-start');
-            if (!this.isSwappable(this.swappingObject.originalSource._prevClass)) {
-                event.cancel();
-                console.log(`Event canceled`);
-                return;
-            }
-
-            if (this.isAddonationalInventory(this.swappingObject.sourceContainer)) {
-                this.selectedItem = this.getItemByIdFromAddonationalInventory(this.swappingObject.source.dataset.itemid);
-            } else {
-                this.selectedItem = this.getItemById(this.swappingObject.source.dataset.itemid);
-            }
-
-            console.log(event);
-        },
-        onSwappableSwap(event) {
-            this.applyHoverEffect(event);
-            this.lastDragOverContaier = event.data.overContainer;
-            this.moveBetweenInventories = false;
-
-            if (this.lastDragOverContaier != this.swappingObject.sourceContainer) {
-                console.log(`Move between inventories`);
-                this.moveBetweenInventories = true;
-                if (this.isAddonationalInventory(this.swappingObject.sourceContainer)) {
-                    console.log(`Swapping from addonational inventory`);
-                    this.itemToSwap = this.getItemById(event.dragEvent.data.over.dataset.itemid);
-                } else {
-                    console.log('Swapping to addonational inventory');
-                    this.itemToSwap = this.getItemByIdFromAddonationalInventory(event.dragEvent.data.over.dataset.itemid);
-                }
-            } else if (this.isAddonationalInventory(this.swappingObject.sourceContainer)) {
-                this.itemToSwap = this.getItemByIdFromAddonationalInventory(event.dragEvent.data.over.dataset.itemid);
-            } else {
-                this.itemToSwap = this.getItemById(event.dragEvent.data.over.dataset.itemid);
-            }
-
-            if (this.itemToSwap == null) {
-                // There was no item in that cell, it means we should move it there
-                this.action = 'swap';
-                this.newSlotId = Number(event.data.over.parentNode.id);
-                console.log(`New slot = ${this.newSlotId}`);
-            } else {
-                if (this.selectedItem.name == this.itemToSwap.name && this.selectedItem.stackSize > 1) {
-                    console.log(`We should stack`);
-                    this.action = 'stack';
-                } else {
-                    this.action = 'swap';
-                }
-            }
-            console.log('swappable:swap');
-            console.log(event);
-            event.cancel();
         },
         onDragOutContainer(event) {
             console.log(`Dragged out container`);
@@ -375,21 +318,6 @@ export default {
                     break;
             }
             this.resetStates();
-        },
-        onItemStack() {
-            let amountOfItemsToStack = this.selectedItem.quantity;
-            const maxQuantity = this.itemToSwap.stackSize - this.itemToSwap.quantity;
-            const toAdd = Math.min(amountOfItemsToStack, maxQuantity);
-            if (toAdd <= 0) return;
-            this.itemToSwap.quantity += toAdd;
-            this.selectedItem.quantity -= toAdd;
-            if (this.selectedItem.quantity <= 0) {
-                console.log(`Should delete item`);
-                this.personalInventory.items = this.personalInventory.items.filter(i => i.id != this.selectedItem.id);
-            }
-            amountOfItemsToStack -= toAdd;
-            alt.emit('inventoryStackItems', this.itemToSwap.id, this.selectedItem.id);
-            this.addItemToLastAffectedItems(this.itemToSwap, this.selectedItem);
         },
         onItemSwap() {
             if (this.itemToSwap != null) {
@@ -457,36 +385,6 @@ export default {
             console.log(`Closing inventory`);
             alt.emit('closeInventory');
         },
-        addItemToLastAffectedItems(...args) {
-            for (let i = 0; i < args.length; i++) {
-                if (this.lastAffectedItems.length > 9) this.lastAffectedItems.pop();
-                this.lastAffectedItems.push(args[i]);
-            }
-        },
-        itemAtSlot(slotId) {
-            for (let i = 0; i < this.personalInventory.items.length; i++) {
-                if (this.personalInventory.items[i].slotId == slotId) return this.personalInventory.items[i];
-            }
-            return null;
-        },
-        itemAtSlotInAddonationalInv(slotId) {
-            for (let i = 0; i < this.addonationalInventory.items.length; i++) {
-                if (this.addonationalInventory.items[i].slotId == slotId) return this.addonationalInventory.items[i];
-            }
-            return null;
-        },
-        getItemById(itemId) {
-            for (let i = 0; i < this.personalInventory.items.length; i++) {
-                if (this.personalInventory.items[i].id == itemId) return this.personalInventory.items[i];
-            }
-            return null;
-        },
-        getItemByIdFromAddonationalInventory(itemId) {
-            for (let i = 0; i < this.addonationalInventory.items.length; i++) {
-                if (this.addonationalInventory.items[i].id == itemId) return this.addonationalInventory.items[i];
-            }
-            return null;
-        },
         isDraggable(item) {
             return item.includes(this.draggableItemClassName);
         },
@@ -499,16 +397,13 @@ export default {
             if (this.lastDragOverItem == this.swappingObject.source) return; // Don't apply hover effect on selected item
             this.lastDragOverItem.classList.add(this.hoverClass);
         },
-        addDragEfect(swappingObject) {
-            swappingObject.classList.add(this.dragEffectClass);
-        },
         removeHoverEffect(item) {
             if (item != null) {
                 item.classList.remove(this.hoverClass);
             }
         },
-        isAddonationalInventory(container) {
-            return container.className.includes(this.addonationalInventoryClassName);
+        addDragEfect(swappingObject) {
+            swappingObject.classList.add(this.dragEffectClass);
         },
         getInventoryFromClassName(className) {
             if (className.includes(this.addonationalInventoryClassName)) {

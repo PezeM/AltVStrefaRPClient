@@ -130,7 +130,7 @@ export default {
     border: 1px solid transparent;
     background-clip: padding-box;
     /* border: 1px solid transparent; */
-    transition: 0.5s;
+    transition: 2s;
 }
 
 .on-drag-start {

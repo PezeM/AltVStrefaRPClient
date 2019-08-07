@@ -66,6 +66,7 @@ export default {
             console.log('Drag over container');
             this.lastDragOverContaier = event.data;
             this.inventoryController.setMovingOverInventory(this.getInventoryFromClassName(this.lastDragOverContaier.overContainer.className));
+
             if (this.lastDragOverContaier.sourceContainer != this.lastDragOverContaier.overContainer) {
                 this.inventoryController.isMovingItemsBetweenInventories = true;
                 console.log('Moving items between inventories');
@@ -75,12 +76,7 @@ export default {
             }
         });
 
-        draggable.on('drag:stop', event => {
-            console.log(`Drag stop`);
-            this.resetStates();
-            this.inventoryController.reset();
-        });
-
+        draggable.on('drag:stop', this.onDraggableStop.bind(this));
         // swappable.on('swappable:swap', this.onSwappableSwap.bind(this));
         // swappable.on('swappable:stop', this.onSwappableStop.bind(this));
 
@@ -354,6 +350,11 @@ export default {
                 console.log('Should drop item');
                 this.removeHoverEffect(this.lastDragOverItem);
             }
+        },
+        onDraggableStop(event) {
+            console.log(`Drag stop`);
+            this.inventoryController.onDraggableStop(event);
+            this.resetStates();
         },
         onSwappableStop(event) {
             console.log('swappable:stop');

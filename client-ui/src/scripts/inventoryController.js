@@ -8,6 +8,7 @@ class Inventory {
 }
 
 import Actions from "./inventoryActions";
+import EventBus from '@/event-bus.js';
 
 export default class InventoryController {
     constructor(personalInventory, equippedInventory, addonationalInventory) {
@@ -99,7 +100,85 @@ export default class InventoryController {
         return false;
     }
 
+    onDraggableStop(event) {
+        switch (this.action) {
+            case Actions.Drop:
+                this.onActionItemDrop();
+                break;
+            case Actions.Move:
+                this.onActionItemMove();
+                break;
+            case Actions.Stack:
+                this.onActionItemStack();
+                break;
+            case Actions.Swap:
+                this.onActionItemSwap();
+                break;
+            default:
+                break;
+        }
+        this.reset();
+    }
+
+    onActionItemDrop() {
+        if (this.selectedItem == null) return;
+        if (!this.selectedItem.isDroppable) {
+            EventBus.$emit('showNotification', 3, 'Błąd', 'Nie można wyrzucić tego przedmiotu.', 3500);
+            return;
+        }
+
+        alt.emit('inventoryDropItem', this.selectedInventory.inventoryId, this.selectedItem.id, this.selectedItem.quantity);
+
+        // Propably change this later on to listen to events etc
+        this.selectedInventory.items = this.selectedInventory.items.filter(i => i.id !== this.selectedItem.id);
+    }
+
+    onActionItemMove() {
+        if (this.selectedItem == null) return;
+        if (this.isMovingItemsBetweenInventories) {
+            // Transfering items between inventories
+            if (this.newSlotId > this.movingOverInventory.inventorySlots - 1) return;
+            this.selectedItem.slotId = this.newSlotId;
+
+            console.log(`Moving item id ${this.selectedItem.id} from inventory ${this.selectedInventory.inventoryId} to inventory ${this.movingOverInventory.inventoryId}`);
+            alt.emit('inventoryTransferItem', this.selectedInventory.inventoryId, this.movingOverInventory.inventoryId,
+                this.selectedItem.id, this.selectedItem.slotId);
+
+            // Temporary for visual
+            this.removeItem(this.selectedItem);
+            this.movingOverInventory.items.push(this.selectedItem);
+        } else {
+            if (this.newSlotId > this.movingOverInventory.inventorySlots) return;
+            this.selectedItem.slotId = this.newSlotId;
+            alt.emit('inventoryMoveItem', this.selectedItem.id, this.newSlotId);
+        }
+    }
+
+    onActionItemStack() {
+        if (this.selectedItem == null || this.itemToSwap == null) return;
+        let amountOfItemsToStack = this.selectedItem.quantity;
+        const maxQuantity = this.itemToSwap.stackSize - this.itemToSwap.quantity;
+        const toAdd = Math.min(amountOfItemsToStack, maxQuantity);
+        if (toAdd <= 0) return;
+
+        console.log(`Stacked item ${this.selectedItem.id} with item ${this.itemToSwap.id}`);
+        alt.emit('inventoryStackItems', this.selectedInventory.inventoryId, this.itemToSwap.id, this.selectedItem.id);
+
+        // Temporary till callbacks from server
+        this.itemToSwap.quantity += toAdd;
+        this.selectedItem.quantity -= toAdd;
+        if (this.selectedItem.quantity <= 0) {
+            console.log(`Should delete item`);
+            this.removeItem(this.selectedItem);
+        }
+    }
+
+    onActionItemSwap() {
+
+    }
+
     reset() {
+        console.log('Called inventory controller stop');
         this.selectedInventory = null;
         this.selectedItem = null;
         this.itemToSwap = null;

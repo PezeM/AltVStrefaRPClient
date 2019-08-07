@@ -52,6 +52,7 @@ export default {
         });
 
         draggable.on('drag:start', this.onDragStarted.bind(this));
+        draggable.on('drag:out:container', this.onDragOutContainer.bind(this));
 
         draggable.on('drag:over', event => {
             console.log('Drag over');
@@ -63,7 +64,6 @@ export default {
 
         draggable.on('drag:over:container', event => {
             console.log('Drag over container');
-            console.log(event);
             this.lastDragOverContaier = event.data;
             this.inventoryController.setMovingOverInventory(this.getInventoryFromClassName(this.lastDragOverContaier.overContainer.className));
             if (this.lastDragOverContaier.sourceContainer != this.lastDragOverContaier.overContainer) {
@@ -75,20 +75,14 @@ export default {
             }
         });
 
-        draggable.on('drag:out:container', event => {
-            console.log(`Dragged out container`);
-        });
-
         draggable.on('drag:stop', event => {
             console.log(`Drag stop`);
             this.resetStates();
             this.inventoryController.reset();
         });
 
-        // swappable.on('swappable:start', this.onSwappableStart.bind(this));
         // swappable.on('swappable:swap', this.onSwappableSwap.bind(this));
         // swappable.on('swappable:stop', this.onSwappableStop.bind(this));
-        // swappable.on('drag:out:container', this.onDragOutContainer.bind(this));
 
         this.inventoryController = new InventoryController(this.personalInventory, this.equippedInventory, this.addonationalInventory);
     },
@@ -355,14 +349,10 @@ export default {
             event.cancel();
         },
         onDragOutContainer(event) {
-            console.log(`drag:out:container`);
-            if (this.selectedItem) {
-                this.action = 'drop';
-                console.log(`Should drop`);
-                if (this.lastDragOverItem != null) {
-                    console.log(`Should remove hover effect on that element`);
-                    this.lastDragOverItem.classList.remove(this.hoverClass);
-                }
+            console.log(`Dragged out container`);
+            if (this.inventoryController.setDropAction()) {
+                console.log('Should drop item');
+                this.removeHoverEffect(this.lastDragOverItem);
             }
         },
         onSwappableStop(event) {
@@ -510,6 +500,11 @@ export default {
         },
         addDragEfect(swappingObject) {
             swappingObject.classList.add(this.dragEffectClass);
+        },
+        removeHoverEffect(item) {
+            if (item != null) {
+                item.classList.remove(this.hoverClass);
+            }
         },
         isAddonationalInventory(container) {
             return container.className.includes(this.addonationalInventoryClassName);

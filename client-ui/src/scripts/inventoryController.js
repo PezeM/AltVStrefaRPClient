@@ -91,6 +91,14 @@ export default class InventoryController {
         console.log(`Action = ${this.action}`);
     }
 
+    setDropAction() {
+        if (this.selectedItem) {
+            this.action = Actions.Drop;
+            return true;
+        }
+        return false;
+    }
+
     canStackItems(itemToStack, item) {
         return (itemToStack.stackSize > 1 && item.stackSize > 1)
             && (item.quantity < item.stackSize)

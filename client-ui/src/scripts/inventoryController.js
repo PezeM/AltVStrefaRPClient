@@ -8,29 +8,28 @@ class Inventory {
 }
 
 export default class InventoryController {
-    constructor(a, equippedInventory, addonationalInventory) {
+    constructor(personalInventory, equippedInventory, addonationalInventory) {
         console.log(`Inventory controller initialized`);
-        this.personalInventory = a;
+        this.personalInventory = personalInventory;
         this.equippedInventory = equippedInventory;
         this.addonationalInventory = addonationalInventory;
-        this.cos = new Inventory(addonationalInventory);
 
         this.selectedInventory = null;
         this.selectedItem = null;
         this.swappingObject = null;
     }
 
-    setSelectedInventory(inventoryName) {
-        switch (inventoryName) {
-            case this.personalInventory.inventoryName:
+    setSelectedInventory(inventory) {
+        switch (inventory) {
+            case this.personalInventory:
                 console.log(`Selected personal inventory`);
                 this.selectedInventory = this.personalInventory;
                 break;
-            case this.equippedInventory.inventoryName:
+            case this.equippedInventory:
                 console.log('Selected equipped inventory');
                 this.selectedInventory = this.equippedInventory;
                 break;
-            case this.addonationalInventory.inventoryName:
+            case this.addonationalInventory:
                 console.log('Selected addonational inventory');
                 this.selectedInventory = this.addonationalInventory;
                 break;
@@ -40,9 +39,10 @@ export default class InventoryController {
         }
     }
 
-    setSelectedItem(item, swappingObject) {
-        this.selectedItem = item;
+    setSelectedItem(itemId, swappingObject) {
+        this.selectedItem = this.getItemById(itemId);
         this.swappingObject = swappingObject;
+        console.log(`Selected item is ${JSON.stringify(this.selectedItem)}`);
     }
 
     removeItem(item) {

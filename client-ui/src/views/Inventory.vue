@@ -8,7 +8,7 @@
             <div class="col">
               <p class="text-left">Nazwa inventory: {{ personalInventory.inventoryName }}</p>
               <p class="text-left">Id inventory: {{ personalInventory.inventoryId }}</p>
-              <inventory-container :inventory="personalInventory" @drag-started="dragStarted" />
+              <inventory-container :inventory="personalInventory" />
             </div>
             <div class="col" v-if="showAddonationalInventory">
               <p
@@ -18,7 +18,6 @@
               <inventory-container
                 :inventory="addonationalInventory"
                 :inventoryClass="addonationalInventoryClassName"
-                @drag-started="dragStarted"
               />
             </div>
           </div>
@@ -29,7 +28,7 @@
 </template>
 
 <script>
-import { Swappable, Plugins } from '@shopify/draggable';
+import { Draggable, Plugins } from '@shopify/draggable';
 import InventoryContainer from '@/components/Inventory/InventoryContainer.vue';
 import InventoryController from '@/scripts/inventoryController.js';
 import EventBus from '@/event-bus.js';
@@ -40,17 +39,27 @@ export default {
         InventoryContainer,
     },
     mounted() {
-        // const containerSelector = '.inventory-container';
-        // const containers = this.$el.querySelectorAll(containerSelector);
-        // const swappable = new Swappable(containers, {
-        //     draggable: '.isDraggable',
-        //     delay: 150,
-        //     mirror: {
-        //         appendTo: containerSelector,
-        //         constrainDimensions: true,
-        //     },
-        // //     plugins: [Plugins.ResizeMirror],
-        // });
+        const containerSelector = '.inventory-container';
+        const containers = this.$el.querySelectorAll(containerSelector);
+        const draggable = new Draggable(containers, {
+            draggable: '.isDraggable',
+            delay: 150,
+            mirror: {
+                appendTo: containerSelector,
+                constrainDimensions: true,
+            },
+        });
+
+        draggable.on('drag:start', this.onDragStarted.bind(this));
+
+        draggable.on('drag:over', event => {
+            console.log('Drag over');
+            console.log(event);
+        });
+
+        draggable.on('drag:out:container', event => {
+            console.log(`Dragged out container`);
+        });
         // swappable.on('swappable:start', this.onSwappableStart.bind(this));
         // swappable.on('swappable:swap', this.onSwappableSwap.bind(this));
         // swappable.on('swappable:stop', this.onSwappableStop.bind(this));
@@ -224,9 +233,10 @@ export default {
     data() {
         return {
             hoverClass: 'on-drag-enter',
+            dragEffectClass: 'on-drag-start',
+            draggableItemClassName: 'withItem',
             lastAffectedItems: [],
             // Class indicating slot is with item
-            withItem: 'withItem',
             addonationalInventoryClassName: 'addonational-inventory',
             moveBetweenInventories: false,
             swappingObject: null,
@@ -239,15 +249,30 @@ export default {
             personalInventory: { ...this.initialPersonalInventory },
             equippedInventory: { ...this.initialEquippedInventory },
             addonationalInventory: { ...this.initialAddonationalInventory },
+
             inventoryController: null,
         };
     },
     methods: {
-        dragStarted(inventoryName, swappingObject, item) {
-            // console.log(`Drag started in inventory ${inventoryName} with item ${JSON.stringify(item)} and swapping object ${swappingObject}`);
+        onDragStarted(event) {
+            console.log(event);
+            this.swappingObject = event.data;
+            this.addDragEfect(this.swappingObject.source);
+            if (!this.isDraggable(this.swappingObject.originalSource._prevClass)) {
+                console.log('This item is not draggable');
+                event.cancel();
+                return;
+            }
+
+            this.dragSuccessfullyStarted(
+                this.getInventoryFromClassName(this.swappingObject.sourceContainer.className),
+                this.swappingObject,
+                this.swappingObject.source.dataset.itemid
+            );
+        },
+        dragSuccessfullyStarted(inventoryName, swappingObject, itemId) {
             this.inventoryController.setSelectedInventory(inventoryName);
-            this.inventoryController.setSelectedItem(item, swappingObject);
-            // this.inventoryController.removeItem(item);
+            this.inventoryController.setSelectedItem(itemId, swappingObject);
         },
         onSwappableStart(event) {
             this.swappingObject = event.dragEvent.data;
@@ -416,9 +441,6 @@ export default {
             console.log(`Closing inventory`);
             alt.emit('closeInventory');
         },
-        isSwappable(item) {
-            return item.includes(this.withItem);
-        },
         addItemToLastAffectedItems(...args) {
             for (let i = 0; i < args.length; i++) {
                 if (this.lastAffectedItems.length > 9) this.lastAffectedItems.pop();
@@ -449,6 +471,9 @@ export default {
             }
             return null;
         },
+        isDraggable(item) {
+            return item.includes(this.draggableItemClassName);
+        },
         applyHoverEffect(event) {
             if (this.lastDragOverItem) {
                 this.lastDragOverItem.classList.remove(this.hoverClass);
@@ -456,8 +481,20 @@ export default {
             this.lastDragOverItem = event.data.over;
             this.lastDragOverItem.classList.add(this.hoverClass);
         },
+        addDragEfect(swappingObject) {
+            swappingObject.classList.add(this.dragEffectClass);
+        },
         isAddonationalInventory(container) {
             return container.className.includes(this.addonationalInventoryClassName);
+        },
+        getInventoryFromClassName(className) {
+            if (className.includes(this.addonationalInventoryClassName)) {
+                return this.addonationalInventory;
+            } else if (className.includes('inventory-container')) {
+                return this.personalInventory;
+            } else {
+                return null;
+            }
         },
         resetStates() {
             this.swappingObject = null;

@@ -49,31 +49,38 @@ export default {
         };
     },
     mounted() {
-        const containerSelector = `.inventory-container`;
-        const containers = this.$el.querySelectorAll(containerSelector);
-        console.log(`Container = ${JSON.stringify(containers)}`);
-        const draggable = new Draggable(containers, {
-            draggable: '.isDraggable',
-            delay: 150,
-            mirror: {
-                appendTo: containerSelector,
-                constrainDimensions: true,
-            },
-            // plugins: [Plugins.ResizeMirror],
-        });
-
-        draggable.on('drag:start', event => {
-            console.log(event);
-            this.swappingObject = event.data;
-            this.addDragEfect(this.swappingObject.source);
-            console.log(`Drag event started in inventory ${this.inventory.inventoryName}`);
-            if (!this.isDraggable(this.swappingObject.originalSource._prevClass)) {
-                console.log('This item is not draggable');
-                event.cancel();
-            }
-
-            this.$emit('drag-started', this.inventory.inventoryName, this.swappingObject, this.getItemById(this.swappingObject.source.dataset.itemid));
-        });
+        // const containerSelector = `.inventory-container`;
+        // const containers = this.$el.querySelectorAll(containerSelector);
+        // console.log(`Container = ${JSON.stringify(containers)}`);
+        // const draggable = new Draggable(containers, {
+        //     draggable: '.isDraggable',
+        //     delay: 150,
+        //     mirror: {
+        //         appendTo: containerSelector,
+        //         constrainDimensions: true,
+        //     },
+        // });
+        // draggable.on('drag:start', event => {
+        //     console.log(event);
+        //     this.swappingObject = event.data;
+        //     this.addDragEfect(this.swappingObject.source);
+        //     console.log(`Drag event started in inventory ${this.inventory.inventoryName}`);
+        //     if (!this.isDraggable(this.swappingObject.originalSource._prevClass)) {
+        //         console.log('This item is not draggable');
+        //         event.cancel();
+        //     }
+        //     this.$emit('drag-started', this.inventory.inventoryName, this.swappingObject, this.getItemById(this.swappingObject.source.dataset.itemid));
+        // });
+        // draggable.on('drag:over', event => {});
+        // draggable.on('drag:over:container', event => {
+        //     console.log(`Drag over container`);
+        // });
+        // draggable.on('drag:out:container', event => {
+        //     console.log(`Drag out container`);
+        // });
+        // draggable.on('drag:stop', event => {
+        //     console.log('Drag event stopped');
+        // });
     },
     methods: {
         addDragEfect(swappingObject) {

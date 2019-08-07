@@ -152,6 +152,7 @@ export default class InventoryController {
     }
 
     onActionItemStack() {
+        // Implement stacking items between inventories
         if (this.selectedItem == null || this.itemToSwap == null) return;
         let amountOfItemsToStack = this.selectedItem.quantity;
         const maxQuantity = this.itemToSwap.stackSize - this.itemToSwap.quantity;

@@ -17,7 +17,7 @@ class InventoryController {
         this.openedInventoryCount = 0;
         this.isInventoryOpened = false;
         mainUi.onUiEvent('closeInventory', this.closeInventory.bind(this));
-        mainUi.onUiEvent('inventoryStackItems', this.inventoryStackItems);
+        mainUi.onUiEvent('inventoryStackItems', this.inventoryTryToStackItems.bind(this));
         mainUi.onUiEvent('inventoryMoveItem', this.inventoryMoveItem);
         mainUi.onUiEvent('inventorySwapItems', this.inventorySwapItems);
         mainUi.onUiEvent('inventoryDropItem', this.inventoryTryDropItem.bind(this));
@@ -91,16 +91,21 @@ class InventoryController {
         });
     }
 
-    inventoryStackItems(itemToStackId: number, itemToStackFromId: number) {
-        // Propably make callback to server. If we get successful response then we can 
-        // Stack in chached memory. If there was error then we shouldn't stack items and send event 
-        // to ui to unstack items 
-        try {
-            alt.log(`Typeof cached inventory = ${typeof inventoryCache.cachedInventory}`);
-            inventoryCache.stackItems(itemToStackId, itemToStackFromId);
-            alt.emitServer('InventoryTryToStackItems', itemToStackId, itemToStackFromId);
-        } catch (error) {
-            alt.log(`Error stacking items: ${error}`);
+    inventoryTryToStackItems(inventoryId: number, itemToStackId: number, itemToStackFromId: number) {
+        serverCallbacks.callback("InventoryTryToStackItems", "inventoryStackItems", [inventoryId, itemToStackId, itemToStackFromId],
+            (wasStacked: boolean, itemId: number) => {
+                this.inventoryStackItems(inventoryId, wasStacked, itemId, itemToStackFromId);
+            })
+    }
+
+    inventoryStackItems(inventoryId: number, wasStacked: boolean, itemToStackId: number, itemToStackFromId: number) {
+        alt.log('Inventory stack items callback');
+        if (wasStacked) {
+            alt.log(`Item with id ${itemToStackId} was stacked`);
+            inventoryCache.stackItems(inventoryId, itemToStackId, itemToStackFromId);
+        } else {
+            // Unstack it on UI propably
+            alt.log(`Item with id ${itemToStackId} was not stacked`);
         }
     }
 
@@ -116,14 +121,15 @@ class InventoryController {
         inventoryCache.swapItems(selectedItemId, selectedItemSlotId, itemToSwapId, itemToSwapSlotId);
     }
 
-    inventoryTryDropItem(itemToDropId: number, quantity: number) {
-        alt.log(`Dropping item id ${itemToDropId} quantity ${quantity}`);
-        serverCallbacks.callback("InventoryDropItem", "inventoryItemDropResponse", [itemToDropId, quantity], (wasDropped: boolean, itemId: number) => {
-            this.inventoryDropItem(wasDropped, itemId, quantity);
-        });
+    inventoryTryDropItem(inventoryId: number, itemToDropId: number, quantity: number) {
+        alt.log(`Dropping item id ${itemToDropId} quantity ${quantity} from inventory ${inventoryId}`);
+        serverCallbacks.callback("InventoryDropItem", "inventoryItemDropResponse", [inventoryId, itemToDropId, quantity],
+            (wasDropped: boolean, itemId: number) => {
+                this.inventoryDropItem(wasDropped, inventoryId, itemId, quantity);
+            });
     }
 
-    inventoryDropItem(wasDropped: boolean, itemId: number, quantity: number) {
+    inventoryDropItem(wasDropped: boolean, inventoryId: number, itemId: number, quantity: number) {
         alt.log(`Inventory drop item callback`);
         if (wasDropped) {
             alt.log(`Item with id ${itemId} quantity ${quantity} was dropped`);

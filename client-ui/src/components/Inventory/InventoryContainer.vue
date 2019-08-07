@@ -8,7 +8,18 @@
           v-bind:id="index"
           class="col-lg-2 col-md-4 inventory-slot"
         >
-          <inventory-slot :item="item" />
+          <div
+            class="slot-content isDraggable"
+            v-bind:class="{ withItem: item != null }"
+            v-bind:data-itemId="item != null ? item.id : 0"
+          >
+            <div v-if="item != null">
+              {{ item.name }}
+              <br />
+              {{ item.slotId }} - Q: {{ item.quantity }}
+            </div>
+            <div v-else>Item</div>
+          </div>
         </div>
       </div>
     </div>
@@ -16,13 +27,10 @@
 </template>
 
 <script>
-import InventorySlot from '@/components/Inventory/InventorySlot.vue';
+import { Draggable, Plugins } from '@shopify/draggable';
 
 export default {
     name: 'inventory-container',
-    components: {
-        InventorySlot,
-    },
     props: {
         inventory: {
             type: Object,
@@ -33,6 +41,25 @@ export default {
         itemAtSlotClass: {
             type: String,
         },
+    },
+    mounted() {
+        const containerSelector = `.inventory-container`;
+        const containers = this.$el.querySelectorAll(containerSelector);
+        console.log(`Container = ${JSON.stringify(containers)}`);
+
+        const swappable = new Draggable(containers, {
+            draggable: '.isDraggable',
+            delay: 150,
+            mirror: {
+                appendTo: containerSelector,
+                constrainDimensions: true,
+            },
+            plugins: [Plugins.ResizeMirror],
+        });
+
+        swappable.on('drag:start', event => {
+            console.log(`Drag event started in inventory ${this.inventory.inventoryName}`);
+        });
     },
     computed: {
         inventorySortedBySlotId() {

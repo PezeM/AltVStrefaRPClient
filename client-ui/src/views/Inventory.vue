@@ -8,7 +8,7 @@
             <div class="col">
               <p class="text-left">Nazwa inventory: {{ personalInventory.inventoryName }}</p>
               <p class="text-left">Id inventory: {{ personalInventory.inventoryId }}</p>
-              <inventory-container :inventory="personalInventory"></inventory-container>
+              <inventory-container :inventory="personalInventory" />
             </div>
             <div class="col" v-if="showAddonationalInventory">
               <p
@@ -18,7 +18,7 @@
               <inventory-container
                 :inventory="addonationalInventory"
                 :inventoryClass="addonationalInventoryClassName"
-              ></inventory-container>
+              />
             </div>
           </div>
         </div>
@@ -28,6 +28,14 @@
 </template>
 
 <script>
+class InventoryController {
+    constructor() {
+        console.log(`Eldo`);
+        EventBus.$on('eluwa', () => console.log(`Got message from inventory controller`));
+        EventBus.$emit('eluwa');
+    }
+}
+
 import { Swappable, Plugins } from '@shopify/draggable';
 import InventoryContainer from '@/components/Inventory/InventoryContainer.vue';
 import EventBus from '@/event-bus.js';
@@ -38,25 +46,21 @@ export default {
         InventoryContainer,
     },
     mounted() {
-        const containerSelector = '.inventory-container';
-        const containers = this.$el.querySelectorAll(containerSelector);
-
-        const swappable = new Swappable(containers, {
-            draggable: '.isDraggable',
-            delay: 150,
-            mirror: {
-                appendTo: containerSelector,
-                constrainDimensions: true,
-            },
-            plugins: [Plugins.ResizeMirror],
-        });
-
-        swappable.on('swappable:start', this.onSwappableStart.bind(this));
-        swappable.on('swappable:swap', this.onSwappableSwap.bind(this));
-        swappable.on('swappable:stop', this.onSwappableStop.bind(this));
-        swappable.on('drag:out:container', this.onDragOutContainer.bind(this));
-
-        console.log(`Addonation inventory is ${this.addonationalInventory}`);
+        // const containerSelector = '.inventory-container';
+        // const containers = this.$el.querySelectorAll(containerSelector);
+        // const swappable = new Swappable(containers, {
+        //     draggable: '.isDraggable',
+        //     delay: 150,
+        //     mirror: {
+        //         appendTo: containerSelector,
+        //         constrainDimensions: true,
+        //     },
+        //     plugins: [Plugins.ResizeMirror],
+        // });
+        // swappable.on('swappable:start', this.onSwappableStart.bind(this));
+        // swappable.on('swappable:swap', this.onSwappableSwap.bind(this));
+        // swappable.on('swappable:stop', this.onSwappableStop.bind(this));
+        // swappable.on('drag:out:container', this.onDragOutContainer.bind(this));
     },
     props: {
         initialPersonalInventory: {
@@ -240,6 +244,7 @@ export default {
             personalInventory: { ...this.initialPersonalInventory },
             equippedInventory: { ...this.initialEquippedInventory },
             addonationalInventory: { ...this.initialAddonationalInventory },
+            controller: new InventoryController(),
         };
     },
     methods: {

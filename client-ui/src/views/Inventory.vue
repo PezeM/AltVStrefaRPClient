@@ -32,6 +32,7 @@ import { Draggable, Plugins } from '@shopify/draggable';
 import InventoryContainer from '@/components/Inventory/InventoryContainer.vue';
 import InventoryController from '@/scripts/inventoryController.js';
 import EventBus from '@/event-bus.js';
+import Actions from '../scripts/inventoryActions';
 
 export default {
     name: 'inventory',
@@ -55,11 +56,36 @@ export default {
         draggable.on('drag:over', event => {
             console.log('Drag over');
             console.log(event);
+            this.applyHoverEffect(event);
+            this.inventoryController.setItemToSwap(event.data.over.dataset.itemid);
+            this.inventoryController.setCorrectAction(event.data);
+        });
+
+        draggable.on('drag:over:container', event => {
+            console.log('Drag over container');
+            console.log(event);
+            this.lastDragOverContaier = event.data;
+            if (this.lastDragOverContaier.sourceContainer != this.lastDragOverContaier.overContainer) {
+                this.inventoryController.isMovingItemsBetweenInventories = true;
+                console.log('Moving items between inventories');
+                this.inventoryController.setMovingOverInventory(this.getInventoryFromClassName(this.lastDragOverContaier.overContainer.className));
+            } else {
+                console.log('Not moving items between inventories');
+                this.inventoryController.isMovingItemsBetweenInventories = false;
+                this.inventoryController.movingOverInventory = null;
+            }
         });
 
         draggable.on('drag:out:container', event => {
             console.log(`Dragged out container`);
         });
+
+        draggable.on('drag:stop', event => {
+            console.log(`Drag stop`);
+            this.resetStates();
+            this.inventoryController.reset();
+        });
+
         // swappable.on('swappable:start', this.onSwappableStart.bind(this));
         // swappable.on('swappable:swap', this.onSwappableSwap.bind(this));
         // swappable.on('swappable:stop', this.onSwappableStop.bind(this));
@@ -313,7 +339,7 @@ export default {
             }
 
             if (this.itemToSwap == null) {
-                // There was no item in that cell, it means we should drop it there
+                // There was no item in that cell, it means we should move it there
                 this.action = 'swap';
                 this.newSlotId = Number(event.data.over.parentNode.id);
                 console.log(`New slot = ${this.newSlotId}`);
@@ -478,7 +504,9 @@ export default {
             if (this.lastDragOverItem) {
                 this.lastDragOverItem.classList.remove(this.hoverClass);
             }
+
             this.lastDragOverItem = event.data.over;
+            if (this.lastDragOverItem == this.swappingObject.source) return; // Don't apply hover effect on selected item
             this.lastDragOverItem.classList.add(this.hoverClass);
         },
         addDragEfect(swappingObject) {

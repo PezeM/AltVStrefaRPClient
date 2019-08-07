@@ -104,10 +104,10 @@ class InventoryController {
         }
     }
 
-    inventoryMoveItem(selectedItemId: number, selectedItemSlotId: number) {
+    inventoryMoveItem(selectedInventoryId: number, selectedItemId: number, newSlotNumber: number) {
         // Move item to empty slot
-        alt.emitServer('InventoryMoveItem', selectedItemId, selectedItemSlotId);
-        inventoryCache.moveItem(selectedItemId, selectedItemSlotId);
+        alt.emitServer('InventoryMoveItem', selectedInventoryId, selectedItemId, newSlotNumber);
+        inventoryCache.moveItem(selectedInventoryId, selectedItemId, newSlotNumber);
     }
 
     inventorySwapItems(selectedItemId: number, selectedItemSlotId: number, itemToSwapId: number, itemToSwapSlotId: number) {

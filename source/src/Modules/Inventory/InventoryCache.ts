@@ -48,12 +48,13 @@ class InventoryCache {
         }
     }
 
-    moveItem(selectedItemId: number, selectedItemSlotId: number) {
-        if (this.cachedInventory == null) return;
+    moveItem(inventoryId: number, selectedItemId: number, newSlotId: number) {
+        // Need to check if iventoryId is personal inventory or equipped inventory
+        if (this.cachedInventory == null || this.cachedInventory.inventoryId !== inventoryId) return;
         const itemToMove = this.getItemWithId(selectedItemId);
         if (itemToMove == null) return;
-        itemToMove.slotId = selectedItemSlotId;
-        alt.log(`Moved item ${selectedItemId} to ${selectedItemSlotId}`);
+        itemToMove.slotId = newSlotId;
+        alt.log(`Moved item ${selectedItemId} to ${newSlotId}`);
     }
 
     swapItems(selectedItemId: number, selectedItemSlotId: number, itemToSwapId: number, itemToSwapSlotId: number) {

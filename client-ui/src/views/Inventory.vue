@@ -52,30 +52,9 @@ export default {
         });
 
         draggable.on('drag:start', this.onDragStarted.bind(this));
+        draggable.on('drag:over', this.onDragOver.bind(this));
+        draggable.on('drag:over:container', this.onDragOverContainer.bind(this));
         draggable.on('drag:out:container', this.onDragOutContainer.bind(this));
-
-        draggable.on('drag:over', event => {
-            console.log('Drag over');
-            console.log(event);
-            this.applyHoverEffect(event);
-            this.inventoryController.setItemToSwap(event.data.over.dataset.itemid);
-            this.inventoryController.setCorrectAction(event.data);
-        });
-
-        draggable.on('drag:over:container', event => {
-            console.log('Drag over container');
-            this.lastDragOverContaier = event.data;
-            this.inventoryController.setMovingOverInventory(this.getInventoryFromClassName(this.lastDragOverContaier.overContainer.className));
-
-            if (this.lastDragOverContaier.sourceContainer != this.lastDragOverContaier.overContainer) {
-                this.inventoryController.isMovingItemsBetweenInventories = true;
-                console.log('Moving items between inventories');
-            } else {
-                console.log('Not moving items between inventories');
-                this.inventoryController.isMovingItemsBetweenInventories = false;
-            }
-        });
-
         draggable.on('drag:stop', this.onDraggableStop.bind(this));
 
         this.inventoryController = new InventoryController(this.personalInventory, this.equippedInventory, this.addonationalInventory);
@@ -287,6 +266,26 @@ export default {
             this.inventoryController.setSelectedInventory(inventoryName);
             this.inventoryController.setSelectedItem(itemId, swappingObject);
         },
+        onDragOver(event) {
+            console.log('Drag over');
+            console.log(event);
+            this.applyHoverEffect(event);
+            this.inventoryController.setItemToSwap(event.data.over.dataset.itemid);
+            this.inventoryController.setCorrectAction(event.data);
+        },
+        onDragOverContainer(event) {
+            console.log('Drag over container');
+            this.lastDragOverContaier = event.data;
+            this.inventoryController.setMovingOverInventory(this.getInventoryFromClassName(this.lastDragOverContaier.overContainer.className));
+
+            if (this.lastDragOverContaier.sourceContainer != this.lastDragOverContaier.overContainer) {
+                this.inventoryController.isMovingItemsBetweenInventories = true;
+                console.log('Moving items between inventories');
+            } else {
+                console.log('Not moving items between inventories');
+                this.inventoryController.isMovingItemsBetweenInventories = false;
+            }
+        },
         onDragOutContainer(event) {
             console.log(`Dragged out container`);
             if (this.inventoryController.setDropAction()) {
@@ -297,26 +296,6 @@ export default {
         onDraggableStop(event) {
             console.log(`Drag stop`);
             this.inventoryController.onDraggableStop(event);
-            this.resetStates();
-        },
-        onSwappableStop(event) {
-            console.log('swappable:stop');
-            switch (this.action) {
-                case 'stack':
-                    console.log(`We should stack items`);
-                    this.onItemStack();
-                    break;
-                case 'swap':
-                    console.log(`We should swap items`);
-                    this.onItemSwap();
-                    break;
-                case 'drop':
-                    console.log('We should drop item');
-                    this.onItemDrop();
-                    break;
-                default:
-                    break;
-            }
             this.resetStates();
         },
         onItemSwap() {

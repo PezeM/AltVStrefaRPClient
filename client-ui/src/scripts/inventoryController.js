@@ -70,14 +70,11 @@ export default class InventoryController {
     }
 
     setCorrectAction(eventData) {
-        console.log('Setting correct action');
         this.action = Actions.None;
 
         if (this.itemToSwap == null) {
             // Move to empty slot
-            console.log('Move to empty slot');
             this.newSlotId = Number(eventData.over.parentNode.id);
-            console.log('Slot id = ' + this.newSlotId);
             if (this.newSlotId >= 0) this.action = Actions.Move;
         } else if (this._isItemStackable(this.itemToSwap) && this._isItemStackable(this.selectedItem)) {
             // Stack items
@@ -150,7 +147,7 @@ export default class InventoryController {
         } else {
             if (this.newSlotId > this.movingOverInventory.inventorySlots) return;
             this.selectedItem.slotId = this.newSlotId;
-            alt.emit('inventoryMoveItem', this.selectedItem.id, this.newSlotId);
+            alt.emit('inventoryMoveItem', this.selectedInventory.inventoryId, this.selectedItem.id, this.newSlotId);
         }
     }
 

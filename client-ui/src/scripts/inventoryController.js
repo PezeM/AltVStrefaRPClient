@@ -80,7 +80,7 @@ export default class InventoryController {
             if (this.newSlotId >= 0) this.action = Actions.Move;
         } else if (this._isItemStackable(this.itemToSwap) && this._isItemStackable(this.selectedItem)) {
             // Stack items
-            if (this.canStackItems(this.selectedItem, this.itemToSwap)) {
+            if (this._canStackItems(this.selectedItem, this.itemToSwap)) {
                 this.action = Actions.Stack;
             }
         } else if (this.itemToSwap != this.selectedItem) {
@@ -97,12 +97,6 @@ export default class InventoryController {
             return true;
         }
         return false;
-    }
-
-    canStackItems(itemToStack, item) {
-        return (itemToStack.stackSize > 1 && item.stackSize > 1)
-            && (item.quantity < item.stackSize)
-            && (itemToStack.id != item.id);
     }
 
     reset() {
@@ -136,6 +130,12 @@ export default class InventoryController {
             if (inventoryItems[i].id == itemId) return inventoryItems[i];
         }
         return null;
+    }
+
+    _canStackItems(itemToStack, item) {
+        return (itemToStack.stackSize > 1 && item.stackSize > 1)
+            && (item.quantity < item.stackSize)
+            && (itemToStack.id != item.id);
     }
 
     _isItemStackable(item) {

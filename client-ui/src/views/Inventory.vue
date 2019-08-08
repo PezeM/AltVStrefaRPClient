@@ -227,17 +227,11 @@ export default {
             hoverClass: 'on-drag-enter',
             dragEffectClass: 'on-drag-start',
             draggableItemClassName: 'withItem',
-            lastAffectedItems: [],
             // Class indicating slot is with item
             addonationalInventoryClassName: 'addonational-inventory',
-            moveBetweenInventories: false,
             swappingObject: null,
-            selectedItem: null,
             lastDragOverItem: null,
             lastDragOverContaier: null,
-            itemToSwap: null,
-            newSlotId: -1,
-            action: null,
             personalInventory: { ...this.initialPersonalInventory },
             equippedInventory: { ...this.initialEquippedInventory },
             addonationalInventory: { ...this.initialAddonationalInventory },
@@ -349,21 +343,6 @@ export default {
                 this.addItemToLastAffectedItems(this.selectedItem);
             }
         },
-        onItemDrop() {
-            if (this.selectedItem == null) return;
-            if (!this.selectedItem.isDroppable) {
-                EventBus.$emit('showNotification', 3, 'Błąd', 'Nie można wyrzucić tego przedmiotu.', 3500);
-                return;
-            }
-            alt.emit('inventoryDropItem', this.selectedItem.id, this.selectedItem.quantity);
-            // Temporary till user can select quantity
-            this.personalInventory.items = this.personalInventory.items.filter(i => i.id !== this.selectedItem.id);
-            this.addItemToLastAffectedItems(this.selectedItem);
-        },
-        closeInventory() {
-            console.log(`Closing inventory`);
-            alt.emit('closeInventory');
-        },
         isDraggable(item) {
             return item.includes(this.draggableItemClassName);
         },
@@ -394,15 +373,17 @@ export default {
             }
         },
         resetStates() {
+            this.lastDragOverContaier = null;
             this.swappingObject = null;
-            this.selectedItem = null;
-            this.action = null;
-            this.newSlotId = -1;
-            this.moveBetweenInventories = false;
+
             if (this.lastDragOverItem) {
                 this.lastDragOverItem.classList.remove('on-drag-enter');
                 this.lastDragOverItem = null;
             }
+        },
+        closeInventory() {
+            console.log(`Closing inventory`);
+            alt.emit('closeInventory');
         },
     },
     computed: {

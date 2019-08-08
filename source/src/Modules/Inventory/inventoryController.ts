@@ -47,7 +47,6 @@ class InventoryController {
                 this.isInventoryOpened = true;
                 return;
             }
-            alt.log(`Items: ${JSON.stringify(inventoryCache.cachedInventory, null, 4)}`);
             this.populateInventoryInUi();
         } else {
             this.openInventoryFromServer();
@@ -89,10 +88,11 @@ class InventoryController {
     }
 
     inventoryTryStackItems(inventoryId: number, itemToStackFromId: number, itemToStackId: number, itemToStackInventoryId: number) {
-        if (typeof itemToStackInventoryId === 'undefined') {
+        if (itemToStackInventoryId == null) {
             // Stacking items in one inventory
             serverCallbacks.callback("InventoryTryStackItem", "inventoryStackItemResponse", [inventoryId, itemToStackFromId, itemToStackId],
                 (wasStacked: boolean, amountOfStackedItems: number) => {
+                    alt.log(`Inventory stack items respoonse was stacked: ${wasStacked} amount of items: ${amountOfStackedItems}`);
                     this.inventoryStackItems(wasStacked, inventoryId, itemToStackFromId, itemToStackId, amountOfStackedItems);
                 });
         } else {
@@ -100,6 +100,7 @@ class InventoryController {
             serverCallbacks.callback("InventoryTryStackItemBetweenInventories", "inventoryStackItemResponse",
                 [inventoryId, itemToStackFromId, itemToStackId, itemToStackInventoryId],
                 (wasStacked: boolean, amountOfStackedItems: number) => {
+                    alt.log(`Inventory stack items between inventories response was stacked: ${wasStacked} amount of items: ${amountOfStackedItems}`);
                     this.inventoryStackItems(wasStacked, inventoryId, itemToStackFromId, itemToStackId, amountOfStackedItems, itemToStackInventoryId);
                 });
         }

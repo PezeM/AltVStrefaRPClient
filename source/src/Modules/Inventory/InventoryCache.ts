@@ -140,7 +140,7 @@ class InventoryCache {
     private removeItem(item: IInventoryItem, amount: number, inventory: IInventoryContainer) {
         item.quantity -= amount;
         if (item.quantity <= 0) {
-            inventory.items = inventory.items.splice(inventory.items.indexOf(item), 1);
+            inventory.items = inventory.items.filter(i => i.id !== item.id);
         }
     }
 

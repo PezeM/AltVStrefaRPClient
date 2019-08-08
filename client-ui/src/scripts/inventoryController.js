@@ -166,13 +166,13 @@ export default class InventoryController {
             alt.emit('inventoryStackItems', this.selectedInventory.inventoryId, this.selectedItem.id, this.itemToSwap.id);
         }
 
-        // Temporary till callbacks from server
-        this.itemToSwap.quantity += toAdd;
-        this.selectedItem.quantity -= toAdd;
-        if (this.selectedItem.quantity <= 0) {
-            console.log(`Should delete item`);
-            this.removeItem(this.selectedItem);
-        }
+        // // Temporary till callbacks from server
+        // this.itemToSwap.quantity += toAdd;
+        // this.selectedItem.quantity -= toAdd;
+        // if (this.selectedItem.quantity <= 0) {
+        //     console.log(`Should delete item`);
+        //     this.removeItem(this.selectedItem);
+        // }
     }
 
     itemStackedSuccessfully(inventoryId, itemToStackFromId, itemToStackId, itemToStackInventoryId, amountOfStackedItems) {
@@ -199,6 +199,7 @@ export default class InventoryController {
         } else {
             const itemToStack = this.getItemByIdFromInventoryItems(inventory.items, itemToStackId);
 
+            console.log('Stacked item on VUE');
             this._removeItemFromInventory(itemToStackFrom, amountOfStackedItems, inventory);
             this._addItemQuantity(itemToStack, amountOfStackedItems);
         }
@@ -274,7 +275,8 @@ export default class InventoryController {
         if (item != null) {
             item.quantity -= amount;
             if (item.quantity <= 0) {
-                inventory.items = inventory.items.filter(i => i.id != item.id);
+                console.log('Item quantity was below 0. Deleting item');
+                inventory.items = inventory.items.filter(i => i.id !== item.id);
             }
         }
     }

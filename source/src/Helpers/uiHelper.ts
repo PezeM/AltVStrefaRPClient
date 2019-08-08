@@ -46,7 +46,7 @@ export function drawText(text: string, position: number[], font: number, color: 
     game.endTextCommandDisplayText(position[0], position[1]);
 }
 
-export function draw3DText(text: string, position: number[], font: number, color: number[], scale: number, outline = true,
+export function draw3DText2(text: string, position: number[], font: number, color: number[], scale: number, outline = true,
     drawBackground = true, backgroundColor = [0, 0, 0, 90]) {
     const [bol, x, y] = game.getScreenCoordFromWorldCoord(position[0], position[1], position[2]);
     const camCord = game.getGameplayCamCoords();
@@ -82,12 +82,13 @@ export function draw3DText(text: string, position: number[], font: number, color
     }
 }
 
-export function draw3DText2(text: string, position: number[], font: number, color: number[], scale: number, outline = true,
+export function draw3DText(text: string, position: number[], font: number, color: number[], scale: number, outline = true,
     drawBackground = true, backgroundColor = [0, 0, 0, 90]) {
     const camCoord = game.getGameplayCamCoords();
-    let distance = game.getDistanceBetweenCoords(position[0], position[1], position[2], camCoord.x, camCoord.y, camCoord.z, true);
+    const distance = game.getDistanceBetweenCoords(position[0], position[1], position[2], camCoord.x, camCoord.y, camCoord.z, true);
 
-    if (distance > 20) distance = 20;
+    if (distance > 20) return;
+
     scale *= 1 - (distance / 20);
 
     game.setTextScale(scale, scale);
@@ -108,8 +109,8 @@ export function draw3DText2(text: string, position: number[], font: number, colo
 
     game.endTextCommandDisplayText(0, 0);
 
-    if (drawBackground)
-        drawRectangleBackground(text, scale, font, backgroundColor);
+    // if (drawBackground)
+    //     drawRectangleBackground(text, scale, font, backgroundColor);
 
     game.clearDrawOrigin();
 }

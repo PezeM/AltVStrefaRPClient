@@ -33,6 +33,7 @@ import InventoryContainer from '@/components/Inventory/InventoryContainer.vue';
 import InventoryController from '@/scripts/inventoryController.js';
 import EventBus from '@/event-bus.js';
 import Actions from '../scripts/inventoryActions';
+import { returnTwo } from 'natives';
 
 export default {
     name: 'inventory',
@@ -60,6 +61,7 @@ export default {
         this.inventoryController = new InventoryController(this.personalInventory, this.equippedInventory, this.addonationalInventory);
 
         EventBus.$on('inventoryItemWasDroppedSuccessfully', this.itemWasDroppedSuccessfully);
+        EventBus.$on('inventoryAddNewItems', this.inventoryAddNewItems);
     },
     props: {
         initialPersonalInventory: {
@@ -297,6 +299,12 @@ export default {
         itemWasDroppedSuccessfully(inventoryId, itemId, quantity) {
             this.inventoryController.itemDroppedSuccessfully(inventoryId, itemId, quantity);
         },
+        inventoryAddNewItems(newItems) {
+            if (newItems == null) return;
+            newItems.forEach(item => {
+                this.personalInventory.items.push(item);
+            });
+        },
         isDraggable(item) {
             return item.includes(this.draggableItemClassName);
         },
@@ -353,6 +361,10 @@ export default {
 
 alt.on('inventoryItemWasDroppedSuccessfully', (inventoryId, itemId, quantity) => {
     EventBus.$emit('inventoryItemWasDroppedSuccessfully', inventoryId, itemId, quantity);
+});
+
+alt.on('inventoryAddNewItems', newItems => {
+    EventBus.$emit('inventoryAddNewItems', newItems);
 });
 </script>
 

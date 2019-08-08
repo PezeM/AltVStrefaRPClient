@@ -151,7 +151,7 @@ class InventoryController {
     inventoryAddNewItems(newItems: IInventoryItem[]) {
         alt.log(`New items = ${JSON.stringify(newItems, null, 4)}`);
         if (this.isInventoryOpened) {
-            mainUi.emitUiEvent('inventoryAddNewItem', newItems);
+            mainUi.emitUiEvent('inventoryAddNewItems', newItems);
         }
         newItems.forEach(item => {
             inventoryCache.addNewItem(item);

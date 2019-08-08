@@ -118,6 +118,7 @@ export default class InventoryController {
     }
 
     onActionItemDrop() {
+        // TODO: Checking if user has enough of item quantity before dropping
         if (this.selectedItem == null) return;
         if (!this.selectedItem.isDroppable) {
             EventBus.$emit('showNotification', 3, 'Błąd', 'Nie można wyrzucić tego przedmiotu.', 3500);
@@ -131,12 +132,12 @@ export default class InventoryController {
     }
 
     onActionItemMove() {
-        if (this.selectedItem == null) return;
+        if (this.selectedItem == null || this.movingOverInventory == null) return;
+        if (this.newSlotId > this.movingOverInventory.inventorySlots - 1) return;
+        this.selectedItem.slotId = this.newSlotId;
+
         if (this.isMovingItemsBetweenInventories) {
             // Transfering items between inventories
-            if (this.newSlotId > this.movingOverInventory.inventorySlots - 1) return;
-            this.selectedItem.slotId = this.newSlotId;
-
             console.log(`Moving item id ${this.selectedItem.id} from inventory ${this.selectedInventory.inventoryId} to inventory ${this.movingOverInventory.inventoryId}`);
             alt.emit('inventoryTransferItem', this.selectedInventory.inventoryId, this.movingOverInventory.inventoryId,
                 this.selectedItem.id, this.selectedItem.slotId);
@@ -145,8 +146,6 @@ export default class InventoryController {
             this.removeItem(this.selectedItem);
             this.movingOverInventory.items.push(this.selectedItem);
         } else {
-            if (this.newSlotId > this.movingOverInventory.inventorySlots) return;
-            this.selectedItem.slotId = this.newSlotId;
             alt.emit('inventoryMoveItem', this.selectedInventory.inventoryId, this.selectedItem.id, this.newSlotId);
         }
     }
@@ -159,8 +158,13 @@ export default class InventoryController {
         const toAdd = Math.min(amountOfItemsToStack, maxQuantity);
         if (toAdd <= 0) return;
 
-        console.log(`Stacked item ${this.selectedItem.id} with item ${this.itemToSwap.id}`);
-        alt.emit('inventoryStackItems', this.selectedInventory.inventoryId, this.itemToSwap.id, this.selectedItem.id);
+        if (this.isMovingItemsBetweenInventories) {
+            console.log(`Stacking item id ${this.selectedItem.id} from inventory ${this.selectedInventory.inventoryName} with item ${this.itemToSwap.id} from inventory ${this.movingOverInventory.inventoryName}`);
+            alt.emit('inventoryStackItems', this.selectedInventory.inventoryId, this.selectedItem.id, this.movingOverInventory.id);
+        } else {
+            console.log(`Stacked item ${this.selectedItem.id} with item ${this.itemToSwap.id}`);
+            alt.emit('inventoryStackItems', this.selectedInventory.inventoryId, this.selectedItem.id, this.itemToSwap.id);
+        }
 
         // Temporary till callbacks from server
         this.itemToSwap.quantity += toAdd;

@@ -25,7 +25,7 @@ class InventoryCache {
         return this.cachedInventory.items.find(i => i.id === itemId);
     }
 
-    stackItems(inventoryId: number, itemToStackId: number, itemToStackFromId: number) {
+    stackItems(inventoryId: number, itemToStackFromId: number, itemToStackId: number) {
         // Implement stacking items
         // Add checking inventory
         if (this.cachedInventory === null) return;

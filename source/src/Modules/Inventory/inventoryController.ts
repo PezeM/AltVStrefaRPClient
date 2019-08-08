@@ -91,18 +91,18 @@ class InventoryController {
         });
     }
 
-    inventoryTryToStackItems(inventoryId: number, itemToStackId: number, itemToStackFromId: number) {
-        serverCallbacks.callback("InventoryTryToStackItems", "inventoryStackItems", [inventoryId, itemToStackId, itemToStackFromId],
+    inventoryTryToStackItems(inventoryId: number, itemToStackFromId: number, itemToStackId: number, itemToStackInventoryId: number) {
+        serverCallbacks.callback("InventoryTryToStackItems", "inventoryStackItems", [inventoryId, itemToStackFromId, itemToStackId],
             (wasStacked: boolean, itemId: number) => {
-                this.inventoryStackItems(inventoryId, wasStacked, itemId, itemToStackFromId);
+                this.inventoryStackItems(wasStacked, inventoryId, itemToStackFromId, itemId);
             })
     }
 
-    inventoryStackItems(inventoryId: number, wasStacked: boolean, itemToStackId: number, itemToStackFromId: number) {
+    inventoryStackItems(wasStacked: boolean, inventoryId: number, itemToStackFromId: number, itemToStackId: number) {
         alt.log('Inventory stack items callback');
         if (wasStacked) {
             alt.log(`Item with id ${itemToStackId} was stacked`);
-            inventoryCache.stackItems(inventoryId, itemToStackId, itemToStackFromId);
+            inventoryCache.stackItems(inventoryId, itemToStackFromId, itemToStackId);
         } else {
             // Unstack it on UI propably
             alt.log(`Item with id ${itemToStackId} was not stacked`);

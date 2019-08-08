@@ -27,8 +27,6 @@
 </template>
 
 <script>
-import { Draggable, Plugins } from '@shopify/draggable';
-
 export default {
     name: 'inventory-container',
     props: {
@@ -48,47 +46,7 @@ export default {
             draggableItemClassName: 'withItem',
         };
     },
-    mounted() {
-        // const containerSelector = `.inventory-container`;
-        // const containers = this.$el.querySelectorAll(containerSelector);
-        // console.log(`Container = ${JSON.stringify(containers)}`);
-        // const draggable = new Draggable(containers, {
-        //     draggable: '.isDraggable',
-        //     delay: 150,
-        //     mirror: {
-        //         appendTo: containerSelector,
-        //         constrainDimensions: true,
-        //     },
-        // });
-        // draggable.on('drag:start', event => {
-        //     console.log(event);
-        //     this.swappingObject = event.data;
-        //     this.addDragEfect(this.swappingObject.source);
-        //     console.log(`Drag event started in inventory ${this.inventory.inventoryName}`);
-        //     if (!this.isDraggable(this.swappingObject.originalSource._prevClass)) {
-        //         console.log('This item is not draggable');
-        //         event.cancel();
-        //     }
-        //     this.$emit('drag-started', this.inventory.inventoryName, this.swappingObject, this.getItemById(this.swappingObject.source.dataset.itemid));
-        // });
-        // draggable.on('drag:over', event => {});
-        // draggable.on('drag:over:container', event => {
-        //     console.log(`Drag over container`);
-        // });
-        // draggable.on('drag:out:container', event => {
-        //     console.log(`Drag out container`);
-        // });
-        // draggable.on('drag:stop', event => {
-        //     console.log('Drag event stopped');
-        // });
-    },
     methods: {
-        addDragEfect(swappingObject) {
-            swappingObject.classList.add('on-drag-start');
-        },
-        isDraggable(item) {
-            return item.includes(this.draggableItemClassName);
-        },
         getItemById(itemId) {
             for (let i = 0; i < this.inventory.items.length; i++) {
                 if (this.inventory.items[i].id == itemId) return this.inventory.items[i];
@@ -126,10 +84,10 @@ export default {
     height: 96px;
     background-color: rgba(0, 0, 0, 0.5);
     color: #f3f3f3;
-    padding: 0rem;
+    font-size: 0.8em;
+    padding: 0.1rem;
     border: 1px solid transparent;
     background-clip: padding-box;
-    /* border: 1px solid transparent; */
     transition: 2s;
 }
 
@@ -147,6 +105,6 @@ export default {
 .slot-content {
     width: 100%;
     height: 100%;
-    overflow: auto;
+    /* overflow: hidden; */
 }
 </style>

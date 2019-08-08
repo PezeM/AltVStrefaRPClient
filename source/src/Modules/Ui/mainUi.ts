@@ -75,7 +75,7 @@ class MainUi {
         } else if (showUi) {
             showUi(displayUi)
         } else if (unFreezePlayer) {
-            game.freezeEntityPosition(game.playerPedId(), true);
+            game.freezeEntityPosition(game.playerPedId(), false);
         }
 
         // alt.setTimeout(() => {

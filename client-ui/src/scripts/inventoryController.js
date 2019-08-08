@@ -43,12 +43,10 @@ export default class InventoryController {
     setSelectedItem(itemId, swappingObject) {
         this.selectedItem = this.getItemById(itemId);
         this.swappingObject = swappingObject;
-        console.log(`Selected item is ${JSON.stringify(this.selectedItem)}`);
     }
 
     setItemToSwap(itemId) {
         this.itemToSwap = this.getItemByIdFromInventoryItems(this.movingOverInventory.items, itemId)
-        console.log(`Item to swap was ${JSON.stringify(this.itemToSwap)}`);
     }
 
     setMovingOverInventory(inventory) {
@@ -117,16 +115,15 @@ export default class InventoryController {
         }
 
         alt.emit('inventoryTryDropItem', this.selectedInventory.inventoryId, this.selectedItem.id, this.selectedItem.quantity);
-
-        // Propably change this later on to listen to events etc
-        // this.selectedInventory.items = this.selectedInventory.items.filter(i => i.id !== this.selectedItem.id);
     }
 
     itemDroppedSuccessfully(inventoryId, itemId, quantity) {
-        const inventory = this._getInventory(inventoryId);
+        const inventory = this._getInventoryById(inventoryId);
         if (inventory == null) return;
-        const itemToDrop = this.getItemByIdFromInventoryItems(inventory, itemId);
+        const itemToDrop = this.getItemByIdFromInventoryItems(inventory.items, itemId);
         if (itemToDrop == null) return;
+
+        console.log(`Found inventory ${inventory.inventoryName} and item ${itemToDrop.name}`);
 
         itemToDrop.quantity -= quantity;
         if (itemToDrop.quantity <= 0) {
@@ -262,8 +259,8 @@ export default class InventoryController {
 
     _getInventoryById(inventoryId) {
         if (this.personalInventory.inventoryId === inventoryId) return this.personalInventory;
-        else if (this.addonationalInventory.inventoryId === inventoryId) return this.addonationalInventory;
         else if (this.equippedInventory.inventoryId === inventoryId) return this.equippedInventory;
+        else if (this.addonationalInventory.inventoryId === inventoryId) return this.addonationalInventory;
         return null;
     }
 }

@@ -295,7 +295,6 @@ export default {
             this.resetStates();
         },
         itemWasDroppedSuccessfully(inventoryId, itemId, quantity) {
-            console.log(`Item was dropped Successfully on VUE`);
             this.inventoryController.itemDroppedSuccessfully(inventoryId, itemId, quantity);
         },
         isDraggable(item) {
@@ -348,6 +347,7 @@ export default {
     },
     beforeDestroy() {
         EventBus.$off('inventoryItemWasDroppedSuccessfully', this.itemWasDroppedSuccessfully);
+        console.log('Called event bus off event');
     },
 };
 
@@ -358,7 +358,7 @@ alt.on('inventoryItemWasDroppedSuccessfully', (inventoryId, itemId, quantity) =>
 
 <style>
 #inventory {
-    background-image: url('../assets/example-image.jpg');
+    /* background-image: url('../assets/example-image.jpg'); */
     background-color: rgba(0, 0, 0, 0.561);
     /* padding-bottom: 2em; */
     width: 100%;

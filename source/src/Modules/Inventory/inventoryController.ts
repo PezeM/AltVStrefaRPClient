@@ -43,6 +43,8 @@ class InventoryController {
             if (this.needToRefreshCache()) {
                 alt.log(`Refreshing inventory`);
                 this.openInventoryFromServer();
+                this.openedInventoryCount++;
+                this.isInventoryOpened = true;
                 return;
             }
             alt.log(`Items: ${JSON.stringify(inventoryCache.cachedInventory, null, 4)}`);
@@ -124,7 +126,7 @@ class InventoryController {
     }
 
     inventoryTryDropItem(inventoryId: number, itemToDropId: number, quantity: number) {
-        alt.log(`Dropping item id ${itemToDropId} quantity ${quantity} from inventory ${inventoryId}`);
+        alt.log(`Dropping item id ${itemToDropId} quantity ${quantity} from inventory id ${inventoryId}`);
         serverCallbacks.callback("InventoryDropItem", "inventoryItemDropResponse", [inventoryId, itemToDropId, quantity],
             (wasDropped: boolean, itemId: number) => {
                 this.inventoryDropItem(wasDropped, inventoryId, itemId, quantity);
@@ -136,6 +138,7 @@ class InventoryController {
         if (wasDropped) {
             alt.log(`Item with id ${itemId} quantity ${quantity} was dropped`);
             if (this.isInventoryOpened) {
+                alt.log(`Inventory was opened calling UI event`);
                 mainUi.emitUiEvent("inventoryItemWasDroppedSuccessfully", inventoryId, itemId, quantity);
             }
             inventoryCache.dropItem(inventoryId, itemId, quantity);

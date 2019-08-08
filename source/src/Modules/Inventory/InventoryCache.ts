@@ -68,14 +68,17 @@ class InventoryCache {
         alt.log(`Swapped slot of item ${selectedItemId} to ${selectedItemSlotId} and ${itemToSwapId} to ${itemToSwapSlotId}`);
     }
 
-    dropItem(itemToDropId: number, quantity: number) {
-        if (this.cachedInventory == null) return;
+    dropItem(inventoryId: number, itemToDropId: number, quantity: number) {
+        const inventory = this.getInventory(inventoryId);
+        if (inventory == null) return;
+
         const itemToDrop = this.getItemWithId(itemToDropId);
         if (itemToDrop == null) return;
         if (itemToDrop.quantity < quantity) return;
+
         itemToDrop.quantity -= quantity;
         if (itemToDrop.quantity <= 0) {
-            this.cachedInventory.items = this.cachedInventory.items.filter(i => i.id !== itemToDrop.id);
+            inventory.items = inventory.items.filter(i => i.id !== itemToDrop.id);
         }
     }
 
@@ -88,6 +91,14 @@ class InventoryCache {
         const item = this.getItemWithId(itemId);
         if (item == null) return;
         item.quantity = itemQuantity;
+    }
+
+    private getInventory(inventoryId: number) {
+        if (this.cachedInventory != null && this.cachedInventory.inventoryId === inventoryId) {
+            return this.cachedInventory;
+        } else if (this.cachedEquippedInventory != null && this.cachedEquippedInventory.inventoryId === inventoryId) {
+            return this.cachedEquippedInventory;
+        }
     }
 }
 

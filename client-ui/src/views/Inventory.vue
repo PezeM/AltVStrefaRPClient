@@ -58,6 +58,8 @@ export default {
         draggable.on('drag:stop', this.onDraggableStop.bind(this));
 
         this.inventoryController = new InventoryController(this.personalInventory, this.equippedInventory, this.addonationalInventory);
+
+        EventBus.$on('inventoryItemWasDroppedSuccessfully', this.itemWasDroppedSuccessfully);
     },
     props: {
         initialPersonalInventory: {
@@ -292,6 +294,10 @@ export default {
             this.inventoryController.onDraggableStop(event);
             this.resetStates();
         },
+        itemWasDroppedSuccessfully(inventoryId, itemId, quantity) {
+            console.log(`Item was dropped Successfully on VUE`);
+            this.inventoryController.itemDroppedSuccessfully(inventoryId, itemId, quantity);
+        },
         isDraggable(item) {
             return item.includes(this.draggableItemClassName);
         },
@@ -340,7 +346,14 @@ export default {
             return !(Object.entries(this.addonationalInventory).length === 0 && this.addonationalInventory.constructor === Object);
         },
     },
+    beforeDestroy() {
+        EventBus.$off('inventoryItemWasDroppedSuccessfully', this.itemWasDroppedSuccessfully);
+    },
 };
+
+alt.on('inventoryItemWasDroppedSuccessfully', (inventoryId, itemId, quantity) => {
+    EventBus.$emit('inventoryItemWasDroppedSuccessfully', inventoryId, itemId, quantity);
+});
 </script>
 
 <style>

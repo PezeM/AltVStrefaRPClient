@@ -7,7 +7,7 @@ import itemStreamer from 'source/src/Modules/Streaming/itemStreamer';
 import animationController from 'source/src/Modules/animations';
 import { IInventoryItem, IInventoryContainer } from 'source/src/Constans/interfaces';
 
-const NUMBER_OF_INVENTORY_OPENINGS_TO_REFRESH_CACHE = 15;
+const NUMBER_OF_INVENTORY_OPENINGS_TO_REFRESH_CACHE = 5;
 
 class InventoryController {
     openedInventoryCount: number;
@@ -20,8 +20,8 @@ class InventoryController {
         mainUi.onUiEvent('inventoryStackItems', this.inventoryTryToStackItems.bind(this));
         mainUi.onUiEvent('inventoryMoveItem', this.inventoryMoveItem.bind(this));
         mainUi.onUiEvent('inventorySwapItems', this.inventorySwapItems.bind(this));
-        mainUi.onUiEvent('inventoryDropItem', this.inventoryTryDropItem.bind(this));
-        alt.onServer('inventoryAddNewItem', this.inventoryAddNewItem.bind(this));
+        mainUi.onUiEvent('inventoryTryDropItem', this.inventoryTryDropItem.bind(this));
+        alt.onServer('inventoryAddNewItems', this.inventoryAddNewItems.bind(this));
         alt.onServer('updateInventoryItemQuantity', this.updateInventoryItemQuantity.bind(this));
         alt.onServer('populateAddonationalInventoryContainer', this.populateAddonationalInventoryContainer.bind(this));
     }
@@ -135,29 +135,24 @@ class InventoryController {
         alt.log(`Inventory drop item callback`);
         if (wasDropped) {
             alt.log(`Item with id ${itemId} quantity ${quantity} was dropped`);
-            inventoryCache.dropItem(itemId, quantity);
+            if (this.isInventoryOpened) {
+                mainUi.emitUiEvent("inventoryItemWasDroppedSuccessfully", inventoryId, itemId, quantity);
+            }
+            inventoryCache.dropItem(inventoryId, itemId, quantity);
         } else {
             alt.log(`Item with id ${itemId} quantity ${quantity} was not dropped`);
             // If the item was not dropped then not remove it from inventory and also propably restore it in the UI
         }
     }
 
-    inventoryAddNewItem(newItems: IInventoryItem | IInventoryItem[]) {
-        alt.log(`New item = ${JSON.stringify(newItems, null, 4)}`);
-        if (Object.prototype.toString.call(newItems) === '[object Array]') {
-            alt.log(`Added multiple items`);
-            (newItems as IInventoryItem[]).forEach(item => {
-                inventoryCache.addNewItem(item);
-                mainUi.emitUiEvent('inventoryAddNewItem', item);
-            });
-        } else {
-            alt.log(`Added one new item ${JSON.stringify(newItems, null, 4)}`);
-            inventoryCache.addNewItem(newItems as IInventoryItem);
-        }
-
+    inventoryAddNewItems(newItems: IInventoryItem[]) {
+        alt.log(`New items = ${JSON.stringify(newItems, null, 4)}`);
         if (this.isInventoryOpened) {
             mainUi.emitUiEvent('inventoryAddNewItem', newItems);
         }
+        newItems.forEach(item => {
+            inventoryCache.addNewItem(item);
+        });
     }
 
     updateInventoryItemQuantity(itemId: number, itemQuantity: number) {

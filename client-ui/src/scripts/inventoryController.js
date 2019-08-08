@@ -116,10 +116,22 @@ export default class InventoryController {
             return;
         }
 
-        alt.emit('inventoryDropItem', this.selectedInventory.inventoryId, this.selectedItem.id, this.selectedItem.quantity);
+        alt.emit('inventoryTryDropItem', this.selectedInventory.inventoryId, this.selectedItem.id, this.selectedItem.quantity);
 
         // Propably change this later on to listen to events etc
-        this.selectedInventory.items = this.selectedInventory.items.filter(i => i.id !== this.selectedItem.id);
+        // this.selectedInventory.items = this.selectedInventory.items.filter(i => i.id !== this.selectedItem.id);
+    }
+
+    itemDroppedSuccessfully(inventoryId, itemId, quantity) {
+        const inventory = this._getInventory(inventoryId);
+        if (inventory == null) return;
+        const itemToDrop = this.getItemByIdFromInventoryItems(inventory, itemId);
+        if (itemToDrop == null) return;
+
+        itemToDrop.quantity -= quantity;
+        if (itemToDrop.quantity <= 0) {
+            inventory.items.splice(inventory.items.indexOf(itemToDrop), 1);
+        }
     }
 
     onActionItemMove() {
@@ -246,5 +258,12 @@ export default class InventoryController {
                 console.log(`ERROR in InventoryController. Couldn't get inventory ${JSON.stringify(inventory)}`);
                 break;
         }
+    }
+
+    _getInventoryById(inventoryId) {
+        if (this.personalInventory.inventoryId === inventoryId) return this.personalInventory;
+        else if (this.addonationalInventory.inventoryId === inventoryId) return this.addonationalInventory;
+        else if (this.equippedInventory.inventoryId === inventoryId) return this.equippedInventory;
+        return null;
     }
 }

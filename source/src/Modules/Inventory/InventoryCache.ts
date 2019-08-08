@@ -58,7 +58,7 @@ class InventoryCache {
         alt.log(`Moved item ${selectedItemId} to ${newSlotId}`);
     }
 
-    swapItems(selectedItemId: number, selectedItemSlotId: number, itemToSwapId: number, itemToSwapSlotId: number) {
+    swapItems(inventoryId: number, selectedItemId: number, selectedItemSlotId: number, itemToSwapId: number, itemToSwapSlotId: number) {
         if (this.cachedInventory == null) return;
         const selectedItem = this.getItemWithId(selectedItemId);
         const itemToSwap = this.getItemWithId(itemToSwapId);

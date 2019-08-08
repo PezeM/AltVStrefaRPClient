@@ -2,19 +2,19 @@
   <div id="inventory" v-on:keyup.esc="closeInventory()" v-on:keyup.i="closeInventory()">
     <div class="container-fluid h-100 w-100">
       <div class="row align-items-end h-100 pb-4">
-        <div class="col-3">Tutaj bedzie equipped inventory</div>
-        <div class="col-9">
+        <div class="col-4">Tutaj bedzie equipped inventory</div>
+        <div class="col-8">
           <div class="row">
             <div class="col">
-              <p class="text-left">Nazwa inventory: {{ personalInventory.inventoryName }}</p>
-              <p class="text-left">Id inventory: {{ personalInventory.inventoryId }}</p>
+              <div class="row inventory-name">
+                <p class="text-left">{{ personalInventory.inventoryName }}</p>
+              </div>
               <inventory-container :inventory="personalInventory" />
             </div>
             <div class="col" v-if="showAddonationalInventory">
-              <p
-                class="text-left"
-              >Nazwa dodatkowego inventory {{ addonationalInventory.inventoryName }}</p>
-              <p class="text-left">Id dodatkowego inventory {{ addonationalInventory.inventoryId }}</p>
+              <div class="row inventory-name">
+                <p class="text-left">{{ addonationalInventory.inventoryName }}</p>
+              </div>
               <inventory-container
                 :inventory="addonationalInventory"
                 :inventoryClass="addonationalInventoryClassName"
@@ -292,57 +292,6 @@ export default {
             this.inventoryController.onDraggableStop(event);
             this.resetStates();
         },
-        onItemSwap() {
-            if (this.itemToSwap != null) {
-                // Swapping item with item
-                if (this.moveBetweenInventories) {
-                    const temporarySlot = this.itemToSwap.slotId;
-                    this.itemToSwap.slotId = this.selectedItem.slotId;
-                    this.selectedItem.slotId = temporarySlot;
-                    if (this.isAddonationalInventory(this.swappingObject.sourceContainer)) {
-                        console.log(`Swapping from addonational inventory`);
-                        this.personalInventory.items = this.personalInventory.items.filter(i => i.id !== this.itemToSwap.id);
-                        this.personalInventory.items.push(this.selectedItem);
-                        this.addonationalInventory.items = this.addonationalInventory.items.filter(i => i.id !== this.selectedItem.id);
-                        this.addonationalInventory.items.push(this.itemToSwap);
-                    } else {
-                        console.log('Swapping to addonational inventory');
-                        this.addonationalInventory.items = this.addonationalInventory.items.filter(i => i.id !== this.itemToSwap.id);
-                        this.addonationalInventory.items.push(this.selectedItem);
-                        this.personalInventory.items = this.personalInventory.items.filter(i => i.id !== this.selectedItem.id);
-                        this.personalInventory.items.push(this.itemToSwap);
-                    }
-                } else {
-                    const temporarySlot = this.itemToSwap.slotId;
-                    this.itemToSwap.slotId = this.selectedItem.slotId;
-                    this.selectedItem.slotId = temporarySlot;
-                    alt.emit('inventorySwapItems', this.selectedItem.id, this.selectedItem.slotId, this.itemToSwap.id, this.itemToSwap.slotId);
-                }
-
-                this.addItemToLastAffectedItems(this.selectedItem, this.itemToSwap);
-            } else if (this.newSlotId > -1) {
-                // Moving item to empty slot
-                if (this.moveBetweenInventories) {
-                    this.selectedItem.slotId = this.newSlotId;
-                    alt.emit('transferItemBetweenInventories');
-                    console.log(`Moving between inventories`);
-                    // this.swappingObject = this.lastDragOverContaier;
-                    if (this.isAddonationalInventory(this.swappingObject.sourceContainer)) {
-                        console.log(`Moving from addonational inventory`);
-                        this.personalInventory.items.push(this.selectedItem);
-                        this.addonationalInventory.items = this.addonationalInventory.items.filter(i => i.id !== this.selectedItem.id);
-                    } else {
-                        console.log('Moving to addonational inventory');
-                        this.addonationalInventory.items.push(this.selectedItem);
-                        this.personalInventory.items = this.personalInventory.items.filter(i => i.id !== this.selectedItem.id);
-                    }
-                } else {
-                    this.selectedItem.slotId = this.newSlotId;
-                    alt.emit('inventoryMoveItem', this.selectedItem.id, this.selectedItem.slotId);
-                }
-                this.addItemToLastAffectedItems(this.selectedItem);
-            }
-        },
         isDraggable(item) {
             return item.includes(this.draggableItemClassName);
         },
@@ -403,9 +352,22 @@ export default {
     height: 100vh;
 }
 
-#inventory p {
-    font-family: 'Roboto';
+#inventory .inventory-name {
+    height: 3vh;
+    line-height: 3vh;
+    font-size: 3vh;
+}
+
+.inventory-name p {
+    /* font-family: 'Roboto';
     color: #212121;
-    font-weight: 700;
+    font-weight: 700; */
+
+    font-family: 'Century Schoolbook', Georgia, Times, serif;
+    font-weight: bold;
+    color: rgb(182, 182, 182);
+    letter-spacing: -2px;
+
+    background-color: #111111da;
 }
 </style>

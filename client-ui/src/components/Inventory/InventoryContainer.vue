@@ -72,7 +72,7 @@ export default {
 <style scoped>
 .inventory-container {
     /* min-height: 45vh; */
-    min-width: 20em;
+    min-width: 10em;
     max-height: 50vh;
     max-width: 30em;
     overflow-y: auto;
@@ -80,15 +80,15 @@ export default {
 }
 
 .inventory-slot {
-    width: 96px;
-    height: 96px;
+    width: 4rem;
+    height: 5rem;
     background-color: rgba(0, 0, 0, 0.5);
     color: #f3f3f3;
     font-size: 0.8em;
     padding: 0.1rem;
     border: 1px solid transparent;
     background-clip: padding-box;
-    transition: 2s;
+    transition: 0.2s;
 }
 
 .on-drag-start {

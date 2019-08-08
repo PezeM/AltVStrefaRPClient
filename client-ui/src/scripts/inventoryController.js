@@ -1,12 +1,3 @@
-class Inventory {
-    constructor(inventoryData) {
-        this.inventoryName = inventoryData.inventoryName;
-        this.inventoryId = inventoryData.inventoryId;
-        this.inventorySlots = inventoryData.inventorySlots;
-        this.items = inventoryData.items;
-    }
-}
-
 import Actions from "./inventoryActions";
 import EventBus from '@/event-bus.js';
 
@@ -160,7 +151,7 @@ export default class InventoryController {
 
         if (this.isMovingItemsBetweenInventories) {
             console.log(`Stacking item id ${this.selectedItem.id} from inventory ${this.selectedInventory.inventoryName} with item ${this.itemToSwap.id} from inventory ${this.movingOverInventory.inventoryName}`);
-            alt.emit('inventoryStackItems', this.selectedInventory.inventoryId, this.selectedItem.id, this.movingOverInventory.id);
+            alt.emit('inventoryStackItems', this.selectedInventory.inventoryId, this.selectedItem.id, this.itemToSwap.id, this.movingOverInventory.id);
         } else {
             console.log(`Stacked item ${this.selectedItem.id} with item ${this.itemToSwap.id}`);
             alt.emit('inventoryStackItems', this.selectedInventory.inventoryId, this.selectedItem.id, this.itemToSwap.id);
@@ -176,7 +167,27 @@ export default class InventoryController {
     }
 
     onActionItemSwap() {
+        if (this.selectedItem == null || this.itemToSwap == null) return;
 
+        // Temporary
+        const temporarySlot = this.itemToSwap.slotId;
+        this.itemToSwap.slotId = this.selectedItem.slotId;
+        this.selectedItem.slotId = temporarySlot;
+
+        if (this.isMovingItemsBetweenInventories) {
+            // Temporary till callbacks
+            this.removeItem(this.selectedItem);
+            this.selectedInventory.items.push(this.itemToSwap);
+
+            this.movingOverInventory.items = this.movingOverInventory.items.filter(i => i.id != this.itemToSwap.id);
+            this.movingOverInventory.items.push(this.selectedItem);
+
+            alt.emit('inventorySwapItems', this.selectedInventory.inventoryId, this.selectedItem.id, this.selectedItem.slotId,
+                this.itemToSwap.id, this.itemToSwap.slotId, this.movingOverInventory.inventoryId);
+        } else {
+            alt.emit('inventorySwapItems', this.selectedInventory.inventoryId, this.selectedItem.id, this.selectedItem.slotId,
+                this.itemToSwap.id, this.itemToSwap.slotId);
+        }
     }
 
     reset() {

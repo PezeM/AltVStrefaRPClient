@@ -18,8 +18,8 @@ class InventoryController {
         this.isInventoryOpened = false;
         mainUi.onUiEvent('closeInventory', this.closeInventory.bind(this));
         mainUi.onUiEvent('inventoryStackItems', this.inventoryTryToStackItems.bind(this));
-        mainUi.onUiEvent('inventoryMoveItem', this.inventoryMoveItem);
-        mainUi.onUiEvent('inventorySwapItems', this.inventorySwapItems);
+        mainUi.onUiEvent('inventoryMoveItem', this.inventoryMoveItem.bind(this));
+        mainUi.onUiEvent('inventorySwapItems', this.inventorySwapItems.bind(this));
         mainUi.onUiEvent('inventoryDropItem', this.inventoryTryDropItem.bind(this));
         alt.onServer('inventoryAddNewItem', this.inventoryAddNewItem.bind(this));
         alt.onServer('updateInventoryItemQuantity', this.updateInventoryItemQuantity.bind(this));
@@ -115,10 +115,12 @@ class InventoryController {
         inventoryCache.moveItem(selectedInventoryId, selectedItemId, newSlotNumber);
     }
 
-    inventorySwapItems(selectedItemId: number, selectedItemSlotId: number, itemToSwapId: number, itemToSwapSlotId: number) {
+    inventorySwapItems(inventoryId: number, selectedItemId: number, selectedItemSlotId: number,
+        itemToSwapId: number, itemToSwapSlotId: number, itemToSwapInventoryId: number) {
         // Swap items slots
+        // Add inventory callback propably
         alt.emitServer('InventorySwapItems', selectedItemId, selectedItemSlotId, itemToSwapId, itemToSwapSlotId);
-        inventoryCache.swapItems(selectedItemId, selectedItemSlotId, itemToSwapId, itemToSwapSlotId);
+        inventoryCache.swapItems(inventoryId, selectedItemId, selectedItemSlotId, itemToSwapId, itemToSwapSlotId);
     }
 
     inventoryTryDropItem(inventoryId: number, itemToDropId: number, quantity: number) {

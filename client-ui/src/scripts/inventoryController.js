@@ -61,6 +61,8 @@ export default class InventoryController {
     setCorrectAction(eventData) {
         this.action = Actions.None;
 
+        // Add checking for equiping/deequiping items
+        // Stacking items in equipped inventory and dropping
         if (this.itemToSwap == null) {
             // Move to empty slot
             this.newSlotId = Number(eventData.over.parentNode.id);
@@ -151,11 +153,9 @@ export default class InventoryController {
     }
 
     onActionItemStack() {
-        // Implement stacking items between inventories
         if (this.selectedItem == null || this.itemToSwap == null) return;
-        let amountOfItemsToStack = this.selectedItem.quantity;
         const maxQuantity = this.itemToSwap.stackSize - this.itemToSwap.quantity;
-        const toAdd = Math.min(amountOfItemsToStack, maxQuantity);
+        const toAdd = Math.min(this.selectedItem.quantity, maxQuantity);
         if (toAdd <= 0) return;
 
         if (this.isMovingItemsBetweenInventories) {
@@ -172,6 +172,35 @@ export default class InventoryController {
         if (this.selectedItem.quantity <= 0) {
             console.log(`Should delete item`);
             this.removeItem(this.selectedItem);
+        }
+    }
+
+    itemStackedSuccessfully(inventoryId, itemToStackFromId, itemToStackId, itemToStackInventoryId, amountOfStackedItems) {
+        const inventory = this._getInventoryById(inventoryId);
+        if (inventory == null) {
+            alt.log('Couldnt stack items on UI. Inventory was null.');
+            return;
+        }
+
+        const itemToStackFrom = this.getItemByIdFromInventoryItems(inventory.items, itemToStackFromId);
+
+        if (itemToStackInventoryId > -1) {
+            // Moving between inventories
+            this._removeItemFromInventory(itemToStackFrom, amountOfStackedItems, inventory);
+
+            const itemToStackInventory = this._getInventoryById(itemToStackInventoryId);
+            if (itemToStackInventory == null) {
+                alt.log('Couldnt stack items on UI. Item to stack inventory was null.');
+                return;
+            }
+
+            const itemToStack = this.getItemByIdFromInventoryItems(itemToStackInventory.items, itemToStackId);
+            this._addItemQuantity(itemToStack, amountOfStackedItems);
+        } else {
+            const itemToStack = this.getItemByIdFromInventoryItems(inventory.items, itemToStackId);
+
+            this._removeItemFromInventory(itemToStackFrom, amountOfStackedItems, inventory);
+            this._addItemQuantity(itemToStack, amountOfStackedItems);
         }
     }
 
@@ -231,6 +260,23 @@ export default class InventoryController {
             if (inventoryItems[i].id == itemId) return inventoryItems[i];
         }
         return null;
+    }
+
+    _addItemQuantity(item, amount) {
+        if (item != null) {
+            item.quantity += amount;
+            if (item.quantity >= item.stackSize)
+                item.quantity = item.stackSize;
+        }
+    }
+
+    _removeItemFromInventory(item, amount, inventory) {
+        if (item != null) {
+            item.quantity -= amount;
+            if (item.quantity <= 0) {
+                inventory.items = inventory.items.filter(i => i.id != item.id);
+            }
+        }
     }
 
     _canStackItems(itemToStack, item) {

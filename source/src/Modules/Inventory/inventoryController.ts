@@ -17,7 +17,7 @@ class InventoryController {
         this.openedInventoryCount = 0;
         this.isInventoryOpened = false;
         mainUi.onUiEvent('closeInventory', this.closeInventory.bind(this));
-        mainUi.onUiEvent('inventoryStackItems', this.inventoryTryToStackItems.bind(this));
+        mainUi.onUiEvent('inventoryStackItems', this.inventoryTryStackItems.bind(this));
         mainUi.onUiEvent('inventoryMoveItem', this.inventoryMoveItem.bind(this));
         mainUi.onUiEvent('inventorySwapItems', this.inventorySwapItems.bind(this));
         mainUi.onUiEvent('inventoryTryDropItem', this.inventoryTryDropItem.bind(this));
@@ -57,12 +57,13 @@ class InventoryController {
     }
 
     openInventoryFromServer() {
-        this.getInventoryFromServer((inventory: IInventoryContainer, equippedItems: IInventoryContainer) => {
-            alt.log(`Got inventory from server`);
-            inventoryCache.setInventory(inventory);
-            inventoryCache.setEquippedInventory(equippedItems);
-            this.populateInventoryInUi(null);
-        });
+        serverCallbacks.callback("GetPlayerInventory", "populatePlayerInventory", undefined,
+            (inventory: IInventoryContainer, equippedItems: IInventoryContainer) => {
+                alt.log(`Got inventory from server`);
+                inventoryCache.setInventory(inventory);
+                inventoryCache.setEquippedInventory(equippedItems);
+                this.populateInventoryInUi(null);
+            });
     }
 
     openVehicleInventory(vehicleToOpenInventory: alt.Vehicle) {
@@ -87,26 +88,33 @@ class InventoryController {
         game.transitionToBlurred(150);
     }
 
-    getInventoryFromServer(callback: (...result: any) => void) {
-        serverCallbacks.callback("GetPlayerInventory", "populatePlayerInventory", undefined, (...result: any) => {
-            callback(...result);
-        });
+    inventoryTryStackItems(inventoryId: number, itemToStackFromId: number, itemToStackId: number, itemToStackInventoryId: number) {
+        if (typeof itemToStackInventoryId === 'undefined') {
+            // Stacking items in one inventory
+            serverCallbacks.callback("InventoryTryStackItem", "inventoryStackItemResponse", [inventoryId, itemToStackFromId, itemToStackId],
+                (wasStacked: boolean, amountOfStackedItems: number) => {
+                    this.inventoryStackItems(wasStacked, inventoryId, itemToStackFromId, itemToStackId, amountOfStackedItems);
+                });
+        } else {
+            // Stacking items between inventories
+            serverCallbacks.callback("InventoryTryStackItemBetweenInventories", "inventoryStackItemResponse",
+                [inventoryId, itemToStackFromId, itemToStackId, itemToStackInventoryId],
+                (wasStacked: boolean, amountOfStackedItems: number) => {
+                    this.inventoryStackItems(wasStacked, inventoryId, itemToStackFromId, itemToStackId, amountOfStackedItems, itemToStackInventoryId);
+                });
+        }
     }
 
-    inventoryTryToStackItems(inventoryId: number, itemToStackFromId: number, itemToStackId: number, itemToStackInventoryId: number) {
-        serverCallbacks.callback("InventoryTryToStackItems", "inventoryStackItems", [inventoryId, itemToStackFromId, itemToStackId],
-            (wasStacked: boolean, itemId: number) => {
-                this.inventoryStackItems(wasStacked, inventoryId, itemToStackFromId, itemId);
-            })
-    }
-
-    inventoryStackItems(wasStacked: boolean, inventoryId: number, itemToStackFromId: number, itemToStackId: number) {
-        alt.log('Inventory stack items callback');
+    inventoryStackItems(wasStacked: boolean, inventoryId: number, itemToStackFromId: number, itemToStackId: number, amountOfStackedItems: number,
+        itemToStackInventoryId: number = -1) {
         if (wasStacked) {
             alt.log(`Item with id ${itemToStackId} was stacked`);
-            inventoryCache.stackItems(inventoryId, itemToStackFromId, itemToStackId);
+            if (this.isInventoryOpened) {
+                mainUi.emitUiEvent("inventoryItemWasStackedSuccesfully", inventoryId, itemToStackFromId, itemToStackId, itemToStackInventoryId,
+                    amountOfStackedItems);
+            }
+            inventoryCache.stackItems(inventoryId, itemToStackFromId, itemToStackId, amountOfStackedItems, itemToStackInventoryId);
         } else {
-            // Unstack it on UI propably
             alt.log(`Item with id ${itemToStackId} was not stacked`);
         }
     }

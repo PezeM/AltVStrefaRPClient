@@ -33,7 +33,6 @@ import InventoryContainer from '@/components/Inventory/InventoryContainer.vue';
 import InventoryController from '@/scripts/inventoryController.js';
 import EventBus from '@/event-bus.js';
 import Actions from '../scripts/inventoryActions';
-import { returnTwo } from 'natives';
 
 export default {
     name: 'inventory',
@@ -62,6 +61,7 @@ export default {
 
         EventBus.$on('inventoryItemWasDroppedSuccessfully', this.itemWasDroppedSuccessfully);
         EventBus.$on('inventoryAddNewItems', this.inventoryAddNewItems);
+        EventBus.$on('inventoryItemWasStackedSuccesfully', this.itemWasStackedSuccessfully);
     },
     props: {
         initialPersonalInventory: {
@@ -299,6 +299,9 @@ export default {
         itemWasDroppedSuccessfully(inventoryId, itemId, quantity) {
             this.inventoryController.itemDroppedSuccessfully(inventoryId, itemId, quantity);
         },
+        itemWasStackedSuccessfully(inventoryId, itemToStackFromId, itemToStackId, itemToStackInventoryId, amountOfStackedItems) {
+            this.inventoryController.itemStackedSuccessfully(inventoryId, itemToStackFromId, itemToStackId, itemToStackInventoryId, amountOfStackedItems);
+        },
         inventoryAddNewItems(newItems) {
             if (newItems == null) return;
             newItems.forEach(item => {
@@ -355,7 +358,8 @@ export default {
     },
     beforeDestroy() {
         EventBus.$off('inventoryItemWasDroppedSuccessfully', this.itemWasDroppedSuccessfully);
-        console.log('Called event bus off event');
+        EventBus.$off('inventoryAddNewItems', this.inventoryAddNewItems);
+        EventBus.$off('inventoryItemWasStackedSuccesfully', this.itemWasStackedSuccessfully);
     },
 };
 
@@ -365,6 +369,10 @@ alt.on('inventoryItemWasDroppedSuccessfully', (inventoryId, itemId, quantity) =>
 
 alt.on('inventoryAddNewItems', newItems => {
     EventBus.$emit('inventoryAddNewItems', newItems);
+});
+
+alt.on('inventoryItemWasStackedSuccesfully', (inventoryId, itemToStackFromId, itemToStackId, itemToStackInventoryId, amountOfStackedItems) => {
+    EventBus.$emit('inventoryItemWasStackedSuccesfully', inventoryId, itemToStackFromId, itemToStackId, itemToStackInventoryId, amountOfStackedItems);
 });
 </script>
 

@@ -3,25 +3,30 @@ interface ISlotObject {
 }
 
 const equipmentSlots: ISlotObject = {
-    10000: -1,
-    10001: 1,
-    10003: 3,
-    10004: 4,
-    10005: 5,
-    10006: 6,
-    10007: 7,
-    10008: 8,
-    10009: 9,
-    10010: 10,
-    10011: 11,
-    11001: 0, // Start of props
-    11002: 1,
-    11003: 2,
-    11006: 6,
-    11007: 7,
-    12000: 100,
-    12001: 101,
-    12002: 102
+    // Equipment
+    1000: -1, // None
+    1001: 3, // Torsos
+    1002: 8, // Undershirts
+    1003: 11, // Tops
+    1004: 4, // Legs
+    1005: 6, // Shoes
+    1006: 9, // Body Armor
+    1007: 10, // Decals
+    1201: 103, // Extra slot
+    1202: 104, // Extra slot 2
+    1300: 100, // Left hand
+    1301: 101, // Right hand
+    1302: 102, // Phone
+    // Accessories
+    1101: 1, // Masks
+    1102: 0, // Hats
+    1103: 1, // Glasses
+    1104: 6, // Watches
+    1105: 7, // Bracelets
+    1106: 2, // Ears
+    1107: 7, // Accessories
+    1108: 5, // Bags
+    1203: 105, // Extra slot 3
 };
 
 export default equipmentSlots;

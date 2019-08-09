@@ -135,8 +135,9 @@ export default class InventoryController {
 
     onActionItemMove() {
         if (this.selectedItem == null || this.movingOverInventory == null) return;
-        if (this.newSlotId > this.movingOverInventory.inventorySlots - 1) return;
+        // if (this.newSlotId > this.movingOverInventory.inventorySlots - 1) return;
         this.selectedItem.slotId = this.newSlotId;
+        console.log('tutaj');
 
         if (this.isMovingItemsBetweenInventories) {
             // Transfering items between inventories

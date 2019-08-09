@@ -1,24 +1,108 @@
 <template>
   <div id="inventory" v-on:keyup.esc="closeInventory()" v-on:keyup.i="closeInventory()">
-    <div class="container-fluid h-100 w-100">
-      <div class="row align-items-end h-100 pb-4">
-        <div class="col-4">Tutaj bedzie equipped inventory</div>
-        <div class="col-8">
+    <div class="container h-100">
+      <div class="row h-100">
+        <div class="row justify-content align-content-center">
           <div class="row">
-            <div class="col">
-              <div class="row inventory-name">
-                <p class="text-left">{{ personalInventory.inventoryName }}</p>
-              </div>
-              <inventory-container :inventory="personalInventory" />
+            <div class="col-12">
+              <h1>Tekst jakis dluzszy tutaj bedzie staty itp</h1>
             </div>
-            <div class="col" v-if="showAddonationalInventory">
-              <div class="row inventory-name">
-                <p class="text-left">{{ addonationalInventory.inventoryName }}</p>
+          </div>
+          <div class="row">
+            <div class="col-3">
+              <div id="equipped-inventory">
+                <div class="row inventory-header">
+                  <div class="col align-self-start pl-0">
+                    <p
+                      class="inventory-text"
+                      :class="{ notSelected: selectedEquippedInventory != 'equipment' }"
+                      @click="changeEquippedContainer('equipment')"
+                    >Ekwipunek</p>
+                  </div>
+                  <div class="col align-self-end pl-0">
+                    <p
+                      class="inventory-text"
+                      :class="{ notSelected: selectedEquippedInventory != 'accessories' }"
+                      @click="changeEquippedContainer('accessories')"
+                    >Akcesoria</p>
+                  </div>
+                </div>
+                <div
+                  class="row items-equipment mr-2 draggable-container"
+                  v-if="selectedEquippedInventory == 'equipment'"
+                >
+                  <div class="row m-0">
+                    <div
+                      v-for="(item, key) in equippedItemsEquipment"
+                      :key="key"
+                      :id="key"
+                      class="col-4 item-slot"
+                      :class="{ withItem: item != null }"
+                    >
+                      <div
+                        v-if="item != null"
+                        class="slot-content isDraggable withItem"
+                        v-bind:data-itemId="item.id"
+                      >
+                        {{ item.name }}
+                        <br />
+                        {{ item.slotId }} - Q: {{ item.quantity }}
+                      </div>
+                      <div
+                        v-else
+                        class="slot-content isDraggable"
+                        :class="{ withItem: item != null }"
+                        v-bind:data-itemId="0"
+                      >Item</div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="row items-equipment mr-2 draggable-container"
+                  v-else-if="selectedEquippedInventory == 'accessories'"
+                >
+                  <div class="row m-0">
+                    <div
+                      v-for="(item, key) in equippedItemsAccessories"
+                      :key="key"
+                      :id="key"
+                      class="col-4 item-slot isDraggable"
+                    >
+                      <div
+                        v-if="item != null"
+                        class="slot-content"
+                        :class="{ withItem: item != null }"
+                        v-bind:data-itemId="item.id"
+                      >
+                        {{ item.name }}
+                        <br />
+                        {{ item.slotId }} - Q: {{ item.quantity }}
+                      </div>
+                      <div
+                        v-else
+                        class="slot-content"
+                        :class="{ withItem: item != null }"
+                        v-bind:data-itemId="0"
+                      >Item</div>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <inventory-container
-                :inventory="addonationalInventory"
-                :inventoryClass="addonationalInventoryClassName"
-              />
+            </div>
+            <div class="col-9">
+              <div class="row">
+                <div class="col">
+                  <inventory-container :inventory="personalInventory" />
+                </div>
+                <div class="col ml-2" v-if="showAddonationalInventory">
+                  <div class="addonational-inventory-container ml-2">
+                    <inventory-container
+                      :inventory="addonationalInventory"
+                      :inventoryClass="addonationalInventoryClassName"
+                    />
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -40,13 +124,13 @@ export default {
         InventoryContainer,
     },
     mounted() {
-        const containerSelector = '.inventory-container';
+        const containerSelector = '.draggable-container';
         const containers = this.$el.querySelectorAll(containerSelector);
         const draggable = new Draggable(containers, {
             draggable: '.isDraggable',
             delay: 150,
             mirror: {
-                appendTo: containerSelector,
+                appendTo: '.inventory-container',
                 constrainDimensions: true,
             },
         });
@@ -191,7 +275,17 @@ export default {
                     inventoryId: 2,
                     inventoryName: 'Equipped items',
                     inventorySlots: 10,
-                    items: [],
+                    items: [
+                        {
+                            id: 470,
+                            name: 'Some item',
+                            stackSize: 1,
+                            quantity: 1,
+                            isDroppable: false,
+                            equipmentSlot: 1004,
+                            slotId: 1004,
+                        },
+                    ],
                 };
             },
         },
@@ -233,6 +327,9 @@ export default {
             draggableItemClassName: 'withItem',
             // Class indicating slot is with item
             addonationalInventoryClassName: 'addonational-inventory',
+            selectedEquippedInventory: 'equipment', // or accessories
+            equipmentSlots: [1001, 1002, 1003, 1004, 1005, 1006, 1007, 1201, 1202, 1300, 1301, 1302],
+            accessoriesSlots: [1101, 1102, 1103, 1104, 1105, 1106, 1107, 1108, 1203],
             swappingObject: null,
             lastDragOverItem: null,
             lastDragOverContaier: null,
@@ -308,6 +405,9 @@ export default {
                 this.personalInventory.items.push(item);
             });
         },
+        changeEquippedContainer(inventoryName) {
+            this.selectedEquippedInventory = inventoryName;
+        },
         isDraggable(item) {
             return item.includes(this.draggableItemClassName);
         },
@@ -333,6 +433,8 @@ export default {
                 return this.addonationalInventory;
             } else if (className.includes('inventory-container')) {
                 return this.personalInventory;
+            } else if (className.includes('items-equipment')) {
+                return this.equippedInventory;
             } else {
                 return null;
             }
@@ -354,6 +456,34 @@ export default {
     computed: {
         showAddonationalInventory() {
             return !(Object.entries(this.addonationalInventory).length === 0 && this.addonationalInventory.constructor === Object);
+        },
+        equippedItemsEquipment() {
+            const equippedItems = {};
+
+            for (let i = 0; i < this.equipmentSlots.length; i++) {
+                const slot = this.equipmentSlots[i];
+                let equippedItem = this.equippedInventory.items.find(i => i.slotId == slot);
+                if (equippedItem == null) {
+                    equippedItems[slot] = null;
+                } else {
+                    equippedItems[slot] = equippedItem;
+                }
+            }
+            return equippedItems;
+        },
+        equippedItemsAccessories() {
+            const equippedItems = {};
+
+            for (let i = 0; i < this.accessoriesSlots.length; i++) {
+                const slot = this.accessoriesSlots[i];
+                let equippedItem = this.equippedInventory.items.find(i => i.slotId == slot);
+                if (equippedItem == null) {
+                    equippedItems[slot] = null;
+                } else {
+                    equippedItems[slot] = equippedItem;
+                }
+            }
+            return equippedItems;
         },
     },
     beforeDestroy() {
@@ -378,29 +508,86 @@ alt.on('inventoryItemWasStackedSuccesfully', (inventoryId, itemToStackFromId, it
 
 <style>
 #inventory {
-    /* background-image: url('../assets/example-image.jpg'); */
+    background-image: url('../assets/example-image.jpg');
     background-color: rgba(0, 0, 0, 0.561);
     /* padding-bottom: 2em; */
     width: 100%;
     height: 100vh;
 }
 
-#inventory .inventory-name {
-    height: 3vh;
-    line-height: 3vh;
-    font-size: 3vh;
+#inventory .inventory-header {
+    font-size: 1.3rem;
 }
 
-.inventory-name p {
-    /* font-family: 'Roboto';
-    color: #212121;
-    font-weight: 700; */
+.inventory-header .inventory-text {
+    font-family: Arial;
+    font-style: normal;
+    font-weight: normal;
+    color: #ffffff;
 
-    font-family: 'Century Schoolbook', Georgia, Times, serif;
-    font-weight: bold;
-    color: rgb(182, 182, 182);
-    letter-spacing: -2px;
+    mix-blend-mode: normal;
+    text-shadow: 1px 2px 2px #000000;
+    transition: 0.3s;
+}
 
-    background-color: #111111da;
+#equipped-inventory .inventory-text:hover {
+    cursor: pointer;
+}
+
+.inventory-header .notSelected {
+    color: #aaaaaa;
+}
+
+#equipped-inventory {
+    transform: perspective(500px) rotateY(12deg);
+}
+
+#equipped-inventory .item-slot {
+    width: 64px;
+    height: 96px;
+    padding: 0.1rem;
+    background: rgba(0, 0, 0, 0.5);
+    mix-blend-mode: normal;
+    border: 1px solid rgba(133, 133, 133, 0.4);
+
+    transition: 0.3s;
+}
+
+#equipped-inventory .item-slot:hover {
+    box-shadow: inset 0px 0px 0px 1px #f3f3f3;
+}
+
+#equipped-inventory .items-equipment {
+    color: rgb(200, 200, 200);
+    font-size: 0.8em;
+    font-style: normal;
+    font-weight: lighter;
+
+    background-color: rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(133, 133, 133, 0.4);
+    border-top-left-radius: 0.5em;
+    border-top-right-radius: 0.5em;
+    border-bottom-left-radius: 0.5em;
+    border-bottom-right-radius: 0.5em;
+}
+
+#equipped-inventory .slot-content {
+    width: 100%;
+    height: 100%;
+}
+
+.addonational-inventory-container {
+    transform: perspective(500px) rotateY(-12deg);
+}
+
+.on-drag-start {
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 1;
+}
+
+.on-drag-enter {
+    /* border: 1px solid rgba(255, 255, 255, 0.425); */
+    opacity: 0.6;
+    transform: scale(0.9);
 }
 </style>

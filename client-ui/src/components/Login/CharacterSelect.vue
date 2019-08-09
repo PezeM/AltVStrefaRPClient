@@ -11,7 +11,7 @@
       <div class="col-4 mb-4">
         <div class="profile-card" @click="createCharacter()">
           <div class="new-char img">
-            <img src="../../assets/images/strefa-logo.png">
+            <img src="../../assets/images/strefa-logo.png" />
           </div>
           <div class="mid-section">
             <div class="name">Nowa postać</div>
@@ -33,7 +33,7 @@
       >
         <div class="profile-card">
           <div class="img">
-            <img :src="getImage(character)">
+            <img :src="getImage(character)" />
           </div>
           <div class="mid-section">
             <div class="name">{{ getCharacterFullName(character) }}</div>
@@ -180,7 +180,7 @@ export default {
 }
 
 .character-select::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
     border-radius: 10px;
     background-color: #555;
 }
@@ -192,7 +192,7 @@ export default {
 
 .character-select::-webkit-scrollbar-thumb {
     border-radius: 10px;
-    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
     background-color: #f5f5f5;
 }
 

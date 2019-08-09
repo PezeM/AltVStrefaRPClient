@@ -1,24 +1,29 @@
 <template>
-  <div class="row">
-    <div class="inventory-container" v-bind:class="inventoryClass">
-      <div class="row m-0 p-1">
-        <div
-          v-for="(item, index) in inventorySortedBySlotId"
-          v-bind:key="index"
-          v-bind:id="index"
-          class="col-lg-2 col-md-4 inventory-slot"
-        >
+  <div>
+    <div class="row inventory-header">
+      <p class="inventory-text">{{ inventory.inventoryName }}</p>
+    </div>
+    <div class="row">
+      <div class="inventory-container draggable-container" v-bind:class="inventoryClass">
+        <div class="row m-0">
           <div
-            class="slot-content isDraggable"
-            v-bind:class="{ withItem: item != null }"
-            v-bind:data-itemId="item != null ? item.id : 0"
+            v-for="(item, index) in inventorySortedBySlotId"
+            v-bind:key="index"
+            v-bind:id="index"
+            class="col-lg-2 col-md-4 inventory-slot"
           >
-            <div v-if="item != null">
-              {{ item.name }}
-              <br />
-              {{ item.slotId }} - Q: {{ item.quantity }}
+            <div
+              class="slot-content isDraggable"
+              v-bind:class="{ withItem: item != null }"
+              v-bind:data-itemId="item != null ? item.id : 0"
+            >
+              <div v-if="item != null">
+                {{ item.name }}
+                <br />
+                {{ item.slotId }} - Q: {{ item.quantity }}
+              </div>
+              <div v-else>Item</div>
             </div>
-            <div v-else>Item</div>
           </div>
         </div>
       </div>
@@ -76,7 +81,12 @@ export default {
     max-height: 50vh;
     max-width: 30em;
     overflow-y: auto;
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(133, 133, 133, 0.4);
+    border-top-left-radius: 0.5em;
+    border-top-right-radius: 0.5em;
+    border-bottom-left-radius: 0.5em;
+    border-bottom-right-radius: 0.5em;
 }
 
 .inventory-slot {
@@ -86,20 +96,15 @@ export default {
     color: #f3f3f3;
     font-size: 0.8em;
     padding: 0.1rem;
-    border: 1px solid transparent;
-    background-clip: padding-box;
-    transition: 0.2s;
+    border: 1px solid rgba(133, 133, 133, 0.4);
+
+    /* border: 1px solid transparent; */
+    /* background-clip: padding-box; */
+    transition: 0.3s;
 }
 
-.on-drag-start {
-    background-color: rgba(0, 0, 0, 0.7);
-    z-index: 1;
-}
-
-.on-drag-enter {
-    /* border: 1px solid rgba(255, 255, 255, 0.425); */
-    opacity: 0.6;
-    transform: scale(0.9);
+.inventory-slot:hover {
+    box-shadow: inset 0px 0px 1px 1px #ffffff;
 }
 
 .slot-content {

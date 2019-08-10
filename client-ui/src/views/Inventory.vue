@@ -476,7 +476,7 @@ alt.on('inventoryItemWasStackedSuccesfully', (inventoryId, itemToStackFromId, it
 <style>
 #inventory {
     background-image: url('../assets/example-image.jpg');
-    background-color: rgba(0, 0, 0, 0.561);
+    background-color: rgba(0, 0, 0, 0.3);
     width: 100%;
     height: 100vh;
 }
@@ -538,6 +538,29 @@ alt.on('inventoryItemWasStackedSuccesfully', (inventoryId, itemToStackFromId, it
     height: 100%;
 }
 
+.item-wrapper {
+    height: 100%;
+
+    transition: 2s;
+}
+
+.item-image {
+    padding: 0.8rem;
+    width: 100%;
+    height: 100%;
+
+    transition: 2s;
+}
+
+.item-quantity-text {
+    position: absolute;
+    bottom: 0.1rem;
+    right: 0.4rem;
+
+    color: #f3f3f3;
+    text-shadow: 3px 1px 10px rgba(0, 0, 0, 1);
+}
+
 #equipped-inventory {
     transform: perspective(500px) rotateY(12deg);
 }
@@ -550,10 +573,7 @@ alt.on('inventoryItemWasStackedSuccesfully', (inventoryId, itemToStackFromId, it
 
     background-color: rgba(0, 0, 0, 0.5);
     border: 1px solid rgba(133, 133, 133, 0.4);
-    border-top-left-radius: 0.5em;
-    border-top-right-radius: 0.5em;
-    border-bottom-left-radius: 0.5em;
-    border-bottom-right-radius: 0.5em;
+    border-radius: 0.5em;
 }
 
 .addonational-inventory-container {

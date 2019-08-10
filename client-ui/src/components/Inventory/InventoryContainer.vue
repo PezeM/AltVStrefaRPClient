@@ -107,10 +107,8 @@ export default {
     overflow-y: auto;
     background-color: rgba(0, 0, 0, 0.5);
     border: 1px solid rgba(133, 133, 133, 0.4);
-    border-top-left-radius: 0.5em;
-    border-top-right-radius: 0.5em;
-    border-bottom-left-radius: 0.5em;
-    border-bottom-right-radius: 0.5em;
+
+    border-radius: 0.5rem;
 }
 
 .inventory-slot {
@@ -127,27 +125,6 @@ export default {
 
 .inventory-slot:hover {
     box-shadow: inset 0px 0px 1px 1px #ffffff;
-}
-
-.item-wrapper {
-    height: 100%;
-
-    transition: 2s;
-}
-
-.item-image {
-    padding: 0.8rem;
-    width: 100%;
-    height: 100%;
-
-    transition: 2s;
-}
-
-.item-quantity-text {
-    position: absolute;
-    bottom: 0.1rem;
-    right: 0.4rem;
-    color: #b3b3b3;
 }
 
 /* Scrollbar */

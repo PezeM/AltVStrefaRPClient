@@ -95,6 +95,7 @@ export interface IInventoryItem {
     isDroppable: boolean;
     equipmentSlot: number;
     slotId: number;
+    description: string;
 }
 
 export interface IItem {

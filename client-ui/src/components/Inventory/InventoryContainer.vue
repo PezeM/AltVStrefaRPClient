@@ -30,9 +30,6 @@
                                     class="item-quantity-text"
                                 >{{ item.quantity }}/{{ item.stackSize }}</span>
                             </div>
-                            <!-- {{ item.name }}
-                            <br />
-                            {{ item.slotId }} - Q: {{ item.quantity }}-->
                         </div>
                         <div
                             v-else
@@ -40,13 +37,7 @@
                             v-bind:class="{ withItem: item }"
                             v-bind:data-itemId="0"
                         >
-                            <div class="item-wrapper">
-                                <!-- <img
-                                    :src="require(`@/assets/images/items/${inventorySlotImages[1002]}`)"
-                                    class="item-image"
-                                />
-                                <span class="item-quantity-text">19/20</span>-->
-                            </div>
+                            <div class="item-wrapper"></div>
                         </div>
                     </div>
                 </div>

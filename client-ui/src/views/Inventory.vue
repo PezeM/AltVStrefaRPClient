@@ -1,120 +1,117 @@
 <template>
-  <div id="inventory" v-on:keyup.esc="closeInventory()" v-on:keyup.i="closeInventory()">
-    <div class="container h-100">
-      <div class="row h-100">
-        <div class="row justify-content align-content-center">
-          <div class="row">
-            <div class="col-12">
-              <h1>Tekst jakis dluzszy tutaj bedzie staty itp</h1>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-3">
-              <div id="equipped-inventory">
-                <div class="row inventory-header">
-                  <div class="col align-self-start pl-0">
-                    <p
-                      class="inventory-text"
-                      :class="{ notSelected: selectedEquippedInventory != 'equipment' }"
-                      @click="changeEquippedContainer('equipment')"
-                    >Ekwipunek</p>
-                  </div>
-                  <div class="col align-self-end pl-0">
-                    <p
-                      class="inventory-text"
-                      :class="{ notSelected: selectedEquippedInventory != 'accessories' }"
-                      @click="changeEquippedContainer('accessories')"
-                    >Akcesoria</p>
-                  </div>
-                </div>
-                <div
-                  class="row items-equipment mr-2 draggable-container"
-                  v-if="selectedEquippedInventory == 'equipment'"
-                >
-                  <div class="row m-0">
-                    <div
-                      v-for="(item, key) in equippedItemsEquipment"
-                      :key="key"
-                      :id="key"
-                      class="col-4 item-slot"
-                      :class="{ withItem: item != null }"
-                    >
-                      <div
-                        v-if="item != null"
-                        class="slot-content isDraggable withItem"
-                        v-bind:data-itemId="item.id"
-                      >
-                        {{ item.name }}
-                        <br />
-                        {{ item.slotId }} - Q: {{ item.quantity }}
-                      </div>
-                      <div
-                        v-else
-                        class="slot-content isDraggable"
-                        :class="{ withItem: item != null }"
-                        v-bind:data-itemId="0"
-                      >Item</div>
+    <div id="inventory" v-on:keyup.esc="closeInventory()" v-on:keyup.i="closeInventory()">
+        <div class="container h-100">
+            <div class="row h-100">
+                <div class="row justify-content align-content-center">
+                    <InventoryTopBar :gameInfo="gameInfo" />
+                    <div class="row w-100">
+                        <div class="col-3">
+                            <div id="equipped-inventory">
+                                <div class="row inventory-header">
+                                    <div class="col align-self-start pl-0">
+                                        <p
+                                            class="inventory-text"
+                                            :class="{ notSelected: selectedEquippedInventory != 'equipment' }"
+                                            @click="changeEquippedContainer('equipment')"
+                                        >Ekwipunek</p>
+                                    </div>
+                                    <div class="col align-self-end pl-0">
+                                        <p
+                                            class="inventory-text"
+                                            :class="{ notSelected: selectedEquippedInventory != 'accessories' }"
+                                            @click="changeEquippedContainer('accessories')"
+                                        >Akcesoria</p>
+                                    </div>
+                                </div>
+                                <div
+                                    class="row items-equipment mr-2 draggable-container"
+                                    v-if="selectedEquippedInventory == 'equipment'"
+                                >
+                                    <div class="row m-0">
+                                        <div
+                                            v-for="(item, key) in equippedItemsEquipment"
+                                            :key="key"
+                                            :id="key"
+                                            class="col-4 item-slot"
+                                            :class="{ withItem: item != null }"
+                                        >
+                                            <div
+                                                v-if="item != null"
+                                                class="slot-content isDraggable withItem"
+                                                v-bind:data-itemId="item.id"
+                                            >
+                                                {{ item.name }}
+                                                <br />
+                                                {{ item.slotId }} - Q: {{ item.quantity }}
+                                            </div>
+                                            <div
+                                                v-else
+                                                class="slot-content isDraggable"
+                                                :class="{ withItem: item != null }"
+                                                v-bind:data-itemId="0"
+                                            >Item</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div
+                                    class="row items-equipment mr-2 draggable-container"
+                                    v-else-if="selectedEquippedInventory == 'accessories'"
+                                >
+                                    <div class="row m-0">
+                                        <div
+                                            v-for="(item, key) in equippedItemsAccessories"
+                                            :key="key"
+                                            :id="key"
+                                            class="col-4 item-slot isDraggable"
+                                        >
+                                            <div
+                                                v-if="item != null"
+                                                class="slot-content"
+                                                :class="{ withItem: item != null }"
+                                                v-bind:data-itemId="item.id"
+                                            >
+                                                {{ item.name }}
+                                                <br />
+                                                {{ item.slotId }} - Q: {{ item.quantity }}
+                                            </div>
+                                            <div
+                                                v-else
+                                                class="slot-content"
+                                                :class="{ withItem: item != null }"
+                                                v-bind:data-itemId="0"
+                                            >Item</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-9">
+                            <div class="row">
+                                <div class="col">
+                                    <inventory-container :inventory="personalInventory" />
+                                </div>
+                                <div class="col ml-2" v-if="showAddonationalInventory">
+                                    <div class="addonational-inventory-container ml-2">
+                                        <inventory-container
+                                            :inventory="addonationalInventory"
+                                            :inventoryClass="addonationalInventoryClassName"
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                  </div>
                 </div>
-                <div
-                  class="row items-equipment mr-2 draggable-container"
-                  v-else-if="selectedEquippedInventory == 'accessories'"
-                >
-                  <div class="row m-0">
-                    <div
-                      v-for="(item, key) in equippedItemsAccessories"
-                      :key="key"
-                      :id="key"
-                      class="col-4 item-slot isDraggable"
-                    >
-                      <div
-                        v-if="item != null"
-                        class="slot-content"
-                        :class="{ withItem: item != null }"
-                        v-bind:data-itemId="item.id"
-                      >
-                        {{ item.name }}
-                        <br />
-                        {{ item.slotId }} - Q: {{ item.quantity }}
-                      </div>
-                      <div
-                        v-else
-                        class="slot-content"
-                        :class="{ withItem: item != null }"
-                        v-bind:data-itemId="0"
-                      >Item</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
             </div>
-            <div class="col-9">
-              <div class="row">
-                <div class="col">
-                  <inventory-container :inventory="personalInventory" />
-                </div>
-                <div class="col ml-2" v-if="showAddonationalInventory">
-                  <div class="addonational-inventory-container ml-2">
-                    <inventory-container
-                      :inventory="addonationalInventory"
-                      :inventoryClass="addonationalInventoryClassName"
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
-      </div>
     </div>
-  </div>
 </template>
 
 <script>
 import { Draggable, Plugins } from '@shopify/draggable';
 import InventoryContainer from '@/components/Inventory/InventoryContainer.vue';
 import InventoryController from '@/scripts/inventoryController.js';
+import InventoryTopBar from '@/components/Inventory/InventoryTopBar.vue';
 import EventBus from '@/event-bus.js';
 import Actions from '../scripts/inventoryActions';
 
@@ -122,6 +119,7 @@ export default {
     name: 'inventory',
     components: {
         InventoryContainer,
+        InventoryTopBar,
     },
     mounted() {
         const containerSelector = '.draggable-container';
@@ -319,6 +317,17 @@ export default {
                 };
             },
         },
+        gameInfo: {
+            type: Object,
+            default: () => {
+                return {
+                    hours: 13,
+                    minutes: 35,
+                    health: 75,
+                    armor: 15,
+                };
+            },
+        },
     },
     data() {
         return {
@@ -510,16 +519,20 @@ alt.on('inventoryItemWasStackedSuccesfully', (inventoryId, itemToStackFromId, it
 #inventory {
     background-image: url('../assets/example-image.jpg');
     background-color: rgba(0, 0, 0, 0.561);
-    /* padding-bottom: 2em; */
     width: 100%;
     height: 100vh;
+}
+
+#inventory .inventory-top {
+    font-size: 2rem;
+    padding-bottom: 1em;
 }
 
 #inventory .inventory-header {
     font-size: 1.3rem;
 }
 
-.inventory-header .inventory-text {
+#inventory .inventory-text {
     font-family: Arial;
     font-style: normal;
     font-weight: normal;
@@ -530,11 +543,11 @@ alt.on('inventoryItemWasStackedSuccesfully', (inventoryId, itemToStackFromId, it
     transition: 0.3s;
 }
 
-#equipped-inventory .inventory-text:hover {
+.inventory-header .inventory-text:hover {
     cursor: pointer;
 }
 
-.inventory-header .notSelected {
+#inventory .notSelected {
     color: #aaaaaa;
 }
 
@@ -544,7 +557,7 @@ alt.on('inventoryItemWasStackedSuccesfully', (inventoryId, itemToStackFromId, it
 
 #equipped-inventory .item-slot {
     width: 64px;
-    height: 96px;
+    height: 80px;
     padding: 0.1rem;
     background: rgba(0, 0, 0, 0.5);
     mix-blend-mode: normal;

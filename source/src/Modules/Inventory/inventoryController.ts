@@ -82,6 +82,13 @@ class InventoryController {
     }
 
     populateInventoryInUi(addonationalInventoryContainer: object | null = null) {
+        const currentDateInGame = {
+            hours: game.getClockHours(),
+            minutes: game.getClockMinutes()
+        };
+
+        alt.log(`Current date in game: ${currentDateInGame.hours}:${currentDateInGame.minutes}`);
+
         mainUi.openMenu('openPlayerInventory', true, false, inventoryCache.cachedInventory, inventoryCache.cachedEquippedInventory,
             addonationalInventoryContainer);
         game.transitionToBlurred(150);

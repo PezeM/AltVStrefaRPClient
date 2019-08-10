@@ -1,34 +1,34 @@
 <template>
-  <div>
-    <div class="row inventory-header">
-      <p class="inventory-text">{{ inventory.inventoryName }}</p>
-    </div>
-    <div class="row">
-      <div class="inventory-container draggable-container" v-bind:class="inventoryClass">
-        <div class="row m-0">
-          <div
-            v-for="(item, index) in inventorySortedBySlotId"
-            v-bind:key="index"
-            v-bind:id="index"
-            class="col-lg-2 col-md-4 inventory-slot"
-          >
-            <div
-              class="slot-content isDraggable"
-              v-bind:class="{ withItem: item != null }"
-              v-bind:data-itemId="item != null ? item.id : 0"
-            >
-              <div v-if="item != null">
-                {{ item.name }}
-                <br />
-                {{ item.slotId }} - Q: {{ item.quantity }}
-              </div>
-              <div v-else>Item</div>
-            </div>
-          </div>
+    <div>
+        <div class="row inventory-header">
+            <p class="inventory-text">{{ inventory.inventoryName }}</p>
         </div>
-      </div>
+        <div class="row">
+            <div class="inventory-container draggable-container" v-bind:class="inventoryClass">
+                <div class="row m-0">
+                    <div
+                        v-for="(item, index) in inventorySortedBySlotId"
+                        v-bind:key="index"
+                        v-bind:id="index"
+                        class="col-lg-2 col-md-4 inventory-slot"
+                    >
+                        <div
+                            class="slot-content isDraggable"
+                            v-bind:class="{ withItem: item != null }"
+                            v-bind:data-itemId="item != null ? item.id : 0"
+                        >
+                            <div v-if="item != null">
+                                {{ item.name }}
+                                <br />
+                                {{ item.slotId }} - Q: {{ item.quantity }}
+                            </div>
+                            <div v-else>Item</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
 </template>
 
 <script>

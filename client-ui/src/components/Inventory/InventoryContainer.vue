@@ -4,8 +4,11 @@
             <p class="inventory-text">{{ inventory.inventoryName }}</p>
         </div>
         <div class="row">
-            <div class="inventory-container draggable-container" v-bind:class="inventoryClass">
-                <div class="row m-0">
+            <div
+                class="inventory-container draggable-container w-100"
+                v-bind:class="inventoryClass"
+            >
+                <div class="row m-0 w-100">
                     <div
                         v-for="(item, index) in inventorySortedBySlotId"
                         v-bind:key="index"

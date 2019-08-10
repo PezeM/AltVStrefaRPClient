@@ -3,8 +3,8 @@
         <div class="container h-100">
             <div class="row h-100">
                 <div class="row justify-content align-content-center">
-                    <InventoryTopBar :gameInfo="gameInfo" />
-                    <div class="row w-100">
+                    <InventoryTopBar :gameInfo="gameInfo" class="mx-auto" />
+                    <div class="row w-100 mx-auto">
                         <div class="col-3">
                             <div id="equipped-inventory">
                                 <div class="row inventory-header">
@@ -484,6 +484,30 @@ alt.on('inventoryItemWasStackedSuccesfully', (inventoryId, itemToStackFromId, it
 #inventory .inventory-top {
     font-size: 2rem;
     padding-bottom: 1em;
+}
+
+.inventory-header-date .header-date-text {
+    font-size: 3rem;
+}
+
+@media (max-width: 1281px) {
+    #inventory .inventory-top {
+        font-size: 1.8rem;
+    }
+
+    .inventory-header-date .header-date-text {
+        font-size: 2.3rem;
+    }
+}
+
+@media (max-width: 767.98px) {
+    #inventory .inventory-top {
+        font-size: 1.3rem;
+    }
+
+    .inventory-header-date .header-date-text {
+        font-size: 1.3rem;
+    }
 }
 
 #inventory .inventory-header {

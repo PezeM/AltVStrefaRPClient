@@ -10,7 +10,7 @@
                         v-for="(item, index) in inventorySortedBySlotId"
                         v-bind:key="index"
                         v-bind:id="index"
-                        class="col-lg-2 col-md-4 inventory-slot"
+                        class="col-lg-3 col-md-4 inventory-slot"
                     >
                         <div
                             class="slot-content isDraggable"
@@ -90,8 +90,8 @@ export default {
 }
 
 .inventory-slot {
-    width: 4rem;
-    height: 5rem;
+    /* width: 3rem; */
+    height: 96px;
     background-color: rgba(0, 0, 0, 0.5);
     color: #f3f3f3;
     font-size: 0.8em;
@@ -103,5 +103,24 @@ export default {
 
 .inventory-slot:hover {
     box-shadow: inset 0px 0px 1px 1px #ffffff;
+}
+
+/* Scrollbar */
+.inventory-container::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    /* background-color: #555; */
+}
+
+.inventory-container::-webkit-scrollbar {
+    width: 0.3rem;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* background-color: #555; */
+}
+
+.inventory-container::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    background-color: #f3f3f3;
 }
 </style>

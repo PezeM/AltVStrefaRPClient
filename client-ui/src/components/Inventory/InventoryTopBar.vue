@@ -5,8 +5,12 @@
         </div>
         <div class="col-10 p-0 inventory-top-bar">
             <div class="row inventory-top-bar-container">
-                <div class="col-2 my-auto">
+                <div class="col-8 my-auto">
                     <p class="inventory-text">StrefaRP.pl</p>
+                </div>
+                <div class="col-4 my-auto">
+                    <span class="inventory-text">H: {{ gameInfo.health }}</span>
+                    <span class="inventory-text ml-4">A: {{ gameInfo.armor }}</span>
                 </div>
             </div>
         </div>
@@ -51,9 +55,5 @@ export default {
 .inventory-top-bar .inventory-top-bar-container {
     height: 100%;
     padding-left: 1.5rem;
-}
-
-.inventory-header-date .header-date-text {
-    font-size: 3rem;
 }
 </style>

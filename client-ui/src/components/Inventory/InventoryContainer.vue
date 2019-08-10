@@ -16,16 +16,37 @@
                         class="col-lg-3 col-md-4 inventory-slot"
                     >
                         <div
+                            v-if="item != null"
                             class="slot-content isDraggable"
-                            v-bind:class="{ withItem: item != null }"
-                            v-bind:data-itemId="item != null ? item.id : 0"
+                            v-bind:class="{ withItem: item }"
+                            v-bind:data-itemId="item.id"
                         >
-                            <div v-if="item != null">
-                                {{ item.name }}
-                                <br />
-                                {{ item.slotId }} - Q: {{ item.quantity }}
+                            <div class="item-wrapper">
+                                <img
+                                    :src="require(`@/assets/images/items/${getCorrectImage(item)}`)"
+                                    class="item-image"
+                                />
+                                <span
+                                    class="item-quantity-text"
+                                >{{ item.quantity }}/{{ item.stackSize }}</span>
                             </div>
-                            <div v-else>Item</div>
+                            <!-- {{ item.name }}
+                            <br />
+                            {{ item.slotId }} - Q: {{ item.quantity }}-->
+                        </div>
+                        <div
+                            v-else
+                            class="slot-content isDraggable"
+                            v-bind:class="{ withItem: item }"
+                            v-bind:data-itemId="0"
+                        >
+                            <div class="item-wrapper">
+                                <!-- <img
+                                    :src="require(`@/assets/images/items/${inventorySlotImages[1002]}`)"
+                                    class="item-image"
+                                />
+                                <span class="item-quantity-text">19/20</span>-->
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -35,6 +56,9 @@
 </template>
 
 <script>
+import InventorySlotImages from '@/scripts/inventorySlotImages.js';
+import InventoryNameImages from '@/scripts/inventoryNameImages.js';
+
 export default {
     name: 'inventory-container',
     props: {
@@ -52,6 +76,8 @@ export default {
         return {
             swappingObject: null,
             draggableItemClassName: 'withItem',
+            inventoryNameImages: InventoryNameImages,
+            inventorySlotImages: InventorySlotImages,
         };
     },
     methods: {
@@ -60,6 +86,10 @@ export default {
                 if (this.inventory.items[i].id == itemId) return this.inventory.items[i];
             }
             return null;
+        },
+        getCorrectImage(item) {
+            // return item.equipmentSlot == -1 ? this.inventorySlotImages[item.equipmentSlot] : this.inventoryNameImages[item.name];
+            return item.equipmentSlot == -1 ? InventoryNameImages[item.name] : InventorySlotImages[item.equipmentSlot];
         },
     },
     computed: {
@@ -106,6 +136,27 @@ export default {
 
 .inventory-slot:hover {
     box-shadow: inset 0px 0px 1px 1px #ffffff;
+}
+
+.item-wrapper {
+    height: 100%;
+
+    transition: 2s;
+}
+
+.item-image {
+    padding: 0.8rem;
+    width: 100%;
+    height: 100%;
+
+    transition: 2s;
+}
+
+.item-quantity-text {
+    position: absolute;
+    bottom: 0.1rem;
+    right: 0.4rem;
+    color: #b3b3b3;
 }
 
 /* Scrollbar */

@@ -118,7 +118,7 @@ export default {
                             stackSize: 1,
                             quantity: 1,
                             isDroppable: false,
-                            equipmentSlot: 10004,
+                            equipmentSlot: 1004,
                             slotId: 15,
                         },
                         {
@@ -127,7 +127,7 @@ export default {
                             stackSize: 1,
                             quantity: 1,
                             isDroppable: false,
-                            equipmentSlot: 10004,
+                            equipmentSlot: 1004,
                             slotId: 1,
                         },
                         {
@@ -136,7 +136,7 @@ export default {
                             stackSize: 1,
                             quantity: 1,
                             isDroppable: true,
-                            equipmentSlot: 10004,
+                            equipmentSlot: 1004,
                             slotId: 2,
                         },
                         {
@@ -145,7 +145,7 @@ export default {
                             stackSize: 1,
                             quantity: 1,
                             isDroppable: true,
-                            equipmentSlot: 10004,
+                            equipmentSlot: 1004,
                             slotId: 3,
                         },
                         {
@@ -154,7 +154,7 @@ export default {
                             stackSize: 1,
                             quantity: 1,
                             isDroppable: true,
-                            equipmentSlot: 10004,
+                            equipmentSlot: 1004,
                             slotId: 4,
                         },
                         {
@@ -163,7 +163,7 @@ export default {
                             stackSize: 1,
                             quantity: 1,
                             isDroppable: true,
-                            equipmentSlot: 12000,
+                            equipmentSlot: 1300,
                             slotId: 5,
                         },
                         {
@@ -172,7 +172,7 @@ export default {
                             stackSize: 1,
                             quantity: 1,
                             isDroppable: true,
-                            equipmentSlot: 12000,
+                            equipmentSlot: 1300,
                             slotId: 6,
                         },
                         {
@@ -181,7 +181,7 @@ export default {
                             stackSize: 1,
                             quantity: 1,
                             isDroppable: true,
-                            equipmentSlot: 12000,
+                            equipmentSlot: 1300,
                             slotId: 7,
                         },
                         {
@@ -190,7 +190,7 @@ export default {
                             stackSize: 1,
                             quantity: 1,
                             isDroppable: true,
-                            equipmentSlot: 12000,
+                            equipmentSlot: 1300,
                             slotId: 8,
                         },
                         {
@@ -199,7 +199,7 @@ export default {
                             stackSize: 1,
                             quantity: 1,
                             isDroppable: true,
-                            equipmentSlot: 12000,
+                            equipmentSlot: 1300,
                             slotId: 9,
                         },
                         {
@@ -259,7 +259,7 @@ export default {
                             stackSize: 1,
                             quantity: 1,
                             isDroppable: true,
-                            equipmentSlot: 10004,
+                            equipmentSlot: 1004,
                             slotId: 3,
                         },
                         {
@@ -268,7 +268,7 @@ export default {
                             stackSize: 1,
                             quantity: 1,
                             isDroppable: true,
-                            equipmentSlot: 10004,
+                            equipmentSlot: 1004,
                             slotId: 1,
                         },
                     ],
@@ -557,7 +557,7 @@ alt.on('inventoryItemWasStackedSuccesfully', (inventoryId, itemToStackFromId, it
 }
 
 .addonational-inventory-container {
-    transform: perspective(500px) rotateY(-12deg);
+    transform: perspective(500px) rotateY(-12deg) translateZ(0);
 }
 
 .on-drag-start {

@@ -95,21 +95,13 @@ export default {
     background-color: rgba(0, 0, 0, 0.5);
     color: #f3f3f3;
     font-size: 0.8em;
-    padding: 0.1rem;
+    padding: 0.1em;
     border: 1px solid rgba(133, 133, 133, 0.4);
 
-    /* border: 1px solid transparent; */
-    /* background-clip: padding-box; */
     transition: 0.3s;
 }
 
 .inventory-slot:hover {
     box-shadow: inset 0px 0px 1px 1px #ffffff;
-}
-
-.slot-content {
-    width: 100%;
-    height: 100%;
-    /* overflow: hidden; */
 }
 </style>

@@ -116,6 +116,11 @@ export default class InventoryController {
             return;
         }
 
+        if (this.selectedInventory == this.equippedInventory) {
+            EventBus.$emit('showNotification', 3, 'Błąd', 'Musisz najpierw zdjąc przedmiot żeby go wyrzucić.', 5000);
+            return;
+        }
+
         alt.emit('inventoryTryDropItem', this.selectedInventory.inventoryId, this.selectedItem.id, this.selectedItem.quantity);
     }
 
@@ -237,20 +242,48 @@ export default class InventoryController {
         this.itemToSwap.slotId = this.selectedItem.slotId;
         this.selectedItem.slotId = temporarySlot;
 
-        if (this.isMovingItemsBetweenInventories) {
-            // Temporary till callbacks
-            this.removeItem(this.selectedItem);
-            this.selectedInventory.items.push(this.itemToSwap);
-
-            this.movingOverInventory.items = this.movingOverInventory.items.filter(i => i.id != this.itemToSwap.id);
-            this.movingOverInventory.items.push(this.selectedItem);
-
-            alt.emit('inventorySwapItems', this.selectedInventory.inventoryId, this.selectedItem.id, this.selectedItem.slotId,
-                this.itemToSwap.id, this.itemToSwap.slotId, this.movingOverInventory.inventoryId);
-        } else {
+        if (!this.isMovingItemsBetweenInventories) {
             alt.emit('inventorySwapItems', this.selectedInventory.inventoryId, this.selectedItem.id, this.selectedItem.slotId,
                 this.itemToSwap.id, this.itemToSwap.slotId);
+            return;
         }
+
+        if (this.movingOverInventory == this.equippedInventory) {
+            console.log('Try to equip item and unequip');
+            this.tryToEquipItemAndUnequipItem(this.selectedItem, this.itemToSwap);
+            return;
+        } else if (this.selectedInventory == this.equippedInventory) {
+            console.log('Try to unequip item and equip the other');
+            this.tryToUnequipItemAndEquipItem(this.selectedItem, this.itemToSwap);
+            return;
+        }
+
+        // Temporary till callbacks
+        this.removeItem(this.selectedItem);
+        this.selectedInventory.items.push(this.itemToSwap);
+
+        this.movingOverInventory.items = this.movingOverInventory.items.filter(i => i.id != this.itemToSwap.id);
+        this.movingOverInventory.items.push(this.selectedItem);
+
+        alt.emit('inventorySwapItems', this.selectedInventory.inventoryId, this.selectedItem.id, this.selectedItem.slotId,
+            this.itemToSwap.id, this.itemToSwap.slotId, this.movingOverInventory.inventoryId);
+
+    }
+
+    tryToEquipItemAndUnequipItem(itemToEquip, itemToUnequip) {
+        if (!this._isItemEquipmentable(itemToEquip)) return;
+        console.log('Item is equipmentable');
+        if (!this._isItemEquipmentableAtThisSlot(itemToEquip, itemToUnequip.equipmentSlot)) return;
+        console.log('Item is equipmentable at slot ' + itemToUnequip.equipmentSlot);
+
+        alt.emit('inventoryEquipItemAndUnequipItem', this.selectedInventory.id, itemToEquip.id, this.movingOverInventory.id, itemToUnequip.id);
+    }
+
+    tryToUnequipItemAndEquipItem(itemToUnequip, itemToEquip) {
+        if (!this._isItemEquipmentable(itemToEquip)) return;
+        if (!this._isItemEquipmentableAtThisSlot(itemToEquip, itemToUnequip.equipmentSlot)) return;
+
+        alt.emit('inventoryUnequipItemAndEquipItem', this.selectedInventory.id, itemToUnequip.id, this.movingOverInventory.id, itemToEquip.id);
     }
 
     reset() {

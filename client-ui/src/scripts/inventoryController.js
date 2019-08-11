@@ -135,22 +135,45 @@ export default class InventoryController {
 
     onActionItemMove() {
         if (this.selectedItem == null || this.movingOverInventory == null) return;
-        // if (this.newSlotId > this.movingOverInventory.inventorySlots - 1) return;
-        this.selectedItem.slotId = this.newSlotId;
-        console.log('tutaj');
+        // this.selectedItem.slotId = this.newSlotId;
 
-        if (this.isMovingItemsBetweenInventories) {
-            // Transfering items between inventories
-            console.log(`Moving item id ${this.selectedItem.id} from inventory ${this.selectedInventory.inventoryId} to inventory ${this.movingOverInventory.inventoryId}`);
-            alt.emit('inventoryTransferItem', this.selectedInventory.inventoryId, this.movingOverInventory.inventoryId,
-                this.selectedItem.id, this.selectedItem.slotId);
+        console.log(`Moving item id ${this.selectedItem.id} from inventory ${this.selectedInventory.inventoryId} to inventory ${this.movingOverInventory.inventoryId}`);
 
-            // Temporary for visual
-            this.removeItem(this.selectedItem);
-            this.movingOverInventory.items.push(this.selectedItem);
-        } else {
+        if (!this.isMovingItemsBetweenInventories) {
             alt.emit('inventoryMoveItem', this.selectedInventory.inventoryId, this.selectedItem.id, this.newSlotId);
+            return;
         }
+
+        if (this.movingOverInventory == this.equippedInventory) {
+            console.log('Try to equip item');
+            this.tryToEquipItem();
+            return;
+        } else if (this.selectedInventory == this.equippedInventory) {
+            console.log('Try to unequip item');
+            this.tryToUnequipItem();
+            return;
+        }
+
+        // Transfering items between inventories
+        alt.emit('inventoryTransferItem', this.selectedInventory.inventoryId, this.movingOverInventory.inventoryId,
+            this.selectedItem.id, this.selectedItem.slotId);
+
+        // Temporary for visual
+        // this.removeItem(this.selectedItem);
+        // this.movingOverInventory.items.push(this.selectedItem);
+    }
+
+    tryToEquipItem() {
+        if (!this._isItemEquipmentable(this.selectedItem)) return;
+        if (!this._isItemEquipmentableAtThisSlot(this.selectedItem, this.newSlotId)) return;
+
+        alt.emit('inventoryEquipItem', this.selectedInventory.inventoryId, this.movingOverInventory.inventoryId, this.selectedItem.id, this.newSlotId);
+    }
+
+    tryToUnequipItem() {
+        if (!this._isItemEquipmentable(this.selectedItem)) return;
+
+        alt.emit('inventoryUnequipItem', this.selectedInventory.inventoryId, this.movingOverInventory.inventoryId, this.selectedItem.id, this.newSlotId);
     }
 
     onActionItemStack() {
@@ -168,12 +191,12 @@ export default class InventoryController {
         }
 
         // // Temporary till callbacks from server
-        // this.itemToSwap.quantity += toAdd;
-        // this.selectedItem.quantity -= toAdd;
-        // if (this.selectedItem.quantity <= 0) {
-        //     console.log(`Should delete item`);
-        //     this.removeItem(this.selectedItem);
-        // }
+        this.itemToSwap.quantity += toAdd;
+        this.selectedItem.quantity -= toAdd;
+        if (this.selectedItem.quantity <= 0) {
+            console.log(`Should delete item`);
+            this.removeItem(this.selectedItem);
+        }
     }
 
     itemStackedSuccessfully(inventoryId, itemToStackFromId, itemToStackId, itemToStackInventoryId, amountOfStackedItems) {
@@ -290,6 +313,14 @@ export default class InventoryController {
 
     _isItemStackable(item) {
         return item.stackSize > 1;
+    }
+
+    _isItemEquipmentable(item) {
+        return item.equipmentSlot > 0;
+    }
+
+    _isItemEquipmentableAtThisSlot(item, slotId) {
+        return item.equipmentSlot == slotId;
     }
 
     _getInventory(inventory) {

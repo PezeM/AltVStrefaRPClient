@@ -522,7 +522,7 @@ alt.on('inventoryItemWasStackedSuccesfully', (inventoryId, itemToStackFromId, it
 
     mix-blend-mode: normal;
     text-shadow: 1px 2px 2px #000000;
-    transition: 0.3s;
+    /* transition: 0.3s; */
 }
 
 .inventory-header .inventory-text:hover {
@@ -541,7 +541,7 @@ alt.on('inventoryItemWasStackedSuccesfully', (inventoryId, itemToStackFromId, it
 .item-wrapper {
     height: 100%;
 
-    transition: 2s;
+    /* transition: 2s; */
 }
 
 .item-image {
@@ -549,7 +549,7 @@ alt.on('inventoryItemWasStackedSuccesfully', (inventoryId, itemToStackFromId, it
     width: 100%;
     height: 100%;
 
-    transition: 2s;
+    /* transition: 2s; */
 }
 
 .item-quantity-text {

@@ -31,6 +31,7 @@
                                 >{{ item.quantity }}/{{ item.stackSize }}</span>
                             </div>
                         </div>
+
                         <div
                             v-else
                             class="slot-content isDraggable"

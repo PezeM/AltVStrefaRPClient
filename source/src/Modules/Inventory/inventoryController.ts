@@ -82,15 +82,18 @@ class InventoryController {
     }
 
     populateInventoryInUi(addonationalInventoryContainer: object | null = null) {
-        const currentDateInGame = {
+        const localPlayer = alt.Player.local;
+        const gameInfo = {
             hours: game.getClockHours(),
-            minutes: game.getClockMinutes()
+            minutes: game.getClockMinutes(),
+            health: game.getEntityHealth(localPlayer.scriptID),
+            armor: game.getPedArmour(localPlayer.scriptID),
         };
 
-        alt.log(`Current date in game: ${currentDateInGame.hours}:${currentDateInGame.minutes}`);
+        alt.log(`Current date in game: ${gameInfo.hours}:${gameInfo.minutes}`);
 
         mainUi.openMenu('openPlayerInventory', true, false, inventoryCache.cachedInventory, inventoryCache.cachedEquippedInventory,
-            addonationalInventoryContainer);
+            addonationalInventoryContainer, gameInfo);
         game.transitionToBlurred(150);
     }
 

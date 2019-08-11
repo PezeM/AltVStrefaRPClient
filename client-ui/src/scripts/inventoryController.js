@@ -149,11 +149,11 @@ export default class InventoryController {
             return;
         }
 
-        if (this.movingOverInventory == this.equippedInventory) {
+        if (this.movingOverInventory.inventoryName == this.equippedInventory.inventoryName) {
             console.log('Try to equip item');
             this.tryToEquipItem();
             return;
-        } else if (this.selectedInventory == this.equippedInventory) {
+        } else if (this.selectedInventory.inventoryName == this.equippedInventory.inventoryName) {
             console.log('Try to unequip item');
             this.tryToUnequipItem();
             return;

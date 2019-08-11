@@ -1,10 +1,10 @@
 <template>
-  <div id="app">
-    <MainUiView id="overlay" />
-    <transition name="fade" mode="out-in">
-      <router-view class="menus" />
-    </transition>
-  </div>
+    <div id="app">
+        <MainUiView id="overlay" />
+        <transition name="fade" mode="out-in">
+            <router-view class="menus" />
+        </transition>
+    </div>
 </template>
 
 <script>
@@ -76,7 +76,7 @@ alt.on('openFractionMenu', (fractionType, fractionDatas) => {
     }
 });
 
-alt.on('openPlayerInventory', (inventoryData, equippedItems, addonationalInventory) => {
+alt.on('openPlayerInventory', (inventoryData, equippedItems, addonationalInventory, gameInformation) => {
     console.log(`Inventory data on UI ${inventoryData} equippedItems ${equippedItems} addonationalInventory ${addonationalInventory}`);
     router.push({
         name: 'inventory',
@@ -84,6 +84,7 @@ alt.on('openPlayerInventory', (inventoryData, equippedItems, addonationalInvento
             initialPersonalInventory: inventoryData,
             initialEquippedInventory: equippedItems,
             initialAddonationalInventory: addonationalInventory,
+            gameInfo: gameInformation,
         },
     });
 });

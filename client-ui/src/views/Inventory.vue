@@ -485,7 +485,7 @@ alt.on('inventoryItemWasEquippedSuccessfully', (selectedInventoryId, playerEquip
 
 <style>
 #inventory {
-    background-image: url('../assets/example-image.jpg');
+    /* background-image: url('../assets/example-image.jpg'); */
     background-color: rgba(0, 0, 0, 0.3);
     width: 100%;
     height: 100vh;
@@ -548,10 +548,18 @@ alt.on('inventoryItemWasEquippedSuccessfully', (selectedInventoryId, playerEquip
     height: 100%;
 }
 
+#inventory .on-drag-enter {
+    transition: transform 0.2s ease-in-out;
+}
+
+.item-wrapper img {
+    transition: 2s;
+}
+
 .item-wrapper {
     height: 100%;
 
-    /* transition: 2s; */
+    transition: all 2s ease-in-out;
 }
 
 .item-image {
@@ -559,7 +567,7 @@ alt.on('inventoryItemWasEquippedSuccessfully', (selectedInventoryId, playerEquip
     width: 100%;
     height: 100%;
 
-    /* transition: 2s; */
+    transition: all 0.3s ease-in-out;
 }
 
 .item-quantity-text {
@@ -598,5 +606,56 @@ alt.on('inventoryItemWasEquippedSuccessfully', (selectedInventoryId, playerEquip
 .on-drag-enter {
     opacity: 0.6;
     transform: scale(0.9);
+}
+
+/* Bootstrap 5 columns in row */
+.col-2dot4,
+.col-sm-2dot4,
+.col-md-2dot4,
+.col-lg-2dot4,
+.col-xl-2dot4 {
+    position: relative;
+    width: 100%;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+.col-2dot4 {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 20%;
+    flex: 0 0 20%;
+    max-width: 20%;
+}
+@media (min-width: 540px) {
+    .col-sm-2dot4 {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 20%;
+        flex: 0 0 20%;
+        max-width: 20%;
+    }
+}
+@media (min-width: 720px) {
+    .col-md-2dot4 {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 20%;
+        flex: 0 0 20%;
+        max-width: 20%;
+    }
+}
+@media (min-width: 960px) {
+    .col-lg-2dot4 {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 20%;
+        flex: 0 0 20%;
+        max-width: 20%;
+    }
+}
+@media (min-width: 1140px) {
+    .col-xl-2dot4 {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 20%;
+        flex: 0 0 20%;
+        max-width: 20%;
+    }
 }
 </style>

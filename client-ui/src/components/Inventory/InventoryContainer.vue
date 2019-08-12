@@ -13,7 +13,7 @@
                         v-for="(item, index) in inventorySortedBySlotId"
                         v-bind:key="index"
                         v-bind:id="index"
-                        class="col-lg-3 col-md-4 inventory-slot"
+                        class="col-lg-2dot4 col-md-3 inventory-slot"
                     >
                         <div
                             v-if="item != null"
@@ -114,14 +114,14 @@ export default {
 
 .inventory-slot {
     /* width: 3rem; */
-    height: 96px;
+    height: 5.5rem;
     background-color: rgba(0, 0, 0, 0.5);
     color: #f3f3f3;
     font-size: 0.8em;
     padding: 0.1em;
     border: 1px solid rgba(133, 133, 133, 0.4);
 
-    transition: 0.3s;
+    transition: box-shadow 0.25s;
 }
 
 .inventory-slot:hover {

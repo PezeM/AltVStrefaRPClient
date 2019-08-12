@@ -1,5 +1,5 @@
 <template>
-    <div class="row m-0">
+    <div class="row m-0 w-100">
         <div
             v-for="(item, key) in equipmentItems"
             :key="key"
@@ -101,14 +101,13 @@ export default {
 
 <style scoped>
 .item-slot {
-    width: 64px;
-    height: 96px;
+    height: 5.5rem;
     padding: 0.1rem;
     background: rgba(0, 0, 0, 0.5);
     mix-blend-mode: normal;
     border: 1px solid rgba(133, 133, 133, 0.4);
 
-    transition: 0.3s;
+    transition: box-shadow 0.25s;
 }
 
 .item-slot:hover {

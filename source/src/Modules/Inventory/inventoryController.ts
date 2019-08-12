@@ -17,7 +17,7 @@ class InventoryController {
         this.openedInventoryCount = 0;
         this.isInventoryOpened = false;
         mainUi.onUiEvent('closeInventory', this.closeInventory.bind(this));
-        mainUi.onUiEvent('inventoryStackItems', this.inventoryTryStackItems.bind(this));
+        mainUi.onUiEvent('inventoryTryStackItem', this.inventoryTryStackItem.bind(this));
         mainUi.onUiEvent('inventoryMoveItem', this.inventoryMoveItem.bind(this));
         mainUi.onUiEvent('inventorySwapItems', this.inventorySwapItems.bind(this));
         mainUi.onUiEvent('inventoryTryDropItem', this.inventoryTryDropItem.bind(this));
@@ -100,12 +100,13 @@ class InventoryController {
         game.transitionToBlurred(150);
     }
 
-    inventoryTryStackItems(inventoryId: number, itemToStackFromId: number, itemToStackId: number, itemToStackInventoryId: number) {
+    inventoryTryStackItem(inventoryId: number, itemToStackFromId: number, itemToStackId: number, itemToStackInventoryId: number) {
         if (itemToStackInventoryId == null) {
             // Stacking items in one inventory
-            serverCallbacks.callback("InventoryTryStackItem", "inventoryStackItemResponse", [inventoryId, itemToStackFromId, itemToStackId],
+            serverCallbacks.callback("InventoryTryStackItem", "inventoryStackItemResponse",
+                [inventoryId, itemToStackFromId, itemToStackId],
                 (wasStacked: boolean, amountOfStackedItems: number) => {
-                    alt.log(`Inventory stack items respoonse was stacked: ${wasStacked} amount of items: ${amountOfStackedItems}`);
+                    alt.log(`Inventory stack items response was stacked: ${wasStacked} amount of items: ${amountOfStackedItems}`);
                     this.inventoryStackItems(wasStacked, inventoryId, itemToStackFromId, itemToStackId, amountOfStackedItems);
                 });
         } else {

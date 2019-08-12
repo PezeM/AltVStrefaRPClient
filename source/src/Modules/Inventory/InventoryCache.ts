@@ -37,59 +37,17 @@ class InventoryCache {
 
     stackItems(inventoryId: number, itemToStackFromId: number, itemToStackId: number, amountOfStackedItems: number, itemToStackInventoryId: number) {
         const inventory = this.getInventory(inventoryId); // We don't have this
+        if (inventory == null) return;
 
         // Moving between inventories
         if (itemToStackInventoryId > -1) {
-            if (inventory == null) {
-                // Vehicle inv is null
-                // itemToStack quantity++
-                // check if personal inv is not null
-                const itemToStack = this.getItem(itemToStackId);
-                if (itemToStack == null) return;
+            const inventoryToStack = this.getInventory(itemToStackInventoryId);
+            if (inventoryToStack == null) return;
 
-                this.addItemQuantity(itemToStack, amountOfStackedItems);
-
-            } else {
-                // Personal inv is inventory
-                // Moving to vehicle inventory
-                // check if personal inv is not null
-                // Decreaase quantity of item itemToStackFrom
-                const itemToStackFrom = this.getItem(itemToStackFromId);
-                if (itemToStackFrom == null) return;
-
-                this.removeItem(itemToStackFrom, amountOfStackedItems, inventory);
-            }
-
-            // // Stacking from personal inventory to addonational inventory
-            // if (inventoryToStack == null) { // samochod
-            //     if (inventory == null) return; // nasze inventory
-            //     const itemToStackFrom = this.getItemFromInventory(inventory, itemToStackFromId);
-            //     if (itemToStackFrom == null) return;
-            //     itemToStackFrom.quantity -= amountOfStackedItems;
-
-            //     if (itemToStackFrom.quantity <= 0) {
-            //         inventory.items = inventory.items.splice(inventory.items.indexOf(itemToStackFrom), 1);
-            //     }
-            // } else {
-            //     // Stacking from addonational inventory to personal inventory
-            //     const itemToStack = this.getItemFromInventory(inventoryToStack, itemToStackId);
-            //     if (itemToStack == null) return;
-            //     itemToStack.quantity += amountOfStackedItems;
-
-            //     if (itemToStack.quantity > itemToStack.stackSize) itemToStack.quantity = itemToStack.stackSize;
-            // }
+            this.stackItem(inventory, itemToStackFromId, inventoryToStack, itemToStackId, amountOfStackedItems);
         } else {
             // Stacking items in personal inventory
-            if (inventory == null) return;
-            const itemToStack = this.getItem(itemToStackId);
-            const itemToStackFrom = this.getItem(itemToStackFromId);
-            if (itemToStack == null || itemToStackFrom == null) {
-                alt.logError(`Stack items error: One of the items was null`);
-                return;
-            }
-
-            this.addItemQuantity(itemToStack, amountOfStackedItems);
-            this.removeItem(itemToStackFrom, amountOfStackedItems, inventory);
+            this.stackItem(inventory, itemToStackFromId, inventory, itemToStackId, amountOfStackedItems);
         }
     }
 
@@ -148,6 +106,19 @@ class InventoryCache {
         const item = this.getItem(itemId);
         if (item == null) return;
         item.quantity = itemQuantity;
+    }
+
+    private stackItem(inventory: IInventoryContainer, itemToStackFromId: number, inventoryToStack: IInventoryContainer, itemToStackId: number,
+        amountOfStackedItems: number) {
+        const itemToStack = this.getItemFromInventory(inventoryToStack, itemToStackId);
+        if (itemToStack != null) {
+            this.addItemQuantity(itemToStack, amountOfStackedItems);
+        }
+
+        const itemToStackFrom = this.getItemFromInventory(inventory, itemToStackFromId);
+        if (itemToStackFrom != null) {
+            this.removeItem(itemToStackFrom, amountOfStackedItems, inventory);
+        }
     }
 
     private addItemQuantity(item: IInventoryItem, amount: number) {

@@ -205,10 +205,10 @@ export default class InventoryController {
 
         if (this.isMovingItemsBetweenInventories) {
             console.log(`Stacking item id ${this.selectedItem.id} from inventory ${this.selectedInventory.inventoryName} with item ${this.itemToSwap.id} from inventory ${this.movingOverInventory.inventoryName}`);
-            alt.emit('inventoryStackItems', this.selectedInventory.inventoryId, this.selectedItem.id, this.itemToSwap.id, this.movingOverInventory.id);
+            alt.emit('inventoryTryStackItem', this.selectedInventory.inventoryId, this.selectedItem.id, this.itemToSwap.id, this.movingOverInventory.id);
         } else {
             console.log(`Stacked item ${this.selectedItem.id} with item ${this.itemToSwap.id}`);
-            alt.emit('inventoryStackItems', this.selectedInventory.inventoryId, this.selectedItem.id, this.itemToSwap.id);
+            alt.emit('inventoryTryStackItem', this.selectedInventory.inventoryId, this.selectedItem.id, this.itemToSwap.id);
         }
 
         // // Temporary till callbacks from server

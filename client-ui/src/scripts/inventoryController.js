@@ -187,8 +187,14 @@ export default class InventoryController {
     itemWasEquippedSuccessfully(selectedInventoryId, playerEquipmentId, itemToEquipId, slotId) {
         const inventory = this._getInventoryById(selectedInventoryId);
         if (inventory == null) return;
-        const itemToEquip = this.getItemByIdFromInventoryItems(this.playerEquipment, itemToEquipId);
-        if (itemToDrop == null) return;
+        if (this.playerEquipment == null || this.playerEquipment.inventoryId !== playerEquipmentId) return;
+        const itemToEquip = this.getItemByIdFromInventoryItems(inventory, itemToEquipId);
+        if (itemToEquip == null) return;
+
+        console.log(`Equipping item ID ${itemToEquip.id} from inventory ${inventory.inventoryId}`);
+        itemToEquip.slotId = slotId;
+        this.playerEquipment.items.push(itemToEquip);
+        this._removeItemFromInventory(itemToEquip, 1, inventory);
     }
 
     onActionItemStack() {

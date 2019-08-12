@@ -6,10 +6,12 @@ class InventoryCache {
     cachedEquippedInventoryId: number;
     cachedInventory: IInventoryContainer | null;
     cachedEquippedInventory: IInventoryContainer | null;
+    lastOpenedInventory: IInventoryContainer | null;
 
     constructor() {
         this.cachedInventory = null;
         this.cachedEquippedInventory = null;
+        this.lastOpenedInventory = null;
     }
 
     setInventory(inventory: IInventoryContainer) {
@@ -18,6 +20,10 @@ class InventoryCache {
 
     setEquippedInventory(equippedInventory: IInventoryContainer) {
         this.cachedEquippedInventory = equippedInventory;
+    }
+
+    setLastOpenedInventory(lastOpenedInventroy: IInventoryContainer) {
+        this.lastOpenedInventory = lastOpenedInventroy;
     }
 
     getItem(itemId: number) {
@@ -96,6 +102,19 @@ class InventoryCache {
         alt.log(`Moved item ${selectedItemId} to ${newSlotId}`);
     }
 
+    equipItem(selectedInventoryId: number, playerEquipmentId: number, itemToEquipId: number, slotId: number) {
+        if (this.cachedEquippedInventory == null) return;
+        if (playerEquipmentId !== this.cachedEquippedInventory.inventoryId) return;
+        const inventory = this.getInventory(selectedInventoryId);
+        if (inventory == null) return;
+        const itemToEquip = this.getItemFromInventory(inventory, itemToEquipId);
+        if (itemToEquip == null) return;
+
+        itemToEquip.slotId = slotId;
+        this.cachedEquippedInventory.items.push(itemToEquip);
+        this.removeItem(itemToEquip, 1, inventory);
+    }
+
     swapItems(inventoryId: number, selectedItemId: number, selectedItemSlotId: number, itemToSwapId: number, itemToSwapSlotId: number) {
         if (this.cachedInventory == null) return;
         const selectedItem = this.getItem(selectedItemId);
@@ -149,7 +168,10 @@ class InventoryCache {
             return this.cachedInventory;
         } else if (this.cachedEquippedInventory != null && this.cachedEquippedInventory.inventoryId === inventoryId) {
             return this.cachedEquippedInventory;
+        } else if (this.lastOpenedInventory != null && this.lastOpenedInventory.inventoryId === inventoryId) {
+            return this.lastOpenedInventory;
         }
+        return null;
     }
 
     private getItemFromInventory(inventory: IInventoryContainer, itemId: number) {

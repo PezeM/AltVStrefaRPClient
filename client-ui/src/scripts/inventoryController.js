@@ -2,10 +2,10 @@ import Actions from "./inventoryActions";
 import EventBus from '@/event-bus.js';
 
 export default class InventoryController {
-    constructor(personalInventory, equippedInventory, addonationalInventory) {
+    constructor(personalInventory, playerEquipment, addonationalInventory) {
         console.log(`Inventory controller initialized`);
         this.personalInventory = personalInventory;
-        this.equippedInventory = equippedInventory;
+        this.playerEquipment = playerEquipment;
         this.addonationalInventory = addonationalInventory;
 
         this.selectedInventory = null;
@@ -26,9 +26,9 @@ export default class InventoryController {
                 console.log(`Selected personal inventory`);
                 this.selectedInventory = this.personalInventory;
                 break;
-            case this.equippedInventory:
+            case this.playerEquipment:
                 console.log('Selected equipped inventory');
-                this.selectedInventory = this.equippedInventory;
+                this.selectedInventory = this.playerEquipment;
                 break;
             case this.addonationalInventory:
                 console.log('Selected addonational inventory');
@@ -116,7 +116,7 @@ export default class InventoryController {
             return;
         }
 
-        if (this.selectedInventory == this.equippedInventory) {
+        if (this.selectedInventory == this.playerEquipment) {
             EventBus.$emit('showNotification', 3, 'Błąd', 'Musisz najpierw zdjąc przedmiot żeby go wyrzucić.', 5000);
             return;
         }
@@ -145,15 +145,18 @@ export default class InventoryController {
         console.log(`Moving item id ${this.selectedItem.id} from inventory ${this.selectedInventory.inventoryId} to inventory ${this.movingOverInventory.inventoryId}`);
 
         if (!this.isMovingItemsBetweenInventories) {
+            // Can't move items inside equipped inventories
+            if (this.selectedInventory.inventoryId === this.playerEquipment.inventoryId) return;
+
             alt.emit('inventoryMoveItem', this.selectedInventory.inventoryId, this.selectedItem.id, this.newSlotId);
             return;
         }
 
-        if (this.movingOverInventory.inventoryName == this.equippedInventory.inventoryName) {
+        if (this.movingOverInventory.inventoryId == this.playerEquipment.inventoryId) {
             console.log('Try to equip item');
             this.tryToEquipItem();
             return;
-        } else if (this.selectedInventory.inventoryName == this.equippedInventory.inventoryName) {
+        } else if (this.selectedInventory.inventoryId == this.playerEquipment.inventoryId) {
             console.log('Try to unequip item');
             this.tryToUnequipItem();
             return;
@@ -172,13 +175,20 @@ export default class InventoryController {
         if (!this._isItemEquipmentable(this.selectedItem)) return;
         if (!this._isItemEquipmentableAtThisSlot(this.selectedItem, this.newSlotId)) return;
 
-        alt.emit('inventoryEquipItem', this.selectedInventory.inventoryId, this.movingOverInventory.inventoryId, this.selectedItem.id, this.newSlotId);
+        alt.emit('inventoryTryEquipItem', this.selectedInventory.inventoryId, this.movingOverInventory.inventoryId, this.selectedItem.id, this.newSlotId);
     }
 
     tryToUnequipItem() {
         if (!this._isItemEquipmentable(this.selectedItem)) return;
 
-        alt.emit('inventoryUnequipItem', this.selectedInventory.inventoryId, this.movingOverInventory.inventoryId, this.selectedItem.id, this.newSlotId);
+        alt.emit('inventoryTryUnequipItem', this.selectedInventory.inventoryId, this.movingOverInventory.inventoryId, this.selectedItem.id, this.newSlotId);
+    }
+
+    itemWasEquippedSuccessfully(selectedInventoryId, playerEquipmentId, itemToEquipId, slotId) {
+        const inventory = this._getInventoryById(selectedInventoryId);
+        if (inventory == null) return;
+        const itemToEquip = this.getItemByIdFromInventoryItems(this.playerEquipment, itemToEquipId);
+        if (itemToDrop == null) return;
     }
 
     onActionItemStack() {
@@ -248,11 +258,11 @@ export default class InventoryController {
             return;
         }
 
-        if (this.movingOverInventory == this.equippedInventory) {
+        if (this.movingOverInventory == this.playerEquipment) {
             console.log('Try to equip item and unequip');
             this.tryToEquipItemAndUnequipItem(this.selectedItem, this.itemToSwap);
             return;
-        } else if (this.selectedInventory == this.equippedInventory) {
+        } else if (this.selectedInventory == this.playerEquipment) {
             console.log('Try to unequip item and equip the other');
             this.tryToUnequipItemAndEquipItem(this.selectedItem, this.itemToSwap);
             return;
@@ -360,8 +370,8 @@ export default class InventoryController {
         switch (inventory.inventoryId) {
             case this.personalInventory.inventoryId:
                 return this.personalInventory;
-            case this.equippedInventory.inventoryId:
-                return this.equippedInventory;
+            case this.playerEquipment.inventoryId:
+                return this.playerEquipment;
             case this.addonationalInventory.inventoryId:
                 return this.addonationalInventory;
             default:
@@ -372,8 +382,8 @@ export default class InventoryController {
 
     _getInventoryById(inventoryId) {
         if (this.personalInventory.inventoryId === inventoryId) return this.personalInventory;
-        else if (this.equippedInventory.inventoryId === inventoryId) return this.equippedInventory;
         else if (this.addonationalInventory.inventoryId === inventoryId) return this.addonationalInventory;
+        else if (this.playerEquipment.inventoryId === inventoryId) return this.playerEquipment;
         return null;
     }
 }

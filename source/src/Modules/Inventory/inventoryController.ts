@@ -21,6 +21,7 @@ class InventoryController {
         mainUi.onUiEvent('inventoryMoveItem', this.inventoryMoveItem.bind(this));
         mainUi.onUiEvent('inventorySwapItems', this.inventorySwapItems.bind(this));
         mainUi.onUiEvent('inventoryTryDropItem', this.inventoryTryDropItem.bind(this));
+        mainUi.onUiEvent('inventoryTryEquipItem', this.inventoryTryEquipItem.bind(this));
         alt.onServer('inventoryAddNewItems', this.inventoryAddNewItems.bind(this));
         alt.onServer('updateInventoryItemQuantity', this.updateInventoryItemQuantity.bind(this));
         alt.onServer('populateAddonationalInventoryContainer', this.populateAddonationalInventoryContainer.bind(this));
@@ -28,6 +29,8 @@ class InventoryController {
 
     populateAddonationalInventoryContainer(inventoryContainer: IInventoryContainer, personalInventory: IInventoryContainer | null,
         equippedInventory: IInventoryContainer | null) {
+        inventoryCache.setLastOpenedInventory(inventoryContainer);
+
         if (personalInventory) {
             inventoryCache.setInventory(personalInventory);
         }
@@ -134,6 +137,27 @@ class InventoryController {
         // Move item to empty slot
         alt.emitServer('InventoryMoveItem', selectedInventoryId, selectedItemId, newSlotNumber);
         inventoryCache.moveItem(selectedInventoryId, selectedItemId, newSlotNumber);
+    }
+
+    inventoryTryEquipItem(selectedInventoryId: number, playerEquipmentId: number, itemToEquipId: number, slotId: number) {
+        alt.log(`Trying to equipitem ID ${itemToEquipId} from inventory ${selectedInventoryId}`);
+        serverCallbacks.callback("InventoryTryEquipItem", "InventoryTryEquipItemRespones", [selectedInventoryId, playerEquipmentId, itemToEquipId],
+            (wasEquipped: boolean) => {
+                this.inventoryEquipItem(wasEquipped, selectedInventoryId, playerEquipmentId, itemToEquipId, slotId);
+            });
+    }
+
+    inventoryEquipItem(wasEquipped: boolean, selectedInventoryId: number, playerEquipmentId: number, itemToEquipId: number, slotId: number) {
+        alt.log('Inventory equip item callback');
+        if (wasEquipped) {
+            alt.log(`Item ith id ${itemToEquipId} was equipped`);
+            if (this.isInventoryOpened)
+                mainUi.emitUiEvent("inventoryItemWasEquippedSuccessfully", selectedInventoryId, playerEquipmentId, itemToEquipId, slotId);
+
+            inventoryCache.equipItem(selectedInventoryId, playerEquipmentId, itemToEquipId, slotId);
+        } else {
+            alt.log(`Item with id ${itemToEquipId} was not equipped`);
+        }
     }
 
     inventorySwapItems(inventoryId: number, selectedItemId: number, selectedItemSlotId: number,

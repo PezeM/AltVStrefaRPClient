@@ -102,6 +102,7 @@ export default {
         EventBus.$on('inventoryItemWasDroppedSuccessfully', this.itemWasDroppedSuccessfully);
         EventBus.$on('inventoryAddNewItems', this.inventoryAddNewItems);
         EventBus.$on('inventoryItemWasStackedSuccesfully', this.itemWasStackedSuccessfully);
+        EventBus.$on('inventoryItemWasEquippedSuccessfully', this.itemWasEquippedSuccessfully);
     },
     props: {
         initialPersonalInventory: {
@@ -366,6 +367,10 @@ export default {
         itemWasStackedSuccessfully(inventoryId, itemToStackFromId, itemToStackId, itemToStackInventoryId, amountOfStackedItems) {
             this.inventoryController.itemStackedSuccessfully(inventoryId, itemToStackFromId, itemToStackId, itemToStackInventoryId, amountOfStackedItems);
         },
+        itemWasEquippedSuccessfully(selectedInventoryId, playerEquipmentId, itemToEquipId, slotId) {
+            console.log('Equipping items on vue');
+            this.inventoryController.itemWasEquippedSuccessfully(selectedInventoryId, playerEquipmentId, itemToEquipId, slotId);
+        },
         inventoryAddNewItems(newItems) {
             if (newItems == null) return;
             newItems.forEach(item => {
@@ -457,6 +462,7 @@ export default {
         EventBus.$off('inventoryItemWasDroppedSuccessfully', this.itemWasDroppedSuccessfully);
         EventBus.$off('inventoryAddNewItems', this.inventoryAddNewItems);
         EventBus.$off('inventoryItemWasStackedSuccesfully', this.itemWasStackedSuccessfully);
+        EventBus.$off('inventoryItemWasEquippedSuccessfully', this.itemWasEquippedSuccessfully);
     },
 };
 
@@ -470,6 +476,10 @@ alt.on('inventoryAddNewItems', newItems => {
 
 alt.on('inventoryItemWasStackedSuccesfully', (inventoryId, itemToStackFromId, itemToStackId, itemToStackInventoryId, amountOfStackedItems) => {
     EventBus.$emit('inventoryItemWasStackedSuccesfully', inventoryId, itemToStackFromId, itemToStackId, itemToStackInventoryId, amountOfStackedItems);
+});
+
+alt.on('inventoryItemWasEquippedSuccessfully', (selectedInventoryId, playerEquipmentId, itemToEquipId, slotId) => {
+    EventBus.$emit('inventoryItemWasEquippedSuccessfully', selectedInventoryId, playerEquipmentId, itemToEquipId, slotId);
 });
 </script>
 

@@ -212,12 +212,12 @@ export default class InventoryController {
         }
 
         // // Temporary till callbacks from server
-        this.itemToSwap.quantity += toAdd;
-        this.selectedItem.quantity -= toAdd;
-        if (this.selectedItem.quantity <= 0) {
-            console.log(`Should delete item`);
-            this.removeItem(this.selectedItem);
-        }
+        // this.itemToSwap.quantity += toAdd;
+        // this.selectedItem.quantity -= toAdd;
+        // if (this.selectedItem.quantity <= 0) {
+        //     console.log(`Should delete item`);
+        //     this.removeItem(this.selectedItem);
+        // }
     }
 
     itemStackedSuccessfully(inventoryId, itemToStackFromId, itemToStackId, itemToStackInventoryId, amountOfStackedItems) {
@@ -254,9 +254,9 @@ export default class InventoryController {
         if (this.selectedItem == null || this.itemToSwap == null) return;
 
         // Temporary
-        const temporarySlot = this.itemToSwap.slotId;
-        this.itemToSwap.slotId = this.selectedItem.slotId;
-        this.selectedItem.slotId = temporarySlot;
+        // const temporarySlot = this.itemToSwap.slotId;
+        // this.itemToSwap.slotId = this.selectedItem.slotId;
+        // this.selectedItem.slotId = temporarySlot;
 
         if (!this.isMovingItemsBetweenInventories) {
             alt.emit('inventorySwapItems', this.selectedInventory.inventoryId, this.selectedItem.id, this.selectedItem.slotId,
@@ -275,11 +275,11 @@ export default class InventoryController {
         }
 
         // Temporary till callbacks
-        this.removeItem(this.selectedItem);
-        this.selectedInventory.items.push(this.itemToSwap);
+        // this.removeItem(this.selectedItem);
+        // this.selectedInventory.items.push(this.itemToSwap);
 
-        this.movingOverInventory.items = this.movingOverInventory.items.filter(i => i.id != this.itemToSwap.id);
-        this.movingOverInventory.items.push(this.selectedItem);
+        // this.movingOverInventory.items = this.movingOverInventory.items.filter(i => i.id != this.itemToSwap.id);
+        // this.movingOverInventory.items.push(this.selectedItem);
 
         alt.emit('inventorySwapItems', this.selectedInventory.inventoryId, this.selectedItem.id, this.selectedItem.slotId,
             this.itemToSwap.id, this.itemToSwap.slotId, this.movingOverInventory.inventoryId);
@@ -357,7 +357,8 @@ export default class InventoryController {
     _canStackItems(itemToStack, item) {
         return (itemToStack.stackSize > 1 && item.stackSize > 1)
             && (item.quantity < item.stackSize)
-            && (itemToStack.id != item.id);
+            && (itemToStack.id != item.id)
+            && (itemToStack.name == item.name);
     }
 
     _isItemStackable(item) {

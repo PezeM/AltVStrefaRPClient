@@ -70,11 +70,21 @@ class InventoryCache {
 
         itemToEquip.slotId = slotId;
         this.cachedEquippedInventory.items.push(itemToEquip);
-        this.removeItem(itemToEquip, 1, inventory);
+        this.removeItem(itemToEquip, inventory);
     }
 
     unequipItem(playerEquipmentId: number, selectedInventoryId: number, equippedItemId: number, newSlotId: number) {
-        throw new Error("Method not implemented.");
+        if (this.cachedEquippedInventory == null) return;
+        if (playerEquipmentId !== this.cachedEquippedInventory.inventoryId) return;
+
+        const itemToUnequip = this.getItemFromInventory(this.cachedEquippedInventory, equippedItemId);
+        if (itemToUnequip == null) return;
+        const inventory = this.getInventory(selectedInventoryId);
+        if (inventory == null) return;
+
+        itemToUnequip.slotId = newSlotId;
+        this.removeItem(itemToUnequip, this.cachedEquippedInventory);
+        inventory.items.push(itemToUnequip);
     }
     swapItems(inventoryId: number, selectedItemId: number, selectedItemSlotId: number, itemToSwapId: number, itemToSwapSlotId: number) {
         if (this.cachedInventory == null) return;
@@ -120,7 +130,7 @@ class InventoryCache {
 
         const itemToStackFrom = this.getItemFromInventory(inventory, itemToStackFromId);
         if (itemToStackFrom != null) {
-            this.removeItem(itemToStackFrom, amountOfStackedItems, inventory);
+            this.removeItem(itemToStackFrom, inventory);
         }
     }
 
@@ -130,11 +140,8 @@ class InventoryCache {
             item.quantity = item.stackSize;
     }
 
-    private removeItem(item: IInventoryItem, amount: number, inventory: IInventoryContainer) {
-        item.quantity -= amount;
-        if (item.quantity <= 0) {
-            inventory.items = inventory.items.filter(i => i.id !== item.id);
-        }
+    private removeItem(item: IInventoryItem, inventory: IInventoryContainer) {
+        inventory.items = inventory.items.filter(i => i.id !== item.id);
     }
 
     private getInventory(inventoryId: number) {

@@ -103,6 +103,7 @@ export default {
         EventBus.$on('inventoryAddNewItems', this.inventoryAddNewItems);
         EventBus.$on('inventoryItemWasStackedSuccesfully', this.itemWasStackedSuccessfully);
         EventBus.$on('inventoryItemWasEquippedSuccessfully', this.itemWasEquippedSuccessfully);
+        EventBus.$on('inventoryItemWasUnequippedSuccessfully', this.itemWasUnequippedSuccessfully);
     },
     props: {
         initialPersonalInventory: {
@@ -371,6 +372,9 @@ export default {
             console.log('Equipping items on vue');
             this.inventoryController.itemWasEquippedSuccessfully(selectedInventoryId, playerEquipmentId, itemToEquipId, slotId);
         },
+        itemWasUnequippedSuccessfully(playerEquipmentId, selectedInventoryId, equippedItemId, newSlotId) {
+            this.inventoryController.itemWasUnequippedSuccessfully(playerEquipmentId, selectedInventoryId, equippedItemId, newSlotId);
+        },
         inventoryAddNewItems(newItems) {
             if (newItems == null) return;
             newItems.forEach(item => {
@@ -463,6 +467,7 @@ export default {
         EventBus.$off('inventoryAddNewItems', this.inventoryAddNewItems);
         EventBus.$off('inventoryItemWasStackedSuccesfully', this.itemWasStackedSuccessfully);
         EventBus.$off('inventoryItemWasEquippedSuccessfully', this.itemWasEquippedSuccessfully);
+        EventBus.$off('inventoryItemWasUnequippedSuccessfully', this.itemWasUnequippedSuccessfully);
     },
 };
 
@@ -480,6 +485,10 @@ alt.on('inventoryItemWasStackedSuccesfully', (inventoryId, itemToStackFromId, it
 
 alt.on('inventoryItemWasEquippedSuccessfully', (selectedInventoryId, playerEquipmentId, itemToEquipId, slotId) => {
     EventBus.$emit('inventoryItemWasEquippedSuccessfully', selectedInventoryId, playerEquipmentId, itemToEquipId, slotId);
+});
+
+alt.on('inventoryItemWasUnequippedSuccessfully', (playerEquipmentId, selectedInventoryId, equippedItemId, newSlotId) => {
+    EventBus.$emit('inventoryItemWasUnequippedSuccessfully', playerEquipmentId, selectedInventoryId, equippedItemId, newSlotId);
 });
 </script>
 

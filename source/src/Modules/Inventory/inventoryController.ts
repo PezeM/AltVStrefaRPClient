@@ -166,7 +166,8 @@ class InventoryController {
 
     inventoryTryUnequipItem(playerEquipmentId: number, selectedInventoryId: number, equippedItemId: number, newSlotId: number) {
         alt.log(`Trying to unequip item ID ${equippedItemId} from inventory ${playerEquipmentId} to inventory ${selectedInventoryId}`);
-        serverCallbacks.callback("InventoryTryEquipItem", "inventoryTryEquipItemResponse", [playerEquipmentId, selectedInventoryId, equippedItemId, newSlotId],
+        serverCallbacks.callback("InventoryTryUnequipItem", "inventoryTryUnequipItemResponse",
+            [playerEquipmentId, selectedInventoryId, equippedItemId, newSlotId],
             (wasUnequipped: boolean) => {
                 this.inventoryUnequipItem(wasUnequipped, playerEquipmentId, selectedInventoryId, equippedItemId, newSlotId);
             });

@@ -86,6 +86,7 @@ class InventoryCache {
         this.removeItem(itemToUnequip, this.cachedEquippedInventory);
         inventory.items.push(itemToUnequip);
     }
+
     swapItems(inventoryId: number, selectedItemId: number, selectedItemSlotId: number, itemToSwapId: number, itemToSwapSlotId: number) {
         if (this.cachedInventory == null) return;
         const selectedItem = this.getItem(selectedItemId);

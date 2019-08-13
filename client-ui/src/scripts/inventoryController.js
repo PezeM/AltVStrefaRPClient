@@ -194,7 +194,20 @@ export default class InventoryController {
         console.log(`Equipping item ID ${itemToEquip.id} from inventory ${inventory.inventoryId}`);
         itemToEquip.slotId = slotId;
         this.playerEquipment.items.push(itemToEquip);
-        this._removeItemFromInventory(itemToEquip, 1, inventory);
+        this._removeItemQuantityFromInventory(itemToEquip, 1, inventory);
+    }
+
+    itemWasUnequippedSuccessfully(playerEquipmentId, selectedInventoryId, equippedItemId, newSlotId) {
+        if (this.playerEquipment == null || this.playerEquipment.inventoryId != playerEquipmentId) return;
+        const itemToUnequip = this.getItemByIdFromInventoryItems(this.playerEquipment, equippedItemId);
+        if (itemToUnequip == null) return;
+        const inventory = this._getInventoryById(selectedInventoryId);
+        if (inventory == null) return;
+
+        console.log(`Unequipping item id ${itemToUnequip.id} from inventory ${this.playerEquipment.inventoryId}`);
+        this._removeItemFromInventory(itemToUnequip, this.playerEquipment);
+        itemToUnequip.slotId = newSlotId;
+        inventory.items.push(itemToUnequip);
     }
 
     onActionItemStack() {
@@ -231,7 +244,7 @@ export default class InventoryController {
 
         if (itemToStackInventoryId > -1) {
             // Moving between inventories
-            this._removeItemFromInventory(itemToStackFrom, amountOfStackedItems, inventory);
+            this._removeItemQuantityFromInventory(itemToStackFrom, amountOfStackedItems, inventory);
 
             const itemToStackInventory = this._getInventoryById(itemToStackInventoryId);
             if (itemToStackInventory == null) {
@@ -245,7 +258,7 @@ export default class InventoryController {
             const itemToStack = this.getItemByIdFromInventoryItems(inventory.items, itemToStackId);
 
             console.log('Stacked item on VUE');
-            this._removeItemFromInventory(itemToStackFrom, amountOfStackedItems, inventory);
+            this._removeItemQuantityFromInventory(itemToStackFrom, amountOfStackedItems, inventory);
             this._addItemQuantity(itemToStack, amountOfStackedItems);
         }
     }
@@ -344,7 +357,12 @@ export default class InventoryController {
         }
     }
 
-    _removeItemFromInventory(item, amount, inventory) {
+    _removeItemFromInventory(item, inventory) {
+        if (item == null) return;
+        inventory.items = inventory.items.filter(i => i.id !== item.id);
+    }
+
+    _removeItemQuantityFromInventory(item, amount, inventory) {
         if (item != null) {
             item.quantity -= amount;
             if (item.quantity <= 0) {

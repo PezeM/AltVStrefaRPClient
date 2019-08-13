@@ -1,11 +1,11 @@
 const inventoryNameImages = {
-    "Pistolet": "burger.png",
-    "Pistolet bojowy": "burger.png",
-    "Strzelba": "burger.png",
+    "Pistolet": "pistol.png",
+    "Pistolet bojowy": "combat-pistol.png",
+    "Strzelba": "pump-shotgun.png",
     "Spodnie": "legs.png",
     "Burger": "burger.png",
-    "Woda": "burger.png",
-    "Sprunk": "burger.png",
+    "Woda": "water.png",
+    "Sprunk": "sprunk.png",
 };
 
 export default inventoryNameImages;

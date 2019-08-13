@@ -34,6 +34,7 @@
 
 <script>
 import InventorySlotImages from '@/scripts/inventorySlotImages.js';
+import InventoryNameImages from '@/scripts/inventoryNameImages.js';
 
 export default {
     name: 'inventory-equipment-container',
@@ -44,7 +45,7 @@ export default {
     },
     methods: {
         getCorrectImage(item) {
-            return InventorySlotImages[item.equipmentSlot];
+            return InventoryNameImages[item.name];
         },
         getSlotName(equipmentSlot) {
             switch (equipmentSlot) {

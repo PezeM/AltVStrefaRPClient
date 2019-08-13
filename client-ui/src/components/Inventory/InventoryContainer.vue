@@ -48,7 +48,7 @@
 </template>
 
 <script>
-import InventorySlotImages from '@/scripts/inventorySlotImages.js';
+// import InventorySlotImages from '@/scripts/inventorySlotImages.js';
 import InventoryNameImages from '@/scripts/inventoryNameImages.js';
 
 export default {
@@ -69,7 +69,7 @@ export default {
             swappingObject: null,
             draggableItemClassName: 'withItem',
             inventoryNameImages: InventoryNameImages,
-            inventorySlotImages: InventorySlotImages,
+            // inventorySlotImages: InventorySlotImages,
         };
     },
     methods: {
@@ -80,8 +80,8 @@ export default {
             return null;
         },
         getCorrectImage(item) {
-            // return item.equipmentSlot == -1 ? this.inventorySlotImages[item.equipmentSlot] : this.inventoryNameImages[item.name];
-            return item.equipmentSlot == -1 ? InventoryNameImages[item.name] : InventorySlotImages[item.equipmentSlot];
+            // return item.equipmentSlot == -1 ? InventoryNameImages[item.name] : InventorySlotImages[item.equipmentSlot];
+            return InventoryNameImages[item.name];
         },
     },
     computed: {

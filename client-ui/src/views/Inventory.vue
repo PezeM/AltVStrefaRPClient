@@ -116,7 +116,7 @@ export default {
                     items: [
                         {
                             id: 47,
-                            name: 'Jakieś spodnie',
+                            name: 'Spodnie',
                             stackSize: 1,
                             quantity: 1,
                             isDroppable: false,
@@ -125,16 +125,16 @@ export default {
                         },
                         {
                             id: 48,
-                            name: 'Jakieś spodnie',
+                            name: 'Sprunk',
                             stackSize: 1,
                             quantity: 1,
                             isDroppable: false,
-                            equipmentSlot: 1004,
+                            equipmentSlot: -1,
                             slotId: 1,
                         },
                         {
                             id: 65,
-                            name: 'Jakieś spodnie',
+                            name: 'Spodnie',
                             stackSize: 1,
                             quantity: 1,
                             isDroppable: true,
@@ -143,7 +143,7 @@ export default {
                         },
                         {
                             id: 66,
-                            name: 'Jakieś spodnie',
+                            name: 'Spodnie',
                             stackSize: 1,
                             quantity: 1,
                             isDroppable: true,
@@ -152,7 +152,7 @@ export default {
                         },
                         {
                             id: 67,
-                            name: 'Jakieś spodnie',
+                            name: 'Spodnie',
                             stackSize: 1,
                             quantity: 1,
                             isDroppable: true,
@@ -161,25 +161,25 @@ export default {
                         },
                         {
                             id: 68,
-                            name: 'Combat pistol',
+                            name: 'Strzelba',
                             stackSize: 1,
                             quantity: 1,
                             isDroppable: true,
-                            equipmentSlot: 1300,
+                            equipmentSlot: 1301,
                             slotId: 5,
                         },
                         {
                             id: 69,
-                            name: 'Combat pistol',
+                            name: 'Woda',
                             stackSize: 1,
                             quantity: 1,
                             isDroppable: true,
-                            equipmentSlot: 1300,
+                            equipmentSlot: -1,
                             slotId: 6,
                         },
                         {
                             id: 70,
-                            name: 'Combat pistol',
+                            name: 'Pistolet bojowy',
                             stackSize: 1,
                             quantity: 1,
                             isDroppable: true,
@@ -188,7 +188,7 @@ export default {
                         },
                         {
                             id: 71,
-                            name: 'Combat pistol',
+                            name: 'Pistolet bojowy',
                             stackSize: 1,
                             quantity: 1,
                             isDroppable: true,
@@ -197,7 +197,7 @@ export default {
                         },
                         {
                             id: 72,
-                            name: 'Combat pistol',
+                            name: 'Pistolet',
                             stackSize: 1,
                             quantity: 1,
                             isDroppable: true,
@@ -236,7 +236,7 @@ export default {
                     items: [
                         {
                             id: 470,
-                            name: 'Some item',
+                            name: 'Spodnie',
                             stackSize: 1,
                             quantity: 1,
                             isDroppable: false,
@@ -257,7 +257,7 @@ export default {
                     items: [
                         {
                             id: 505,
-                            name: 'Jakieś spodnie',
+                            name: 'Spodnie',
                             stackSize: 1,
                             quantity: 1,
                             isDroppable: true,
@@ -266,7 +266,7 @@ export default {
                         },
                         {
                             id: 605,
-                            name: 'Jakaś bluza',
+                            name: 'Spodnie',
                             stackSize: 1,
                             quantity: 1,
                             isDroppable: true,

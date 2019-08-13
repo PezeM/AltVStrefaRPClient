@@ -73,6 +73,9 @@ class InventoryCache {
         this.removeItem(itemToEquip, 1, inventory);
     }
 
+    unequipItem(playerEquipmentId: number, selectedInventoryId: number, equippedItemId: number, newSlotId: number) {
+        throw new Error("Method not implemented.");
+    }
     swapItems(inventoryId: number, selectedItemId: number, selectedItemSlotId: number, itemToSwapId: number, itemToSwapSlotId: number) {
         if (this.cachedInventory == null) return;
         const selectedItem = this.getItem(selectedItemId);

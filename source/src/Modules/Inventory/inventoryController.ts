@@ -6,6 +6,7 @@ import mainUi from 'source/src/Modules/Ui/mainUi';
 import itemStreamer from 'source/src/Modules/Streaming/itemStreamer';
 import animationController from 'source/src/Modules/animations';
 import { IInventoryItem, IInventoryContainer } from 'source/src/Constans/interfaces';
+import { NotificationTypes } from 'source/src/Constans/notificationTypes';
 
 const NUMBER_OF_INVENTORY_OPENINGS_TO_REFRESH_CACHE = 5;
 
@@ -22,6 +23,8 @@ class InventoryController {
         mainUi.onUiEvent('inventorySwapItems', this.inventorySwapItems.bind(this));
         mainUi.onUiEvent('inventoryTryDropItem', this.inventoryTryDropItem.bind(this));
         mainUi.onUiEvent('inventoryTryEquipItem', this.inventoryTryEquipItem.bind(this));
+        mainUi.onUiEvent('inventoryTryUnequipItem', this.inventoryTryUnequipItem.bind(this));
+
         alt.onServer('inventoryAddNewItems', this.inventoryAddNewItems.bind(this));
         alt.onServer('updateInventoryItemQuantity', this.updateInventoryItemQuantity.bind(this));
         alt.onServer('populateAddonationalInventoryContainer', this.populateAddonationalInventoryContainer.bind(this));
@@ -158,6 +161,28 @@ class InventoryController {
             inventoryCache.equipItem(selectedInventoryId, playerEquipmentId, itemToEquipId, slotId);
         } else {
             alt.log(`Item with id ${itemToEquipId} was not equipped`);
+        }
+    }
+
+    inventoryTryUnequipItem(playerEquipmentId: number, selectedInventoryId: number, equippedItemId: number, newSlotId: number) {
+        alt.log(`Trying to unequip item ID ${equippedItemId} from inventory ${playerEquipmentId} to inventory ${selectedInventoryId}`);
+        serverCallbacks.callback("InventoryTryEquipItem", "inventoryTryEquipItemResponse", [playerEquipmentId, selectedInventoryId, equippedItemId, newSlotId],
+            (wasUnequipped: boolean) => {
+                this.inventoryUnequipItem(wasUnequipped, playerEquipmentId, selectedInventoryId, equippedItemId, newSlotId);
+            });
+    }
+
+    inventoryUnequipItem(wasUnequipped: boolean, playerEquipmentId: number, selectedInventoryId: number, equippedItemId: number, newSlotId: number) {
+        alt.log('Inventory unequip item callback');
+        if (wasUnequipped) {
+            alt.log(`Item with id ${equippedItemId} was unequipped`);
+            if (this.isInventoryOpened)
+                mainUi.emitUiEvent("inventoryItemWasUnequippedSuccessfully", playerEquipmentId, selectedInventoryId, equippedItemId, newSlotId);
+
+            inventoryCache.unequipItem(playerEquipmentId, selectedInventoryId, equippedItemId, newSlotId);
+        } else {
+            alt.log(`Item with id ${equippedItemId} was not unequipped`);
+            mainUi.showCefNotification(NotificationTypes.Error, "Błąd", "Nie udało się zdjąć przedmiotu", 3000);
         }
     }
 

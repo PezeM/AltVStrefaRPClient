@@ -1,4 +1,3 @@
-
 import * as alt from 'alt';
 import * as game from 'natives';
 import math from 'source/src/Helpers/maths';
@@ -9,49 +8,60 @@ import { VehicleComponentTypes } from 'source/src/Constans/vehicleComponentTypes
 
 const OPEN_DOOR_DISTANCE = 4;
 const OPEN_DOOR_DISTANCE_SQRT = OPEN_DOOR_DISTANCE * OPEN_DOOR_DISTANCE;
+const player = alt.Player.local;
 
 class VehicleDoorComponent extends VehicleComponent {
+    updateInterval: number;
+    closestVehicle: alt.Vehicle | null;
+    bootPosition: Vector3;
+    frontPosition: Vector3;
     constructor(protected componentType: VehicleComponentTypes) {
         super(componentType);
         this.disabled = false;
+        this.closestVehicle = null;
+        this.bootPosition = new alt.Vector3(0, 0, 0);
+        this.frontPosition = new alt.Vector3(0, 0, 0);
 
         alt.onServer('toggleTrunkState', this.toggleTrunkState.bind(this));
         alt.onServer('toggleHoodState', this.toggleHoodState.bind(this));
+        this.updateInterval = alt.setInterval(this.updateTest.bind(this), 50);
+    }
+
+    updateTest() {
+        if (player.vehicle != null) return;
+        this.closestVehicle = getClosestVehicle(player.pos, OPEN_DOOR_DISTANCE_SQRT);
+        if (this.closestVehicle == null) return;
+
+        const trunkIndex = game.getEntityBoneIndexByName(this.closestVehicle.scriptID, "boot");
+        const hoodIndex = game.getEntityBoneIndexByName(this.closestVehicle.scriptID, "bonnet");
+
+        if (trunkIndex !== -1) {
+            const trunkPosition = game.getWorldPositionOfEntityBone(this.closestVehicle.scriptID, trunkIndex);
+            const hoodPosition = game.getWorldPositionOfEntityBone(this.closestVehicle.scriptID, hoodIndex);
+            const trunkDistance = math.distance(trunkPosition, this.closestVehicle.pos);
+            const hoodDistance = math.distance(hoodPosition, this.closestVehicle.pos);
+
+            this.bootPosition = game.getOffsetFromEntityInWorldCoords(this.closestVehicle.scriptID, 0, -trunkDistance, 0);
+            this.frontPosition = game.getOffsetFromEntityInWorldCoords(this.closestVehicle.scriptID, 0, hoodDistance + 1, 0);
+        } else {
+            const hoodPosition = game.getWorldPositionOfEntityBone(this.closestVehicle.scriptID, hoodIndex);
+            const hoodDistance = math.distance(hoodPosition, this.closestVehicle.pos);
+            this.frontPosition = game.getOffsetFromEntityInWorldCoords(this.closestVehicle.scriptID, 0, hoodDistance + 1, 0);
+        }
     }
 
     onUpdateOutsideVehicle(localPlayer: alt.Player) {
-        const vehicle = getClosestVehicle(localPlayer.pos, OPEN_DOOR_DISTANCE_SQRT);
-        if (vehicle == null) return;
+        if (this.closestVehicle == null) return;
 
-        const trunkIndex = game.getEntityBoneIndexByName(vehicle.scriptID, "boot");
-        const hoodIndex = game.getEntityBoneIndexByName(vehicle.scriptID, "bonnet");
-
-        if (trunkIndex !== -1) {
-            const trunkPosition = game.getWorldPositionOfEntityBone(vehicle.scriptID, trunkIndex);
-            const hoodPosition = game.getWorldPositionOfEntityBone(vehicle.scriptID, hoodIndex);
-            const trunkDistance = math.distance(trunkPosition, vehicle.pos);
-            const hoodDistance = math.distance(hoodPosition, vehicle.pos);
-
-            const bootPosition = game.getOffsetFromEntityInWorldCoords(vehicle.scriptID, 0, -trunkDistance, 0);
-            const frontPosition = game.getOffsetFromEntityInWorldCoords(vehicle.scriptID, 0, hoodDistance + 1, 0);
-
-            if (math.distance(localPlayer.pos, bootPosition) <= OPEN_DOOR_DISTANCE_SQRT) {
-                this.displayOpenTrunkText(vehicle, trunkPosition);
-            } else if (math.distance(localPlayer.pos, frontPosition) <= OPEN_DOOR_DISTANCE_SQRT) {
-                this.displayOpenHoodText(vehicle, hoodPosition);
-            }
-        } else {
-            const hoodPosition = game.getWorldPositionOfEntityBone(vehicle.scriptID, hoodIndex);
-            const hoodDistance = math.distance(hoodPosition, vehicle.pos);
-            const frontPosition = game.getOffsetFromEntityInWorldCoords(vehicle.scriptID, 0, hoodDistance + 1, 0);
-
-            if (math.distance(localPlayer.pos, frontPosition) <= OPEN_DOOR_DISTANCE_SQRT) {
-                this.displayOpenHoodText(vehicle, hoodPosition);
-            }
+        if (math.distance(localPlayer.pos, this.bootPosition) <= OPEN_DOOR_DISTANCE_SQRT) {
+            this.displayOpenTrunkText(this.closestVehicle, this.bootPosition);
+        } else if (math.distance(localPlayer.pos, this.frontPosition) <= OPEN_DOOR_DISTANCE_SQRT) {
+            this.displayOpenHoodText(this.closestVehicle, this.frontPosition);
         }
 
         // For debug
-        draw3DText(`ScriptID: ${vehicle.scriptID} ID: ${vehicle.id}`, [vehicle.pos.x, vehicle.pos.y, vehicle.pos.z + 1],
+        draw3DText(`ScriptID: ${this.closestVehicle.scriptID} ID: ${this.closestVehicle.id}`,
+            [this.closestVehicle.pos.x, this.closestVehicle.pos.y, this.closestVehicle.pos.z + 1],
             4, [255, 255, 255, 200], 0.5, true);
     }
 

@@ -63,6 +63,16 @@ alt.on('keydown', (key: number) => {
     }
 });
 
+alt.setInterval(() => {
+    if (localPlayer.vehicle == null && !game.isPlayerDead(localPlayer.scriptID) && !mainUi.viewOpened) {
+        if (!circleMenu.isMenuOpened)
+            raycast.poitingAt(4);
+    }
+    else {
+        raycast.didRaycastHit = false;
+    }
+}, 1);
+
 alt.on('update', () => {
     // if (chat.isOpen() || mainUi.viewOpened) {
     //     game.disableAllControlActions(0);
@@ -77,17 +87,9 @@ alt.on('update', () => {
         drawText(zoneNames.realZoneName, [zoneNames.minimap.rightX, zoneNames.minimap.bottomY - 0.035], 4, [255, 255, 255, 255], 0.55, true, false);
     }
 
-    HUDElementsToHide.forEach((hudElement) => {
-        game.hideHudComponentThisFrame(hudElement);
-    });
-
-    if (localPlayer.vehicle == null && !game.isPlayerDead(localPlayer.scriptID) && !mainUi.viewOpened) {
-        if (!circleMenu.isMenuOpened)
-            raycast.poitingAt(4);
-    }
-    else {
-        raycast.didRaycastHit = false;
-    }
+    // HUDElementsToHide.forEach((hudElement) => {
+    //     game.hideHudComponentThisFrame(hudElement);
+    // });
 
     if (raycast.didRaycastHit && localPlayer.vehicle == null && raycast.endCoords !== null) {
         draw3DText(`[ALT] E: ${raycast.entityHit} T: ${game.getEntityType(raycast.entityHit as number)} M: ${game.getEntityModel(raycast.entityHit as number)}`,
@@ -146,4 +148,4 @@ mainUi.onUiEvent('defaultCancelModalCallback', () => {
 alt.setInterval(() => {
     game._0x9E4CFFF989258472(); // Disables vehicle idle cam ? 
     game.resetCameraAfkTimer(); // Resets camera afk timer
-}, 10000);
+}, 29000);

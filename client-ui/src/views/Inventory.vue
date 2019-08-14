@@ -381,6 +381,7 @@ export default {
             this.inventoryController.itemWasMovedSuccessfully(selectedInventoryId, selectedItemId, newSlotNumber);
         },
         itemWasTransferedSuccessfully(inventoryToMoveFromId, inventoryToMoveToId, itemToTransferId, slotId) {
+            console.log('Item was transfered on VUE');
             this.inventoryController.itemWasTransferedSuccessfully(inventoryToMoveFromId, inventoryToMoveToId, itemToTransferId, slotId);
         },
         inventoryAddNewItems(newItems) {
@@ -502,6 +503,7 @@ alt.on('inventoryItemWasUnequippedSuccessfully', (playerEquipmentId, selectedInv
 });
 
 alt.on('inventoryItemWasMovedSuccessfully', (selectedInventoryId, selectedItemId, newSlotNumber) => {
+    console.log('Item was moved succesfully in VUE ALT ON');
     EventBus.$emit('inventoryItemWasMovedSuccessfully', selectedInventoryId, selectedItemId, newSlotNumber);
 });
 

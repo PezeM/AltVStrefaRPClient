@@ -57,7 +57,6 @@ class InventoryCache {
         const itemToMove = this.getItemFromInventory(inventory, selectedItemId);
         if (itemToMove == null) return;
         itemToMove.slotId = newSlotId;
-        alt.log(`Moved item ${selectedItemId} to ${newSlotId} in inventory cache`);
     }
 
     transferItem(inventoryToMoveFromId: number, inventoryToMoveToId: number, itemToTransferId: number, slotId: number) {

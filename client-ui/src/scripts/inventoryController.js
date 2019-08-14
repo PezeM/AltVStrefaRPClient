@@ -195,6 +195,7 @@ export default class InventoryController {
         if (itemToTransfer == null) return;
 
         this._removeItemFromInventory(itemToTransfer, source);
+        itemToTransfer.slotId = slotId;
         if (receiver != null) {
             receiver.items.push(itemToTransfer);
         }

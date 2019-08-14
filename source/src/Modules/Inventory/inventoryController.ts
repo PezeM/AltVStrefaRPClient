@@ -101,7 +101,8 @@ class InventoryController {
 
         mainUi.openMenu('openPlayerInventory', true, false, inventoryCache.cachedInventory, inventoryCache.cachedEquippedInventory,
             addonationalInventoryContainer, gameInfo);
-        game.transitionToBlurred(150);
+        // game.transitionToBlurred(150);
+        this.isInventoryOpened = true;
     }
 
     inventoryTryStackItem(inventoryId: number, itemToStackFromId: number, itemToStackId: number, itemToStackInventoryId: number) {
@@ -141,10 +142,11 @@ class InventoryController {
     inventoryMoveItem(selectedInventoryId: number, selectedItemId: number, newSlotNumber: number) {
         serverCallbacks.callback("InventoryMoveItem", "inventoryMoveItemResponse", [selectedInventoryId, selectedItemId, newSlotNumber],
             (wasMoved: boolean) => {
-                alt.log('Inventory move item callback');
                 if (wasMoved) {
-                    if (this.isInventoryOpened)
+                    if (this.isInventoryOpened) {
+                        console.log('Inventory was opened');
                         mainUi.emitUiEvent("inventoryItemWasMovedSuccessfully", selectedInventoryId, selectedItemId, newSlotNumber);
+                    }
 
                     inventoryCache.moveItem(selectedInventoryId, selectedItemId, newSlotNumber);
                 } else {
@@ -162,11 +164,11 @@ class InventoryController {
     }
 
     inventoryTransferItem(wasTransfered: boolean, inventoryToMoveFromId: number, inventoryToMoveToId: number, itemToTransferId: number, slotId: number) {
-        alt.log('Item transfer callback');
         if (wasTransfered) {
             alt.log(`Item ${itemToTransferId} was transfered from inv ${inventoryToMoveFromId} to ${inventoryToMoveToId}`);
             if (this.isInventoryOpened)
                 mainUi.emitUiEvent("inventoryItemWasTransferedSuccessfully", inventoryToMoveFromId, inventoryToMoveToId, itemToTransferId, slotId);
+
             inventoryCache.transferItem(inventoryToMoveFromId, inventoryToMoveToId, itemToTransferId, slotId);
         } else {
             alt.log('Error transfering file');
@@ -269,7 +271,7 @@ class InventoryController {
     closeInventory() {
         this.isInventoryOpened = false;
         mainUi.closeMenu();
-        game.transitionFromBlurred(250);
+        // game.transitionFromBlurred(250);
     }
 
     private needToRefreshCache() {

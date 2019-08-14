@@ -52,12 +52,12 @@ class InventoryCache {
     }
 
     moveItem(inventoryId: number, selectedItemId: number, newSlotId: number) {
-        // Need to check if iventoryId is personal inventory or equipped inventory
-        if (this.cachedInventory == null || this.cachedInventory.inventoryId !== inventoryId) return;
-        const itemToMove = this.getItem(selectedItemId);
+        const inventory = this.getInventory(inventoryId);
+        if (inventory == null) return;
+        const itemToMove = this.getItemFromInventory(inventory, selectedItemId);
         if (itemToMove == null) return;
         itemToMove.slotId = newSlotId;
-        alt.log(`Moved item ${selectedItemId} to ${newSlotId}`);
+        alt.log(`Moved item ${selectedItemId} to ${newSlotId} in inventory cache`);
     }
 
     transferItem(inventoryToMoveFromId: number, inventoryToMoveToId: number, itemToTransferId: number, slotId: number) {

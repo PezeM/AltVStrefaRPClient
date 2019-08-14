@@ -3,7 +3,6 @@ import EventBus from '@/event-bus.js';
 
 export default class InventoryController {
     constructor(personalInventory, playerEquipment, addonationalInventory) {
-        console.log(`Inventory controller initialized`);
         this.personalInventory = personalInventory;
         this.playerEquipment = playerEquipment;
         this.addonationalInventory = addonationalInventory;
@@ -132,10 +131,7 @@ export default class InventoryController {
 
         console.log(`Found inventory ${inventory.inventoryName} and item ${itemToDrop.name}`);
 
-        itemToDrop.quantity -= quantity;
-        if (itemToDrop.quantity <= 0) {
-            inventory.items.splice(inventory.items.indexOf(itemToDrop), 1);
-        }
+        this._removeItemQuantityFromInventory(itemToDrop, quantity, inventory);
     }
 
     onActionItemMove() {

@@ -139,9 +139,18 @@ class InventoryController {
     }
 
     inventoryMoveItem(selectedInventoryId: number, selectedItemId: number, newSlotNumber: number) {
-        // Move item to empty slot
-        alt.emitServer('InventoryMoveItem', selectedInventoryId, selectedItemId, newSlotNumber);
-        inventoryCache.moveItem(selectedInventoryId, selectedItemId, newSlotNumber);
+        serverCallbacks.callback("InventoryMoveItem", "inventoryMoveItemResponse", [selectedInventoryId, selectedItemId, newSlotNumber],
+            (wasMoved: boolean) => {
+                alt.log('Inventory move item callback');
+                if (wasMoved) {
+                    if (this.isInventoryOpened)
+                        mainUi.emitUiEvent("inventoryItemWasMovedSuccessfully", selectedInventoryId, selectedItemId, newSlotNumber);
+
+                    inventoryCache.moveItem(selectedInventoryId, selectedItemId, newSlotNumber);
+                } else {
+                    alt.logError("Inventory item couldn't be moved");
+                }
+            });
     }
 
     inventoryTryTransferItem(inventoryToMoveFromId: number, inventoryToMoveToId: number, itemToTransferId: number, slotId: number) {

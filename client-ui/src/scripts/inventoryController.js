@@ -140,7 +140,6 @@ export default class InventoryController {
 
     onActionItemMove() {
         if (this.selectedItem == null || this.movingOverInventory == null) return;
-        // this.selectedItem.slotId = this.newSlotId;
 
         console.log(`Moving item id ${this.selectedItem.id} from inventory ${this.selectedInventory.inventoryId} to inventory ${this.movingOverInventory.inventoryId}`);
 
@@ -163,8 +162,8 @@ export default class InventoryController {
         }
 
         // Transfering items between inventories
-        alt.emit('inventoryTransferItem', this.selectedInventory.inventoryId, this.movingOverInventory.inventoryId,
-            this.selectedItem.id, this.selectedItem.slotId);
+        alt.emit('inventoryTryTransferItem', this.selectedInventory.inventoryId, this.movingOverInventory.inventoryId,
+            this.selectedItem.id, this.newSlotId);
 
         // Temporary for visual
         // this.removeItem(this.selectedItem);

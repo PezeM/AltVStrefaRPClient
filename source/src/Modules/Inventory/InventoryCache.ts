@@ -60,6 +60,21 @@ class InventoryCache {
         alt.log(`Moved item ${selectedItemId} to ${newSlotId}`);
     }
 
+    transferItem(inventoryToMoveFromId: number, inventoryToMoveToId: number, itemToTransferId: number, slotId: number) {
+        const source = this.getInventory(inventoryToMoveFromId);
+        if (source == null) return;
+        const receiver = this.getInventory(inventoryToMoveToId);
+
+        const itemToTransfer = this.getItemFromInventory(source, itemToTransferId);
+        if (itemToTransfer == null) return;
+
+        this.removeItem(itemToTransfer, source);
+        itemToTransfer.slotId = slotId;
+        if (receiver != null) {
+            receiver.items.push(itemToTransfer);
+        }
+    }
+
     equipItem(selectedInventoryId: number, playerEquipmentId: number, itemToEquipId: number, slotId: number) {
         if (this.cachedEquippedInventory == null) return;
         if (playerEquipmentId !== this.cachedEquippedInventory.inventoryId) return;

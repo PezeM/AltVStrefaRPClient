@@ -20,6 +20,7 @@ class InventoryController {
         mainUi.onUiEvent('closeInventory', this.closeInventory.bind(this));
         mainUi.onUiEvent('inventoryTryStackItem', this.inventoryTryStackItem.bind(this));
         mainUi.onUiEvent('inventoryMoveItem', this.inventoryMoveItem.bind(this));
+        mainUi.onUiEvent('inventoryTryTransferItem', this.inventoryTryTransferItem.bind(this));
         mainUi.onUiEvent('inventorySwapItems', this.inventorySwapItems.bind(this));
         mainUi.onUiEvent('inventoryTryDropItem', this.inventoryTryDropItem.bind(this));
         mainUi.onUiEvent('inventoryTryEquipItem', this.inventoryTryEquipItem.bind(this));
@@ -141,6 +142,26 @@ class InventoryController {
         // Move item to empty slot
         alt.emitServer('InventoryMoveItem', selectedInventoryId, selectedItemId, newSlotNumber);
         inventoryCache.moveItem(selectedInventoryId, selectedItemId, newSlotNumber);
+    }
+
+    inventoryTryTransferItem(inventoryToMoveFromId: number, inventoryToMoveToId: number, itemToTransferId: number, slotId: number) {
+        serverCallbacks.callback("InventoryTryTransferItem", "inventoryTryTransferItemResponse",
+            [inventoryToMoveFromId, inventoryToMoveToId, itemToTransferId, slotId],
+            (wasTransfered: boolean) => {
+                this.inventoryTransferItem(wasTransfered, inventoryToMoveFromId, inventoryToMoveToId, itemToTransferId, slotId);
+            });
+    }
+
+    inventoryTransferItem(wasTransfered: boolean, inventoryToMoveFromId: number, inventoryToMoveToId: number, itemToTransferId: number, slotId: number) {
+        alt.log('Item transfer callback');
+        if (wasTransfered) {
+            alt.log(`Item ${itemToTransferId} was transfered from inv ${inventoryToMoveFromId} to ${inventoryToMoveToId}`);
+            if (this.isInventoryOpened)
+                mainUi.emitUiEvent("inventoryItemWasTransferedSuccessfully", inventoryToMoveFromId, inventoryToMoveToId, itemToTransferId, slotId);
+            inventoryCache.transferItem(inventoryToMoveFromId, inventoryToMoveToId, itemToTransferId, slotId);
+        } else {
+            alt.log('Error transfering file');
+        }
     }
 
     inventoryTryEquipItem(selectedInventoryId: number, playerEquipmentId: number, itemToEquipId: number, slotId: number) {

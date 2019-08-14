@@ -36,7 +36,7 @@ class InventoryCache {
     }
 
     stackItems(inventoryId: number, itemToStackFromId: number, itemToStackId: number, amountOfStackedItems: number, itemToStackInventoryId: number) {
-        const inventory = this.getInventory(inventoryId); // We don't have this
+        const inventory = this.getInventory(inventoryId);
         if (inventory == null) return;
 
         // Moving between inventories
@@ -131,7 +131,7 @@ class InventoryCache {
 
         const itemToStackFrom = this.getItemFromInventory(inventory, itemToStackFromId);
         if (itemToStackFrom != null) {
-            this.removeItem(itemToStackFrom, inventory);
+            this.removeItemQuantity(itemToStackFrom, inventory, amountOfStackedItems);
         }
     }
 
@@ -143,6 +143,13 @@ class InventoryCache {
 
     private removeItem(item: IInventoryItem, inventory: IInventoryContainer) {
         inventory.items = inventory.items.filter(i => i.id !== item.id);
+    }
+
+    private removeItemQuantity(item: IInventoryItem, inventory: IInventoryContainer, quantity: number) {
+        item.quantity -= quantity;
+        if (item.quantity <= 0) {
+            this.removeItem(item, inventory);
+        }
     }
 
     private getInventory(inventoryId: number) {

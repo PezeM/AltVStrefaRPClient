@@ -185,22 +185,26 @@ export default class InventoryController {
     }
 
     itemWasEquippedSuccessfully(selectedInventoryId, playerEquipmentId, itemToEquipId, slotId) {
+        if (this.playerEquipment == null || this.playerEquipment.inventoryId != playerEquipmentId) return;
+        console.log('Getting inventory');
         const inventory = this._getInventoryById(selectedInventoryId);
         if (inventory == null) return;
-        if (this.playerEquipment == null || this.playerEquipment.inventoryId !== playerEquipmentId) return;
-        const itemToEquip = this.getItemByIdFromInventoryItems(inventory, itemToEquipId);
+        console.log('Gettint item to equip');
+        const itemToEquip = this.getItemByIdFromInventoryItems(inventory.items, itemToEquipId);
         if (itemToEquip == null) return;
 
         console.log(`Equipping item ID ${itemToEquip.id} from inventory ${inventory.inventoryId}`);
         itemToEquip.slotId = slotId;
         this.playerEquipment.items.push(itemToEquip);
-        this._removeItemQuantityFromInventory(itemToEquip, 1, inventory);
+        this._removeItemFromInventory(itemToEquip, inventory);
     }
 
     itemWasUnequippedSuccessfully(playerEquipmentId, selectedInventoryId, equippedItemId, newSlotId) {
+        console.log('On item was unequipped succesfully');
         if (this.playerEquipment == null || this.playerEquipment.inventoryId != playerEquipmentId) return;
-        const itemToUnequip = this.getItemByIdFromInventoryItems(this.playerEquipment, equippedItemId);
+        const itemToUnequip = this.getItemByIdFromInventoryItems(this.playerEquipment.items, equippedItemId);
         if (itemToUnequip == null) return;
+        console.log('Getting inventory where to put item');
         const inventory = this._getInventoryById(selectedInventoryId);
         if (inventory == null) return;
 

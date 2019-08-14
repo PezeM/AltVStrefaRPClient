@@ -6,7 +6,7 @@ import keycodes from 'source/src/Constans/keycodes';
 import * as gameState from 'source/src/gameState';
 import 'source/src/uiController';
 import 'source/src/menus';
-import 'source/src/Modules/Login/login';
+import 'source/src/Modules/Login/loginController';
 import 'source/src/Modules/Admin/noclip';
 import 'source/src/Modules/Admin/adminTeleports';
 import 'source/src/Modules/Admin/animationBrowser';

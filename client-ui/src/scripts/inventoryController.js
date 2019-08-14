@@ -179,6 +179,14 @@ export default class InventoryController {
         alt.emit('inventoryTryUnequipItem', this.selectedInventory.inventoryId, this.movingOverInventory.inventoryId, this.selectedItem.id, this.newSlotId);
     }
 
+    itemWasMovedSuccessfully(selectedInventoryId, selectedItemId, newSlotNumber) {
+        const inventory = this._getInventoryById(selectedInventoryId);
+        if (inventory == null) return;
+        const itemToMove = this.getItemByIdFromInventoryItems(inventory.items, selectedItemId);
+        if (itemToMove == null) return;
+        itemToMove.slotId = newSlotNumber;
+    }
+
     itemWasEquippedSuccessfully(selectedInventoryId, playerEquipmentId, itemToEquipId, slotId) {
         if (this.playerEquipment == null || this.playerEquipment.inventoryId != playerEquipmentId) return;
         console.log('Getting inventory');

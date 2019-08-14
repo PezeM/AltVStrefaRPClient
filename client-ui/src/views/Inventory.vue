@@ -104,6 +104,7 @@ export default {
         EventBus.$on('inventoryItemWasStackedSuccesfully', this.itemWasStackedSuccessfully);
         EventBus.$on('inventoryItemWasEquippedSuccessfully', this.itemWasEquippedSuccessfully);
         EventBus.$on('inventoryItemWasUnequippedSuccessfully', this.itemWasUnequippedSuccessfully);
+        EventBus.$on('inventoryItemWasMovedSuccessfully', this.itemWasMovedSuccessfully);
     },
     props: {
         initialPersonalInventory: {
@@ -375,6 +376,9 @@ export default {
         itemWasUnequippedSuccessfully(playerEquipmentId, selectedInventoryId, equippedItemId, newSlotId) {
             this.inventoryController.itemWasUnequippedSuccessfully(playerEquipmentId, selectedInventoryId, equippedItemId, newSlotId);
         },
+        itemWasMovedSuccessfully(selectedInventoryId, selectedItemId, newSlotNumber) {
+            this.inventoryController.itemWasMovedSuccessfully(selectedInventoryId, selectedItemId, newSlotNumber);
+        },
         inventoryAddNewItems(newItems) {
             if (newItems == null) return;
             newItems.forEach(item => {
@@ -468,6 +472,7 @@ export default {
         EventBus.$off('inventoryItemWasStackedSuccesfully', this.itemWasStackedSuccessfully);
         EventBus.$off('inventoryItemWasEquippedSuccessfully', this.itemWasEquippedSuccessfully);
         EventBus.$off('inventoryItemWasUnequippedSuccessfully', this.itemWasUnequippedSuccessfully);
+        EventBus.$off('inventoryItemWasMovedSuccessfully', this.itemWasMovedSuccessfully);
     },
 };
 
@@ -489,6 +494,10 @@ alt.on('inventoryItemWasEquippedSuccessfully', (selectedInventoryId, playerEquip
 
 alt.on('inventoryItemWasUnequippedSuccessfully', (playerEquipmentId, selectedInventoryId, equippedItemId, newSlotId) => {
     EventBus.$emit('inventoryItemWasUnequippedSuccessfully', playerEquipmentId, selectedInventoryId, equippedItemId, newSlotId);
+});
+
+alt.on('inventoryItemWasMovedSuccessfully', (selectedInventoryId, selectedItemId, newSlotNumber) => {
+    EventBus.$emit('inventoryItemWasMovedSuccessfully', selectedInventoryId, selectedItemId, newSlotNumber);
 });
 </script>
 

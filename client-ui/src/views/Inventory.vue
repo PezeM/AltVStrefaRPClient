@@ -41,19 +41,18 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-9">
-                            <div class="row">
-                                <div class="col">
-                                    <inventory-container :inventory="personalInventory" />
-                                </div>
-                                <div class="col ml-2" v-if="showAddonationalInventory">
-                                    <div class="addonational-inventory-container ml-2">
-                                        <inventory-container
-                                            :inventory="addonationalInventory"
-                                            :inventoryClass="addonationalInventoryClassName"
-                                        />
-                                    </div>
-                                </div>
+                        <div class="col-5">
+                            <inventory-container :inventory="personalInventory" />
+                        </div>
+                        <div class="col-4">
+                            <div
+                                class="addonational-inventory-container ml-2"
+                                v-if="showAddonationalInventory"
+                            >
+                                <inventory-container
+                                    :inventory="addonationalInventory"
+                                    :inventoryClass="addonationalInventoryClassName"
+                                />
                             </div>
                         </div>
                     </div>

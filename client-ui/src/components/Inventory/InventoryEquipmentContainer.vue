@@ -123,10 +123,29 @@ export default {
     position: absolute;
     top: 0.1rem;
     right: 0.4rem;
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     z-index: 1;
 
     color: #f3f3f3;
     text-shadow: 3px 1px 10px rgba(0, 0, 0, 1);
+}
+
+@media (max-width: 1281px) {
+    .item-slot-name {
+        font-size: 0.7rem;
+    }
+}
+
+@media (max-width: 1025px) {
+    .item-slot-name {
+        font-size: 0.6rem;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .item-slot-name {
+        font-size: 0.5rem;
+        word-wrap: break-word;
+    }
 }
 </style>

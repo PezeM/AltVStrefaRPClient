@@ -24,7 +24,7 @@
                                     </div>
                                 </div>
                                 <div
-                                    class="row items-equipment mr-2 draggable-container"
+                                    class="row items-equipment mr-1 draggable-container"
                                     v-if="selectedEquippedInventory == 'equipment'"
                                 >
                                     <InventoryEquipmentContainer
@@ -46,7 +46,7 @@
                         </div>
                         <div class="col-4">
                             <div
-                                class="addonational-inventory-container ml-2"
+                                class="addonational-inventory-container ml-1"
                                 v-if="showAddonationalInventory"
                             >
                                 <inventory-container

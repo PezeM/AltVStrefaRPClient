@@ -105,6 +105,7 @@ export default {
         EventBus.$on('inventoryItemWasEquippedSuccessfully', this.itemWasEquippedSuccessfully);
         EventBus.$on('inventoryItemWasUnequippedSuccessfully', this.itemWasUnequippedSuccessfully);
         EventBus.$on('inventoryItemWasMovedSuccessfully', this.itemWasMovedSuccessfully);
+        EventBus.$on('inventoryItemWasTransferedSuccessfully', this.itemWasTransferedSuccessfully);
     },
     props: {
         initialPersonalInventory: {
@@ -379,6 +380,9 @@ export default {
         itemWasMovedSuccessfully(selectedInventoryId, selectedItemId, newSlotNumber) {
             this.inventoryController.itemWasMovedSuccessfully(selectedInventoryId, selectedItemId, newSlotNumber);
         },
+        itemWasTransferedSuccessfully(inventoryToMoveFromId, inventoryToMoveToId, itemToTransferId, slotId) {
+            this.inventoryController.itemWasTransferedSuccessfully(inventoryToMoveFromId, inventoryToMoveToId, itemToTransferId, slotId);
+        },
         inventoryAddNewItems(newItems) {
             if (newItems == null) return;
             newItems.forEach(item => {
@@ -473,6 +477,7 @@ export default {
         EventBus.$off('inventoryItemWasEquippedSuccessfully', this.itemWasEquippedSuccessfully);
         EventBus.$off('inventoryItemWasUnequippedSuccessfully', this.itemWasUnequippedSuccessfully);
         EventBus.$off('inventoryItemWasMovedSuccessfully', this.itemWasMovedSuccessfully);
+        EventBus.$off('inventoryItemWasTransferedSuccessfully', this.itemWasTransferedSuccessfully);
     },
 };
 
@@ -498,6 +503,10 @@ alt.on('inventoryItemWasUnequippedSuccessfully', (playerEquipmentId, selectedInv
 
 alt.on('inventoryItemWasMovedSuccessfully', (selectedInventoryId, selectedItemId, newSlotNumber) => {
     EventBus.$emit('inventoryItemWasMovedSuccessfully', selectedInventoryId, selectedItemId, newSlotNumber);
+});
+
+alt.on('inventoryItemWasTransferedSuccessfully', (inventoryToMoveFromId, inventoryToMoveToId, itemToTransferId, slotId) => {
+    EventBus.$emit('inventoryItemWasTransferedSuccessfully', inventoryToMoveFromId, inventoryToMoveToId, itemToTransferId, slotId);
 });
 </script>
 

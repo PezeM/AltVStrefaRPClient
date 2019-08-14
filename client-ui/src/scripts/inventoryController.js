@@ -187,6 +187,19 @@ export default class InventoryController {
         itemToMove.slotId = newSlotNumber;
     }
 
+    itemWasTransferedSuccessfully(inventoryToMoveFromId, inventoryToMoveToId, itemToTransferId, slotId) {
+        const source = this._getInventoryById(inventoryToMoveFromId);
+        if (source == null) return;
+        const receiver = this._getInventoryById(inventoryToMoveToId);
+        const itemToTransfer = this.getItemByIdFromInventoryItems(source.items, itemToTransferId);
+        if (itemToTransfer == null) return;
+
+        this._removeItemFromInventory(itemToTransfer, source);
+        if (receiver != null) {
+            receiver.items.push(itemToTransfer);
+        }
+    }
+
     itemWasEquippedSuccessfully(selectedInventoryId, playerEquipmentId, itemToEquipId, slotId) {
         if (this.playerEquipment == null || this.playerEquipment.inventoryId != playerEquipmentId) return;
         console.log('Getting inventory');

@@ -156,7 +156,7 @@ export default {
 }
 
 .inventory-slot {
-    width: 3rem;
+    /* width: 3rem; */
     height: 5.5rem;
     background-color: rgba(0, 0, 0, 0.5);
     color: #f3f3f3;

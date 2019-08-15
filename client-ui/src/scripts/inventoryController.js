@@ -293,8 +293,8 @@ export default class InventoryController {
         // this.selectedItem.slotId = temporarySlot;
 
         if (!this.isMovingItemsBetweenInventories) {
-            alt.emit('inventorySwapItems', this.selectedInventory.inventoryId, this.selectedItem.id, this.selectedItem.slotId,
-                this.itemToSwap.id, this.itemToSwap.slotId);
+            alt.emit('inventorySwapItem', this.selectedInventory.inventoryId, this.selectedItem.id, this.selectedItem.slotId,
+                this.itemToSwap.id, this.itemToSwap.slotId, -1);
             return;
         }
 
@@ -315,7 +315,7 @@ export default class InventoryController {
         // this.movingOverInventory.items = this.movingOverInventory.items.filter(i => i.id != this.itemToSwap.id);
         // this.movingOverInventory.items.push(this.selectedItem);
 
-        alt.emit('inventorySwapItems', this.selectedInventory.inventoryId, this.selectedItem.id, this.selectedItem.slotId,
+        alt.emit('inventoryTrySwapItem', this.selectedInventory.inventoryId, this.selectedItem.id, this.selectedItem.slotId,
             this.itemToSwap.id, this.itemToSwap.slotId, this.movingOverInventory.inventoryId);
 
     }

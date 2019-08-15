@@ -43,7 +43,7 @@ class LoginController {
     loadCharacter(characterId: number) {
         characterId = Number(characterId);
         alt.log(`Loading character with id: ${characterId}`);
-        alt.emitServer('tryToLoadCharacter', characterId);
+        alt.emitServer('TryToLoadCharacter', characterId);
     }
 
     tryToCreateNewCharacter() {

@@ -21,7 +21,7 @@ class InventoryController {
         mainUi.onUiEvent('inventoryTryStackItem', this.inventoryTryStackItem.bind(this));
         mainUi.onUiEvent('inventoryMoveItem', this.inventoryMoveItem.bind(this));
         mainUi.onUiEvent('inventoryTryTransferItem', this.inventoryTryTransferItem.bind(this));
-        mainUi.onUiEvent('inventorySwapItems', this.inventorySwapItems.bind(this));
+        mainUi.onUiEvent('inventoryTrySwapItem', this.inventoryTrySwapItem.bind(this));
         mainUi.onUiEvent('inventoryTryDropItem', this.inventoryTryDropItem.bind(this));
         mainUi.onUiEvent('inventoryTryEquipItem', this.inventoryTryEquipItem.bind(this));
         mainUi.onUiEvent('inventoryTryUnequipItem', this.inventoryTryUnequipItem.bind(this));
@@ -219,12 +219,33 @@ class InventoryController {
         }
     }
 
-    inventorySwapItems(inventoryId: number, selectedItemId: number, selectedItemSlotId: number,
+    inventoryTrySwapItem(inventoryId: number, selectedItemId: number, selectedItemSlotId: number,
         itemToSwapId: number, itemToSwapSlotId: number, itemToSwapInventoryId: number) {
         // Swap items slots
         // Add inventory callback propably
         alt.emitServer('InventorySwapItems', selectedItemId, selectedItemSlotId, itemToSwapId, itemToSwapSlotId);
         inventoryCache.swapItems(inventoryId, selectedItemId, selectedItemSlotId, itemToSwapId, itemToSwapSlotId);
+
+        serverCallbacks.callback("InventoryTrySwapItem", "inventorySwapItemResponse",
+            [inventoryId, selectedItemId, selectedItemSlotId, itemToSwapId, itemToSwapSlotId, itemToSwapInventoryId],
+            (wasSwapped: boolean) => {
+                this.inventorySwapItem(wasSwapped, inventoryId, selectedItemId, selectedItemSlotId, itemToSwapId, itemToSwapSlotId, itemToSwapInventoryId);
+            });
+    }
+
+    inventorySwapItem(wasSwapped: boolean, inventoryId: number, selectedItemId: number, selectedItemSlotId: number,
+        itemToSwapId: number, itemToSwapSlotId: number, itemToSwapInventoryId: number) {
+        alt.log('Item swap callback');
+        if (wasSwapped) {
+            alt.log('Item was sawpped');
+            if (this.isInventoryOpened) {
+                mainUi.emitUiEvent("inventoryItemWasSwappedSuccessfully",
+                    inventoryId, selectedItemId, selectedItemSlotId, itemToSwapId, itemToSwapSlotId, itemToSwapInventoryId);
+            }
+
+        } else {
+            alt.logError('Item was not swapped');
+        }
     }
 
     inventoryTryDropItem(inventoryId: number, itemToDropId: number, quantity: number) {

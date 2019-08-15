@@ -27,20 +27,43 @@
                                 :delay="tooltipDelay"
                                 :disabled="isMovingItem"
                                 placement="auto"
+                                popoverClass="item-popover"
                             >
                                 <div class="item-wrapper">
                                     <img
                                         :src="require(`@/assets/images/items/${getCorrectImage(item)}`)"
                                         class="item-image"
                                     />
-                                    <span
-                                        class="item-quantity-text"
-                                    >{{ item.quantity }}/{{ item.stackSize }}</span>
+                                    <span class="item-quantity-text">x{{ item.quantity }}</span>
                                 </div>
 
                                 <template slot="popover">
-                                    <div>
-                                        <span>Opis itemu: {{ item.name }}</span>
+                                    <div class="row m-0">
+                                        <div class="col-5 m-0 p-0">
+                                            <img
+                                                :src="require(`@/assets/images/items/${getCorrectImage(item)}`)"
+                                                class="item-image"
+                                            />
+                                        </div>
+                                        <div class="col-7">
+                                            <div class="row justify-content-center">
+                                                <span class="popover-item-name">{{ item.name }}</span>
+                                            </div>
+                                            <div class="row">
+                                                <span
+                                                    class="text-justify popover-item-description"
+                                                >{{ item.description }}</span>
+                                            </div>
+                                            <div class="row">
+                                                <hr class="item-popover-hr" />
+                                            </div>
+                                            <div
+                                                class="row item-popover-quantity"
+                                            >Ilość: {{ item.quantity }}</div>
+                                            <div
+                                                class="row item-popover-quantity"
+                                            >Maksymalna ilość: {{ item.stackSize }}</div>
+                                        </div>
                                     </div>
                                 </template>
                             </v-popover>
@@ -62,7 +85,7 @@
 </template>
 
 <script>
-// import InventorySlotImages from '@/scripts/inventorySlotImages.js';
+import InventorySlotImages from '@/scripts/inventorySlotImages.js';
 import InventoryNameImages from '@/scripts/inventoryNameImages.js';
 
 export default {
@@ -100,8 +123,8 @@ export default {
             return null;
         },
         getCorrectImage(item) {
-            // return item.equipmentSlot == -1 ? InventoryNameImages[item.name] : InventorySlotImages[item.equipmentSlot];
-            return InventoryNameImages[item.name];
+            const imageByName = InventoryNameImages[item.name];
+            return imageByName != null ? imageByName : InventorySlotImages[item.equipmentSlot];
         },
     },
     computed: {
@@ -133,7 +156,7 @@ export default {
 }
 
 .inventory-slot {
-    /* width: 3rem; */
+    width: 3rem;
     height: 5.5rem;
     background-color: rgba(0, 0, 0, 0.5);
     color: #f3f3f3;
@@ -176,7 +199,7 @@ export default {
 
 .tooltip .tooltip-inner {
     background: black;
-    color: white;
+    color: #f0f0f0;
     border-radius: 16px;
     padding: 5px 10px 4px;
 }
@@ -191,6 +214,70 @@ export default {
     z-index: 1;
 }
 
+.tooltip.popover .popover-inner {
+    background: #f3f3f3;
+    color: black;
+    border-radius: 5px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+}
+
+.tooltip.popover .popover-arrow {
+    border-color: #f3f3f3;
+}
+
+.tooltip[aria-hidden='true'] {
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.35s, visibility 0.35s;
+}
+
+.tooltip[aria-hidden='false'] {
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 0.35s;
+}
+
+.item-popover {
+    max-width: 16rem;
+    max-height: 16rem;
+    font-size: 0.8rem;
+}
+
+.item-popover .tooltip-inner {
+    max-width: 16rem;
+    max-height: 16rem;
+}
+
+.item-popover .tooltip-inner .item-image {
+    max-width: 8rem;
+    max-height: 8rem;
+    padding: 0.1rem;
+}
+
+.item-popover .popover-item-name {
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.item-popover .popover-item-description {
+    color: rgba(51, 51, 51, 0.8);
+    font-size: 0.65rem;
+    word-wrap: break-word;
+}
+
+.item-popover .item-popover-hr {
+    width: 100%;
+    margin: 0;
+    border-top-color: #4b4b4b7a;
+}
+
+.item-popover .item-popover-quantity {
+    color: rgba(51, 51, 51, 0.8);
+    font-size: 0.7rem;
+}
+</style>
+
+<style>
 .tooltip[x-placement^='top'] {
     margin-bottom: 5px;
 }
@@ -249,29 +336,5 @@ export default {
     top: calc(50% - 5px);
     margin-left: 0;
     margin-right: 0;
-}
-
-.tooltip.popover .popover-inner {
-    background: #f9f9f9;
-    color: black;
-    padding: 24px;
-    border-radius: 5px;
-    box-shadow: 0 5px 30px rgba(black, 0.1);
-}
-
-.tooltip.popover .popover-arrow {
-    border-color: #f9f9f9;
-}
-
-.tooltip[aria-hidden='true'] {
-    visibility: hidden;
-    opacity: 0;
-    transition: opacity 0.15s, visibility 0.15s;
-}
-
-.tooltip[aria-hidden='false'] {
-    visibility: visible;
-    opacity: 1;
-    transition: opacity 0.15s;
 }
 </style>

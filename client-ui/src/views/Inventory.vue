@@ -127,6 +127,7 @@ export default {
                             isDroppable: false,
                             equipmentSlot: 1004,
                             slotId: 15,
+                            description: 'Super kolorowe spodnie zrobione z kolorowej skóry. Tekstura: 15 Rodzaj 20 Coś tam dodatkowe 32',
                         },
                         {
                             id: 48,
@@ -136,6 +137,7 @@ export default {
                             isDroppable: false,
                             equipmentSlot: -1,
                             slotId: 1,
+                            description: 'Jakiś krótszy opis przedmiotu',
                         },
                         {
                             id: 65,
@@ -145,6 +147,7 @@ export default {
                             isDroppable: true,
                             equipmentSlot: 1004,
                             slotId: 2,
+                            description: 'Jakiś krótszy opis przedmiotu',
                         },
                         {
                             id: 66,
@@ -154,6 +157,7 @@ export default {
                             isDroppable: true,
                             equipmentSlot: 1004,
                             slotId: 3,
+                            description: 'Jakiś krótszy opis przedmiotu',
                         },
                         {
                             id: 67,
@@ -163,6 +167,7 @@ export default {
                             isDroppable: true,
                             equipmentSlot: 1004,
                             slotId: 4,
+                            description: 'Jakiś krótszy opis przedmiotu',
                         },
                         {
                             id: 68,
@@ -172,6 +177,7 @@ export default {
                             isDroppable: true,
                             equipmentSlot: 1301,
                             slotId: 5,
+                            description: 'Jakiś krótszy opis przedmiotu',
                         },
                         {
                             id: 69,
@@ -181,6 +187,7 @@ export default {
                             isDroppable: true,
                             equipmentSlot: -1,
                             slotId: 6,
+                            description: 'Jakiś krótszy opis przedmiotu',
                         },
                         {
                             id: 70,
@@ -190,6 +197,7 @@ export default {
                             isDroppable: true,
                             equipmentSlot: 1300,
                             slotId: 7,
+                            description: 'Jakiś krótszy opis przedmiotu',
                         },
                         {
                             id: 71,
@@ -199,6 +207,7 @@ export default {
                             isDroppable: true,
                             equipmentSlot: 1300,
                             slotId: 8,
+                            description: 'Jakiś krótszy opis przedmiotu',
                         },
                         {
                             id: 72,
@@ -208,6 +217,7 @@ export default {
                             isDroppable: true,
                             equipmentSlot: 1300,
                             slotId: 9,
+                            description: 'Jakiś krótszy opis przedmiotu',
                         },
                         {
                             id: 109,
@@ -217,6 +227,7 @@ export default {
                             isDroppable: true,
                             equipmentSlot: -1,
                             slotId: 10,
+                            description: 'Jakiś krótszy opis przedmiotu',
                         },
                         {
                             id: 110,
@@ -226,6 +237,7 @@ export default {
                             isDroppable: true,
                             equipmentSlot: -1,
                             slotId: 11,
+                            description: 'Jakiś krótszy opis przedmiotu',
                         },
                     ],
                 };
@@ -247,6 +259,7 @@ export default {
                             isDroppable: false,
                             equipmentSlot: 1004,
                             slotId: 1004,
+                            description: 'Jakiś krótszy opis przedmiotu',
                         },
                     ],
                 };
@@ -268,6 +281,7 @@ export default {
                             isDroppable: true,
                             equipmentSlot: 1004,
                             slotId: 3,
+                            description: 'Jakiś krótszy opis przedmiotu',
                         },
                         {
                             id: 605,
@@ -277,6 +291,7 @@ export default {
                             isDroppable: true,
                             equipmentSlot: 1004,
                             slotId: 1,
+                            description: 'Jakiś krótszy opis przedmiotu',
                         },
                     ],
                 };
@@ -517,7 +532,7 @@ alt.on('inventoryItemWasTransferedSuccessfully', (inventoryToMoveFromId, invento
 
 <style>
 #inventory {
-    /* background-image: url('../assets/example-image.jpg'); */
+    background-image: url('../assets/example-image.jpg');
     background-color: rgba(0, 0, 0, 0.3);
     width: 100%;
     height: 100vh;

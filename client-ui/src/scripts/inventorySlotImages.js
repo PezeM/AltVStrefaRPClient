@@ -1,5 +1,6 @@
 const inventorySlotImages = {
-    1000: -1, // None
+    "-1": -1, // Blank image
+    1000: -1, // None - some image 
     1001: "legs.png", // Torsos
     1002: "legs.png", // Undershirts
     1003: "legs.png", // Tops

@@ -13,12 +13,46 @@
                 class="slot-content isDraggable withItem"
                 v-bind:data-itemId="item.id"
             >
-                <div class="item-wrapper">
-                    <img
-                        :src="require(`@/assets/images/items/${getCorrectImage(item)}`)"
-                        class="item-image"
-                    />
-                </div>
+                <v-popover
+                    offset="16"
+                    trigger="hover"
+                    :delay="tooltipDelay"
+                    :disabled="isMovingItem"
+                    placement="auto"
+                    popoverClass="item-popover"
+                >
+                    <div class="item-wrapper">
+                        <img
+                            :src="require(`@/assets/images/items/${getCorrectImage(item)}`)"
+                            class="item-image"
+                        />
+                    </div>
+
+                    <template slot="popover">
+                        <div class="row m-0">
+                            <div class="col-5 m-0 p-0">
+                                <img
+                                    :src="require(`@/assets/images/items/${getCorrectImage(item)}`)"
+                                    class="item-image"
+                                />
+                            </div>
+                            <div class="col-7">
+                                <div class="row justify-content-center">
+                                    <span class="popover-item-name">{{ item.name }}</span>
+                                </div>
+                                <div class="row">
+                                    <span
+                                        class="text-justify popover-item-description"
+                                    >{{ item.description }}</span>
+                                </div>
+                                <div class="row">
+                                    <hr class="item-popover-hr" />
+                                </div>
+                                <div class="row item-popover-quantity">Typ: {{ getSlotName(key) }}</div>
+                            </div>
+                        </div>
+                    </template>
+                </v-popover>
             </div>
             <div
                 v-else
@@ -42,10 +76,24 @@ export default {
         equipmentItems: {
             type: Object,
         },
+        isMovingItem: {
+            type: Boolean,
+        },
+    },
+    data() {
+        return {
+            tooltipDelay: {
+                tooltipDelay: {
+                    show: 500,
+                    hide: 20,
+                },
+            },
+        };
     },
     methods: {
         getCorrectImage(item) {
-            return InventoryNameImages[item.name];
+            const imageByName = InventoryNameImages[item.name];
+            return imageByName != null ? imageByName : InventorySlotImages[item.equipmentSlot];
         },
         getSlotName(equipmentSlot) {
             switch (equipmentSlot) {

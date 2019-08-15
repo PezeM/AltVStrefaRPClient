@@ -19,6 +19,7 @@ import EventBus from './event-bus';
 import App from './App.vue';
 import router from './router';
 import VModal from 'vue-js-modal';
+import VTooltip from 'v-tooltip';
 
 Vue.config.productionTip = false;
 
@@ -26,6 +27,8 @@ Vue.use(VModal, {
     dialog: true,
     dynamic: true,
 });
+
+Vue.use(VTooltip);
 
 new Vue({
     router,

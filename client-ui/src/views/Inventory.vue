@@ -42,7 +42,10 @@
                             </div>
                         </div>
                         <div class="col-5">
-                            <inventory-container :inventory="personalInventory" />
+                            <inventory-container
+                                :inventory="personalInventory"
+                                :isMovingItem="swappingObject != null"
+                            />
                         </div>
                         <div class="col-4">
                             <div
@@ -52,6 +55,7 @@
                                 <inventory-container
                                     :inventory="addonationalInventory"
                                     :inventoryClass="addonationalInventoryClassName"
+                                    :isMovingItem="swappingObject != null"
                                 />
                             </div>
                         </div>

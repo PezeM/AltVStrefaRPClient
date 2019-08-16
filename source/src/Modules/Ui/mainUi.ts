@@ -92,9 +92,7 @@ class MainUi {
 
     showCefNotification(type: number, title: string, message: string, duration = 5000, icon = true) {
         try {
-            if (typeof type === 'number' && typeof message === 'string') {
-                this.uiView.emit('showNotification', type, title, message, duration, icon);
-            }
+            this.uiView.emit('showNotification', type, title, message, duration, icon);
         } catch (error) {
             alt.log('mainUi -> showCefNotification -> ' + error);
         }

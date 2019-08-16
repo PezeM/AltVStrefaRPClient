@@ -77,17 +77,6 @@ class InventoryController {
         alt.emitServer('OpenVehicleInventory', vehicleToOpenInventory, getPersonalInventory);
     }
 
-    pickupItem() {
-        if (!itemStreamer.canPickupItem || itemStreamer.nearestItem == null) return false;
-        animationController.findAndPlayAnimation("pickup2");
-        alt.setTimeout(() => {
-            if (itemStreamer.nearestItem == null) return false;
-            alt.log(`Picked up item with id ${itemStreamer.nearestItem.item.id} and network object id ${itemStreamer.nearestItem.id}`);
-            alt.emitServer('PickupDroppedItem', itemStreamer.nearestItem.id, itemStreamer.nearestItem.item.id);
-        }, 500);
-        return true;
-    }
-
     populateInventoryInUi(addonationalInventoryContainer: object | null = null) {
         const localPlayer = alt.Player.local;
         const gameInfo = {
@@ -103,6 +92,17 @@ class InventoryController {
             addonationalInventoryContainer, gameInfo);
         // game.transitionToBlurred(150);
         this.isInventoryOpened = true;
+    }
+
+    pickupItem() {
+        if (!itemStreamer.canPickupItem || itemStreamer.nearestItem == null) return false;
+        animationController.findAndPlayAnimation("pickup2");
+        alt.setTimeout(() => {
+            if (itemStreamer.nearestItem == null) return false;
+            alt.log(`Picked up item with id ${itemStreamer.nearestItem.item.id} and network object id ${itemStreamer.nearestItem.id}`);
+            alt.emitServer('PickupDroppedItem', itemStreamer.nearestItem.id, itemStreamer.nearestItem.item.id);
+        }, 500);
+        return true;
     }
 
     inventoryTryStackItem(inventoryId: number, itemToStackFromId: number, itemToStackId: number, itemToStackInventoryId: number) {
@@ -136,6 +136,7 @@ class InventoryController {
             inventoryCache.stackItems(inventoryId, itemToStackFromId, itemToStackId, amountOfStackedItems, itemToStackInventoryId);
         } else {
             alt.log(`Item with id ${itemToStackId} was not stacked`);
+            mainUi.showCefNotification(NotificationTypes.Error, "Błąd", "Połączenie przedmiotu nie powiodło się", 3500);
         }
     }
 
@@ -151,6 +152,7 @@ class InventoryController {
                     inventoryCache.moveItem(selectedInventoryId, selectedItemId, newSlotNumber);
                 } else {
                     alt.logError("Inventory item couldn't be moved");
+                    mainUi.showCefNotification(NotificationTypes.Error, "Błąd", "Przeniesienie przedmiotu nie powiodło się", 3500);
                 }
             });
     }
@@ -172,6 +174,7 @@ class InventoryController {
             inventoryCache.transferItem(inventoryToMoveFromId, inventoryToMoveToId, itemToTransferId, slotId);
         } else {
             alt.log('Error transfering file');
+            mainUi.showCefNotification(NotificationTypes.Error, "Błąd", "Przeniesienie przedmiotu nie powiodło się", 3500);
         }
     }
 
@@ -193,6 +196,7 @@ class InventoryController {
             inventoryCache.equipItem(selectedInventoryId, playerEquipmentId, itemToEquipId, slotId);
         } else {
             alt.log(`Item with id ${itemToEquipId} was not equipped`);
+            mainUi.showCefNotification(NotificationTypes.Error, "Błąd", "Zakładanie przedmiotu nie powiodło się", 3500);
         }
     }
 
@@ -215,7 +219,7 @@ class InventoryController {
             inventoryCache.unequipItem(playerEquipmentId, selectedInventoryId, equippedItemId, newSlotId);
         } else {
             alt.log(`Item with id ${equippedItemId} was not unequipped`);
-            mainUi.showCefNotification(NotificationTypes.Error, "Błąd", "Nie udało się zdjąć przedmiotu", 3000);
+            mainUi.showCefNotification(NotificationTypes.Error, "Błąd", "Zdejmowanie przedmiotu nie powiodło się", 3500);
         }
     }
 
@@ -225,8 +229,9 @@ class InventoryController {
         // Add inventory callback propably
         serverCallbacks.callback("InventoryTrySwapItems", "inventorySwapItemsResponse",
             [inventoryId, selectedItemId, selectedItemSlotId, itemToSwapId, itemToSwapSlotId, itemToSwapInventoryId],
-            (wasSwapped: boolean) => {
-                this.inventorySwapItems(wasSwapped, inventoryId, selectedItemId, selectedItemSlotId, itemToSwapId, itemToSwapSlotId, itemToSwapInventoryId);
+            (wasSwapped: boolean, selectedItemNewSlotId: number, swappedItemNewSlotId: number) => {
+                this.inventorySwapItems(wasSwapped, inventoryId, selectedItemId, selectedItemNewSlotId, itemToSwapId,
+                    swappedItemNewSlotId, itemToSwapInventoryId);
             });
     }
 
@@ -243,6 +248,7 @@ class InventoryController {
             inventoryCache.swapItems(inventoryId, selectedItemId, selectedItemSlotId, itemToSwapId, itemToSwapSlotId, itemToSwapInventoryId);
         } else {
             alt.logError('Item was not swapped');
+            mainUi.showCefNotification(NotificationTypes.Error, "Błąd", "Zamiana przedmiotów miejscami nie powiodła się", 3500);
         }
     }
 
@@ -265,7 +271,7 @@ class InventoryController {
             inventoryCache.dropItem(inventoryId, itemId, quantity);
         } else {
             alt.log(`Item with id ${itemId} quantity ${quantity} was not dropped`);
-            // If the item was not dropped then not remove it from inventory and also propably restore it in the UI
+            mainUi.showCefNotification(NotificationTypes.Error, "Błąd", "Wyrzucenie przedmiotu nie powiodło się", 3500);
         }
     }
 

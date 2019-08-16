@@ -243,6 +243,7 @@ class InventoryController {
                     inventoryId, selectedItemId, selectedItemSlotId, itemToSwapId, itemToSwapSlotId, itemToSwapInventoryId);
             }
 
+            inventoryCache.swapItems(inventoryId, selectedItemId, selectedItemSlotId, itemToSwapId, itemToSwapSlotId, itemToSwapInventoryId);
         } else {
             alt.logError('Item was not swapped');
         }

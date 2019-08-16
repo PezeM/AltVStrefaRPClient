@@ -101,14 +101,35 @@ class InventoryCache {
         inventory.items.push(itemToUnequip);
     }
 
-    swapItems(inventoryId: number, selectedItemId: number, selectedItemSlotId: number, itemToSwapId: number, itemToSwapSlotId: number) {
-        if (this.cachedInventory == null) return;
-        const selectedItem = this.getItem(selectedItemId);
-        const itemToSwap = this.getItem(itemToSwapId);
-        if (itemToSwap == null || selectedItem == null) return;
-        selectedItem.slotId = selectedItemSlotId;
-        itemToSwap.slotId = itemToSwapSlotId;
-        alt.log(`Swapped slot of item ${selectedItemId} to ${selectedItemSlotId} and ${itemToSwapId} to ${itemToSwapSlotId}`);
+    swapItems(inventoryId: number, selectedItemId: number, selectedItemSlotId: number, itemToSwapId: number,
+        itemToSwapSlotId: number, itemToSwapInventoryId: number = -1) {
+        const inventory = this.getInventory(inventoryId);
+        if (inventory == null) return;
+
+        const item = this.getItemFromInventory(inventory, selectedItemId);
+        if (item == null) return;
+
+        if (itemToSwapInventoryId > 0) {
+            const inventoryToSwap = this.getInventory(itemToSwapInventoryId);
+            if (inventoryToSwap == null) return;
+            const itemToSwap = this.getItemFromInventory(inventoryToSwap, itemToSwapId);
+            if (itemToSwap == null) return;
+
+            itemToSwap.slotId = selectedItemSlotId;
+            item.slotId = itemToSwapInventoryId;
+
+            this.removeItem(itemToSwap, inventoryToSwap);
+            this.removeItem(item, inventory);
+            inventory.items.push(itemToSwap);
+            inventoryToSwap.items.push(item);
+        } else {
+            // Swapping in one inventory
+            const itemToSwap = this.getItemFromInventory(inventory, itemToSwapId);
+            if (itemToSwap == null) return;
+
+            itemToSwap.slotId = selectedItemSlotId;
+            item.slotId = itemToSwapSlotId;
+        }
     }
 
     dropItem(inventoryId: number, itemToDropId: number, quantity: number) {

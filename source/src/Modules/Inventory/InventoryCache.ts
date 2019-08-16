@@ -115,11 +115,12 @@ class InventoryCache {
             const itemToSwap = this.getItemFromInventory(inventoryToSwap, itemToSwapId);
             if (itemToSwap == null) return;
 
-            itemToSwap.slotId = selectedItemSlotId;
-            item.slotId = itemToSwapInventoryId;
-
             this.removeItem(itemToSwap, inventoryToSwap);
             this.removeItem(item, inventory);
+
+            itemToSwap.slotId = itemToSwapSlotId;
+            item.slotId = selectedItemSlotId;
+
             inventory.items.push(itemToSwap);
             inventoryToSwap.items.push(item);
         } else {
@@ -127,8 +128,8 @@ class InventoryCache {
             const itemToSwap = this.getItemFromInventory(inventory, itemToSwapId);
             if (itemToSwap == null) return;
 
-            itemToSwap.slotId = selectedItemSlotId;
-            item.slotId = itemToSwapSlotId;
+            itemToSwap.slotId = itemToSwapSlotId;
+            item.slotId = selectedItemSlotId;
         }
     }
 

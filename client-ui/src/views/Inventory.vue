@@ -109,6 +109,7 @@ export default {
         EventBus.$on('inventoryItemWasUnequippedSuccessfully', this.itemWasUnequippedSuccessfully);
         EventBus.$on('inventoryItemWasMovedSuccessfully', this.itemWasMovedSuccessfully);
         EventBus.$on('inventoryItemWasTransferedSuccessfully', this.itemWasTransferedSuccessfully);
+        EventBus.$on('inventoryItemWasSwappedSuccessfully', this.itemWasSwappedSuccessfully);
     },
     props: {
         initialPersonalInventory: {
@@ -402,6 +403,16 @@ export default {
             console.log('Item was transfered on VUE');
             this.inventoryController.itemWasTransferedSuccessfully(inventoryToMoveFromId, inventoryToMoveToId, itemToTransferId, slotId);
         },
+        inventoryItemWasSwappedSuccessfully(inventoryId, selectedItemId, selectedItemSlotId, itemToSwapId, itemToSwapSlotId, itemToSwapInventoryId) {
+            this.inventoryController.itemWasSwappedSuccessfully(
+                inventoryId,
+                selectedItemId,
+                selectedItemSlotId,
+                itemToSwapId,
+                itemToSwapSlotId,
+                itemToSwapInventoryId
+            );
+        },
         inventoryAddNewItems(newItems) {
             if (newItems == null) return;
             newItems.forEach(item => {
@@ -497,6 +508,7 @@ export default {
         EventBus.$off('inventoryItemWasUnequippedSuccessfully', this.itemWasUnequippedSuccessfully);
         EventBus.$off('inventoryItemWasMovedSuccessfully', this.itemWasMovedSuccessfully);
         EventBus.$off('inventoryItemWasTransferedSuccessfully', this.itemWasTransferedSuccessfully);
+        EventBus.$off('inventoryItemWasSwappedSuccessfully', this.itemWasSwappedSuccessfully);
     },
 };
 
@@ -527,6 +539,18 @@ alt.on('inventoryItemWasMovedSuccessfully', (selectedInventoryId, selectedItemId
 
 alt.on('inventoryItemWasTransferedSuccessfully', (inventoryToMoveFromId, inventoryToMoveToId, itemToTransferId, slotId) => {
     EventBus.$emit('inventoryItemWasTransferedSuccessfully', inventoryToMoveFromId, inventoryToMoveToId, itemToTransferId, slotId);
+});
+
+alt.on('inventoryItemWasSwappedSuccessfully', (inventoryId, selectedItemId, selectedItemSlotId, itemToSwapId, itemToSwapSlotId, itemToSwapInventoryId) => {
+    EventBus.$emit(
+        'inventoryItemWasSwappedSuccessfully',
+        inventoryId,
+        selectedItemId,
+        selectedItemSlotId,
+        itemToSwapId,
+        itemToSwapSlotId,
+        itemToSwapInventoryId
+    );
 });
 </script>
 

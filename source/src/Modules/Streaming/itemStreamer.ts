@@ -60,22 +60,20 @@ class ItemStreamer {
     }
 
     onStreamIn(entity: INetworkingEntity) {
-        utils.loadModelAsyncTest(entity.data.model.stringValue as string).then(() => {
-            const gameObject = game.createObject(utils.joaat(entity.data.model.stringValue as string),
-                entity.position.x, entity.position.y, entity.position.z,
-                true, false, true);
-            game.placeObjectOnGroundProperly(gameObject);
-            game.setEntityCollision(gameObject, false, true);
-            game.freezeEntityPosition(gameObject, true);
+        const gameObject = game.createObject(utils.joaat(entity.data.model.stringValue as string),
+            entity.position.x, entity.position.y, entity.position.z,
+            true, false, true);
+        game.placeObjectOnGroundProperly(gameObject);
+        game.setEntityCollision(gameObject, false, true);
+        game.freezeEntityPosition(gameObject, true);
 
-            (entity as INetworkingItem).item = {
-                id: entity.data.id.intValue as number,
-                object: gameObject,
-                name: entity.data.name.stringValue as string,
-                count: entity.data.count.intValue as number
-            }
-            this.streamedItems.set(entity.id, entity as INetworkingItem);
-        });
+        (entity as INetworkingItem).item = {
+            id: entity.data.id.intValue as number,
+            object: gameObject,
+            name: entity.data.name.stringValue as string,
+            count: entity.data.count.intValue as number
+        }
+        this.streamedItems.set(entity.id, entity as INetworkingItem);
     }
 
     onStreamOut(entity: INetworkingEntity) {

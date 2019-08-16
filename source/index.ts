@@ -3,7 +3,7 @@ import * as game from 'natives';
 import chat from 'chat';
 import mainUi from 'source/src/Modules/Ui/mainUi';
 import keycodes from 'source/src/Constans/keycodes';
-import * as gameState from 'source/src/gameState';
+import * as gameState from 'source/src/Modules/Core/States/gameState';
 import 'source/src/uiController';
 import 'source/src/menus';
 import 'source/src/Modules/Login/loginController';
@@ -124,6 +124,16 @@ alt.on('consoleCommand', (command: string, ...args: string[]) => {
     }
 })
 
+
+alt.on('playerEnteredVehicle', (vehicle: alt.Vehicle, seat: number) => {
+    alt.log('On player enter vehicle');
+});
+
+
+alt.on('playerLeftVehicle', (vehicle: alt.Vehicle, seat: number) => {
+    alt.log('On player left vehicle');
+});
+
 let cinemaObject: number | any = null;
 let cinemaView: alt.WebView | null = null;
 const cinemaPosition: Vector3 = {
@@ -189,18 +199,6 @@ function test3DView() {
         }, 10);
     });
 
-}
-
-function loadModelAsync(data: any) {
-    return new Promise((resolve, reject) => {
-        const loader = alt.setInterval(() => {
-            alt.log('Inside interval')
-            if (data() === true) {
-                resolve(true);
-                alt.clearInterval(loader);
-            }
-        }, 10);
-    });
 }
 
 function loadModel(modelHash: number) {
@@ -273,12 +271,6 @@ alt.onServer('equipClothableItem', (slot: number, drawableId: number, textureId:
         game.setPedComponentVariation(localPlayer.scriptID, equipmentSlots[slot], drawableId, textureId, paletteId);
     }
 });
-
-// alt.on('playerConnect', () => {
-//     game.requestAnimDict("mp_facial");
-//     game.requestAnimDict("facials@gen_male@variations@normal");
-// });
-
 
 game.loadMpDlcMaps();
 game.requestIpl('chop_props');

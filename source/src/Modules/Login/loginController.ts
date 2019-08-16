@@ -1,7 +1,7 @@
 import * as alt from 'alt';
 import * as game from 'natives';
 import mainUi from 'source/src/Modules/Ui/mainUi';
-import { changeGameState } from 'source/src/gameState';
+import { changeGameState } from 'source/src/Modules/Core/States/gameState';
 import { GameState } from 'source/src/Constans/enums';
 
 const localPlayer = alt.Player.local;

@@ -4,28 +4,34 @@ import { drawText } from 'source/src/Helpers/uiHelper';
 import { isDriver } from 'source/src/Helpers/playerHelpers';
 import VehicleComponent from 'source/src/Modules/Vehicle/Components/vehicleComponent';
 import { VehicleComponentTypes } from 'source/src/Constans/vehicleComponentTypes';
+import { getRadarState, showRadar, hideRadar } from 'source/src/Modules/Core/States/radarState';
 
 const MULTIPLY_SPEED_BY = 3.6;
+const player = alt.Player.local;
+
 class VehicleSpeedometer extends VehicleComponent {
+    radarCheckInterval: number;
     constructor(protected componentType: VehicleComponentTypes) {
         super(componentType);
         this.disabled = false;
+
+        this.radarCheckInterval = alt.setInterval(this.onRadarIntervalCheck.bind(this), 300);
+    }
+
+    onRadarIntervalCheck() {
+        if (player.vehicle) {
+            if (!getRadarState()) {
+                showRadar();
+            }
+        } else {
+            if (getRadarState()) {
+                hideRadar();
+            }
+        }
     }
 
     onUpdateInVehicle(localPlayer: alt.Player) {
         this.displaySpeed(localPlayer);
-
-        if (game.isRadarHidden()) {
-            game.displayRadar(true);
-            game.displayHud(true);
-        }
-    }
-
-    onUpdateOutsideVehicle(localPlayer: alt.Player) {
-        if (!game.isRadarHidden()) {
-            game.displayRadar(false);
-            game.displayHud(false);
-        }
     }
 
     displaySpeed(localPlayer: alt.Player) {

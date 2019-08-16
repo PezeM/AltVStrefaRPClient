@@ -324,6 +324,35 @@ export default class InventoryController {
         alt.emit('inventoryUnequipItemAndEquipItem', this.selectedInventory.id, itemToUnequip.id, this.movingOverInventory.id, itemToEquip.id);
     }
 
+    itemWasSwappedSuccessfully(inventoryId, selectedItemId, selectedItemSlotId, itemToSwapId, itemToSwapSlotId, itemToSwapInventoryId) {
+        const inventory = this._getInventoryById(inventoryId);
+        if (inventory == null) return;
+        const selectedItem = this.getItemByIdFromInventoryItems(inventory.items, selectedItemId);
+        if (selectedItem == null) return;
+
+        if (itemToSwapInventoryId > 0) {
+            const inventoryToSwap = this._getInventoryById(itemToSwapInventoryId);
+            if (inventoryToSwap == null) return;
+            const itemToSwap = this.getItemByIdFromInventoryItems(inventoryToSwap.items, itemToSwapId);
+            if (itemToSwap == null) return;
+
+            this._removeItemFromInventory(selectedItem, inventory);
+            this._removeItemFromInventory(itemToSwap, inventoryToSwap);
+
+            selectedItem.slotId = selectedItemSlotId;
+            itemToSwap.slotId = itemToSwapSlotId;
+
+            inventory.items.push(itemToSwap);
+            itemToSwap.items.push(selectedItem);
+        } else {
+            const itemToSwap = this.getItemByIdFromInventoryItems(inventory.items, itemToSwapId);
+            if (itemToSwap == null) return;
+
+            selectedItem.slotId = selectedItemSlotId;
+            itemToSwap.slotId = itemToSwapSlotId;
+        }
+    }
+
     reset() {
         console.log('Called inventory controller stop');
         this.selectedInventory = null;

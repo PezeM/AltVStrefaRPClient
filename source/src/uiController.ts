@@ -2,7 +2,7 @@ import * as alt from 'alt';
 import * as game from 'natives';
 import chat from 'chat';
 import circleMenu from 'source/src/Modules/CircleMenu/circleMenu';
-import { getGameState } from 'source/src/gameState';
+import { getGameState } from 'source/src/Modules/Core/States/gameState';
 import { drawText, draw3DText } from 'source/src/Helpers/uiHelper';
 import animations from 'source/src/Modules/animations';
 import ZoneNames from 'source/src/Modules/Ui/zoneNames';

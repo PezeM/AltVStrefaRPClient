@@ -286,38 +286,26 @@ export default class InventoryController {
 
     onActionItemSwap() {
         if (this.selectedItem == null || this.itemToSwap == null) return;
-
-        // Temporary
-        // const temporarySlot = this.itemToSwap.slotId;
-        // this.itemToSwap.slotId = this.selectedItem.slotId;
-        // this.selectedItem.slotId = temporarySlot;
+        if (this.movingOverInventory == this.playerEquipment || this.selectedInventory == this.playerEquipment) return;
 
         if (!this.isMovingItemsBetweenInventories) {
-            alt.emit('inventorySwapItem', this.selectedInventory.inventoryId, this.selectedItem.id, this.selectedItem.slotId,
+            alt.emit('inventorySwapItems', this.selectedInventory.inventoryId, this.selectedItem.id, this.selectedItem.slotId,
                 this.itemToSwap.id, this.itemToSwap.slotId, -1);
             return;
         }
 
-        if (this.movingOverInventory == this.playerEquipment) {
-            console.log('Try to equip item and unequip');
-            this.tryToEquipItemAndUnequipItem(this.selectedItem, this.itemToSwap);
-            return;
-        } else if (this.selectedInventory == this.playerEquipment) {
-            console.log('Try to unequip item and equip the other');
-            this.tryToUnequipItemAndEquipItem(this.selectedItem, this.itemToSwap);
-            return;
-        }
+        // if (this.movingOverInventory == this.playerEquipment) {
+        //     console.log('Try to equip item and unequip');
+        //     this.tryToEquipItemAndUnequipItem(this.selectedItem, this.itemToSwap);
+        //     return;
+        // } else if (this.selectedInventory == this.playerEquipment) {
+        //     console.log('Try to unequip item and equip the other');
+        //     this.tryToUnequipItemAndEquipItem(this.selectedItem, this.itemToSwap);
+        //     return;
+        // }
 
-        // Temporary till callbacks
-        // this.removeItem(this.selectedItem);
-        // this.selectedInventory.items.push(this.itemToSwap);
-
-        // this.movingOverInventory.items = this.movingOverInventory.items.filter(i => i.id != this.itemToSwap.id);
-        // this.movingOverInventory.items.push(this.selectedItem);
-
-        alt.emit('inventoryTrySwapItem', this.selectedInventory.inventoryId, this.selectedItem.id, this.selectedItem.slotId,
+        alt.emit('inventoryTrySwapItems', this.selectedInventory.inventoryId, this.selectedItem.id, this.selectedItem.slotId,
             this.itemToSwap.id, this.itemToSwap.slotId, this.movingOverInventory.inventoryId);
-
     }
 
     tryToEquipItemAndUnequipItem(itemToEquip, itemToUnequip) {

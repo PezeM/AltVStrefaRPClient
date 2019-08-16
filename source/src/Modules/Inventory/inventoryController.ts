@@ -21,7 +21,7 @@ class InventoryController {
         mainUi.onUiEvent('inventoryTryStackItem', this.inventoryTryStackItem.bind(this));
         mainUi.onUiEvent('inventoryMoveItem', this.inventoryMoveItem.bind(this));
         mainUi.onUiEvent('inventoryTryTransferItem', this.inventoryTryTransferItem.bind(this));
-        mainUi.onUiEvent('inventoryTrySwapItem', this.inventoryTrySwapItem.bind(this));
+        mainUi.onUiEvent('inventoryTrySwapItems', this.inventoryTrySwapItems.bind(this));
         mainUi.onUiEvent('inventoryTryDropItem', this.inventoryTryDropItem.bind(this));
         mainUi.onUiEvent('inventoryTryEquipItem', this.inventoryTryEquipItem.bind(this));
         mainUi.onUiEvent('inventoryTryUnequipItem', this.inventoryTryUnequipItem.bind(this));
@@ -219,21 +219,18 @@ class InventoryController {
         }
     }
 
-    inventoryTrySwapItem(inventoryId: number, selectedItemId: number, selectedItemSlotId: number,
+    inventoryTrySwapItems(inventoryId: number, selectedItemId: number, selectedItemSlotId: number,
         itemToSwapId: number, itemToSwapSlotId: number, itemToSwapInventoryId: number) {
         // Swap items slots
         // Add inventory callback propably
-        alt.emitServer('InventorySwapItems', selectedItemId, selectedItemSlotId, itemToSwapId, itemToSwapSlotId);
-        inventoryCache.swapItems(inventoryId, selectedItemId, selectedItemSlotId, itemToSwapId, itemToSwapSlotId);
-
-        serverCallbacks.callback("InventoryTrySwapItem", "inventorySwapItemResponse",
+        serverCallbacks.callback("InventoryTrySwapItems", "inventorySwapItemsResponse",
             [inventoryId, selectedItemId, selectedItemSlotId, itemToSwapId, itemToSwapSlotId, itemToSwapInventoryId],
             (wasSwapped: boolean) => {
-                this.inventorySwapItem(wasSwapped, inventoryId, selectedItemId, selectedItemSlotId, itemToSwapId, itemToSwapSlotId, itemToSwapInventoryId);
+                this.inventorySwapItems(wasSwapped, inventoryId, selectedItemId, selectedItemSlotId, itemToSwapId, itemToSwapSlotId, itemToSwapInventoryId);
             });
     }
 
-    inventorySwapItem(wasSwapped: boolean, inventoryId: number, selectedItemId: number, selectedItemSlotId: number,
+    inventorySwapItems(wasSwapped: boolean, inventoryId: number, selectedItemId: number, selectedItemSlotId: number,
         itemToSwapId: number, itemToSwapSlotId: number, itemToSwapInventoryId: number) {
         alt.log('Item swap callback');
         if (wasSwapped) {

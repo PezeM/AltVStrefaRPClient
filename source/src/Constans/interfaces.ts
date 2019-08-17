@@ -121,3 +121,12 @@ export interface INetworkingItem extends INetworkingEntity {
         count: number
     }
 }
+
+export interface IBlipWrapper {
+    id: number;
+    name: string;
+    color: number;
+    sprite: number;
+    position: Vector3;
+    type: number;
+}

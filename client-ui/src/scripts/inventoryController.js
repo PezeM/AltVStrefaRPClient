@@ -66,14 +66,15 @@ export default class InventoryController {
             // Move to empty slot
             this.newSlotId = Number(eventData.over.parentNode.id);
             if (this.newSlotId >= 0) this.action = Actions.Move;
-        } else if (this._isItemStackable(this.itemToSwap) && this._isItemStackable(this.selectedItem)) {
-            // Stack items
-            if (this._canStackItems(this.selectedItem, this.itemToSwap)) {
-                this.action = Actions.Stack;
-            }
         } else if (this.itemToSwap != this.selectedItem) {
             // Swap items
             this.action = Actions.Swap;
+            // Stack items
+            if (this._isItemStackable(this.itemToSwap) && this._isItemStackable(this.selectedItem)) {
+                if (this._canStackItems(this.selectedItem, this.itemToSwap)) {
+                    this.action = Actions.Stack;
+                }
+            }
         }
 
         console.log(`Action = ${this.action}`);
@@ -136,7 +137,6 @@ export default class InventoryController {
 
     onActionItemMove() {
         if (this.selectedItem == null || this.movingOverInventory == null) return;
-
         console.log(`Moving item id ${this.selectedItem.id} from inventory ${this.selectedInventory.inventoryId} to inventory ${this.movingOverInventory.inventoryId}`);
 
         if (!this.isMovingItemsBetweenInventories) {
@@ -257,7 +257,7 @@ export default class InventoryController {
     itemStackedSuccessfully(inventoryId, itemToStackFromId, itemToStackId, itemToStackInventoryId, amountOfStackedItems) {
         const inventory = this._getInventoryById(inventoryId);
         if (inventory == null) {
-            alt.log('Couldnt stack items on UI. Inventory was null.');
+            console.log('Couldnt stack items on UI. Inventory was null.');
             return;
         }
 
@@ -269,7 +269,7 @@ export default class InventoryController {
 
             const itemToStackInventory = this._getInventoryById(itemToStackInventoryId);
             if (itemToStackInventory == null) {
-                alt.log('Couldnt stack items on UI. Item to stack inventory was null.');
+                console.log('Couldnt stack items on UI. Item to stack inventory was null.');
                 return;
             }
 
@@ -289,7 +289,7 @@ export default class InventoryController {
         if (this.movingOverInventory == this.playerEquipment || this.selectedInventory == this.playerEquipment) return;
 
         if (!this.isMovingItemsBetweenInventories) {
-            alt.emit('inventorySwapItems', this.selectedInventory.inventoryId, this.selectedItem.id, this.selectedItem.slotId,
+            alt.emit('inventoryTrySwapItems', this.selectedInventory.inventoryId, this.selectedItem.id, this.selectedItem.slotId,
                 this.itemToSwap.id, this.itemToSwap.slotId, -1);
             return;
         }
@@ -343,7 +343,7 @@ export default class InventoryController {
             itemToSwap.slotId = itemToSwapSlotId;
 
             inventory.items.push(itemToSwap);
-            itemToSwap.items.push(selectedItem);
+            inventoryToSwap.items.push(selectedItem);
         } else {
             const itemToSwap = this.getItemByIdFromInventoryItems(inventory.items, itemToSwapId);
             if (itemToSwap == null) return;

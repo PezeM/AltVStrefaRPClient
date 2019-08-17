@@ -110,6 +110,7 @@ declare module "alt" {
 
     export class BaseObject {
         readonly type: number;
+		readonly valid: boolean;
 
         destroy(): void;
         getMeta(key: string): any;
@@ -133,9 +134,9 @@ declare module "alt" {
         readonly name: string;
         readonly scriptID: number;
         readonly vehicle: Vehicle | undefined | null;
-		static all: Array<Player>;
+		static readonly all: Array<Player>;
 		static readonly local: Player;
-        isTalking: any;
+        readonly isTalking: boolean;
         remoteId: any;
         syncedObject: any;
 
@@ -152,11 +153,13 @@ declare module "alt" {
     }
 
     export class Vehicle extends Entity {
+        static readonly all: Array<Vehicle>;
         readonly gear: number;
         readonly rpm: number;
         readonly scriptID: number;
-        readonly speed: number;
-        static all: Array<Vehicle>;
+		readonly speed: number;
+		readonly wheelsCount: number;
+
         lightFading: any;
         lightFadingCount: number;
         lockTimer: any;
@@ -166,6 +169,7 @@ declare module "alt" {
         isVisible: boolean;
         url: string;
 
+		constructor(v8webview: string);
         constructor(url: string, isOverlayVal: number | boolean, targetTexture?: string);
         emit(evName: string, ...args: any[]): void;
         execJS(p0: string): void;
@@ -226,6 +230,78 @@ declare module "alt" {
 
         constructor(x: number, y: number, z: number);
     }
+
+	export class HandlingData {
+		acceleration: number;
+		antiRollBarBiasFront: number;
+		antiRollBarBiasRear: number;
+		antiRollBarForce: number;
+		brakeBiasFront: number;
+		brakeBiasRear: number;
+		breakForce: number;
+		camberStiffnesss: number;
+		centreOfMassOffset: any|number|Object;
+		clutchChangeRateScaleDownShift: number;
+		clutchChangeRateScaleUpShift: number;
+		collisionDamageMult: number;
+		damageFlags: number|number;
+		deformationDamageMult: number;
+		downforceModifier: number;
+		driveBiasFront: number;
+		driveInertia: number;
+		driveMaxFlatVel: number;
+		engineDamageMult: number;
+		handBrakeForce: number;
+		handlingFlags: number|number;
+		readonly handlingNameHash: number;
+		inertiaMultiplier: any|number|Object;
+		initialDragCoeff: number;
+		initialDriveForce: number;
+		initialDriveGears: number|number;
+		initialDriveMaxFlatVel: number;
+		lowSpeedTractionLossMult: number;
+		mass: number;
+		modelFlags: number|number;
+		monetaryValue: number|number;
+		oilVolume: number;
+		percentSubmerged: number;
+		percentSubmergedRatio: number;
+		petrolTankVolume: number;
+		rollCentreHeightFront: number;
+		rollCentreHeightRear: number;
+		seatOffsetDistX: number;
+		seatOffsetDistY: number;
+		seatOffsetDistZ: number;
+		steeringLock: number;
+		steeringLockRatio: number;
+		suspensionBiasFront: number;
+		suspensionBiasRear: number;
+		suspensionCompDamp: number;
+		suspensionForce: number;
+		suspensionLowerLimit: number;
+		suspensionRaise: number;
+		suspensionReboundDamp: number;
+		suspensionUpperLimit: number;
+		tractionBiasFront: number;
+		tractionBiasRear: number;
+		tractionCurveLateral: number;
+		tractionCurveLateralRatio: number;
+		tractionCurveMax: number;
+		tractionCurveMaxRatio: number;
+		tractionCurveMin: number;
+		tractionCurveMinRatio: number;
+		tractionLossMult: number;
+		tractionSpringDeltaMax: number;
+		tractionSpringDeltaMaxRatio: number;
+		unkFloat1: number;
+		unkFloat2: number;
+		unkFloat4: number;
+		unkFloat5: number;
+		weaponDamageMult: number;
+	
+		constructor(p0: number);
+		getForModel(modelHash: number|number):any;
+	  }
 
 	export class LocalStorage {
         static get(): LocalStorage;
@@ -370,6 +446,7 @@ declare module "alt" {
       }
       */
     export function discordInfo(): Object | undefined | null;
+  	export function discordRequestOAuth2(): void;
 
     /**
        * Emit a client script event
@@ -440,6 +517,7 @@ declare module "alt" {
       */
     export function gameControlsEnabled(): boolean;
     export function getCursorPos(): Object;
+    export function getDiscordOAuth2Result(): any;
 
     /**
       type: 'function',
@@ -470,6 +548,18 @@ declare module "alt" {
       */
     export function getLicenseHash(): string;
 
+	  /**
+    type: 'function',
+    name: 'getLocalPlayer',
+    description: 'Returns a local player',
+    returns: {
+    	dataType: 'Player',
+    	description: 'Local Player object'
+    }
+    */
+    export function getLocalPlayer(): Player;
+    export function getLocale(): any;
+
     /**
       type: 'function',
       name: 'getMicLevel',
@@ -489,6 +579,9 @@ declare module "alt" {
     description: 'Initializes voice system',
     */
     export function initVoice(bitrate: number): boolean;
+	export function isDiscordInfoReady(): boolean;
+	export function isDiscordOAuth2Accepted(): boolean;
+	export function isDiscordOAuth2Finished(): boolean;
 
     /**
       type: 'function',
@@ -805,7 +898,9 @@ declare module "alt" {
       }
       */
     export function setTimeout(idFn: Function, id: number | number): number;
-
+	export function setWeatherCycle(weathers: Array<any>, multipliers: Array<any>): any;
+	export function setWeatherSyncActive(isActive: boolean): any;
+  
     /**
       type: 'function',
       name: 'showCursor',

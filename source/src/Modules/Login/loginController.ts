@@ -110,3 +110,49 @@ class LoginController {
 
 const loginController = new LoginController();
 export default loginController;
+
+
+
+
+
+let isDiscordReady = false;
+const discordInfoReadyInterval = alt.setInterval(() => {
+    if (alt.isDiscordInfoReady()) {
+        isDiscordReady = true;
+        alt.clearInterval(discordInfoReadyInterval);
+        alt.emit('discordInfoIsReady');
+    }
+}, 100);
+
+
+alt.on('discordInfoIsReady', () => {
+    alt.log('Requesting discord OAuth2');
+    alt.discordRequestOAuth2();
+    const discordOAuth2FinishedInterval = alt.setInterval(() => {
+        if (alt.isDiscordOAuth2Finished()) {
+            alt.log(`Discord OAuth2 finished`);
+            alt.emit('discordOAuth2Finished');
+            alt.clearInterval(discordOAuth2FinishedInterval);
+        }
+    }, 100);
+});
+
+function stringifyReplacer(key: any, value: any) {
+    if (typeof value === 'bigint') {
+        return value.toString() + 'n';
+    } else {
+        return value;
+    }
+}
+
+alt.on('discordOAuth2Finished', () => {
+    if (alt.isDiscordOAuth2Accepted()) {
+        alt.log(`Discord OAuth2 finished and was accepted`);
+        const oAuth2Result = alt.getDiscordOAuth2Result();
+        alt.log(oAuth2Result);
+        // alt.log(JSON.stringify(oAuth2Result, stringifyReplacer));
+        alt.emitServer('discordOAuth2Result', oAuth2Result);
+    } else {
+        alt.log(`Discord OAuth2 finished and was declined`);
+    }
+});

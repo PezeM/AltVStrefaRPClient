@@ -1,25 +1,23 @@
 import { displayRadar, displayHud } from 'natives';
 
-let isRadarVisible = false;
+let radarState = false;
 
-export const getRadarState = (): boolean => isRadarVisible;
+export const isRadarVisible = (): boolean => radarState;
 
-export function showRadar() {
-    isRadarVisible = true;
-    displayHud(isRadarVisible);
-    displayRadar(isRadarVisible);
+export function showRadar(show = true) {
+    radarState = show;
+    displayHud(show);
+    displayRadar(show);
 }
 
 export function hideRadar() {
-    isRadarVisible = false;
-    displayHud(isRadarVisible);
-    displayRadar(isRadarVisible);
+    showRadar(false);
 }
 
 export function toggleRadar() {
-    isRadarVisible = !isRadarVisible;
-    displayHud(isRadarVisible);
-    displayRadar(isRadarVisible);
+    radarState = !radarState;
+    displayHud(radarState);
+    displayRadar(radarState);
 }
 
 

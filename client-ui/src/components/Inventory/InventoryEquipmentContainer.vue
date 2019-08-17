@@ -20,8 +20,9 @@
                     :disabled="isMovingItem"
                     placement="auto"
                     popoverClass="item-popover"
+                    class="h-100"
                 >
-                    <div class="item-wrapper">
+                    <div class="item-wrapper h-100">
                         <img
                             :src="require(`@/assets/images/items/${getCorrectImage(item)}`)"
                             class="item-image"
@@ -150,6 +151,7 @@ export default {
 
 <style scoped>
 .item-slot {
+    width: 3em;
     height: 5.5rem;
     padding: 0.1rem;
     background: rgba(0, 0, 0, 0.5);

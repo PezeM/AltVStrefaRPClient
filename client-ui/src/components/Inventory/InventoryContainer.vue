@@ -28,6 +28,7 @@
                                 :disabled="isMovingItem"
                                 placement="auto"
                                 popoverClass="item-popover"
+                                class="h-100"
                             >
                                 <div class="item-wrapper">
                                     <img
@@ -156,12 +157,12 @@ export default {
 }
 
 .inventory-slot {
-    /* width: 3rem; */
+    width: 3rem;
     height: 5.5rem;
     background-color: rgba(0, 0, 0, 0.5);
     color: #f3f3f3;
     font-size: 0.8em;
-    padding: 0.1em;
+    padding: 0.4em;
     border: 1px solid rgba(133, 133, 133, 0.4);
 
     transition: box-shadow 0.25s;

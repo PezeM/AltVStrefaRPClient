@@ -4,7 +4,7 @@ import { drawText } from 'source/src/Helpers/uiHelper';
 import { isDriver } from 'source/src/Helpers/playerHelpers';
 import VehicleComponent from 'source/src/Modules/Vehicle/Components/vehicleComponent';
 import { VehicleComponentTypes } from 'source/src/Constans/vehicleComponentTypes';
-import { getRadarState, showRadar, hideRadar } from 'source/src/Modules/Core/States/radarState';
+import { isRadarVisible, showRadar, hideRadar } from 'source/src/Modules/Core/States/radarState';
 
 const MULTIPLY_SPEED_BY = 3.6;
 const player = alt.Player.local;
@@ -20,11 +20,11 @@ class VehicleSpeedometer extends VehicleComponent {
 
     onRadarIntervalCheck() {
         if (player.vehicle) {
-            if (!getRadarState()) {
+            if (!isRadarVisible()) {
                 showRadar();
             }
         } else {
-            if (getRadarState()) {
+            if (isRadarVisible()) {
                 hideRadar();
             }
         }

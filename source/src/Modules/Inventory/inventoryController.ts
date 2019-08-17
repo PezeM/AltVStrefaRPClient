@@ -241,6 +241,7 @@ class InventoryController {
         if (wasSwapped) {
             alt.log('Item was sawpped');
             if (this.isInventoryOpened) {
+                alt.log('Calling UI event');
                 mainUi.emitUiEvent("inventoryItemWasSwappedSuccessfully",
                     inventoryId, selectedItemId, selectedItemSlotId, itemToSwapId, itemToSwapSlotId, itemToSwapInventoryId);
             }

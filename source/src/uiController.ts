@@ -71,9 +71,10 @@ alt.setInterval(() => {
     else {
         raycast.didRaycastHit = false;
     }
+
 }, 1);
 
-alt.on('update', () => {
+alt.setInterval(() => {
     // if (chat.isOpen() || mainUi.viewOpened) {
     //     game.disableAllControlActions(0);
     //     game.disableAllControlActions(2);
@@ -106,7 +107,7 @@ alt.on('update', () => {
         game.enableControlAction(0, 2, false); // Mouse Look, Up/Down
         game.enableControlAction(0, 142, false); // Right Click
     }
-});
+}, 0);
 
 alt.onServer('showNotification', (type: number, title: string, message: string, duration: number, icon: any) => {
     mainUi.showCefNotification(type, title, message, duration, icon == null ? true : icon);

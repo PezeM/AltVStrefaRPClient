@@ -2,13 +2,13 @@ import * as alt from 'alt';
 import * as game from 'natives';
 import utils from 'source/src/Helpers/utils';
 import { IMinimap } from 'source/src/Constans/interfaces';
+import { showRadar } from 'source/src/Modules/Core/States/radarState';
 
 const localPlayer = alt.Player.local;
 
 export function showUi(toggle: boolean) {
     alt.toggleGameControls(toggle);
-    game.displayHud(toggle);
-    game.displayRadar(toggle);
+    showRadar(toggle);
 }
 
 export function showUiAndFreezePlayer(toggle: boolean) {

@@ -2,7 +2,7 @@
     <div id="inventory" v-on:keyup.esc="closeInventory()" v-on:keyup.i="closeInventory()">
         <div class="container h-100">
             <div class="row h-100">
-                <div class="row justify-content align-content-center">
+                <div class="row justify-content align-content-center w-100">
                     <InventoryTopBar :gameInfo="gameInfo" class="mx-auto" />
                     <div class="row w-100 mx-auto">
                         <div class="col-3">
@@ -118,7 +118,7 @@ export default {
                 return {
                     inventoryId: 3,
                     inventoryName: 'Ekwipunek',
-                    inventorySlots: 30,
+                    inventorySlots: 18,
                     items: [
                         {
                             id: 47,
@@ -403,7 +403,7 @@ export default {
             console.log('Item was transfered on VUE');
             this.inventoryController.itemWasTransferedSuccessfully(inventoryToMoveFromId, inventoryToMoveToId, itemToTransferId, slotId);
         },
-        inventoryItemWasSwappedSuccessfully(inventoryId, selectedItemId, selectedItemSlotId, itemToSwapId, itemToSwapSlotId, itemToSwapInventoryId) {
+        itemWasSwappedSuccessfully(inventoryId, selectedItemId, selectedItemSlotId, itemToSwapId, itemToSwapSlotId, itemToSwapInventoryId) {
             this.inventoryController.itemWasSwappedSuccessfully(
                 inventoryId,
                 selectedItemId,
@@ -533,7 +533,6 @@ alt.on('inventoryItemWasUnequippedSuccessfully', (playerEquipmentId, selectedInv
 });
 
 alt.on('inventoryItemWasMovedSuccessfully', (selectedInventoryId, selectedItemId, newSlotNumber) => {
-    console.log('Item was moved succesfully in VUE ALT ON');
     EventBus.$emit('inventoryItemWasMovedSuccessfully', selectedInventoryId, selectedItemId, newSlotNumber);
 });
 
@@ -542,6 +541,7 @@ alt.on('inventoryItemWasTransferedSuccessfully', (inventoryToMoveFromId, invento
 });
 
 alt.on('inventoryItemWasSwappedSuccessfully', (inventoryId, selectedItemId, selectedItemSlotId, itemToSwapId, itemToSwapSlotId, itemToSwapInventoryId) => {
+    console.log('Item was swapped on VUE ALT ON');
     EventBus.$emit(
         'inventoryItemWasSwappedSuccessfully',
         inventoryId,
@@ -556,7 +556,7 @@ alt.on('inventoryItemWasSwappedSuccessfully', (inventoryId, selectedItemId, sele
 
 <style>
 #inventory {
-    background-image: url('../assets/example-image.jpg');
+    /* background-image: url('../assets/example-image.jpg'); */
     background-color: rgba(0, 0, 0, 0.3);
     width: 100%;
     height: 100vh;

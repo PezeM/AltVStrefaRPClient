@@ -3,6 +3,8 @@ import * as game from 'natives';
 import mainUi from 'source/src/Modules/Ui/mainUi';
 import { NotificationTypes } from 'source/src/Constans/notificationTypes';
 import { drawText } from 'source/src/Helpers/uiHelper';
+import utils from 'source/src/Helpers/utils';
+import sounds from 'source/src/Modules/Core/soundsController';
 
 const localPlayer = alt.Player.local;
 
@@ -27,6 +29,9 @@ class Debug {
             case "activateInterior":
                 this.activateInteriorAtPlayerCoords();
                 break;
+            case "test3DSound":
+                this.test3DSound();
+                break;
             default:
                 break;
         }
@@ -35,17 +40,17 @@ class Debug {
     onTick() {
         if (!this.debugEnabled) return;
 
-        drawText(`Health: ${game.getEntityHealth(localPlayer.scriptID)}`, [0.1, 0.05], 4, [255, 255, 255, 255], 0.4, true, false);
-        drawText(`Armor: ${game.getPedArmour(localPlayer.scriptID)}`, [0.1, 0.07], 4, [255, 255, 255, 255], 0.4, true, false);
+        drawText(`Health: ${game.getEntityHealth(localPlayer.scriptID)}`, [0.03, 0.05], 4, [255, 255, 255, 255], 0.4, true, false);
+        drawText(`Armor: ${game.getPedArmour(localPlayer.scriptID)}`, [0.03, 0.07], 4, [255, 255, 255, 255], 0.4, true, false);
         drawText(`Pos: x: ${localPlayer.pos.x.toFixed(3)} y: ${localPlayer.pos.y.toFixed(3)} z: ${localPlayer.pos.z.toFixed(3)}`,
-            [0.1, 0.09], 4, [255, 255, 255, 255], 0.4, true, false);
-        drawText(`Heading: ${game.getEntityHeading(localPlayer.scriptID)}`, [0.1, 0.11], 4, [255, 255, 255, 255], 0.4, true, false);
-        drawText(`HaG: ${game.getEntityHeightAboveGround(localPlayer.scriptID)}`, [0.1, 0.13], 4, [255, 255, 255, 255], 0.4, true, false);
-        drawText(`Speed: ${game.getEntitySpeed(localPlayer.scriptID)}`, [0.1, 0.15], 4, [255, 255, 255, 255], 0.4, true, false);
-        drawText(`Frame time: ${game.getFrameTime()}`, [0.1, 0.17], 4, [255, 255, 255, 255], 0.4, true, false);
-        drawText(`Model: ${localPlayer.model}`, [0.1, 0.19], 4, [255, 255, 255, 255], 0.4, true, false);
-        drawText(`ScriptID: ${localPlayer.scriptID}`, [0.1, 0.21], 4, [255, 255, 255, 255], 0.4, true, false);
-        drawText(`ID: ${localPlayer.id}`, [0.1, 0.23], 4, [255, 255, 255, 255], 0.4, true, false);
+            [0.03, 0.09], 4, [255, 255, 255, 255], 0.4, true, false);
+        drawText(`Heading: ${game.getEntityHeading(localPlayer.scriptID).toFixed(4)}`, [0.03, 0.11], 4, [255, 255, 255, 255], 0.4, true, false);
+        drawText(`HaG: ${game.getEntityHeightAboveGround(localPlayer.scriptID).toFixed(4)}`, [0.03, 0.13], 4, [255, 255, 255, 255], 0.4, true, false);
+        drawText(`Speed: ${game.getEntitySpeed(localPlayer.scriptID).toFixed(4)}`, [0.03, 0.15], 4, [255, 255, 255, 255], 0.4, true, false);
+        drawText(`Frame time: ${game.getFrameTime().toFixed(4)}`, [0.03, 0.17], 4, [255, 255, 255, 255], 0.4, true, false);
+        drawText(`Model: ${localPlayer.model}`, [0.03, 0.19], 4, [255, 255, 255, 255], 0.4, true, false);
+        drawText(`ScriptID: ${localPlayer.scriptID}`, [0.03, 0.21], 4, [255, 255, 255, 255], 0.4, true, false);
+        drawText(`ID: ${localPlayer.id}`, [0.03, 0.23], 4, [255, 255, 255, 255], 0.4, true, false);
     }
 
     loadIpl(iplName: string) {
@@ -63,6 +68,15 @@ class Debug {
         if (interiorId < 1) return;
         game.setInteriorActive(interiorId, true);
         game.unpinInterior(interiorId);
+    }
+
+    test3DSound() {
+        const object = game.createObject(utils.joaat("prop_speaker_07"), localPlayer.pos.x + 1, localPlayer.pos.y + 1, localPlayer.pos.z - 0.5,
+            true, false, false);
+        const objectPos = game.getEntityCoords(object, false);
+        alt.log(`Object coords = ${JSON.stringify(objectPos, null, 2)}`);
+        sounds.play3DCefSound("test", 1.0, objectPos, localPlayer.pos, true);
+        mainUi.showCefNotification(NotificationTypes.Notice, "3D Sound", "Odtwarzanie dźwieku 3D dev", 3500);
     }
 }
 

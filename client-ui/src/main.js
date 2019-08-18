@@ -4,7 +4,7 @@ if (!global.alt) {
     global.alt = {
         uiDebug: true,
         on(ev, cb) {
-            console.log('Alt on', ev, cb);
+            // console.log('Alt on', ev, cb);
         },
         emit(ev, ...args) {
             console.log('Event triggered', ev, args);

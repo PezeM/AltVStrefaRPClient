@@ -12,7 +12,7 @@ if (!global.alt) {
     global.alt = {
         uiDebug: true,
         on(ev, cb) {
-            console.log('Alt on', ev, cb);
+            // console.log('Alt on', ev, cb);
         },
         emit(ev, ...args) {
             console.log('Event triggered', ev, args);
@@ -77,7 +77,6 @@ alt.on('openFractionMenu', (fractionType, fractionDatas) => {
 });
 
 alt.on('openPlayerInventory', (inventoryData, equippedItems, addonationalInventory, gameInformation) => {
-    console.log(`Inventory data on UI ${inventoryData} equippedItems ${equippedItems} addonationalInventory ${addonationalInventory}`);
     router.push({
         name: 'inventory',
         params: {

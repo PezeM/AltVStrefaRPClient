@@ -17,6 +17,12 @@ class SoundsController {
         this.soundTick = alt.setInterval(this.onSoundTick.bind(this), 100);
 
         mainUi.onUiEvent('soundsSoundEnded', this.onSoundEndedPlaying.bind(this));
+
+        alt.onServer('soundsPlaySoundInRange', this.onPlayCefSoundInRange.bind(this));
+    }
+
+    playCefSoundInRange(soundName: string, volume: number, range: number, position: Vector3, loop: boolean = false) {
+        alt.emitServer('SoundsPlaySoundInRange', soundName, volume, range, position, loop);
     }
 
     playCefSound(soundName: string, volume: number, loop: boolean = false) {
@@ -40,7 +46,12 @@ class SoundsController {
         }
     }
 
-    onSoundTick() {
+    private onPlayCefSoundInRange(soundId: number, soundName: string, volume: number, loop: boolean = false) {
+        this.sounds.push(new Sound(soundId, soundName, false));
+        mainUi.emitUiEvent('soundsPlaySound', soundId, soundName, volume, loop);
+    }
+
+    private onSoundTick() {
         if (!this.updatePlayerPosition) return;
         mainUi.emitUiEvent('soundsEmitPlayerPosition', localPlayer.pos);
     }

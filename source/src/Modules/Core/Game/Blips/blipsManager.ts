@@ -26,7 +26,6 @@ class BlipsManager {
     }
 
     onAddedNewBlip(newBlip: IBlipWrapper) {
-        alt.log('New blip event triggered. New blip is ' + JSON.stringify(newBlip, null, 2));
         const blip = this.createNewBlip(newBlip);
         this.blips.set(newBlip.id, blip);
     }
@@ -77,11 +76,13 @@ class BlipsManager {
     }
 
     private createNewBlip(newBlip: IBlipWrapper) {
+        alt.log('New blip event triggered. New blip is ' + JSON.stringify(newBlip, null, 2));
         const blip = new alt.PointBlip(newBlip.position.x, newBlip.position.y, newBlip.position.z);
-        blip.name = newBlip.name;
+        blip.category = 4;
+        blip.shortRange = true;
         blip.sprite = newBlip.sprite;
         blip.color = newBlip.color;
-        blip.shortRange = true;
+        blip.name = newBlip.name;
         alt.log(`Blip name = ${blip.name} gxt name = ${blip.gxtName} short range = ${blip.shortRange}`);
         return blip;
     }

@@ -1185,7 +1185,7 @@ declare module "natives" {
 	export function setEntityMaxHealth(entity: number, value: number): void;
 	export function getEntityHeight(entity: number, X: number, Y: number, Z: number, atTop: boolean, inWorldCoords: boolean): number;
 	export function getEntityHeightAboveGround(entity: number): number;
-	export function getEntityMatrix(entity: number, rightVector: vectorPtr, forwardVector: vectorPtr, upVector: vectorPtr, position: vectorPtr): Array<any>;
+	export function getEntityMatrix(entity: number, rightVector: vectorPtr | null, forwardVector: vectorPtr | null, upVector: vectorPtr | null, position: vectorPtr | null): Array<any>;
 	export function getEntityModel(entity: number): number;
 	export function getOffsetFromEntityGivenWorldCoords(entity: number, posX: number, posY: number, posZ: number): Vector3;
 	export function getOffsetFromEntityInWorldCoords(entity: number, offsetX: number, offsetY: number, offsetZ: number): Vector3;

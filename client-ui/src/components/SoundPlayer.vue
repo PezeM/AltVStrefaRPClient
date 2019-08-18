@@ -2,6 +2,8 @@
 
 <script>
 import { Howl, Howler } from 'howler';
+import sono from 'sono';
+import panner from 'sono/effects/panner';
 import EventBus from '@/event-bus.js';
 
 export default {
@@ -11,22 +13,19 @@ export default {
         EventBus.$on('soundsEmitPlayerPosition', this.updatePosition);
         EventBus.$on('soundsPlay3DSound', this.play3DSound);
         console.log('Sound player mounted');
-        setTimeout(() => {
-            this.playSound(1, 'unbuckle', 0.5);
-        }, 3000);
 
         // setTimeout(() => {
         //     console.log('Playing 3d sound');
         //     const soundPosition = { x: 0, y: 0, z: 0 };
         //     const playerPosition = { x: 1, y: 1, z: 1 };
-        //     this.play3DSound('test', 1, soundPosition, playerPosition);
-
-        //     setInterval(() => {
-        //         playerPosition.x++;
-        //         console.log('Changed player position x to ' + playerPosition.x);
-        //         this.updatePosition(playerPosition);
-        //     }, 5000);
+        //     this.play3DSound(1, 'test', 0.5, soundPosition, playerPosition, false);
+        //     // setInterval(() => {
+        //     //     playerPosition.x++;
+        //     //     console.log('Changed player position x to ' + playerPosition.x);
+        //     //     this.updatePosition(playerPosition);
+        //     // }, 1000);
         // }, 2000);
+        sono.log();
     },
     data() {
         return {
@@ -62,7 +61,51 @@ export default {
 
             console.log(`Should play sound`);
         },
-        play3DSound(id, soundName, volume, soundPosition, playerPosition, loop = false) {
+        play3DSound(id, soundName, volume, soundPosition, soundForwardVector, playerPosition, loop = false) {
+            const player = {
+                id: id,
+                soundName: soundName,
+                sono: sono.create({
+                    id: id,
+                    url: require(`@/assets/sounds/${soundName}.mp3`),
+                    volume: volume,
+                    loop: loop,
+                    effects: [
+                        sono.panner({
+                            panningModel: 'HRTF',
+                            distanceModel: 'exponential',
+                            refDistance: 0.8,
+                            maxDistance: 1000,
+                            rolloffFactor: 2,
+                            coneInnerAngle: 360,
+                            coneOuterAngle: 0,
+                            coneOuterGain: 0,
+                        }),
+                    ],
+                }),
+            };
+            this.soundPlayers.set(player.id, player);
+            player.sono.on('error', () => {
+                console.log(`Couldn't play sound named: ${soundName}.`);
+                EventBus.$emit('showNotification', 3, 'Błąd', 'Wystąpił błąd z odtworzeniem dźwięku. Zgłoś ten problem administracji.');
+            });
+
+            player.sono.on('ended', () => {
+                player.sono.destroy();
+                player.sono = null;
+                alt.emit('soundsSoundEnded', player.id);
+                this.soundPlayers.delete(player.id);
+            });
+
+            player.sono.effects[0].setPosition(soundPosition);
+            player.sono.effects[0].setOrientation(0, 0, 0);
+
+            player.sono.effects[0].setListenerPosition(playerPosition);
+            player.sono.effects[0].setListenerOrientation(0, 0, 0);
+
+            player.sono.play();
+        },
+        play3DSound2(id, soundName, volume, soundPosition, playerPosition, loop = false) {
             const player = {
                 id: id,
                 soundName: soundName,
@@ -108,8 +151,12 @@ export default {
         muteAllSounds() {
             Howler.mute(true);
         },
-        updatePosition(playerPosition) {
-            Howler.pos(playerPosition.x, playerPosition.y, playerPosition.z);
+        updatePosition(playerPosition, forwardVector) {
+            // Howler.pos(playerPosition.x, playerPosition.y, playerPosition.z);
+
+            panner.setListenerPosition(playerPosition.x, playerPosition.y, playerPosition.z);
+            panner.setListenerOrientation(forwardVector.x, 0, 0);
+            // console.log('Changed panner position');
         },
         changeGlobalVolume(volume) {
             if (volume < 0 && volume > 1) {
@@ -131,11 +178,11 @@ alt.on('soundsPlaySound', (id, soundName, volume, loop) => {
     EventBus.$emit('soundsPlaySound', id, soundName, volume, loop);
 });
 
-alt.on('soundsPlay3DSound', (id, soundName, volume, soundPosition, playerPosition, loop) => {
-    EventBus.$emit('soundsPlay3DSound', id, soundName, volume, soundPosition, playerPosition, loop);
+alt.on('soundsPlay3DSound', (id, soundName, volume, soundPosition, soundForwardVector, playerPosition, loop) => {
+    EventBus.$emit('soundsPlay3DSound', id, soundName, volume, soundPosition, soundForwardVector, playerPosition, loop);
 });
 
-alt.on('soundsEmitPlayerPosition', position => {
-    EventBus.$emit('soundsEmitPlayerPosition', position);
+alt.on('soundsEmitPlayerPosition', (position, forwardVector) => {
+    EventBus.$emit('soundsEmitPlayerPosition', position, forwardVector);
 });
 </script>

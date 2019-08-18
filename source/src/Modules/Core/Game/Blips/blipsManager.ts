@@ -1,6 +1,6 @@
 import * as alt from 'alt';
 import { IBlipWrapper } from 'source/src/Constans/interfaces';
-import IdGenerator from '../../idGenerator';
+import IdGenerator from 'source/src/Modules/Core/idGenerator';
 
 class BlipsManager {
     blips: Map<number, alt.Blip>;
@@ -33,13 +33,14 @@ class BlipsManager {
 
     onRemovedBlip(blipId: number) {
         if (!this.blips.has(blipId)) return;
+        const blip = this.blips.get(blipId) as alt.Blip;
         this.blips.delete(blipId);
+        blip.destroy();
         alt.log(`Deleted blip ${blipId}`);
     }
 
     onLoadAllBlips(blipsList: IBlipWrapper[]) {
         if (blipsList == null) return;
-        alt.log(`Blip lists: ${JSON.stringify(blipsList, null, 2)}`);
         alt.log(`Loading ${blipsList.length} blips`);
         blipsList.forEach(blip => {
             this.onAddedNewBlip(blip);
@@ -80,6 +81,8 @@ class BlipsManager {
         blip.name = newBlip.name;
         blip.sprite = newBlip.sprite;
         blip.color = newBlip.color;
+        blip.shortRange = true;
+        alt.log(`Blip name = ${blip.name} gxt name = ${blip.gxtName} short range = ${blip.shortRange}`);
         return blip;
     }
 }

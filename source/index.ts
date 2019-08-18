@@ -22,7 +22,7 @@ import vehicleSeatbeltComponent from 'source/src/Modules/Vehicle/Components/vehi
 import vehicleEngineToggleComponent from 'source/src/Modules/Vehicle/Components/vehicleEngineToggleComponent';
 import SoundBrowser from 'source/src/Modules/Admin/soundBrowser';
 import inventoryController from 'source/src/Modules/Inventory/inventoryController';
-import 'source/src/Modules/Core/Game/blipsManager';
+import 'source/src/Modules/Core/Game/Blips/blipsManager';
 
 const localPlayer = alt.Player.local;
 let lastKeyPressedTime = new Date().getTime();

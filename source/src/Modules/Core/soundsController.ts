@@ -32,6 +32,32 @@ class SoundsController {
             [0.7, 0.1], 4, [255, 255, 255, 255], 0.35, true);
     }
 
+    playSound(soundId: number, audioName: string, audioRef: string, p5: boolean) {
+        return game.playSound(soundId, audioName, audioRef, false, 0, p5);
+    }
+
+    playSoundFromEntity(audioName: string, entityId: number, audioRef: string) {
+        return game.playSoundFromEntity(-1, audioName, entityId, audioRef, false, 0);
+    }
+
+    playSoundFromCoords(audioName: string, audioRef: string, position: Vector3) {
+        return game.playSoundFromCoord(-1, audioName, position.x, position.y, position.z, audioRef, false, 0, false);
+    }
+
+    playSoundFrontend(audioName: string, audioRef: string, p3: boolean) {
+        return game.playSoundFrontend(-1, audioName, audioRef, p3);
+    }
+
+    playSpeech(pedId: number, speechName: string, speechParam: string) {
+        game.playAmbientSpeech1(pedId, speechName, speechParam);
+    }
+
+    // https://gist.github.com/alexguirre/0af600eb3d4c91ad4f900120a63b8992
+    // https://docs.ragepluginhook.net/html/M_Rage_Ped_PlayAmbientSpeech_2.htm
+    playSpeechWithVoice(pedId: number, speechName: string, voiceName: string, speechParam: string) {
+        game.playAmbientSpeechWithVoice(pedId, speechName, voiceName, speechParam, false);
+    }
+
     playCefSoundInRange(soundName: string, volume: number, range: number, position: Vector3, loop: boolean = false) {
         alt.emitServer('SoundsPlaySoundInRange', soundName, volume, range, position, loop);
     }

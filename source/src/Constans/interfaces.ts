@@ -127,6 +127,6 @@ export interface IBlipWrapper {
     name: string;
     color: number;
     sprite: number;
+    scale: number;
     position: Vector3;
-    type: number;
 }

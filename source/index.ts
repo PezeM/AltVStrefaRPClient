@@ -1,16 +1,18 @@
 import * as alt from 'alt';
 import * as game from 'natives';
 import chat from 'chat';
+import * as gameState from 'source/src/Modules/Core/States/gameState';
 import mainUi from 'source/src/Modules/Ui/mainUi';
 import keycodes from 'source/src/Constans/keycodes';
-import * as gameState from 'source/src/Modules/Core/States/gameState';
+import 'source/src/Modules/Core/Game/Blips/blipsManager';
+import 'source/src/Modules/Debug/debug';
 import 'source/src/uiController';
 import 'source/src/menus';
 import 'source/src/Modules/Login/loginController';
 import 'source/src/Modules/Admin/noclip';
 import 'source/src/Modules/Admin/adminTeleports';
 import 'source/src/Modules/Admin/animationBrowser';
-import 'source/src/Environment/sitting';
+import 'source/src/Modules/Environment/sitting';
 import * as vehicles from 'source/src/Modules/Vehicle/vehicles';
 import 'source/src/Modules/objectSync';
 import 'source/src/Modules/Streaming/networkStreamer';
@@ -22,8 +24,6 @@ import vehicleSeatbeltComponent from 'source/src/Modules/Vehicle/Components/vehi
 import vehicleEngineToggleComponent from 'source/src/Modules/Vehicle/Components/vehicleEngineToggleComponent';
 import SoundBrowser from 'source/src/Modules/Admin/soundBrowser';
 import inventoryController from 'source/src/Modules/Inventory/inventoryController';
-import 'source/src/Modules/Core/Game/Blips/blipsManager';
-import 'source/src/Modules/Debug/debug';
 
 const localPlayer = alt.Player.local;
 let lastKeyPressedTime = new Date().getTime();

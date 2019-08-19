@@ -81,6 +81,7 @@ class BlipsManager {
         blip.shortRange = true;
         blip.sprite = newBlip.sprite;
         blip.color = newBlip.color;
+        blip.scale = newBlip.scale;
         blip.name = newBlip.name;
         return blip;
     }

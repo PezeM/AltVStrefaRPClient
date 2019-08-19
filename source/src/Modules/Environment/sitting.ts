@@ -1,6 +1,7 @@
 import * as alt from 'alt';
 import * as game from 'natives';
 import { IControlsIds, ISittableArray, ISittableObject } from 'source/src/Constans/interfaces';
+import maths from 'source/src/Helpers/maths';
 
 const CONTROL_IDS: IControlsIds = {
     E: 38,
@@ -157,8 +158,7 @@ class Sitting {
                 if (closestBenchId === 0) continue;
 
                 const closestBenchCoords = game.getEntityCoords(closestBenchId, true);
-                if (game.getDistanceBetweenCoords(closestBenchCoords.x, closestBenchCoords.y, closestBenchCoords.z,
-                    localPlayer.pos.x, localPlayer.pos.y, localPlayer.pos.z, false) > DISTANCE) continue;
+                if (maths.distance(closestBenchCoords, localPlayer.pos, false) > DISTANCE) continue;
 
                 alt.log('Closest bench model: ' + key);
 

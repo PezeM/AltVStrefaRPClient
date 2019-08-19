@@ -54,8 +54,8 @@ class SoundsController {
 
     // https://gist.github.com/alexguirre/0af600eb3d4c91ad4f900120a63b8992
     // https://docs.ragepluginhook.net/html/M_Rage_Ped_PlayAmbientSpeech_2.htm
-    playSpeechWithVoice(pedId: number, speechName: string, voiceName: string, speechParam: string) {
-        game.playAmbientSpeechWithVoice(pedId, speechName, voiceName, speechParam, false);
+    playSpeechWithVoice(pedId: number, speechName: string, voiceName: string, speechModifier: string = 'SPEECH_PARAMS_FORCE') {
+        game.playAmbientSpeechWithVoice(pedId, speechName, voiceName, speechModifier, false);
     }
 
     playCefSoundInRange(soundName: string, volume: number, range: number, position: Vector3, loop: boolean = false) {

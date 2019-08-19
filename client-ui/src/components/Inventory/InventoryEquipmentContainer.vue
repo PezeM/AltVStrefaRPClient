@@ -84,10 +84,8 @@ export default {
     data() {
         return {
             tooltipDelay: {
-                tooltipDelay: {
-                    show: 500,
-                    hide: 20,
-                },
+                show: 500,
+                hide: 20,
             },
         };
     },

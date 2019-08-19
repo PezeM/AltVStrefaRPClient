@@ -32,6 +32,18 @@ class Debug {
             case "test3DSound":
                 this.test3DSound();
                 break;
+            case "setMaxDistance":
+                this.setMaxDistance(args[0]);
+                break;
+            case "setRefDistance":
+                this.setRefDistance(args[0]);
+                break;
+            case "setRollofFactor":
+                this.setRollofFactor(args[0]);
+                break;
+            case "setDistanceModel":
+                this.setDistanceModel(args[0]);
+                break;
             default:
                 break;
         }
@@ -76,11 +88,30 @@ class Debug {
         const objectPos = game.getEntityCoords(object, false);
         const [_, rightVector, forwardVector, upVector, position] = game.getEntityMatrix(object, null, null, null, null);
         alt.log(`Object coords = ${JSON.stringify(objectPos, null, 2)}`);
-        sounds.play3DCefSound("test", 1.0, objectPos, forwardVector, localPlayer.pos, true);
+        sounds.play3DCefSound("test.mp3", 1.0, objectPos, forwardVector, localPlayer.pos, true);
         mainUi.showCefNotification(NotificationTypes.Notice, "3D Sound", "Odtwarzanie dźwieku 3D dev", 3500);
 
         const matrix = game.getEntityMatrix(object, null, null, null, null);
         alt.log(`Matrix = ${JSON.stringify(matrix)}`);
+    }
+
+    setRollofFactor(arg0: string) {
+        const factor = Number(arg0);
+        mainUi.emitUiEvent("soundsSetRollofFactor", factor);
+    }
+
+    setRefDistance(arg0: string) {
+        const refDistance = Number(arg0);
+        mainUi.emitUiEvent("soundsSetRefDistance", refDistance);
+    }
+
+    setMaxDistance(arg0: string) {
+        const maxDistance = Number(arg0);
+        mainUi.emitUiEvent("soundsSetMaxDistance", maxDistance);
+    }
+
+    setDistanceModel(arg: string) {
+        mainUi.emitUiEvent("soundsSetDistanceModel", arg);
     }
 }
 

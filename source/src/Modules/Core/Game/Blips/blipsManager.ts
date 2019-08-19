@@ -76,14 +76,12 @@ class BlipsManager {
     }
 
     private createNewBlip(newBlip: IBlipWrapper) {
-        alt.log('New blip event triggered. New blip is ' + JSON.stringify(newBlip, null, 2));
         const blip = new alt.PointBlip(newBlip.position.x, newBlip.position.y, newBlip.position.z);
         blip.category = 4;
         blip.shortRange = true;
         blip.sprite = newBlip.sprite;
         blip.color = newBlip.color;
         blip.name = newBlip.name;
-        alt.log(`Blip name = ${blip.name} gxt name = ${blip.gxtName} short range = ${blip.shortRange}`);
         return blip;
     }
 }

@@ -38,7 +38,6 @@ alt.on('syncedMetaDataChange ', (entity: any, key: any, value: any) => {
 
 alt.onServer("objectStreamUpdate", (playerId: number, streamObject: any) => {
     alt.log('Triggered object stream update client-side');
-    alt.log(`All players: ${JSON.stringify(alt.Player.all)}`);
     const player = alt.Player.all.find(p => p.id === playerId);
     if (player == null || player.id === localPlayer.id) return;
     alt.log(`objectStreamUpdate player: ${JSON.stringify(player)}`);

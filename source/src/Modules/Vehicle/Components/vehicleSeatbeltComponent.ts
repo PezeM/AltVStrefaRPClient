@@ -74,7 +74,7 @@ class VehicleSeatbeltComponent extends VehicleComponent {
         const correctVehicleClass = this.correctVehicleClass(localPlayer.vehicle as alt.Vehicle);
         if (!correctVehicleClass) return;
         this.isSeatbeltOn = !this.isSeatbeltOn;
-        this.isSeatbeltOn ? sounds.playCefSound('buckle', 0.5, false) : sounds.playCefSound('unbuckle', 0.5, false);
+        this.isSeatbeltOn ? sounds.playCefSound('buckle.webm', 0.5, false) : sounds.playCefSound('unbuckle.webm', 0.5, false);
         alt.setTimeout(() => {
             const text = this.isSeatbeltOn ? 'Zapięto pasy bezpieczeństwa.' : 'Odpięto pasy bezpieczeństwa';
             mainUi.showCefNotification(NotificationTypes.Info, 'Pasy', text, 2500);

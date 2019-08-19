@@ -18,7 +18,7 @@ class SoundsController {
         this.idGenerator = new IdGenerator(1000000);
         this.sounds = [];
         this.updatePlayerPosition = false;
-        this.soundTick = alt.setInterval(this.onSoundTick.bind(this), 20);
+        this.soundTick = alt.setInterval(this.onSoundTick.bind(this), 100);
         this.forwardVector = new alt.Vector3(0, 0, 0);
 
         mainUi.onUiEvent('soundsSoundEnded', this.onSoundEndedPlaying.bind(this));
@@ -45,7 +45,7 @@ class SoundsController {
     play3DCefSound(soundName: string, volume: number, soundPosition: alt.Vector3, soundForwardVector: alt.Vector3,
         playerPosition: alt.Vector3, loop: boolean = false) {
         const nextSoundId = this.idGenerator.getNextId();
-        this.sounds.push(new Sound(nextSoundId, soundName, false));
+        this.sounds.push(new Sound(nextSoundId, soundName, true));
         mainUi.emitUiEvent('soundsPlay3DSound', nextSoundId, soundName, volume, soundPosition, soundForwardVector, playerPosition, loop);
         this.updatePlayerPosition = true;
     }

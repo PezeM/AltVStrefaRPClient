@@ -17,6 +17,7 @@ class BlipsManager {
         alt.onServer('blipManagerUpdateBlipPosition', this.onUpdateBlipPosition.bind(this));
         alt.onServer('blipManagerUpdateBlipSprite', this.onUpdateBlipSprite.bind(this));
         alt.onServer('blipManagerUpdateBlipColor', this.onUpdateBlipColor.bind(this));
+        alt.onServer('blipManagerUpdateBlipScale', this.onUpdateBlipScale.bind(this));
     }
 
     createNewClientSideBlip(blip: alt.Blip): number {
@@ -50,7 +51,7 @@ class BlipsManager {
         if (!this.blips.has(blipId)) return;
         const blipToUpdate = this.blips.get(blipId) as alt.Blip;
         blipToUpdate.name = blipName;
-        alt.log(`Updated blip ${blipId} name to ${blipToUpdate.name}`);
+        alt.log(`Updated blip ${blipId} name to ${blipName}`);
     }
 
     onUpdateBlipPosition(blipId: number, blipPosition: alt.Vector3) {
@@ -58,21 +59,28 @@ class BlipsManager {
         const blipToUpdate = this.blips.get(blipId) as alt.Blip;
         // blipToUpdate.position = blipPosition; // ???????? array of what
         blipToUpdate.position = [blipPosition.x, blipPosition.y, blipPosition.z]; // ?????
-        alt.log(`Updated blip ${blipId} position to ${JSON.stringify(blipToUpdate.position, null, 2)}`);
+        alt.log(`Updated blip ${blipId} position to ${JSON.stringify(blipPosition, null, 2)}`);
     }
 
     onUpdateBlipSprite(blipId: number, blipSprite: number) {
         if (!this.blips.has(blipId)) return;
         const blipToUpdate = this.blips.get(blipId) as alt.Blip;
         blipToUpdate.sprite = blipSprite;
-        alt.log(`Updated blip ${blipId} sprite to ${blipToUpdate.sprite}`);
+        alt.log(`Updated blip ${blipId} sprite to ${blipSprite}`);
     }
 
     onUpdateBlipColor(blipId: number, blipColor: number) {
         if (!this.blips.has(blipId)) return;
         const blipToUpdate = this.blips.get(blipId) as alt.Blip;
         blipToUpdate.color = blipColor;
-        alt.log(`Updated blip ${blipId} color to ${blipToUpdate.color}`);
+        alt.log(`Updated blip ${blipId} color to ${blipColor}`);
+    }
+
+    onUpdateBlipScale(blipId: number, blipScale: number) {
+        if (!this.blips.has(blipId)) return;
+        const blipToUpdate = this.blips.get(blipId) as alt.Blip;
+        blipToUpdate.scale = blipScale;
+        alt.log(`Updated blip ${blipId} color to ${blipScale}`);
     }
 
     private createNewBlip(newBlip: IBlipWrapper) {

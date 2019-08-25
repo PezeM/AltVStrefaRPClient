@@ -16,9 +16,6 @@ export default {
         EventBus.$on('soundsSetRefDistance', this.setRefDistance);
         EventBus.$on('soundsSetMaxDistance', this.setMaxDistance);
         EventBus.$on('soundsSetDistanceModel', this.setDistanceModel);
-
-        console.log('Sound player mounted');
-
         // setTimeout(() => {
         //     console.log('Playing 3d sound');
         //     const soundPosition = { x: 0, y: 0, z: 0 };
@@ -30,7 +27,6 @@ export default {
         //     //     this.updatePosition(playerPosition);
         //     // }, 1000);
         // }, 2000);
-        sono.log();
     },
     data() {
         return {

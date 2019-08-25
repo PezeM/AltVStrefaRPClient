@@ -477,11 +477,7 @@ export default {
             for (let i = 0; i < this.equipmentSlots.length; i++) {
                 const slot = this.equipmentSlots[i];
                 let equippedItem = this.equippedInventory.items.find(i => i.slotId == slot);
-                if (equippedItem == null) {
-                    equippedItems[slot] = null;
-                } else {
-                    equippedItems[slot] = equippedItem;
-                }
+                equippedItem == null ? (equippedItems[slot] = null) : (equippedItems[slot] = equippedItem);
             }
             return equippedItems;
         },
@@ -491,11 +487,7 @@ export default {
             for (let i = 0; i < this.accessoriesSlots.length; i++) {
                 const slot = this.accessoriesSlots[i];
                 let equippedItem = this.equippedInventory.items.find(i => i.slotId == slot);
-                if (equippedItem == null) {
-                    equippedItems[slot] = null;
-                } else {
-                    equippedItems[slot] = equippedItem;
-                }
+                equippedItem == null ? (equippedItems[slot] = null) : (equippedItems[slot] = equippedItem);
             }
             return equippedItems;
         },

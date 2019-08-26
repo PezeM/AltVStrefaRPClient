@@ -29,6 +29,11 @@
                                 >
                                     <InventoryEquipmentContainer
                                         :equipmentItems="equippedItemsEquipment"
+                                        :equipmentInventoryId="equippedInventory.inventoryId"
+                                        :personalInventoryId="personalInventory.inventoryId"
+                                        @opened-context-menu="onOpenedContextMenu"
+                                        @closed-context-menu="onClosedContextMenu"
+                                        :canDisplayTooltip="canDisplayTooltip"
                                     />
                                 </div>
                                 <div
@@ -37,6 +42,11 @@
                                 >
                                     <InventoryEquipmentContainer
                                         :equipmentItems="equippedItemsAccessories"
+                                        :equipmentInventoryId="equippedInventory.inventoryId"
+                                        :personalInventoryId="personalInventory.inventoryId"
+                                        @opened-context-menu="onOpenedContextMenu"
+                                        @closed-context-menu="onClosedContextMenu"
+                                        :canDisplayTooltip="canDisplayTooltip"
                                     />
                                 </div>
                             </div>
@@ -44,7 +54,10 @@
                         <div class="col-5">
                             <inventory-container
                                 :inventory="personalInventory"
-                                :isMovingItem="swappingObject != null"
+                                :equipmentInventoryId="equippedInventory.inventoryId"
+                                :canDisplayTooltip="canDisplayTooltip"
+                                @opened-context-menu="onOpenedContextMenu"
+                                @closed-context-menu="onClosedContextMenu"
                             />
                         </div>
                         <div class="col-4">
@@ -54,8 +67,11 @@
                             >
                                 <inventory-container
                                     :inventory="addonationalInventory"
+                                    :equipmentInventoryId="equippedInventory.inventoryId"
                                     :inventoryClass="addonationalInventoryClassName"
-                                    :isMovingItem="swappingObject != null"
+                                    :canDisplayTooltip="canDisplayTooltip"
+                                    @opened-context-menu="onOpenedContextMenu"
+                                    @closed-context-menu="onClosedContextMenu"
                                 />
                             </div>
                         </div>
@@ -262,6 +278,16 @@ export default {
                             slotId: 1004,
                             description: 'Jakiś krótszy opis przedmiotu',
                         },
+                        {
+                            id: 470,
+                            name: 'Spodnie',
+                            stackSize: 1,
+                            quantity: 1,
+                            isDroppable: false,
+                            equipmentSlot: 1202,
+                            slotId: 1202,
+                            description: 'Jakiś krótszy opis przedmiotu',
+                        },
                     ],
                 };
             },
@@ -320,6 +346,8 @@ export default {
             selectedEquippedInventory: 'equipment', // or accessories
             equipmentSlots: [1001, 1002, 1003, 1004, 1005, 1006, 1007, 1201, 1202, 1300, 1301, 1302],
             accessoriesSlots: [1101, 1102, 1103, 1104, 1105, 1106, 1107, 1108, 1203],
+            isContextMenuOpened: false,
+            openedContextMenu: null,
             swappingObject: null,
             lastDragOverItem: null,
             lastDragOverContaier: null,
@@ -352,7 +380,6 @@ export default {
             this.inventoryController.setSelectedItem(itemId, swappingObject);
         },
         onDragOver(event) {
-            console.log('Drag over');
             console.log(event);
             this.applyHoverEffect(event);
             this.inventoryController.setItemToSwap(event.data.over.dataset.itemid);
@@ -462,6 +489,14 @@ export default {
                 this.lastDragOverItem = null;
             }
         },
+        onOpenedContextMenu(ref) {
+            this.isContextMenuOpened = true;
+            // console.log(`Context menu state ${this.isContextMenuOpened}`);
+        },
+        onClosedContextMenu(ref) {
+            this.isContextMenuOpened = false;
+            // console.log(`Context menu state ${this.isContextMenuOpened}`);
+        },
         closeInventory() {
             console.log(`Closing inventory`);
             alt.emit('closeInventory');
@@ -490,6 +525,11 @@ export default {
                 equippedItem == null ? (equippedItems[slot] = null) : (equippedItems[slot] = equippedItem);
             }
             return equippedItems;
+        },
+        canDisplayTooltip() {
+            if (this.isContextMenuOpened) return false;
+            else if (this.swappingObject == null) return true;
+            else return false;
         },
     },
     beforeDestroy() {
@@ -548,7 +588,7 @@ alt.on('inventoryItemWasSwappedSuccessfully', (inventoryId, selectedItemId, sele
 
 <style>
 #inventory {
-    /* background-image: url('../assets/example-image.jpg'); */
+    background-image: url('../assets/example-image.jpg');
     background-color: rgba(0, 0, 0, 0.3);
     width: 100%;
     height: 100vh;
@@ -642,10 +682,6 @@ alt.on('inventoryItemWasSwappedSuccessfully', (inventoryId, selectedItemId, sele
     text-shadow: 3px 1px 10px rgba(0, 0, 0, 1);
 }
 
-#equipped-inventory {
-    transform: perspective(500px) rotateY(12deg);
-}
-
 #equipped-inventory .items-equipment {
     color: rgb(200, 200, 200);
     font-size: 0.8em;
@@ -657,10 +693,6 @@ alt.on('inventoryItemWasSwappedSuccessfully', (inventoryId, selectedItemId, sele
     border-radius: 0.5em;
 }
 
-.addonational-inventory-container {
-    transform: perspective(500px) rotateY(-12deg) translateZ(0);
-}
-
 .on-drag-start {
     background-color: rgba(0, 0, 0, 0.6);
     z-index: 1;
@@ -669,6 +701,24 @@ alt.on('inventoryItemWasSwappedSuccessfully', (inventoryId, selectedItemId, sele
 .on-drag-enter {
     opacity: 0.6;
     transform: scale(0.9);
+}
+
+#inventory .v-context {
+    font-size: 0.8rem;
+    padding: 2px 0;
+    min-width: 5rem;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+#inventory .v-context a {
+    color: #f3f3f3;
+    transition: background-color 0.2s ease;
+}
+
+#inventory .v-context a:hover,
+.inventory .v-context a:focus {
+    background-color: rgb(255, 255, 255, 0.8);
+    color: #000000;
 }
 
 /* Bootstrap 5 columns in row */

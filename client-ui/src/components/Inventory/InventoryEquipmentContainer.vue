@@ -12,12 +12,13 @@
                 v-if="item != null"
                 class="slot-content isDraggable withItem"
                 v-bind:data-itemId="item.id"
+                @contextmenu.prevent="$refs.equipmentContextMenu.open($event, { item })"
             >
                 <v-popover
                     offset="16"
                     trigger="hover"
                     :delay="tooltipDelay"
-                    :disabled="isMovingItem"
+                    :disabled="!canDisplayTooltip"
                     placement="auto"
                     popoverClass="item-popover"
                     class="h-100"
@@ -64,20 +65,43 @@
                 <div class="item-wrapper"></div>
             </div>
         </div>
+        <vue-context
+            ref="equipmentContextMenu"
+            @open="onContextMenuOpen"
+            @close="onContextMenuClose"
+        >
+            <template slot-scope="child" v-if="child.data">
+                <li>
+                    <a href="#" @click.prevent="unequipItem(child.data.item)">Zdejmij</a>
+                </li>
+            </template>
+        </vue-context>
     </div>
 </template>
 
 <script>
 import InventorySlotImages from '@/scripts/inventorySlotImages.js';
 import InventoryNameImages from '@/scripts/inventoryNameImages.js';
+import { VueContext } from 'vue-context';
 
 export default {
     name: 'inventory-equipment-container',
+    components: {
+        VueContext,
+    },
     props: {
         equipmentItems: {
             type: Object,
         },
-        isMovingItem: {
+        equipmentInventoryId: {
+            type: Number,
+            required: true,
+        },
+        personalInventoryId: {
+            type: Number,
+            required: true,
+        },
+        canDisplayTooltip: {
             type: Boolean,
         },
     },
@@ -90,6 +114,15 @@ export default {
         };
     },
     methods: {
+        onContextMenuOpen(event, data, top, left) {
+            this.$emit('opened-context-menu', 'equipmentContextMenu');
+        },
+        onContextMenuClose() {
+            this.$emit('closed-context-menu', 'equipmentContextMenu');
+        },
+        unequipItem(item) {
+            alt.emit('inventoryTryUnequipItem', this.equipmentInventoryId, this.personalInventoryId, item.id, -1);
+        },
         getCorrectImage(item) {
             const imageByName = InventoryNameImages[item.name];
             return imageByName != null ? imageByName : InventorySlotImages[item.equipmentSlot];
@@ -195,5 +228,11 @@ export default {
         font-size: 0.5rem;
         word-wrap: break-word;
     }
+}
+</style>
+<style>
+.test-context {
+    transform: perspective(500px) rotateY(12deg);
+    font-size: 10rem;
 }
 </style>

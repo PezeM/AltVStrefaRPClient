@@ -20,12 +20,13 @@
                             class="slot-content isDraggable"
                             v-bind:class="{ withItem: item }"
                             v-bind:data-itemId="item.id"
+                            @contextmenu.prevent="$refs.contextMenu.open($event, { item })"
                         >
                             <v-popover
                                 offset="16"
                                 trigger="hover"
                                 :delay="tooltipDelay"
-                                :disabled="isMovingItem"
+                                :disabled="!canDisplayTooltip"
                                 placement="auto"
                                 popoverClass="item-popover"
                                 class="h-100"
@@ -81,6 +82,20 @@
                     </div>
                 </div>
             </div>
+
+            <vue-context ref="contextMenu" @open="onContextMenuOpen" @close="onContextMenuClose">
+                <template slot-scope="child" v-if="child.data">
+                    <li>
+                        <a href="#" @click.prevent="useItem(child.data.item)">Użyj</a>
+                    </li>
+                    <li v-if="child.data.item.stackSize > 1">
+                        <a href="#">Rozdziel</a>
+                    </li>
+                    <li v-if="child.data.item.isDroppable">
+                        <a href="#" @click.prevent="dropItem(child.data.item)">Wyrzuć</a>
+                    </li>
+                </template>
+            </vue-context>
         </div>
     </div>
 </template>
@@ -88,12 +103,20 @@
 <script>
 import InventorySlotImages from '@/scripts/inventorySlotImages.js';
 import InventoryNameImages from '@/scripts/inventoryNameImages.js';
+import { VueContext } from 'vue-context';
 
 export default {
     name: 'inventory-container',
+    components: {
+        VueContext,
+    },
     props: {
         inventory: {
             type: Object,
+            required: true,
+        },
+        equipmentInventoryId: {
+            type: Number,
         },
         inventoryClass: {
             type: String,
@@ -101,7 +124,7 @@ export default {
         itemAtSlotClass: {
             type: String,
         },
-        isMovingItem: {
+        canDisplayTooltip: {
             type: Boolean,
         },
     },
@@ -126,6 +149,25 @@ export default {
         getCorrectImage(item) {
             const imageByName = InventoryNameImages[item.name];
             return imageByName != null ? imageByName : InventorySlotImages[item.equipmentSlot];
+        },
+        onContextMenuOpen(event, data, top, left) {
+            this.$emit('opened-context-menu', 'contextMenu');
+        },
+        onContextMenuClose() {
+            this.$emit('closed-context-menu', 'contextMenu');
+        },
+        useItem(item) {
+            if (item.equipmentSlot > 1000) {
+                alt.emit('inventoryTryEquipItem', this.inventory.inventoryId, this.equipmentInventoryId.inventoryId, item.id, item.slotId);
+                return;
+            }
+
+            alt.emit('inventoryUseItem', this.inventory.inventoryId, item.id);
+            alert(`Użyto przedmiotu ${item.id} ${item.name} z inventory ${this.inventory.inventoryId}`);
+        },
+        dropItem(item) {
+            if (!item.isDroppable) return;
+            alt.emit('inventoryTryDropItem', this.inventory.inventoryId, item.id, item.quantity);
         },
     },
     computed: {
@@ -161,8 +203,8 @@ export default {
     height: 5.5rem;
     background-color: rgba(0, 0, 0, 0.5);
     color: #f3f3f3;
-    font-size: 0.8em;
-    padding: 0.4em;
+    font-size: 0.8rem;
+    padding: 0.1rem;
     border: 1px solid rgba(133, 133, 133, 0.4);
 
     transition: box-shadow 0.25s;
@@ -276,9 +318,7 @@ export default {
     color: rgba(51, 51, 51, 0.8);
     font-size: 0.7rem;
 }
-</style>
 
-<style>
 .tooltip[x-placement^='top'] {
     margin-bottom: 5px;
 }

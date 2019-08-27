@@ -90,7 +90,7 @@ class MainUi {
         alt.showCursor(showCursor);
     }
 
-    showCefNotification(type: number, title: string, message: string, duration = 5000, icon = true) {
+    showCefNotification(type: number, title: string, message: string, duration = 5000, icon: string | boolean = true) {
         try {
             this.uiView.emit('showNotification', type, title, message, duration, icon);
         } catch (error) {

@@ -49,7 +49,7 @@ function showNotification(type, title, message, duration = 5000, icon = true) {
         styling: 'bootstrap4',
         addClass: 'notification-style',
         icons: 'material',
-        icon: icon,
+        icon: true,
         animation: 'fade',
         hide: true,
         delay: duration,

@@ -1,4 +1,4 @@
-import Actions from "./inventoryActions";
+import Actions from './inventoryActions';
 import EventBus from '@/event-bus.js';
 
 export default class InventoryController {
@@ -52,7 +52,8 @@ export default class InventoryController {
         this.movingOverInventory = this._getInventory(inventory);
         if (this.movingOverInventory == null) {
             this.isMovingItemsBetweenInventories = false;
-            console.log(`ERROR in InventoryController. Couldn't set moving over inventory. Moving over inventory = ${JSON.stringify(this.movingOverInventory)}`);
+            console.log(`ERROR in InventoryController. Couldn't set moving over inventory. 
+                    Moving over inventory = ${JSON.stringify(this.movingOverInventory)}`);
             return;
         }
     }
@@ -88,7 +89,7 @@ export default class InventoryController {
         return false;
     }
 
-    onDraggableStop(event) {
+    onDraggableStop() {
         switch (this.action) {
             case Actions.Drop:
                 this.onActionItemDrop();
@@ -137,7 +138,8 @@ export default class InventoryController {
 
     onActionItemMove() {
         if (this.selectedItem == null || this.movingOverInventory == null) return;
-        console.log(`Moving item id ${this.selectedItem.id} from inventory ${this.selectedInventory.inventoryId} to inventory ${this.movingOverInventory.inventoryId}`);
+        console.log(`Moving item id ${this.selectedItem.id} from inventory ${this.selectedInventory.inventoryId} 
+                    to inventory ${this.movingOverInventory.inventoryId}`);
 
         if (!this.isMovingItemsBetweenInventories) {
             // Can't move items inside equipped inventories
@@ -158,8 +160,7 @@ export default class InventoryController {
         }
 
         // Transfering items between inventories
-        alt.emit('inventoryTryTransferItem', this.selectedInventory.inventoryId, this.movingOverInventory.inventoryId,
-            this.selectedItem.id, this.newSlotId);
+        alt.emit('inventoryTryTransferItem', this.selectedInventory.inventoryId, this.movingOverInventory.inventoryId, this.selectedItem.id, this.newSlotId);
 
         // Temporary for visual
         // this.removeItem(this.selectedItem);
@@ -238,7 +239,8 @@ export default class InventoryController {
         if (toAdd <= 0) return;
 
         if (this.isMovingItemsBetweenInventories) {
-            console.log(`Stacking item id ${this.selectedItem.id} from inventory ${this.selectedInventory.inventoryName} with item ${this.itemToSwap.id} from inventory ${this.movingOverInventory.inventoryName}`);
+            console.log(`Stacking item id ${this.selectedItem.id} from inventory ${this.selectedInventory.inventoryName} 
+                with item ${this.itemToSwap.id} from inventory ${this.movingOverInventory.inventoryName}`);
             alt.emit('inventoryTryStackItem', this.selectedInventory.inventoryId, this.selectedItem.id, this.itemToSwap.id, this.movingOverInventory.id);
         } else {
             console.log(`Stacked item ${this.selectedItem.id} with item ${this.itemToSwap.id}`);
@@ -289,8 +291,15 @@ export default class InventoryController {
         if (this.movingOverInventory == this.playerEquipment || this.selectedInventory == this.playerEquipment) return;
 
         if (!this.isMovingItemsBetweenInventories) {
-            alt.emit('inventoryTrySwapItems', this.selectedInventory.inventoryId, this.selectedItem.id, this.selectedItem.slotId,
-                this.itemToSwap.id, this.itemToSwap.slotId, -1);
+            alt.emit(
+                'inventoryTrySwapItems',
+                this.selectedInventory.inventoryId,
+                this.selectedItem.id,
+                this.selectedItem.slotId,
+                this.itemToSwap.id,
+                this.itemToSwap.slotId,
+                -1
+            );
             return;
         }
 
@@ -304,8 +313,15 @@ export default class InventoryController {
         //     return;
         // }
 
-        alt.emit('inventoryTrySwapItems', this.selectedInventory.inventoryId, this.selectedItem.id, this.selectedItem.slotId,
-            this.itemToSwap.id, this.itemToSwap.slotId, this.movingOverInventory.inventoryId);
+        alt.emit(
+            'inventoryTrySwapItems',
+            this.selectedInventory.inventoryId,
+            this.selectedItem.id,
+            this.selectedItem.slotId,
+            this.itemToSwap.id,
+            this.itemToSwap.slotId,
+            this.movingOverInventory.inventoryId
+        );
     }
 
     tryToEquipItemAndUnequipItem(itemToEquip, itemToUnequip) {
@@ -390,8 +406,7 @@ export default class InventoryController {
     _addItemQuantity(item, amount) {
         if (item != null) {
             item.quantity += amount;
-            if (item.quantity >= item.stackSize)
-                item.quantity = item.stackSize;
+            if (item.quantity >= item.stackSize) item.quantity = item.stackSize;
         }
     }
 
@@ -411,10 +426,10 @@ export default class InventoryController {
     }
 
     _canStackItems(itemToStack, item) {
-        return (itemToStack.stackSize > 1 && item.stackSize > 1)
-            && (item.quantity < item.stackSize)
-            && (itemToStack.id != item.id)
-            && (itemToStack.name == item.name);
+        return (itemToStack.stackSize > 1 && item.stackSize > 1) &&
+            (item.quantity < item.stackSize) &&
+            (itemToStack.id != item.id) &&
+            (itemToStack.name == item.name);
     }
 
     _isItemStackable(item) {

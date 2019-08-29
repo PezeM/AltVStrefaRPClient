@@ -168,7 +168,7 @@
 
                 <div class="col-6 pr-2 mt-1">
                   <div class="list">
-                    <div class="item" v-for="transaction in computedTransactionList">
+                    <div class="item" v-for="(transaction, index) in computedTransactionList" v-bind:key="index">
                       <div class="history-section">
                         <div class="icon" v-if="transaction.Positive == true">
                           <img src="@/assets/images/icons/arrow-up.png" class="icon-png">

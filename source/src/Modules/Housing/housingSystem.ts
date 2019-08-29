@@ -15,3 +15,10 @@ function onInHouseEnterColshape(entered: boolean) {
         insideHouseDoorColshape = false;
     }
 }
+
+class HousingSystem {
+
+}
+
+const housingSystem = new HousingSystem();
+export default housingSystem;

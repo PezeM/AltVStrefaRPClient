@@ -1,6 +1,6 @@
 import * as alt from 'alt';
 import * as game from 'natives';
-import { PedConfigFlags } from 'source/src/Constans/pedConfigFlags';
+import { PedConfigFlags } from 'source/src/Constans/Ped/pedConfigFlags';
 
 class ConfigFlagsController {
     constructor() {

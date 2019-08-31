@@ -1,5 +1,6 @@
 import { Vector3 } from "alt";
 import { INetworkingEntity } from "networking-entity";
+import { HouseType } from "source/src/Constans/HouseTypes";
 
 export interface Vector3Rotation extends Vector3 {
     rot: number
@@ -129,4 +130,13 @@ export interface IBlipWrapper {
     sprite: number;
     scale: number;
     position: Vector3;
+}
+
+export interface HouseMenu {
+    houseType: HouseType;
+    price: number;
+    position: Vector3;
+    interiorName: string;
+    owner?: string;
+    isClosed?: boolean;
 }

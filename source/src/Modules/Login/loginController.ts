@@ -10,6 +10,7 @@ class LoginController {
     constructor() {
         alt.log('Login controller initialized');
         this.showLoginWindow();
+        game.setPedDefaultComponentVariation(localPlayer.scriptID);
 
         mainUi.onUiEvent('tryToLogin', this.tryToLogin.bind(this));
         mainUi.onUiEvent('tryToRegister', this.tryToRegister.bind(this));
@@ -103,7 +104,6 @@ class LoginController {
 
     private onCharacterLoad() {
         game.freezeEntityPosition(localPlayer.scriptID, false);
-        game.setPedDefaultComponentVariation(localPlayer.scriptID);
         this.hideLoginView();
     }
 }

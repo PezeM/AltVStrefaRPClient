@@ -24,6 +24,7 @@ import vehicleSeatbeltComponent from 'source/src/Modules/Vehicle/Components/vehi
 import vehicleEngineToggleComponent from 'source/src/Modules/Vehicle/Components/vehicleEngineToggleComponent';
 import SoundBrowser from 'source/src/Modules/Admin/soundBrowser';
 import inventoryController from 'source/src/Modules/Inventory/inventoryController';
+import housingSystemController from 'source/src/Modules/Housing/housingSystemController';
 
 const localPlayer = alt.Player.local;
 let lastKeyPressedTime = new Date().getTime();
@@ -66,6 +67,7 @@ alt.on('keydown', (key: number) => {
             if (localPlayer.vehicle != null || game.isEntityDead(localPlayer.scriptID) || new Date().getTime() - lastKeyPressedTime < 750) return;
             lastKeyPressedTime = new Date().getTime();
             if (inventoryController.pickupItem()) return;
+            else if (housingSystemController.onKeyPress()) return;
             else if (vehicleDoors.toggleTrunkOrHoodState(localPlayer)) return;
             break;
         case controlsIds.L:

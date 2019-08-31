@@ -99,6 +99,7 @@ export default {
                 return;
             }
 
+            this.lastTimeButtonPressed = new Date().getTime();
             alt.emit('tryCloseHouseDoor');
         },
         closeMenu() {

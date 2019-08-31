@@ -137,6 +137,7 @@ export interface HouseMenu {
     price: number;
     position: Vector3;
     interiorName: string;
-    owner?: string;
+    owner?: boolean;
     isClosed?: boolean;
+    streetName?: string;
 }

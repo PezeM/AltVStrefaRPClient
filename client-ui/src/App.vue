@@ -88,6 +88,10 @@ alt.on('openPlayerInventory', (inventoryData, equippedItems, addonationalInvento
     });
 });
 
+alt.on('showHouseEnterInteractionMenu', house => {
+    router.push({ name: 'houseEnterInteractionMenu', params: { house: house } });
+});
+
 alt.on('closeMenu', () => {
     console.log('Changing the router to emtpy');
     router.push('/empty');

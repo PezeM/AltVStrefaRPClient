@@ -7,8 +7,7 @@ Vue.use(Router);
 export default new Router({
     mode: 'hash',
     base: process.env.BASE_URL,
-    routes: [
-        {
+    routes: [{
             path: '/',
             name: 'home',
             component: () => import('./views/Empty.vue'),
@@ -16,8 +15,7 @@ export default new Router({
         {
             path: '/login',
             component: () => import('./views/Login/Login.vue'),
-            children: [
-                {
+            children: [{
                     path: '',
                     name: 'loginWindow',
                     component: () => import('@/components/Login/LoginWindow.vue'),
@@ -70,8 +68,7 @@ export default new Router({
             path: '/townHallMenu',
             component: () => import('./views/Fractions/TownHall/TownHallView.vue'),
             props: true,
-            children: [
-                {
+            children: [{
                     path: '',
                     name: 'townHallMainPage',
                     component: () => import('./views/Fractions/TownHall/MainPage.vue'),
@@ -113,6 +110,12 @@ export default new Router({
             path: '/inventory',
             name: 'inventory',
             component: () => import('./views/Inventory.vue'),
+            props: true,
+        },
+        {
+            path: '/houseEnterInteractionMenu',
+            name: 'houseEnterInteractionMenu',
+            component: () => import('./views/Housing/EnterHouseInteractionMenu.vue'),
             props: true,
         },
         {

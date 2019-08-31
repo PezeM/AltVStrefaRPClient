@@ -1,4 +1,5 @@
 import * as alt from 'alt';
+import * as native from 'natives';
 import mainUi from 'source/src/Modules/Ui/mainUi';
 import { NotificationTypes } from 'source/src/Constans/notificationTypes';
 import sounds from 'source/src/Modules/Core/soundsController';
@@ -44,6 +45,8 @@ class HousingSystemController {
 
     showHouseEnterInteractionMenu(house: HouseMenu) {
         alt.log(`House data: ${JSON.stringify(house, null, 2)}`);
+        const [_, streetHash, crossingRoad] = native.getStreetNameAtCoord(house.position.x, house.position.y, house.position.z, 0, 0);
+        house.streetName = native.getStreetNameFromHashKey(streetHash);
         mainUi.openMenu("showHouseEnterInteractionMenu", true, true, house);
     }
 

@@ -22,9 +22,13 @@
                     <buy-button
                         :price="house.price"
                         :buttonText="house.houseType == 1 ? 'KUP' : 'WYNAJMIJ'"
+                        @buy-button-clicked="onBuyClick"
                     />
                 </div>
-                <div class="col-6">Col 2</div>
+                <div class="col-6">
+                    <house-enter-menu v-if="house.houseType == 1" :isClosed="house.isClosed" />
+                    <hotel-enter-menu v-else-if="house.houseType == 2" :hotelRoom="hotelRoom" />
+                </div>
             </div>
         </div>
     </div>
@@ -32,26 +36,60 @@
 
 <script>
 import BuyButton from '@/components/Housing/BuyButton.vue';
+import HouseEnterMenu from '@/components/Housing/HouseEnterMenu.vue';
+import HotelEnterMenu from '@/components/Housing/HotelEnterMenu.vue';
+import { getRemainingCooldown } from './../../scripts/helpers.js';
+import EventBus from '@/event-bus.js';
 
 export default {
     name: 'enterHouseInteractionMenu',
     components: {
         BuyButton,
+        HouseEnterMenu,
+        HotelEnterMenu,
     },
     props: {
         house: {
             type: Object,
             default: function() {
                 return {
-                    houseType: 1,
+                    houseType: 2,
                     price: 150,
                     position: { x: 1, y: 1, z: 2 },
                     interiorName: 'Małe mieszkanie',
                     owner: false,
-                    isClosed: true,
+                    isClosed: false,
                     streetName: 'Dłuższa nazwa ulicy',
                 };
             },
+        },
+    },
+    data() {
+        return {
+            hotelRoom: 0,
+            lastTimeButtonPressed: new Date().getTime() - this.cooldownTime,
+            cooldownTime: 1000,
+        };
+    },
+    methods: {
+        onBuyClick() {
+            if (getRemainingCooldown(this.cooldownTime, this.lastTimeButtonPressed) > 0) {
+                EventBus.$emit(
+                    'showNotification',
+                    3,
+                    'Spokojnie',
+                    `Spokojnie, spróbuj ponownie za ${getRemainingCooldown(this.cooldownTime, this.lastTimeButtonPressed)}s`
+                );
+                return;
+            }
+
+            if (this.house.houseType == 1) {
+                alt.emit('tryBuyHouse');
+            } else if (this.house.houseType == 2) {
+                alt.emit('tryRentHotelRoom', this.hotelRoom);
+            }
+
+            this.lastTimeButtonPressed = new Date().getTime();
         },
     },
     computed: {
@@ -77,7 +115,7 @@ export default {
 }
 
 .enter-house-interaction-menu {
-    max-width: 40vh;
+    max-width: 25rem;
     position: relative;
     background-color: #000000e3;
     color: #f3f3f3;

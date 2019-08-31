@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col">
             <button
-                class="btn btn-success w-100"
+                class="btn btn-success btn-block"
                 @click="onClickButton"
             >{{ buttonText }} {{ price }}$</button>
         </div>
@@ -23,11 +23,8 @@ export default {
     },
     methods: {
         onClickButton() {
-            this.emit('buy-button-clicked');
+            this.$emit('buy-button-clicked');
         },
     },
 };
 </script>
-
-<style>
-</style>

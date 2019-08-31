@@ -48,6 +48,9 @@ export default {
         HouseEnterMenu,
         HotelEnterMenu,
     },
+    mounted() {
+        alt.on('toggleHouseLock', this.toggleHouseLock);
+    },
     props: {
         house: {
             type: Object,
@@ -91,6 +94,11 @@ export default {
 
             this.lastTimeButtonPressed = new Date().getTime();
         },
+        toggleHouseLock(isLocked) {
+            console.log('Toggle house lock on UI');
+            if (!this.house) return;
+            this.house.isClosed = isLocked;
+        },
     },
     computed: {
         getHouseTypeName() {
@@ -99,6 +107,9 @@ export default {
         getInteriorImage() {
             return require('@/assets/images/townHallLogo.png');
         },
+    },
+    beforeDestroy() {
+        alt.off('toggleHouseLock', this.toggleHouseLock);
     },
 };
 </script>

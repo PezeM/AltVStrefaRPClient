@@ -77,6 +77,10 @@ class HousingSystemController {
         mainUi.showCefNotification(NotificationTypes.Info, "Zamek", `Pomyślnie ${isLocked ? 'zamknięto' : 'otwarto'} mieszkanie`);
         // Play some sound on lock/unlock
         sounds.playCefSound('houseDoorLock.mp3', 0.5, false);
+        if (mainUi.viewOpened) {
+            alt.log('Emiting toggle house lock event');
+            mainUi.emitUiEvent('toggleHouseLock', isLocked);
+        }
     }
 
     tryEnterHouse(hotelRoom?: number) {

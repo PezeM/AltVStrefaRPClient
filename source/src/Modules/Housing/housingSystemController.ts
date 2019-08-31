@@ -16,6 +16,11 @@ class HousingSystemController {
         alt.onServer('successfullyToggledHouseLock', this.successfullyToggledHouseLock.bind(this));
         alt.onServer('showHouseEnterInteractionMenu', this.showHouseEnterInteractionMenu.bind(this));
         alt.onServer('showInteriorExitMenu', this.showInteriorExitMenu.bind(this));
+
+        mainUi.onUiEvent('tryEnterHouse', this.tryEnterHouse.bind(this));
+        mainUi.onUiEvent('tryBuyHouse', this.tryBuyHouse.bind(this));
+        mainUi.onUiEvent('tryRentHotelRoom', this.tryRentHotelRoom.bind(this));
+        mainUi.onUiEvent('closeEnterHouseInteractionMenu', this.closeEnterHouseInteractionMenu.bind(this));
     }
 
     inHouseEnterColshape(entered: boolean) {
@@ -54,6 +59,26 @@ class HousingSystemController {
         mainUi.showCefNotification(NotificationTypes.Info, "Zamek", `Pomyślnie ${isLocked ? 'zamknięto' : 'otwarto'} mieszkanie`);
         // Play some sound on lock/unlock
         sounds.playCefSound('houseDoorLock.mp3', 0.5, false);
+    }
+
+    tryEnterHouse(hotelRoom?: number) {
+        if (hotelRoom) {
+            alt.emit('TryEnterHouse', hotelRoom);
+        } else {
+            alt.emit('TryEnterHouse');
+        }
+    }
+
+    tryBuyHouse() {
+        alt.emitServer('TryBuyHouse');
+    }
+
+    tryRentHotelRoom(hotelRoom: number) {
+        alt.emitServer('TryRentHotelRoom', hotelRoom);
+    }
+
+    closeEnterHouseInteractionMenu() {
+        mainUi.closeMenu();
     }
 }
 

@@ -27,7 +27,7 @@
                 </div>
                 <div class="col-6">
                     <house-enter-menu v-if="house.houseType == 1" :isClosed="house.isClosed" />
-                    <hotel-enter-menu v-else-if="house.houseType == 2" :hotelRoom="hotelRoom" />
+                    <hotel-enter-menu v-else-if="house.houseType == 2" :hotelRoom.sync="hotelRoom" />
                 </div>
             </div>
         </div>

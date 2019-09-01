@@ -9,12 +9,14 @@ const localPlayer = alt.Player.local;
 
 class HousingSystemController {
     insideHouseDoorColshape: boolean = false;
+    houseMenuOpened: boolean = false;
 
     constructor() {
         alt.log('Initialized housing system');
         alt.onServer('inHouseEnterColshape', this.inHouseEnterColshape.bind(this));
         alt.onServer('successfullyToggledHouseLock', this.successfullyToggledHouseLock.bind(this));
         alt.onServer('showHouseEnterInteractionMenu', this.showHouseEnterInteractionMenu.bind(this));
+        alt.onServer('playerMovedInsideHouse', this.playerMovedInsideHouse.bind(this));
         alt.onServer('showInteriorExitMenu', this.showInteriorExitMenu.bind(this));
 
         mainUi.onUiEvent('tryEnterHouse', this.tryEnterHouse.bind(this));
@@ -45,8 +47,10 @@ class HousingSystemController {
     showInteriorExitMenu(state: boolean) {
         if (state) {
             // Show
+            mainUi.openMenu('showHouseInteriorExitMenu', true, false);
         } else {
             // Hide
+            mainUi.closeMenu();
         }
     }
 
@@ -55,6 +59,13 @@ class HousingSystemController {
         const [_, streetHash, crossingRoad] = native.getStreetNameAtCoord(house.position.x, house.position.y, house.position.z, 0, 0);
         house.streetName = native.getStreetNameFromHashKey(streetHash);
         mainUi.openMenu("showHouseEnterInteractionMenu", true, true, house);
+        this.houseMenuOpened = true;
+    }
+
+    playerMovedInsideHouse() {
+        if (this.houseMenuOpened) {
+            mainUi.closeMenu();
+        }
     }
 
     successfullyToggledHouseLock(isLocked: boolean) {
@@ -104,6 +115,7 @@ class HousingSystemController {
 
     closeEnterHouseInteractionMenu() {
         mainUi.closeMenu();
+        this.houseMenuOpened = false;
     }
 }
 

@@ -401,6 +401,8 @@ const AnimList: Array<Array<string | string[]>> = [
     ["amb@code_human_wander_drinking_fat@male@idle_a", ["idle_c", "idle_b", "idle_a"]],
     ["amb@code_human_wander_eating_donut@female@base", ["static", "base"]],
     ["amb@code_human_wander_eating_donut@female@idle_a", ["idle_b", "idle_a", "idle_c"]],
+    ["anim@amb@nightclub@lazlow@hi_chair@", ["seatedidle_li_17_crotchscratch_laz", "seatedidle_li_17_crotchscratch_laz_face"]],
+    ["move_p_m_two_idles@generic", ["fidget_agitated", "fidget_blow_snot", "fidget_look_around", "fidget_pick_at_face", "fidget_rub_face", "fidget_scratch_balls", "fidget_sniff_fingers", "fidget_worked_up",]]
 ];
 const localPlayer = alt.Player.local;
 

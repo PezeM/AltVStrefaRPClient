@@ -20,6 +20,7 @@
                         </div>
                     </div>
                     <buy-button
+                        v-if="!house.owner"
                         :price="house.price"
                         :buttonText="house.houseType == 1 ? 'KUP' : 'WYNAJMIJ'"
                         @buy-button-clicked="onBuyClick"
@@ -52,7 +53,7 @@ export default {
         alt.on('toggleHouseLock', this.toggleHouseLock);
     },
     props: {
-        house: {
+        houseProp: {
             type: Object,
             default: function() {
                 return {
@@ -72,6 +73,7 @@ export default {
             hotelRoom: 0,
             lastTimeButtonPressed: new Date().getTime() - this.cooldownTime,
             cooldownTime: 1000,
+            house: this.houseProp,
         };
     },
     methods: {
@@ -98,6 +100,7 @@ export default {
             console.log('Toggle house lock on UI');
             if (!this.house) return;
             this.house.isClosed = isLocked;
+            console.log('Set house lock status to ' + this.house.isClosed);
         },
     },
     computed: {
@@ -106,6 +109,13 @@ export default {
         },
         getInteriorImage() {
             return require('@/assets/images/townHallLogo.png');
+        },
+        hasOwner() {
+            if (this.house.hasOwnProperty('owner')) {
+                return this.house.owner;
+            } else {
+                return false;
+            }
         },
     },
     beforeDestroy() {

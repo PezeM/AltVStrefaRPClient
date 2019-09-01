@@ -89,7 +89,7 @@ alt.on('openPlayerInventory', (inventoryData, equippedItems, addonationalInvento
 });
 
 alt.on('showHouseEnterInteractionMenu', house => {
-    router.push({ name: 'houseEnterInteractionMenu', params: { house: house } });
+    router.push({ name: 'houseEnterInteractionMenu', params: { houseProp: house } });
 });
 
 alt.on('closeMenu', () => {

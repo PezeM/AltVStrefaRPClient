@@ -588,7 +588,7 @@ alt.on('inventoryItemWasSwappedSuccessfully', (inventoryId, selectedItemId, sele
 
 <style>
 #inventory {
-    background-image: url('../assets/example-image.jpg');
+    /* background-image: url('../assets/example-image.jpg'); */
     background-color: rgba(0, 0, 0, 0.3);
     width: 100%;
     height: 100vh;

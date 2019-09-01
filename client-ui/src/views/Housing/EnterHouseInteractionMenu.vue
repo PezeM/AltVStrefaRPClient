@@ -116,7 +116,7 @@ export default {
 
 <style scoped>
 #enter-house-interaction-menu {
-    background-image: url('../../assets/example-image.jpg');
+    /* background-image: url('../../assets/example-image.jpg'); */
     padding: 0;
     margin: 0;
     display: flex;

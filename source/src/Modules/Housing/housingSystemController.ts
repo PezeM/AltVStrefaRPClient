@@ -19,32 +19,16 @@ class HousingSystemController {
 
         mainUi.onUiEvent('tryEnterHouse', this.tryEnterHouse.bind(this));
         mainUi.onUiEvent('tryOpenHouseDoor', this.tryOpenHouseDoor.bind(this));
-        mainUi.onUiEvent('tryCloseHouseDoor', this.tryOpenHouseDoor.bind(this));
+        mainUi.onUiEvent('tryCloseHouseDoor', this.tryCloseHouseDoor.bind(this));
         mainUi.onUiEvent('tryBuyHouse', this.tryBuyHouse.bind(this));
         mainUi.onUiEvent('tryRentHotelRoom', this.tryRentHotelRoom.bind(this));
         mainUi.onUiEvent('closeEnterHouseInteractionMenu', this.closeEnterHouseInteractionMenu.bind(this));
     }
 
-    tryOpenHouseDoor(hotelRoom?: number) {
-        if (hotelRoom) {
-            alt.emitServer('TryOpenHouseDoor', hotelRoom);
-        } else {
-            alt.emitServer('TryOpenHouseDoor');
-        }
-    }
-
-    tryCloseHouseDoor(hotelRoom?: number) {
-        if (hotelRoom) {
-            alt.emitServer('TryCloseHouseDoor', hotelRoom);
-        } else {
-            alt.emitServer('TryCloseHouseDoor');
-        }
-    }
-
     inHouseEnterColshape(entered: boolean) {
         if (entered) {
             this.insideHouseDoorColshape = true;
-            mainUi.showCefNotification(NotificationTypes.Info, "Mieszkanie", "Naciśnij [E] aby otworzyć menu mieszkania", 3000, "house");
+            mainUi.showCefNotification(NotificationTypes.Info, "Mieszkanie", "Naciśnij [E] aby otworzyć menu mieszkania", 2000);
         } else {
             this.insideHouseDoorColshape = false;
         }
@@ -84,10 +68,29 @@ class HousingSystemController {
     }
 
     tryEnterHouse(hotelRoom?: number) {
+        alt.log('tryEnterHouse in client-side, hotelroom = ' + hotelRoom);
         if (hotelRoom) {
-            alt.emit('TryEnterHouse', hotelRoom);
+            alt.log('Try enter hotel');
+            alt.emitServer('TryEnterHouse', hotelRoom);
         } else {
-            alt.emit('TryEnterHouse');
+            alt.log('Try enter house');
+            alt.emitServer('TryEnterHouse');
+        }
+    }
+
+    tryOpenHouseDoor(hotelRoom?: number) {
+        if (hotelRoom) {
+            alt.emitServer('TryOpenHouseDoor', hotelRoom);
+        } else {
+            alt.emitServer('TryOpenHouseDoor');
+        }
+    }
+
+    tryCloseHouseDoor(hotelRoom?: number) {
+        if (hotelRoom) {
+            alt.emitServer('TryCloseHouseDoor', hotelRoom);
+        } else {
+            alt.emitServer('TryCloseHouseDoor');
         }
     }
 

@@ -92,8 +92,11 @@ alt.on('showHouseEnterInteractionMenu', house => {
     router.push({ name: 'houseEnterInteractionMenu', params: { houseProp: house } });
 });
 
+alt.on('showHouseInteriorExitMenu', () => {
+    router.push({ name: 'houseInteriorExitMenu' });
+});
+
 alt.on('closeMenu', () => {
-    console.log('Changing the router to emtpy');
     router.push('/empty');
 });
 </script>

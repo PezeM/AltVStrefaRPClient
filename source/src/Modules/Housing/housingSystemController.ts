@@ -20,11 +20,13 @@ class HousingSystemController {
         alt.onServer('showInteriorExitMenu', this.showInteriorExitMenu.bind(this));
 
         mainUi.onUiEvent('tryEnterHouse', this.tryEnterHouse.bind(this));
+        mainUi.onUiEvent('tryLeaveHouse', this.tryLeaveHouse.bind(this));
         mainUi.onUiEvent('tryOpenHouseDoor', this.tryOpenHouseDoor.bind(this));
         mainUi.onUiEvent('tryCloseHouseDoor', this.tryCloseHouseDoor.bind(this));
         mainUi.onUiEvent('tryBuyHouse', this.tryBuyHouse.bind(this));
         mainUi.onUiEvent('tryRentHotelRoom', this.tryRentHotelRoom.bind(this));
         mainUi.onUiEvent('closeEnterHouseInteractionMenu', this.closeEnterHouseInteractionMenu.bind(this));
+        mainUi.onUiEvent('closeHouseInteriorExitMenu', this.closeHouseInteriorExitMenu.bind(this));
     }
 
     inHouseEnterColshape(entered: boolean) {
@@ -89,6 +91,10 @@ class HousingSystemController {
         }
     }
 
+    tryLeaveHouse() {
+        alt.emitServer('TryLeaveHouse');
+    }
+
     tryOpenHouseDoor(hotelRoom?: number) {
         if (hotelRoom) {
             alt.emitServer('TryOpenHouseDoor', hotelRoom);
@@ -116,6 +122,10 @@ class HousingSystemController {
     closeEnterHouseInteractionMenu() {
         mainUi.closeMenu();
         this.houseMenuOpened = false;
+    }
+
+    closeHouseInteriorExitMenu() {
+        mainUi.closeMenu();
     }
 }
 

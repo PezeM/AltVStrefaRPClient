@@ -119,6 +119,11 @@ export default new Router({
             props: true,
         },
         {
+            path: '/houseInteriorExitMenu',
+            name: 'houseInteriorExitMenu',
+            component: () => import('./views/Housing/HouseInteriorExitMenu.vue'),
+        },
+        {
             path: '/empty',
             name: 'empty',
             component: () => import('./views/Empty.vue'),

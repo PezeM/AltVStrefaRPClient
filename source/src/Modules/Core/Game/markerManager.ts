@@ -3,20 +3,23 @@ import * as native from 'natives';
 import { INetworkingEntity } from 'networking-entity';
 import { INetworkingMarker, IClientSideMarker } from 'source/src/Constans/interfaces';
 import maths from 'source/src/Helpers/maths';
+import IdGenerator from 'source/src/Modules/Core/idGenerator';
 
 const localPlayer = alt.Player.local;
 
 class MarkerManager {
     markers: Map<number, INetworkingMarker>;
-    clientSideMarkers: Map<number, IClientSideMarker>;
     tickInterval: number;
-    markerDistanceCheckInterval: number;
-    clientSideMarkersToRender: IClientSideMarker[];
+    private clientSideMarkers: Map<number, IClientSideMarker>;
+    private markerDistanceCheckInterval: number;
+    private idGenerator: IdGenerator;
+    private clientSideMarkersToRender: IClientSideMarker[];
 
     constructor() {
         this.markers = new Map();
         this.clientSideMarkers = new Map();
         this.clientSideMarkersToRender = [];
+        this.idGenerator = new IdGenerator(0);
 
         this.tickInterval = alt.setInterval(this.onTickInterval.bind(this), 0);
         this.markerDistanceCheckInterval = alt.setInterval(this.onMarkerDistanceCheckInterval.bind(this), 500);
@@ -56,6 +59,32 @@ class MarkerManager {
         }
     }
 
+    addMarker(type: number, position: Vector3, scale: Vector3, r: number, g: number, b: number, a: number, range: number = 10): IClientSideMarker {
+        const newMarker: IClientSideMarker = {
+            id: this.idGenerator.getNextId(),
+            type,
+            pos: position,
+            scaleX: scale.x,
+            scaleY: scale.y,
+            scaleZ: scale.z,
+            red: r,
+            green: g,
+            blue: b,
+            alpha: a,
+            range
+        }
+
+        this.clientSideMarkers.set(newMarker.id, newMarker);
+        return newMarker;
+    }
+
+    removeMarker(markerId: number) {
+        if (this.clientSideMarkers.has(markerId)) {
+            return this.clientSideMarkers.delete(markerId);
+        }
+        return false;
+    }
+
     onStreamIn(entity: INetworkingEntity) {
         (entity as INetworkingMarker).marker = {
             type: entity.data.type.intValue as number,
@@ -63,9 +92,9 @@ class MarkerManager {
             green: entity.data.type.intValue as number,
             blue: entity.data.type.intValue as number,
             alpha: entity.data.type.intValue as number,
-            scaleX: entity.data.type.intValue as number,
-            scaleY: entity.data.type.intValue as number,
-            scaleZ: entity.data.type.intValue as number
+            scaleX: entity.data.type.doubleValue as number,
+            scaleY: entity.data.type.doubleValue as number,
+            scaleZ: entity.data.type.doubleValue as number
         };
 
         this.markers.set(entity.id, entity as INetworkingMarker);

@@ -60,7 +60,7 @@ class Bank {
             atmBlip.shortRange = true;
             atmBlip.sprite = 277;
             atmBlip.color = 69;
-            atmBlip.scale = 0.5;
+            atmBlip.scale = 0.75;
             atmBlip.name = "ATM";
             blipsManager.createNewClientSideBlip(atmBlip);
         }

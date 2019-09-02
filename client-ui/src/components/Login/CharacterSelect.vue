@@ -1,62 +1,65 @@
 <template>
-  <div class="character-select container-fluid">
-    <div class="row mb-5 mx-auto pt-5">
-      <error-modal v-bind:errorMessage="errorMessage" v-on:hide-error-window="hideErrorWindow"></error-modal>
+    <div class="character-select container-fluid">
+        <div class="row mb-5 mx-auto pt-5">
+            <error-modal
+                v-bind:errorMessage="errorMessage"
+                v-on:hide-error-window="hideErrorWindow"
+            ></error-modal>
 
-      <div class="col-12 text-center title">
-        <h1>Witaj na serwerze! Wybierz swoją postać</h1>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-4 mb-4">
-        <div class="profile-card" @click="createCharacter()">
-          <div class="new-char img">
-            <img src="../../assets/images/strefa-logo.png" />
-          </div>
-          <div class="mid-section">
-            <div class="name">Nowa postać</div>
-            <div class="line"></div>
-            <div class="stats">
-              <div class="stat">
-                {{ charactersList.length }}
-                <div class="subtext">Ilość postaci</div>
-              </div>
+            <div class="col-12 text-center title">
+                <h1>Witaj na serwerze! Wybierz swoją postać</h1>
             </div>
-          </div>
         </div>
-      </div>
-      <div
-        class="col-4 mb-4"
-        v-for="character in filteredCharacterList"
-        :key="character.Id"
-        @click="chooseCharacter(character.Id)"
-      >
-        <div class="profile-card">
-          <div class="img">
-            <img :src="getImage(character)" />
-          </div>
-          <div class="mid-section">
-            <div class="name">{{ getCharacterFullName(character) }}</div>
-            <div class="line"></div>
-            <div class="stats">
-              <div class="stat">
-                {{ character.TimePlayed }}
-                <div class="subtext">Czas online</div>
-              </div>
-              <div class="stat">
-                {{ character.Money }}$
-                <div class="subtext">Pieniądze</div>
-              </div>
-              <div class="stat">
-                {{ character.Id }}
-                <div class="subtext">Id</div>
-              </div>
+        <div class="row">
+            <div class="col-4 mb-4">
+                <div class="profile-card" @click="createCharacter()">
+                    <div class="new-char img">
+                        <img src="../../assets/images/strefa-logo.png" />
+                    </div>
+                    <div class="mid-section">
+                        <div class="name">Nowa postać</div>
+                        <div class="line"></div>
+                        <div class="stats">
+                            <div class="stat">
+                                {{ charactersList.length }}
+                                <div class="subtext">Ilość postaci</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
+            <div
+                class="col-4 mb-4"
+                v-for="character in filteredCharacterList"
+                :key="character.Id"
+                @click="chooseCharacter(character.Id)"
+            >
+                <div class="profile-card">
+                    <div class="img">
+                        <img :src="getImage(character)" />
+                    </div>
+                    <div class="mid-section">
+                        <div class="name">{{ getCharacterFullName(character) }}</div>
+                        <div class="line"></div>
+                        <div class="stats">
+                            <div class="stat">
+                                {{ character.TimePlayed }}
+                                <div class="subtext">Czas online</div>
+                            </div>
+                            <div class="stat">
+                                {{ character.Money }}$
+                                <div class="subtext">Pieniądze</div>
+                            </div>
+                            <div class="stat">
+                                {{ character.Id }}
+                                <div class="subtext">Id</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
 </template>
 
 <script>
@@ -112,36 +115,17 @@ export default {
     data() {
         return {
             errorMessage: '',
-            // charactersList: [
-            //     {
-            //         Id: 'characters/33-A',
-            //         TimePlayed: 7,
-            //         Name: 'Anna',
-            //         LastName: 'Anna2',
-            //         ProfileImage: 'default-profile-image.jpg',
-            //     },
-            //     {
-            //         Id: 'characters/1-A',
-            //         TimePlayed: 2,
-            //         Name: 'Kurwa',
-            //         LastName: 'Maciek',
-            //         ProfileImage: 'default-profile-image.jpg',
-            //     },
-            //     {
-            //         Id: 'characters/97-A',
-            //         TimePlayed: 16,
-            //         Name: 'Edward',
-            //         LastName: 'Testowy',
-            //         ProfileImage: 'default-profile-image.jpg',
-            //     },
-            // ],
         };
+    },
+    mounted() {
+        console.log('Mounted character select, should work fine');
     },
     methods: {
         createCharacter() {
             alt.emit('tryToCreateNewCharacter');
         },
         chooseCharacter(characterId) {
+            console.log('Clicking choose character');
             if (characterId) {
                 alt.emit('loadCharacter', characterId);
             } else {

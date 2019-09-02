@@ -1,7 +1,8 @@
 import * as alt from 'alt';
 import networkingEntity, { INetworkingEntity } from "networking-entity";
-import pedStreamer from 'src/Modules/Streaming/pedStreamer';
-import itemStreamer from 'src/Modules/Streaming/itemStreamer';
+import pedStreamer from 'source/src/Modules/Streaming/pedStreamer';
+import itemStreamer from 'source/src/Modules/Streaming/itemStreamer';
+import markerManager from 'source/src/Modules/Core/Game/markerManager';
 
 class NetworkStreamer {
     constructor() {
@@ -22,6 +23,8 @@ class NetworkStreamer {
             pedStreamer.onStreamIn(entity);
         } else if (entity.data.entityType.intValue === 2) { // Item
             itemStreamer.onStreamIn(entity);
+        } else if (entity.data.entityType.intValue === 3) {
+            markerManager.onStreamIn(entity);
         }
     }
 
@@ -32,6 +35,8 @@ class NetworkStreamer {
             pedStreamer.onStreamOut(entity);
         } else if (entity.data.entityType.intValue === 2) { // Items
             itemStreamer.onStreamOut(entity);
+        } else if (entity.data.entityType.intValue === 3) {
+            markerManager.onStreamOut(entity);
         }
     }
 

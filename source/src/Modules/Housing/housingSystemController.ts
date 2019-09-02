@@ -49,9 +49,11 @@ class HousingSystemController {
     showInteriorExitMenu(state: boolean) {
         if (state) {
             // Show
+            alt.log('Showing house interior exit menu')
             mainUi.openMenu('showHouseInteriorExitMenu', true, false);
         } else {
             // Hide
+            alt.log('Closing house interior exit menu');
             mainUi.closeMenu();
         }
     }
@@ -71,8 +73,7 @@ class HousingSystemController {
     }
 
     successfullyToggledHouseLock(isLocked: boolean) {
-        mainUi.showCefNotification(NotificationTypes.Info, "Zamek", `Pomyślnie ${isLocked ? 'zamknięto' : 'otwarto'} mieszkanie`);
-        // Play some sound on lock/unlock
+        mainUi.showCefNotification(NotificationTypes.Info, "Zamek", `Pomyślnie ${isLocked ? 'zamknięto' : 'otworzono'} mieszkanie`);
         sounds.playCefSound('houseDoorLock.mp3', 0.5, false);
         if (mainUi.viewOpened) {
             alt.log('Emiting toggle house lock event');

@@ -53,6 +53,7 @@ class HousingSystemController {
             if (this.interiorExitMenuOpened) return;
             alt.log('Showing house interior exit menu')
             mainUi.openMenu('showHouseInteriorExitMenu', true, false);
+            this.interiorExitMenuOpened = true;
         } else {
             // Hide
             if (!this.interiorExitMenuOpened) return;

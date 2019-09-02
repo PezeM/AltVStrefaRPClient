@@ -10,6 +10,7 @@ const localPlayer = alt.Player.local;
 class HousingSystemController {
     insideHouseDoorColshape: boolean = false;
     houseMenuOpened: boolean = false;
+    interiorExitMenuOpened: boolean = false;
 
     constructor() {
         alt.log('Initialized housing system');
@@ -49,12 +50,15 @@ class HousingSystemController {
     showInteriorExitMenu(state: boolean) {
         if (state) {
             // Show
+            if (this.interiorExitMenuOpened) return;
             alt.log('Showing house interior exit menu')
             mainUi.openMenu('showHouseInteriorExitMenu', true, false);
         } else {
             // Hide
+            if (!this.interiorExitMenuOpened) return;
             alt.log('Closing house interior exit menu');
             mainUi.closeMenu();
+            this.interiorExitMenuOpened = false;
         }
     }
 
@@ -127,6 +131,7 @@ class HousingSystemController {
 
     closeHouseInteriorExitMenu() {
         mainUi.closeMenu();
+        this.interiorExitMenuOpened = false;
     }
 }
 

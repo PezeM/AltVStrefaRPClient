@@ -4,6 +4,7 @@ import { INetworkingEntity } from 'networking-entity';
 import { INetworkingMarker, IClientSideMarker } from 'source/src/Constans/interfaces';
 import maths from 'source/src/Helpers/maths';
 import IdGenerator from 'source/src/Modules/Core/idGenerator';
+import { drawText } from 'source/src/Helpers/uiHelper';
 
 const localPlayer = alt.Player.local;
 
@@ -33,7 +34,9 @@ class MarkerManager {
                 0, 0, 0,
                 marker.marker.scaleX, marker.marker.scaleY, marker.marker.scaleZ,
                 marker.marker.red, marker.marker.green, marker.marker.blue, marker.marker.alpha,
-                true, false, 2, true, undefined, undefined, false);
+                false, false, 2, true, undefined, undefined, false);
+
+            // false, false, 2, false, undefined, undefined, false
         }
 
         for (let i = 0; i < this.clientSideMarkersToRender.length; i++) {
@@ -86,15 +89,17 @@ class MarkerManager {
     }
 
     onStreamIn(entity: INetworkingEntity) {
+        alt.log('Marker streamed in');
+
         (entity as INetworkingMarker).marker = {
             type: entity.data.type.intValue as number,
-            red: entity.data.type.intValue as number,
-            green: entity.data.type.intValue as number,
-            blue: entity.data.type.intValue as number,
-            alpha: entity.data.type.intValue as number,
-            scaleX: entity.data.type.doubleValue as number,
-            scaleY: entity.data.type.doubleValue as number,
-            scaleZ: entity.data.type.doubleValue as number
+            red: entity.data.red.intValue as number,
+            green: entity.data.green.intValue as number,
+            blue: entity.data.blue.intValue as number,
+            alpha: entity.data.alpha.intValue as number,
+            scaleX: entity.data.scaleX.doubleValue as number,
+            scaleY: entity.data.scaleY.doubleValue as number,
+            scaleZ: entity.data.scaleZ.doubleValue as number
         };
 
         this.markers.set(entity.id, entity as INetworkingMarker);

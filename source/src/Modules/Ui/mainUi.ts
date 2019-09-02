@@ -39,7 +39,7 @@ class MainUi {
         } else if (hideUi) {
             showUi(false);
         } else if (freezePlayer) {
-            game.freezeEntityPosition(game.playerPedId(), true);
+            game.freezeEntityPosition(alt.Player.local.scriptID, true);
         }
 
         // var localPlayer = alt.Player.local.scriptID;
@@ -54,6 +54,7 @@ class MainUi {
         alt.showCursor(true);
         this.uiView.focus();
 
+        alt.log('View loaded and focused');
         // let inter = alt.setInterval(() => {
         //     if (alt.isTextureExistInArchetype(game.getHashKey('xm_prop_x17_sec_panel_01'), 'script_rt_prop_x17_p_01')) {
         //         this.tabletView = new alt.WebView("http://resources/AltVStrefaRPClient/mainUi/menus.html", 

@@ -1,5 +1,5 @@
 import * as alt from 'alt';
-import networkingEntity, { INetworkingEntity } from "networking-entity";
+import networkingEntity, { INetworkingEntity, INetworkingDataChange } from "networking-entity";
 import pedStreamer from 'source/src/Modules/Streaming/pedStreamer';
 import itemStreamer from 'source/src/Modules/Streaming/itemStreamer';
 import markerManager from 'source/src/Modules/Core/Game/markerManager';
@@ -40,8 +40,16 @@ class NetworkStreamer {
         }
     }
 
-    onDataChange(entity: INetworkingEntity, newAddedData: any) {
-        alt.log(`Data changed on entity ${JSON.stringify(entity, null, 2)} to ${JSON.stringify(newAddedData, null, 2)}`);
+    onDataChange(entity: INetworkingEntity, changedData: INetworkingDataChange) {
+        alt.log(`Data changed on entity ${JSON.stringify(entity, null, 2)}. Changed data ${JSON.stringify(changedData, null, 2)}`);
+        if (typeof entity.data.entityType === 'undefined') return;
+        if (entity.data.entityType.intValue === 1) {
+
+        } else if (entity.data.entityType.intValue === 2) {
+
+        } else if (entity.data.entityType.intValue === 3) {
+            markerManager.onDataChange(entity, changedData);
+        }
         // TODO: when model changes ect.
     }
 

@@ -1,5 +1,5 @@
 import { Vector3 } from "alt";
-import { INetworkingEntity } from "networking-entity";
+import { INetworkingEntity, MValue } from "networking-entity";
 import { HouseType } from "source/src/Constans/HouseTypes";
 
 export interface Vector3Rotation extends Vector3 {

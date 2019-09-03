@@ -24,7 +24,7 @@ class SoundsController {
         mainUi.onUiEvent('soundsSoundEnded', this.onSoundEndedPlaying.bind(this));
 
         alt.onServer('soundsPlaySoundInRange', this.onPlayCefSoundInRange.bind(this));
-        this.testTick = alt.setInterval(this.onTestTick.bind(this), 0);
+        // this.testTick = alt.setInterval(this.onTestTick.bind(this), 0);
     }
 
     onTestTick() {

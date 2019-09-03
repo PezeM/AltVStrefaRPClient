@@ -30,7 +30,7 @@ class Raycast {
         };
 
         const rayTest = game.startShapeTestRay(pos.x, pos.y, pos.z, farAway.x, farAway.y, farAway.z, 30, localPlayer.scriptID, 0);
-        game.drawLine(pos.x, pos.y, pos.z, farAway.x, farAway.y, farAway.z, 255, 255, 255, 255);
+        // game.drawLine(pos.x, pos.y, pos.z, farAway.x, farAway.y, farAway.z, 255, 255, 255, 255);
         [this.useless, this.didRaycastHit, this.endCoords, this.surfaceNormal, this.entityHit] = game.getShapeTestResult(rayTest,
             false, { x: 0, y: 0, z: 0 }, { x: 0, y: 0, z: 0 }, 0);
     }

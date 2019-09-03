@@ -108,7 +108,14 @@ export default {
             return this.house.houseType == 1 ? 'Mieszkanie' : 'Hotel';
         },
         getInteriorImage() {
-            return require('@/assets/images/townHallLogo.png');
+            switch (this.house.interiorName) {
+                case 'Małe mieszkanie':
+                    return require('@/assets/images/small_interior.jpg');
+                case 'Większe mieszkanie':
+                    break;
+                default:
+                    return require('@/assets/images/townHallLogo.png');
+            }
         },
         hasOwner() {
             if (this.house.hasOwnProperty('owner')) {

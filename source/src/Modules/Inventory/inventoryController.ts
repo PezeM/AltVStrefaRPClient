@@ -86,8 +86,6 @@ class InventoryController {
             armor: game.getPedArmour(localPlayer.scriptID),
         };
 
-        alt.log(`Current date in game: ${gameInfo.hours}:${gameInfo.minutes}`);
-
         mainUi.openMenu('openPlayerInventory', true, false, inventoryCache.cachedInventory, inventoryCache.cachedEquippedInventory,
             addonationalInventoryContainer, gameInfo);
         // game.transitionToBlurred(150);

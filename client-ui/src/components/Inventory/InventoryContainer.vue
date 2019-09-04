@@ -158,15 +158,14 @@ export default {
         },
         useItem(item) {
             if (item.equipmentSlot > 1000) {
-                alt.emit('inventoryTryEquipItem', this.inventory.inventoryId, this.equipmentInventoryId.inventoryId, item.id, item.slotId);
+                alt.emit('inventoryTryEquipItem', this.inventory.inventoryId, this.equipmentInventoryId, item.id, item.slotId);
                 return;
             }
 
-            alt.emit('inventoryUseItem', this.inventory.inventoryId, item.id);
-            alert(`Użyto przedmiotu ${item.id} ${item.name} z inventory ${this.inventory.inventoryId}`);
+            alt.emit('inventoryTryUseItem', this.inventory.inventoryId, item.id);
         },
         dropItem(item) {
-            if (!item.isDroppable) return;
+            if (!item.isDroppable && item.quantity > 1) return;
             alt.emit('inventoryTryDropItem', this.inventory.inventoryId, item.id, item.quantity);
         },
     },

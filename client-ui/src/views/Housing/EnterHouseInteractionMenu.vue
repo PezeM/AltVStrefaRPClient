@@ -52,6 +52,7 @@ export default {
     mounted() {
         alt.log('May this be the problem wtf');
         EventBus.$on('toggleHouseLock', this.toggleHouseLock);
+        EventBus.$on('successfullyBoughtHouse', this.successfullyBoughtHouse);
     },
     props: {
         houseProp: {
@@ -103,6 +104,10 @@ export default {
             this.house.isClosed = isLocked;
             console.log('Set house lock status to ' + this.house.isClosed);
         },
+        successfullyBoughtHouse(houseId) {
+            // if (this.house.id != houseId) return; For later
+            this.house.owner = true;
+        },
     },
     computed: {
         getHouseTypeName() {
@@ -128,11 +133,16 @@ export default {
     },
     beforeDestroy() {
         EventBus.$off('toggleHouseLock', this.toggleHouseLock);
+        EventBus.$off('successfullyBoughtHouse', this.successfullyBoughtHouse);
     },
 };
 
 alt.on('toggleHouseLock', isLocked => {
     EventBus.$emit('toggleHouseLock', isLocked);
+});
+
+alt.on('successfullyBoughtHouse', houseId => {
+    EventBus.$emit('successfullyBoughtHouse', houseId);
 });
 </script>
 

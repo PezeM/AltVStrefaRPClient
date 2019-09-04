@@ -7,7 +7,7 @@
                 </div>
             </div>
             <div class="row enter-house-interaction-menu-container">
-                <div class="col-6">
+                <div class="col-7">
                     <div class="row">
                         <div class="col text-center">
                             <img :src="getInteriorImage" class="img-fluid" />
@@ -26,7 +26,7 @@
                         @buy-button-clicked="onBuyClick"
                     />
                 </div>
-                <div class="col-6">
+                <div class="col-5">
                     <house-enter-menu v-if="house.houseType == 1" :isClosed="house.isClosed" />
                     <hotel-enter-menu v-else-if="house.houseType == 2" :hotelRoom.sync="hotelRoom" />
                 </div>
@@ -50,6 +50,7 @@ export default {
         HotelEnterMenu,
     },
     mounted() {
+        alt.log('May this be the problem wtf');
         alt.on('toggleHouseLock', this.toggleHouseLock);
     },
     props: {
@@ -110,9 +111,9 @@ export default {
         getInteriorImage() {
             switch (this.house.interiorName) {
                 case 'Małe mieszkanie':
-                    return require('@/assets/images/small_interior.jpg');
+                    return require('@/assets/images/small_interior.png');
                 case 'Większe mieszkanie':
-                    break;
+                    return require('@/assets/images/bigger_interior.png');
                 default:
                     return require('@/assets/images/townHallLogo.png');
             }
@@ -133,7 +134,7 @@ export default {
 
 <style scoped>
 #enter-house-interaction-menu {
-    /* background-image: url('../../assets/example-image.jpg'); */
+    background-image: url('../../assets/example-image.jpg');
     padding: 0;
     margin: 0;
     display: flex;
@@ -143,7 +144,7 @@ export default {
 }
 
 .enter-house-interaction-menu {
-    max-width: 25rem;
+    max-width: 30rem;
     position: relative;
     background-color: #000000e3;
     color: #f3f3f3;
@@ -170,4 +171,16 @@ export default {
     color: #333333;
     font-size: 1.3rem;
 }
+</style>
+
+<style>
+/* Colors
+    black: #0C1024,
+    blue: #222A53,
+    text: #C2B2D4,
+    light-blue: #7187AD
+    light-blue2: #444AB7
+    red: #BD326C,
+    light-purple: #BC6ACA
+ */
 </style>

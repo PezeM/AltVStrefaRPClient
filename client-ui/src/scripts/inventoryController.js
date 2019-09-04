@@ -45,7 +45,7 @@ export default class InventoryController {
     }
 
     setItemToSwap(itemId) {
-        this.itemToSwap = this.getItemByIdFromInventoryItems(this.movingOverInventory.items, itemId)
+        this.itemToSwap = this.getItemByIdFromInventoryItems(this.movingOverInventory.items, itemId);
     }
 
     setMovingOverInventory(inventory) {

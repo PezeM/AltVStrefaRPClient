@@ -158,7 +158,7 @@ export default {
         },
         useItem(item) {
             if (item.equipmentSlot > 1000) {
-                alt.emit('inventoryTryEquipItem', this.inventory.inventoryId, this.equipmentInventoryId, item.id, item.slotId);
+                alt.emit('inventoryTryEquipItem', this.inventory.inventoryId, this.equipmentInventoryId, item.id, item.equipmentSlot);
                 return;
             }
 

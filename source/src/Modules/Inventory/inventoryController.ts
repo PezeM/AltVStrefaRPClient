@@ -187,7 +187,7 @@ class InventoryController {
     inventoryEquipItem(wasEquipped: boolean, selectedInventoryId: number, playerEquipmentId: number, itemToEquipId: number, slotId: number) {
         alt.log('Inventory equip item callback');
         if (wasEquipped) {
-            alt.log(`Item ith id ${itemToEquipId} was equipped`);
+            alt.log(`Item with id ${itemToEquipId} was equipped`);
             if (this.isInventoryOpened)
                 mainUi.emitUiEvent("inventoryItemWasEquippedSuccessfully", selectedInventoryId, playerEquipmentId, itemToEquipId, slotId);
 
@@ -202,8 +202,8 @@ class InventoryController {
         alt.log(`Trying to unequip item ID ${equippedItemId} from inventory ${playerEquipmentId} to inventory ${selectedInventoryId}`);
         serverCallbacks.callback("InventoryTryUnequipItem", "inventoryTryUnequipItemResponse",
             [playerEquipmentId, selectedInventoryId, equippedItemId, newSlotId],
-            (wasUnequipped: boolean) => {
-                this.inventoryUnequipItem(wasUnequipped, playerEquipmentId, selectedInventoryId, equippedItemId, newSlotId);
+            (wasUnequipped: boolean, itemSlotId: number) => {
+                this.inventoryUnequipItem(wasUnequipped, playerEquipmentId, selectedInventoryId, equippedItemId, itemSlotId);
             });
     }
 

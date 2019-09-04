@@ -19,6 +19,7 @@ class HousingSystemController {
         alt.onServer('showHouseEnterInteractionMenu', this.showHouseEnterInteractionMenu.bind(this));
         alt.onServer('playerMovedInsideHouse', this.playerMovedInsideHouse.bind(this));
         alt.onServer('showInteriorExitMenu', this.showInteriorExitMenu.bind(this));
+        alt.onServer('successfullyBoughtHouse', this.successfullyBoughtHouse.bind(this));
 
         mainUi.onUiEvent('tryEnterHouse', this.tryEnterHouse.bind(this));
         mainUi.onUiEvent('tryLeaveHouse', this.tryLeaveHouse.bind(this));
@@ -123,6 +124,13 @@ class HousingSystemController {
 
     tryRentHotelRoom(hotelRoom: number) {
         alt.emitServer('TryRentHotelRoom', hotelRoom);
+    }
+
+    successfullyBoughtHouse(houseId: number, housePrice: number) {
+        mainUi.showCefNotification(NotificationTypes.Succes, "Kupiono mieszkanie", `Pomyślnie zakupiełeś mieszkanie za ${housePrice}$`, 3500);
+        if (this.houseMenuOpened) {
+            mainUi.emitUiEvent("successfullyBoughtHouse", houseId);
+        }
     }
 
     closeEnterHouseInteractionMenu() {

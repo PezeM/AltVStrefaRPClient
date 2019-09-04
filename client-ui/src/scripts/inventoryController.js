@@ -369,6 +369,14 @@ export default class InventoryController {
         }
     }
 
+    itemWasUsedSuccessfully(inventoryId, itemId, quantity) {
+        const inventory = this._getInventoryById(inventoryId);
+        if (inventory == null) return;
+        const usedItem = this.getItemByIdFromInventoryItems(inventory.items, itemId);
+        if (usedItem == null) return;
+        this._removeItemQuantityFromInventory(usedItem, quantity, inventory);
+    }
+
     reset() {
         console.log('Called inventory controller stop');
         this.selectedInventory = null;

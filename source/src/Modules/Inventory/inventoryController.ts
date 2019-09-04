@@ -30,7 +30,7 @@ class InventoryController {
         alt.onServer('inventoryAddNewItems', this.inventoryAddNewItems.bind(this));
         alt.onServer('updateInventoryItemQuantity', this.updateInventoryItemQuantity.bind(this));
         alt.onServer('populateAddonationalInventoryContainer', this.populateAddonationalInventoryContainer.bind(this));
-        alt.onServer('usedItemSuccessfully', this.usedItemSuccessfully.bind(this));
+        alt.onServer('inventoryUsedItemSuccessfully', this.inventoryUsedItemSuccessfully.bind(this));
     }
 
     populateAddonationalInventoryContainer(inventoryContainer: IInventoryContainer, personalInventory: IInventoryContainer | null,
@@ -280,10 +280,10 @@ class InventoryController {
         alt.emitServer("InventoryTryUseItem", inventoryId, itemId);
     }
 
-    usedItemSuccessfully(inventoryId: number, itemId: number, quantity: number) {
+    inventoryUsedItemSuccessfully(inventoryId: number, itemId: number, quantity: number) {
         alt.log('On used item successfully');
         if (this.isInventoryOpened) {
-            mainUi.emitUiEvent('usedItemSuccessfully', inventoryId, itemId, quantity);
+            mainUi.emitUiEvent('inventoryItemWasUsedSuccessfully', inventoryId, itemId, quantity);
         }
         inventoryCache.usedItem(inventoryId, itemId, quantity);
     }

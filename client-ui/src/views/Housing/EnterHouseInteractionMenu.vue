@@ -51,7 +51,7 @@ export default {
     },
     mounted() {
         alt.log('May this be the problem wtf');
-        alt.on('toggleHouseLock', this.toggleHouseLock);
+        EventBus.$on('toggleHouseLock', this.toggleHouseLock);
     },
     props: {
         houseProp: {
@@ -127,9 +127,13 @@ export default {
         },
     },
     beforeDestroy() {
-        alt.off('toggleHouseLock', this.toggleHouseLock);
+        EventBus.$off('toggleHouseLock', this.toggleHouseLock);
     },
 };
+
+alt.on('toggleHouseLock', isLocked => {
+    EventBus.$emit('toggleHouseLock', isLocked);
+});
 </script>
 
 <style scoped>

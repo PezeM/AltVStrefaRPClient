@@ -126,6 +126,7 @@ export default {
         EventBus.$on('inventoryItemWasMovedSuccessfully', this.itemWasMovedSuccessfully);
         EventBus.$on('inventoryItemWasTransferedSuccessfully', this.itemWasTransferedSuccessfully);
         EventBus.$on('inventoryItemWasSwappedSuccessfully', this.itemWasSwappedSuccessfully);
+        EventBus.$on('inventoryItemWasUsedSuccessfully', this.itemWasUsedSuccessfully);
     },
     props: {
         initialPersonalInventory: {
@@ -440,6 +441,9 @@ export default {
                 itemToSwapInventoryId
             );
         },
+        itemWasUsedSuccessfully(inventoryId, itemId, quantity) {
+            this.inventoryController.itemWasUsedSuccessfully(inventoryId, itemId, quantity);
+        },
         inventoryAddNewItems(newItems) {
             if (newItems == null) return;
             newItems.forEach(item => {
@@ -583,6 +587,10 @@ alt.on('inventoryItemWasSwappedSuccessfully', (inventoryId, selectedItemId, sele
         itemToSwapSlotId,
         itemToSwapInventoryId
     );
+});
+
+alt.on('inventoryItemWasUsedSuccessfully', (inventoryId, itemId, quantity) => {
+    EventBus.$emit('inventoryItemWasUsedSuccessfully', inventoryId, itemId, quantity);
 });
 </script>
 

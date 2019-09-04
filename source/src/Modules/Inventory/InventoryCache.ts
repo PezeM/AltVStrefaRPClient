@@ -137,14 +137,20 @@ class InventoryCache {
         const inventory = this.getInventory(inventoryId);
         if (inventory == null) return;
 
-        const itemToDrop = this.getItem(itemToDropId);
+        const itemToDrop = this.getItemFromInventory(inventory, itemToDropId);
         if (itemToDrop == null) return;
         if (itemToDrop.quantity < quantity) return;
 
-        itemToDrop.quantity -= quantity;
-        if (itemToDrop.quantity <= 0) {
-            inventory.items = inventory.items.filter(i => i.id !== itemToDrop.id);
-        }
+        this.removeItemQuantity(itemToDrop, inventory, quantity);
+    }
+
+    usedItem(inventoryId: number, itemId: number, quantity: number) {
+        alt.log('Used item inventory cache');
+        const inventory = this.getInventory(inventoryId);
+        if (inventory == null) return;
+        const usedItem = this.getItemFromInventory(inventory, itemId);
+        if (usedItem == null) return;
+        this.removeItemQuantity(usedItem, inventory, quantity);
     }
 
     addNewItem(newItem: IInventoryItem) {

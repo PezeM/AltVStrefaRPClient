@@ -25,10 +25,12 @@ class InventoryController {
         mainUi.onUiEvent('inventoryTryDropItem', this.inventoryTryDropItem.bind(this));
         mainUi.onUiEvent('inventoryTryEquipItem', this.inventoryTryEquipItem.bind(this));
         mainUi.onUiEvent('inventoryTryUnequipItem', this.inventoryTryUnequipItem.bind(this));
+        mainUi.onUiEvent('inventoryTryUseItem', this.inventoryTryUseItem.bind(this));
 
         alt.onServer('inventoryAddNewItems', this.inventoryAddNewItems.bind(this));
         alt.onServer('updateInventoryItemQuantity', this.updateInventoryItemQuantity.bind(this));
         alt.onServer('populateAddonationalInventoryContainer', this.populateAddonationalInventoryContainer.bind(this));
+        alt.onServer('usedItemSuccessfully', this.usedItemSuccessfully.bind(this));
     }
 
     populateAddonationalInventoryContainer(inventoryContainer: IInventoryContainer, personalInventory: IInventoryContainer | null,
@@ -272,6 +274,18 @@ class InventoryController {
             alt.log(`Item with id ${itemId} quantity ${quantity} was not dropped`);
             mainUi.showCefNotification(NotificationTypes.Error, "Błąd", "Wyrzucenie przedmiotu nie powiodło się", 3500);
         }
+    }
+
+    inventoryTryUseItem(inventoryId: number, itemId: number) {
+        alt.emitServer("InventoryTryUseItem", inventoryId, itemId);
+    }
+
+    usedItemSuccessfully(inventoryId: number, itemId: number, quantity: number) {
+        alt.log('On used item successfully');
+        if (this.isInventoryOpened) {
+            mainUi.emitUiEvent('usedItemSuccessfully', inventoryId, itemId, quantity);
+        }
+        inventoryCache.usedItem(inventoryId, itemId, quantity);
     }
 
     inventoryAddNewItems(newItems: IInventoryItem[]) {

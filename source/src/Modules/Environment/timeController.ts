@@ -6,12 +6,22 @@ const MS_PER_GAME_MINUTE = 3000; // 3s per 1 min in game, 1min irl = 20 min in g
 class TimeController {
     currentWeather: Weather;
     constructor() {
+        alt.log('Initialzied TimeController');
         this.currentWeather = Weather.ExtraSunny;
 
         alt.setMsPerGameMinute(MS_PER_GAME_MINUTE);
+
+        alt.onServer('setWeatherNow', this.setWeather.bind(this));
+        alt.onServer('setWeatherOverTime', this.setWeatherOverTime.bind(this));
+        alt.onServer('setGlobalTime', this.setTime.bind(this));
     }
 
-    setWeather(weatherId: number, transitionDuration: number) {
+    setWeather(weatherId: number) {
+        const weather = this.weatherDict[weatherId];
+        native.setWeatherTypeNow(weather);
+    }
+
+    setWeatherOverTime(weatherId: number, transitionDuration: number) {
         const weather = this.weatherDict[weatherId];
         native.setWeatherTypeOverTime(weather, transitionDuration);
     }

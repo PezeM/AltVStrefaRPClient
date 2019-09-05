@@ -25,6 +25,7 @@ import vehicleEngineToggleComponent from 'source/src/Modules/Vehicle/Components/
 import SoundBrowser from 'source/src/Modules/Admin/soundBrowser';
 import inventoryController from 'source/src/Modules/Inventory/inventoryController';
 import housingSystemController from 'source/src/Modules/Housing/housingSystemController';
+import 'source/src/Modules/Environment/timeController';
 
 const localPlayer = alt.Player.local;
 let lastKeyPressedTime = new Date().getTime();

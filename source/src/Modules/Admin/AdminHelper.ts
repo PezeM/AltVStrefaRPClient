@@ -1,5 +1,7 @@
 import * as alt from 'alt';
 import { AdminLevel } from 'source/src/Constans/AdminLevels';
+import mainUi from 'source/src/Modules/Ui/mainUi';
+import { NotificationTypes } from 'source/src/Constans/notificationTypes';
 
 const PLAYER_ADMIN_META = "playerAdminLevel";
 export class AdminHelper {
@@ -16,5 +18,14 @@ export class AdminHelper {
         }
 
         return adminLevel;
+    }
+
+    static hasAdminLevel(localPlayer: alt.Player, adminLevel: AdminLevel): boolean {
+        if (this.getAdminLevel(localPlayer) <= adminLevel) {
+            mainUi.showCefNotification(NotificationTypes.Error, "Brak uprawnień",
+                "Nie posiadasz odpowiednich uprawnień do wykonania tej akcji", 3500);
+            return false;
+        }
+        return true;
     }
 }

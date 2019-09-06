@@ -33,7 +33,7 @@ let direction: Vector3 = {
 let lastChecked = 0;
 const localPlayer = alt.Player.local;
 
-async function toggleFlying() {
+export async function toggleFlying() {
     fly.flying = !fly.flying;
 
     game.freezeEntityPosition(localPlayer.scriptID, fly.flying);
@@ -45,6 +45,7 @@ async function toggleFlying() {
     }
 
     await showNotification('Noclip', fly.flying ? "~g~ Został włączony" : "~r~Został wyłączony", "");
+    return fly.flying;
 }
 
 function landSafeOnTheGround() {

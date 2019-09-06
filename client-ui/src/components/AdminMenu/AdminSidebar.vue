@@ -3,17 +3,29 @@
         <div class="sidebar-sticky">
             <ul class="nav flex-column">
                 <li class="nav-item">
-                    <a class="nav-link active" @click="moveToDashboard">
+                    <a
+                        class="nav-link"
+                        :class="{ active: isPageActive('Dashboard')}"
+                        @click="moveToPage('Dashboard')"
+                    >
                         <v-icon name="home" />Dashboard
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" @click="moveToDebugPage">
+                    <a
+                        class="nav-link"
+                        :class="{ active: isPageActive('Debug')}"
+                        @click="moveToPage('Debug')"
+                    >
                         <v-icon name="bug" />Debug
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
+                    <a
+                        class="nav-link"
+                        :class="{ active: isPageActive('Admin')}"
+                        @click="moveToPage('Admin')"
+                    >
                         <v-icon name="toolbox" />Admin
                     </a>
                 </li>
@@ -88,24 +100,35 @@ export default {
     components: {
         'v-icon': Icon,
     },
+    data() {
+        return {
+            activePage: 'Dashboard',
+        };
+    },
     methods: {
-        moveToDashboard() {
-            this.$router.push('/adminMenu', () => {});
+        isPageActive(pageName) {
+            return this.activePage === pageName;
         },
-        moveToDebugPage() {
-            this.$router.push({ name: 'adminDebugMenu' }, () => {});
+        moveToPage(pageName) {
+            switch (pageName) {
+                case 'Dashboard':
+                    this.$router.push('/adminMenu', () => {});
+                    this.activePage = pageName;
+                    break;
+                case 'Debug':
+                    this.$router.push({ name: 'adminDebugMenu' }, () => {});
+                    this.activePage = pageName;
+                    break;
+                default:
+                    this.$router.push('/adminMenu', () => {});
+                    break;
+            }
         },
     },
 };
 </script>
 
 <style scoped>
-.fa-icon {
-    width: 16px;
-    height: 16px;
-    vertical-align: text-bottom;
-}
-
 .sidebar {
     position: fixed;
     top: 0;
@@ -135,6 +158,12 @@ export default {
 .sidebar .nav-link {
     font-weight: 500;
     color: #333;
+}
+
+.fa-icon {
+    width: 16px;
+    height: 16px;
+    vertical-align: text-bottom;
 }
 
 .sidebar .fa-icon {

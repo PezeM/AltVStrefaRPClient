@@ -6,7 +6,7 @@
             <div class="row h-100">
                 <admin-sidebar />
 
-                <div id="admin-menu-content" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+                <div id="admin-menu-content" class="col-md-10 ml-sm-auto col-lg-10 px-4">
                     <router-view />
                 </div>
             </div>

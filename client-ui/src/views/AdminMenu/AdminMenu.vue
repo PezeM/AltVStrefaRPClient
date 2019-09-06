@@ -28,14 +28,9 @@ export default {
 </script>
 
 <style scoped>
-.feather {
-    width: 16px;
-    height: 16px;
-    vertical-align: text-bottom;
-}
-
 #admin-menu-content {
     padding-top: 133px;
+    background-color: #f3f3f3;
 }
 
 @media (min-width: 768px) {

@@ -97,6 +97,7 @@ alt.on('showHouseInteriorExitMenu', () => {
 });
 
 alt.on('openAdminMenu', () => {
+    console.log('Opening admin menu on UI');
     router.push('/adminMenu');
 });
 

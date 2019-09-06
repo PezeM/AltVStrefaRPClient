@@ -10,7 +10,7 @@ class AdminMenuController {
         alt.log('Admin menu controller initialized');
         this.isMenuOpened = false;
 
-        alt.onServer('openAdminMenu', this.tryOpenAdminMenu.bind(this));
+        alt.onServer('openAdminMenu', this.openAdminMenu.bind(this));
         mainUi.onUiEvent('closeAdminMenu', this.closeAdminMenu.bind(this));
     }
 

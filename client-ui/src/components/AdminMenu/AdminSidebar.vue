@@ -3,12 +3,12 @@
         <div class="sidebar-sticky">
             <ul class="nav flex-column">
                 <li class="nav-item">
-                    <a class="nav-link active" href="#">
+                    <a class="nav-link active" @click="moveToDashboard">
                         <v-icon name="home" />Dashboard
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" @click="moveToDebugPage">
                         <v-icon name="bug" />Debug
                     </a>
                 </li>
@@ -87,6 +87,14 @@ import Icon from 'vue-awesome/components/Icon';
 export default {
     components: {
         'v-icon': Icon,
+    },
+    methods: {
+        moveToDashboard() {
+            this.$router.push('/adminMenu', () => {});
+        },
+        moveToDebugPage() {
+            this.$router.push({ name: 'adminDebugMenu' }, () => {});
+        },
     },
 };
 </script>

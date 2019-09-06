@@ -39,3 +39,9 @@ export default {
     }
 }
 </style>
+
+<style>
+#admin-menu p {
+    font-family: 'Roboto' !important;
+}
+</style>

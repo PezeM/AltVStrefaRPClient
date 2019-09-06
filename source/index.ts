@@ -26,6 +26,7 @@ import SoundBrowser from 'source/src/Modules/Admin/soundBrowser';
 import inventoryController from 'source/src/Modules/Inventory/inventoryController';
 import housingSystemController from 'source/src/Modules/Housing/housingSystemController';
 import 'source/src/Modules/Environment/timeController';
+import adminMenuController from 'source/src/Modules/Admin/AdminMenuController';
 
 const localPlayer = alt.Player.local;
 let lastKeyPressedTime = new Date().getTime();
@@ -95,6 +96,11 @@ alt.on('keydown', (key: number) => {
             if (new Date().getTime() - lastKeyPressedTime < 500) return;
             lastKeyPressedTime = new Date().getTime();
             inventoryController.openInventory();
+            break;
+        case keycodes.VK_F11:
+            if (new Date().getTime() - lastKeyPressedTime < 500) return;
+            lastKeyPressedTime = new Date().getTime();
+            adminMenuController.tryOpenAdminMenu();
             break;
     }
 });

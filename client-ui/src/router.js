@@ -124,6 +124,15 @@ export default new Router({
             component: () => import('./views/Housing/HouseInteriorExitMenu.vue'),
         },
         {
+            path: '/adminMenu',
+            component: () => import('./views/AdminMenu/AdminMenu.vue'),
+            children: [{
+                path: '',
+                name: 'adminMenuDashboard',
+                component: () => import('./views/AdminMenu/MainPage.vue'),
+            }, ],
+        },
+        {
             path: '/empty',
             name: 'empty',
             component: () => import('./views/Empty.vue'),

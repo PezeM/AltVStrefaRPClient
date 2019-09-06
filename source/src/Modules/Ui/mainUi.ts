@@ -51,6 +51,7 @@ class MainUi {
 
         this.uiView.emit(menuName, ...args);
         this.viewOpened = true;
+        this.uiView.isVisible = true;
         alt.showCursor(true);
         this.uiView.focus();
 
@@ -86,7 +87,7 @@ class MainUi {
         //     this.tabletView.destroy();
         // }, 0);
         this.uiView.emit('closeMenu');
-        this.uiView.unfocus();
+        // this.uiView.unfocus();
         this.viewOpened = false;
         alt.showCursor(showCursor);
     }

@@ -96,6 +96,10 @@ alt.on('showHouseInteriorExitMenu', () => {
     router.push({ name: 'houseInteriorExitMenu' });
 });
 
+alt.on('openAdminMenu', () => {
+    router.push('/adminMenu');
+});
+
 alt.on('closeMenu', () => {
     router.push('/empty');
 });

@@ -15,6 +15,7 @@ if (!global.alt) {
 // import 'bootstrap/dist/css/bootstrap.css';
 import '../node_modules/bootswatch/dist/litera/bootstrap.min.css';
 import Vue from 'vue';
+import Vuex from 'vuex';
 import EventBus from './event-bus';
 import App from './App.vue';
 import router from './router';
@@ -23,6 +24,7 @@ import VTooltip from 'v-tooltip';
 
 Vue.config.productionTip = false;
 
+Vue.use(Vuex);
 Vue.use(VModal, {
     dialog: true,
     dynamic: true,

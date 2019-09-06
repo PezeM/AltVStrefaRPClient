@@ -2,8 +2,8 @@
     <div id="admin-menu">
         <admin-navbar />
 
-        <div class="container-fluid">
-            <div class="row">
+        <div class="container-fluid h-100">
+            <div class="row h-100">
                 <admin-sidebar />
 
                 <div id="admin-menu-content" class="col-md-9 ml-sm-auto col-lg-10 px-4">

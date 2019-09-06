@@ -127,10 +127,16 @@ export default new Router({
             path: '/adminMenu',
             component: () => import('./views/AdminMenu/AdminMenu.vue'),
             children: [{
-                path: '',
-                name: 'adminMenuDashboard',
-                component: () => import('./views/AdminMenu/MainPage.vue'),
-            }, ],
+                    path: '',
+                    name: 'adminMenuDashboard',
+                    component: () => import('./views/AdminMenu/MainPage.vue'),
+                },
+                {
+                    path: 'adminDebugMenu',
+                    name: 'adminDebugMenu',
+                    component: () => import('./views/AdminMenu/AdminDebugMenu.vue'),
+                }
+            ],
         },
         {
             path: '/empty',

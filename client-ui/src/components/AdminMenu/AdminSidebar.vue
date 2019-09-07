@@ -100,27 +100,23 @@ export default {
     components: {
         'v-icon': Icon,
     },
-    data() {
-        return {
-            activePage: 'Dashboard',
-        };
-    },
     methods: {
         isPageActive(pageName) {
-            return this.activePage === pageName;
+            return this.$store.state.adminMenu.activePage === pageName;
         },
         moveToPage(pageName) {
             switch (pageName) {
                 case 'Dashboard':
                     this.$router.push('/adminMenu', () => {});
-                    this.activePage = pageName;
+                    this.$store.commit('adminMenu/changeActivePage', pageName);
                     break;
                 case 'Debug':
                     this.$router.push({ name: 'adminDebugMenu' }, () => {});
-                    this.activePage = pageName;
+                    this.$store.commit('adminMenu/changeActivePage', pageName);
                     break;
                 default:
-                    this.$router.push('/adminMenu', () => {});
+                    this.$router.push({ name: 'adminPage' }, () => {});
+                    this.$store.commit('adminMenu/changeActivePage', pageName);
                     break;
             }
         },

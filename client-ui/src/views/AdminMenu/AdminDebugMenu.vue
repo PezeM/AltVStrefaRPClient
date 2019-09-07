@@ -9,14 +9,14 @@
                             Debug mode:
                             <span
                                 class="disabled"
-                                :class="{active: debugModeStatus}"
-                            >{{ debugModeStatus ? 'włączony' : 'wyłączony' }}</span>
+                                :class="{active: getDebugModeStatus}"
+                            >{{ getDebugModeStatus ? 'włączony' : 'wyłączony' }}</span>
                         </p>
                         <button
                             class="btn btn-success"
-                            :class="{'btn-danger': debugModeStatus}"
+                            :class="{'btn-danger': getDebugModeStatus}"
                             @click="toggleDebugMode"
-                        >{{ debugModeStatus ? 'Wyłącz' : 'Włącz' }}</button>
+                        >{{ getDebugModeStatus ? 'Wyłącz' : 'Włącz' }}</button>
                     </div>
                 </div>
             </div>
@@ -33,7 +33,7 @@
                         <button
                             class="btn btn-success"
                             :class="{'btn-danger': getNoclipStatus}"
-                            @click="toggleDebugMode"
+                            @click="toggleNoclipMode"
                         >{{ getNoclipStatus ? 'Wyłącz' : 'Włącz' }}</button>
                     </div>
                 </div>
@@ -115,6 +115,7 @@ export default {
         },
         toggledNoclipMode(noclipStatus) {
             this.noclipStatus = noclipStatus;
+            this.$store.commit('adminMenu/setNoclip', true);
         },
         loadIpl() {
             if (this.loadIplName == null || this.loadIplName.length < 3) {
@@ -134,10 +135,10 @@ export default {
     },
     computed: {
         getNoclipStatus() {
-            return this.$store.state.adminMenu.noclipStatus;
+            return this.$store.state.adminMenu.debug.noclipStatus;
         },
         getDebugModeStatus() {
-            return this.$store.state.adminMenu.debugModeStatus;
+            return this.$store.state.adminMenu.debug.debugModeStatus;
         },
     },
 };

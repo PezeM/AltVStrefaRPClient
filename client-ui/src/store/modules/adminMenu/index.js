@@ -1,18 +1,12 @@
-import {
-    getters
-} from './getters';
-import {
-    actions
-} from './actions';
-import {
-    mutations
-} from './mutations';
+import getters from './getters';
+import actions from './actions';
+import mutations from './mutations';
+import debug from './debugPage/index';
 
 const namespaced = true;
 
 const state = {
-    noclipStatus: false,
-    debugModeStatus: false,
+    activePage: 'Dashboard',
 };
 
 export default {
@@ -21,4 +15,7 @@ export default {
     getters,
     actions,
     mutations,
+    modules: {
+        debug
+    }
 };

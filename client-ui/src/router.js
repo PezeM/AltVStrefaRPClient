@@ -135,6 +135,11 @@ export default new Router({
                     path: 'adminDebugMenu',
                     name: 'adminDebugMenu',
                     component: () => import('./views/AdminMenu/AdminDebugMenu.vue'),
+                },
+                {
+                    path: 'adminPage',
+                    name: 'adminPage',
+                    component: () => import('./views/AdminMenu/AdminPage.vue'),
                 }
             ],
         },

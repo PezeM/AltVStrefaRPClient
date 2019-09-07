@@ -27,14 +27,14 @@
                             Noclip:
                             <span
                                 class="disabled"
-                                :class="{active: noclipStatus}"
-                            >{{ noclipStatus ? 'włączony' : 'wyłączony' }}</span>
+                                :class="{active: getNoclipStatus}"
+                            >{{ getNoclipStatus ? 'włączony' : 'wyłączony' }}</span>
                         </p>
                         <button
                             class="btn btn-success"
-                            :class="{'btn-danger': noclipStatus}"
+                            :class="{'btn-danger': getNoclipStatus}"
                             @click="toggleDebugMode"
-                        >{{ noclipStatus ? 'Wyłącz' : 'Włącz' }}</button>
+                        >{{ getNoclipStatus ? 'Wyłącz' : 'Włącz' }}</button>
                     </div>
                 </div>
             </div>
@@ -130,6 +130,14 @@ export default {
         },
         activateTest3DSound() {
             alt.emit('adminMenu::activate3DSound');
+        },
+    },
+    computed: {
+        getNoclipStatus() {
+            return this.$store.state.adminMenu.noclipStatus;
+        },
+        getDebugModeStatus() {
+            return this.$store.state.adminMenu.debugModeStatus;
         },
     },
 };

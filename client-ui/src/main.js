@@ -21,6 +21,7 @@ import App from './App.vue';
 import router from './router';
 import VModal from 'vue-js-modal';
 import VTooltip from 'v-tooltip';
+import store from './store/index';
 
 Vue.config.productionTip = false;
 
@@ -35,4 +36,5 @@ Vue.use(VTooltip);
 new Vue({
     router,
     render: h => h(App),
+    store,
 }).$mount('#app');

@@ -144,7 +144,7 @@ class CameraRotator {
 
         this.setPoint(x, y);
 
-        this.drawDebugText();
+        // this.drawDebugText();
 
         // On left mouse hold
         if (game.isDisabledControlPressed(2, 237)) {

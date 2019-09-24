@@ -1208,7 +1208,7 @@ declare module "natives" {
 	export function _0x4D953DF78EBF8158(): void;
 	export function _0x6D6840CEE8845831(action: string): void;
 	export function _0x6E91B04E08773030(action: string): void;
-	export function renderScriptCams(render: boolean, ease: boolean, easeTime: number, p3: boolean, p4: boolean, p5: number): void;
+	export function renderScriptCams(render: boolean, ease: boolean, easeTime: number, p3: boolean, p4: boolean): void;
 	export function renderFirstPersonCam(render: boolean, p1: number, p2: number, p3: number): void;
 	export function createCam(camName: string, p1: boolean): number;
 	export function createCamWithParams(camName: string, posX: number, posY: number, posZ: number, rotX: number, rotY: number, rotZ: number, fov: number, p8: boolean, p9: number): number;

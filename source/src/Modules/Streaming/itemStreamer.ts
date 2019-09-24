@@ -45,7 +45,7 @@ class ItemStreamer {
 
     render() {
         this.canPickupItem = false;
-        if (this.nearestItem == null || this.localPlayer.vehicle != null || game.isEntityDead(this.localPlayer.scriptID)) return;
+        if (this.nearestItem == null || this.localPlayer.vehicle != null || game.isEntityDead(this.localPlayer.scriptID, false)) return;
         if (!game.isEntityOnScreen(this.nearestItem.item.object)) return;
 
         draw3DText(`~y~(${this.nearestItem.item.count}) \n ~w~${this.nearestItem.item.name}`,

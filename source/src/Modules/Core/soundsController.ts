@@ -49,7 +49,7 @@ class SoundsController {
     }
 
     playSpeech(pedId: number, speechName: string, speechParam: string) {
-        game.playAmbientSpeech1(pedId, speechName, speechParam);
+        game.playAmbientSpeech1(pedId, speechName, speechParam, 0);
     }
 
     // https://gist.github.com/alexguirre/0af600eb3d4c91ad4f900120a63b8992

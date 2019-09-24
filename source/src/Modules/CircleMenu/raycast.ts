@@ -6,9 +6,9 @@ const localPlayer = alt.Player.local;
 class Raycast {
     didRaycastHit: boolean;
     entityHit: number | null;
-    useless: null;
+    useless: number | null;
     endCoords: Vector3 | null;
-    surfaceNormal: null;
+    surfaceNormal: Vector3 | null;
     constructor() {
         alt.log('Initialized raycast Class');
         this.didRaycastHit = false;

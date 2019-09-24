@@ -51,7 +51,7 @@ class MarkerManager {
         }
 
         // Screen flickering fix
-        native.drawRect(0, 0, 0, 0, 0, 0, 0, 0);
+        native.drawRect(0, 0, 0, 0, 0, 0, 0, 0, false);
     }
 
     onMarkerDistanceCheckInterval() {

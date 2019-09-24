@@ -9,7 +9,7 @@ class Scaleform {
   draw3D(posX: number, posY: number, posZ: number, rotX: number, rotY: number, rotZ: number, unk1: number, unk2: number, unk3: number,
     scaleX: number, scaleY: number, scaleZ: number, unk4: number
   ) {
-    return game.drawScaleformMovie3dNonAdditive(this.handle, posX, posY, posZ, rotX, rotY, rotZ, unk1, unk2, unk3, scaleX, scaleY, scaleZ, unk4);
+    return game.drawScaleformMovie3dSolid(this.handle, posX, posY, posZ, rotX, rotY, rotZ, unk1, unk2, unk3, scaleX, scaleY, scaleZ, unk4);
   }
 
   isLoaded() {
@@ -30,13 +30,13 @@ function handleScaleform(scaleform: Scaleform) {
           for (const a in args) {
             const nextArg = args[a];
             if (typeof nextArg === 'number' && Number.isInteger(nextArg)) {
-              game.addScaleformMovieMethodParameterInt(nextArg);
+              game.scaleformMovieMethodAddParamInt(nextArg);
             } else if (typeof nextArg === 'number') {
-              game.addScaleformMovieMethodParameterFloat(nextArg);
+              game.scaleformMovieMethodAddParamFloat(nextArg);
             } else if (typeof nextArg === 'boolean') {
-              game.addScaleformMovieMethodParameterBool(nextArg);
+              game.scaleformMovieMethodAddParamBool(nextArg);
             } else {
-              game.addScaleformMovieMethodParameterString(nextArg);
+              game.scaleformMovieMethodAddParamTextureNameString(nextArg);
             }
           }
           game.endScaleformMovieMethod();

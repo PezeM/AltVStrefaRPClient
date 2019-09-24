@@ -37,7 +37,7 @@ alt.on('keydown', (key: number) => {
 
     switch (key) {
         case controlsIds.Alt:
-            if (localPlayer.vehicle != null || game.isEntityDead(localPlayer.scriptID) || new Date().getTime() - lastKeyPressedTime < 300) return;
+            if (localPlayer.vehicle != null || game.isEntityDead(localPlayer.scriptID, false) || new Date().getTime() - lastKeyPressedTime < 300) return;
             else if (circleMenu.isMenuOpened) {
                 circleMenu.closeMenu(true);
                 return;
@@ -47,7 +47,7 @@ alt.on('keydown', (key: number) => {
             lastKeyPressedTime = new Date().getTime();
             break;
         case controlsIds.G:
-            if (game.isEntityDead(localPlayer.scriptID) || new Date().getTime() - lastKeyPressedTime < 500) return;
+            if (game.isEntityDead(localPlayer.scriptID, false) || new Date().getTime() - lastKeyPressedTime < 500) return;
             if (circleMenu.isMenuOpened) {
                 circleMenu.closeMenu(true);
             } else {
@@ -56,7 +56,7 @@ alt.on('keydown', (key: number) => {
             lastKeyPressedTime = new Date().getTime();
             break;
         case controlsIds.Tilde:
-            if (game.isEntityDead(localPlayer.scriptID) || new Date().getTime() - lastKeyPressedTime < 500) return;
+            if (game.isEntityDead(localPlayer.scriptID, false) || new Date().getTime() - lastKeyPressedTime < 500) return;
             lastKeyPressedTime = new Date().getTime();
             animations.forceAnimationStop();
             break;
@@ -148,5 +148,5 @@ mainUi.onUiEvent('defaultCancelModalCallback', () => {
 // Test cinematic camera off
 alt.setInterval(() => {
     game._0x9E4CFFF989258472(); // Disables vehicle idle cam ? 
-    game.resetCameraAfkTimer(); // Resets camera afk timer
+    game.invalidateIdleCam(); // Resets camera afk timer
 }, 29000);

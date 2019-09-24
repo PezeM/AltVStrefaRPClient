@@ -43,7 +43,7 @@ export function drawText(text: string, position: number[], font: number, color: 
 
     game.beginTextCommandDisplayText("STRING");
     game.addTextComponentSubstringPlayerName(text);
-    game.endTextCommandDisplayText(position[0], position[1]);
+    game.endTextCommandDisplayText(position[0], position[1], 0);
 }
 
 export function draw3DText2(text: string, position: number[], font: number, color: number[], scale: number, outline = true,
@@ -78,7 +78,7 @@ export function draw3DText2(text: string, position: number[], font: number, colo
         game.setTextCentre(true);
         game.beginTextCommandDisplayText("STRING");
         game.addTextComponentSubstringPlayerName(text);
-        game.endTextCommandDisplayText(x, y + 0.025);
+        game.endTextCommandDisplayText(x, y + 0.025, 0);
     }
 }
 
@@ -107,7 +107,7 @@ export function draw3DText(text: string, position: number[], font: number, color
     game.beginTextCommandDisplayText("STRING");
     game.addTextComponentSubstringPlayerName(text);
 
-    game.endTextCommandDisplayText(0, 0);
+    game.endTextCommandDisplayText(0, 0, 0);
 
     // if (drawBackground)
     //     drawRectangleBackground(text, scale, font, backgroundColor);
@@ -116,7 +116,7 @@ export function draw3DText(text: string, position: number[], font: number, color
 }
 
 export function drawRectangleBackground(text: string, scale: number, font: number, backgroundColor: number[]) {
-    game.beginTextCommandWidth("STRING");
+    game.beginTextCommandGetWidth("STRING");
     game.addTextComponentSubstringPlayerName(text);
     game.setTextFont(font);
     game.setTextScale(scale, scale);
@@ -124,7 +124,7 @@ export function drawRectangleBackground(text: string, scale: number, font: numbe
     const height = game.getTextScaleHeight(1.2 * scale, font);
     const width = game.endTextCommandGetWidth(true);
 
-    game.drawRect(0, 0 + scale / 25, width, height, backgroundColor[0], backgroundColor[1], backgroundColor[2], backgroundColor[3]);
+    game.drawRect(0, 0 + scale / 25, width, height, backgroundColor[0], backgroundColor[1], backgroundColor[2], backgroundColor[3], false);
 }
 
 export function getMinimapAnchor() {

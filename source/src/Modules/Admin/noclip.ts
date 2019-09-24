@@ -50,7 +50,7 @@ export async function toggleFlying() {
 
 function landSafeOnTheGround() {
     const position = game.getEntityCoords(localPlayer.scriptID, true);
-    const [isGroundFound, positionZ] = game.getGroundZFor3dCoord(position.x, position.y, position.z, 0.0, false);
+    const [isGroundFound, positionZ] = game.getGroundZFor3dCoord(position.x, position.y, position.z, 0.0, false, false);
     if (isGroundFound) {
         game.setEntityCoordsNoOffset(localPlayer.scriptID, position.x, position.y, positionZ, false, false, false);
     }

@@ -23,7 +23,7 @@ class TimeController {
 
     setWeatherOverTime(weatherId: number, transitionDuration: number) {
         const weather = this.weatherDict[weatherId];
-        native.setWeatherTypeOverTime(weather, transitionDuration);
+        native.setWeatherTypeOvertimePersist(weather, transitionDuration);
         alt.log('Setting new weather to ' + weather);
     }
 

@@ -24,7 +24,7 @@ alt.onServer('teleportToWaypoint', () => {
     const interval = alt.setInterval(() => {
         game.setEntityCoords(localPlayer.scriptID, waypointCoords.x, waypointCoords.y, waypointCoords.z, true, false, false, true);
 
-        const [isGroundFound, positionZ] = game.getGroundZFor3dCoord(waypointCoords.x, waypointCoords.y, waypointCoords.z, 0, false);
+        const [isGroundFound, positionZ] = game.getGroundZFor3dCoord(waypointCoords.x, waypointCoords.y, waypointCoords.z, 0, false, false);
         if (isGroundFound) {
             groundFound = true;
             if (!game.isPlayerTeleportActive()) {

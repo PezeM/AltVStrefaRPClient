@@ -140,8 +140,8 @@ class VehicleShop {
 
             alt.loadModel(newVehicleModel);
             this.spawnedVehicle = game.createVehicle(newVehicleModel, vehicleShopData.vehicleSpawn.x, vehicleShopData.vehicleSpawn.y,
-                vehicleShopData.vehicleSpawn.z, 180, true, true);
-            game.setVehicleOnGroundProperly(this.spawnedVehicle);
+                vehicleShopData.vehicleSpawn.z, 180, true, true, false);
+            game.setVehicleOnGroundProperly(this.spawnedVehicle, 0);
             game.setVehicleUndriveable(this.spawnedVehicle, true);
         } catch (error) {
             alt.log(`Error while changing vehicle in vehicleShops = ${error}`);
@@ -152,7 +152,7 @@ class VehicleShop {
         console.log(`Setting camera to positon ${vehicleShopData.cameraPosition}`);
         this.shopCamera = new Camera('DEFAULT_SCRIPTED_CAMERA', vehicleShopData.cameraPosition, vehicleShopData.cameraRotation, 45);
         this.shopCamera.setActive(true);
-        game.renderScriptCams(true, false, 0, true, false);
+        game.renderScriptCams(true, false, 0, true, false, 0);
     }
 
     setupCameraRotator(vehicleShopData: IVehicleShop) {
@@ -202,7 +202,7 @@ class VehicleShop {
             this.shopCamera = null;
         }
         mainUi.closeMenu();
-        game.renderScriptCams(false, true, 400, true, false);
+        game.renderScriptCams(false, true, 400, true, false, 0);
     }
 }
 

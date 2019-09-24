@@ -1,5 +1,4 @@
 import * as alt from 'alt';
-import * as native from 'natives';
 import mainUi from 'source/src/Modules/Ui/mainUi';
 import AdminDebugMenu from 'source/src/Modules/Admin/AdminMenus/AdminDebugMenu';
 

@@ -33,7 +33,7 @@ class MarkerManager {
                 0, 0, 0,
                 marker.marker.scaleX, marker.marker.scaleY, marker.marker.scaleZ,
                 marker.marker.red, marker.marker.green, marker.marker.blue, marker.marker.alpha,
-                false, false, 2, true, undefined, undefined, false);
+                false, false, 2, true, null, null, false);
 
             // false, false, 2, false, undefined, undefined, false
         }
@@ -46,7 +46,7 @@ class MarkerManager {
                 0, 0, 0,
                 marker.scaleX, marker.scaleY, marker.scaleZ,
                 marker.red, marker.green, marker.blue, marker.alpha,
-                true, false, 2, true, undefined, undefined, false);
+                true, false, 2, true, null, null, false);
 
         }
 

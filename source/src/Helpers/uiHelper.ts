@@ -48,7 +48,7 @@ export function drawText(text: string, position: number[], font: number, color: 
 
 export function draw3DText2(text: string, position: number[], font: number, color: number[], scale: number, outline = true,
     drawBackground = true, backgroundColor = [0, 0, 0, 90]) {
-    const [bol, x, y] = game.getScreenCoordFromWorldCoord(position[0], position[1], position[2]);
+    const [bol, x, y] = game.getScreenCoordFromWorldCoord(position[0], position[1], position[2], 0, 0);
     const camCord = game.getGameplayCamCoords();
     const dist = game.getDistanceBetweenCoords(camCord.x, camCord.y, camCord.z, position[0], position[1], position[2], true);
 

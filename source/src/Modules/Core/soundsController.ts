@@ -91,7 +91,8 @@ class SoundsController {
 
     private onSoundTick() {
         if (!this.updatePlayerPosition) return;
-        const [_, rightVector, forwardVector, upVector, position] = game.getEntityMatrix(localPlayer.scriptID, null, null, null, null);
+        const [_, rightVector, forwardVector, upVector, position] = game.getEntityMatrix(localPlayer.scriptID, new alt.Vector3(0, 0, 0),
+            new alt.Vector3(0, 0, 0), new alt.Vector3(0, 0, 0), new alt.Vector3(0, 0, 0));
         this.forwardVector = forwardVector;
         mainUi.emitUiEvent('soundsEmitPlayerPosition', localPlayer.pos, forwardVector);
     }

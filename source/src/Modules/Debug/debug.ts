@@ -86,12 +86,13 @@ class Debug {
         const object = game.createObject(utils.joaat("prop_speaker_07"), localPlayer.pos.x + 1, localPlayer.pos.y + 1, localPlayer.pos.z - 0.5,
             true, false, false);
         const objectPos = game.getEntityCoords(object, false);
-        const [_, rightVector, forwardVector, upVector, position] = game.getEntityMatrix(object, null, null, null, null);
+        const [_, rightVector, forwardVector, upVector, position] = game.getEntityMatrix(object, new alt.Vector3(0, 0, 0),
+            new alt.Vector3(0, 0, 0), new alt.Vector3(0, 0, 0), new alt.Vector3(0, 0, 0));
         alt.log(`Object coords = ${JSON.stringify(objectPos, null, 2)}`);
         sounds.play3DCefSound("test.mp3", 1.0, objectPos, forwardVector, localPlayer.pos, true);
         mainUi.showCefNotification(NotificationTypes.Notice, "3D Sound", "Odtwarzanie dźwieku 3D dev", 3500);
 
-        const matrix = game.getEntityMatrix(object, null, null, null, null);
+        const matrix = game.getEntityMatrix(object, new alt.Vector3(0, 0, 0), new alt.Vector3(0, 0, 0), new alt.Vector3(0, 0, 0), new alt.Vector3(0, 0, 0));
         alt.log(`Matrix = ${JSON.stringify(matrix)}`);
     }
 

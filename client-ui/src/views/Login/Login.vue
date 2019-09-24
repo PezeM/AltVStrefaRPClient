@@ -1,7 +1,7 @@
 <template>
-  <div id="login-window">
-    <router-view></router-view>
-  </div>
+    <div id="login-window">
+        <router-view></router-view>
+    </div>
 </template>
 
 <script>
@@ -13,7 +13,6 @@ export default {
 };
 
 alt.on('succesfullyLoggedIn', characterList => {
-    console.log('Inside Login.vue succesfullyLoggedIn with data ' + JSON.stringify(characterList));
     router.push({
         name: 'characters',
         params: { charactersList: JSON.parse(characterList) },

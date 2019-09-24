@@ -1,46 +1,46 @@
 <template>
-  <div id="town-hall-view">
-    <div class="town-hall-view container">
-      <div class="row h-100">
-        <div class="col-3 side-menu">
-          <div class="row">
-            <div class="col p-0">
-              <div class="name-header">
-                <h2 class="name-text">Urząd Miasta</h2>
-              </div>
-              <div class="logo-container">
-                <img src="@/assets/images/townHallLogo.png" class="town-hall-logo">
-              </div>
-              <ul class="side-menu-list">
-                <li
-                  v-for="item in sideMenuItems"
-                  :key="item.page"
-                  :class="{ active: item.page == currentMenuName}"
-                >
-                  <div class="menu-item" @click="sideMenuPage(item)">
-                    <v-icon :name="item.icon"/>
-                    <span>{{ item.page }}</span>
-                  </div>
-                </li>
-              </ul>
+    <div id="town-hall-view">
+        <div class="town-hall-view container">
+            <div class="row h-100">
+                <div class="col-3 side-menu">
+                    <div class="row">
+                        <div class="col p-0">
+                            <div class="name-header">
+                                <h2 class="name-text">Urząd Miasta</h2>
+                            </div>
+                            <div class="logo-container">
+                                <img src="@/assets/images/townHallLogo.png" class="town-hall-logo" />
+                            </div>
+                            <ul class="side-menu-list">
+                                <li
+                                    v-for="item in sideMenuItems"
+                                    :key="item.page"
+                                    :class="{ active: item.page == currentMenuName}"
+                                >
+                                    <div class="menu-item" @click="sideMenuPage(item)">
+                                        <v-icon :name="item.icon" />
+                                        <span>{{ item.page }}</span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-9">
+                    <div class="row">
+                        <town-hall-navbar
+                            v-bind:searchQueries="searchQueries"
+                            v-on:close-menu="closeMenu"
+                            v-on:search-result="onNavbarSearch"
+                        ></town-hall-navbar>
+                    </div>
+                    <div class="row no-gutters fraction-town-hall-content">
+                        <router-view :data="fractionData" @update-menu-name="updateMenuName"></router-view>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-        <div class="col-9">
-          <div class="row">
-            <town-hall-navbar
-              v-bind:searchQueries="searchQueries"
-              v-on:close-menu="closeMenu"
-              v-on:search-result="onNavbarSearch"
-            ></town-hall-navbar>
-          </div>
-          <div class="row no-gutters fraction-town-hall-content">
-            <router-view :data="fractionData" @update-menu-name="updateMenuName"></router-view>
-          </div>
-        </div>
-      </div>
     </div>
-  </div>
 </template>
 
 <script>
@@ -266,23 +266,11 @@ alt.on('testEmit', data => {
 .side-menu .menu-item:hover {
     cursor: pointer;
     color: #fff;
-    background: linear-gradient(
-        to right,
-        rgba(239, 160, 50, 0.51) 0%,
-        rgba(212, 166, 94, 0) 24%,
-        rgba(191, 171, 127, 0) 42%,
-        rgba(125, 185, 232, 0) 100%
-    );
+    background: linear-gradient(to right, rgba(239, 160, 50, 0.51) 0%, rgba(212, 166, 94, 0) 24%, rgba(191, 171, 127, 0) 42%, rgba(125, 185, 232, 0) 100%);
 }
 
 .side-menu-list .active {
-    background: linear-gradient(
-        to right,
-        rgba(239, 160, 50, 0.51) 0%,
-        rgba(212, 166, 94, 0) 24%,
-        rgba(191, 171, 127, 0) 42%,
-        rgba(125, 185, 232, 0) 100%
-    );
+    background: linear-gradient(to right, rgba(239, 160, 50, 0.51) 0%, rgba(212, 166, 94, 0) 24%, rgba(191, 171, 127, 0) 42%, rgba(125, 185, 232, 0) 100%);
 }
 
 .side-menu-list .active span {

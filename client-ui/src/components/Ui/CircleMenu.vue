@@ -1,27 +1,32 @@
 <template>
-  <transition name="fade" mode="out-in">
-    <div id="circleMenu" @mouseout="mouseOut" v-show="circleMenuActive" v-bind:style="styleObject">
-      <div id="circleBackground"></div>
-      <ul>
-        <li
-          v-for="(value, key, index) in currentMenuItems"
-          v-bind:id="index"
-          @mouseover="mouseOver($event, value)"
-          v-bind:key="index"
+    <transition name="fade" mode="out-in">
+        <div
+            id="circleMenu"
+            @mouseout="mouseOut"
+            v-show="circleMenuActive"
+            v-bind:style="styleObject"
         >
-          <div
-            v-bind:id="index"
-            class="contents"
-            :class="value.icon"
-            @click="itemClick($event,key)"
-          ></div>
-        </li>
-      </ul>
-      <div id="8" class="centeredCircle" @mouseover="mouseOver" @click="itemClick">
-        <div id="8" class="descriptionText">{{ mainCircleDescription }}</div>
-      </div>
-    </div>
-  </transition>
+            <div id="circleBackground"></div>
+            <ul>
+                <li
+                    v-for="(value, key, index) in currentMenuItems"
+                    v-bind:id="index"
+                    @mouseover="mouseOver($event, value)"
+                    v-bind:key="index"
+                >
+                    <div
+                        v-bind:id="index"
+                        class="contents"
+                        :class="value.icon"
+                        @click="itemClick($event,key)"
+                    ></div>
+                </li>
+            </ul>
+            <div id="8" class="centeredCircle" @mouseover="mouseOver" @click="itemClick">
+                <div id="8" class="descriptionText">{{ mainCircleDescription }}</div>
+            </div>
+        </div>
+    </transition>
 </template>
 
 <script>
@@ -122,7 +127,7 @@ if (!global.alt) {
     global.alt = {
         uiDebug: true,
         on(ev, cb) {
-            console.log('Alt on', ev, cb);
+            // console.log('Alt on', ev, cb);
         },
         emit(ev, ...args) {
             console.log('Event triggered', ev, args);

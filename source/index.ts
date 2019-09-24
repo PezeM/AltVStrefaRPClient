@@ -1,26 +1,32 @@
 import * as alt from 'alt';
 import * as game from 'natives';
 import chat from 'chat';
+import * as gameState from 'source/src/Modules/Core/States/gameState';
 import mainUi from 'source/src/Modules/Ui/mainUi';
 import keycodes from 'source/src/Constans/keycodes';
-import * as gameState from 'source/src/gameState';
+import 'source/src/Modules/Core/Game/Blips/blipsManager';
+import 'source/src/Modules/Debug/debug';
 import 'source/src/uiController';
 import 'source/src/menus';
-import 'source/src/Login/login';
-import 'source/src/Admin/noclip';
-import 'source/src/Admin/adminTeleports';
-import 'source/src/Admin/animationBrowser';
-import 'source/src/Environment/sitting';
+import 'source/src/Modules/Login/loginController';
+import 'source/src/Modules/Admin/noclip';
+import 'source/src/Modules/Admin/adminTeleports';
+import 'source/src/Modules/Admin/animationBrowser';
+import 'source/src/Modules/Environment/sitting';
 import * as vehicles from 'source/src/Modules/Vehicle/vehicles';
 import 'source/src/Modules/objectSync';
 import 'source/src/Modules/Streaming/networkStreamer';
 import equipmentSlots from 'source/src/Constans/equipmentSlots';
 import 'source/src/Modules/Vehicle/vehicleComponentsController';
+import 'source/src/configFlagsController';
 import vehicleDoors from 'source/src/Modules/Vehicle/Components/vehicleDoorsComponent';
 import vehicleSeatbeltComponent from 'source/src/Modules/Vehicle/Components/vehicleSeatbeltComponent';
 import vehicleEngineToggleComponent from 'source/src/Modules/Vehicle/Components/vehicleEngineToggleComponent';
-import SoundBrowser from 'source/src/Admin/soundBrowser';
+import SoundBrowser from 'source/src/Modules/Admin/soundBrowser';
 import inventoryController from 'source/src/Modules/Inventory/inventoryController';
+import housingSystemController from 'source/src/Modules/Housing/housingSystemController';
+import 'source/src/Modules/Environment/timeController';
+import adminMenuController from 'source/src/Modules/Admin/AdminMenuController';
 
 const localPlayer = alt.Player.local;
 let lastKeyPressedTime = new Date().getTime();
@@ -63,6 +69,7 @@ alt.on('keydown', (key: number) => {
             if (localPlayer.vehicle != null || game.isEntityDead(localPlayer.scriptID) || new Date().getTime() - lastKeyPressedTime < 750) return;
             lastKeyPressedTime = new Date().getTime();
             if (inventoryController.pickupItem()) return;
+            else if (housingSystemController.onKeyPress()) return;
             else if (vehicleDoors.toggleTrunkOrHoodState(localPlayer)) return;
             break;
         case controlsIds.L:
@@ -89,6 +96,11 @@ alt.on('keydown', (key: number) => {
             if (new Date().getTime() - lastKeyPressedTime < 500) return;
             lastKeyPressedTime = new Date().getTime();
             inventoryController.openInventory();
+            break;
+        case keycodes.VK_F11:
+            if (new Date().getTime() - lastKeyPressedTime < 500) return;
+            lastKeyPressedTime = new Date().getTime();
+            adminMenuController.tryOpenAdminMenu();
             break;
     }
 });
@@ -122,6 +134,16 @@ alt.on('consoleCommand', (command: string, ...args: string[]) => {
         }
     }
 })
+
+
+alt.on('playerEnteredVehicle', (vehicle: alt.Vehicle, seat: number) => {
+    alt.log('On player enter vehicle');
+});
+
+
+alt.on('playerLeftVehicle', (vehicle: alt.Vehicle, seat: number) => {
+    alt.log('On player left vehicle');
+});
 
 let cinemaObject: number | any = null;
 let cinemaView: alt.WebView | null = null;
@@ -188,18 +210,6 @@ function test3DView() {
         }, 10);
     });
 
-}
-
-function loadModelAsync(data: any) {
-    return new Promise((resolve, reject) => {
-        const loader = alt.setInterval(() => {
-            alt.log('Inside interval')
-            if (data() === true) {
-                resolve(true);
-                alt.clearInterval(loader);
-            }
-        }, 10);
-    });
 }
 
 function loadModel(modelHash: number) {
@@ -272,12 +282,6 @@ alt.onServer('equipClothableItem', (slot: number, drawableId: number, textureId:
         game.setPedComponentVariation(localPlayer.scriptID, equipmentSlots[slot], drawableId, textureId, paletteId);
     }
 });
-
-alt.on('playerConnect', () => {
-    game.requestAnimDict("mp_facial");
-    game.requestAnimDict("facials@gen_male@variations@normal");
-});
-
 
 game.loadMpDlcMaps();
 game.requestIpl('chop_props');

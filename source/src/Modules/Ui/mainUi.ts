@@ -39,7 +39,7 @@ class MainUi {
         } else if (hideUi) {
             showUi(false);
         } else if (freezePlayer) {
-            game.freezeEntityPosition(game.playerPedId(), true);
+            game.freezeEntityPosition(alt.Player.local.scriptID, true);
         }
 
         // var localPlayer = alt.Player.local.scriptID;
@@ -51,9 +51,11 @@ class MainUi {
 
         this.uiView.emit(menuName, ...args);
         this.viewOpened = true;
+        this.uiView.isVisible = true;
         alt.showCursor(true);
         this.uiView.focus();
 
+        alt.log('View loaded and focused');
         // let inter = alt.setInterval(() => {
         //     if (alt.isTextureExistInArchetype(game.getHashKey('xm_prop_x17_sec_panel_01'), 'script_rt_prop_x17_p_01')) {
         //         this.tabletView = new alt.WebView("http://resources/AltVStrefaRPClient/mainUi/menus.html", 
@@ -75,7 +77,7 @@ class MainUi {
         } else if (showUi) {
             showUi(displayUi)
         } else if (unFreezePlayer) {
-            game.freezeEntityPosition(game.playerPedId(), true);
+            game.freezeEntityPosition(game.playerPedId(), false);
         }
 
         // alt.setTimeout(() => {
@@ -85,16 +87,14 @@ class MainUi {
         //     this.tabletView.destroy();
         // }, 0);
         this.uiView.emit('closeMenu');
-        this.uiView.unfocus();
+        // this.uiView.unfocus();
         this.viewOpened = false;
         alt.showCursor(showCursor);
     }
 
-    showCefNotification(type: number, title: string, message: string, duration = 5000, icon = true) {
+    showCefNotification(type: number, title: string, message: string, duration = 5000, icon: string | boolean = true) {
         try {
-            if (typeof type === 'number' && typeof message === 'string') {
-                this.uiView.emit('showNotification', type, title, message, duration, icon);
-            }
+            this.uiView.emit('showNotification', type, title, message, duration, icon);
         } catch (error) {
             alt.log('mainUi -> showCefNotification -> ' + error);
         }

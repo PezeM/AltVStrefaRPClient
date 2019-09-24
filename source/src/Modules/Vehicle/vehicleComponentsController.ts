@@ -37,10 +37,11 @@ class VehicleComponentsController {
     }
 
     onUpdate() {
+        const isPlayerInVehicle = localPlayer.vehicle;
         for (let i = 0; i < this.components.length; i++) {
             const component = this.components[i];
             if (component.isDisabled()) continue;
-            if (localPlayer.vehicle === null) {
+            if (!isPlayerInVehicle) {
                 component.onUpdateOutsideVehicle(localPlayer);
             } else {
                 component.onUpdateInVehicle(localPlayer);

@@ -1,7 +1,8 @@
 import * as alt from 'alt';
 import * as game from 'natives';
-import Maths from 'source/src/Helpers/maths';
+import maths from 'source/src/Helpers/maths';
 
+const localPlayer = alt.Player.local;
 class Raycast {
     didRaycastHit: boolean;
     entityHit: number | null;
@@ -19,7 +20,7 @@ class Raycast {
 
     poitingAt(maxDistance = 4) {
         const pos = game.getGameplayCamCoord();
-        const dir = Maths.rotToDirection(game.getGameplayCamRot(2));
+        const dir = maths.rotToDirection(game.getGameplayCamRot(2));
         const distance = this.calculateRaycastDistance(maxDistance);
 
         const farAway = {
@@ -28,8 +29,8 @@ class Raycast {
             z: (dir.z * distance) + pos.z,
         };
 
-        const rayTest = game.startShapeTestRay(pos.x, pos.y, pos.z, farAway.x, farAway.y, farAway.z, (2 | 4 | 8 | 16), game.playerPedId(), 0);
-        game.drawLine(pos.x, pos.y, pos.z, farAway.x, farAway.y, farAway.z, 255, 255, 255, 255);
+        const rayTest = game.startShapeTestRay(pos.x, pos.y, pos.z, farAway.x, farAway.y, farAway.z, 30, localPlayer.scriptID, 0);
+        // game.drawLine(pos.x, pos.y, pos.z, farAway.x, farAway.y, farAway.z, 255, 255, 255, 255);
         [this.useless, this.didRaycastHit, this.endCoords, this.surfaceNormal, this.entityHit] = game.getShapeTestResult(rayTest,
             false, { x: 0, y: 0, z: 0 }, { x: 0, y: 0, z: 0 }, 0);
     }

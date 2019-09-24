@@ -33,7 +33,7 @@ class ServerCallbacks {
         alt.onServer(callbackEventName, (...result: any) => {
             let index = -1;
             for (let i = 0; i < this.callbacks.length; i++) {
-                if (this.callbacks[i].callbackEventName !== callbackEventName) continue;
+                if (this.callbacks[i].callbackEventName !== callbackEventName || this.callbacks[i].completed) continue;
                 index = i;
                 break;
             }

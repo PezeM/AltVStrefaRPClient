@@ -3,7 +3,7 @@ import * as game from 'natives';
 import { showUiAndFreezePlayer } from 'source/src/Helpers/uiHelper';
 import mainUi from 'source/src/Modules/Ui/mainUi';
 import animations from 'source/src/Modules/animations';
-import trashBin from 'source/src/Environment/trashBin';
+import trashBin from 'source/src/Modules/Environment/trashBin';
 import vehicleShop from 'source/src/Modules/Vehicle/vehicleShop';
 import banking from 'source/src/Modules/banking';
 import { EntityTypes } from 'source/src/Constans/entityTypes';

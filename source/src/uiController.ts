@@ -2,7 +2,7 @@ import * as alt from 'alt';
 import * as game from 'natives';
 import chat from 'chat';
 import circleMenu from 'source/src/Modules/CircleMenu/circleMenu';
-import { getGameState } from 'source/src/gameState';
+import { getGameState } from 'source/src/Modules/Core/States/gameState';
 import { drawText, draw3DText } from 'source/src/Helpers/uiHelper';
 import animations from 'source/src/Modules/animations';
 import ZoneNames from 'source/src/Modules/Ui/zoneNames';
@@ -63,7 +63,18 @@ alt.on('keydown', (key: number) => {
     }
 });
 
-alt.on('update', () => {
+alt.setInterval(() => {
+    if (localPlayer.vehicle == null && !game.isPlayerDead(localPlayer.scriptID) && !mainUi.viewOpened) {
+        if (!circleMenu.isMenuOpened)
+            raycast.poitingAt(4);
+    }
+    else {
+        raycast.didRaycastHit = false;
+    }
+
+}, 1);
+
+alt.setInterval(() => {
     // if (chat.isOpen() || mainUi.viewOpened) {
     //     game.disableAllControlActions(0);
     //     game.disableAllControlActions(2);
@@ -77,17 +88,9 @@ alt.on('update', () => {
         drawText(zoneNames.realZoneName, [zoneNames.minimap.rightX, zoneNames.minimap.bottomY - 0.035], 4, [255, 255, 255, 255], 0.55, true, false);
     }
 
-    HUDElementsToHide.forEach((hudElement) => {
-        game.hideHudComponentThisFrame(hudElement);
-    });
-
-    if (localPlayer.vehicle == null && !game.isPlayerDead(localPlayer.scriptID) && !mainUi.viewOpened) {
-        if (!circleMenu.isMenuOpened)
-            raycast.poitingAt(4);
-    }
-    else {
-        raycast.didRaycastHit = false;
-    }
+    // HUDElementsToHide.forEach((hudElement) => {
+    //     game.hideHudComponentThisFrame(hudElement);
+    // });
 
     if (raycast.didRaycastHit && localPlayer.vehicle == null && raycast.endCoords !== null) {
         draw3DText(`[ALT] E: ${raycast.entityHit} T: ${game.getEntityType(raycast.entityHit as number)} M: ${game.getEntityModel(raycast.entityHit as number)}`,
@@ -104,7 +107,7 @@ alt.on('update', () => {
         game.enableControlAction(0, 2, false); // Mouse Look, Up/Down
         game.enableControlAction(0, 142, false); // Right Click
     }
-});
+}, 0);
 
 alt.onServer('showNotification', (type: number, title: string, message: string, duration: number, icon: any) => {
     mainUi.showCefNotification(type, title, message, duration, icon == null ? true : icon);
@@ -146,4 +149,4 @@ mainUi.onUiEvent('defaultCancelModalCallback', () => {
 alt.setInterval(() => {
     game._0x9E4CFFF989258472(); // Disables vehicle idle cam ? 
     game.resetCameraAfkTimer(); // Resets camera afk timer
-}, 10000);
+}, 29000);

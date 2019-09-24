@@ -59,9 +59,9 @@ class ItemStreamer {
         this.canPickupItem = true;
     }
 
-    async onStreamIn(entity: INetworkingEntity) {
-        await utils.loadModelAsync(entity.data.model.stringValue as string);
-        const gameObject = game.createObject(game.getHashKey(entity.data.model.stringValue as string), entity.position.x, entity.position.y, entity.position.z,
+    onStreamIn(entity: INetworkingEntity) {
+        const gameObject = game.createObject(utils.joaat(entity.data.model.stringValue as string),
+            entity.position.x, entity.position.y, entity.position.z,
             true, false, true);
         game.placeObjectOnGroundProperly(gameObject);
         game.setEntityCollision(gameObject, false, true);

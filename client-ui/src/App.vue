@@ -1,10 +1,10 @@
 <template>
-  <div id="app">
-    <MainUiView id="overlay" />
-    <transition name="fade" mode="out-in">
-      <router-view class="menus" />
-    </transition>
-  </div>
+    <div id="app">
+        <MainUiView id="overlay" />
+        <transition name="fade" mode="out-in">
+            <router-view class="menus" />
+        </transition>
+    </div>
 </template>
 
 <script>
@@ -12,7 +12,7 @@ if (!global.alt) {
     global.alt = {
         uiDebug: true,
         on(ev, cb) {
-            console.log('Alt on', ev, cb);
+            // console.log('Alt on', ev, cb);
         },
         emit(ev, ...args) {
             console.log('Event triggered', ev, args);
@@ -76,20 +76,32 @@ alt.on('openFractionMenu', (fractionType, fractionDatas) => {
     }
 });
 
-alt.on('openPlayerInventory', (inventoryData, equippedItems, addonationalInventory) => {
-    console.log(`Inventory data on UI ${inventoryData} equippedItems ${equippedItems} addonationalInventory ${addonationalInventory}`);
+alt.on('openPlayerInventory', (inventoryData, equippedItems, addonationalInventory, gameInformation) => {
     router.push({
         name: 'inventory',
         params: {
             initialPersonalInventory: inventoryData,
             initialEquippedInventory: equippedItems,
             initialAddonationalInventory: addonationalInventory,
+            gameInfo: gameInformation,
         },
     });
 });
 
+alt.on('showHouseEnterInteractionMenu', house => {
+    router.push({ name: 'houseEnterInteractionMenu', params: { houseProp: house } });
+});
+
+alt.on('showHouseInteriorExitMenu', () => {
+    router.push({ name: 'houseInteriorExitMenu' });
+});
+
+alt.on('openAdminMenu', () => {
+    console.log('Opening admin menu on UI');
+    router.push('/adminMenu');
+});
+
 alt.on('closeMenu', () => {
-    console.log('Changing the router to emtpy');
     router.push('/empty');
 });
 </script>

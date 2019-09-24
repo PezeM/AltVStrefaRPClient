@@ -1,71 +1,74 @@
 <template>
-  <div class="town-hall-ranks-page">
-    <v-dialog/>
-    <EditRankModal v-on:save-rank-changes="saveRankChanges"/>
-    <NewRankModal v-on:add-new-rank="addNewRank"/>
+    <div class="town-hall-ranks-page">
+        <v-dialog />
+        <EditRankModal v-on:save-rank-changes="saveRankChanges" />
+        <NewRankModal v-on:add-new-rank="addNewRank" />
 
-    <div class="row mb-3">
-      <div class="col-4">
-        <div class="card h-100 shadow rounded border text-center">
-          <div class="card-body">
-            <button class="btn btn-primary action-button" @click="showNewRankModal()">
-              <v-icon name="user-plus"/>Dodaj nową role
-            </button>
-          </div>
+        <div class="row mb-3">
+            <div class="col-4">
+                <div class="card h-100 shadow rounded border text-center">
+                    <div class="card-body">
+                        <button class="btn btn-primary action-button" @click="showNewRankModal()">
+                            <v-icon name="user-plus" />Dodaj nową role
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="card h-100 shadow rounded border text-center">
+                    <div class="card-body align-items-center d-flex justify-content-center">
+                        <p class="card-text">
+                            Aktualna liczba roli:
+                            <strong>{{ data.rolesCount }}</strong>
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="col-4">
-        <div class="card h-100 shadow rounded border text-center">
-          <div class="card-body align-items-center d-flex justify-content-center">
-            <p class="card-text">
-              Aktualna liczba roli:
-              <strong>{{ data.rolesCount }}</strong>
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
 
-    <div class="row" v-if="ranks">
-      <div class="col-12">
-        <div class="overflow-auto ranks-table shadow">
-          <table class="table table-sm table-hover">
-            <thead class="thead-dark">
-              <tr>
-                <th>Stanowisko</th>
-                <th
-                  v-for="permission in ranks[0].Permissions"
-                  v-bind:key="permission.Id"
-                >{{ permission.Name }}</th>
-                <th style="width: 10%">Akcje</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr v-for="rank in getRanks" v-bind:key="rank.Id">
-                <td>{{ rank.RankName }}</td>
-                <td
-                  v-for="permission in rank.Permissions"
-                  v-bind:key="permission.Id"
-                >{{ betterPermissionDisplay(permission.HasPermission) }}</td>
-                <td>
-                  <button
-                    class="btn btn-danger"
-                    :disabled="canDeleteRank(rank)"
-                    @click="showRemoveRankDialog(rank)"
-                  >
-                    <v-icon name="user-slash"/>
-                  </button>
-                  <button class="btn btn-primary" @click="showEditRankModal(rank)">
-                    <v-icon name="user-edit"/>
-                  </button>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+        <div class="row" v-if="ranks">
+            <div class="col-12">
+                <div class="overflow-auto ranks-table shadow">
+                    <table class="table table-sm table-hover">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th>Stanowisko</th>
+                                <th
+                                    v-for="permission in ranks[0].Permissions"
+                                    v-bind:key="permission.Id"
+                                >{{ permission.Name }}</th>
+                                <th style="width: 10%">Akcje</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for="rank in getRanks" v-bind:key="rank.Id">
+                                <td>{{ rank.RankName }}</td>
+                                <td
+                                    v-for="permission in rank.Permissions"
+                                    v-bind:key="permission.Id"
+                                >{{ betterPermissionDisplay(permission.HasPermission) }}</td>
+                                <td>
+                                    <button
+                                        class="btn btn-danger"
+                                        :disabled="canDeleteRank(rank)"
+                                        @click="showRemoveRankDialog(rank)"
+                                    >
+                                        <v-icon name="user-slash" />
+                                    </button>
+                                    <button
+                                        class="btn btn-primary"
+                                        @click="showEditRankModal(rank)"
+                                    >
+                                        <v-icon name="user-edit" />
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
 </template>
 
 <script>

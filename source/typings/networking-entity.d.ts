@@ -22,12 +22,17 @@ declare module "networking-entity" {
         [key: string]: any
     }
 
+    export interface INetworkingDataChange {
+        key: string,
+        value: MValue,
+    }
+
     export function create(): void;
     export function createWithWebView(webView: any): void;
     export function createNoneDefault(): void;
     export function init(url: string, token: string): void;
-    export function onStreamIn(callback: (entity: INetworkingEntity) => Promise<void>): void;
+    export function onStreamIn(callback: (entity: INetworkingEntity) => void): void;
     export function onStreamOut(callback: (entity: INetworkingEntity) => void): void;
-    export function onDataChange(callback: (entity: INetworkingEntity, newAddedData: any) => void): void;
+    export function onDataChange(callback: (entity: INetworkingEntity, changedData: INetworkingDataChange) => void): void;
 }
 

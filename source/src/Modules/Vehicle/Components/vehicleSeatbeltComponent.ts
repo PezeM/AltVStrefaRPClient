@@ -3,6 +3,8 @@ import * as game from 'natives';
 import mainUi from 'src/Modules/Ui/mainUi';
 import VehicleComponent from 'src/Modules/Vehicle/Components/vehicleComponent';
 import { VehicleComponentTypes } from 'source/src/Constans/vehicleComponentTypes';
+import { NotificationTypes } from 'source/src/Constans/notificationTypes';
+import sounds from 'source/src/Modules/Core/soundsController';
 
 const SEATBELT_EJECT_SPEED = 60;
 const SEATBELT_EJECT_ACCELERATION = 900;
@@ -31,7 +33,7 @@ class VehicleSeatbeltComponent extends VehicleComponent {
             if (!game.getIsVehicleEngineRunning(playerVehicle.scriptID)) return;
 
             const previousSpeed = this.currentSpeed;
-            this.currentSpeed = game.getEntitySpeed(playerVehicle.scriptID);
+            this.currentSpeed = playerVehicle.speed;
             game.setPedConfigFlag(localPlayer.scriptID, 32, true);
             const isVehicleMovingForward = game.getEntitySpeedVector(playerVehicle.scriptID, true).y > 1.0;
             const vehicleAcceleration = this.calculateVehicleAcceleration(previousSpeed);
@@ -72,8 +74,11 @@ class VehicleSeatbeltComponent extends VehicleComponent {
         const correctVehicleClass = this.correctVehicleClass(localPlayer.vehicle as alt.Vehicle);
         if (!correctVehicleClass) return;
         this.isSeatbeltOn = !this.isSeatbeltOn;
-        const text = this.isSeatbeltOn ? 'Zapięto pasy bezpieczeństwa.' : 'Odpięto pasy bezpieczeństwa';
-        mainUi.showCefNotification(0, 'Pasy', text, 2500);
+        this.isSeatbeltOn ? sounds.playCefSound('buckle.webm', 0.5, false) : sounds.playCefSound('unbuckle.webm', 0.5, false);
+        alt.setTimeout(() => {
+            const text = this.isSeatbeltOn ? 'Zapięto pasy bezpieczeństwa.' : 'Odpięto pasy bezpieczeństwa';
+            mainUi.showCefNotification(NotificationTypes.Info, 'Pasy', text, 2500);
+        }, 850);
     }
 
     correctVehicleClass(vehicle: alt.Vehicle) {

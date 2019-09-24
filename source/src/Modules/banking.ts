@@ -1,6 +1,8 @@
 import * as game from 'natives';
 import * as alt from 'alt';
-import mainUi from 'src/Modules/Ui/mainUi';
+import mainUi from 'source/src/Modules/Ui/mainUi';
+import atmPositions from 'source/src/Constans/Coords/atmPositions';
+import blipsManager from './Core/Game/Blips/blipsManager';
 
 const PED_POSITIONS = [
     { x: -111.9647, y: 6471.319, z: 31.6267, rot: 138.7 },
@@ -26,6 +28,7 @@ class Bank {
         this.pedHash = 3272005365;
         alt.loadModel(this.pedHash);
         this.initializePeds();
+        this.initializeAtms();
 
         alt.onServer('openBankMenu', this.openBankMenu);
         alt.onServer('updateBankMoneyWithNotification', this.updateBankMoneyWithNotification);
@@ -47,6 +50,20 @@ class Bank {
             this.pedList.push(ped);
         });
         alt.log(`Created ${this.pedList.length} bank peds.`);
+    }
+
+    initializeAtms() {
+        for (let i = 0; i < atmPositions.length; i++) {
+            const atm = atmPositions[i];
+            const atmBlip = new alt.PointBlip(atm.x, atm.y, atm.z);
+            atmBlip.category = 4;
+            atmBlip.shortRange = true;
+            atmBlip.sprite = 277;
+            atmBlip.color = 69;
+            atmBlip.scale = 0.75;
+            atmBlip.name = "ATM";
+            blipsManager.createNewClientSideBlip(atmBlip);
+        }
     }
 
     openBankMenu(bankAccountInformations: string) {

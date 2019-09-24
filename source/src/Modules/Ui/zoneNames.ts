@@ -2,6 +2,7 @@ import * as game from 'natives';
 import * as alt from 'alt';
 import { getMinimapAnchor } from 'source/src/Helpers/uiHelper';
 import { IMinimap } from 'source/src/Constans/interfaces';
+import { isRadarVisible } from 'source/src/Modules/Core/States/radarState';
 
 export default class ZoneNames {
     zoneNamesShort: string[];
@@ -26,7 +27,7 @@ export default class ZoneNames {
 
     getZoneNames() {
         // only do stuff if radar is enabled and visible
-        if (game.isRadarEnabled() && !game.isRadarHidden()) {
+        if (isRadarVisible()) {
             this.minimap = getMinimapAnchor(); // Gets coords of minimap
 
             const position = alt.Player.local.pos;
@@ -37,7 +38,6 @@ export default class ZoneNames {
                 this.realZoneName = this.zoneNames[this.zoneNamesShort.indexOf(zoneName)];
             }
         } else {
-            // alt.log('Radar is hidden or not enabled');
             this.streetName = null;
             this.realZoneName = null;
         }

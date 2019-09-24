@@ -13,25 +13,36 @@
     "bootswatch": "^4.3.1",
     "chart.js": "^2.8.0",
     "core-js": "^2.6.9",
+    "events": "^1.1.1",
     "jquery": "^3.4.1",
     "pnotify": "^4.0.0",
+    "sono": "^2.1.6",
+    "v-tooltip": "^2.0.2",
     "vue": "^2.6.10",
     "vue-awesome": "^3.5.4",
     "vue-bootstrap-typeahead": "^0.2.6",
     "vue-carousel-3d": "^0.2.0",
+    "vue-context": "^4.0.3",
     "vue-js-modal": "^1.3.31",
-    "vue-router": "^3.0.7",
-    "vue-select": "^3.1.0"
+    "vue-router": "^3.1.2",
+    "vue-select": "^3.1.0",
+    "vuex": "^3.1.1"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^3.9.2",
-    "@vue/cli-plugin-eslint": "^3.9.2",
-    "@vue/cli-service": "^3.9.3",
+    "@babel/plugin-transform-runtime": "^7.5.5",
+    "@vue/cli-plugin-babel": "^3.10.0",
+    "@vue/cli-plugin-eslint": "^3.10.0",
+    "@vue/cli-service": "^3.10.0",
     "@vue/eslint-config-prettier": "^4.0.1",
     "babel-eslint": "^10.0.2",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.2.3",
-    "vue-template-compiler": "^2.5.21"
+    "vue-template-compiler": "^2.5.21",
+    "babel-cli": "^6.24.1",
+    "babel-core": "^6.24.1",
+    "babel-plugin-external-helpers": "^6.22.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-es2015": "^6.24.1"
   },
   "eslintConfig": {
     "root": true,
@@ -42,15 +53,20 @@
       "plugin:vue/essential",
       "@vue/prettier"
     ],
-    "rules": {},
+    "rules": {
+      "no-console": "off"
+    },
     "parserOptions": {
       "parser": "babel-eslint"
+    },
+    "globals": {
+      "alt": true
     }
   },
   "prettier": {
     "tabWidth": 4,
     "singleQuote": true,
-    "printWidth": 140,
+    "printWidth": 160,
     "trailingComma": "es5"
   },
   "postcss": {

@@ -3,233 +3,237 @@
 // Generated on "7/5/2019, 9:46:36 PM"
 
 declare namespace hashes {
-    enum Weapon {
-        AntiqueCavalryDagger = 24601201,
-        BaseballBat = 2508868239,
-        BrokenBottle = 4192643659,
-        Crowbar = 2227010557,
-        Fist = 2725352035,
-        Flashlight = 2343591895,
-        GolfClub = 1141786504,
-        Hammer = 1317494643,
-        Hatchet = 4191993645,
-        BrassKnuckles = 3638508604,
-        Knife = 2578778090,
-        Machete = 3713923289,
-        Switchblade = 3756226112,
-        Nightstick = 1737195953,
-        PipeWrench = 419712736,
-        BattleAxe = 3441901897,
-        PoolCue = 2484171525,
-        StoneHatchet = 940833800,
-        Pistol = 453432689,
-        PistolMkII = 3219281620,
-        CombatPistol = 1593441988,
-        APPistol = 584646201,
-        StunGun = 911657153,
-        Pistol50 = 2578377531,
-        SNSPistol = 3218215474,
-        SNSPistolMkII = 2285322324,
-        HeavyPistol = 3523564046,
-        VintagePistol = 137902532,
-        FlareGun = 1198879012,
-        MarksmanPistol = 3696079510,
-        HeavyRevolver = 3249783761,
-        HeavyRevolverMkII = 3415619887,
-        DoubleActionRevolver = 25487034,
-        UpnAtomizer = 2939590305,
-        MicroSMG = 324215364,
-        SMG = 736523883,
-        SMGMkII = 2024373456,
-        AssaultSMG = 4024951519,
-        CombatPDW = 171789620,
-        MachinePistol = 3675956304,
-        MiniSMG = 3173288789,
-        UnholyHellbringer = 1198256469,
-        PumpShotgun = 487013001,
-        PumpShotgunMkII = 1432025498,
-        SawedOffShotgun = 2017895192,
-        AssaultShotgun = 3800352039,
-        BullpupShotgun = 2640438543,
-        Musket = 2828843422,
-        HeavyShotgun = 984333226,
-        DoubleBarrelShotgun = 401952761,
-        SweeperShotgun = 317205821,
-        AssaultRifle = 3220176749,
-        AussaultRifleMkII = 961495388,
-        CarbineRifle = 2210333304,
-        CarbineRifleMkII = 4208062921,
-        AdvancedRifle = 2937143193,
-        SpecialCarbine = 3231910285,
-        SpecialCarbineMkII = 2526821735,
-        BullpupRifle = 2132975508,
-        BullpupRifleMkII = 2228681469,
-        CompactRifle = 1649403952,
-        MG = 2634544996,
-        CombatMG = 2144741730,
-        CombatMGMkII = 3686625920,
-        GusenbergSweeper = 1627465347,
-        SniperRifle = 100416529,
-        HeavySniper = 205991906,
-        HeavySniperMkII = 177293209,
-        MarksmanRifle = 3342088282,
-        MarksmanRifleMkII = 1785463520,
-        RPG = 2982836145,
-        GrenadeLauncher = 2726580491,
-        GrenadeLauncherSmoke = 13056645,
-        Minigun = 1119849093,
-        FireworkLauncher = 2138347493,
-        Railgun = 1834241177,
-        HomingLauncher = 1672152130,
-        CompactGrenadeLauncher = 125959,
-        Widowmaker = 3056410471,
-        Grenade = 2481070269,
-        BZGas = 2694266206,
-        MolotovCocktail = 4256991824,
-        StickyBomb = 1233104067,
-        ProximityMines = 615608432,
-        Snowballs = 741814745,
-        PipeBombs = 2874559379,
-        Baseball = 126349499,
-        TearGas = 3125143736,
-        Flare = 600439132,
-        JerryCan = 314298409,
-        Parachute = 1940617049,
-        FireExtinguisher = 1532858877
-    }
+	enum Weapon {
+		AntiqueCavalryDagger = 24601201,
+		BaseballBat = 2508868239,
+		BrokenBottle = 4192643659,
+		Crowbar = 2227010557,
+		Fist = 2725352035,
+		Flashlight = 2343591895,
+		GolfClub = 1141786504,
+		Hammer = 1317494643,
+		Hatchet = 4191993645,
+		BrassKnuckles = 3638508604,
+		Knife = 2578778090,
+		Machete = 3713923289,
+		Switchblade = 3756226112,
+		Nightstick = 1737195953,
+		PipeWrench = 419712736,
+		BattleAxe = 3441901897,
+		PoolCue = 2484171525,
+		StoneHatchet = 940833800,
+		Pistol = 453432689,
+		PistolMkII = 3219281620,
+		CombatPistol = 1593441988,
+		APPistol = 584646201,
+		StunGun = 911657153,
+		Pistol50 = 2578377531,
+		SNSPistol = 3218215474,
+		SNSPistolMkII = 2285322324,
+		HeavyPistol = 3523564046,
+		VintagePistol = 137902532,
+		FlareGun = 1198879012,
+		MarksmanPistol = 3696079510,
+		HeavyRevolver = 3249783761,
+		HeavyRevolverMkII = 3415619887,
+		DoubleActionRevolver = 25487034,
+		UpnAtomizer = 2939590305,
+		MicroSMG = 324215364,
+		SMG = 736523883,
+		SMGMkII = 2024373456,
+		AssaultSMG = 4024951519,
+		CombatPDW = 171789620,
+		MachinePistol = 3675956304,
+		MiniSMG = 3173288789,
+		UnholyHellbringer = 1198256469,
+		PumpShotgun = 487013001,
+		PumpShotgunMkII = 1432025498,
+		SawedOffShotgun = 2017895192,
+		AssaultShotgun = 3800352039,
+		BullpupShotgun = 2640438543,
+		Musket = 2828843422,
+		HeavyShotgun = 984333226,
+		DoubleBarrelShotgun = 401952761,
+		SweeperShotgun = 317205821,
+		AssaultRifle = 3220176749,
+		AussaultRifleMkII = 961495388,
+		CarbineRifle = 2210333304,
+		CarbineRifleMkII = 4208062921,
+		AdvancedRifle = 2937143193,
+		SpecialCarbine = 3231910285,
+		SpecialCarbineMkII = 2526821735,
+		BullpupRifle = 2132975508,
+		BullpupRifleMkII = 2228681469,
+		CompactRifle = 1649403952,
+		MG = 2634544996,
+		CombatMG = 2144741730,
+		CombatMGMkII = 3686625920,
+		GusenbergSweeper = 1627465347,
+		SniperRifle = 100416529,
+		HeavySniper = 205991906,
+		HeavySniperMkII = 177293209,
+		MarksmanRifle = 3342088282,
+		MarksmanRifleMkII = 1785463520,
+		RPG = 2982836145,
+		GrenadeLauncher = 2726580491,
+		GrenadeLauncherSmoke = 13056645,
+		Minigun = 1119849093,
+		FireworkLauncher = 2138347493,
+		Railgun = 1834241177,
+		HomingLauncher = 1672152130,
+		CompactGrenadeLauncher = 125959,
+		Widowmaker = 3056410471,
+		Grenade = 2481070269,
+		BZGas = 2694266206,
+		MolotovCocktail = 4256991824,
+		StickyBomb = 1233104067,
+		ProximityMines = 615608432,
+		Snowballs = 741814745,
+		PipeBombs = 2874559379,
+		Baseball = 126349499,
+		TearGas = 3125143736,
+		Flare = 600439132,
+		JerryCan = 314298409,
+		Parachute = 1940617049,
+		FireExtinguisher = 1532858877
+	}
 }
 
 declare module "alt" {
-    export class Vector3 {
-        x: number;
-        y: number;
-        z: number;
+	export class Vector3 {
+		x: number;
+		y: number;
+		z: number;
 
-        constructor(x: number, y: number, z: number);
-    }
+		constructor(x: number, y: number, z: number);
+	}
 
-    export class BaseObject {
-        readonly type: number;
+	export class BaseObject {
+		readonly type: number;
 		readonly valid: boolean;
 
-        destroy(): void;
-        getMeta(key: string): any;
-        setMeta(key: string, p1: any): void;
-    }
+		destroy(): void;
+		getMeta(key: string): any;
+		setMeta(key: string, p1: any): void;
+	}
 
-    export class WorldObject extends BaseObject {
-        readonly pos: Vector3;
+	export class WorldObject extends BaseObject {
+		readonly pos: Vector3;
 		dimension: number;
-    }
+	}
 
-    export class Entity extends WorldObject {
-        readonly id: number;
-        readonly model: number;
-        readonly rot: Object;
+	export class Entity extends WorldObject {
+		readonly id: number;
+		readonly model: number;
+		readonly rot: Object;
+		readonly scriptID: number;
 
-        getSyncedMeta(key: string): any;
-    }
+		getByID(id: number): Entity | null;
+		getByScriptID(scriptID: number): Entity | null;
+		getSyncedMeta(key: string): any;
+		static getByID(id: number): Entity | null;
+		static getByScriptID(scriptID: number): Entity | null;
+	}
 
-    export class Player extends Entity {
-        readonly name: string;
-        readonly scriptID: number;
-        readonly vehicle: Vehicle | undefined | null;
+	export class Player extends Entity {
 		static readonly all: Array<Player>;
+		readonly name: string;
+		readonly vehicle: Vehicle | null;
 		static readonly local: Player;
-        readonly isTalking: boolean;
-        remoteId: any;
-        syncedObject: any;
+		readonly isTalking: boolean;
+		remoteId: any;
+		syncedObject: any;
 
-        addWeaponComponent(weaponHash: number, componentHash: number): void;
-        getCurrentWeapon(): number;
-        getWeaponTintIndex(weaponHash: number): number;
-        giveWeapon(weaponHash: number, ammoCount: number): void;
-        removeAllWeapons(): void;
-        removeWeapon(weaponHash: number): boolean;
-        removeWeaponComponent(weaponHash: number, componentHash: number): void;
-        setCurrentWeapon(weaponHash: number): void;
-        setWeaponTintIndex(weaponHash: number, tintIndex: number): void;
-        weaponHasComponent(weaponHash: number, componentHash: number): boolean;
-    }
+		addWeaponComponent(weaponHash: number, componentHash: number): void;
+		getCurrentWeapon(): number;
+		getWeaponTintIndex(weaponHash: number): number;
+		giveWeapon(weaponHash: number, ammoCount: number): void;
+		removeAllWeapons(): void;
+		removeWeapon(weaponHash: number): boolean;
+		removeWeaponComponent(weaponHash: number, componentHash: number): void;
+		setCurrentWeapon(weaponHash: number): void;
+		setWeaponTintIndex(weaponHash: number, tintIndex: number): void;
+		weaponHasComponent(weaponHash: number, componentHash: number): boolean;
+	}
 
-    export class Vehicle extends Entity {
-        static readonly all: Array<Vehicle>;
-        readonly gear: number;
-        readonly rpm: number;
-        readonly scriptID: number;
+	export class Vehicle extends Entity {
+		static readonly all: Array<any>;
+		readonly gear: number;
+		readonly rpm: number;
 		readonly speed: number;
+		readonly speedVector: any;
 		readonly wheelsCount: number;
 
-        lightFading: any;
-        lightFadingCount: number;
-        lockTimer: any;
-    }
+		lightFading: any;
+		lightFadingCount: number;
+		lockTimer: any;
+	}
 
-    export class WebView extends BaseObject {
-        isVisible: boolean;
-        url: string;
+	export class WebView extends BaseObject {
+		isVisible: boolean;
+		url: string;
 
 		constructor(v8webview: string);
-        constructor(url: string, isOverlayVal: number | boolean, targetTexture?: string);
-        emit(evName: string, ...args: any[]): void;
-        execJS(p0: string): void;
-        focus(): void;
-        off(evName: string, p1Fn: Function): void;
-        on(evName: string, p1Fn: Function): void;
+		constructor(url: string, isOverlayVal: number | boolean, targetTexture?: string);
+		emit(evName: string, ...args: any[]): void;
+		execJS(p0: string): void;
+		focus(): void;
+		off(evName: string, p1Fn: Function): void;
+		on(evName: string, p1Fn: Function): void;
 		unfocus(): void;
-		destroy(): void;		
-    }
+		destroy(): void;
+	}
 
-    export class Blip extends BaseObject {
-        alpha: number;
-        asMissionCreator: boolean;
-        bright: boolean;
-        category: number;
-        color: number;
-        crewIndicatorVisible: boolean;
-        flashInterval: number;
-        flashTimer: number;
-        flashes: boolean;
-        flashesAlternate: boolean;
-        friendIndicatorVisible: boolean;
-        friendly: boolean;
-        gxtName: string;
-        headingIndicatorVisible: boolean;
-        highDetail: boolean;
-        name: string;
-        number: number;
-        outlineIndicatorVisible: boolean;
-        position: Array<any>;
-        priority: number;
-        pulse: boolean;
-        rotation: number;
-        route: boolean;
-        routeColor: number;
-        scale: number;
-        secondaryColor: number;
-        shortRange: boolean;
-        showCone: boolean;
-        shrinked: boolean;
-        sprite: number;
-        tickVisible: boolean;
+	export class Blip extends BaseObject {
+		alpha: number;
+		asMissionCreator: boolean;
+		bright: boolean;
+		category: number;
+		color: number;
+		crewIndicatorVisible: boolean;
+		flashInterval: number;
+		flashTimer: number;
+		flashes: boolean;
+		flashesAlternate: boolean;
+		friendIndicatorVisible: boolean;
+		friendly: boolean;
+		gxtName: string;
+		headingIndicatorVisible: boolean;
+		highDetail: boolean;
+		name: string;
+		number: number;
+		outlineIndicatorVisible: boolean;
+		position: Array<any>;
+		priority: number;
+		pulse: boolean;
+		rotation: number;
+		route: boolean;
+		routeColor: number;
+		scale: number;
+		secondaryColor: number;
+		shortRange: boolean;
+		showCone: boolean;
+		shrinked: boolean;
+		sprite: number;
+		tickVisible: boolean;
 
-        fade(duration: number, p1: number): void;
-    }
+		fade(duration: number, p1: number): void;
+	}
 
-    export class AreaBlip extends Blip {
+	export class AreaBlip extends Blip {
 
-        constructor(x: number, y: number, z: number, width: number, height: number);
-    }
+		constructor(x: number, y: number, z: number, width: number, height: number);
+	}
 
-    export class RadiusBlip extends Blip {
+	export class RadiusBlip extends Blip {
 
-        constructor(x: number, y: number, z: number, radius: number);
-    }
+		constructor(x: number, y: number, z: number, radius: number);
+	}
 
-    export class PointBlip extends Blip {
+	export class PointBlip extends Blip {
 
-        constructor(x: number, y: number, z: number);
-    }
+		constructor(x: number, y: number, z: number);
+	}
 
 	export class HandlingData {
 		acceleration: number;
@@ -240,11 +244,11 @@ declare module "alt" {
 		brakeBiasRear: number;
 		breakForce: number;
 		camberStiffnesss: number;
-		centreOfMassOffset: any|number|Object;
+		centreOfMassOffset: any | Object;
 		clutchChangeRateScaleDownShift: number;
 		clutchChangeRateScaleUpShift: number;
 		collisionDamageMult: number;
-		damageFlags: number|number;
+		damageFlags: number | number;
 		deformationDamageMult: number;
 		downforceModifier: number;
 		driveBiasFront: number;
@@ -252,17 +256,17 @@ declare module "alt" {
 		driveMaxFlatVel: number;
 		engineDamageMult: number;
 		handBrakeForce: number;
-		handlingFlags: number|number;
+		handlingFlags: number | number;
 		readonly handlingNameHash: number;
-		inertiaMultiplier: any|number|Object;
+		inertiaMultiplier: any | number | Object;
 		initialDragCoeff: number;
 		initialDriveForce: number;
-		initialDriveGears: number|number;
+		initialDriveGears: number | number;
 		initialDriveMaxFlatVel: number;
 		lowSpeedTractionLossMult: number;
 		mass: number;
-		modelFlags: number|number;
-		monetaryValue: number|number;
+		modelFlags: number | number;
+		monetaryValue: number | number;
 		oilVolume: number;
 		percentSubmerged: number;
 		percentSubmergedRatio: number;
@@ -298,18 +302,44 @@ declare module "alt" {
 		unkFloat4: number;
 		unkFloat5: number;
 		weaponDamageMult: number;
-	
+
 		constructor(p0: number);
-		getForModel(modelHash: number|number):any;
-	  }
+		getForModel(modelHash: number | number): any;
+		static getForModel(modelHash: number | number): any;
+	}
 
 	export class LocalStorage {
-        static get(): LocalStorage;
-        get(key: string): any;
-        set(key: string, value: any): void;
-        delete(key: string): void;
-        deleteAll(): void;
-        save(): void;
+		static get(): LocalStorage;
+		get(key: string): Object | any;
+		set(key: string, value: any): void;
+		delete(key: string): void;
+		deleteAll(): void;
+		save(): void;
+	}
+
+	export class MemoryBuffer {
+
+		constructor(p0: number);
+		byte(offset: number | number, p1: number): null | number | bigint | number | string;
+		double(offset: number | number, p1: number): null | number | bigint | number | string;
+		float(offset: number | number, p1: number): null | number | bigint | number | string;
+		free(): boolean;
+		int(offset: number | number, p1: number): null | number | bigint | number | string;
+		long(offset: number | number, p1: number): null | number | bigint | number | string;
+		short(offset: number | number, p1: number): null | number | bigint | number | string;
+		string(offset: number | number, p1: number): null | number | bigint | number | string;
+		ubyte(offset: number | number, p1: number): null | number | bigint | number | string;
+		uint(offset: number | number, p1: number): null | number | bigint | number | string;
+		ulong(offset: number | number, p1: number): null | number | bigint | number | string;
+		ushort(offset: number | number, p1: number): null | number | bigint | number | string;
+	}
+
+	export class File {
+
+		exists(name: string): boolean;
+		read(name: string, p1: string): string | ArrayBuffer;
+		static exists(name: string): boolean;
+		static read(name: string, p1: string): string | ArrayBuffer;
 	}
 
     /**
@@ -329,7 +359,7 @@ declare module "alt" {
           },
       ]
       */
-    export function addGxtText(key: string, textValue: string): void;
+	export function addGxtText(key: string, textValue: string): void;
 
     /**
       type: 'function',
@@ -343,80 +373,34 @@ declare module "alt" {
           }
       ]
       */
-    export function beginScaleformMovieMethodMinimap(methodName: string): boolean;
+	export function beginScaleformMovieMethodMinimap(methodName: string): boolean;
 
-    /**
-      type: 'function',
-      name: 'clearInterval',
-      description: 'Cancels a timed, repeating action which was previously established by a call to setInterval (MDN)',
-      parameters: [
-          {
-              name: 'intervalID',
-              dataType: 'int',
-              description: 'The identifier of the repeated action you want to cancel'
-          }
-      ]
-      */
-    /**
-    type: 'function',
-    name: 'clearTimeout',
-    description: 'Cancels a timeout previously established by calling setTimeout (MDN)',
-    parameters: [
-        {
-            name: 'timeoutID',
-            dataType: 'int',
-            description: 'The identifier of the timeout you want to cancel'
-        }
-    ]
-    */
-    export function clearInterval(p0: number | number): void;
-
-    /**
-      type: 'function',
-      name: 'clearInterval',
-      description: 'Cancels a timed, repeating action which was previously established by a call to setInterval (MDN)',
-      parameters: [
-          {
-              name: 'intervalID',
-              dataType: 'int',
-              description: 'The identifier of the repeated action you want to cancel'
-          }
-      ]
-      */
-    /**
-    type: 'function',
-    name: 'clearTimeout',
-    description: 'Cancels a timeout previously established by calling setTimeout (MDN)',
-    parameters: [
-        {
-            name: 'timeoutID',
-            dataType: 'int',
-            description: 'The identifier of the timeout you want to cancel'
-        }
-    ]
-    */
-    export function clearTimeout(p0: number | number): void;
+	export function clearEveryTick(time: number | number): void;
+	export function clearInterval(time: number | number): void;
+	export function clearNextTick(time: number | number): void;
+	export function clearTimeout(time: number | number): void;
+	export function clearTimer(time: number | number): void;
 
     /**
       type: 'function',
       name: 'disableVoiceActivation',
       description: 'Disables Voice Activation',
       */
-    export function disableVoiceActivation(): void;
+	export function disableVoiceActivation(): void;
 
     /**
       type: 'function',
       name: 'disableVoiceInput',
       description: 'Disables Voice Input',
       */
-    export function disableVoiceInput(): boolean;
+	export function disableVoiceInput(): boolean;
 
     /**
       type: 'function',
       name: 'disableVoiceTest',
       description: 'Disables Voice Test',
       */
-    export function disableVoiceTest(): boolean;
+	export function disableVoiceTest(): boolean;
 
     /**
       type: 'function',
@@ -445,13 +429,13 @@ declare module "alt" {
           }
       }
       */
-    export function discordInfo(): Object | undefined | null;
-  	export function discordRequestOAuth2(): void;
+	export function discordInfo(): Object | undefined | null;
+	export function discordRequestOAuth2(): void;
 
     /**
        * Emit a client script event
        * */
-    export function emit(name: string, ...args: any[]): void;
+	export function emit(name: string, ...args: any[]): void;
 
     /**
       type: 'function',
@@ -471,7 +455,7 @@ declare module "alt" {
           }
       ]
       */
-    export function emitServer(name: string, ...args: any[]): void;
+	export function emitServer(name: string, ...args: any[]): void;
 
     /**
       type: 'function',
@@ -490,21 +474,21 @@ declare module "alt" {
           }
       ]
       */
-    export function enableVoiceActivation(activateOn: number, activationTime: number): void;
+	export function enableVoiceActivation(activateOn: number, activationTime: number): void;
 
     /**
       type: 'function',
       name: 'enableVoiceInput',
       description: 'Enables Voice Input',
       */
-    export function enableVoiceInput(): boolean;
+	export function enableVoiceInput(): boolean;
 
     /**
       type: 'function',
       name: 'enableVoiceTest',
       description: 'Enables Voice Test',
       */
-    export function enableVoiceTest(): boolean;
+	export function enableVoiceTest(): boolean;
 
     /**
       type: 'function',
@@ -515,9 +499,9 @@ declare module "alt" {
           description: 'If is game controls enabled'
       }
       */
-    export function gameControlsEnabled(): boolean;
-    export function getCursorPos(): Object;
-    export function getDiscordOAuth2Result(): any;
+	export function gameControlsEnabled(): boolean;
+	export function getCursorPos(): Object;
+	export function getDiscordOAuth2Result(): any;
 
     /**
       type: 'function',
@@ -535,7 +519,7 @@ declare module "alt" {
           description: 'Text of GTX text'
       }
       */
-    export function getGxtText(key: string): string;
+	export function getGxtText(key: string): string;
 
     /**
       type: 'function',
@@ -546,19 +530,19 @@ declare module "alt" {
           description: 'License hash'
       }
       */
-    export function getLicenseHash(): string;
+	export function getLicenseHash(): string;
 
-	  /**
-    type: 'function',
-    name: 'getLocalPlayer',
-    description: 'Returns a local player',
-    returns: {
-    	dataType: 'Player',
-    	description: 'Local Player object'
-    }
-    */
-    export function getLocalPlayer(): Player;
-    export function getLocale(): any;
+	/**
+  type: 'function',
+  name: 'getLocalPlayer',
+  description: 'Returns a local player',
+  returns: {
+	  dataType: 'Player',
+	  description: 'Local Player object'
+  }
+  */
+	export function getLocalPlayer(): Player;
+	export function getLocale(): string;
 
     /**
       type: 'function',
@@ -569,16 +553,19 @@ declare module "alt" {
           description: 'Microphone Level'
       }
       */
-    export function getMicLevel(): number;
-    export function getMsPerGameMinute(): number;
+	export function getMicLevel(): number;
+	export function getMsPerGameMinute(): number;
 
-    //Voice functions
+	export function getStat(statName: string): number | bigint | number | boolean | string | null;
+	export function getVehWheels(vehId: number): number;
+
+	//Voice functions
     /**
     type: 'function',
     name: 'initVoice',
     description: 'Initializes voice system',
     */
-    export function initVoice(bitrate: number): boolean;
+	export function initVoice(bitrate: number): boolean;
 	export function isDiscordInfoReady(): boolean;
 	export function isDiscordOAuth2Accepted(): boolean;
 	export function isDiscordOAuth2Finished(): boolean;
@@ -594,7 +581,7 @@ declare module "alt" {
           }
       ]
       */
-    export function isInSandbox(): boolean;
+	export function isInSandbox(): boolean;
 
     /**
       type: 'function',
@@ -613,7 +600,7 @@ declare module "alt" {
           }
       ]
       */
-    export function isTextureExistInArchetype(modelHash: number, modelName: string): boolean;
+	export function isTextureExistInArchetype(modelHash: number, modelName: string): boolean;
 
     /**
       type: 'function',
@@ -627,7 +614,7 @@ declare module "alt" {
           }
       ]
       */
-    export function loadModel(modelHash: number): void;
+	export function loadModel(modelHash: number): void;
 
     /**
       type: 'function',
@@ -641,7 +628,7 @@ declare module "alt" {
           }
       ]
       */
-    export function loadModelAsync(modelHash: number): void;
+	export function loadModelAsync(modelHash: number): void;
 
     /**
       type: 'function',
@@ -655,7 +642,7 @@ declare module "alt" {
           }
       ]
       */
-    export function log(...val: any[]): void;
+	export function log(...val: any[]): void;
 
     /**
       type: 'function',
@@ -669,7 +656,7 @@ declare module "alt" {
           }
       ]
       */
-    export function logError(...val: any[]): void;
+	export function logError(...val: any[]): void;
 
     /**
       type: 'function',
@@ -683,7 +670,7 @@ declare module "alt" {
           }
       ]
       */
-    export function logWarning(...val: any[]): void;
+	export function logWarning(...val: any[]): void;
 
     /**
       type: 'function',
@@ -697,9 +684,9 @@ declare module "alt" {
           }
       ]
       */
-    export function nextTick(p0Fn: Function): void;
-    export function off(evName: string, p1Fn: Function): void;
-    export function offServer(evName: string, p1Fn: Function): void;
+	export function nextTick(p0Fn: Function): void;
+	export function off(evName: string, p1Fn: Function): void;
+	export function offServer(evName: string, p1Fn: Function): void;
 
     /**
       type: 'function',
@@ -725,7 +712,7 @@ declare module "alt" {
           }
       ]
       */
-    export function on(evName: string, p1Fn: Function): void;
+	export function on(evName: string, p1Fn: Function): void;
 
     /**
       type: 'function',
@@ -751,7 +738,7 @@ declare module "alt" {
           }
       ]
       */
-    export function onServer(evName: string, p1Fn: Function): void;
+	export function onServer(evName: string, p1Fn: Function): void;
 
     /**
       type: 'function',
@@ -765,7 +752,7 @@ declare module "alt" {
           }
       ]
       */
-    export function removeGxtText(key: string): void;
+	export function removeGxtText(key: string): void;
 
     /**
       type: 'function',
@@ -779,7 +766,7 @@ declare module "alt" {
           }
       ]
       */
-    export function removeIpl(iplName: string): void;
+	export function removeIpl(iplName: string): void;
 
     /**
       type: 'function',
@@ -793,8 +780,9 @@ declare module "alt" {
           }
       ]
       */
-    export function requestIpl(iplName: string): void;
-    export function saveScreenshot(fileName: string): boolean;
+	export function requestIpl(iplName: string): void;
+	export function resetStat(statName: string): boolean;
+	export function saveScreenshot(fileName: string): boolean;
 
     /**
       type: 'function',
@@ -808,8 +796,8 @@ declare module "alt" {
           }
       ]
       */
-    export function setCamFrozen(state: boolean): void;
-    export function setCursorPos(pos: Object): void;
+	export function setCamFrozen(state: boolean): void;
+	export function setCursorPos(pos: Object): void;
 
     /**
       type: 'function',
@@ -832,7 +820,7 @@ declare module "alt" {
           description: 'Non-zero value which identifies the timer created by the call to setInterval this value can be passed to clearInterval to cancel the timeout'
       }
       */
-    export function setInterval(idFn: Function, id: number | number): number;
+	export function setInterval(idFn: Function, id: number | number): number;
 
     /**
       type: 'function',
@@ -846,7 +834,7 @@ declare module "alt" {
           }
       ]
       */
-    export function setMicGain(micGain: number): void;
+	export function setMicGain(micGain: number): void;
 
     /**
       type: 'function',
@@ -860,7 +848,7 @@ declare module "alt" {
           }
       ]
       */
-    export function setModel(modelName: string): void;
+	export function setModel(modelName: string): void;
 
     /**
       type: 'function',
@@ -874,7 +862,9 @@ declare module "alt" {
           }
       ]
       */
-    export function setMsPerGameMinute(ms: number): void;
+	export function setMsPerGameMinute(ms: number): void;
+	export function setNoiseSuppressionStatus(status: boolean): void;
+	export function setStat(statName: string, intValue: number | number | bigint | boolean | string | number): boolean;
 
     /**
       type: 'function',
@@ -897,10 +887,10 @@ declare module "alt" {
           description: 'Positive integer value which identifies the timer created by the call to setTimeout this value can be passed to clearTimeout to cancel the timeout'
       }
       */
-    export function setTimeout(idFn: Function, id: number | number): number;
+	export function setTimeout(idFn: Function, id: number | number): number;
 	export function setWeatherCycle(weathers: Array<any>, multipliers: Array<any>): any;
 	export function setWeatherSyncActive(isActive: boolean): any;
-  
+
     /**
       type: 'function',
       name: 'showCursor',
@@ -913,7 +903,7 @@ declare module "alt" {
           }
       ]
       */
-    export function showCursor(p0: boolean): void;
+	export function showCursor(p0: boolean): void;
 
     /**
       type: 'function',
@@ -927,13 +917,13 @@ declare module "alt" {
           }
       ]
       */
-    export function toggleGameControls(state: boolean): void;
+	export function toggleGameControls(state: boolean): void;
 }
 
 interface Vector3 {
-    x: number;
-    y: number;
-    z: number;
+	x: number;
+	y: number;
+	z: number;
 }
 
 type booleanPtr = boolean;
@@ -1155,6 +1145,25 @@ declare module "natives" {
 	export function _0x65FAEE425DE637B0(p0: number): boolean;
 	export function _0x5501B7A5CDB79D37(p0: number): void;
 	export function _0x56105E599CAB0EFA(p0: intPtr): Array<any>;
+	export function _0x45EC93127B9586F0(p0: number, p1: number): void;
+	export function _0xE238F45C3A2DA0A1(p0: number): void;
+	export function _0x4F8882E0F30D19C2(p0: number, p1: number): void;
+	export function _0x7BA277D6DF3F4742(p0: number, p1: number): void;
+	export function _0x29247C3358570094(player1: number, player2: number, toggle: boolean): void;
+	export function _0x1B9C92466C9CAC2A(p0: number, p1: number): void;
+	export function _0xACC32BE99069C80F(p0: number): number;
+	export function _0x0E7CFB9483EDEF55(p0: number): number;
+	export function _0x9947D4ED28EB6B48(p0: number): number;
+	export function _0x7798CC617B2E1687(p0: number): void;
+	export function _0xF9268B9E60BE2F2A(p0: number, p1: number): void;
+	export function _0x7BDFAAB8E89250E8(p0: number, p1: number): void;
+	export function _0x2BA4D7371FC2A81C(p0: number, p1: number): number;
+	export function _0xD1A4044339FF624E(p0: number, p1: number): void;
+	export function _0xF434DDAC46F6B3B8(p0: number, p1: number): void;
+	export function _0x5BA6CE4EFE760AF7(): number;
+	export function _0x869B2477A65F3C05(p0: number, p1: number): void;
+	export function _0x71665CA35A6703B3(p0: number, p1: number): void;
+	export function _0x1544DC31C28E93A4(p0: number): void;
 	export function doesEntityExist(entity: number): boolean;
 	export function doesEntityBelongToThisScript(entity: number, p2: boolean): boolean;
 	export function doesEntityHaveDrawable(entity: number): boolean;
@@ -1185,7 +1194,7 @@ declare module "natives" {
 	export function setEntityMaxHealth(entity: number, value: number): void;
 	export function getEntityHeight(entity: number, X: number, Y: number, Z: number, atTop: boolean, inWorldCoords: boolean): number;
 	export function getEntityHeightAboveGround(entity: number): number;
-	export function getEntityMatrix(entity: number, rightVector: vectorPtr | null, forwardVector: vectorPtr | null, upVector: vectorPtr | null, position: vectorPtr | null): Array<any>;
+	export function getEntityMatrix(entity: number, rightVector: vectorPtr, forwardVector: vectorPtr, upVector: vectorPtr, position: vectorPtr): Array<any>;
 	export function getEntityModel(entity: number): number;
 	export function getOffsetFromEntityGivenWorldCoords(entity: number, posX: number, posY: number, posZ: number): Vector3;
 	export function getOffsetFromEntityInWorldCoords(entity: number, offsetX: number, offsetY: number, offsetZ: number): Vector3;
@@ -1317,6 +1326,19 @@ declare module "natives" {
 	export function _0xDC6F8601FAF2E893(entity: number, p1: boolean): void;
 	export function _0x2C2E3DC128F44309(entity: number, p1: boolean): void;
 	export function _0x1A092BB0C3808B96(entity: number, p1: boolean): void;
+	export function _0xC3766A0A2E5E921A(p0: number, p1: number): void;
+	export function _0x4F9CB9F38E5B84E9(p0: number, p1: number): void;
+	export function _0x4560AD0210852356(p0: number, p1: number): Vector3;
+	export function _0x03C24BDA30D334C8(p0: number): void;
+	export function _0x6804C9A0125B9034(p0: number, p1: number, p2: number, p3: number, p4: number, p5: number): void;
+	export function _0x2B47B5D5B3F4358B(p0: number): void;
+	export function _0x5DDC8DFF54E2EE00(p0: number): number;
+	export function _0xCDE97FDDEA0EC5ED(p0: number, p1: number): void;
+	export function _0xB8DFB3C324C5E05D(p0: number, p1: number): Vector3;
+	export function _0xD7658DBAD421A24B(p0: number, p1: number): void;
+	export function _0x8F1ECBB7E0B4D2A1(p0: number): number;
+	export function _0xB264A1D39785CB6A(p0: number, p1: number): void;
+	export function _0xF3AFD119C8A30F39(p0: number, p1: number, p2: number, p3: number, p4: number, p5: number): void;
 	export function createPed(pedType: number, modelHash: number, x: number, y: number, z: number, heading: number, isNetwork: boolean, thisScriptCheck: boolean): number;
 	export function deletePed(ped: intPtr): Array<any>;
 	export function clonePed(ped: number, heading: number, isNetwork: boolean, thisScriptCheck: boolean): number;
@@ -1624,7 +1646,7 @@ declare module "natives" {
 	export function getPedPropTextureIndex(ped: number, componentId: number): number;
 	export function _0x1280804F7CFD2D6C(p0: number): void;
 	export function _0x36C6984C3ED0C911(p0: number): void;
-	export function _0xB50EB4CCB29704AC(p0: number): void;
+	export function clearPedScubaGearVariation(p0: number): void;
 	export function _0xFEC9A3B1820F3331(p0: number): boolean;
 	export function setBlockingOfNonTemporaryEvents(ped: number, toggle: boolean): void;
 	export function setPedBoundsOrientation(ped: number, p1: number, p2: number, p3: number, p4: number, p5: number): void;
@@ -1848,7 +1870,7 @@ declare module "natives" {
 	export function _0x781DE8FA214E87D2(ped: number, p1: string): void;
 	export function setPedCapsule(ped: number, value: number): void;
 	export function registerPedheadshot(ped: number): number;
-	export function _0x953563CE563143AF(p0: number): number;
+	export function registerPedheadshotTransparent(p0: number): number;
 	export function unregisterPedheadshot(handle: number): void;
 	export function isPedheadshotValid(handle: number): boolean;
 	export function isPedheadshotReady(handle: number): boolean;
@@ -1887,6 +1909,32 @@ declare module "natives" {
 	export function _0xD33DAA36272177C4(ped: number): void;
 	export function _0x83A169EABCDB10A2(p0: number, p1: number): void;
 	export function _0x288DF530C92DAD6F(p0: number, p1: number): void;
+	export function getPedIlluminatedClothingGlowIntensity(ped: number): number;
+	export function _0x74F73C4B2DE24AC7(colorID: number): boolean;
+	export function _0x88A5C451942ECCE2(p0: number, p1: number): void;
+	export function _0xC794277E1B24F2D4(p0: number, p1: number, p2: number): void;
+	export function _0xB9FABE19738FFBB3(p0: number, p1: number, p2: number): void;
+	export function _0xD03660E5D549065E(p0: number, p1: number): number;
+	export function _0xC6D87B07A55B6326(p0: number, p1: number, p2: number, p3: number, p4: number, p5: number, p6: number): void;
+	export function _0x61912D474766B4E1(p0: number): number;
+	export function _0x21517C1D9E21CD16(p0: number, p1: number): void;
+	export function _0x0A04693A1AC1FA5B(p0: number): number;
+	export function _0x6A6D512CABA492E0(p0: number, p1: number, p2: number, p3: number): void;
+	export function _0x56CBA8CC20DD2FBF(p0: number): number;
+	export function _0x755641835889EEAD(p0: number, p1: number): void;
+	export function _0xF8C49A1C37F02432(p0: number, p1: number, p2: number, p3: number, p4: number): number;
+	export function _0xB6203BEB7C10EB8F(p0: number, p1: number): void;
+	export function _0x43123BEF792AB611(p0: number): number;
+	export function _0x4264D47E1F951DC6(p0: number): number;
+	export function _0xF137D06DF5F807BA(p0: number, p1: number): void;
+	export function _0x13D345D9D3754417(p0: number, p1: number, p2: number, p3: number, p4: number, p5: number): number;
+	export function _0xCD97A0CE4D7138E3(p0: number): void;
+	export function _0x728ED3396328866E(p0: number, p1: number): void;
+	export function _0x4FD35A5C280F38A2(p0: number): number;
+	export function _0x88C3971B28DE45CD(p0: number): number;
+	export function _0xA2BBDC0B3CC54EBF(p0: number): number;
+	export function _0x965BFFDCDE3419AE(p0: number, p1: number): void;
+	export function setPedIlluminatedClothingGlowIntensity(ped: number, intensity: number): void;
 	export function createVehicle(modelHash: number, x: number, y: number, z: number, heading: number, isNetwork: boolean, thisScriptCheck: boolean): number;
 	export function deleteVehicle(vehicle: intPtr): Array<any>;
 	export function _0x7D6F9A3EF26136A0(vehicle: number, p1: boolean, p2: boolean): void;
@@ -1934,7 +1982,6 @@ declare module "natives" {
 	export function _0x99AD4CCCB128CBC9(vehicle: number): void;
 	export function _0x6ADAABD3068C5235(): number;
 	export function requestVehiclePhoneExplosion(): void;
-	export function _0xAE3FEE8709B39DCB(vehicle: number): boolean;
 	export function setTaxiLights(vehicle: number, state: boolean): void;
 	export function isTaxiLightOn(vehicle: number): boolean;
 	export function isVehicleInGarageArea(garageName: string, vehicle: number): boolean;
@@ -2197,7 +2244,7 @@ declare module "natives" {
 	export function isVehicleAttachedToTowTruck(towTruck: number, vehicle: number): boolean;
 	export function getEntityAttachedToTowTruck(towTruck: number): number;
 	export function setVehicleAutomaticallyAttaches(vehicle: number, p1: boolean, p2: number): number;
-	export function _0xF8EBCCC96ADB9FB7(p0: number, p1: number, p2: boolean): void;
+	export function setVehicleBulldozerArmPosition(p0: number, p1: number, p2: boolean): void;
 	export function _0x56B94C6D7127DFBA(p0: number, p1: number, p2: boolean): void;
 	export function _0x1093408B4B9D1146(p0: number, p1: number): void;
 	export function setDesiredVerticalFlightPhase(vehicle: number, angleRatio: number): void;
@@ -2335,7 +2382,7 @@ declare module "natives" {
 	export function _0x0CDDA42F9E360CA6(vehicle: number, toggle: boolean): void;
 	export function isVehicleStolen(vehicle: number): boolean;
 	export function setVehicleIsStolen(vehicle: number, isStolen: boolean): number;
-	export function _0xAD2D28A1AFDFF131(vehicle: number, value: number): void;
+	export function setPlaneTurbulenceMultiplier(vehicle: number, value: number): void;
 	export function areVehicleWingsIntact(vehicle: number): boolean;
 	export function _0xB264C4D2F2B0A78B(vehicle: number): void;
 	export function detachVehicleFromCargobob(vehicle: number, cargobob: number): void;
@@ -2407,6 +2454,141 @@ declare module "natives" {
 	export function _0xC361AA040D6637A8(vehicle: number, p1: boolean): void;
 	export function setVehicleHudSpecialAbilityBarActive(vehicle: number, active: boolean): void;
 	export function _0xE16142B94664DEFD(vehicle: number, p1: boolean): void;
+	export function areBombBayDoorsOpen(aircraft: number): boolean;
+	export function canVehicleParachuteBeActivated(vehicle: number): boolean;
+	export function disableVehicleNeonLights(vehicle: number, disable: boolean): void;
+	export function doesVehicleHaveDoor(vehicle: number, doorIndex: number): boolean;
+	export function getAircraftBombCount(aircraft: number): number;
+	export function getAllVehicles(vehArray: intPtr): Array<any>;
+	export function getAircraftCountermeasureCount(aircraft: number): number;
+	export function getEntryPositionOfDoor(vehicle: number, doorIndex: number): Vector3;
+	export function getHasLowerableWheels(vehicle: number): boolean;
+	export function getNumberOfVehicleDoors(vehicle: number): number;
+	export function getVehicleDashboardColour(vehicle: number, color: intPtr): Array<any>;
+	export function getVehicleHasKers(vehicle: number): boolean;
+	export function getVehicleHoverModePercentage(aircraft: number): number;
+	export function getVehicleHeadlightsColour(vehicle: number): number;
+	export function getVehicleInteriorColour(vehicle: number, color: intPtr): Array<any>;
+	export function getVehicleRoofLiveryCount(vehicle: number): number;
+	export function getVehicleRoofLivery(vehicle: number): number;
+	export function hasVehicleJumpingAbility(vehicle: number): boolean;
+	export function hasVehicleParachute(vehicle: number): boolean;
+	export function hasVehicleRocketBoost(vehicle: number): boolean;
+	export function isThisModelAnAmphibiousCar(model: number): boolean;
+	export function isVehicleEngineOnFire(vehicle: number): boolean;
+	export function isVehicleRocketBoostActive(vehicle: number): boolean;
+	export function _0xD70151401A93A200(p0: number, p1: number, p2: number, p3: number, p4: number, p5: number): void;
+	export function _0x7D1A3BF4E85E030D(p0: number, p1: number): number;
+	export function _0xC53475BC8F04A579(p0: number, p1: number): void;
+	export function _0xE3ABA5FA872AA072(p0: number, p1: number): void;
+	export function _0xD15914F02DBAFD4B(p0: number, p1: number): void;
+	export function _0x783094EA0E540662(p0: number, p1: number): void;
+	export function _0x1F837D2A5113773C(p0: number, p1: number): void;
+	export function _0x1312DDD8385AEE4E(p0: number, p1: number): void;
+	export function _0x97C7CD8F61531EB0(p0: number, p1: number): void;
+	export function _0x8F16AD7B6E1AF4DE(p0: number, p1: number): void;
+	export function _0xF4C6C562F157DDE7(p0: number): number;
+	export function _0x4A4AC9013825EC27(p0: number, p1: number, p2: number): void;
+	export function _0x2AD57E3C35187265(p0: number, p1: number): void;
+	export function _0xE5C8B4ABE1F29F25(p0: number): void;
+	export function _0x6626587886FC0680(p0: number, p1: number): void;
+	export function _0xB4BD6E4466DFA4B4(p0: number, p1: number): number;
+	export function _0x909330A4F1A9E431(p0: number, p1: number): void;
+	export function _0x61F23F3414318ABC(p0: number): void;
+	export function _0x2FA2494B47FDD009(p0: number, p1: number): void;
+	export function _0xADF37ED1048E7D51(p0: number, p1: number): void;
+	export function _0x24C68132BBF26C12(p0: number, p1: number, p2: number): void;
+	export function _0xE64259B22CA4816B(p0: number): number;
+	export function _0xAD73DFE1BE17D11C(p0: number, p1: number): void;
+	export function _0x920895968BCEAEF5(p0: number, p1: number, p2: number, p3: number, p4: number): void;
+	export function _0xEBD4662D44E09120(p0: number): void;
+	export function _0xD5DAB08571A951AC(p0: number): void;
+	export function _0x616F1C07F2D539FF(p0: number, p1: number, p2: number): void;
+	export function _0x10ED68FDBB55877B(p0: number, p1: number): number;
+	export function _0xE8D5A7343BE09566(p0: number): number;
+	export function _0x6017D134DB679657(p0: number, p1: number): number;
+	export function _0xE5E5836B9BF282FC(p0: number, p1: number): number;
+	export function _0x6BAED5083892AB0A(p0: number): number;
+	export function _0x47DF44FA9C153C85(p0: number): void;
+	export function _0x544996C0081ABDEB(p0: number, p1: number): void;
+	export function _0x515FE27B7FDC24C3(p0: number, p1: number, p2: number): number;
+	export function _0xBD41704A2040D45D(p0: number): number;
+	export function _0xDBF5ED72DCB6717C(p0: number, p1: number): number;
+	export function _0xE8E02E918B84552C(p0: number, p1: number): void;
+	export function _0xB00B3C9C017FF62B(p0: number, p1: number): void;
+	export function _0xB80E9CD4F32A8C3F(p0: number, p1: number): void;
+	export function _0x66E3AAFACE2D1EB8(p0: number, p1: number, p2: number): void;
+	export function _0x73EB7DB371DBCFAB(p0: number): void;
+	export function _0x72BECCF4B829522E(p0: number, p1: number): void;
+	export function _0x400058D1D583D9EC(p0: number): number;
+	export function _0x7F13C391DCBB3BCE(p0: number, p1: number): void;
+	export function _0xBF11130136295FAD(p0: number, p1: number): void;
+	export function _0x78CEEE41F49F421F(p0: number, p1: number): void;
+	export function _0x282BAD470C323153(p0: number, p1: number): void;
+	export function _0x06E564BB615BAEEE(p0: number): void;
+	export function _0x18A49F238C54A823(p0: number): void;
+	export function _0x140C726334328899(p0: number): void;
+	export function _0x318DFD40501DA151(p0: number, p1: number): number;
+	export function _0x1B39142F15F1D16A(vehicle: number, toggle: boolean): void;
+	export function _0x956761DAC7A2E45D(p0: number, p1: number, p2: number): void;
+	export function _0xE46E827F1DD9DF0D(p0: number): number;
+	export function _0xDE711D17330E97CC(p0: number, p1: number, p2: number): void;
+	export function _0x8D37E0D8E03D755A(): number;
+	export function _0xB8167A6C764CE0B0(p0: number, p1: number): void;
+	export function _0x8628B6D3AB9816A2(p0: number, p1: number): void;
+	export function _0x5414D803CC98005F(p0: number): number;
+	export function _0xD55D4E298BCB0DF6(p0: number): void;
+	export function _0x3B9D91D83B2EF700(p0: number, p1: number, p2: number, p3: number, p4: number, p5: number): void;
+	export function _0xB483F1A5969C9603(p0: number): number;
+	export function _0x407BAA0DE2B7CC4F(p0: number): void;
+	export function _0x6E43D783C31FF4FF(): void;
+	export function _0x8FC3B94EA472CA05(p0: number, p1: number): void;
+	export function _0xE7ABEBFC0280FE3D(p0: number, p1: number): number;
+	export function _0xAF60E6A2936F982A(p0: number, p1: number): void;
+	export function _0x4C3AF1BAD83D666F(p0: number, p1: number, p2: number): number;
+	export function _0xF5E298D1B06E3F2A(p0: number): number;
+	export function _0x720715BA9E55E55A(vehicle: number, toggle: boolean): void;
+	export function _0xF5159D24A8A5B4A2(p0: number): number;
+	export function _0x9C0BF9B628872C82(p0: number, p1: number): void;
+	export function _0x5FAC106130F836B7(p0: number, p1: number): void;
+	export function _0x4128B5B5A3E05AE7(p0: number): void;
+	export function _0x399DA7997F64086A(p0: number, p1: number, p2: number): void;
+	export function _0x3549D82A818BFAFD(p0: number, p1: number, p2: number, p3: number, p4: number): void;
+	export function _0x853FCD9E3194F6BB(p0: number): void;
+	export function _0x380ED4D004950A69(p0: number, p1: number): number;
+	export function _0x9D5B0D871903DDBA(p0: number): void;
+	export function _0xA15EEFFA8D1E3C49(p0: number, p1: number): number;
+	export function _0x67F5EE9A72F16A2C(p0: number): void;
+	export function _0x41AB6AE1125C75B2(p0: number, p1: number): number;
+	export function _0xA25E3EAFEEF3FA24(p0: number, p1: number): void;
+	export function _0x545FDE83A12363A7(): number;
+	export function _0x9A9F05760D7F70B6(): void;
+	export function _0x84FE51A0DFCCE7AD(p0: number, p1: number): void;
+	export function _0x8C21772129B7C6ED(p0: number, p1: number): void;
+	export function _0xEDBC8405B3895CC9(p0: number, p1: number): void;
+	export function _0x065F443CF7457D5E(p0: number, p1: number): void;
+	export function _0x4894124488AC0FF8(p0: number): void;
+	export function _0x6EB0F2B8795AE3F9(p0: number, p1: number): number;
+	export function _0x97CF3991059807DF(p0: number, p1: number): void;
+	export function raiseLowerableWheels(vehicle: number): void;
+	export function setAircraftCountermeasureCount(aircraft: number, count: number): void;
+	export function setAircraftBombCount(aircraft: number, bombCount: number): void;
+	export function setCarBootOpen(vehicle: number): void;
+	export function setRampVehicleReceivesRampDamage(vehicle: number, receivesDamage: boolean): void;
+	export function setUseHigherVehicleJumpForce(vehicle: number, toggle: boolean): void;
+	export function setVehicleDashboardColour(vehicle: number, color: number): void;
+	export function setVehicleInteriorColour(vehicle: number, color: number): void;
+	export function setVehicleMaxSpeed(vehicle: number, speed: number): void;
+	export function setVehicleParachuteActive(vehicle: number, active: boolean): void;
+	export function setVehicleRocketBoostActive(vehicle: number, active: boolean): void;
+	export function setVehicleRocketBoostRefillTime(vehicle: number, time: number): void;
+	export function setVehicleRocketBoostPercentage(vehicle: number, percentage: number): void;
+	export function setVehicleRoofLivery(vehicle: number, livery: number): void;
+	export function setVehicleTransformState(vehicle: number, state: number): void;
+	export function transformStormbergToRoadVehicle(vehicle: number, instantly: boolean): void;
+	export function vehicleSetCustomParachuteModel(vehicle: number, parachuteModel: number): void;
+	export function vehicleSetCustomParachuteTexture(vehicle: number, colorIndex: number): void;
+	export function transformStormbergToWaterVehicle(vehicle: number, instantly: boolean): void;
 	export function createObject(modelHash: number, x: number, y: number, z: number, isNetwork: boolean, thisScriptCheck: boolean, dynamic: boolean): number;
 	export function createObjectNoOffset(modelHash: number, x: number, y: number, z: number, isNetwork: boolean, thisScriptCheck: boolean, dynamic: boolean): number;
 	export function deleteObject(object: intPtr): Array<any>;
@@ -2471,7 +2653,7 @@ declare module "natives" {
 	export function setDesObjectState(handle: number, state: number): void;
 	export function getDesObjectState(handle: number): number;
 	export function doesDesObjectExist(handle: number): boolean;
-	export function _0x260EE4FDBDF4DB01(p0: number): number;
+	export function getDesObjectAnimProgress(p0: number): number;
 	export function createPickup(pickupHash: number, posX: number, posY: number, posZ: number, p4: number, value: number, p6: boolean, modelHash: number): number;
 	export function createPickupRotate(pickupHash: number, posX: number, posY: number, posZ: number, rotX: number, rotY: number, rotZ: number, flag: number, amount: number, p9: number, p10: boolean, modelHash: number): number;
 	export function createAmbientPickup(pickupHash: number, posX: number, posY: number, posZ: number, p4: number, value: number, modelHash: number, returnHandle: boolean, p8: boolean): number;
@@ -2512,6 +2694,30 @@ declare module "natives" {
 	export function getPickupHash(pickupHash: number): number;
 	export function setForceObjectThisFrame(p0: number, p1: number, p2: number, p3: number): void;
 	export function markObjectForDeletion(object: number): void;
+	export function _0x611594DA095BE345(p0: number, player: number, p2: number, p3: number): boolean;
+	export function _0x38C65D05AF97976C(p0: number, p1: number): void;
+	export function _0x10C4B80F25CEE687(p0: number, p1: boolean, p2: boolean, p3: boolean, p4: boolean): void;
+	export function _0x461C95A908DA4D79(p0: number, p1: number): void;
+	export function _0xB9941E6F1556FF2B(p0: number, p1: number): void;
+	export function _0x2C9D9C409AEA23E4(): void;
+	export function _0xED145E5E99D97197(p0: number, p1: number): void;
+	export function _0x42503E830877B608(p0: number, p1: number): void;
+	export function _0xFFFF625919AA14A9(p0: number, p1: number): void;
+	export function _0x5D54110B39949EAD(p0: number): void;
+	export function _0xC27163E43AD83614(p0: number, p1: number): void;
+	export function _0x4BC264DB2837F69F(p0: number): void;
+	export function _0xB06E8488F9EFC2A7(p0: number, p1: number): void;
+	export function _0xD938594911922392(p0: number, p1: number): void;
+	export function _0x7C38A7CBDE9727A6(p0: number, p1: number): void;
+	export function _0x40AD538C3FCAD9B8(p0: number): void;
+	export function _0x1FA33938BF46EAE3(p0: number): void;
+	export function _0x3880C7D2101171FB(p0: number, p1: number): void;
+	export function _0xA394804C3C4CC822(): number;
+	export function _0x75EF02828C389409(p0: number): number;
+	export function _0x6CD1C777AC0358B6(p0: number, p1: number): void;
+	export function _0x214F8B8AB8262218(p0: number): number;
+	export function _0xCC7ECEEE8E8BC4B2(p0: number, p1: number, p2: number, p3: number, p4: number, p5: number): number;
+	export function setObjectColour(entity: number, p1: number, R: number, G: number, B: number): void;
 	export function taskPause(ped: number, time: number): void;
 	export function taskStandStill(ped: number, time: number): void;
 	export function taskJump(ped: number, unused: boolean): void;
@@ -2949,7 +3155,7 @@ declare module "natives" {
 	export function isMinigameInProgress(): boolean;
 	export function isThisAMinigameScript(): boolean;
 	export function isSniperInverted(): boolean;
-	export function _0xD3D15555431AB793(): boolean;
+	export function shouldUseMetricMeasurements(): boolean;
 	export function getProfileSetting(profileSetting: number): number;
 	export function areStringsEqual(string1: string, string2: string): boolean;
 	export function compareStrings(str1: string, str2: string, matchCase: boolean, maxLength: number): number;
@@ -3327,6 +3533,20 @@ declare module "natives" {
 	export function _0x806058BBDC136E06(): void;
 	export function _0x544810ED9DB6BBE6(): boolean;
 	export function _0x5B50ABB1FE3746F4(): boolean;
+	export function _0x15776186477988D1(p0: number): number;
+	export function _0x16E6E3C714D094A0(p0: number): void;
+	export function _0xB50DF7F4EB8B9217(p0: number): void;
+	export function _0x29401505B1410601(p0: number, p1: number, p2: number): void;
+	export function _0xB8CCBD740F23D340(p0: number, p1: number, p2: number): number;
+	export function _0xD47C0ACE358BEDBF(p0: boolean, p1: boolean): void;
+	export function _0x4C64213D29C26AF9(): void;
+	export function _0x1085AAAC0EC5A9C3(p0: number): number;
+	export function _0x0516E1D0819C6B3A(p0: number, p1: number, p2: number, p3: number, p4: number, p5: number): void;
+	export function _0xE94A4C97FBCB0753(p0: number, p1: number): void;
+	export function _0xDCE814B4BBAD8FC4(p0: number, p1: number, p2: number, p3: number): void;
+	export function _0xE1F2E7F410F9AC78(p0: number, p1: number): void;
+	export function _0x35EA08F75F9F5366(): void;
+	export function _0x4DB209A110C1E31A(p0: number): void;
 	export function requestCutscene(cutsceneName: string, p1: number): void;
 	export function requestCutsceneEx(cutsceneName: string, p1: number, p2: number): void;
 	export function removeCutscene(): void;
@@ -3413,6 +3633,10 @@ declare module "natives" {
 	export function capInterior(interiorID: number, toggle: boolean): void;
 	export function isInteriorCapped(interiorID: number): boolean;
 	export function _0x9E6542F0CE8E70A3(toggle: boolean): void;
+	export function _0x3CF313DC7E509037(p0: number): void;
+	export function _0x56297A8CE5365606(): void;
+	export function _0x9027312E709F09D6(p0: number, p1: number): void;
+	export function setInteriorPropColor(interiorID: number, propName: string, color: number): void;
 	export function renderScriptCams(render: boolean, ease: boolean, easeTime: number, p3: boolean, p4: boolean): void;
 	export function renderFirstPersonCam(render: boolean, p1: number, p2: number): void;
 	export function createCam(camName: string, unk: boolean): number;
@@ -3627,6 +3851,16 @@ declare module "natives" {
 	export function _0x11FA5D3479C7DD47(p0: number): void;
 	export function _0xEAF0FA793D05C592(): number;
 	export function getReplayFreeCamMaxRange(): number;
+	export function attachCamToVehicleBone(cam: number, vehicle: number, boneIndex: number, relativeRotation: boolean, rotX: number, rotY: number, rotZ: number, offX: number, offY: number, offZ: number, fixedDirection: boolean): void;
+	export function _0x44ADBD490DA0A4EE(): void;
+	export function _0xC8D600A8E7BC9408(p0: number, p1: number): void;
+	export function _0xBE32AB261E9BC3AA(p0: number, p1: number, p2: number): void;
+	export function _0x68D661CF8BFF17ED(): number;
+	export function _0x6F47362FA140EBE4(): void;
+	export function _0x37215F9E61F49217(): void;
+	export function _0x6412595E99E2CBEE(): void;
+	export function _0xF6E1AA9F93ADCF55(): number;
+	export function _0xA8A40388FFBCB07B(p0: number, p1: number, p2: number, p3: number): void;
 	export function enableLaserSightRendering(toggle: boolean): void;
 	export function getWeaponComponentTypeModel(componentHash: number): number;
 	export function getWeapontypeModel(weaponHash: number): number;
@@ -3702,7 +3936,7 @@ declare module "natives" {
 	export function getWeaponTintCount(weaponHash: number): number;
 	export function getWeaponHudStats(weaponHash: number, outData: intPtr): Array<any>;
 	export function getWeaponComponentHudStats(componentHash: number, outData: intPtr): Array<any>;
-	export function _0x3133B907D8B32053(p0: number, p1: number): number;
+	export function getWeaponDamage(p0: number, p1: number): number;
 	export function getWeaponClipSize(weaponHash: number): number;
 	export function setPedChanceOfFiringBlanks(ped: number, xBias: number, yBias: number): void;
 	export function _0xB4C8D77C80C0421E(ped: number, p1: number): number;
@@ -3714,6 +3948,29 @@ declare module "natives" {
 	export function getWeaponDamageType(weaponHash: number): number;
 	export function _0xE4DCEC7FD5B739A5(ped: number): void;
 	export function canUseWeaponOnParachute(weaponHash: number): boolean;
+	export function getPedAmmoTypeFromWeapon2(ped: number, weaponHash: number): number;
+	export function _0x11CA894958C354A7(p0: number): number;
+	export function _0x3186FA667A5EA848(): void;
+	export function _0x32DEAC184CBB829F(p0: number, p1: number, p2: number, p3: number): void;
+	export function _0x19220E87994C2088(p0: number, p1: number): number;
+	export function _0x04E468EB9FB148D0(p0: number, p1: number): void;
+	export function _0xAD4124DE9445A5B7(p0: number, p1: number, p2: number): number;
+	export function _0xC9AACE51B2358439(p0: number, p1: number, p2: number): void;
+	export function _0x7AA9D09283E8BE3E(p0: number): number;
+	export function _0x8C66296075032CF4(p0: number, p1: number): void;
+	export function _0xC5E60863D653024B(p0: number, p1: number, p2: number, p3: number, p4: number, p5: number, p6: number, weaponHash: number): number;
+	export function _0xEC26B178AFA28C6B(p0: number, p1: number): void;
+	export function _0xA641544C89178AFD(p0: number, p1: number, p2: number, p3: number): void;
+	export function _0xD7B5AF1EAA56CA25(p0: number, p1: number): number;
+	export function _0xAD914273FA355AE2(p0: number, p1: number, p2: number, p3: number, p4: number, p5: number, p6: number, p7: number, p8: number, p9: number, p10: number): number;
+	export function _0xCC0D64FEFDACB2A4(p0: number, p1: number, p2: number, p3: number, p4: number): number;
+	export function _0x47098D39C996AE48(p0: number, p1: number): number;
+	export function _0x6E876F7C852ED321(player: number, p1: number, p2: boolean): void;
+	export function _0x739258EDD1C56940(p0: number): number;
+	export function _0x8A148EE6FA29CEFB(p0: number, p1: number, p2: number): number;
+	export function setCanPedEquipAllWeapons(ped: number, toggle: boolean): void;
+	export function setCanPedSelectWeapon(ped: number, weaponHash: number, toggle: boolean): void;
+	export function _0x68E7C703C4450F0F(ped: number, ammoType: number, ammo: number): void;
 	export function createItemset(distri: number): number;
 	export function destroyItemset(p0: number): void;
 	export function isItemsetValid(p0: number): boolean;
@@ -3726,7 +3983,6 @@ declare module "natives" {
 	export function loadAllObjectsNow(): void;
 	export function loadScene(x: number, y: number, z: number): void;
 	export function networkUpdateLoadScene(): vectorPtr;
-	export function networkStopLoadScene(): void;
 	export function isNetworkLoadingScene(): boolean;
 	export function setInteriorActive(interiorID: number, toggle: boolean): void;
 	export function requestModel(model: number): void;
@@ -3840,6 +4096,7 @@ declare module "natives" {
 	export function _0x0BC3144DEB678666(modelHash: number): boolean;
 	export function _0xF086AD9354FAC3A3(p0: number): void;
 	export function _0x3D3D8B3BE5A83D35(): number;
+	export function isModelAPed(modelHash: number): boolean;
 	export function requestScript(scriptName: string): void;
 	export function setScriptAsNoLongerNeeded(scriptName: string): void;
 	export function hasScriptLoaded(scriptName: string): boolean;
@@ -3867,6 +4124,7 @@ declare module "natives" {
 	export function setNoLoadingScreen(toggle: boolean): void;
 	export function getNoLoadingScreen(): boolean;
 	export function _0xB1577667C3708F9B(): void;
+	export function _0x09269A9CFC145847(eventGroup: number, args: intPtr, argCount: number, bit: number): Array<any>;
 	export function beginTextCommandBusyString(string: string): void;
 	export function endTextCommandBusyString(busySpinnerType: number): void;
 	export function removeLoadingPrompt(): void;
@@ -3881,7 +4139,7 @@ declare module "natives" {
 	export function _0x632B2940C67F4EA9(scaleformHandle: number, p1: intPtr, p2: intPtr, p3: intPtr): Array<any>;
 	export function _0x6F1554B0CC2089FA(p0: boolean): void;
 	export function clearNotificationsPos(pos: number): void;
-	export function _0x25F87B30C382FCA7(): void;
+	export function hideHudNotificationsThisFrame(): void;
 	export function _0xA8FDB297A8D25FBA(): void;
 	export function removeNotification(notificationId: number): void;
 	export function _0xA13C11E1B5C06BFC(): void;
@@ -4097,7 +4355,7 @@ declare module "natives" {
 	export function showHeadingIndicatorOnBlip(blip: number, toggle: boolean): void;
 	export function showOutlineIndicatorOnBlip(blip: number, toggle: boolean): void;
 	export function showFriendIndicatorOnBlip(blip: number, toggle: boolean): void;
-	export function _0xDCFB5D4DB8BF367E(p0: number, p1: boolean): void;
+	export function showCrewIndicatorOnBlip(p0: number, p1: boolean): void;
 	export function _0xC4278F70131BAA6D(p0: number, p1: boolean): void;
 	export function setBlipShrink(blip: number, toggle: boolean): void;
 	export function _0x25615540D894B814(p0: number, p1: boolean): void;
@@ -4147,16 +4405,16 @@ declare module "natives" {
 	export function _0x14C9FDCC41F81F63(p0: boolean): void;
 	export function setGpsFlags(p0: number, p1: number): void;
 	export function clearGpsFlags(): void;
-	export function _0x1EAC5F91BCBC5073(p0: boolean): void;
+	export function setRaceTrackRender(p0: boolean): void;
 	export function clearGpsRaceTrack(): void;
-	export function _0xDB34E8D56FC13B08(p0: number, p1: boolean, p2: boolean): void;
-	export function _0x311438A071DD9B1A(p0: number, p1: number, p2: number): void;
-	export function _0x900086F371220B6F(p0: boolean, p1: number, p2: number): void;
-	export function _0xE6DE0561D9232A64(): void;
-	export function _0x3D3D15AF7BCAAF83(p0: number, p1: boolean, p2: boolean): void;
-	export function _0xA905192A6781C41B(x: number, y: number, z: number): void;
-	export function _0x3DDA37128DD1ACA8(p0: boolean): void;
-	export function _0x67EEDEA1B9BAFD94(): void;
+	export function startGpsCustomRoute(p0: number, p1: boolean, p2: boolean): void;
+	export function addPointToGpsCustomRoute(p0: number, p1: number, p2: number): void;
+	export function setGpsCustomRouteRender(p0: boolean, p1: number, p2: number): void;
+	export function clearGpsCustomRoute(): void;
+	export function startGpsMultiRoute(p0: number, p1: boolean, p2: boolean): void;
+	export function addPointToGpsMultiRoute(x: number, y: number, z: number): void;
+	export function setGpsMultiRouteRender(p0: boolean): void;
+	export function clearGpsMultiRoute(): void;
 	export function clearGpsPlayerWaypoint(): void;
 	export function setGpsFlashes(toggle: boolean): void;
 	export function _0x7B21E0BB01E8224A(p0: number): void;
@@ -4174,7 +4432,7 @@ declare module "natives" {
 	export function isMinimapAreaRevealed(x: number, y: number, radius: number): boolean;
 	export function _0x62E849B7EB28E770(p0: boolean): void;
 	export function _0x0923DBF87DFF735E(x: number, y: number, z: number): void;
-	export function _0x71BDB63DBAF8DA59(p0: number): void;
+	export function setMinimapGolfCourse(p0: number): void;
 	export function _0x35EDD5B2E3FF01C0(): void;
 	export function lockMinimapAngle(angle: number): void;
 	export function unlockMinimapAngle(): void;
@@ -4197,7 +4455,7 @@ declare module "natives" {
 	export function setHudComponentPosition(id: number, x: number, y: number): void;
 	export function getHudComponentPosition(id: number): Vector3;
 	export function clearReminderMessage(): void;
-	export function getScreenCoordFromWorldCoord(worldX: number, worldY: number, worldZ: number): Array<any>;
+	export function getScreenCoordFromWorldCoord(worldX: number, worldY: number, worldZ: number, screenX: floatPtr, screenY: floatPtr): Array<any>;
 	export function displayJobReport(): void;
 	export function _0xEE4C0E6DBC6F2C6F(): void;
 	export function _0x9135584D09A3437E(): number;
@@ -4292,13 +4550,13 @@ declare module "natives" {
 	export function _0x052991E59076E4E4(p0: number, p1: intPtr): Array<any>;
 	export function clearPedInPauseMenu(): void;
 	export function givePedToPauseMenu(ped: number, p1: number): void;
-	export function _0x3CA6050692BC61B0(p0: boolean): void;
-	export function _0xECF128344E9FF9F1(p0: boolean): void;
+	export function setPauseMenuPedLighting(p0: boolean): void;
+	export function setPauseMenuPedSleepState(p0: boolean): void;
 	export function showSocialClubLegalScreen(): void;
 	export function _0xF13FE2A80C05C561(): number;
-	export function _0x6F72CD94F7B5B68C(): number;
-	export function _0x75D3691713C3B05A(): void;
-	export function _0xD2B32BE3FC1626C6(): void;
+	export function isOnlinePoliciesMenuActive(): number;
+	export function openSocialClubMenu(): void;
+	export function closeSocialClubMenu(): void;
 	export function _0x9E778248D6685FE0(p0: string): void;
 	export function isSocialClubActive(): boolean;
 	export function _0x1185A8087587322C(p0: boolean): void;
@@ -4364,7 +4622,7 @@ declare module "natives" {
 	export function drawSpotLightWithShadow(posX: number, posY: number, posZ: number, dirX: number, dirY: number, dirZ: number, colorR: number, colorG: number, colorB: number, distance: number, brightness: number, roundness: number, radius: number, falloff: number, shadowId: number): void;
 	export function _0xC9B18B4619F48F7B(p0: number): void;
 	export function entityDescriptionText(entity: number): void;
-	export function drawMarker(type: number, posX: number, posY: number, posZ: number, dirX: number, dirY: number, dirZ: number, rotX: number, rotY: number, rotZ: number, scaleX: number, scaleY: number, scaleZ: number, red: number, green: number, blue: number, alpha: number, bobUpAndDown: boolean, faceCamera: boolean, p19: number, rotate: boolean, textureDict: string|undefined, textureName: string|undefined, drawOnEnts: boolean): void;
+	export function drawMarker(type: number, posX: number, posY: number, posZ: number, dirX: number, dirY: number, dirZ: number, rotX: number, rotY: number, rotZ: number, scaleX: number, scaleY: number, scaleZ: number, red: number, green: number, blue: number, alpha: number, bobUpAndDown: boolean, faceCamera: boolean, p19: number, rotate: boolean, textureDict: string, textureName: string, drawOnEnts: boolean): void;
 	export function createCheckpoint(type: number, posX1: number, posY1: number, posZ1: number, posX2: number, posY2: number, posZ2: number, radius: number, red: number, green: number, blue: number, alpha: number, reserved: number): number;
 	export function setCheckpointScale(checkpoint: number, p0: number): void;
 	export function setCheckpointCylinderHeight(checkpoint: number, nearHeight: number, farHeight: number, radius: number): void;
@@ -4379,12 +4637,12 @@ declare module "natives" {
 	export function hasStreamedTextureDictLoaded(textureDict: string): boolean;
 	export function setStreamedTextureDictAsNoLongerNeeded(textureDict: string): void;
 	export function drawRect(x: number, y: number, width: number, height: number, r: number, g: number, b: number, a: number): void;
-	export function _0xC6372ECD45D73BCD(p0: boolean): void;
+	export function setScriptGfxDrawBehindPausemenu(p0: boolean): void;
 	export function setUiLayer(layer: number): void;
 	export function screenDrawPositionBegin(x: number, y: number): void;
 	export function screenDrawPositionEnd(): void;
 	export function screenDrawPositionRatio(x: number, y: number, p2: number, p3: number): void;
-	export function _0x6DD8F5AA635EB4B2(p0: number, p1: number, p2: floatPtr, p3: floatPtr): Array<any>;
+	export function getScriptGfxPosition(p0: number, p1: number, p2: floatPtr, p3: floatPtr): Array<any>;
 	export function getSafeZoneSize(): number;
 	export function drawSprite(textureDict: string, textureName: string, screenX: number, screenY: number, width: number, height: number, heading: number, red: number, green: number, blue: number, alpha: number): void;
 	export function addEntityIcon(entity: number, icon: string): number;
@@ -4458,7 +4716,7 @@ declare module "natives" {
 	export function _0xA4664972A9B8F8BA(p0: number): number;
 	export function setSeethrough(toggle: boolean): void;
 	export function isSeethroughActive(): boolean;
-	export function _0xD7D0B00177485411(p0: number, p1: number): void;
+	export function seethroughSetHeatscale(p0: number, p1: number): void;
 	export function _0xB3C641F3630BF6DA(p0: number): void;
 	export function _0xE59343E9E96529E7(): number;
 	export function _0xE63D7C6EECECB66B(p0: boolean): void;
@@ -4572,11 +4830,11 @@ declare module "natives" {
 	export function _0xBF59707B3E5ED531(p0: string): void;
 	export function _0x1A8E2C8B9CF4549C(p0: intPtr, p1: intPtr): Array<any>;
 	export function _0x15E33297C3E8DC60(p0: number): void;
-	export function _0x5096FD9CCB49056D(p0: string): void;
-	export function _0x92CCC17A7A2285DA(): void;
-	export function _0xBB0527EC6341496D(): number;
-	export function _0x2C328AF17210F009(p0: number): void;
-	export function _0x2BF72AD5B41AA739(): void;
+	export function setExtraTimecycleModifier(p0: string): void;
+	export function clearExtraTimecycleModifier(): void;
+	export function getExtraTimecycleModifierIndex(): number;
+	export function setExtraTimecycleModifierStrength(p0: number): void;
+	export function resetExtraTimecycleModifierStrength(): void;
 	export function requestScaleformMovie(scaleformName: string): number;
 	export function requestScaleformMovieInstance(scaleformName: string): number;
 	export function requestScaleformMovieInteractive(scaleformName: string): number;
@@ -4634,7 +4892,7 @@ declare module "natives" {
 	export function drawShowroom(p0: string, ped: number, p2: number, posX: number, posY: number, posZ: number): boolean;
 	export function _0x7A42B2E236E71415(): void;
 	export function _0x108BE26959A9D9BB(p0: boolean): void;
-	export function _0xA356990E161C9E65(p0: boolean): void;
+	export function terraingridActivate(p0: boolean): void;
 	export function _0x1C4FC5752BCD8E48(p0: number, p1: number, p2: number, p3: number, p4: number, p5: number, p6: number, p7: number, p8: number, p9: number, p10: number, p11: number, p12: number): void;
 	export function _0x5CE62918F8D703C7(p0: number, p1: number, p2: number, p3: number, p4: number, p5: number, p6: number, p7: number, p8: number, p9: number, p10: number, p11: number): void;
 	export function startScreenEffect(effectName: string, duration: number, looped: boolean): void;
@@ -4642,6 +4900,43 @@ declare module "natives" {
 	export function getScreenEffectIsActive(effectName: string): boolean;
 	export function stopAllScreenEffects(): void;
 	export function _0xD2209BE128B5418C(graphicsName: string): void;
+	export function _0x82EF7DCBEE45753D(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, red: number, green: number, blue: number, alpha: number): void;
+	export function drawInteractiveSprite(textureDict: string, textureName: string, screenX: number, screenY: number, width: number, height: number, heading: number, red: number, green: number, blue: number, alpha: number): void;
+	export function _0x281206A3ED9B7B48(textureDict: string, textureName: string, screenX: number, screenY: number, width: number, height: number, heading: number, red: number, green: number, blue: number, alpha: number): void;
+	export function _0x4F2B2904A1C0EA49(p0: number): void;
+	export function _0xF8CCC18D0A085F08(p0: number, p1: number, p2: number, p3: number, p4: number, p5: number, p6: number, p7: number, p8: number, p9: number, p10: number, p11: number, p12: number, p13: number, p14: number, p15: number, p16: number, p17: number, p18: number, p19: number, p20: number, p21: number, p22: number, p23: number): void;
+	export function _0x4709C3A875229814(p0: number): void;
+	export function _0x48D0A21A082CB8FB(p0: number, p1: number): void;
+	export function _0x2BCA9F74D650F320(): number;
+	export function _0xFC7883677C26032A(p0: number, p1: number): void;
+	export function _0x45E693D494B28FB1(p0: number): void;
+	export function _0xD8A1D89A9F12EEC7(p0: number): void;
+	export function _0x986FF020E31B0BB8(p0: number, p1: number, p2: number, p3: number, p4: number, p5: number, p6: number): void;
+	export function _0xAB4EF920F54A2B25(p0: number, p1: number, p2: number, p3: number, p4: number, p5: number, p6: number, p7: number, p8: number, p9: number, p10: number, p11: number, p12: number, p13: number, p14: number, p15: number, p16: number, p17: number, p18: number, p19: number, p20: number, p21: number, p22: number, p23: number, p24: number, p25: number, p26: number, p27: number, p28: number, p29: number, p30: number, p31: number): void;
+	export function _0xDAEC24E682BA05A5(x: number, y: number, z: number, radius: number, r: number, g: number, b: number, opacity: number): void;
+	export function _0xEE447CC8ED5AC0A0(p0: number): number;
+	export function _0xB1DF6B4697887FA0(p0: number): void;
+	export function _0xE8FC135D1DAF14B9(p0: number, p1: number, p2: number): number;
+	export function _0xC9BA8A7F6F58702A(p0: number): void;
+	export function _0xF2960A4C41499AD3(p0: number): void;
+	export function _0xA202596E1BEE3527(p0: number): void;
+	export function _0x1912BC532F9E0FA9(p0: number): void;
+	export function _0xE857B10E0E6CF914(p0: number, p1: number): void;
+	export function _0x67B16D397878EFC9(p0: number): void;
+	export function _0xDFBCCF50AF9B4E45(p0: number): void;
+	export function _0x94C0B813BC712644(p0: number): void;
+	export function _0xBC7C0FD942D5C706(p0: number): number;
+	export function _0x02E8F57B4CCA873E(p0: number): number;
+	export function _0x991D90DDD9A9C1B7(p0: number, p1: number): void;
+	export function _0x3DE922056876A494(p0: number, p1: number, p2: number, p3: number, p4: number, p5: number, p6: number, p7: number, p8: number, p9: number, p10: number, p11: number, p12: number, p13: number, p14: number, p15: number, p16: number, p17: number, p18: number, p19: number, p20: number, p21: number, p22: number, p23: number, p24: number): void;
+	export function _0xC7DB42A5499E92CB(p0: number): void;
+	export function pushScaleformMovieMethodParameterString2(value: string): void;
+	export function seethroughSetHiLightNoise(noise: number): void;
+	export function seethroughSetColorNear(red: number, green: number, blue: number): void;
+	export function seethroughSetHiLightIntensity(intensity: number): void;
+	export function seethroughSetMaxThickness(thickness: number): void;
+	export function seethroughSetNoiseAmountMax(amount: number): void;
+	export function seethroughSetNoiseAmountMin(amount: number): void;
 	export function statClearSlotForReload(statSlot: number): number;
 	export function statLoad(p0: number): boolean;
 	export function statSave(p0: number, p1: boolean, p2: number): boolean;
@@ -4720,7 +5015,6 @@ declare module "natives" {
 	export function playstatsAmbientMissionCrateCreated(p0: number, p1: number, p2: number): void;
 	export function _0xCB00196B31C39EB1(p0: number, p1: number, p2: number, p3: number): void;
 	export function _0x2B69F5074C894811(p0: number, p1: number, p2: number, p3: number): void;
-	export function _0x7EEC2A316C250073(p0: number, p1: number, p2: number): void;
 	export function _0xADDD1C754E2E2914(p0: number, p1: number, p2: number, p3: number, p4: number, p5: number, p6: number, p7: number, p8: number, p9: number): void;
 	export function _0x79AB33F0FBFAC40C(p0: number): void;
 	export function playstatsWebsiteVisited(scaleformHash: number, p1: number): void;
@@ -4804,6 +5098,92 @@ declare module "natives" {
 	export function _0xB3DA2606774A8E2D(): number;
 	export function _0xDAC073C7901F9E15(p0: number): void;
 	export function _0xF6792800AC95350D(p0: number): void;
+	export function _0xFB8301B4366E000F(p0: number, p1: number, p2: number, p3: number, p4: number, p5: number, p6: number): void;
+	export function _0x452BB19742E74488(p0: number): void;
+	export function _0xE63F6ECF196E7EB1(p0: number): void;
+	export function _0x3C58B063AA8B43B9(p0: number, p1: number, p2: number, p3: number, p4: number): void;
+	export function _0x73A832DC6FF54083(p0: number): void;
+	export function _0x998D775FEE0F1CEF(p0: number, p1: number, p2: number, p3: number, p4: number, p5: number, p6: number): void;
+	export function _0x118C1D4F1E2DDE3C(p0: number): void;
+	export function _0xF751C93B5BEB9B4F(): number;
+	export function _0xE3F45F2E5162B2C7(p0: number): void;
+	export function _0x51B4477365DBB021(p0: number): void;
+	export function _0x8F65E416EC1D1B3F(p0: number): void;
+	export function _0x76689EE9F24F074B(p0: number): void;
+	export function _0x042284CA4DDD6C92(p0: number): number;
+	export function _0x77B40C035B696B8D(p0: number): void;
+	export function _0x55B2E4ED2EAB57D6(p0: number): void;
+	export function _0xE23CB8869EF84E2F(p0: number): void;
+	export function _0x1D347E9F7360C7D0(p0: number, p1: number, p2: number, p3: number, p4: number, p5: number, p6: number, p7: number, p8: number, p9: number): void;
+	export function _0x4016F3A6D53B60DA(p0: number, p1: number, p2: number, p3: number, p4: number): void;
+	export function _0x423A9EE664543FEE(p0: number): void;
+	export function _0xC549BDBEDE978311(): number;
+	export function _0x8092401F55B45241(p0: number, p1: number): number;
+	export function _0xDEFB827386899A9A(p0: number): void;
+	export function _0xCE06A45F8D739487(p0: number): void;
+	export function _0x2A813E2E66E13D5E(p0: number): void;
+	export function _0xD1670A8674088713(p0: number): void;
+	export function _0x71B818A035870763(p0: number): void;
+	export function _0x27AA661817723FCB(p0: number, p1: number, p2: number, p3: number, p4: number, p5: number): void;
+	export function _0x26349A4A6735ED66(p0: number): void;
+	export function _0xE534A599B28FE898(): number;
+	export function _0x8A4B9AF574840B87(p0: number): void;
+	export function _0x0586A5916F7FBF45(p0: number): void;
+	export function _0xDA81DBEA680FB9D8(p0: number): void;
+	export function _0x46466C34BBB8452A(p0: number): void;
+	export function _0x4E35827C7D3B32EC(p0: number): void;
+	export function _0x04D5A8C072EE2293(p0: number, p1: number, p2: number): void;
+	export function _0xB680266F40334A7F(p0: number): void;
+	export function _0x62CE3308D3B272C7(p0: number, p1: number, p2: number, p3: number, p4: number): void;
+	export function _0x6198465F972B5ACE(): number;
+	export function _0xFD460EB342839C04(p0: number): void;
+	export function _0x31B697523E7A273B(p0: number): void;
+	export function _0x107AFB07496589BF(p0: number, p1: number): void;
+	export function _0xB3A8B5C5D159930A(p0: number): void;
+	export function _0x79449220E40CF832(p0: number): void;
+	export function _0xACA839D7D231FE14(p0: number): void;
+	export function _0xB7AADFC2A97BFDD2(): number;
+	export function _0x53B147E8FAB85344(p0: number): void;
+	export function _0x68E28BDB1EF35003(p0: number): void;
+	export function _0x8D3D3453B862AB6C(p0: number): void;
+	export function _0xCD1911041287F803(p0: number, p1: number, p2: number, p3: number, p4: number, p5: number, p6: number): void;
+	export function _0x53DD678C4EDFFED0(): void;
+	export function _0x008788B8BBF9E28F(): number;
+	export function _0x3D455508C71D780A(p0: number): void;
+	export function _0x4474FCE0D07B711F(p0: number): void;
+	export function _0x809390DDCB8AA89D(p0: number): void;
+	export function _0x23CBA9B7357FC6CD(): void;
+	export function _0x7A5C699E23FF6CB0(p0: number, p1: number, p2: number): void;
+	export function _0xEE6D400B03BA7F0B(): number;
+	export function _0xDEDE451B3BE15009(p0: number, p1: number): void;
+	export function _0xBDDFA98CDDF18526(p0: number): void;
+	export function _0xD1B5D0431188F774(): number;
+	export function _0xE59C47393C61837B(): number;
+	export function _0xAB93AD90EEABE20F(p0: number, p1: number, p2: number): void;
+	export function _0xFADBDAE24FD2462D(): number;
+	export function _0x808CD9A8FA027937(): number;
+	export function _0x63421B05C609601C(p0: number, p1: number, p2: number, p3: number, p4: number, p5: number, p6: number): void;
+	export function _0x3DA3FD6B26041EE3(p0: number): void;
+	export function _0x58A7C43AB4330600(): number;
+	export function _0x943046DFCE2D3AC6(p0: number): void;
+	export function _0x0118CDB6D266E2BA(p0: number): void;
+	export function _0x0B4FD3CFA47FFC6A(p0: number): void;
+	export function _0x7D171911CE333D09(p0: number): void;
+	export function _0x6C1A219BBD60D370(p0: number, p1: number, p2: number, p3: number, p4: number): void;
+	export function _0xEE88534AA65CB772(p0: number, p1: number, p2: number): void;
+	export function _0xFF4746A8B3C29BE0(p0: number): void;
+	export function _0xB01299969AE9B9BD(p0: number, p1: number, p2: number): void;
+	export function _0xD5A7B1E464FD6968(p0: number, p1: number, p2: number, p3: number, p4: number): void;
+	export function _0xD91ECC9A7702A96A(p0: number): void;
+	export function _0xCE29A5C8A3842672(p0: number): void;
+	export function _0x8E3F14FE8F709132(p0: number): void;
+	export function _0x8579DB9B108971C2(): number;
+	export function _0x240F6BDBD967E2F3(p0: number): void;
+	export function _0x905CCFFBC1B50B32(p0: number): void;
+	export function _0xB3B961C26A3B0548(p0: number): number;
+	export function _0x35F3C3D72A0671B9(p0: number, p1: number, p2: number, p3: number, p4: number): void;
+	export function _0x371FB1BDFC7B95DB(): number;
+	export function _0xA0558C3D8406230F(p0: number): void;
 	export function addScriptToRandomPed(name: string, model: number, p2: number, p3: number): void;
 	export function registerObjectScriptBrain(scriptName: string, objectName: number, p2: number, p3: number, p4: number, p5: number): void;
 	export function isObjectWithinBrainActivationRange(object: number): boolean;
@@ -4815,6 +5195,10 @@ declare module "natives" {
 	export function _0x4D953DF78EBF8158(): void;
 	export function _0x6D6840CEE8845831(action: string): void;
 	export function _0x6E91B04E08773030(action: string): void;
+	export function _0xBA23129567562CC3(p0: number, p1: number): void;
+	export function _0x3915903857260526(p0: number, p1: number, p2: number, p3: number, p4: number, p5: number, p6: number, p7: number, p8: number, p9: number): void;
+	export function _0x67DAEAE413619FDD(p0: number, p1: number): void;
+	export function _0x934302946AAB689C(p0: number, p1: number, p2: number, p3: number, p4: number, p5: number, p6: number): void;
 	export function createMobilePhone(p3: number): void;
 	export function destroyMobilePhone(): void;
 	export function setMobilePhoneScale(scale: number): void;
@@ -4839,25 +5223,13 @@ declare module "natives" {
 	export function _0x466DA42C89865553(p0: number): void;
 	export function cellCamIsCharVisibleNoFaceCheck(entity: number): boolean;
 	export function getMobilePhoneRenderId(renderId: intPtr): Array<any>;
+	export function _0xF3DBF2ACE9D492CF(p0: number): void;
 	export function networkShopDoesItemExist(name: string): boolean;
 	export function networkShopDoesItemExistHash(hash: number): boolean;
 	export function appDataValid(): number;
 	export function appGetInt(property: number): intPtr;
 	export function appGetFloat(property: string): number;
 	export function appGetString(property: string): string;
-	export function appSetInt(property: string, value: number): void;
-	export function appSetFloat(property: string, value: number): void;
-	export function appSetString(property: string, value: string): void;
-	export function appSetApp(appName: string): void;
-	export function appSetBlock(blockName: string): void;
-	export function appClearBlock(): void;
-	export function appCloseApp(): void;
-	export function appCloseBlock(): void;
-	export function appHasLinkedSocialClubAccount(): boolean;
-	export function appHasSyncedData(appName: string): boolean;
-	export function appSaveData(): void;
-	export function appGetDeletedFileStatus(): number;
-	export function appDeleteAppData(appName: string): boolean;
 	export function setClockTime(hour: number, minute: number, second: number): void;
 	export function pauseClock(toggle: boolean): void;
 	export function advanceClockTimeTo(hour: number, minute: number, second: number): void;
@@ -4892,7 +5264,6 @@ declare module "natives" {
 	export function getSupportsGpsRouteFlag(nodeID: number): boolean;
 	export function getIsSlowRoadFlag(nodeID: number): boolean;
 	export function getClosestRoad(x: number, y: number, z: number, p3: number, p4: number, p5: vectorPtr, p6: vectorPtr, p7: intPtr, p8: intPtr, p9: floatPtr, p10: boolean): Array<any>;
-	export function loadAllPathNodes(keepInMemory: boolean): boolean;
 	export function _0x228E5C6AD4D74BFD(p0: boolean): void;
 	export function _0xF7B79A50B905A30D(p0: number, p1: number, p2: number, p3: number): boolean;
 	export function _0x07FB139B592FA687(p0: number, p1: number, p2: number, p3: number): boolean;
@@ -4911,9 +5282,9 @@ declare module "natives" {
 	export function _0x869DAACBBE9FA006(): number;
 	export function _0x16F46FB18C8009E4(p0: number, p1: number, p2: number, p3: number, p4: number): number;
 	export function isPointOnRoad(x: number, y: number, z: number, vehicle: number): boolean;
-	export function _0xD3A6A0EF48823A8C(): number;
-	export function _0xD0BC1C6FB18EE154(p0: number, p1: number, p2: number, p3: number, p4: number, p5: number, p6: number): void;
-	export function _0x2801D0012266DF07(p0: number): void;
+	export function getNextGpsDisabledZoneIndex(): number;
+	export function setGpsDisabledZoneAtIndex(p0: number, p1: number, p2: number, p3: number, p4: number, p5: number, p6: number): void;
+	export function clearGpsDisabledZoneAtIndex(p0: number): void;
 	export function addNavmeshRequiredRegion(x: number, y: number, radius: number): void;
 	export function removeNavmeshRequiredRegions(): void;
 	export function disableNavmeshInArea(p0: number, p1: number, p2: number, p3: number, p4: number, p5: number, p6: number): void;
@@ -4929,6 +5300,9 @@ declare module "natives" {
 	export function _0x336511A34F2E5185(left: number, right: number): number;
 	export function _0x3599D741C9AC6310(p0: number, p1: number, p2: number, p3: number): number;
 	export function calculateTravelDistanceBetweenPoints(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number): number;
+	export function _0x58B958694D37C531(): number;
+	export function _0x1326E32991D42735(p0: number, p1: number, p2: number, p3: number, p4: number): number;
+	export function _0x33992B907FC8BF08(p0: number, p1: number, p2: number, p3: number): number;
 	export function isControlEnabled(inputGroup: number, control: number): boolean;
 	export function isControlPressed(inputGroup: number, control: number): boolean;
 	export function isControlReleased(inputGroup: number, control: number): boolean;
@@ -5121,6 +5495,7 @@ declare module "natives" {
 	export function setCurrentIntensity(intensity: number): void;
 	export function getCurrentIntensity(): number;
 	export function resetCurrentIntensity(): void;
+	export function _0x980F3EB89A78F4FB(p0: number): void;
 	export function startShapeTestLosProbe(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, flags: number, ent: number, p8: number): number;
 	export function startShapeTestRay(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, flags: number, entity: number, p8: number): number;
 	export function startShapeTestBoundingBox(entity: number, flags1: number, flags2: number): number;
@@ -5145,7 +5520,6 @@ declare module "natives" {
 	export function _0x67A5589628E0CFF6(): boolean;
 	export function _0xBA9775570DB788CF(): number;
 	export function networkIsHost(): boolean;
-	export function _0xA306F470D1660581(): number;
 	export function _0x4237E822315D8BA9(): boolean;
 	export function networkHaveOnlinePrivileges(): boolean;
 	export function networkHasRestrictedProfile(): boolean;
@@ -5347,13 +5721,10 @@ declare module "natives" {
 	export function _0x120364DE2845DAF8(p0: intPtr, p1: number): Array<any>;
 	export function _0xFD8B834A8BA05048(): number;
 	export function networkIsChattingInPlatformParty(networkHandle: intPtr): Array<any>;
-	export function networkIsInParty(): boolean;
-	export function networkIsPartyMember(networkHandle: intPtr): Array<any>;
 	export function _0x2BF66D2E7414F686(): number;
 	export function _0x14922ED3E38761F0(): number;
 	export function _0xFA2888E3833C8E96(): void;
 	export function _0x25D990F8E0E3F13C(): void;
-	export function _0x77FADDCBE3499DF7(p0: number): void;
 	export function _0xF1B84178F8674195(p0: number): void;
 	export function networkGetRandomInt(): number;
 	export function networkGetRandomIntInRange(rangeStart: number, rangeEnd: number): number;
@@ -5595,7 +5966,7 @@ declare module "natives" {
 	export function _0x0AFCE529F69B21FF(): number;
 	export function _0xA72835064DD63E4C(): number;
 	export function getNetworkTime(): number;
-	export function _0x89023FBBF9200E9F(): number;
+	export function getNetworkTimeAccurate(): number;
 	export function hasNetworkTimeStarted(): boolean;
 	export function getTimeOffset(timeA: number, timeB: number): number;
 	export function isTimeLessThan(timeA: number, timeB: number): boolean;
@@ -5833,90 +6204,161 @@ declare module "natives" {
 	export function _0x5C497525F803486B(): void;
 	export function _0x6FB7BB3607D27FA2(): number;
 	export function _0x45A83257ED02D9BC(): void;
-	export function networkInitializeCash(p0: number, p1: number): void;
-	export function networkDeleteCharacter(characterIndex: number, p1: boolean, p2: boolean): void;
-	export function networkClearCharacterWallet(p0: number): void;
-	export function networkGivePlayerJobshareCash(amount: number, networkHandle: intPtr): Array<any>;
-	export function networkReceivePlayerJobshareCash(value: number, networkHandle: intPtr): Array<any>;
-	export function _0x1C2473301B1C66BA(): number;
-	export function networkRefundCash(index: number, context: string, reason: string, unk: boolean): void;
-	export function networkMoneyCanBet(p0: number, p1: boolean, p2: boolean): boolean;
+	export function _0xDB7A20748C5E6EF3(amount: number): boolean;
+	export function canRegisterMissionPickups(p0: number): boolean;
+	export function _0xFECF68385821AC9A(p0: number, p1: number, p2: number): number;
+	export function _0xCD79E7A420FEE24A(p0: number, p1: number): void;
+	export function _0x127967AEF2B3A663(p0: number, p1: number, p2: number): number;
+	export function _0x51D2C61FFB4872C9(p0: number, p1: number, p2: number): number;
+	export function _0x45CD2432C5D20F51(p0: number): void;
+	export function _0x317C507A1C41C1A6(p0: number): void;
+	export function _0x1549A34EB0282877(p0: number): void;
+	export function _0x45C2083E60CD7E0B(p0: number): void;
+	export function _0x8F71CC0322BC1CF1(p0: number, p1: number): void;
+	export function _0xA3EE903A8383CC86(): void;
+	export function _0x1224A874B79DDEA1(p0: number, p1: number, p2: number): number;
+	export function _0x4FF2244C44BB16C5(): void;
+	export function _0x51C41BD5EF55E247(p0: number): void;
+	export function _0x87ACC1C0F9CF1F83(p0: number): void;
+	export function _0x1E0686224F1F06CC(p0: number, p1: number, p2: number, p3: number): void;
+	export function _0xC1C869C62F806502(p0: number, p1: number, p2: number, p3: number, p4: number, p5: number, p6: number): number;
+	export function _0xFAE7F50D5B6A8CE0(p0: number): void;
+	export function _0xD72829CBB7F3AB50(p0: number, p1: number): number;
+	export function _0x22F14FCB6E5B9A61(p0: number, p1: number, p2: number, p3: number, p4: number, p5: number, p6: number): number;
+	export function _0xD0083DAE28331A50(p0: number): Vector3;
+	export function _0x7F400D83FBEAD084(p0: number, p1: number, p2: number): void;
+	export function _0x93F5718A720AFD17(p0: number): number;
+	export function _0xFCBC7FBC340C81B4(p0: number): number;
+	export function _0x1AE7956124D78E4F(p0: number, p1: number, p2: number): number;
+	export function _0x2255B55E30E0D0E7(p0: number, p1: number): number;
+	export function _0xD91A54F26ED34B95(): number;
+	export function _0xB1DFC17D1DE6E07A(p0: number, p1: number): void;
+	export function _0x635C202CF2520A3F(): void;
+	export function _0xF185341B27405EB6(p0: number, p1: number): number;
+	export function _0x6C8E92D4F56B150E(): number;
+	export function _0xEA570AD706676713(): number;
+	export function _0x2A13FCA346E423BF(p0: number): void;
+	export function _0x8B625D97CDF31961(p0: number): void;
+	export function _0x343D2EA04E37CC7E(): number;
+	export function _0x9DFA154D409C82CB(p0: number): Vector3;
+	export function _0xA0C9E03267CAE042(p0: number): void;
+	export function _0xF4CE1D6A8D129ED5(): number;
+	export function _0x613FD5B32454C1E6(p0: number, p1: number, p2: number): number;
+	export function _0xDC727B31FC322C60(): void;
+	export function _0x091D314E3A43B25D(p0: number): number;
+	export function _0xF8095024B48641AA(p0: number): number;
+	export function _0x0C41E3939C498007(netId: number): number;
+	export function _0x99CD01150FB4B151(p0: number): number;
+	export function _0xB6071B99C63D2D9B(p0: number): number;
+	export function _0x40A5C2D3FC6CBB3D(p0: number, p1: number, p2: number): number;
+	export function _0xC2C8D5BB48D7188A(): number;
+	export function _0x987200E2725C495E(p0: number, p1: number): void;
+	export function _0xDB03EC449C340E55(p0: number, p1: number, p2: number, p3: number): number;
+	export function _0x816B8CB68DC70BD1(p0: number): number;
+	export function _0x9470A5CC83653477(): number;
+	export function _0x3E4D238C10B939AF(): number;
+	export function _0xFE535D3975B71F23(p0: number, p1: number): void;
+	export function _0xC592614C63F2DC5C(p0: number, p1: number): void;
+	export function _0x37F60FF1673CF050(): number;
+	export function _0x86A6BD68DBFBCE2D(p0: number): number;
+	export function _0x084B103BF04722E5(p0: number, p1: number): void;
+	export function _0x2B0C8FE5270E621C(p0: number, p1: number): void;
+	export function _0x67309A18839A8071(p0: number, p1: number, p2: number, p3: number, p4: number): number;
+	export function _0x3573EE279FC21225(p0: number, p1: number): number;
+	export function _0x36410DC3B93A3616(p0: number): void;
+	export function _0x7440D26962DD2EB4(): number;
+	export function _0x564F09683C17FB7D(p0: number, p1: number): void;
+	export function _0x1E836135A2E6AF6F(p0: number): number;
+	export function _0x8A10E37D289D43E6(): number;
+	export function _0xADC98F9AB5E739C3(): number;
+	export function _0x68BCA7C2DF4143B3(p0: number): void;
+	export function _0xAD59059226F7B023(): number;
+	export function networkGetPlayerCoords(player: number): Vector3;
+	export function _0x9D34F024713B3952(amount: number): void;
+	export function _0x030259127EFE86CA(): number;
+	export function _0xF2502ABE4B4D66BB(p0: number): void;
+	export function _0x12485CA48AD6F92D(p0: number, p1: boolean, p2: boolean, p3: boolean, p4: intPtr, p5: number): Array<any>;
+	export function _0x8E0B41F54511A04C(): boolean;
+	export function _0xDF93DC2E6F1639A7(p0: number, p1: number): boolean;
+	export function _0x556D46A14D95B82C(p0: number): boolean;
+	export function _0xE911AD36EA79E1F9(p0: number): boolean;
+	export function _0x026FF94C589F1017(p0: number): number;
+	export function networkBuyAirstrike(cost: number, p1: boolean, p2: boolean): void;
+	export function networkBuyBounty(amount: number, victim: number, p2: boolean, p3: boolean): void;
+	export function networkBuyFairgroundRide(amountSpent: number, p1: number, p2: boolean, p3: boolean): void;
+	export function networkBuyHealthcare(cost: number, p1: boolean, p2: boolean): void;
+	export function networkBuyHeliStrike(cost: number, p1: boolean, p2: boolean): void;
+	export function networkBuyProperty(propertyCost: number, propertyName: number, p2: boolean, p3: boolean): void;
+	export function networkBuyItem(player: number, item: number, p2: number, p3: number, p4: boolean, item_name: string, p6: number, p7: number, p8: number, p9: boolean): void;
 	export function networkCanBet(p0: number): boolean;
-	export function networkEarnFromPickup(amount: number): number;
-	export function networkEarnFromGangPickup(amount: number): void;
+	export function networkCanReceivePlayerCash(p0: number, p1: number, p2: number, p3: number): boolean;
+	export function networkClearCharacterWallet(p0: number): void;
+	export function networkCanSpendMoney(p0: number, p1: boolean, p2: boolean, p3: boolean, p4: number): boolean;
+	export function networkEarnFromAmbientJob(p0: number, p1: string, p2: intPtr): Array<any>;
+	export function networkDeleteCharacter(characterIndex: number, p1: boolean, p2: boolean): void;
 	export function networkEarnFromArmourTruck(amount: number): void;
-	export function networkEarnFromCrateDrop(amount: number): void;
-	export function networkEarnFromBetting(amount: number, p1: string): void;
-	export function networkEarnFromJob(amount: number, p1: string): void;
-	export function networkEarnFromMissionH(amount: number, heistHash: string): void;
-	export function networkEarnFromChallengeWin(p0: number, p1: intPtr, p2: boolean): Array<any>;
+	export function networkEarnFromAiTargetKill(p0: number, p1: number): void;
 	export function networkEarnFromBounty(amount: number, networkHandle: intPtr, p2: intPtr, p3: number): Array<any>;
+	export function networkEarnFromBetting(amount: number, p1: string): void;
+	export function networkEarnFromDailyObjective(p0: number, p1: string, p2: number): void;
+	export function networkEarnFromChallengeWin(p0: number, p1: intPtr, p2: boolean): Array<any>;
+	export function networkEarnFromGangPickup(amount: number): void;
+	export function networkEarnFromCrateDrop(amount: number): void;
 	export function networkEarnFromImportExport(p0: number, p1: number): void;
 	export function networkEarnFromHoldups(amount: number): void;
-	export function networkEarnFromProperty(amount: number, propertyName: number): void;
-	export function networkEarnFromAiTargetKill(p0: number, p1: number): void;
+	export function networkEarnFromJobBonus(p0: number, p1: intPtr, p2: intPtr): Array<any>;
+	export function networkEarnFromJob(amount: number, p1: string): void;
+	export function networkEarnFromMissionH(amount: number, heistHash: string): void;
 	export function networkEarnFromNotBadsport(amount: number): void;
+	export function networkEarnFromPickup(amount: number): number;
+	export function networkEarnFromPersonalVehicle(p0: number, p1: number, p2: number, p3: number, p4: number, p5: number, p6: number, p7: number, p8: number): void;
+	export function networkEarnFromProperty(amount: number, propertyName: number): void;
 	export function networkEarnFromRockstar(amount: number): void;
 	export function networkEarnFromVehicle(p0: number, p1: number, p2: number, p3: number, p4: number, p5: number, p6: number, p7: number): void;
-	export function networkEarnFromPersonalVehicle(p0: number, p1: number, p2: number, p3: number, p4: number, p5: number, p6: number, p7: number, p8: number): void;
-	export function networkEarnFromDailyObjective(p0: number, p1: string, p2: number): void;
-	export function networkEarnFromAmbientJob(p0: number, p1: string, p2: intPtr): Array<any>;
-	export function networkEarnFromJobBonus(p0: number, p1: intPtr, p2: intPtr): Array<any>;
-	export function networkCanSpendMoney(p0: number, p1: boolean, p2: boolean, p3: boolean, p4: number): boolean;
-	export function _0x7303E27CC6532080(p0: number, p1: boolean, p2: boolean, p3: boolean, p4: intPtr, p5: number): Array<any>;
-	export function networkBuyItem(player: number, item: number, p2: number, p3: number, p4: boolean, item_name: string, p6: number, p7: number, p8: number, p9: boolean): void;
-	export function networkSpentTaxi(amount: number, p1: boolean, p2: boolean): void;
-	export function networkPayEmployeeWage(p0: number, p1: boolean, p2: boolean): void;
-	export function networkPayUtilityBill(p0: number, p1: boolean, p2: boolean): void;
-	export function networkPayMatchEntryFee(value: number, p1: intPtr, p2: boolean, p3: boolean): Array<any>;
-	export function networkSpentBetting(p0: number, p1: number, p2: intPtr, p3: boolean, p4: boolean): Array<any>;
-	export function networkSpentInStripclub(p0: number, p1: boolean, p2: number, p3: boolean): void;
-	export function networkBuyHealthcare(cost: number, p1: boolean, p2: boolean): void;
-	export function networkBuyAirstrike(cost: number, p1: boolean, p2: boolean): void;
-	export function networkBuyHeliStrike(cost: number, p1: boolean, p2: boolean): void;
-	export function networkSpentAmmoDrop(p0: number, p1: boolean, p2: boolean): void;
-	export function networkBuyBounty(amount: number, victim: number, p2: boolean, p3: boolean): void;
-	export function networkBuyProperty(propertyCost: number, propertyName: number, p2: boolean, p3: boolean): void;
-	export function networkSpentHeliPickup(p0: number, p1: boolean, p2: boolean): void;
-	export function networkSpentBoatPickup(p0: number, p1: boolean, p2: boolean): void;
-	export function networkSpentBullShark(p0: number, p1: boolean, p2: boolean): void;
-	export function networkSpentCashDrop(amount: number, p1: boolean, p2: boolean): void;
-	export function networkSpentHireMugger(p0: number, p1: boolean, p2: boolean): void;
-	export function networkSpentRobbedByMugger(amount: number, p1: boolean, p2: boolean): void;
-	export function networkSpentHireMercenary(p0: number, p1: boolean, p2: boolean): void;
-	export function networkSpentBuyWantedlevel(p0: number, p1: intPtr, p2: boolean, p3: boolean): Array<any>;
-	export function networkSpentBuyOfftheradar(p0: number, p1: boolean, p2: boolean): void;
-	export function networkSpentBuyRevealPlayers(p0: number, p1: boolean, p2: boolean): void;
-	export function networkSpentCarwash(p0: number, p1: number, p2: number, p3: boolean, p4: boolean): void;
-	export function networkSpentCinema(p0: number, p1: number, p2: boolean, p3: boolean): void;
-	export function networkSpentTelescope(p0: number, p1: boolean, p2: boolean): void;
-	export function networkSpentHoldups(p0: number, p1: boolean, p2: boolean): void;
-	export function networkSpentBuyPassiveMode(p0: number, p1: boolean, p2: boolean): void;
-	export function networkSpentProstitutes(p0: number, p1: boolean, p2: boolean): void;
-	export function networkSpentArrestBail(p0: number, p1: boolean, p2: boolean): void;
-	export function networkSpentPayVehicleInsurancePremium(amount: number, vehicleModel: number, networkHandle: intPtr, notBankrupt: boolean, hasTheMoney: boolean): Array<any>;
-	export function networkSpentCallPlayer(p0: number, p1: intPtr, p2: boolean, p3: boolean): Array<any>;
-	export function networkSpentBounty(p0: number, p1: boolean, p2: boolean): void;
-	export function networkSpentFromRockstar(bank: number, p1: boolean, p2: boolean): void;
-	export function processCashGift(p0: intPtr, p1: intPtr, p2: string): Array<any>;
-	export function networkSpentPlayerHealthcare(p0: number, p1: number, p2: boolean, p3: boolean): void;
-	export function networkSpentNoCops(p0: number, p1: boolean, p2: boolean): void;
-	export function networkSpentRequestJob(p0: number, p1: boolean, p2: boolean): void;
-	export function networkSpentRequestHeist(p0: number, p1: boolean, p2: boolean): void;
-	export function networkBuyFairgroundRide(amountSpent: number, p1: number, p2: boolean, p3: boolean): void;
-	export function _0x7C4FCCD2E4DEB394(): boolean;
+	export function networkGetBankBalanceString(): string;
+	export function networkGetVcBalance(): number;
 	export function networkGetVcBankBalance(): number;
 	export function networkGetVcWalletBalance(character: number): number;
-	export function networkGetVcBalance(): number;
-	export function networkGetBankBalanceString(): string;
-	export function _0xDC18531D7019A535(p0: number, p1: number): boolean;
-	export function networkCanReceivePlayerCash(p0: number, p1: number, p2: number, p3: number): boolean;
-	export function _0xF70EFA14FE091429(p0: number): number;
-	export function _0xE260E0BB9CD995AC(p0: number): boolean;
-	export function _0xE154B48B68EF72BC(p0: number): boolean;
-	export function _0x6FCF8DDEA146C45B(p0: number): boolean;
+	export function networkGivePlayerJobshareCash(amount: number, networkHandle: intPtr): Array<any>;
+	export function networkInitializeCash(p0: number, p1: number): void;
+	export function networkMoneyCanBet(p0: number, p1: boolean, p2: boolean): boolean;
+	export function networkPayEmployeeWage(p0: number, p1: boolean, p2: boolean): void;
+	export function networkPayMatchEntryFee(value: number, p1: intPtr, p2: boolean, p3: boolean): Array<any>;
+	export function networkPayUtilityBill(p0: number, p1: boolean, p2: boolean): void;
+	export function networkReceivePlayerJobshareCash(value: number, networkHandle: intPtr): Array<any>;
+	export function networkRefundCash(index: number, context: string, reason: string, unk: boolean): void;
+	export function networkSpentAmmoDrop(p0: number, p1: boolean, p2: boolean): void;
+	export function networkSpentArrestBail(p0: number, p1: boolean, p2: boolean): void;
+	export function networkSpentBetting(p0: number, p1: number, p2: intPtr, p3: boolean, p4: boolean): Array<any>;
+	export function networkSpentBoatPickup(p0: number, p1: boolean, p2: boolean): void;
+	export function networkSpentBounty(p0: number, p1: boolean, p2: boolean): void;
+	export function networkSpentBullShark(p0: number, p1: boolean, p2: boolean): void;
+	export function networkSpentBuyPassiveMode(p0: number, p1: boolean, p2: boolean): void;
+	export function networkSpentBuyOfftheradar(p0: number, p1: boolean, p2: boolean): void;
+	export function networkSpentBuyWantedlevel(p0: number, p1: intPtr, p2: boolean, p3: boolean): Array<any>;
+	export function networkSpentBuyRevealPlayers(p0: number, p1: boolean, p2: boolean): void;
+	export function networkSpentCarwash(p0: number, p1: number, p2: number, p3: boolean, p4: boolean): void;
+	export function networkSpentCallPlayer(p0: number, p1: intPtr, p2: boolean, p3: boolean): Array<any>;
+	export function networkSpentCinema(p0: number, p1: number, p2: boolean, p3: boolean): void;
+	export function networkSpentHeliPickup(p0: number, p1: boolean, p2: boolean): void;
+	export function networkSpentCashDrop(amount: number, p1: boolean, p2: boolean): void;
+	export function networkSpentHireMugger(p0: number, p1: boolean, p2: boolean): void;
+	export function networkSpentFromRockstar(bank: number, p1: boolean, p2: boolean): void;
+	export function networkSpentHireMercenary(p0: number, p1: boolean, p2: boolean): void;
+	export function networkSpentInStripclub(p0: number, p1: boolean, p2: number, p3: boolean): void;
+	export function networkSpentPayVehicleInsurancePremium(amount: number, vehicleModel: number, networkHandle: intPtr, notBankrupt: boolean, hasTheMoney: boolean): Array<any>;
+	export function networkSpentHoldups(p0: number, p1: boolean, p2: boolean): void;
+	export function networkSpentProstitutes(p0: number, p1: boolean, p2: boolean): void;
+	export function networkSpentNoCops(p0: number, p1: boolean, p2: boolean): void;
+	export function networkSpentRequestJob(p0: number, p1: boolean, p2: boolean): void;
+	export function networkSpentPlayerHealthcare(p0: number, p1: number, p2: boolean, p3: boolean): void;
+	export function networkSpentRobbedByMugger(amount: number, p1: boolean, p2: boolean): void;
+	export function networkSpentRequestHeist(p0: number, p1: boolean, p2: boolean): void;
+	export function networkSpentTelescope(p0: number, p1: boolean, p2: boolean): void;
+	export function networkSpentTaxi(amount: number, p1: boolean, p2: boolean): void;
+	export function processCashGift(p0: intPtr, p1: intPtr, p2: string): Array<any>;
 	export function getNumDecorations(character: number): number;
-	export function _0xFF56381874F82086(character: number, p1: number, outComponent: intPtr): Array<any>;
+	export function getTattooCollectionData(character: number, p1: number, outComponent: intPtr): Array<any>;
 	export function initShopPedComponent(outComponent: intPtr): Array<any>;
 	export function initShopPedProp(outProp: intPtr): Array<any>;
 	export function _0x50F457823CE6EB5F(p0: number, p1: number, p2: number, p3: number): number;
@@ -5960,30 +6402,6 @@ declare module "natives" {
 	export function nullify(variable: intPtr, unused: number): Array<any>;
 	export function loadSpDlcMaps(): void;
 	export function loadMpDlcMaps(): void;
-	export function wait(ms: intPtr): Array<any>;
-	export function startNewScript(scriptName: string, stackSize: number): number;
-	export function startNewScriptWithArgs(scriptName: string, args: intPtr, argCount: number, stackSize: number): Array<any>;
-	export function startNewScriptWithNameHash(scriptHash: number, stackSize: number): number;
-	export function startNewScriptWithNameHashAndArgs(scriptHash: number, args: intPtr, argCount: number, stackSize: number): Array<any>;
-	export function timera(): number;
-	export function timerb(): number;
-	export function settimera(value: number): void;
-	export function settimerb(value: number): void;
-	export function timestep(): number;
-	export function sin(value: number): number;
-	export function cos(value: number): number;
-	export function sqrt(value: number): number;
-	export function pow(base: number, exponent: number): number;
-	export function vmag(x: number, y: number, z: number): number;
-	export function vmag2(x: number, y: number, z: number): number;
-	export function vdist(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number): number;
-	export function vdist2(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number): number;
-	export function shiftLeft(value: number, bitShift: number): number;
-	export function shiftRight(value: number, bitShift: number): number;
-	export function floor(value: number): number;
-	export function ceil(value: number): number;
-	export function round(value: number): number;
-	export function toFloat(value: number): number;
 	export function decorSetTime(entity: number, propertyName: string, timestamp: number): boolean;
 	export function decorSetBool(entity: number, propertyName: string, value: boolean): boolean;
 	export function decorSetFloat(entity: number, propertyName: string, value: number): boolean;
@@ -6057,6 +6475,9 @@ declare module "natives" {
 	export function getSocialclubNickname(): string;
 	export function _0x225798743970412B(p0: intPtr): Array<any>;
 	export function _0x418DC16FAE452C1C(p0: number): boolean;
+	export function _0xC80A36AD6CC2F3E8(p0: number): number;
+	export function _0xE1846A40DE9D7CBE(): number;
+	export function _0xCB648F66D8216E79(p0: number, p1: number): number;
 	export function _0xF2CA003F167E21D2(): number;
 	export function _0xEF7D17BC6C85264C(): boolean;
 	export function _0xB0C56BD3D808D863(p0: boolean): void;
@@ -6072,7 +6493,7 @@ declare module "natives" {
 	export function _0x13B350B8AD0EEE10(): void;
 	export function _0x293220DA1B46CEBC(p0: number, p1: number, p2: boolean): void;
 	export function _0x208784099002BC30(missionNameLabel: string, p1: number): void;
-	export function _0xEB2D525B57F42B40(): void;
+	export function stopRecordingThisFrame(): void;
 	export function _0xF854439EFBB3B583(): void;
 	export function _0xAF66DCEE6609B148(): void;
 	export function _0x66972397E0757E7A(p0: number, p1: number, p2: number): void;
@@ -6090,40 +6511,141 @@ declare module "natives" {
 	export function _0xE058175F8EAFE79A(p0: boolean): void;
 	export function resetEditorValues(): void;
 	export function activateRockstarEditor(): void;
-	export function networkShopGetPrice(itemHash: number, categoryHash: number, p2: boolean): number;
-	export function _0x3C4487461E9B0DCB(): number;
-	export function _0x2B949A1E6AEC8F6A(): number;
-	export function _0x85F6C9ABA1DE2BCF(): number;
-	export function _0x357B152EF96C30B6(): number;
-	export function _0xCF38DAFBB49EDE5E(p0: intPtr): Array<any>;
-	export function _0xE3E5A7C64CA2C6ED(): number;
-	export function _0x0395CB47B022E62C(p0: intPtr): Array<any>;
-	export function networkShopStartSession(p0: number): boolean;
-	export function _0x72EB7BA9B69BF6AB(): boolean;
-	export function _0x170910093218C8B9(p0: intPtr): Array<any>;
-	export function _0xC13C38E47EA5DF31(p0: intPtr): Array<any>;
-	export function networkShopGetTransactionsEnabledForCharacter(mpChar: number): boolean;
-	export function _0x74A0FD0688F1EE45(p0: number): number;
-	export function networkShopSessionApplyReceivedData(p0: number): boolean;
-	export function networkShopGetTransactionsDisabled(): boolean;
-	export function _0x35A1B3E1D1315CFA(p0: boolean, p1: boolean): boolean;
-	export function _0x897433D292B44130(p0: intPtr, p1: intPtr): Array<any>;
-	export function networkShopBasketStart(p0: intPtr, p1: number, p2: number, p3: number): Array<any>;
-	export function networkShopBasketEnd(): boolean;
+	export function getOnlineVersion(): string;
+	export function clearAllBlipRoutes(): void;
+	export function drawFrontendAlert(labelTitle: string, labelMsg: string, p2: number, p3: number, labelMsg2: string, p5: number, p6: number, p7: number, p8: string, p9: string, background: boolean, errorCode: number): number;
+	export function _0x5CAB62F217F047C5(p0: boolean): number;
+	export function _0xEB3CDDFC044A3FAF(): void;
+	export function _0x357E4DBCA57731F2(): void;
+	export function _0x09DB996B2AEC13B5(blip: number): number;
+	export function _0x9940E61BA4811313(p0: number): void;
+	export function _0xE6A9444AA75B8DAB(p0: number): void;
+	export function _0x8AFE31AEF3F850E7(): void;
+	export function _0x97EA1976BDB4A8CE(): number;
+	export function _0x25912A4CAE7448FA(): void;
+	export function _0xD92E6E1CE2456E18(p0: number, p1: number): void;
+	export function _0x872C457153642710(p0: number): void;
+	export function _0x0B4859DB290B43D8(p0: number): void;
+	export function _0xFBE7A7A759640627(p0: number): void;
+	export function _0x9A9C10C0ACDA938B(p0: number): void;
+	export function _0x856CAD5F821AE5F9(): number;
+	export function _0x75402180CE0D65B9(p0: number, p1: number): number;
+	export function _0x11A4B380C2C7AF10(p0: number, p1: number): void;
+	export function _0x94C24EC488BD2C6E(p0: number, p1: number, p2: number): void;
+	export function _0xBF9A5AE08662CB24(p0: number, p1: number): void;
+	export function _0x90CC3AC0A82D3ACE(ped: number, toggle: boolean, p3: number): void;
+	export function _0xB2813F686DACE80B(p0: number, p1: number): void;
+	export function _0x19200462D21D0B7A(p0: number, p1: number, p2: number, p3: number, p4: number): void;
+	export function _0xB33D60A9F2FF6FBD(): number;
+	export function _0x4B7F117A022E96EC(p0: number): void;
+	export function _0x56F7C04B5348ECCF(p0: number): void;
+	export function _0x2E50E8FCD9213379(p0: number, p1: number): void;
+	export function _0x1DFC768C95CA77C0(ped: number, p1: number): void;
+	export function _0x186981AE2EC1837F(blip: number, toggle: boolean): void;
+	export function _0x371A0858E55017FF(propHash: number): number;
+	export function _0x4D0125131661B655(p0: number, p1: number, p2: number, p3: number, p4: number): void;
+	export function _0xD8197D570B83E43F(): number;
+	export function cancelOnscreenKeyboard(): void;
+	export function _0x888B56C50889EB5E(p0: number): void;
+	export function _0x82EA997206A3B017(p0: number): number;
+	export function _0xAEA0BFBDA0CDA688(p0: number, p1: number, p2: number): void;
+	export function _0x04465848DF9CF167(p0: number): void;
+	export function _0x088470E7A33F9EBE(): void;
+	export function _0xBC1110E3B67A9DFF(p0: number, p1: number, p2: number, p3: number, p4: number): number;
+	export function _0x1E72B2B3AC945691(p0: number): void;
+	export function restartGame(): void;
+	export function _0xE5B884DE6E6FA75D(p0: number, p1: number, p2: number, p3: number): void;
+	export function _0xB36BD3E91448C545(p0: number, p1: number, p2: number, p3: number): void;
+	export function _0xFCDB301E3DAFDCA6(p0: number, p1: number, p2: number): void;
+	export function _0x88D0B61C77282B4E(p0: number, p1: number, p2: number): void;
+	export function _0x9B2453C4B3C419EC(p0: number, p1: number, p2: number, p3: number): void;
+	export function _0x0DB1798EE9180823(p0: number, p1: number, p2: number, p3: number): void;
+	export function _0xDE8005FB0797ABCC(p0: number, p1: number, p2: number, p3: number): void;
+	export function _0xCCA49445BB4F29B3(p0: number, p1: number, p2: number, p3: number): void;
+	export function _0xC6A59E6E610F69BE(p0: number, p1: number, p2: number, p3: number): void;
+	export function _0x811B5A194BEAC028(p0: number, p1: number, p2: number, p3: number): void;
+	export function _0x099132165392FF2A(p0: number, p1: number, p2: number, p3: number): void;
+	export function _0x41DA1A1C7486482C(p0: number, p1: number, p2: number, p3: number): void;
+	export function _0x738013A405F63B27(p0: number, p1: number, p2: number, p3: number, p4: number): void;
+	export function _0x891C8338AFBC5FB9(p0: number, p1: number, p2: number, p3: number): void;
+	export function _0xC0E9B202C84578BD(): number;
+	export function _0x8919D429A465E513(p0: number, p1: number, p2: number, p3: number): void;
+	export function _0x2423A08C8CD78DE8(p0: number, p1: number, p2: number, p3: number): void;
+	export function _0x237B05DFBD78EB67(p0: number, p1: number, p2: number, p3: number): void;
+	export function _0xBBE89CE5E970AA46(p0: number, p1: number, p2: number): void;
+	export function _0x6BB5E635B54915A1(p0: number, p1: number): void;
+	export function _0x55D4E693DE96A371(p0: number, p1: number, p2: number): void;
+	export function _0x1BD0EE32305B6481(p0: number, p1: number, p2: number): void;
+	export function _0x7D3ACC7CE12CA24A(p0: number, p1: number, p2: number, p3: number): void;
+	export function _0xFF6DA45BDAD55783(p0: number, p1: number, p2: number, p3: number): void;
+	export function _0x8008E5B6B23B8464(p0: number): void;
+	export function _0x808E1C5DC539543C(p0: number): void;
+	export function _0x54F6931BFE89203E(p0: number, p1: number, p2: number, p3: number): void;
+	export function _0xD03C3D53A195C1E1(p0: number, p1: number, p2: number, p3: number): void;
+	export function _0xE3493FC02A2F9B5C(p0: number, p1: number, p2: number, p3: number): void;
+	export function _0xB65854FC086DBE96(): number;
+	export function _0xA5384A63924FFE8A(p0: number, p1: number): void;
+	export function _0x06714A444AD32BE2(p0: number, p1: number, p2: number, p3: number): void;
+	export function _0xF2B7F83139790930(p0: number, p1: number, p2: number, p3: number): void;
+	export function _0x6CCB63664E91EE89(p0: number, p1: number, p2: number, p3: number): void;
+	export function _0xBC2FC8C9FD491EAF(p0: number, p1: number, p2: number, p3: number, p4: number, p5: number, p6: number, p7: number, p8: number, p9: number): void;
+	export function _0xD94D9F4761F6EBB0(p0: number, p1: number, p2: number, p3: number): void;
+	export function _0x665437F81CFE4C07(p0: number, p1: number, p2: number, p3: number): void;
+	export function _0x64901E530A497934(p0: number, p1: number, p2: number, p3: number): void;
+	export function _0xB81A1858D4F944AE(p0: number, p1: number, p2: number, p3: number): void;
+	export function _0x71B530BAA6A35357(p0: number, p1: number): void;
+	export function _0xD9FF0DB2B2504258(p0: number, p1: number, p2: number): void;
+	export function _0xA651EA9C36144ADA(p0: number, p1: number, p2: number, p3: number, p4: number): void;
+	export function _0x32795CB155B2FBA7(p0: number, p1: number, p2: number): void;
+	export function _0xE4083C1D968F4663(p0: number, p1: number, p2: number): void;
+	export function _0x5042A31F324CBA02(p0: number, p1: number, p2: number): void;
+	export function _0x271E1658C1080692(p0: number, p1: number, p2: number): void;
+	export function _0xABC7B8C1BE239012(p0: number, p1: number, p2: number): void;
+	export function _0xA4CF8D21E553B5FC(p0: number, p1: number): void;
+	export function _0x85897155BB20177E(p0: number, p1: number, p2: number, p3: number): void;
+	export function _0xF326FD4B452451EF(p0: number, p1: number, p2: number, p3: number): void;
+	export function _0x82A5D78181F55C7D(p0: number, p1: number, p2: number, p3: number): void;
+	export function _0x97EC1F5F0E1E7DD7(): number;
+	export function _0xCB7905BBF082C26C(p0: number, p1: number, p2: number): void;
+	export function _0x569BFF4D3561CD4B(p0: number, p1: number, p2: number): void;
+	export function _0x454396EFEC8F7E46(p0: intPtr): Array<any>;
+	export function _0x6A11453B296B92F1(p0: intPtr): Array<any>;
+	export function _0x55D229DC89F87434(): number;
+	export function _0x9E20AF865B60B18B(): number;
+	export function _0x7ACA6CBB5F6ADABB(): number;
+	export function _0xB9357C7A3D152F94(): number;
+	export function _0x84EA41B25613C0F8(): number;
+	export function _0x29EC7E23BAD77E5C(): number;
+	export function _0xB8EAC01BB1CAE77C(p0: boolean, p1: boolean): boolean;
+	export function _0x07CA01F2AF077014(): number;
+	export function _0x79D9E72FA281558C(p0: number, p1: boolean, p2: number): boolean;
+	export function _0x31F0DDDE45A2F598(): boolean;
+	export function _0xF1E9B06F94A12804(p0: number): number;
+	export function _0x12ABFF21ABCC6401(): number;
+	export function _0x60C4AEB7492D0129(p0: intPtr): Array<any>;
+	export function _0x84EDD6303549E375(p0: intPtr, p1: intPtr): Array<any>;
+	export function _0x1A54C74D2604BBCC(): number;
 	export function networkShopBasketAddItem(p0: intPtr, p1: number): Array<any>;
-	export function networkShopBasketIsFull(): number;
+	export function _0x74A0FEF768D33EE8(p0: intPtr): Array<any>;
 	export function networkShopBasketApplyServerData(p0: number, p1: intPtr): Array<any>;
-	export function networkShopCheckoutStart(p0: number): boolean;
+	export function networkShopBasketIsFull(): number;
+	export function networkShopBasketEnd(): boolean;
+	export function networkShopBasketStart(p0: intPtr, p1: number, p2: number, p3: number): Array<any>;
 	export function networkShopBeginService(transactionID: intPtr, p1: number, transactionHash: number, amount: number, p4: number, mode: number): Array<any>;
-	export function networkShopTerminateService(transactionID: number): boolean;
-	export function _0x51F1A8E48C3D2F6D(p0: number, p1: boolean, p2: number): boolean;
-	export function _0x0A6D923DFFC9BD89(): number;
+	export function networkShopCashTransferSetTelemetryNonceSeed(): boolean;
+	export function networkShopCheckoutStart(transactionID: number): boolean;
 	export function networkShopDeleteSetTelemetryNonceSeed(): number;
+	export function networkShopGetPrice(itemHash: number, hash2: number, p2: boolean): number;
+	export function networkShopGetTransactionsDisabled(): boolean;
+	export function networkShopGetTransactionsEnabledForCharacter(mpChar: number): boolean;
+	export function networkShopSessionApplyReceivedData(p0: number): boolean;
+	export function networkShopSetTelemetryNonceSeed(p0: number): boolean;
+	export function networkShopStartSession(p0: number): boolean;
+	export function networkShopTerminateService(transactionID: number): boolean;
 	export function networkTransferBankToWallet(charStatInt: number, amount: number): boolean;
 	export function networkTransferWalletToBank(charStatInt: number, amount: number): boolean;
-	export function _0x23789E777D14CE44(): number;
-	export function _0x350AA5EBC03D3BD2(): number;
-	export function networkShopCashTransferSetTelemetryNonceSeed(): boolean;
-	export function networkShopSetTelemetryNonceSeed(p0: number): boolean;
-	export function getOnlineVersion(): string;
+	export function isDisabledControlReleased(inputGroup: number, control: number): boolean;
+	export function _0x526C807D3B38F60D(p0: number): number;
+	export function _0x2783739285D213AC(p0: number, p1: number): void;
+	export function _0x5D2AB91ADF4F3A5C(p0: number): void;
 }

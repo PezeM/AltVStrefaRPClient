@@ -44,7 +44,7 @@ export async function toggleFlying() {
         landSafeOnTheGround();
     }
 
-    await showNotification('Noclip', fly.flying ? "~g~ Został włączony" : "~r~Został wyłączony", "");
+    // await showNotification('Noclip', fly.flying ? "~g~ Został włączony" : "~r~Został wyłączony", "");
     return fly.flying;
 }
 

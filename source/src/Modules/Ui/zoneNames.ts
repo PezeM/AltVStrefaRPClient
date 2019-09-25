@@ -21,7 +21,7 @@ export default class ZoneNames {
         this.streetName = null;
         this.realZoneName = null;
         this.minimap = null;
-        this.minimapUpdateInterval = 500; // milliseconds, lower value = more accurate, at the cost of performance
+        this.minimapUpdateInterval = 0; // milliseconds, lower value = more accurate, at the cost of performance
         this.tickInterval = alt.setInterval(this.getZoneNames.bind(this), this.minimapUpdateInterval);
     }
 

@@ -6,7 +6,7 @@
         <div class="col-10 p-0 inventory-top-bar">
             <div class="row inventory-top-bar-container">
                 <div class="col-8 my-auto">
-                    <p class="inventory-text">StrefaRP.pl</p>
+                    <p class="inventory-text">Losowy header</p>
                 </div>
                 <div class="col-4 my-auto">
                     <span class="inventory-text">H: {{ gameInfo.health }}</span>

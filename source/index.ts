@@ -66,29 +66,29 @@ alt.on('keydown', (key: number) => {
 
     switch (key) {
         case controlsIds.E:
-            if (localPlayer.vehicle != null || game.isEntityDead(localPlayer.scriptID) || new Date().getTime() - lastKeyPressedTime < 750) return;
+            if (localPlayer.vehicle != null || game.isEntityDead(localPlayer.scriptID, false) || new Date().getTime() - lastKeyPressedTime < 750) return;
             lastKeyPressedTime = new Date().getTime();
             if (inventoryController.pickupItem()) return;
             else if (housingSystemController.onKeyPress()) return;
             else if (vehicleDoors.toggleTrunkOrHoodState(localPlayer)) return;
             break;
         case controlsIds.L:
-            if (game.isEntityDead(localPlayer.scriptID) || new Date().getTime() - lastKeyPressedTime < 750) return;
+            if (game.isEntityDead(localPlayer.scriptID, false) || new Date().getTime() - lastKeyPressedTime < 750) return;
             lastKeyPressedTime = new Date().getTime();
             if (vehicles.toggleLockState()) return;
             break;
         case keycodes.K_KEY:
-            if (game.isEntityDead(localPlayer.scriptID) || localPlayer.vehicle === null || new Date().getTime() - lastKeyPressedTime < 500) return;
+            if (game.isEntityDead(localPlayer.scriptID, false) || localPlayer.vehicle === null || new Date().getTime() - lastKeyPressedTime < 500) return;
             lastKeyPressedTime = new Date().getTime();
             vehicleSeatbeltComponent.toggleSeatbelt(localPlayer);
             break;
         case keycodes.U_KEY:
-            if (game.isEntityDead(localPlayer.scriptID) || new Date().getTime() - lastKeyPressedTime < 400) return;
+            if (game.isEntityDead(localPlayer.scriptID, false) || new Date().getTime() - lastKeyPressedTime < 400) return;
             vehicleEngineToggleComponent.toggleEngine(localPlayer);
             lastKeyPressedTime = new Date().getTime();
             break;
         case keycodes.VK_NUMPAD6:
-            if (game.isEntityDead(localPlayer.scriptID) || new Date().getTime() - lastKeyPressedTime < 500) return;
+            if (game.isEntityDead(localPlayer.scriptID, false) || new Date().getTime() - lastKeyPressedTime < 500) return;
             lastKeyPressedTime = new Date().getTime();
             soundBrowser.toggle();
             break;

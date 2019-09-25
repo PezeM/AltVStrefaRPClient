@@ -6144,7 +6144,7 @@ declare module "natives" {
 	export function isPedBeingArrested(ped: number): boolean;
 	export function uncuffPed(ped: number): void;
 	export function isPedCuffed(ped: number): boolean;
-	export function createVehicle(modelHash: number, x: number, y: number, z: number, heading: number, isNetwork: boolean, thisScriptCheck: boolean, p7: boolean): number;
+	export function createVehicle(modelHash: number, x: number, y: number, z: number, heading: number, isNetwork: boolean, thisScriptCheck: boolean): number;
 	export function deleteVehicle(vehicle: number): [void, number];
 	export function _0x7D6F9A3EF26136A0(vehicle: number, toggle: boolean, p2: boolean): void;
 	export function setVehicleCanBeLockedOn(vehicle: number, canBeLockedOn: boolean, unk: boolean): void;

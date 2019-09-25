@@ -5,6 +5,8 @@ import cameraRotator from 'source/src/Helpers/cameraRotator';
 import mainUi from 'source/src/Modules/Ui/mainUi';
 import { IVehicleShop } from 'source/src/Constans/interfaces';
 import { VehicleShopList } from 'source/src/Constans/types';
+import utils from 'source/src/Helpers/utils';
+import maths from 'source/src/Helpers/maths';
 
 interface VehicleDataFromServer {
     VehicleModel: number;
@@ -26,7 +28,8 @@ const VEHICLE_SHOP_DATA: VehicleShopList = [
     {
         id: 1,
         pedPosition: { x: -44.58461, y: -1105.648, z: 25.5, rot: 0 },
-        cameraPosition: { x: -45.5, y: -1095.7, z: 26.5 }, cameraRotation: { x: 0, y: 0, z: 308 },
+        // cameraPosition: { x: -45.5, y: -1095.7, z: 26.5 }, cameraRotation: { x: 0, y: 0, z: 308 },
+        cameraPosition: { x: -50, y: -1094, z: 26.5 }, cameraRotation: { x: 0, y: 0, z: 260 },
         vehicleSpawn: { x: -43.9, y: -1096.6, z: 26.1 }
     },
     {
@@ -138,26 +141,30 @@ class VehicleShop {
                 this.spawnedVehicle = null;
             }
 
-            alt.loadModel(newVehicleModel);
-            this.spawnedVehicle = game.createVehicle(newVehicleModel, vehicleShopData.vehicleSpawn.x, vehicleShopData.vehicleSpawn.y,
-                vehicleShopData.vehicleSpawn.z, 180, true, true, true);
-            game.setVehicleOnGroundProperly(this.spawnedVehicle, 0);
-            game.setVehicleUndriveable(this.spawnedVehicle, true);
+            // Convert to async code
+            utils.loadModelAsync(newVehicleModel).then(() => {
+                alt.loadModel(newVehicleModel);
+                this.spawnedVehicle = game.createVehicle(newVehicleModel, vehicleShopData.vehicleSpawn.x, vehicleShopData.vehicleSpawn.y,
+                    vehicleShopData.vehicleSpawn.z, 180, false, false);
+                game.setVehicleOnGroundProperly(this.spawnedVehicle, 0);
+                game.setVehicleUndriveable(this.spawnedVehicle, true);
+            })
         } catch (error) {
             alt.log(`Error while changing vehicle in vehicleShops = ${error}`);
         }
     }
 
     renderShopCamera(vehicleShopData: IVehicleShop) {
-        console.log(`Setting camera to positon ${vehicleShopData.cameraPosition}`);
-        this.shopCamera = new Camera('DEFAULT_SCRIPTED_CAMERA', vehicleShopData.cameraPosition, vehicleShopData.cameraRotation, 45);
+        alt.log(`Setting camera to positon ${JSON.stringify(vehicleShopData.cameraPosition, null, 2)}`);
+        this.shopCamera = new Camera('DEFAULT_SCRIPTED_CAMERA', vehicleShopData.cameraPosition, vehicleShopData.cameraRotation, 65);
         this.shopCamera.setActive(true);
         game.renderScriptCams(true, false, 0, true, false);
     }
 
     setupCameraRotator(vehicleShopData: IVehicleShop) {
         const vehiclePos = game.getEntityCoords(this.spawnedVehicle as number, true);
-        cameraRotator.start(this.shopCamera as Camera, vehicleShopData.cameraPosition, vehiclePos, { x: 4.3, y: 2.3, z: 0 }, 180);
+        alt.log('Setting camera rotator');
+        cameraRotator.start(this.shopCamera as Camera, vehicleShopData.cameraPosition, vehiclePos, { x: 4.3, y: 2.3, z: 0 }, 0);
         cameraRotator.setZBound(-0.8, 1.6);
         cameraRotator.setZUpMultipler(3);
     }
@@ -168,7 +175,7 @@ class VehicleShop {
 
         this.changeVehicle(newVehicleData[0].vehicleModel, shopData as IVehicleShop);
         this.renderShopCamera(shopData as IVehicleShop);
-        this.setupCameraRotator(shopData as IVehicleShop);
+        // this.setupCameraRotator(shopData as IVehicleShop);
         mainUi.openMenu("openVehicleShop", true, true, JSON.stringify(newVehicleData), shopId);
     }
 

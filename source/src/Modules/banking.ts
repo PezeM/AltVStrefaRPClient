@@ -6,7 +6,7 @@ import blipsManager from './Core/Game/Blips/blipsManager';
 
 const PED_POSITIONS = [
     { x: -111.9647, y: 6471.319, z: 31.6267, rot: 138.7 },
-    { x: 149.09, y: -1042.76, z: 29.37409, rot: 340.29 },
+    { x: 149.09, y: -1042.76, z: 28.5, rot: 340.29 },
     { x: 249.022, y: 224.9183, z: 106.2871, rot: 165.78 },
     { x: 243.9872, y: 227.0842, z: 106.2874, rot: 161.6292 }
 ];
@@ -44,9 +44,9 @@ class Bank {
     initializePeds() {
         PED_POSITIONS.forEach(bankPed => {
             const ped = game.createPed(26, this.pedHash, bankPed.x, bankPed.y, bankPed.z, bankPed.rot, false, true);
-            game.freezeEntityPosition(ped, true);
             game.setEntityInvincible(ped, true);
             game.setBlockingOfNonTemporaryEvents(ped, true);
+            game.freezeEntityPosition(ped, true);
             this.pedList.push(ped);
         });
         alt.log(`Created ${this.pedList.length} bank peds.`);

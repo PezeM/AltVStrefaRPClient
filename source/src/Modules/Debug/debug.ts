@@ -5,6 +5,7 @@ import { NotificationTypes } from 'source/src/Constans/notificationTypes';
 import { drawText } from 'source/src/Helpers/uiHelper';
 import utils from 'source/src/Helpers/utils';
 import sounds from 'source/src/Modules/Core/soundsController';
+import 'source/src/Modules/Debug/testAnimRecorder';
 
 const localPlayer = alt.Player.local;
 

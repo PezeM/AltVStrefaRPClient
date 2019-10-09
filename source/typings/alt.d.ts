@@ -305,7 +305,7 @@ declare module "alt" {
 
 		constructor(p0: number);
 		getForModel(modelHash: number | number): any;
-		static getForModel(modelHash: number | number): any;
+		static getForModel(modelHash: number | number): HandlingData;
 	}
 
 	export class LocalStorage {

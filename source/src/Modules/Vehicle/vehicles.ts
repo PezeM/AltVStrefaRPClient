@@ -2,6 +2,7 @@ import * as alt from 'alt';
 import * as game from 'natives';
 import { getClosestVehicle } from 'source/src/Helpers/collectionHelper';
 import math from 'source/src/Helpers/maths';
+import './vehiclesManualTransmission';
 
 const localPlayer = alt.Player.local;
 

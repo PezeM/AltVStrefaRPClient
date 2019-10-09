@@ -2,7 +2,7 @@ import * as alt from 'alt';
 import * as native from 'natives';
 import { Weather } from 'source/src/Constans/Weathers';
 
-const MS_PER_GAME_MINUTE = 3000; // 3s per 1 min in game, 1min irl = 20 min in game
+const MS_PER_GAME_MINUTE = 30000000000000; // 3s per 1 min in game, 1min irl = 20 min in game
 class TimeController {
     currentWeather: Weather;
     constructor() {

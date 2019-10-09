@@ -17,7 +17,7 @@ class MainUi {
         this.viewOpened = false;
         this.viewLoaded = false;
 
-        this.uiView = new alt.WebView('http://resources/AltVStrefaRPClient/client-ui/dist/index.html#', false);
+        this.uiView = new alt.WebView('http://resource/client-ui/dist/index.html#', false);
     }
 
     onClientEvent(eventName: string, callback: Function) {

@@ -534,16 +534,16 @@ alt.on('update', () => {
             drawText(`~y~${dist} ~w~| ~b~${nameNext} `, [0.5, 0.16], 4, [255, 255, 255, 100], 0.45, true);
 
 
-        if (game.isControlPressed(0, controlsIds.F)) { // F
-            drawText(`~b~LEWO / PRAWO ~w~zmian anim dict~n~`, [0.5, 0.75], 4, [255, 255, 255, 200], 0.5, true);
-            drawText(`~b~CTRL + LEWO / PRAWO ~w~zmiana anim dict o 100~n~`, [0.5, 0.78], 4, [255, 255, 255, 200], 0.5, true);
-            drawText(`~b~SHIFT + LEWO / PRAWO ~w~zmiana anim dict o 10~n~`, [0.5, 0.81], 4, [255, 255, 255, 200], 0.5, true);
-            drawText(`~b~GORA / DOL ~w~zmiana nazwy anim~n~`, [0.5, 0.84], 4, [255, 255, 255, 200], 0.5, true);
-            drawText(`~b~CTRL + GORA / DOL ~w~zmiana flagi anim~n~`, [0.5, 0.87], 4, [255, 255, 255, 200], 0.5, true);
-            return;
-        } else {
-            drawText(`~w~Naciśnij F aby wyświetlić pomoc~n~`, [0.5, 0.93], 4, [255, 255, 255, 100], 0.45, true, true);
-        }
+        // if (game.isControlPressed(0, controlsIds.F)) { // F
+        //     drawText(`~b~LEWO / PRAWO ~w~zmian anim dict~n~`, [0.5, 0.75], 4, [255, 255, 255, 200], 0.5, true);
+        //     drawText(`~b~CTRL + LEWO / PRAWO ~w~zmiana anim dict o 100~n~`, [0.5, 0.78], 4, [255, 255, 255, 200], 0.5, true);
+        //     drawText(`~b~SHIFT + LEWO / PRAWO ~w~zmiana anim dict o 10~n~`, [0.5, 0.81], 4, [255, 255, 255, 200], 0.5, true);
+        //     drawText(`~b~GORA / DOL ~w~zmiana nazwy anim~n~`, [0.5, 0.84], 4, [255, 255, 255, 200], 0.5, true);
+        //     drawText(`~b~CTRL + GORA / DOL ~w~zmiana flagi anim~n~`, [0.5, 0.87], 4, [255, 255, 255, 200], 0.5, true);
+        //     return;
+        // } else {
+        //     drawText(`~w~Naciśnij F aby wyświetlić pomoc~n~`, [0.5, 0.93], 4, [255, 255, 255, 100], 0.45, true, true);
+        // }
     }
 });
 

@@ -157,7 +157,7 @@ declare module "alt" {
 	}
 
 	export class Vehicle extends Entity {
-		static readonly all: Array<any>;
+		static readonly all: Array<Vehicle>;
 		readonly gear: number;
 		readonly rpm: number;
 		readonly speed: number;

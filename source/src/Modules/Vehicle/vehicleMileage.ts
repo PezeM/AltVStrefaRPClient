@@ -1,6 +1,6 @@
 import * as alt from 'alt';
 import * as game from 'natives';
-import playerVehicleController from './playerVehicleController';
+import playerVehicleController, { VehicleLeaveEventArgs, VehicleEnterEventArgs, VehicleSeatChangeEventArgs } from './playerVehicleController';
 import { VehicleSeat } from 'source/src/Constans/enums';
 import { isDriver } from 'source/src/Helpers/playerHelpers';
 import { drawText } from 'source/src/Helpers/uiHelper';
@@ -15,7 +15,7 @@ class VehicleMileage {
     private calculatedDist: number = 0;
 
     constructor() {
-        playerVehicleController.onVehicleEnter(this.onVehicleEnter.bind(this));
+        playerVehicleController.vehicleEnterEvent.on(this.onVehicleEnter);
         this.tickInterval = alt.setInterval(this.tick.bind(this), 0);
     }
 
@@ -27,31 +27,38 @@ class VehicleMileage {
         drawText(`Calculated dist: ${this.calculatedDist.toFixed(2)}`, [0.2, 0.25], 4, [255, 255, 255, 255], 0.6, true, false);
     }
 
-    private onVehicleEnter(vehicle: alt.Vehicle, seat: VehicleSeat) {
-        playerVehicleController.onVehicleSeatChanged(this.onVehicleSeatChanged.bind(this));
-        if (seat !== VehicleSeat.Driver) return;
-        this.startMileageCounter(vehicle);
-        playerVehicleController.onVehicleLeave(this.onVehicleLeave.bind(this));
+    private onVehicleEnter = (args: VehicleEnterEventArgs) => {
+        playerVehicleController.vehicleSeatChangeEvent.on(this.onVehicleSeatChanged);
+        alt.log(`Entered vehicle at seat ${args.seat}`);
+        if (args.seat !== VehicleSeat.Driver) return;
+        playerVehicleController.vehicleLeaveEvent.once(this.onVehicleLeave);
+        this.startMileageCounter(args.vehicle);
     }
 
-    private onVehicleLeave(previousVehicle: alt.Vehicle, previousSeat: VehicleSeat) {
-        if (previousSeat === VehicleSeat.Driver) {
-            this.stopMileageCounter(previousVehicle);
-            playerVehicleController.offVehicleLeave(this.onVehicleLeave);
+    private onVehicleLeave = (args: VehicleLeaveEventArgs) => {
+        if (args.previousSeat === VehicleSeat.Driver) {
+            alt.log('Previous seat was driver. Stopping mileage counter');
+            this.stopMileageCounter(args.previousVehicle);
         }
-        playerVehicleController.offVehicleSeatChanged(this.onVehicleSeatChanged);
+        playerVehicleController.vehicleSeatChangeEvent.off(this.onVehicleSeatChanged);
     }
 
-    private onVehicleSeatChanged(vehicle: alt.Vehicle, newSeat: VehicleSeat, oldSeat: VehicleSeat) {
-        if (newSeat === VehicleSeat.Driver) {
-            this.startMileageCounter(vehicle);
-        } else if (oldSeat === VehicleSeat.Driver) {
-            this.stopMileageCounter(vehicle);
+    private onVehicleSeatChanged = (args: VehicleSeatChangeEventArgs) => {
+        if (args.newSeat === VehicleSeat.Driver) {
+            alt.log('Changed seat to driver');
+            this.startMileageCounter(args.vehicle);
+        } else if (args.oldSeat === VehicleSeat.Driver) {
+            alt.log('Changed seat from driver');
+            this.stopMileageCounter(args.vehicle);
         }
     }
 
     private startMileageCounter(playerVehicle: alt.Vehicle) {
         alt.log('Starting mileage counter');
+        if (!playerVehicle) {
+            alt.logError('Coulnd start mileage counter, because player vehicle was not found.');
+            return;
+        }
         this.vehicleLastPos = playerVehicle.pos;
         const mileage = playerVehicle.getSyncedMeta("vehicleMileage");
         if (mileage == null || typeof mileage === 'undefined') {
@@ -84,6 +91,7 @@ class VehicleMileage {
     }
 
     private stopMileageCounter(previousVehicle: alt.Vehicle | null = null) {
+        alt.log('Stopping mileage counter');
         alt.clearInterval(this.mileageInterval);
         alt.clearInterval(this.mileageUpdater);
         if (previousVehicle && this.calculatedDist > 0.1) {

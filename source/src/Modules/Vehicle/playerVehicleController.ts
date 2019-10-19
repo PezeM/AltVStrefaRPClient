@@ -85,6 +85,7 @@ class PlayerVehicleController {
             for (let i = -1; i < game.getVehicleMaxNumberOfPassengers(playerVehicle.scriptID); i++) {
                 const pedAtSeat = game.getPedInVehicleSeat(playerVehicle.scriptID, i, 0);
                 if (pedAtSeat === localPlayer.scriptID) {
+                    if (this.currentSeat === pedAtSeat) break;
                     this.previousSeat = this.currentSeat;
                     this.currentSeat = i;
                     this.seatChange(playerVehicle, this.currentSeat, this.previousSeat);

@@ -9,8 +9,8 @@ import maths from 'source/src/Helpers/maths';
 const localPlayer = alt.Player.local;
 class VehicleMileage {
     private tickInterval: number = 0;
-    private mileageInterval: number;
-    private mileageUpdater: number;
+    private mileageInterval: number = 0;
+    private mileageUpdater: number = 0;
     private vehicleLastPos: alt.Vector3;
     private calculatedDist: number = 0;
 

@@ -4,6 +4,7 @@ import { getClosestVehicle } from 'source/src/Helpers/collectionHelper';
 import math from 'source/src/Helpers/maths';
 import './vehiclesManualTransmission';
 import './playerVehicleController';
+import './vehicleMileage';
 
 const localPlayer = alt.Player.local;
 

@@ -1,18 +1,10 @@
 import * as alt from 'alt';
 import * as game from 'natives';
-import { isDriver } from 'source/src/Helpers/playerHelpers';
-import maths from 'source/src/Helpers/maths';
-import { drawText } from 'source/src/Helpers/uiHelper';
 import { VehicleLeaveEventCallback, VehicleEnterEventCallback, VehicleChangedSeatEventCallback } from 'source/src/Constans/types';
 import { VehicleSeat } from 'source/src/Constans/enums';
 
 const localPlayer = alt.Player.local;
 class PlayerVehicleController {
-    mileageInterval: number;
-    mileageUpdater: number;
-    vehicleLastPos: alt.Vector3;
-    calculatedDist: number = 0;
-
     previousVehicle: alt.Vehicle | null = null;
     currentVehicle: alt.Vehicle | null = null;
     private currentSeat: VehicleSeat = VehicleSeat.None;
@@ -38,7 +30,7 @@ class PlayerVehicleController {
         }
     }
 
-    onVehicleSeatChanged(func: VehicleEnterEventCallback) {
+    onVehicleSeatChanged(func: VehicleChangedSeatEventCallback) {
         if (this.vehicleSeatChangeEvent.indexOf(func) === -1) {
             this.vehicleSeatChangeEvent.push(func);
         }
@@ -100,11 +92,6 @@ class PlayerVehicleController {
                 }
             }
         }
-
-        if (!playerVehicle) return;
-        if (!isDriver(playerVehicle, localPlayer)) return;
-        drawText(`Vehicle mileage: ${playerVehicle.mileage.toFixed(2)}`, [0.2, 0.2], 4, [255, 255, 255, 255], 0.6, true, false);
-        drawText(`Calculated dist: ${this.calculatedDist.toFixed(2)}`, [0.2, 0.25], 4, [255, 255, 255, 255], 0.6, true, false);
     }
 
     private vehicleLeave(previousVehicle: alt.Vehicle, previousSeat: VehicleSeat) {
@@ -127,46 +114,6 @@ class PlayerVehicleController {
         for (let i = 0; i < this.vehicleSeatChangeEvent.length; i++) {
             this.vehicleSeatChangeEvent[i](vehicle, newSeat, oldSeat);
         }
-    }
-
-    private startMileageCounter(playerVehicle: alt.Vehicle) {
-        if (!isDriver(playerVehicle, localPlayer)) {
-            alt.logWarning('Player was not a driver');
-            return;
-        }
-        this.vehicleLastPos = localPlayer.pos;
-        const mileage = playerVehicle.getSyncedMeta("vehicleMileage");
-        alt.log(`Vehicle mileage = ${mileage}`);
-        playerVehicle.mileage = playerVehicle.getSyncedMeta("vehicleMileage");
-
-        this.mileageInterval = alt.setInterval(() => {
-            const vehicle = localPlayer.vehicle;
-            if (!vehicle) return this.stopMileageCounter();
-            let distance = maths.distanceSqrt(this.vehicleLastPos, vehicle.pos, true);
-            if (distance > 200) distance = 50;
-            distance /= 1000;
-            alt.log('Distance', distance);
-            this.calculatedDist += distance;
-            this.vehicleLastPos = vehicle.pos;
-            vehicle.mileage += distance;
-            alt.log('New vehicle mileage', vehicle.mileage);
-        }, 1000);
-
-        this.mileageUpdater = alt.setInterval(() => {
-            const vehicle = localPlayer.vehicle;
-            if (!vehicle) return this.stopMileageCounter();
-            if (this.calculatedDist < 0.1) return;
-            alt.emitServer("Vehicle-AddMileage", vehicle, this.calculatedDist.toFixed(2));
-            this.calculatedDist = 0;
-        }, 60000);
-    }
-
-    private stopMileageCounter() {
-        alt.clearInterval(this.mileageInterval);
-        alt.clearInterval(this.mileageUpdater);
-        if (this.calculatedDist <= 0.1 || this.previousVehicle == null) return;
-        alt.emitServer('Vehicle-AddMileage', this.previousVehicle, this.calculatedDist.toFixed(2));
-        this.calculatedDist = 0;
     }
 }
 

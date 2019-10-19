@@ -27,6 +27,7 @@ import inventoryController from "source/src/Modules/Inventory/inventoryControlle
 import housingSystemController from "source/src/Modules/Housing/housingSystemController";
 import "source/src/Modules/Environment/timeController";
 import adminMenuController from "source/src/Modules/Admin/AdminMenuController";
+import 'source/src/Modules/interiorChangeHandler';
 
 const localPlayer = alt.Player.local;
 let lastKeyPressedTime = new Date().getTime();

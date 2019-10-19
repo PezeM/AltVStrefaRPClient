@@ -121,21 +121,21 @@ alt.setInterval(() => {
   //     game.hideHudComponentThisFrame(hudElement);
   // });
 
-  if (
-    raycast.didRaycastHit &&
-    localPlayer.vehicle == null &&
-    raycast.endCoords !== null
-  ) {
-    draw3DText(
-      `[ALT] E: ${raycast.entityHit} T: ${game.getEntityType(
-        raycast.entityHit as number
-      )} M: ${game.getEntityModel(raycast.entityHit as number)}`,
-      [raycast.endCoords.x, raycast.endCoords.y, raycast.endCoords.z],
-      4,
-      [255, 255, 255, 200],
-      0.5
-    );
-  }
+  // if (
+  //   raycast.didRaycastHit &&
+  //   localPlayer.vehicle == null &&
+  //   raycast.endCoords !== null
+  // ) {
+  //   draw3DText(
+  //     `[ALT] E: ${raycast.entityHit} T: ${game.getEntityType(
+  //       raycast.entityHit as number
+  //     )} M: ${game.getEntityModel(raycast.entityHit as number)}`,
+  //     [raycast.endCoords.x, raycast.endCoords.y, raycast.endCoords.z],
+  //     4,
+  //     [255, 255, 255, 200],
+  //     0.5
+  //   );
+  // }
 
   // Disable moving camera/attacking while UI is open
   // if (chat.isOpen() || mainUi.viewOpened || circleMenu.isMenuOpened) {

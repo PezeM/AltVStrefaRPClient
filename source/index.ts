@@ -15,7 +15,7 @@ import "source/src/Modules/Admin/animationBrowser";
 import "source/src/Modules/Environment/sitting";
 import * as vehicles from "source/src/Modules/Vehicle/vehicles";
 import "source/src/Modules/objectSync";
-// import 'source/src/Modules/Streaming/networkStreamer';
+import 'source/src/Modules/Streaming/networkStreamer';
 import equipmentSlots from "source/src/Constans/equipmentSlots";
 import "source/src/Modules/Vehicle/vehicleComponentsController";
 import "source/src/configFlagsController";

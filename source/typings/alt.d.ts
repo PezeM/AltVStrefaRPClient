@@ -167,6 +167,7 @@ declare module "alt" {
 		lightFading: any;
 		lightFadingCount: number;
 		lockTimer: any;
+        mileage: number;
 	}
 
 	export class WebView extends BaseObject {

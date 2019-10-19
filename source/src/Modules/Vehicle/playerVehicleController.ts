@@ -3,10 +3,8 @@ import * as game from 'natives';
 import { isDriver } from 'source/src/Helpers/playerHelpers';
 import maths from 'source/src/Helpers/maths';
 import { drawText } from 'source/src/Helpers/uiHelper';
-
-type VehicleEnterEventCallback = (vehicle: alt.Vehicle, seat: number) => void;
-type VehicleLeaveEventCallback = (vehicle: alt.Vehicle, seat: number) => void;
-type VehicleChangedSeatEventCallback = (vehicle: alt.Vehicle, newSeat: number, oldSeat: number) => void;
+import { VehicleLeaveEventCallback, VehicleEnterEventCallback, VehicleChangedSeatEventCallback } from 'source/src/Constans/types';
+import { VehicleSeat } from 'source/src/Constans/enums';
 
 const localPlayer = alt.Player.local;
 class PlayerVehicleController {
@@ -15,9 +13,9 @@ class PlayerVehicleController {
     vehicleLastPos: alt.Vector3;
     calculatedDist: number = 0;
 
-    previousVehicle: alt.Vehicle | null;
-    currentVehicle: alt.Vehicle | null;
-    private currentSeat: number = -2;
+    previousVehicle: alt.Vehicle | null = null;
+    currentVehicle: alt.Vehicle | null = null;
+    private currentSeat: VehicleSeat = VehicleSeat.None;
     private previousSeat: number = -2;
     private tickInterval: number = 0;
     private vehicleEnterEvents: VehicleEnterEventCallback[] = [];
@@ -25,9 +23,6 @@ class PlayerVehicleController {
     private vehicleSeatChangeEvent: VehicleChangedSeatEventCallback[] = [];
 
     constructor() {
-        this.previousVehicle = null;
-        this.currentVehicle = null;
-        alt.log('Created vehicle mileage');
         this.tickInterval = alt.setInterval(this.tick.bind(this), 0);
     }
 
@@ -77,7 +72,7 @@ class PlayerVehicleController {
                 this.previousVehicle = this.currentVehicle;
                 this.currentVehicle = null;
                 this.previousSeat = this.currentSeat;
-                this.currentSeat = -1;
+                this.currentSeat = VehicleSeat.None;
                 this.vehicleLeave(this.previousVehicle as alt.Vehicle, this.previousSeat);
                 return;
             } else {
@@ -112,14 +107,14 @@ class PlayerVehicleController {
         drawText(`Calculated dist: ${this.calculatedDist.toFixed(2)}`, [0.2, 0.25], 4, [255, 255, 255, 255], 0.6, true, false);
     }
 
-    private vehicleLeave(previousVehicle: alt.Vehicle, previousSeat: number) {
+    private vehicleLeave(previousVehicle: alt.Vehicle, previousSeat: VehicleSeat) {
         alt.log('On vehicle leave');
         for (let i = 0; i < this.vehicleLeaveEvents.length; i++) {
             this.vehicleLeaveEvents[i](previousVehicle, previousSeat);
         }
     }
 
-    private vehicleEnter(enteredVehicle: alt.Vehicle, seat: number) {
+    private vehicleEnter(enteredVehicle: alt.Vehicle, seat: VehicleSeat) {
         alt.log('On vehicle enter');
         // this.startMileageCounter(enteredVehicle);
         for (let i = 0; i < this.vehicleEnterEvents.length; i++) {
@@ -127,7 +122,7 @@ class PlayerVehicleController {
         }
     }
 
-    private seatChange(vehicle: alt.Vehicle, newSeat: number, oldSeat: number) {
+    private seatChange(vehicle: alt.Vehicle, newSeat: VehicleSeat, oldSeat: VehicleSeat) {
         alt.log(`Seat changed from ${oldSeat} to ${newSeat}`);
         for (let i = 0; i < this.vehicleSeatChangeEvent.length; i++) {
             this.vehicleSeatChangeEvent[i](vehicle, newSeat, oldSeat);

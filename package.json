@@ -2,7 +2,7 @@
   "name": "altv-strefa-rp-client",
   "version": "1.0.0",
   "description": "altv typescript for client",
-  "main": "index.js",
+  "main": "source/index.js",
   "scripts": {
     "build": "npm run build:client",
     "watch:client": "rollup -cw --config source/rollup.config.ts",

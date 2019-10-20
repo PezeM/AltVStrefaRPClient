@@ -28,6 +28,7 @@ import housingSystemController from "source/src/Modules/Housing/housingSystemCon
 import "source/src/Modules/Environment/timeController";
 import adminMenuController from "source/src/Modules/Admin/AdminMenuController";
 import 'source/src/Modules/interiorChangeHandler';
+import 'source/src/testEvents';
 
 const localPlayer = alt.Player.local;
 let lastKeyPressedTime = new Date().getTime();

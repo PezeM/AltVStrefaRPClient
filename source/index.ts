@@ -15,20 +15,21 @@ import "source/src/Modules/Admin/animationBrowser";
 import "source/src/Modules/Environment/sitting";
 import * as vehicles from "source/src/Modules/Vehicle/vehicles";
 import "source/src/Modules/objectSync";
-import 'source/src/Modules/Streaming/networkStreamer';
+import "source/src/Modules/Streaming/networkStreamer";
 import equipmentSlots from "source/src/Constans/equipmentSlots";
 import "source/src/Modules/Vehicle/vehicleComponentsController";
 import "source/src/configFlagsController";
 import vehicleDoors from "source/src/Modules/Vehicle/Components/vehicleDoorsComponent";
-import vehicleSeatbeltComponent from "source/src/Modules/Vehicle/Components/vehicleSeatbeltComponent";
+// import vehicleSeatbeltComponent from "source/src/Modules/Vehicle/Components/vehicleSeatbeltComponent";
 import vehicleEngineToggleComponent from "source/src/Modules/Vehicle/Components/vehicleEngineToggleComponent";
 import SoundBrowser from "source/src/Modules/Admin/soundBrowser";
 import inventoryController from "source/src/Modules/Inventory/inventoryController";
 import housingSystemController from "source/src/Modules/Housing/housingSystemController";
 import "source/src/Modules/Environment/timeController";
 import adminMenuController from "source/src/Modules/Admin/AdminMenuController";
-import 'source/src/Modules/interiorChangeHandler';
-import 'source/src/testEvents';
+import "source/src/Modules/interiorChangeHandler";
+import "source/src/testEvents";
+import "source/src/Modules/Test/trains";
 
 const localPlayer = alt.Player.local;
 let lastKeyPressedTime = new Date().getTime();
@@ -107,7 +108,7 @@ alt.on("keydown", (key: number) => {
       )
         return;
       lastKeyPressedTime = new Date().getTime();
-      vehicleSeatbeltComponent.toggleSeatbelt(localPlayer);
+      // vehicleSeatbeltComponent.toggleSeatbelt(localPlayer);
       break;
     case keycodes.U_KEY:
       if (
@@ -239,10 +240,10 @@ function test3DView() {
     );
     alt.log(
       "Exists " +
-      alt.isTextureExistInArchetype(
-        game.getHashKey("v_ilev_cin_screen"),
-        "script_rt_cinscreen"
-      )
+        alt.isTextureExistInArchetype(
+          game.getHashKey("v_ilev_cin_screen"),
+          "script_rt_cinscreen"
+        )
     );
 
     const inter = alt.setInterval(() => {
@@ -311,10 +312,10 @@ function testStrefa() {
     );
     alt.log(
       "Exists " +
-      alt.isTextureExistInArchetype(
-        game.getHashKey("xm_prop_x17_sec_panel_01"),
-        "script_rt_prop_x17_p_01"
-      )
+        alt.isTextureExistInArchetype(
+          game.getHashKey("xm_prop_x17_sec_panel_01"),
+          "script_rt_prop_x17_p_01"
+        )
     );
     game.attachEntityToEntity(
       strefaObject,

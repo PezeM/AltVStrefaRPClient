@@ -33,7 +33,7 @@ let direction: Vector3 = {
 let lastChecked = 0;
 const localPlayer = alt.Player.local;
 
-export async function toggleFlying() {
+export function toggleFlying() {
     fly.flying = !fly.flying;
 
     game.freezeEntityPosition(localPlayer.scriptID, fly.flying);

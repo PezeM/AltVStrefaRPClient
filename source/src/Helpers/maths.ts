@@ -11,13 +11,15 @@ class Maths {
     return {
       x: -Math.sin(radiansZ) * num,
       y: Math.cos(radiansZ) * num,
-      z: Math.sin(radiansX),
+      z: Math.sin(radiansX)
     };
   }
 
   distanceSqrt(a: Vector3, b: Vector3, useZ = true) {
     if (useZ) {
-      return Math.sqrt(Math.pow(b.x - a.x, 2) + Math.pow(b.y - a.y, 2) + Math.pow(b.z - a.z, 2));
+      return Math.sqrt(
+        Math.pow(b.x - a.x, 2) + Math.pow(b.y - a.y, 2) + Math.pow(b.z - a.z, 2)
+      );
     } else {
       return Math.sqrt(Math.pow(b.x - a.x, 2) + Math.pow(b.y - a.y, 2));
     }
@@ -25,14 +27,16 @@ class Maths {
 
   distance(a: Vector3, b: Vector3, useZ = true) {
     if (useZ) {
-      return Math.pow(b.x - a.x, 2) + Math.pow(b.y - a.y, 2) + Math.pow(b.z - a.z, 2);
+      return (
+        Math.pow(b.x - a.x, 2) + Math.pow(b.y - a.y, 2) + Math.pow(b.z - a.z, 2)
+      );
     } else {
       return Math.pow(b.x - a.x, 2) + Math.pow(b.y - a.y, 2);
     }
   }
 
   dot(a: Vector3, b: Vector3) {
-    return (a.x * b.x) + (a.y * b.y) + (a.z * b.z);
+    return a.x * b.x + a.y * b.y + a.z * b.z;
   }
 
   substract(a: Vector3, b: Vector3) {
@@ -44,7 +48,9 @@ class Maths {
   }
 
   magnitude(vector: Vector3) {
-    return Math.sqrt(vector.x * vector.x + vector.y * vector.y + vector.z * vector.z);
+    return Math.sqrt(
+      vector.x * vector.x + vector.y * vector.y + vector.z * vector.z
+    );
   }
 
   normalize(vector: Vector3) {
@@ -53,6 +59,10 @@ class Maths {
     vector.y = vector.y / magnitude;
     vector.z = vector.z / magnitude;
     return vector;
+  }
+
+  getRandom(min: number, max: number) {
+    return Math.random() * (max - min) + min;
   }
 }
 

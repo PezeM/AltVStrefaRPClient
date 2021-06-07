@@ -1,4 +1,4 @@
-# AltVStrefaRPClient
+# AltV StrefaRP Client
 
 ## Client-side files setup
 ### Project setup

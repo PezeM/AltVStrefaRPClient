@@ -1,5 +1,7 @@
 # AltV StrefaRP Client
 
+## No longer in development. Available for study purposes
+
 ## Client-side files setup
 ### Project setup
 ```

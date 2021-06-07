@@ -11,5 +11,5 @@ npm install
 npm run build
 ```
 
-## Ui files setup
+## UI files setup
 Check installation [client-ui](client-ui/)
